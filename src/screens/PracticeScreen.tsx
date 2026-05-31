@@ -10,6 +10,7 @@ import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { ClueHighlight } from '../components/question/ClueHighlight';
 import { AppButton } from '../components/ui/AppButton';
+import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, fontWeight, radius, font } from '../theme/tokens';
 import { getQuestionById, getClueWordsByIds, getClueWords } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
@@ -76,7 +77,13 @@ export function PracticeScreen({ navigation, route }: Props) {
   if (!question) {
     return (
       <SafeAreaView style={styles.safe}>
-        <Text style={{ padding: 24 }}>Question not found.</Text>
+        <ScreenHeader title="Practice" onBack={() => navigation.goBack()} />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+          <Text style={{ fontSize: 16, color: colors.textSecondary, textAlign: 'center' }}>
+            No question found. Please go back and try again.
+          </Text>
+          <AppButton label="Go back" onPress={() => navigation.goBack()} style={{ marginTop: 16, width: 160 }} />
+        </View>
       </SafeAreaView>
     );
   }

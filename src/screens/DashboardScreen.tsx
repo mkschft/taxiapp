@@ -20,7 +20,7 @@ type HubItem = {
 const HUBS: HubItem[] = [
   { Icon: BookOpen, tint: colors.primary, title: 'Vocabulary', sub: '20 words · 2 pages', paid: false, screen: 'Vocabulary', stack: 'Study' },
   { Icon: Target, tint: colors.success, title: 'Clue Words', sub: '10 clue patterns', paid: true, screen: 'ClueWords', stack: 'Study' },
-  { Icon: MessageSquare, tint: colors.warning, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'Practice', stack: 'Study' },
+  { Icon: MessageSquare, tint: colors.warning, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'StudyHome', stack: 'Study' },
   { Icon: Timer, tint: colors.error, title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
   { Icon: BarChart3, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];
@@ -30,8 +30,10 @@ export function DashboardScreen() {
   const { answered, accuracy, completion } = useQuestionStats(TOTAL_QUESTIONS);
 
   const navigate = (hub: HubItem) => {
-    if (hub.stack) {
-      navigation.navigate(hub.stack, { screen: hub.screen });
+    if (hub.screen === 'Progress') {
+      navigation.navigate('Progress');
+    } else if (hub.stack) {
+      navigation.navigate(hub.stack, { screen: hub.screen, params: {} });
     } else {
       navigation.navigate(hub.screen);
     }

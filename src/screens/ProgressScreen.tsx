@@ -108,6 +108,7 @@ export function ProgressScreen() {
                     style={styles.retryBtn}
                     onPress={() => navigation.navigate('Study', {
                       screen: 'Practice',
+                      initial: false,
                       params: { questionId: id, sourceLabel: 'Retry' },
                     })}
                   >
@@ -123,6 +124,7 @@ export function ProgressScreen() {
                 if (weakIds.length > 0) {
                   navigation.navigate('Study', {
                     screen: 'Practice',
+                    initial: false,
                     params: {
                       questionId: weakIds[0],
                       queue: weakIds,

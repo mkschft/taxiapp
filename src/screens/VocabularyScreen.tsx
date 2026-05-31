@@ -9,7 +9,7 @@ import { Check, AlertTriangle, Zap } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-import { getVocabByPage, getVocabPageCount } from '../data/loaders';
+import { getVocabByPage, getVocabPageCount, getQuestions } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
 import type { VocabWord } from '../data/types';
@@ -77,14 +77,14 @@ export function VocabularyScreen({ navigation, route }: Props) {
     markAllSeen();
     // Navigate to practice with a set of questions from this vocab page's question IDs
     const qIds = [...new Set(words.flatMap(w => w.appears_in_question_ids))].slice(0, 5);
-    if (qIds.length > 0) {
-      navigation.navigate('Practice', {
-        questionId: qIds[0],
-        queue: qIds,
-        queueIndex: 0,
-        sourceLabel: `Vocab Page ${page} Quiz`,
-      });
-    }
+    const allQIds = getQuestions().map(q => q.id);
+    const practiceIds = qIds.length > 0 ? qIds : allQIds.slice(0, 5);
+    navigation.navigate('Practice', {
+      questionId: practiceIds[0],
+      queue: practiceIds,
+      queueIndex: 0,
+      sourceLabel: `Vocab Page ${page} Quiz`,
+    });
   };
 
   return (
