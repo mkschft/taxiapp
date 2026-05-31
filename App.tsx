@@ -1,14 +1,47 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, View, StyleSheet } from 'react-native';
+import { Platform, View, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+} from '@expo-google-fonts/inter';
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { ProgressProvider } from './src/store/progressStore';
+import { colors, font } from './src/theme/tokens';
+
+// Set Inter as the base font for all Text via defaultProps (safe on web + native).
+// Explicit fontFamily in component styles overrides this for weighted text.
+function applyGlobalFont() {
+  const TextAny = Text as any;
+  if (TextAny.__interPatched) return;
+  TextAny.__interPatched = true;
+  TextAny.defaultProps = TextAny.defaultProps || {};
+  TextAny.defaultProps.style = [{ fontFamily: font.regular }, TextAny.defaultProps.style];
+}
 
 export default function App() {
-  const inner = (
+  const [loaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+  });
+
+  if (loaded) applyGlobalFont();
+
+  const inner = !loaded ? (
+    <View style={styles.loading}>
+      <ActivityIndicator color={colors.primary} />
+    </View>
+  ) : (
     <SafeAreaProvider>
       <ProgressProvider>
         <NavigationContainer>
@@ -21,17 +54,15 @@ export default function App() {
 
   if (Platform.OS !== 'web') return inner;
 
-  // On web: center a phone-width shell with subtle outer background
   return (
     <View style={styles.webOuter}>
-      <View style={styles.webShell}>
-        {inner}
-      </View>
+      <View style={styles.webShell}>{inner}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
   webOuter: {
     flex: 1,
     backgroundColor: '#E8ECF0',
@@ -43,9 +74,6 @@ const styles = StyleSheet.create({
     maxWidth: 430,
     height: '100%',
     backgroundColor: '#FFFFFF',
-    // subtle phone-frame shadow on desktop
-    ...(Platform.OS === 'web' ? {
-      boxShadow: '0 0 40px rgba(0,0,0,0.12)',
-    } as any : {}),
+    ...(Platform.OS === 'web' ? ({ boxShadow: '0 0 40px rgba(0,0,0,0.12)' } as any) : {}),
   },
 });

@@ -1,18 +1,19 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Home, BookOpen, Timer, BarChart3, User } from 'lucide-react-native';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { ProgressScreen } from '../screens/ProgressScreen';
 import { StudyStack } from './StudyStack';
 import { TestStack } from './TestStack';
 import { ProfileStack } from './ProfileStack';
-import { colors, fontSize } from '../theme/tokens';
+import { colors, fontSize, font } from '../theme/tokens';
 import type { AppTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
-const ICONS: Record<string, string> = {
-  Dashboard: '🏠', Study: '📚', Test: '⏱️', Progress: '📊', Profile: '👤',
+const ICONS: Record<string, any> = {
+  Dashboard: Home, Study: BookOpen, Test: Timer, Progress: BarChart3, Profile: User,
 };
 
 export function AppTabs() {
@@ -20,11 +21,15 @@ export function AppTabs() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarIcon: () => <Text style={styles.icon}>{ICONS[route.name]}</Text>,
+        tabBarIcon: ({ color, focused }) => {
+          const Icon = ICONS[route.name];
+          return <Icon size={22} color={color} strokeWidth={focused ? 2.4 : 2} />;
+        },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarInactiveTintColor: colors.textTertiary,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.label,
+        tabBarItemStyle: { paddingTop: 6 },
       })}
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
@@ -38,10 +43,12 @@ export function AppTabs() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 72, borderTopWidth: 1, borderTopColor: colors.border,
+    height: 76,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
     backgroundColor: colors.bg,
-    paddingBottom: 8, paddingTop: 4,
+    paddingBottom: 12,
+    paddingTop: 4,
   },
-  icon: { fontSize: 22 },
-  label: { fontSize: fontSize.xs, marginTop: 2 },
+  label: { fontSize: fontSize.xs, fontFamily: font.medium, marginTop: 3 },
 });

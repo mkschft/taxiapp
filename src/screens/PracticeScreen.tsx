@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert,
+  Pressable,
 } from 'react-native';
+import { MotiView } from 'moti';
+import { Languages, Lightbulb, ChevronLeft } from 'lucide-react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { ClueHighlight } from '../components/question/ClueHighlight';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { colors, spacing, fontSize, fontWeight, radius, font } from '../theme/tokens';
 import { getQuestionById, getClueWordsByIds, getClueWords } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
@@ -96,9 +98,9 @@ export function PracticeScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
+        <Pressable onPress={() => navigation.goBack()} style={styles.backBtn} hitSlop={8}>
+          <ChevronLeft size={24} color={colors.primary} strokeWidth={2.2} />
+        </Pressable>
         <Text style={styles.navTitle}>{sourceLabel}</Text>
         {queue.length > 0 && (
           <Text style={styles.qCount}>{queueIndex + 1}/{queue.length}</Text>
@@ -128,36 +130,42 @@ export function PracticeScreen({ navigation, route }: Props) {
 
         {/* Action bar: Translate + Hint */}
         <View style={styles.actionBar}>
-          <TouchableOpacity
-            style={[styles.actionBtn, lang === 'en' && styles.actionBtnActive]}
+          <Pressable
+            style={({ pressed }) => [styles.actionBtn, lang === 'en' && styles.actionBtnActive, pressed && styles.actionPressed]}
             onPress={cycleLang}
-            activeOpacity={0.7}
           >
-            <Text style={styles.actionIcon}>🌐</Text>
+            <Languages size={16} color={lang === 'en' ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
             <Text style={[styles.actionLabel, lang === 'en' && styles.actionLabelActive]}>
               Translate
             </Text>
             <View style={[styles.langPill, lang === 'en' && styles.langPillActive]}>
               <Text style={styles.langPillText}>{lang.toUpperCase()}</Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity
-            style={[styles.actionBtn, showHint && styles.actionBtnHint]}
+          <Pressable
+            style={({ pressed }) => [styles.actionBtn, showHint && styles.actionBtnHint, pressed && styles.actionPressed]}
             onPress={() => setShowHint(h => !h)}
-            activeOpacity={0.7}
           >
-            <Text style={styles.actionIcon}>💡</Text>
+            <Lightbulb size={16} color={showHint ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
             <Text style={[styles.actionLabel, showHint && styles.actionLabelHint]}>
               Hint
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         {/* Hint panel */}
         {showHint && relevantClues.length > 0 && (
-          <View style={styles.hintPanel}>
-            <Text style={styles.hintTitle}>💡 CLUE WORD HINT</Text>
+          <MotiView
+            from={{ opacity: 0, translateY: -6 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ type: 'timing', duration: 220 }}
+            style={styles.hintPanel}
+          >
+            <View style={styles.hintHeaderRow}>
+              <Lightbulb size={14} color={colors.warning} strokeWidth={2.4} />
+              <Text style={styles.hintTitle}>CLUE WORD HINT</Text>
+            </View>
             {relevantClues.map(cw => (
               <View key={cw.id} style={styles.hintRow}>
                 <View style={[styles.hintDot, cw.group === 'positive' ? styles.dotPos : styles.dotNeg]} />
@@ -170,12 +178,12 @@ export function PracticeScreen({ navigation, route }: Props) {
                 </View>
               </View>
             ))}
-          </View>
+          </MotiView>
         )}
 
         {/* Options */}
         <View style={styles.options}>
-          {question.options.map(opt => (
+          {question.options.map((opt, i) => (
             <OptionRow
               key={opt.letter}
               letter={opt.letter}
@@ -183,13 +191,19 @@ export function PracticeScreen({ navigation, route }: Props) {
               state={optionStates[opt.letter]}
               onPress={() => handleSelect(opt.letter)}
               disabled={answered}
+              index={i}
             />
           ))}
         </View>
 
         {/* Explanation */}
         {answered && (
-          <View style={styles.explanation}>
+          <MotiView
+            from={{ opacity: 0, translateY: 10 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ type: 'timing', duration: 300 }}
+            style={styles.explanation}
+          >
             <Text style={styles.expText}>{question.explanation_en}</Text>
             {relevantClues.length > 0 && (
               <View style={styles.cluePills}>
@@ -208,7 +222,7 @@ export function PracticeScreen({ navigation, route }: Props) {
                 </View>
               </View>
             )}
-          </View>
+          </MotiView>
         )}
 
         <View style={styles.nextBtn}>
@@ -233,10 +247,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, height: 52,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 22, color: colors.primary, fontWeight: fontWeight.regular },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
-  qCount: { fontSize: fontSize.sm, color: colors.textSecondary },
+  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
+  navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  qCount: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium },
   scroll: { flex: 1, padding: spacing.md },
   progressWrap: { marginBottom: 12 },
   progressTrack: { height: 6, backgroundColor: colors.surface, borderRadius: radius.full, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
@@ -244,32 +257,34 @@ const styles = StyleSheet.create({
   questionCard: {
     backgroundColor: colors.surface, borderRadius: radius.md,
     padding: spacing.md, marginBottom: 12,
+    borderWidth: 1, borderColor: colors.border,
   },
-  qLabel: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, color: colors.textSecondary, marginBottom: 6, letterSpacing: 0.5 },
-  qText: { fontSize: 15, lineHeight: 24, color: colors.text },
+  qLabel: { fontSize: fontSize.xs, fontFamily: font.bold, color: colors.textTertiary, marginBottom: 6, letterSpacing: 0.8 },
+  qText: { fontSize: 15, lineHeight: 24, color: colors.text, fontFamily: font.medium },
   actionBar: { flexDirection: 'row', gap: spacing.sm, marginBottom: 12 },
   actionBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 5, height: 40, borderRadius: 10,
+    gap: 6, height: 42, borderRadius: radius.sm,
     borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.surface,
   },
+  actionPressed: { transform: [{ scale: 0.97 }], opacity: 0.9 },
   actionBtnActive: { borderColor: colors.primary, backgroundColor: colors.primaryTint },
   actionBtnHint: { borderColor: colors.warning, backgroundColor: colors.warningTint },
-  actionIcon: { fontSize: 15 },
-  actionLabel: { fontSize: 13, fontWeight: fontWeight.semibold, color: colors.textSecondary },
+  actionLabel: { fontSize: 13, fontFamily: font.semibold, color: colors.textSecondary },
   actionLabelActive: { color: colors.primary },
   actionLabelHint: { color: colors.warning },
   langPill: {
-    backgroundColor: colors.textSecondary, borderRadius: 4,
-    paddingHorizontal: 5, paddingVertical: 1,
+    backgroundColor: colors.textTertiary, borderRadius: 5,
+    paddingHorizontal: 6, paddingVertical: 1,
   },
   langPillActive: { backgroundColor: colors.primary },
-  langPillText: { fontSize: 10, fontWeight: fontWeight.bold, color: '#fff', letterSpacing: 0.4 },
+  langPillText: { fontSize: 10, fontFamily: font.bold, color: '#fff', letterSpacing: 0.4 },
   hintPanel: {
     backgroundColor: colors.warningTint, borderWidth: 1.5, borderColor: colors.warning,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 12,
   },
-  hintTitle: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, color: colors.warning, letterSpacing: 0.6, marginBottom: 8 },
+  hintHeaderRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 },
+  hintTitle: { fontSize: fontSize.xs, fontFamily: font.bold, color: colors.warning, letterSpacing: 0.6 },
   hintRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start', marginBottom: 6 },
   hintDot: { width: 8, height: 8, borderRadius: 4, marginTop: 5, flexShrink: 0 },
   dotPos: { backgroundColor: colors.success },
