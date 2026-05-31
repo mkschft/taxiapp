@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
-import { Home, BookOpen, Timer, BarChart3, User } from 'lucide-react-native';
+import { Home, BookOpen, Timer, TrendingUp, User } from 'lucide-react-native';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { ProgressScreen } from '../screens/ProgressScreen';
 import { StudyStack } from './StudyStack';
@@ -13,7 +13,7 @@ import type { AppTabParamList } from './types';
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
 const ICONS: Record<string, any> = {
-  Dashboard: Home, Study: BookOpen, Test: Timer, Progress: BarChart3, Profile: User,
+  Dashboard: Home, Study: BookOpen, Test: Timer, Progress: TrendingUp, Profile: User,
 };
 
 export function AppTabs() {
