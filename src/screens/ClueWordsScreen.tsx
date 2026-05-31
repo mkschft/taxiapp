@@ -4,16 +4,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { CheckCircle2, AlertTriangle, HelpCircle, Link2, type LucideIcon } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueWords, getQuestions } from '../data/loaders';
 import type { ClueGroup, ClueWord } from '../data/types';
 
-const TABS: { key: ClueGroup; label: string; icon: string }[] = [
-  { key: 'positive', label: 'Positive', icon: '✅' },
-  { key: 'negative', label: 'Negative', icon: '⚠️' },
-  { key: 'wh', label: 'WH-words', icon: '❓' },
-  { key: 'conjunction', label: 'Conjunctions', icon: '🔗' },
+const TABS: { key: ClueGroup; label: string; Icon: LucideIcon }[] = [
+  { key: 'positive', label: 'Positive', Icon: CheckCircle2 },
+  { key: 'negative', label: 'Negative', Icon: AlertTriangle },
+  { key: 'wh', label: 'WH-words', Icon: HelpCircle },
+  { key: 'conjunction', label: 'Conjunctions', Icon: Link2 },
 ];
 
 function ClueCard({ cw }: { cw: ClueWord }) {
@@ -31,11 +33,11 @@ function ClueCard({ cw }: { cw: ClueWord }) {
           <Text style={styles.signalText}>{isPos ? 'CORRECT' : isNeg ? 'WRONG' : 'CONTEXT'}</Text>
         </View>
       </View>
-      <Text style={styles.meaning}><Text style={{ fontWeight: fontWeight.semibold }}>Meaning: </Text>"{cw.phrase_en}"</Text>
+      <Text style={styles.meaning}><Text style={{ fontFamily: font.semibold }}>Meaning: </Text>"{cw.phrase_en}"</Text>
       <Text style={styles.effect}>{cw.effect}</Text>
       {cw.exceptions.length > 0 && (
         <View style={styles.trap}>
-          <Text style={styles.trapLabel}>🪤 Exception</Text>
+          <Text style={styles.trapLabel}>EXCEPTION</Text>
           {cw.exceptions.map((ex, i) => (
             <Text key={i} style={styles.trapText}>{ex}</Text>
           ))}
@@ -59,12 +61,7 @@ export function ClueWordsScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.navTitle}>Clue Words</Text>
-      </View>
+      <ScreenHeader title="Clue Words" onBack={() => navigation.goBack()} />
 
       <View style={styles.intro}>
         <Text style={styles.introText}>
@@ -80,7 +77,7 @@ export function ClueWordsScreen() {
             style={[styles.tab, activeTab === t.key && styles.tabActive]}
             onPress={() => setActiveTab(t.key)}
           >
-            <Text style={styles.tabIcon}>{t.icon}</Text>
+            <t.Icon size={16} color={activeTab === t.key ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
             <Text style={[styles.tabLabel, activeTab === t.key && styles.tabLabelActive]}>
               {t.label}
             </Text>
@@ -112,14 +109,6 @@ export function ClueWordsScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  navBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-    paddingHorizontal: spacing.md, height: 52,
-    borderBottomWidth: 1, borderColor: colors.border,
-  },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 22, color: colors.primary },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
   intro: { padding: spacing.md, paddingBottom: 0 },
   introText: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 20 },
   tabs: {
@@ -127,19 +116,19 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.sm, gap: 8,
   },
   tab: {
-    flex: 1, alignItems: 'center', paddingVertical: 8,
+    flex: 1, alignItems: 'center', paddingVertical: 10, gap: 3,
     borderRadius: radius.sm, borderWidth: 1, borderColor: colors.border,
     backgroundColor: colors.surface,
   },
   tabActive: { backgroundColor: colors.primaryTint, borderColor: colors.primary },
-  tabIcon: { fontSize: 16 },
-  tabLabel: { fontSize: 10, fontWeight: fontWeight.semibold, color: colors.textSecondary, marginTop: 2 },
+  tabLabel: { fontSize: 10, fontFamily: font.semibold, color: colors.textSecondary },
   tabLabelActive: { color: colors.primary },
   scroll: { padding: spacing.md },
   card: {
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
     marginBottom: 12, backgroundColor: colors.bg,
+    ...shadow.sm,
   },
   cardPos: { borderColor: colors.success + '55' },
   cardNeg: { borderColor: colors.error + '55' },
@@ -148,7 +137,7 @@ const styles = StyleSheet.create({
   pillPos: { backgroundColor: colors.successTint, borderColor: colors.success },
   pillNeg: { backgroundColor: colors.errorTint, borderColor: colors.error },
   pillNeutral: { backgroundColor: colors.surface, borderColor: colors.border },
-  pillText: { fontSize: 13, fontWeight: fontWeight.semibold },
+  pillText: { fontSize: 13, fontFamily: font.semibold },
   pillTextPos: { color: colors.success },
   pillTextNeg: { color: colors.error },
   pillTextNeutral: { color: colors.textSecondary },
@@ -156,14 +145,14 @@ const styles = StyleSheet.create({
   signalCorrect: { backgroundColor: colors.success },
   signalWrong: { backgroundColor: colors.error },
   signalNeutral: { backgroundColor: colors.textSecondary },
-  signalText: { fontSize: 10, fontWeight: fontWeight.bold, color: '#fff', letterSpacing: 0.5 },
+  signalText: { fontSize: 10, fontFamily: font.bold, color: '#fff', letterSpacing: 0.5 },
   meaning: { fontSize: 13, color: colors.textSecondary, marginBottom: 6, lineHeight: 18 },
   effect: { fontSize: 13, color: colors.text, lineHeight: 18, marginBottom: 6 },
   trap: {
     backgroundColor: colors.warningTint, borderRadius: radius.sm,
     padding: 10, marginTop: 4,
   },
-  trapLabel: { fontSize: 12, fontWeight: fontWeight.bold, color: colors.warning, marginBottom: 4 },
+  trapLabel: { fontSize: 11, fontFamily: font.bold, color: colors.warning, marginBottom: 4, letterSpacing: 0.5 },
   trapText: { fontSize: 12, color: colors.text, lineHeight: 17 },
   practiceBtn: { marginTop: spacing.md },
 });

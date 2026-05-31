@@ -3,31 +3,35 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
   TouchableOpacity, Switch, Alert,
 } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import {
+  Target, Languages, Bell, CreditCard, Gift, HelpCircle, Star, Trash2,
+  ChevronRight, CalendarDays, type LucideIcon,
+} from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats } from '../store/progressStore';
 import { getQuestions } from '../data/loaders';
 import { clearAll } from '../store/storage';
-import type { ProfileStackParamList } from '../navigation/types';
 
 const TOTAL_QS = getQuestions().length;
 
 function SettingRow({
-  icon, title, subtitle, onPress, right,
+  Icon, tint, title, subtitle, onPress, right,
 }: {
-  icon: string; title: string; subtitle?: string;
+  Icon: LucideIcon; tint?: string; title: string; subtitle?: string;
   onPress?: () => void; right?: React.ReactNode;
 }) {
   return (
     <TouchableOpacity style={styles.settingRow} onPress={onPress} disabled={!onPress} activeOpacity={0.7}>
-      <Text style={styles.settingIcon}>{icon}</Text>
+      <View style={[styles.settingIconChip, { backgroundColor: (tint ?? colors.textSecondary) + '18' }]}>
+        <Icon size={18} color={tint ?? colors.textSecondary} strokeWidth={2.1} />
+      </View>
       <View style={styles.settingInfo}>
         <Text style={styles.settingTitle}>{title}</Text>
         {subtitle && <Text style={styles.settingSub}>{subtitle}</Text>}
       </View>
-      {right ?? <Text style={styles.chevron}>›</Text>}
+      {right ?? <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />}
     </TouchableOpacity>
   );
 }
@@ -71,7 +75,8 @@ export function ProfileScreen() {
           </View>
           <Text style={styles.name}>{state.profile.name || 'Your Name'}</Text>
           <View style={styles.planBadge}>
-            <Text style={styles.planText}>⭐ Full Access</Text>
+            <Star size={12} color={colors.primary} strokeWidth={2.4} fill={colors.primary} />
+            <Text style={styles.planText}>Full Access</Text>
           </View>
         </View>
 
@@ -82,10 +87,10 @@ export function ProfileScreen() {
               <Text style={styles.examLabel}>Exam date</Text>
               <Text style={styles.examDate}>{state.profile.exam_date}</Text>
               <Text style={[styles.examDays, daysLeft < 7 && { color: colors.error }]}>
-                ⏳ {daysLeft} days left
+                {daysLeft} days left
               </Text>
             </View>
-            <Text style={{ fontSize: 40 }}>📅</Text>
+            <CalendarDays size={36} color={colors.warning} strokeWidth={1.8} />
           </View>
         )}
 
@@ -94,7 +99,7 @@ export function ProfileScreen() {
           {[
             { val: `${completion}%`, label: 'Complete' },
             { val: `${accuracy}%`, label: 'Accuracy', color: colors.success },
-            { val: `${state.streak}🔥`, label: 'Streak' },
+            { val: `${state.streak}`, label: 'Day streak' },
           ].map(s => (
             <View key={s.label} style={styles.statChip}>
               <Text style={[styles.statVal, s.color ? { color: s.color } : {}]}>{s.val}</Text>
@@ -106,12 +111,12 @@ export function ProfileScreen() {
         {/* Account */}
         <Text style={styles.sectionHeader}>Account</Text>
         <View style={styles.settingGroup}>
-          <SettingRow icon="🎯" title="Set exam date" subtitle={state.profile.exam_date ?? 'Not set'} onPress={() => {}} />
+          <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={state.profile.exam_date ?? 'Not set'} onPress={() => {}} />
           <View style={styles.sep} />
-          <SettingRow icon="🌐" title="Interface language" subtitle={state.profile.language_pref === 'en' ? 'English' : 'Finnish'} onPress={() => {}} />
+          <SettingRow Icon={Languages} tint={colors.primary} title="Interface language" subtitle={state.profile.language_pref === 'en' ? 'English' : 'Finnish'} onPress={() => {}} />
           <View style={styles.sep} />
           <SettingRow
-            icon="🔔" title="Daily reminder" subtitle="08:00 every day"
+            Icon={Bell} tint={colors.warning} title="Daily reminder" subtitle="08:00 every day"
             right={<Switch value={true} onValueChange={() => {}} trackColor={{ true: colors.success }} />}
           />
         </View>
@@ -119,10 +124,10 @@ export function ProfileScreen() {
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
         <View style={styles.settingGroup}>
-          <SettingRow icon="💳" title="Manage subscription" subtitle="Full Access · active" onPress={() => {}} />
+          <SettingRow Icon={CreditCard} tint={colors.primary} title="Manage subscription" subtitle="Full Access · active" onPress={() => {}} />
           <View style={styles.sep} />
           <SettingRow
-            icon="🎁" title="Referral — give & get free week"
+            Icon={Gift} tint={colors.success} title="Referral — give & get free week"
             subtitle="Share your code, earn rewards"
             onPress={() => navigation.navigate('Referral')}
           />
@@ -131,11 +136,11 @@ export function ProfileScreen() {
         {/* Support */}
         <Text style={styles.sectionHeader}>Support</Text>
         <View style={styles.settingGroup}>
-          <SettingRow icon="❓" title="Help & FAQ" onPress={() => {}} />
+          <SettingRow Icon={HelpCircle} title="Help & FAQ" onPress={() => {}} />
           <View style={styles.sep} />
-          <SettingRow icon="⭐" title="Rate the app" onPress={() => {}} />
+          <SettingRow Icon={Star} title="Rate the app" onPress={() => {}} />
           <View style={styles.sep} />
-          <SettingRow icon="🗑️" title="Clear progress data" onPress={handleClearData} />
+          <SettingRow Icon={Trash2} tint={colors.error} title="Clear progress data" onPress={handleClearData} />
         </View>
 
         <AppButton
@@ -156,20 +161,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  title: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   avatarSection: { alignItems: 'center', paddingVertical: spacing.lg, gap: 8 },
   avatar: {
     width: 80, height: 80, borderRadius: 40,
     backgroundColor: colors.primary,
     alignItems: 'center', justifyContent: 'center',
   },
-  avatarText: { fontSize: 32, fontWeight: fontWeight.bold, color: '#fff' },
-  name: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  avatarText: { fontSize: 32, fontFamily: font.bold, color: '#fff' },
+  name: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   planBadge: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
     backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
-    borderRadius: radius.full, paddingHorizontal: 14, paddingVertical: 4,
+    borderRadius: radius.full, paddingHorizontal: 12, paddingVertical: 5,
   },
-  planText: { fontSize: 12, fontWeight: fontWeight.bold, color: colors.primary },
+  planText: { fontSize: 12, fontFamily: font.bold, color: colors.primary },
   examCard: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     marginHorizontal: spacing.md, marginBottom: spacing.md,
@@ -177,17 +183,17 @@ const styles = StyleSheet.create({
     borderRadius: radius.md, padding: spacing.md,
   },
   examLabel: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 2 },
-  examDate: { fontSize: fontSize.md, fontWeight: fontWeight.semibold },
-  examDays: { fontSize: 13, color: colors.warning, fontWeight: fontWeight.semibold, marginTop: 2 },
+  examDate: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  examDays: { fontSize: 13, color: colors.warning, fontFamily: font.semibold, marginTop: 2 },
   statRow: { flexDirection: 'row', gap: 10, marginHorizontal: spacing.md, marginBottom: spacing.sm },
   statChip: {
     flex: 1, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: 12, alignItems: 'center',
   },
-  statVal: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  statVal: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   statLbl: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
   sectionHeader: {
-    fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 1,
+    fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
     textTransform: 'uppercase', color: colors.textSecondary,
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
   },
@@ -198,12 +204,14 @@ const styles = StyleSheet.create({
   },
   settingRow: {
     flexDirection: 'row', alignItems: 'center', gap: 12,
-    paddingHorizontal: spacing.md, paddingVertical: 14,
+    paddingHorizontal: spacing.md, paddingVertical: 12,
   },
-  settingIcon: { fontSize: 18 },
+  settingIconChip: {
+    width: 34, height: 34, borderRadius: radius.sm,
+    alignItems: 'center', justifyContent: 'center',
+  },
   settingInfo: { flex: 1 },
-  settingTitle: { fontSize: 14, fontWeight: fontWeight.semibold },
+  settingTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   settingSub: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
-  chevron: { fontSize: 18, color: colors.textSecondary },
-  sep: { height: 1, backgroundColor: colors.border, marginLeft: 46 },
+  sep: { height: 1, backgroundColor: colors.border, marginLeft: 62 },
 });

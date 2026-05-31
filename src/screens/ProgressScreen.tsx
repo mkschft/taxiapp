@@ -3,10 +3,12 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { RotateCcw, CircleCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { CategoryIcon } from '../theme/icons';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats, useWeakQuestionIds, useCategoryProgress } from '../store/progressStore';
 import { getQuestions, getCategories, getVocabWords } from '../data/loaders';
 
@@ -42,8 +44,8 @@ export function ProgressScreen() {
             <Text style={styles.overallSub}>{answered} of {TOTAL_QS} questions practiced</Text>
             <View style={styles.statRow}>
               <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.success }]}>{state.streak}🔥</Text>
-                <Text style={styles.statLbl}>Streak</Text>
+                <Text style={[styles.statVal, { color: colors.success }]}>{state.streak}</Text>
+                <Text style={styles.statLbl}>Day streak</Text>
               </View>
               <View style={styles.statChip}>
                 <Text style={[styles.statVal, { color: colors.primary }]}>{accuracy}%</Text>
@@ -89,13 +91,15 @@ export function ProgressScreen() {
         {/* Weak areas */}
         {weakIds.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionHeader}>⚠️ WEAK AREAS — NEEDS ATTENTION</Text>
+            <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
             {weakIds.slice(0, 5).map(id => {
               const q = getQuestions().find(q => q.id === id);
               const cat = CATEGORIES.find(c => c.id === q?.category_id);
               return (
                 <View key={id} style={styles.weakRow}>
-                  <Text style={styles.weakIcon}>{cat?.icon ?? '📌'}</Text>
+                  <View style={styles.weakIconChip}>
+                    <CategoryIcon id={q?.category_id ?? ''} size={20} color={colors.error} />
+                  </View>
                   <View style={styles.weakInfo}>
                     <Text style={styles.weakTitle} numberOfLines={2}>{q?.q_en ?? id}</Text>
                     <Text style={styles.weakSub}>{cat?.name_en}</Text>
@@ -113,7 +117,7 @@ export function ProgressScreen() {
               );
             })}
             <AppButton
-              label="🔁 Retry all weak items"
+              label="Retry all weak items"
               variant="success"
               onPress={() => {
                 if (weakIds.length > 0) {
@@ -135,7 +139,8 @@ export function ProgressScreen() {
 
         {weakIds.length === 0 && answered > 0 && (
           <View style={styles.allGood}>
-            <Text style={styles.allGoodText}>✅ No weak areas! Keep it up.</Text>
+            <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
+            <Text style={styles.allGoodText}>No weak areas! Keep it up.</Text>
           </View>
         )}
 
@@ -151,12 +156,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  title: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   overallCard: {
     flexDirection: 'row', gap: spacing.md, alignItems: 'center',
     margin: spacing.md, padding: spacing.md,
     backgroundColor: colors.bg, borderRadius: radius.md,
     borderWidth: 1, borderColor: colors.border,
+    ...shadow.sm,
   },
   overallRight: { flex: 1 },
   overallLabel: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 2 },
@@ -166,11 +172,11 @@ const styles = StyleSheet.create({
     flex: 1, backgroundColor: colors.surface, borderRadius: radius.sm,
     padding: 8, alignItems: 'center',
   },
-  statVal: { fontSize: fontSize.md, fontWeight: fontWeight.bold },
+  statVal: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
   statLbl: { fontSize: 10, color: colors.textSecondary, marginTop: 1 },
   section: { paddingHorizontal: spacing.md, marginBottom: spacing.sm },
   sectionHeader: {
-    fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 1,
+    fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
     color: colors.textSecondary, paddingTop: spacing.md, paddingBottom: spacing.sm,
   },
   vocabCount: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: -10, marginBottom: spacing.sm },
@@ -180,19 +186,24 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, marginBottom: spacing.sm,
   },
-  weakIcon: { fontSize: 20 },
+  weakIconChip: {
+    width: 36, height: 36, borderRadius: radius.sm,
+    backgroundColor: colors.errorTint,
+    alignItems: 'center', justifyContent: 'center',
+  },
   weakInfo: { flex: 1 },
-  weakTitle: { fontSize: 13, fontWeight: fontWeight.semibold },
+  weakTitle: { fontSize: 13, fontFamily: font.semibold, color: colors.text },
   weakSub: { fontSize: 12, color: colors.textSecondary },
   retryBtn: {
     backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
     borderRadius: radius.sm, paddingHorizontal: 10, paddingVertical: 5,
   },
-  retryText: { fontSize: 12, fontWeight: fontWeight.semibold, color: colors.primary },
+  retryText: { fontSize: 12, fontFamily: font.semibold, color: colors.primary },
   allGood: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
     margin: spacing.md, padding: spacing.md,
     backgroundColor: colors.successTint, borderRadius: radius.md,
     borderWidth: 1, borderColor: colors.success,
   },
-  allGoodText: { fontSize: fontSize.sm, color: colors.success, fontWeight: fontWeight.semibold, textAlign: 'center' },
+  allGoodText: { fontSize: fontSize.sm, color: colors.success, fontFamily: font.semibold },
 });

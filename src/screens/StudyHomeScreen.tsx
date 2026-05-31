@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { BookOpen, Target, MessageSquare, type LucideIcon } from 'lucide-react-native';
 import { Badge } from '../components/ui/Badge';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabPageCount, getQuestions } from '../data/loaders';
 
-const MENU = [
-  { icon: '📚', title: 'Vocabulary', sub: `${getVocabPageCount() * 10} words across ${getVocabPageCount()} pages`, screen: 'Vocabulary', paid: false, params: { page: 1 } },
-  { icon: '🎯', title: 'Clue Words', sub: 'Positive · Negative · WH-words · Conjunctions', screen: 'ClueWords', paid: true, params: {} },
-  { icon: '💬', title: 'Practice All Questions', sub: `${getQuestions().length} questions · by category`, screen: 'Practice', paid: true, params: { questionId: getQuestions()[0]?.id, queue: getQuestions().map(q => q.id), queueIndex: 0, sourceLabel: 'All Questions' } },
+const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
+  { Icon: BookOpen, tint: colors.primary, title: 'Vocabulary', sub: `${getVocabPageCount() * 10} words across ${getVocabPageCount()} pages`, screen: 'Vocabulary', paid: false, params: { page: 1 } },
+  { Icon: Target, tint: colors.success, title: 'Clue Words', sub: 'Positive · Negative · WH-words · Conjunctions', screen: 'ClueWords', paid: true, params: {} },
+  { Icon: MessageSquare, tint: colors.warning, title: 'Practice All Questions', sub: `${getQuestions().length} questions · by category`, screen: 'Practice', paid: true, params: { questionId: getQuestions()[0]?.id, queue: getQuestions().map(q => q.id), queueIndex: 0, sourceLabel: 'All Questions' } },
 ];
 
 export function StudyHomeScreen() {
@@ -28,7 +29,9 @@ export function StudyHomeScreen() {
             onPress={() => navigation.navigate(item.screen, item.params)}
             activeOpacity={0.75}
           >
-            <Text style={styles.icon}>{item.icon}</Text>
+            <View style={[styles.iconChip, { backgroundColor: item.tint + '18' }]}>
+              <item.Icon size={22} color={item.tint} strokeWidth={2.2} />
+            </View>
             <View style={styles.info}>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardSub}>{item.sub}</Text>
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  title: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   sub: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
   scroll: { padding: spacing.md, gap: 12 },
   card: {
@@ -55,9 +58,13 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
     backgroundColor: colors.bg,
+    ...shadow.sm,
   },
-  icon: { fontSize: 28 },
+  iconChip: {
+    width: 44, height: 44, borderRadius: radius.sm,
+    alignItems: 'center', justifyContent: 'center',
+  },
   info: { flex: 1 },
-  cardTitle: { fontSize: fontSize.md, fontWeight: fontWeight.semibold },
+  cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   cardSub: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
 });

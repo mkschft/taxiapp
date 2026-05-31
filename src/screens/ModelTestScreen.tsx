@@ -5,9 +5,10 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import { X, Clock } from 'lucide-react-native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById, getClueWords } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { TestStackParamList } from '../navigation/types';
@@ -117,7 +118,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
           { text: 'Cancel' },
           { text: 'Quit', style: 'destructive', onPress: () => navigation.goBack() },
         ])} style={styles.backBtn}>
-          <Text style={styles.backText}>✕</Text>
+          <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
         <Text style={styles.navTitle}>{test.title_en}</Text>
       </View>
@@ -125,7 +126,8 @@ export function ModelTestScreen({ navigation, route }: Props) {
       {/* Timer + progress */}
       <View style={styles.timerRow}>
         <View style={[styles.timerChip, isLowTime && styles.timerChipLow]}>
-          <Text style={[styles.timerText, isLowTime && styles.timerTextLow]}>⏱ {mm}:{ss}</Text>
+          <Clock size={13} color={isLowTime ? colors.error : colors.warning} strokeWidth={2.4} />
+          <Text style={[styles.timerText, isLowTime && styles.timerTextLow]}>{mm}:{ss}</Text>
         </View>
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${progress}%` }]} />
@@ -192,19 +194,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, height: 52,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 16, color: colors.textSecondary },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
+  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
+  navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   timerRow: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     paddingHorizontal: spacing.md, paddingVertical: 10,
   },
   timerChip: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
     backgroundColor: colors.warningTint, borderWidth: 1, borderColor: colors.warning,
-    borderRadius: 8, paddingHorizontal: 10, paddingVertical: 4,
+    borderRadius: 8, paddingHorizontal: 10, paddingVertical: 5,
   },
   timerChipLow: { backgroundColor: colors.errorTint, borderColor: colors.error },
-  timerText: { fontSize: 14, fontWeight: fontWeight.bold, color: colors.warning },
+  timerText: { fontSize: 14, fontFamily: font.bold, color: colors.warning },
   timerTextLow: { color: colors.error },
   progressTrack: {
     flex: 1, height: 6, backgroundColor: colors.surface,
@@ -213,22 +215,23 @@ const styles = StyleSheet.create({
   progressFill: { height: '100%', backgroundColor: colors.primary, borderRadius: radius.full },
   qCount: { fontSize: fontSize.sm, color: colors.textSecondary, minWidth: 36, textAlign: 'right' },
   scroll: { flex: 1, padding: spacing.md },
-  qCategory: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 8, fontWeight: fontWeight.semibold },
+  qCategory: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 8, fontFamily: font.semibold },
   questionCard: {
     backgroundColor: colors.surface, borderRadius: radius.md,
     padding: spacing.md, marginBottom: spacing.md,
+    borderWidth: 1, borderColor: colors.border,
   },
-  qText: { fontSize: 15, lineHeight: 24, color: colors.text, marginBottom: 8 },
+  qText: { fontSize: 15, lineHeight: 24, color: colors.text, marginBottom: 8, fontFamily: font.medium },
   qEn: { fontSize: 13, lineHeight: 18, color: colors.textSecondary, fontStyle: 'italic' },
   btnRow: { flexDirection: 'row', gap: 10, marginTop: spacing.sm, marginBottom: spacing.md },
   skipBtn: { justifyContent: 'center', paddingHorizontal: spacing.md },
-  skipText: { fontSize: fontSize.md, color: colors.textSecondary, fontWeight: fontWeight.semibold },
+  skipText: { fontSize: fontSize.md, color: colors.textSecondary, fontFamily: font.semibold },
   scoreRow: {
     flexDirection: 'row', backgroundColor: colors.surface,
     borderRadius: radius.md, padding: spacing.md,
     justifyContent: 'space-around',
   },
   scoreChip: { alignItems: 'center' },
-  scoreVal: { fontSize: 20, fontWeight: fontWeight.bold },
+  scoreVal: { fontSize: 20, fontFamily: font.bold },
   scoreLbl: { fontSize: fontSize.xs, color: colors.textSecondary, marginTop: 2 },
 });

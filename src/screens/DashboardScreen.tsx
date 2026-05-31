@@ -3,7 +3,8 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { BookOpen, Target, MessageSquare, Timer, BarChart3, type LucideIcon } from 'lucide-react-native';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { useQuestionStats } from '../store/progressStore';
@@ -12,16 +13,16 @@ import { getQuestions } from '../data/loaders';
 const TOTAL_QUESTIONS = getQuestions().length;
 
 type HubItem = {
-  icon: string; title: string; sub: string; paid: boolean;
+  Icon: LucideIcon; tint: string; title: string; sub: string; paid: boolean;
   screen: string; stack?: string; wide?: boolean;
 };
 
 const HUBS: HubItem[] = [
-  { icon: '📚', title: 'Vocabulary', sub: '20 words · 2 pages', paid: false, screen: 'Vocabulary', stack: 'Study' },
-  { icon: '🎯', title: 'Clue Words', sub: '10 clue patterns', paid: true, screen: 'ClueWords', stack: 'Study' },
-  { icon: '💬', title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'Practice', stack: 'Study' },
-  { icon: '⏱️', title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
-  { icon: '📊', title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
+  { Icon: BookOpen, tint: colors.primary, title: 'Vocabulary', sub: '20 words · 2 pages', paid: false, screen: 'Vocabulary', stack: 'Study' },
+  { Icon: Target, tint: colors.success, title: 'Clue Words', sub: '10 clue patterns', paid: true, screen: 'ClueWords', stack: 'Study' },
+  { Icon: MessageSquare, tint: colors.warning, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'Practice', stack: 'Study' },
+  { Icon: Timer, tint: colors.error, title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
+  { Icon: BarChart3, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];
 
 export function DashboardScreen() {
@@ -41,7 +42,7 @@ export function DashboardScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.greeting}>Good morning 👋</Text>
+            <Text style={styles.greeting}>Good morning</Text>
             <Text style={styles.caption}>Keep going — exam day is coming!</Text>
           </View>
         </View>
@@ -71,8 +72,10 @@ export function DashboardScreen() {
               activeOpacity={0.75}
             >
               {hub.wide ? (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                  <Text style={styles.hubIcon}>{hub.icon}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                  <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
+                    <hub.Icon size={22} color={hub.tint} strokeWidth={2.2} />
+                  </View>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.hubTitle}>{hub.title}</Text>
                     <Text style={styles.hubSub}>{hub.sub}</Text>
@@ -80,7 +83,9 @@ export function DashboardScreen() {
                 </View>
               ) : (
                 <>
-                  <Text style={styles.hubIcon}>{hub.icon}</Text>
+                  <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
+                    <hub.Icon size={22} color={hub.tint} strokeWidth={2.2} />
+                  </View>
                   <Text style={styles.hubTitle}>{hub.title}</Text>
                   <Text style={styles.hubSub}>{hub.sub}</Text>
                   <Badge type={hub.paid ? 'paid' : 'free'} />
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
   },
-  greeting: { fontSize: fontSize.lg, fontWeight: fontWeight.bold, color: colors.text },
+  greeting: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   caption: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
   progressCard: {
     margin: spacing.md,
@@ -110,9 +115,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
+    ...shadow.md,
   },
   progressLabel: { fontSize: fontSize.sm, color: 'rgba(255,255,255,0.8)', marginBottom: 4 },
-  progressPct: { fontSize: 28, fontWeight: fontWeight.bold, color: '#fff', marginBottom: 8 },
+  progressPct: { fontSize: 28, fontFamily: font.bold, color: '#fff', marginBottom: 8 },
   progressTrack: {
     height: 6, backgroundColor: 'rgba(255,255,255,0.3)',
     borderRadius: radius.full, overflow: 'hidden', marginBottom: 8,
@@ -128,10 +134,14 @@ const styles = StyleSheet.create({
     width: '47%', backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
-    gap: spacing.sm, minHeight: 110,
+    gap: spacing.sm, minHeight: 120,
+    ...shadow.sm,
   },
   hubCardWide: { width: '100%', minHeight: 'auto' },
-  hubIcon: { fontSize: 26 },
-  hubTitle: { fontSize: 14, fontWeight: fontWeight.semibold, color: colors.text },
-  hubSub: { fontSize: 12, color: colors.textSecondary },
+  iconChip: {
+    width: 44, height: 44, borderRadius: radius.sm,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
+  hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
 });

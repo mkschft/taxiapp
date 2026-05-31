@@ -6,7 +6,8 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getVocabByPage, getVocabPageCount } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
@@ -80,25 +81,25 @@ export function VocabularyScreen({ navigation, route }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.navTitle}>Vocabulary — Page {page}</Text>
-        <View style={styles.langToggle}>
-          {(['fi', 'en'] as Lang[]).map(l => (
-            <TouchableOpacity
-              key={l}
-              style={[styles.langBtn, lang === l && styles.langBtnActive]}
-              onPress={() => setLang(l)}
-            >
-              <Text style={[styles.langBtnText, lang === l && styles.langBtnTextActive]}>
-                {l.toUpperCase()}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
+      <ScreenHeader
+        title={`Vocabulary — Page ${page}`}
+        onBack={() => navigation.goBack()}
+        right={
+          <View style={styles.langToggle}>
+            {(['fi', 'en'] as Lang[]).map(l => (
+              <TouchableOpacity
+                key={l}
+                style={[styles.langBtn, lang === l && styles.langBtnActive]}
+                onPress={() => setLang(l)}
+              >
+                <Text style={[styles.langBtnText, lang === l && styles.langBtnTextActive]}>
+                  {l.toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        }
+      />
 
       <View style={styles.subHeader}>
         <Text style={styles.caption}>Page {page} of {totalPages} · {words.length} words</Text>
@@ -136,21 +137,13 @@ export function VocabularyScreen({ navigation, route }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  navBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-    paddingHorizontal: spacing.md, height: 52,
-    borderBottomWidth: 1, borderColor: colors.border,
-  },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 22, color: colors.primary },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
   langToggle: {
     flexDirection: 'row', backgroundColor: colors.surface,
     borderRadius: 8, padding: 2, gap: 2,
   },
   langBtn: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 6 },
   langBtnActive: { backgroundColor: colors.bg },
-  langBtnText: { fontSize: fontSize.sm, fontWeight: fontWeight.semibold, color: colors.textSecondary },
+  langBtnText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.textSecondary },
   langBtnTextActive: { color: colors.primary },
   subHeader: { paddingHorizontal: spacing.md, paddingVertical: spacing.sm },
   caption: { fontSize: fontSize.sm, color: colors.textSecondary },
@@ -161,12 +154,12 @@ const styles = StyleSheet.create({
   },
   vocabRowSeen: { opacity: 0.8 },
   vocabFi: { width: 130, flexShrink: 0 },
-  wordFi: { fontSize: 15, fontWeight: fontWeight.semibold, color: colors.text },
+  wordFi: { fontSize: 15, fontFamily: font.semibold, color: colors.text },
   formsFi: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
   vocabRight: { flex: 1, gap: 4 },
   wordEn: { fontSize: 14, color: colors.text },
   cluePill: { borderRadius: radius.full, paddingHorizontal: 8, paddingVertical: 2, alignSelf: 'flex-start', marginTop: 2 },
-  cluePillText: { fontSize: 11, fontWeight: fontWeight.semibold },
+  cluePillText: { fontSize: 11, fontFamily: font.semibold },
   appearsIn: { fontSize: 12, color: colors.textSecondary },
   sep: { height: 1, backgroundColor: colors.border },
   footer: { paddingTop: spacing.lg, paddingBottom: 32 },

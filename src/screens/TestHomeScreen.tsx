@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Clock, ClipboardList, CircleCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 
@@ -34,13 +35,13 @@ export function TestHomeScreen() {
                 )}
               </View>
               <View style={styles.metaRow}>
-                <Text style={styles.meta}>⏱ {t.time_minutes} min</Text>
-                <Text style={styles.meta}>📝 {t.question_ids.length} questions</Text>
-                <Text style={styles.meta}>✅ Pass: {t.pass_mark}%</Text>
+                <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.time_minutes} min</Text></View>
+                <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.question_ids.length} questions</Text></View>
+                <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>Pass {t.pass_mark}%</Text></View>
               </View>
               {prevScore && (
-                <Text style={styles.lastScore}>
-                  Last attempt: {prevScore.score}% · {prevScore.passed ? '✅ Passed' : '❌ Failed'}
+                <Text style={[styles.lastScore, { color: prevScore.passed ? colors.success : colors.error }]}>
+                  Last attempt: {prevScore.score}% · {prevScore.passed ? 'Passed' : 'Failed'}
                 </Text>
               )}
               <AppButton
@@ -63,24 +64,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
     borderBottomWidth: 1, borderColor: colors.border,
   },
-  title: { fontSize: fontSize.lg, fontWeight: fontWeight.bold },
+  title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   sub: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
   scroll: { padding: spacing.md },
   testCard: {
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 14,
     backgroundColor: colors.bg,
+    ...shadow.sm,
   },
   cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
-  testTitle: { fontSize: fontSize.md, fontWeight: fontWeight.semibold },
+  testTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   scoreBadge: {
     borderRadius: radius.sm, paddingHorizontal: 8, paddingVertical: 3,
     borderWidth: 1,
   },
   badgePass: { backgroundColor: colors.successTint, borderColor: colors.success },
   badgeFail: { backgroundColor: colors.errorTint, borderColor: colors.error },
-  scoreBadgeText: { fontSize: 12, fontWeight: fontWeight.bold },
-  metaRow: { flexDirection: 'row', gap: 14, marginBottom: 4 },
+  scoreBadgeText: { fontSize: 12, fontFamily: font.bold },
+  metaRow: { flexDirection: 'row', gap: 14, marginBottom: 4, flexWrap: 'wrap' },
+  metaItem: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   meta: { fontSize: 13, color: colors.textSecondary },
-  lastScore: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  lastScore: { fontSize: 12, fontFamily: font.medium, marginTop: 2 },
 });

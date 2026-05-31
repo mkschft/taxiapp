@@ -4,9 +4,11 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import { PartyPopper, BookOpenCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ProgressBar } from '../components/ui/ProgressBar';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getQuestionById } from '../data/loaders';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -28,18 +30,15 @@ export function ResultScreen({ navigation, route }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.popToTop()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.navTitle}>{label} — Result</Text>
-      </View>
+      <ScreenHeader title={`${label} — Result`} onBack={() => navigation.popToTop()} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Pass / fail banner */}
         <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
-          <Text style={styles.bannerEmoji}>{passed ? '🎉' : '📖'}</Text>
-          <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error }]}>
+          {passed
+            ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
+            : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
+          <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
             {passed ? 'You passed!' : 'Keep studying'}
           </Text>
           <Text style={styles.bannerSub}>Pass mark: 75% · Your score: {pct}%</Text>
@@ -121,14 +120,6 @@ export function ResultScreen({ navigation, route }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  navBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-    paddingHorizontal: spacing.md, height: 52,
-    borderBottomWidth: 1, borderColor: colors.border,
-  },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 22, color: colors.primary },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
   scroll: { padding: spacing.md },
   banner: {
     borderWidth: 1.5, borderRadius: radius.md,
@@ -136,8 +127,7 @@ const styles = StyleSheet.create({
   },
   bannerPass: { backgroundColor: colors.successTint, borderColor: colors.success },
   bannerFail: { backgroundColor: colors.errorTint, borderColor: colors.error },
-  bannerEmoji: { fontSize: 32, marginBottom: spacing.xs },
-  bannerTitle: { fontSize: fontSize.lg, fontWeight: fontWeight.bold, marginBottom: 4 },
+  bannerTitle: { fontSize: fontSize.lg, fontFamily: font.bold, marginBottom: 4 },
   bannerSub: { fontSize: fontSize.sm, color: colors.textSecondary },
   scoreCircle: {
     width: 120, height: 120, borderRadius: 60,
@@ -145,17 +135,17 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
     alignSelf: 'center', marginBottom: spacing.lg,
   },
-  scoreNum: { fontSize: 32, fontWeight: fontWeight.bold },
+  scoreNum: { fontSize: 32, fontFamily: font.bold },
   scoreOf: { fontSize: fontSize.sm, color: colors.textSecondary },
   statRow: { flexDirection: 'row', gap: 10, marginBottom: spacing.lg },
   statChip: {
     flex: 1, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: 12, alignItems: 'center',
   },
-  statVal: { fontSize: 20, fontWeight: fontWeight.bold },
+  statVal: { fontSize: 20, fontFamily: font.bold },
   statLbl: { fontSize: fontSize.xs, color: colors.textSecondary, marginTop: 2 },
   sectionHeader: {
-    fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 1,
+    fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
     textTransform: 'uppercase', color: colors.textSecondary,
     paddingTop: spacing.md, paddingBottom: spacing.sm,
   },
@@ -163,7 +153,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF8F8', borderWidth: 1, borderColor: '#FECACA',
     borderRadius: radius.md, padding: 12, marginBottom: spacing.sm,
   },
-  wrongQ: { fontSize: 13, fontWeight: fontWeight.semibold, color: colors.text, marginBottom: 4 },
+  wrongQ: { fontSize: 13, fontFamily: font.semibold, color: colors.text, marginBottom: 4 },
   wrongMeta: { fontSize: 12, color: colors.primary },
   actions: { marginTop: spacing.md },
 });

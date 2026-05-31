@@ -5,8 +5,10 @@ import {
 } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { useNavigation } from '@react-navigation/native';
+import { Gift } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
-import { colors, spacing, fontSize, fontWeight, radius } from '../theme/tokens';
+import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { useProgress } from '../store/progressStore';
 
 const STEPS = [
@@ -20,7 +22,7 @@ function BoldText({ text }: { text: string }) {
   return (
     <Text style={styles.stepText}>
       {parts.map((p, i) =>
-        i % 2 === 1 ? <Text key={i} style={{ fontWeight: fontWeight.bold }}>{p}</Text> : p
+        i % 2 === 1 ? <Text key={i} style={{ fontFamily: font.bold }}>{p}</Text> : p
       )}
     </Text>
   );
@@ -49,17 +51,14 @@ export function ReferralScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.navTitle}>Refer a friend</Text>
-      </View>
+      <ScreenHeader title="Refer a friend" onBack={() => navigation.goBack()} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Hero */}
         <View style={styles.hero}>
-          <Text style={styles.heroEmoji}>🎁</Text>
+          <View style={styles.heroIconChip}>
+            <Gift size={36} color={colors.success} strokeWidth={1.9} />
+          </View>
           <Text style={styles.heroTitle}>Give 7 days free.{'\n'}Get 7 days free.</Text>
           <Text style={styles.heroSub}>
             Share your code with a friend who needs the Finnish taxi exam.
@@ -132,35 +131,31 @@ export function ReferralScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  navBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-    paddingHorizontal: spacing.md, height: 52,
-    borderBottomWidth: 1, borderColor: colors.border,
-  },
-  backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  backText: { fontSize: 22, color: colors.primary },
-  navTitle: { flex: 1, fontSize: fontSize.md, fontWeight: fontWeight.semibold },
   scroll: { padding: spacing.md },
   hero: { alignItems: 'center', paddingVertical: spacing.xl },
-  heroEmoji: { fontSize: 52, marginBottom: 12 },
-  heroTitle: { fontSize: fontSize.lg, fontWeight: fontWeight.bold, textAlign: 'center', marginBottom: spacing.sm, lineHeight: 30 },
+  heroIconChip: {
+    width: 72, height: 72, borderRadius: radius.lg,
+    backgroundColor: colors.successTint,
+    alignItems: 'center', justifyContent: 'center', marginBottom: 14,
+  },
+  heroTitle: { fontSize: fontSize.lg, fontFamily: font.bold, textAlign: 'center', marginBottom: spacing.sm, lineHeight: 30, color: colors.text },
   heroSub: { fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 22 },
   codeCard: {
     borderRadius: radius.md, borderWidth: 1.5, borderColor: colors.border,
     padding: spacing.lg, alignItems: 'center' as const, marginBottom: spacing.sm,
     backgroundColor: colors.surface,
   },
-  codeLabel: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 1, color: colors.textSecondary, marginBottom: 8 },
-  code: { fontSize: 36, fontWeight: fontWeight.extrabold, letterSpacing: 6, color: colors.primary },
+  codeLabel: { fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1, color: colors.textSecondary, marginBottom: 8 },
+  code: { fontSize: 36, fontFamily: font.extrabold, letterSpacing: 6, color: colors.primary },
   copyConfirm: {
     backgroundColor: colors.successTint, borderWidth: 1, borderColor: colors.success,
     borderRadius: radius.md, padding: 10, marginBottom: spacing.sm, alignItems: 'center',
   },
-  copyConfirmText: { fontSize: 13, fontWeight: fontWeight.semibold, color: colors.success },
+  copyConfirmText: { fontSize: 13, fontFamily: font.semibold, color: colors.success },
   shareSection: { marginBottom: spacing.lg },
   whatsapp: { backgroundColor: '#25D366' } as const,
   sectionHeader: {
-    fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 1,
+    fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
     color: colors.textSecondary, paddingBottom: spacing.sm,
   },
   steps: { marginBottom: spacing.lg },
@@ -169,16 +164,16 @@ const styles = StyleSheet.create({
     width: 28, height: 28, borderRadius: 14,
     backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
-  stepNumText: { fontSize: 13, fontWeight: fontWeight.bold, color: '#fff' },
+  stepNumText: { fontSize: 13, fontFamily: font.bold, color: '#fff' },
   stepText: { flex: 1, fontSize: 14, lineHeight: 22, color: colors.text, paddingTop: 3 },
   statsCard: {
     backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
   },
-  statsTitle: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, letterSpacing: 0.6, color: colors.textSecondary, marginBottom: 12 },
+  statsTitle: { fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 0.6, color: colors.textSecondary, marginBottom: 12 },
   statsRow: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
   statsDivider: { width: 1, height: 36, backgroundColor: colors.border },
   statItem: { alignItems: 'center' },
-  statVal: { fontSize: 24, fontWeight: fontWeight.bold },
+  statVal: { fontSize: 24, fontFamily: font.bold },
   statLbl: { fontSize: fontSize.xs, color: colors.textSecondary, marginTop: 2 },
 });
