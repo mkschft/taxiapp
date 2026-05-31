@@ -4,7 +4,7 @@ import {
   Pressable,
 } from 'react-native';
 import { MotiView } from 'moti';
-import { Languages, Lightbulb, ChevronLeft } from 'lucide-react-native';
+import { Languages, Lightbulb, ChevronLeft, Check, AlertTriangle } from 'lucide-react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
@@ -209,16 +209,22 @@ export function PracticeScreen({ navigation, route }: Props) {
               <View style={styles.cluePills}>
                 <Text style={styles.expSubLabel}>Clue words in this question:</Text>
                 <View style={styles.pillRow}>
-                  {relevantClues.map(cw => (
-                    <View
-                      key={cw.id}
-                      style={[styles.pill, cw.group === 'positive' ? styles.pillPos : styles.pillNeg]}
-                    >
-                      <Text style={[styles.pillText, cw.group === 'positive' ? styles.pillTextPos : styles.pillTextNeg]}>
-                        {cw.phrase_fi} {cw.group === 'positive' ? '✅' : '⚠️'}
-                      </Text>
-                    </View>
-                  ))}
+                  {relevantClues.map(cw => {
+                    const isPos = cw.group === 'positive';
+                    return (
+                      <View
+                        key={cw.id}
+                        style={[styles.pill, isPos ? styles.pillPos : styles.pillNeg]}
+                      >
+                        {isPos
+                          ? <Check size={12} color={colors.success} strokeWidth={3} />
+                          : <AlertTriangle size={11} color={colors.error} strokeWidth={2.6} />}
+                        <Text style={[styles.pillText, isPos ? styles.pillTextPos : styles.pillTextNeg]}>
+                          {cw.phrase_fi}
+                        </Text>
+                      </View>
+                    );
+                  })}
                 </View>
               </View>
             )}
@@ -293,14 +299,14 @@ const styles = StyleSheet.create({
   hintEffect: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
   options: { marginBottom: 12 },
   explanation: {
-    backgroundColor: colors.primaryTint, borderLeftWidth: 3, borderLeftColor: colors.primary,
+    backgroundColor: colors.primaryTint,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 12,
   },
   expText: { fontSize: 13, lineHeight: 20, color: colors.text },
   cluePills: { marginTop: spacing.sm },
   expSubLabel: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, color: colors.textSecondary, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 6 },
   pillRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  pill: { borderRadius: radius.full, paddingHorizontal: 10, paddingVertical: 3 },
+  pill: { flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: radius.full, paddingHorizontal: 10, paddingVertical: 4 },
   pillPos: { backgroundColor: colors.successTint, borderWidth: 1, borderColor: colors.success },
   pillNeg: { backgroundColor: colors.errorTint, borderWidth: 1, borderColor: colors.error },
   pillText: { fontSize: 11, fontWeight: fontWeight.semibold },

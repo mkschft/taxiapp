@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import { Check, AlertTriangle, Zap } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
@@ -21,13 +22,14 @@ type Props = {
 type Lang = 'fi' | 'en';
 
 const CLUE_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  positive: { label: '✅ Positive clue', color: colors.success, bg: colors.successTint },
-  negative: { label: '⚠️ Negative clue', color: colors.error, bg: colors.errorTint },
+  positive: { label: 'Positive clue', color: colors.success, bg: colors.successTint },
+  negative: { label: 'Negative clue', color: colors.error, bg: colors.errorTint },
   neutral: { label: '', color: '', bg: '' },
 };
 
 function VocabRow({ word, lang, seen }: { word: VocabWord; lang: Lang; seen: boolean }) {
   const clue = CLUE_LABELS[word.clue_type];
+  const isPos = word.clue_type === 'positive';
   return (
     <View style={[styles.vocabRow, seen && styles.vocabRowSeen]}>
       <View style={styles.vocabFi}>
@@ -42,11 +44,17 @@ function VocabRow({ word, lang, seen }: { word: VocabWord; lang: Lang; seen: boo
         )}
         {clue.label !== '' && (
           <View style={[styles.cluePill, { backgroundColor: clue.bg }]}>
+            {isPos
+              ? <Check size={11} color={clue.color} strokeWidth={3} />
+              : <AlertTriangle size={10} color={clue.color} strokeWidth={2.6} />}
             <Text style={[styles.cluePillText, { color: clue.color }]}>{clue.label}</Text>
           </View>
         )}
         {word.appears_in_question_ids.length > 0 && (
-          <Text style={styles.appearsIn}>⚡ {word.appears_in_question_ids.length} exam Qs</Text>
+          <View style={styles.appearsInRow}>
+            <Zap size={11} color={colors.textSecondary} strokeWidth={2.2} />
+            <Text style={styles.appearsIn}>{word.appears_in_question_ids.length} exam Qs</Text>
+          </View>
         )}
       </View>
     </View>
@@ -158,8 +166,9 @@ const styles = StyleSheet.create({
   formsFi: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
   vocabRight: { flex: 1, gap: 4 },
   wordEn: { fontSize: 14, color: colors.text },
-  cluePill: { borderRadius: radius.full, paddingHorizontal: 8, paddingVertical: 2, alignSelf: 'flex-start', marginTop: 2 },
+  cluePill: { flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: radius.full, paddingHorizontal: 8, paddingVertical: 3, alignSelf: 'flex-start', marginTop: 2 },
   cluePillText: { fontSize: 11, fontFamily: font.semibold },
+  appearsInRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 1 },
   appearsIn: { fontSize: 12, color: colors.textSecondary },
   sep: { height: 1, backgroundColor: colors.border },
   footer: { paddingTop: spacing.lg, paddingBottom: 32 },
