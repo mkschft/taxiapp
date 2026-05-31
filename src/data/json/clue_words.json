@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cw_varmistaa", "group": "positive",
+    "phrase_fi": "varmistaa / varmistetaan",
+    "phrase_en": "to make sure / ensure",
+    "effect": "Signals the driver is being responsible — answer is usually CORRECT",
+    "exceptions": [],
+    "linked_question_ids": ["q1","q3","q7"]
+  },
+  {
+    "id": "cw_huolehtia", "group": "positive",
+    "phrase_fi": "huolehtia / huolehtii",
+    "phrase_en": "to take care of",
+    "effect": "Proactive care for passenger — answer is usually CORRECT",
+    "exceptions": [],
+    "linked_question_ids": ["q2","q5"]
+  },
+  {
+    "id": "cw_tiedustella", "group": "positive",
+    "phrase_fi": "tiedustella / kysyä tarvitseeko apua",
+    "phrase_en": "to ask / inquire if help is needed",
+    "effect": "Asking before acting — answer is usually CORRECT",
+    "exceptions": [],
+    "linked_question_ids": ["q1","q4"]
+  },
+  {
+    "id": "cw_velvollinen", "group": "positive",
+    "phrase_fi": "on velvollinen / tulee / pitää",
+    "phrase_en": "is obliged to / must",
+    "effect": "Obligation verb — driver duty statement, answer usually CORRECT",
+    "exceptions": [],
+    "linked_question_ids": ["q6","q8"]
+  },
+  {
+    "id": "cw_turvallisesti", "group": "positive",
+    "phrase_fi": "turvallisesti / turvallinen",
+    "phrase_en": "safely / safe",
+    "effect": "Safety-affirming word — answer is usually CORRECT",
+    "exceptions": [],
+    "linked_question_ids": ["q1","q2","q9"]
+  },
+  {
+    "id": "cw_ilman", "group": "negative",
+    "phrase_fi": "ilman (turvavyötä / apua)",
+    "phrase_en": "without (a seatbelt / help)",
+    "effect": "Removes a safety device or action — answer is usually WRONG",
+    "exceptions": ["Q81: word appears in question stem, not an option — do not auto-eliminate"],
+    "linked_question_ids": ["q2","q5","q10"]
+  },
+  {
+    "id": "cw_ei_koskaan", "group": "negative",
+    "phrase_fi": "ei koskaan / aina / vain / ainoastaan",
+    "phrase_en": "never / always / only",
+    "effect": "Absolute language — too extreme, answer is usually WRONG",
+    "exceptions": [],
+    "linked_question_ids": ["q3","q6"]
+  },
+  {
+    "id": "cw_ei_tarvitse", "group": "negative",
+    "phrase_fi": "ei tarvitse",
+    "phrase_en": "does not need to",
+    "effect": "Dismisses a driver duty — answer is usually WRONG",
+    "exceptions": [],
+    "linked_question_ids": ["q4","q7"]
+  },
+  {
+    "id": "cw_mika", "group": "wh",
+    "phrase_fi": "mikä / missä / milloin / miksi",
+    "phrase_en": "what / where / when / why",
+    "effect": "WH-word — changes the question from yes/no to specific answer type",
+    "exceptions": [],
+    "linked_question_ids": []
+  },
+  {
+    "id": "cw_jos", "group": "conjunction",
+    "phrase_fi": "jos / vaikka / koska / jotta / ellei",
+    "phrase_en": "if / even though / because / so that / unless",
+    "effect": "Conjunction — sets a condition; read the whole clause before choosing",
+    "exceptions": [],
+    "linked_question_ids": []
+  }
+]

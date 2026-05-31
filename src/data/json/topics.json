@@ -1,0 +1,10 @@
+[
+  { "id": "t_seatbelt", "category_id": "passenger_safety", "title_fi": "Turvavyö", "title_en": "Seatbelt", "order": 1 },
+  { "id": "t_mobility_assist", "category_id": "passenger_safety", "title_fi": "Liikuntarajoitteisen avustaminen", "title_en": "Assisting mobility-limited passengers", "order": 2 },
+  { "id": "t_child_safety", "category_id": "special_needs", "title_fi": "Lapsimatkustajat", "title_en": "Child passengers", "order": 1 },
+  { "id": "t_wheelchair", "category_id": "special_needs", "title_fi": "Pyörätuolimatkustajat", "title_en": "Wheelchair passengers", "order": 2 },
+  { "id": "t_customer_rights", "category_id": "customer_service", "title_fi": "Matkustajan oikeudet", "title_en": "Passenger rights", "order": 1 },
+  { "id": "t_receipts", "category_id": "customer_service", "title_fi": "Kuitti ja hinnoittelu", "title_en": "Receipts & pricing", "order": 2 },
+  { "id": "t_traffic_rules", "category_id": "traffic_safety", "title_fi": "Liikennesäännöt", "title_en": "Traffic rules", "order": 1 },
+  { "id": "t_speed", "category_id": "traffic_safety", "title_fi": "Nopeusrajoitukset", "title_en": "Speed limits", "order": 2 }
+]

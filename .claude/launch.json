@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "taxiapp-web",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3457", "/Users/rhiday/Developer/taxiapp/dist"],
+      "port": 3457
+    }
+  ]
+}

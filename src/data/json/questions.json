@@ -1,0 +1,173 @@
+[
+  {
+    "id": "q1",
+    "category_id": "passenger_safety",
+    "topic_id": "t_mobility_assist",
+    "q_fi": "Liikuntarajoitteinen matkustaja nousee taksiin. Mitä kuljettajan tulee tehdä?",
+    "q_en": "A passenger with mobility limitations gets into the taxi. What should the driver do?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettaja tiedustelee matkustajalta, tarvitseeko hän apua sisälle noustessa.", "en": "The driver asks the passenger whether they need help getting in." },
+      { "letter": "B", "fi": "Kuljettaja odottaa, kunnes matkustaja on istuutunut, ja lähtee sitten ajamaan.", "en": "The driver waits until the passenger has sat down and then starts driving." },
+      { "letter": "C", "fi": "Kuljettaja jatkaa ajoa ilman apua, koska matkustajalla on oma avustaja.", "en": "The driver continues without helping, as the passenger has their own assistant." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. The clue word 'tiedustelee' (asks/inquires) signals active care — a positive trigger. Option C contains 'ilman apua' (without help) — a classic negative clue. Option B is passive; the correct behaviour is to actively ask.",
+    "clue_word_ids": ["cw_tiedustella","cw_ilman"],
+    "difficulty": 1,
+    "free_preview": true
+  },
+  {
+    "id": "q2",
+    "category_id": "passenger_safety",
+    "topic_id": "t_seatbelt",
+    "q_fi": "Taksinkuljettaja havaitsee, että matkustaja ei käytä turvavyötä. Miten kuljettajan tulee toimia?",
+    "q_en": "The taxi driver notices a passenger is not wearing a seatbelt. What must the driver do?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettaja pyytää matkustajaa laittamaan turvavyön ennen ajamista.", "en": "The driver asks the passenger to put on the seatbelt before driving." },
+      { "letter": "B", "fi": "Kuljettaja jatkaa ajamista, koska se on matkustajan oma vastuu.", "en": "The driver continues driving, as it is the passenger's own responsibility." },
+      { "letter": "C", "fi": "Kuljettaja ei voi pakottaa matkustajaa käyttämään turvavyötä.", "en": "The driver cannot force the passenger to wear a seatbelt." },
+      { "letter": "D", "fi": "Kuljettaja ilmoittaa asiasta vain erittäin pitkillä matkoilla.", "en": "The driver only mentions it on very long trips." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. The driver is obliged to remind passengers about seatbelts before driving. B, C and D all dismiss the driver's duty — typical negative patterns.",
+    "clue_word_ids": ["cw_varmistaa","cw_ei_tarvitse"],
+    "difficulty": 1,
+    "free_preview": true
+  },
+  {
+    "id": "q3",
+    "category_id": "passenger_safety",
+    "topic_id": "t_seatbelt",
+    "q_fi": "Kuljettajan velvollisuus on varmistaa, että jokainen matkustaja käyttää turvavyötä. Onko tämä oikein?",
+    "q_en": "It is the driver's duty to ensure every passenger wears a seatbelt. Is this correct?",
+    "options": [
+      { "letter": "A", "fi": "Kyllä, kuljettaja on velvollinen varmistamaan turvavyön käytön.", "en": "Yes, the driver is obliged to ensure seatbelt use." },
+      { "letter": "B", "fi": "Ei, matkustaja päättää itse turvavyön käytöstä.", "en": "No, the passenger decides themselves about seatbelt use." },
+      { "letter": "C", "fi": "Vain lapsimatkustajien kohdalla.", "en": "Only in the case of child passengers." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Velvollinen varmistamaan' (obliged to ensure) is a double positive clue — an obligation verb plus varmistaa. C uses 'vain' (only) — an absolute limiter that signals a wrong answer.",
+    "clue_word_ids": ["cw_varmistaa","cw_velvollinen","cw_ei_koskaan"],
+    "difficulty": 2,
+    "free_preview": false
+  },
+  {
+    "id": "q4",
+    "category_id": "special_needs",
+    "topic_id": "t_mobility_assist",
+    "q_fi": "Pyörätuolimatkustaja tarvitsee apua taksiin noustessa. Mitä kuljettajan pitää tehdä?",
+    "q_en": "A wheelchair passenger needs help getting into the taxi. What must the driver do?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettajan pitää auttaa matkustajaa ja varmistaa, että pyörätuoli on turvallisesti kiinnitetty.", "en": "The driver must help the passenger and ensure the wheelchair is safely secured." },
+      { "letter": "B", "fi": "Kuljettaja voi kieltäytyä, jos apu on vaikeaa.", "en": "The driver may refuse if the assistance is difficult." },
+      { "letter": "C", "fi": "Kuljettaja odottaa ilman apua, koska pyörätuolimatkustajalla on aina avustaja.", "en": "The driver waits without helping because wheelchair passengers always have an assistant." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct: 'pitää auttaa' (must help) and 'turvallisesti kiinnitetty' (safely secured) are both positive clues. C uses 'aina' (always) — an absolute word that signals it's wrong.",
+    "clue_word_ids": ["cw_varmistaa","cw_turvallisesti","cw_ilman","cw_ei_koskaan"],
+    "difficulty": 2,
+    "free_preview": false
+  },
+  {
+    "id": "q5",
+    "category_id": "customer_service",
+    "topic_id": "t_customer_rights",
+    "q_fi": "Matkustaja haluaa tietää matkan hinnan ennen matkaa. Mitä kuljettajan tulee tehdä?",
+    "q_en": "A passenger wants to know the trip price before the journey. What should the driver do?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettajan tulee kertoa hinta-arvio tai näyttää taksametri ennen matkaa.", "en": "The driver should give a price estimate or show the taximeter before the trip." },
+      { "letter": "B", "fi": "Kuljettaja ei tarvitse kertoa hintaa ennen matkaa.", "en": "The driver does not need to give the price before the trip." },
+      { "letter": "C", "fi": "Hinnasta kerrotaan vain, jos matkustaja erikseen pyytää.", "en": "The price is given only if the passenger specifically requests it." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. B contains 'ei tarvitse' (does not need to) — a negative clue. C uses 'vain' (only) — an absolute limiter. Both signal wrong answers.",
+    "clue_word_ids": ["cw_ei_tarvitse","cw_ei_koskaan"],
+    "difficulty": 1,
+    "free_preview": true
+  },
+  {
+    "id": "q6",
+    "category_id": "customer_service",
+    "topic_id": "t_receipts",
+    "q_fi": "Matkustaja pyytää kuittia. Onko kuljettaja velvollinen antamaan kuitin?",
+    "q_en": "A passenger requests a receipt. Is the driver obliged to provide one?",
+    "options": [
+      { "letter": "A", "fi": "Kyllä, kuljettaja on velvollinen antamaan kuitin pyydettäessä.", "en": "Yes, the driver is obliged to provide a receipt when requested." },
+      { "letter": "B", "fi": "Ei, kuitin antaminen on vapaaehtoista.", "en": "No, giving a receipt is voluntary." },
+      { "letter": "C", "fi": "Vain, jos matka maksaa yli 10 euroa.", "en": "Only if the trip costs more than €10." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Velvollinen antamaan' (obliged to give) is the positive obligation pattern. C uses 'vain' (only) — an absolute that is almost always wrong.",
+    "clue_word_ids": ["cw_velvollinen","cw_ei_koskaan"],
+    "difficulty": 1,
+    "free_preview": false
+  },
+  {
+    "id": "q7",
+    "category_id": "traffic_safety",
+    "topic_id": "t_traffic_rules",
+    "q_fi": "Taksikuljettaja ajaa hiljaisella kadulla. Saako kuljettaja ylittää nopeusrajoituksen?",
+    "q_en": "A taxi driver is driving on a quiet street. May the driver exceed the speed limit?",
+    "options": [
+      { "letter": "A", "fi": "Ei, kuljettajan tulee aina noudattaa nopeusrajoitusta.", "en": "No, the driver must always follow the speed limit." },
+      { "letter": "B", "fi": "Kyllä, jos katu on tyhjä ja matka on kiireellinen.", "en": "Yes, if the street is empty and the trip is urgent." },
+      { "letter": "C", "fi": "Kyllä, taksinkuljettajilla on lupa ylittää rajoitus 10 km/h.", "en": "Yes, taxi drivers are permitted to exceed the limit by 10 km/h." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Tulee aina noudattaa' (must always follow) — here 'aina' reinforces a legal obligation, not an absolute trap. B and C both permit rule-breaking, which is always wrong in safety questions.",
+    "clue_word_ids": ["cw_velvollinen"],
+    "difficulty": 2,
+    "free_preview": false
+  },
+  {
+    "id": "q8",
+    "category_id": "special_needs",
+    "topic_id": "t_child_safety",
+    "q_fi": "Taksissa on lapsi, joka tarvitsee turvalaitteen. Mitä kuljettajan tulee varmistaa?",
+    "q_en": "A child is in the taxi and needs a safety device. What must the driver ensure?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettajan tulee varmistaa, että lapsella on asianmukainen turvalaite käytössä.", "en": "The driver must ensure the child has an appropriate safety device in use." },
+      { "letter": "B", "fi": "Kuljettaja ei tarvitse huolehtia lapsimatkustajan turvalaitteesta.", "en": "The driver does not need to worry about a child passenger's safety device." },
+      { "letter": "C", "fi": "Turvalaitteen hankkiminen on vanhempien vastuulla.", "en": "Providing the safety device is the parents' responsibility." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Tulee varmistaa' (must ensure) — obligation + positive clue. B contains 'ei tarvitse' (does not need to) — an immediate negative flag.",
+    "clue_word_ids": ["cw_varmistaa","cw_velvollinen","cw_ei_tarvitse"],
+    "difficulty": 1,
+    "free_preview": true
+  },
+  {
+    "id": "q9",
+    "category_id": "passenger_safety",
+    "topic_id": "t_seatbelt",
+    "q_fi": "Kuljettaja voi lähteä ajamaan vasta, kun on varmistanut, että matkustajat ovat turvallisesti sisällä. Onko tämä oikein?",
+    "q_en": "The driver may start driving only after ensuring passengers are safely inside. Is this correct?",
+    "options": [
+      { "letter": "A", "fi": "Kyllä, tämä on kuljettajan velvollisuus.", "en": "Yes, this is the driver's duty." },
+      { "letter": "B", "fi": "Ei, kuljettaja voi lähteä heti, kun matkustaja on istuutunut.", "en": "No, the driver can leave as soon as the passenger sits down." },
+      { "letter": "C", "fi": "Ei, ainoastaan liikuntarajoitteisten matkustajien kanssa.", "en": "No, only with passengers with mobility limitations." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Varmistanut turvallisesti sisällä' stacks varmistaa + turvallisesti — two positive clues. C uses 'ainoastaan' (only) — an absolute limiter, almost always wrong.",
+    "clue_word_ids": ["cw_varmistaa","cw_turvallisesti","cw_ei_koskaan"],
+    "difficulty": 2,
+    "free_preview": false
+  },
+  {
+    "id": "q10",
+    "category_id": "traffic_safety",
+    "topic_id": "t_traffic_rules",
+    "q_fi": "Taksikuljettajalla on velvollisuus noudattaa liikennesääntöjä. Mitä tämä tarkoittaa käytännössä?",
+    "q_en": "The taxi driver has a duty to follow traffic rules. What does this mean in practice?",
+    "options": [
+      { "letter": "A", "fi": "Kuljettajan tulee noudattaa kaikkia liikennemerkejä ja nopeusrajoituksia.", "en": "The driver must follow all traffic signs and speed limits." },
+      { "letter": "B", "fi": "Kuljettaja voi ohittaa punaisen valon, jos tie on selvästi tyhjä.", "en": "The driver may pass a red light if the road is clearly empty." },
+      { "letter": "C", "fi": "Säännöt koskevat taksinkuljettajia vain ruuhka-aikoina.", "en": "Rules apply to taxi drivers only during rush hours." }
+    ],
+    "correct_letter": "A",
+    "explanation_en": "A is correct. 'Tulee noudattaa kaikkia' (must follow all) — obligation verb with all-encompassing scope. B explicitly permits breaking a rule — always wrong. C uses 'vain' (only) — absolute limiter.",
+    "clue_word_ids": ["cw_velvollinen","cw_ei_koskaan"],
+    "difficulty": 1,
+    "free_preview": false
+  }
+]

@@ -1,0 +1,6 @@
+[
+  { "id": "passenger_safety", "name_fi": "Matkustajan apu ja turvallisuus", "name_en": "Passenger Help & Safety", "icon": "🛡️", "color": "#1F6FEB" },
+  { "id": "special_needs", "name_fi": "Erityismatkustajien tarpeet", "name_en": "Special Passenger Needs", "icon": "♿", "color": "#2E9E6B" },
+  { "id": "customer_service", "name_fi": "Asiakaspalvelu", "name_en": "Customer Service", "icon": "🤝", "color": "#E0A100" },
+  { "id": "traffic_safety", "name_fi": "Liikenne ja liikenneturvallisuus", "name_en": "Transport & Traffic Safety", "icon": "🚦", "color": "#DC2626" }
+]
