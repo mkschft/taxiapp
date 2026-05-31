@@ -3,7 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BookOpen, Target, MessageSquare, Timer, TrendingUp, type LucideIcon } from 'lucide-react-native';
+import { BookOpen, Target, MessageSquare, Timer, TrendingUp, FileText, type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
@@ -18,10 +18,11 @@ type HubItem = {
 };
 
 const HUBS: HubItem[] = [
-  { Icon: BookOpen, tint: colors.primary, title: 'Vocabulary', sub: '20 words · 2 pages', paid: false, screen: 'Vocabulary', stack: 'Study' },
-  { Icon: Target, tint: colors.success, title: 'Clue Words', sub: '10 clue patterns', paid: true, screen: 'ClueWords', stack: 'Study' },
-  { Icon: MessageSquare, tint: colors.warning, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'StudyHome', stack: 'Study' },
-  { Icon: Timer, tint: colors.error, title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
+  { Icon: FileText, tint: colors.primary, title: 'Exam Guide', sub: 'Rules · categories · exam day', paid: false, screen: 'Guide', stack: 'Study' },
+  { Icon: BookOpen, tint: colors.success, title: 'Vocabulary', sub: '20 words · 2 pages', paid: false, screen: 'Vocabulary', stack: 'Study' },
+  { Icon: Target, tint: colors.warning, title: 'Clue Words', sub: '10 clue patterns', paid: true, screen: 'ClueWords', stack: 'Study' },
+  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'StudyHome', stack: 'Study' },
+  { Icon: Timer, tint: '#7C3AED', title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
   { Icon: TrendingUp, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];
 

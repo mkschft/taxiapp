@@ -76,6 +76,18 @@ export type Quiz = {
   question_ids: string[];
 };
 
+export type GuideItem = { label: string; value: string };
+export type GuideCategoryRule = {
+  id: string; name: string; icon: string; color: string;
+  description: string; keyRules: string[];
+};
+export type GuideSection = {
+  id: string; icon: string; title: string; summary: string;
+  items?: GuideItem[];
+  categories?: GuideCategoryRule[];
+  note?: string;
+};
+
 export type ModelTest = {
   id: string;
   title_fi: string;

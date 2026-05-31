@@ -5,6 +5,7 @@ import { ClueWordsScreen } from '../screens/ClueWordsScreen';
 import { PracticeScreen } from '../screens/PracticeScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import { StudyHomeScreen } from '../screens/StudyHomeScreen';
+import { GuideScreen } from '../screens/GuideScreen';
 import type { StudyStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<StudyStackParamList>();
@@ -17,6 +18,7 @@ export function StudyStack() {
       <Stack.Screen name="ClueWords" component={ClueWordsScreen} />
       <Stack.Screen name="Practice" component={PracticeScreen} />
       <Stack.Screen name="Result" component={ResultScreen} />
+      <Stack.Screen name="Guide" component={GuideScreen} />
     </Stack.Navigator>
   );
 }

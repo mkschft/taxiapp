@@ -13,6 +13,7 @@ export type AppTabParamList = {
 
 export type StudyStackParamList = {
   StudyHome: undefined;
+  Guide: undefined;
   Vocabulary: { page?: number };
   ClueWords: undefined;
   Practice: {

@@ -1,4 +1,4 @@
-import type { ExamCategory, Topic, VocabWord, ClueWord, Question, ModelTest } from './types';
+import type { ExamCategory, Topic, VocabWord, ClueWord, Question, ModelTest, GuideSection } from './types';
 
 import categoriesRaw from './json/categories.json';
 import topicsRaw from './json/topics.json';
@@ -6,6 +6,7 @@ import vocabRaw from './json/vocab_words.json';
 import clueWordsRaw from './json/clue_words.json';
 import questionsRaw from './json/questions.json';
 import modelTestsRaw from './json/model_tests.json';
+import guideRaw from './json/guide.json';
 
 export const getCategories = (): ExamCategory[] => categoriesRaw as ExamCategory[];
 export const getTopics = (): Topic[] => topicsRaw as Topic[];
@@ -39,3 +40,5 @@ export const getClueWordsByIds = (ids: string[]) =>
 
 export const getModelTestById = (id: string) =>
   (modelTestsRaw as ModelTest[]).find(t => t.id === id);
+
+export const getGuideSections = (): GuideSection[] => guideRaw as GuideSection[];
