@@ -12,7 +12,7 @@ import { ClueHighlight } from '../components/question/ClueHighlight';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, fontWeight, radius, font } from '../theme/tokens';
-import { getQuestionById, getClueWordsByIds, getClueWords } from '../data/loaders';
+import { getQuestionById } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -34,19 +34,18 @@ export function PracticeScreen({ navigation, route }: Props) {
   const [showClues, setShowClues] = useState(false);
   const [answered, setAnswered] = useState(false);
 
-  const allClueWords = getClueWords();
-  const relevantClues = question ? getClueWordsByIds(question.clue_word_ids) : [];
+  const clueAnnotations = question?.clue_annotations ?? [];
 
   const cycleLang = useCallback(() => {
     setLang(l => l === 'fi' ? 'en' : 'fi');
   }, []);
 
-  const handleSelect = useCallback((letter: string) => {
+  const handleSelect = useCallback((key: string) => {
     if (answered || !question) return;
-    setSelected(letter);
+    setSelected(key);
     setAnswered(true);
     setShowClues(true);
-    const correct = letter === question.correct_letter;
+    const correct = key === question.correct_option;
     dispatch({ type: 'ANSWER_QUESTION', id: question.id, correct });
   }, [answered, question, dispatch]);
 
@@ -61,13 +60,13 @@ export function PracticeScreen({ navigation, route }: Props) {
         sourceLabel,
       });
     } else if (queue.length > 0) {
-      const correct = answered && selected === question.correct_letter ? 1 : 0;
+      const correct = answered && selected === question.correct_option ? 1 : 0;
       navigation.replace('Result', {
         mode: 'quiz',
         label: sourceLabel,
         score: correct,
         total: queue.length,
-        wrongIds: selected !== question.correct_letter ? [question.id] : [],
+        wrongIds: selected !== question.correct_option ? [question.id] : [],
       });
     } else {
       navigation.goBack();
@@ -91,16 +90,19 @@ export function PracticeScreen({ navigation, route }: Props) {
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
     if (!answered) {
-      optionStates[o.letter] = selected === o.letter ? 'selected' : 'idle';
+      optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
     } else {
-      if (o.letter === question.correct_letter) optionStates[o.letter] = 'correct';
-      else if (o.letter === selected) optionStates[o.letter] = 'incorrect';
-      else optionStates[o.letter] = 'idle';
+      if (o.key === question.correct_option) optionStates[o.key] = 'correct';
+      else if (o.key === selected) optionStates[o.key] = 'incorrect';
+      else optionStates[o.key] = 'idle';
     }
   });
 
-  const qText = lang === 'fi' ? question.q_fi : question.q_en;
+  const qText = lang === 'fi' ? (question.question.fi ?? '') : (question.question.en ?? question.question.fi ?? '');
   const progress = queue.length > 0 ? ((queueIndex + 1) / queue.length) * 100 : 0;
+
+  // Clues for the hint panel: pcw (positive) and ncw (negative) only
+  const hintClues = clueAnnotations.filter(a => a.clue_type === 'pcw' || a.clue_type === 'ncw');
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -128,8 +130,7 @@ export function PracticeScreen({ navigation, route }: Props) {
           <Text style={styles.qLabel}>{lang === 'fi' ? 'KYSYMYS' : 'QUESTION'}</Text>
           <ClueHighlight
             text={qText}
-            clueWordIds={question.clue_word_ids}
-            allClueWords={allClueWords}
+            clueAnnotations={clueAnnotations}
             showHighlights={showClues}
             style={styles.qText}
           />
@@ -161,8 +162,8 @@ export function PracticeScreen({ navigation, route }: Props) {
           </Pressable>
         </View>
 
-        {/* Hint panel */}
-        {showHint && relevantClues.length > 0 && (
+        {/* Hint panel — shows pcw/ncw clue words */}
+        {showHint && hintClues.length > 0 && (
           <MotiView
             from={{ opacity: 0, translateY: -6 }}
             animate={{ opacity: 1, translateY: 0 }}
@@ -173,15 +174,17 @@ export function PracticeScreen({ navigation, route }: Props) {
               <Lightbulb size={14} color={colors.warning} strokeWidth={2.4} />
               <Text style={styles.hintTitle}>CLUE WORD HINT</Text>
             </View>
-            {relevantClues.map(cw => (
-              <View key={cw.id} style={styles.hintRow}>
-                <View style={[styles.hintDot, cw.group === 'positive' ? styles.dotPos : styles.dotNeg]} />
+            {hintClues.map((ann, idx) => (
+              <View key={idx} style={styles.hintRow}>
+                <View style={[styles.hintDot, ann.clue_type === 'pcw' ? styles.dotPos : styles.dotNeg]} />
                 <View style={{ flex: 1 }}>
                   <Text style={styles.hintPhrase}>
-                    <Text style={{ fontStyle: 'italic' }}>{cw.phrase_fi}</Text>
-                    {' '}({cw.phrase_en})
+                    <Text style={{ fontStyle: 'italic' }}>{ann.text_fi}</Text>
+                    {ann.meaning_en ? ` (${ann.meaning_en})` : ''}
                   </Text>
-                  <Text style={styles.hintEffect}>{cw.effect}</Text>
+                  <Text style={styles.hintEffect}>
+                    {ann.clue_type === 'pcw' ? 'Points toward the correct answer' : 'Points away from correct answer'}
+                  </Text>
                 </View>
               </View>
             ))}
@@ -192,11 +195,11 @@ export function PracticeScreen({ navigation, route }: Props) {
         <View style={styles.options}>
           {question.options.map((opt, i) => (
             <OptionRow
-              key={opt.letter}
-              letter={opt.letter}
-              text={lang === 'fi' ? opt.fi : opt.en}
-              state={optionStates[opt.letter]}
-              onPress={() => handleSelect(opt.letter)}
+              key={opt.key}
+              letter={opt.key}
+              text={lang === 'fi' ? (opt.fi ?? '') : (opt.en ?? opt.fi ?? '')}
+              state={optionStates[opt.key]}
+              onPress={() => handleSelect(opt.key)}
               disabled={answered}
               index={i}
             />
@@ -212,22 +215,22 @@ export function PracticeScreen({ navigation, route }: Props) {
             style={styles.explanation}
           >
             <Text style={styles.expText}>{question.explanation_en}</Text>
-            {relevantClues.length > 0 && (
+            {hintClues.length > 0 && (
               <View style={styles.cluePills}>
                 <Text style={styles.expSubLabel}>Clue words in this question:</Text>
                 <View style={styles.pillRow}>
-                  {relevantClues.map(cw => {
-                    const isPos = cw.group === 'positive';
+                  {hintClues.map((ann, idx) => {
+                    const isPos = ann.clue_type === 'pcw';
                     return (
                       <View
-                        key={cw.id}
+                        key={idx}
                         style={[styles.pill, isPos ? styles.pillPos : styles.pillNeg]}
                       >
                         {isPos
                           ? <Check size={12} color={colors.success} strokeWidth={3} />
                           : <AlertTriangle size={11} color={colors.error} strokeWidth={2.6} />}
                         <Text style={[styles.pillText, isPos ? styles.pillTextPos : styles.pillTextNeg]}>
-                          {cw.phrase_fi}
+                          {ann.text_fi}
                         </Text>
                       </View>
                     );

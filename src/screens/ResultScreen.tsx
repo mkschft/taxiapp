@@ -85,7 +85,7 @@ export function ResultScreen({ navigation, route }: Props) {
                   })}
                   activeOpacity={0.8}
                 >
-                  <Text style={styles.wrongQ} numberOfLines={2}>{q.q_en}</Text>
+                  <Text style={styles.wrongQ} numberOfLines={2}>{q.question.en ?? q.question.fi}</Text>
                   <Text style={styles.wrongMeta}>Tap to review →</Text>
                 </TouchableOpacity>
               );

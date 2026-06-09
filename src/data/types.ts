@@ -48,24 +48,48 @@ export type ClueWord = {
   linked_question_ids: string[];
 };
 
+/** Inline clue annotation attached to a question — replaces the old clue_word_ids ref model */
+export type ClueAnnotation = {
+  text_fi: string;
+  meaning_en: string | null;
+  /** fw = focus word (yellow), pcw = positive clue → correct, ncw = negative clue → wrong */
+  clue_type: 'fw' | 'pcw' | 'ncw';
+  /** Which parts of the question this clue appears in */
+  found_in: string[];
+};
+
 export type QuestionOption = {
-  letter: 'A' | 'B' | 'C' | 'D';
-  fi: string;
-  en: string;
+  key: 'A' | 'B' | 'C';
+  fi: string | null;
+  fi_raw: string | null;
+  en: string | null;
+  is_correct: boolean;
 };
 
 export type Question = {
   id: string;
   category_id: string;
-  topic_id: string;
-  q_fi: string;
-  q_en: string;
+  category_en: string | null;
+  source_topic_fi: string | null;
+  ref_no: string | null;
+  source_set: string | null;
+  question: {
+    fi: string | null;
+    en: string | null;
+    fi_raw: string | null;
+  };
   options: QuestionOption[];
-  correct_letter: 'A' | 'B' | 'C' | 'D';
-  explanation_en: string;
-  clue_word_ids: string[];
-  difficulty: 1 | 2 | 3;
-  free_preview: boolean;
+  correct_option: 'A' | 'B' | 'C' | null;
+  correct_master: string;
+  key_overridden: boolean;
+  clue_annotations: ClueAnnotation[];
+  explanation_en: string | null;
+  difficulty: 'Easy' | 'Medium' | 'Hard' | null;
+  tags: string[];
+  status: string;
+  fi_edited: boolean;
+  reviewer_notes: string | null;
+  enriched: boolean;
 };
 
 export type Quiz = {

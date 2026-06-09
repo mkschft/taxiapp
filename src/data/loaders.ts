@@ -12,17 +12,14 @@ export const getCategories = (): ExamCategory[] => categoriesRaw as ExamCategory
 export const getTopics = (): Topic[] => topicsRaw as Topic[];
 export const getVocabWords = (): VocabWord[] => vocabRaw as VocabWord[];
 export const getClueWords = (): ClueWord[] => clueWordsRaw as ClueWord[];
-export const getQuestions = (): Question[] => questionsRaw as Question[];
+export const getQuestions = (): Question[] => questionsRaw as unknown as Question[];
 export const getModelTests = (): ModelTest[] => modelTestsRaw as ModelTest[];
 
 export const getQuestionById = (id: string) =>
-  (questionsRaw as Question[]).find(q => q.id === id);
+  (questionsRaw as unknown as Question[]).find(q => q.id === id);
 
 export const getQuestionsByCategory = (catId: string) =>
-  (questionsRaw as Question[]).filter(q => q.category_id === catId);
-
-export const getFreePreviewQuestions = () =>
-  (questionsRaw as Question[]).filter(q => q.free_preview);
+  (questionsRaw as unknown as Question[]).filter(q => q.category_id === catId);
 
 export const getVocabByPage = (page: number) =>
   (vocabRaw as VocabWord[]).filter(w => w.page_no === page);
@@ -32,11 +29,9 @@ export const getVocabPageCount = () => {
   return pages.size;
 };
 
+// ClueWords screen still uses the clue_words.json dictionary
 export const getClueWordsByGroup = (group: ClueWord['group']) =>
   (clueWordsRaw as ClueWord[]).filter(c => c.group === group);
-
-export const getClueWordsByIds = (ids: string[]) =>
-  (clueWordsRaw as ClueWord[]).filter(c => ids.includes(c.id));
 
 export const getModelTestById = (id: string) =>
   (modelTestsRaw as ModelTest[]).find(t => t.id === id);

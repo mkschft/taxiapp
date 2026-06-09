@@ -1,46 +1,46 @@
-import type { ClueWord, ClueGroup } from '../data/types';
+import type { ClueAnnotation } from '../data/types';
 
 export type TextSegment = {
   text: string;
   isClue: boolean;
-  clueGroup?: ClueGroup;
-  clueId?: string;
+  clueType?: 'fw' | 'pcw' | 'ncw';
 };
 
 /**
- * Splits a Finnish text string into segments, tagging which parts
- * match clue word phrases so they can be rendered as highlighted spans.
+ * Splits a Finnish text string into segments, tagging which parts match
+ * clue annotation phrases so they can be rendered as highlighted spans.
+ *
+ * clue_type mapping:
+ *   fw  → focus word   (yellow highlight)
+ *   pcw → positive cue → correct answer signal (green)
+ *   ncw → negative cue → wrong answer signal   (red)
  */
 export function parseClues(
   text: string,
-  clueWordIds: string[],
-  allClueWords: ClueWord[],
+  clueAnnotations: ClueAnnotation[],
 ): TextSegment[] {
-  const relevant = allClueWords.filter(c => clueWordIds.includes(c.id));
-  if (relevant.length === 0) return [{ text, isClue: false }];
+  if (!text) return [];
+  if (!clueAnnotations?.length) return [{ text, isClue: false }];
 
-  // Build list of { start, end, clueWord } matches
-  type Match = { start: number; end: number; cw: ClueWord };
+  type Match = { start: number; end: number; clueType: 'fw' | 'pcw' | 'ncw' };
   const matches: Match[] = [];
 
-  for (const cw of relevant) {
-    // Each phrase_fi may have variants separated by " / "
-    const variants = cw.phrase_fi.split(' / ').map(v => v.trim());
-    for (const variant of variants) {
-      const lower = text.toLowerCase();
-      const variantLower = variant.toLowerCase();
-      let idx = lower.indexOf(variantLower);
-      while (idx !== -1) {
-        matches.push({ start: idx, end: idx + variant.length, cw });
-        idx = lower.indexOf(variantLower, idx + 1);
-      }
+  const lowerText = text.toLowerCase();
+
+  for (const ann of clueAnnotations) {
+    if (!ann.text_fi) continue;
+    const phrase = ann.text_fi.toLowerCase();
+    let idx = lowerText.indexOf(phrase);
+    while (idx !== -1) {
+      matches.push({ start: idx, end: idx + ann.text_fi.length, clueType: ann.clue_type });
+      idx = lowerText.indexOf(phrase, idx + 1);
     }
   }
 
   if (matches.length === 0) return [{ text, isClue: false }];
 
-  // Sort by start position, resolve overlaps (keep first)
-  matches.sort((a, b) => a.start - b.start);
+  // Sort by start, drop overlaps (keep first/longest)
+  matches.sort((a, b) => a.start - b.start || b.end - a.end);
   const noOverlap: Match[] = [];
   let cursor = 0;
   for (const m of matches) {
@@ -60,8 +60,7 @@ export function parseClues(
     segments.push({
       text: text.slice(m.start, m.end),
       isClue: true,
-      clueGroup: m.cw.group,
-      clueId: m.cw.id,
+      clueType: m.clueType,
     });
     pos = m.end;
   }
@@ -70,3 +69,6 @@ export function parseClues(
   }
   return segments;
 }
+
+// Legacy helper kept for ClueWordsScreen which still looks up by ClueWord id
+export type { ClueAnnotation };

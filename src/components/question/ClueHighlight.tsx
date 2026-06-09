@@ -2,36 +2,36 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../../theme/tokens';
 import { parseClues } from '../../utils/clueParser';
-import type { ClueWord } from '../../data/types';
+import type { ClueAnnotation } from '../../data/types';
 
 type Props = {
-  text: string;
-  clueWordIds: string[];
-  allClueWords: ClueWord[];
+  text: string | null | undefined;
+  clueAnnotations: ClueAnnotation[];
   style?: object;
   showHighlights?: boolean;
 };
 
-export function ClueHighlight({ text, clueWordIds, allClueWords, style, showHighlights = false }: Props) {
-  if (!showHighlights) {
-    return <Text style={style}>{text}</Text>;
+export function ClueHighlight({ text, clueAnnotations, style, showHighlights = false }: Props) {
+  const safeText = text ?? '';
+
+  if (!showHighlights || !clueAnnotations?.length) {
+    return <Text style={style}>{safeText}</Text>;
   }
 
-  const segments = parseClues(text, clueWordIds, allClueWords);
+  const segments = parseClues(safeText, clueAnnotations);
 
   return (
     <Text style={style}>
       {segments.map((seg, i) => {
         if (!seg.isClue) return <Text key={i}>{seg.text}</Text>;
-        const isPos = seg.clueGroup === 'positive';
-        const isNeg = seg.clueGroup === 'negative';
         return (
           <Text
             key={i}
             style={[
               styles.clue,
-              isPos && styles.positive,
-              isNeg && styles.negative,
+              seg.clueType === 'fw' && styles.focusWord,
+              seg.clueType === 'pcw' && styles.positive,
+              seg.clueType === 'ncw' && styles.negative,
             ]}
           >
             {seg.text}
@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
   clue: {
     fontWeight: '700',
     borderRadius: 3,
+  },
+  focusWord: {
+    backgroundColor: '#FEF3C7',
+    color: '#92400E',
   },
   positive: {
     backgroundColor: colors.successTint,

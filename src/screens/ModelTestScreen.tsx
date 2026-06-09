@@ -78,19 +78,19 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
-    if (!answered) optionStates[o.letter] = selected === o.letter ? 'selected' : 'idle';
+    if (!answered) optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
     else {
-      if (o.letter === question.correct_letter) optionStates[o.letter] = 'correct';
-      else if (o.letter === selected) optionStates[o.letter] = 'incorrect';
-      else optionStates[o.letter] = 'idle';
+      if (o.key === question.correct_option) optionStates[o.key] = 'correct';
+      else if (o.key === selected) optionStates[o.key] = 'incorrect';
+      else optionStates[o.key] = 'idle';
     }
   });
 
-  const handleSelect = (letter: string) => {
+  const handleSelect = (key: string) => {
     if (answered) return;
-    setSelected(letter);
+    setSelected(key);
     setAnswered(true);
-    const correct = letter === question.correct_letter;
+    const correct = key === question.correct_option;
     if (correct) setScore(s => s + 1);
     else setWrongIds(ids => [...ids, question.id]);
     dispatch({ type: 'ANSWER_QUESTION', id: question.id, correct });
@@ -138,17 +138,17 @@ export function ModelTestScreen({ navigation, route }: Props) {
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.qCategory}>Q{qIndex + 1} OF {test.question_ids.length}</Text>
         <View style={styles.questionCard}>
-          <Text style={styles.qText}>{question.q_fi}</Text>
-          <Text style={styles.qEn}>{question.q_en}</Text>
+          <Text style={styles.qText}>{question.question.fi}</Text>
+          <Text style={styles.qEn}>{question.question.en}</Text>
         </View>
 
         {question.options.map(opt => (
           <OptionRow
-            key={opt.letter}
-            letter={opt.letter}
-            text={opt.fi}
-            state={optionStates[opt.letter]}
-            onPress={() => handleSelect(opt.letter)}
+            key={opt.key}
+            letter={opt.key}
+            text={opt.fi ?? ''}
+            state={optionStates[opt.key]}
+            onPress={() => handleSelect(opt.key)}
             disabled={answered}
           />
         ))}

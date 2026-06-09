@@ -101,7 +101,7 @@ export function ProgressScreen() {
                     <CategoryIcon id={q?.category_id ?? ''} size={20} color={colors.error} />
                   </View>
                   <View style={styles.weakInfo}>
-                    <Text style={styles.weakTitle} numberOfLines={2}>{q?.q_en ?? id}</Text>
+                    <Text style={styles.weakTitle} numberOfLines={2}>{q?.question.en ?? q?.question.fi ?? id}</Text>
                     <Text style={styles.weakSub}>{cat?.name_en}</Text>
                   </View>
                   <TouchableOpacity
