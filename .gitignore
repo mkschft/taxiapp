@@ -1,6 +1,5 @@
 node_modules/
 .expo/
-dist/
 web-build/
 *.jks
 *.p8
@@ -11,3 +10,5 @@ web-build/
 .env
 .env.local
 .DS_Store
+.vercel
+
