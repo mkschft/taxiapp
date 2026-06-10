@@ -14,3 +14,13 @@ web-build/
 .DS_Store
 .vercel
 
+# Local progress tracker — not committed
+PROGRESS.md
+
+# Local backups / Python build artifacts
+old-backup-ignore/
+content/.venv/
+content/output/
+**/__pycache__/
+*.pyc
+

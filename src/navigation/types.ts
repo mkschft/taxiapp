@@ -14,8 +14,13 @@ export type AppTabParamList = {
 export type StudyStackParamList = {
   StudyHome: undefined;
   Guide: undefined;
-  Vocabulary: { page?: number };
+  VocabSets: undefined;
+  VocabSetDetail: { setId: string };
+  VocabLesson: { setId: string; index?: number };
+  VocabQuiz: { setId: string };
   ClueWords: undefined;
+  ClueLesson: { groupId: string; index?: number };
+  ClueQuiz: { groupId: string };
   Practice: {
     questionId: string;
     queue?: string[];

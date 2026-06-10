@@ -1,0 +1,7029 @@
+{
+  "sets": [
+    {
+      "id": "set-1",
+      "set_no": 1,
+      "name": "Passenger Assistance & Accessibility — Part 1",
+      "category_id": "special_needs",
+      "order": 1,
+      "word_count": 8,
+      "question_count": 20
+    },
+    {
+      "id": "set-2",
+      "set_no": 2,
+      "name": "Passenger Assistance & Communication — Part 2",
+      "category_id": "special_needs",
+      "order": 2,
+      "word_count": 7,
+      "question_count": 20
+    },
+    {
+      "id": "set-3",
+      "set_no": 3,
+      "name": "Child, Seatbelt & School Transport Safety",
+      "category_id": "passenger_safety",
+      "order": 3,
+      "word_count": 10,
+      "question_count": 20
+    },
+    {
+      "id": "set-4",
+      "set_no": 4,
+      "name": "Traffic Safety & Driving Rules",
+      "category_id": "traffic_safety",
+      "order": 4,
+      "word_count": 9,
+      "question_count": 20
+    },
+    {
+      "id": "set-5",
+      "set_no": 5,
+      "name": "Police, Emergency & Risky Behaviour",
+      "category_id": "traffic_safety",
+      "order": 5,
+      "word_count": 9,
+      "question_count": 20
+    },
+    {
+      "id": "set-6",
+      "set_no": 6,
+      "name": "Payment, Receipt, Kela & Fare",
+      "category_id": "customer_service",
+      "order": 6,
+      "word_count": 6,
+      "question_count": 20
+    },
+    {
+      "id": "set-7",
+      "set_no": 7,
+      "name": "Trip, Route, Luggage & Useful Action Words",
+      "category_id": "customer_service",
+      "order": 7,
+      "word_count": 12,
+      "question_count": 20
+    },
+    {
+      "id": "set-8",
+      "set_no": 8,
+      "name": "Licence, Duties & Legal Rules",
+      "category_id": "traffic_safety",
+      "order": 8,
+      "word_count": 7,
+      "question_count": 20
+    },
+    {
+      "id": "set-9",
+      "set_no": 9,
+      "name": "Passenger Service, Communication & Complaints",
+      "category_id": "customer_service",
+      "order": 9,
+      "word_count": 6,
+      "question_count": 20
+    },
+    {
+      "id": "set-10",
+      "set_no": 10,
+      "name": "Conjunctions",
+      "category_id": null,
+      "order": 10,
+      "word_count": 5,
+      "question_count": 10
+    },
+    {
+      "id": "set-11",
+      "set_no": 11,
+      "name": "WH / Question Words",
+      "category_id": null,
+      "order": 11,
+      "word_count": 5,
+      "question_count": 10
+    }
+  ],
+  "words": [
+    {
+      "id": "set-1-w1",
+      "set_id": "set-1",
+      "index": 1,
+      "total_in_set": 8,
+      "word_fi": "toimia",
+      "meaning_en": "to act / handle the situation",
+      "forms_fi": [
+        {
+          "fi": "toimia",
+          "en": "to act"
+        },
+        {
+          "fi": "hoitaa",
+          "en": "to handle"
+        },
+        {
+          "fi": "varmistaa",
+          "en": "to make sure"
+        },
+        {
+          "fi": "tiedustella",
+          "en": "to ask/check"
+        },
+        {
+          "fi": "kysyä",
+          "en": "to ask"
+        },
+        {
+          "fi": "tarjota",
+          "en": "to offer"
+        },
+        {
+          "fi": "ottaa huomioon",
+          "en": "to consider"
+        },
+        {
+          "fi": "huomata",
+          "en": "to notice"
+        },
+        {
+          "fi": "jatkaa",
+          "en": "to continue"
+        }
+      ],
+      "exam_use_en": "Action keyword. It appears in questions asking what the driver should do: toimia, hoitaa, varmistaa, tiedustella, tarjota or ottaa huomioon."
+    },
+    {
+      "id": "set-1-w2",
+      "set_id": "set-1",
+      "index": 2,
+      "total_in_set": 8,
+      "word_fi": "avustaminen",
+      "meaning_en": "assistance / helping passenger",
+      "forms_fi": [
+        {
+          "fi": "avustaminen",
+          "en": "assistance"
+        },
+        {
+          "fi": "avustaa",
+          "en": "to assist"
+        },
+        {
+          "fi": "avustaja",
+          "en": "assistant/helper"
+        },
+        {
+          "fi": "erityisryhmä",
+          "en": "special group"
+        },
+        {
+          "fi": "erityistarve",
+          "en": "special need"
+        },
+        {
+          "fi": "liikuntarajoitteinen",
+          "en": "mobility-restricted"
+        },
+        {
+          "fi": "liikuntavammainen",
+          "en": "physically disabled"
+        },
+        {
+          "fi": "hoitolaitos",
+          "en": "care institution"
+        },
+        {
+          "fi": "hoitohenkilökunta",
+          "en": "care staff"
+        }
+      ],
+      "exam_use_en": "Assistance keyword. Link with erityisryhmä, liikuntarajoitteinen, avustaja, hoitolaitos and asking what help the customer needs."
+    },
+    {
+      "id": "set-1-w3",
+      "set_id": "set-1",
+      "index": 3,
+      "total_in_set": 8,
+      "word_fi": "pyörätuoli",
+      "meaning_en": "wheelchair",
+      "forms_fi": [
+        {
+          "fi": "pyörätuoli",
+          "en": "wheelchair"
+        },
+        {
+          "fi": "pyörätuolin",
+          "en": "of the wheelchair"
+        },
+        {
+          "fi": "pyörätuolissa",
+          "en": "in the wheelchair"
+        },
+        {
+          "fi": "pyörätuolista",
+          "en": "from the wheelchair"
+        },
+        {
+          "fi": "senioriskootteri",
+          "en": "mobility scooter"
+        },
+        {
+          "fi": "sähkömopo",
+          "en": "electric mobility scooter/moped"
+        }
+      ],
+      "exam_use_en": "Wheelchair and mobility-device keyword. Link with avustaminen, nostin, kiinnitys, turvalaite, and turvallinen kuljetus. The exam logic is safe assistance, not speed."
+    },
+    {
+      "id": "set-1-w4",
+      "set_id": "set-1",
+      "index": 4,
+      "total_in_set": 8,
+      "word_fi": "näkövammainen",
+      "meaning_en": "visually impaired",
+      "forms_fi": [
+        {
+          "fi": "näkövammainen",
+          "en": "visually impaired"
+        },
+        {
+          "fi": "näkövammaista",
+          "en": "visually impaired person as object"
+        },
+        {
+          "fi": "näkövammaisella",
+          "en": "with a visually impaired person"
+        },
+        {
+          "fi": "sokea",
+          "en": "blind"
+        },
+        {
+          "fi": "opaskoira",
+          "en": "guide dog"
+        }
+      ],
+      "exam_use_en": "Visually impaired passenger keyword. Link with sokea, opaskoira, kysyä tarvitseeko apua, ajoneuvon suunta, and clear guidance. Do not assume; ask and guide safely."
+    },
+    {
+      "id": "set-1-w5",
+      "set_id": "set-1",
+      "index": 5,
+      "total_in_set": 8,
+      "word_fi": "esteetön kuljetus",
+      "meaning_en": "accessible transport",
+      "forms_fi": [
+        {
+          "fi": "esteetön kuljetus",
+          "en": "accessible transport"
+        },
+        {
+          "fi": "este",
+          "en": "obstacle/barrier"
+        }
+      ],
+      "exam_use_en": "Accessibility keyword. Link with esteetön kuljetus and este. Used in accessible taxi service and special passenger needs."
+    },
+    {
+      "id": "set-1-w6",
+      "set_id": "set-1",
+      "index": 6,
+      "total_in_set": 8,
+      "word_fi": "nostin",
+      "meaning_en": "lift / lifting device",
+      "forms_fi": [
+        {
+          "fi": "nostin",
+          "en": "lift"
+        },
+        {
+          "fi": "henkilönostin",
+          "en": "passenger lift/person hoist"
+        }
+      ],
+      "exam_use_en": "Lift keyword. Link with henkilönostin, pyörätuoli and safe boarding/unloading of mobility-impaired passengers."
+    },
+    {
+      "id": "set-1-w7",
+      "set_id": "set-1",
+      "index": 7,
+      "total_in_set": 8,
+      "word_fi": "siirtyä",
+      "meaning_en": "to transfer / move",
+      "forms_fi": [
+        {
+          "fi": "siirtyä",
+          "en": "to transfer"
+        },
+        {
+          "fi": "siirtyä itse",
+          "en": "to transfer by oneself"
+        }
+      ],
+      "exam_use_en": "Use this word in Pyörätuoli / esteetön / special assistance questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-1-w8",
+      "set_id": "set-1",
+      "index": 8,
+      "total_in_set": 8,
+      "word_fi": "työkoira",
+      "meaning_en": "working dog",
+      "forms_fi": [
+        {
+          "fi": "työkoira",
+          "en": "working dog"
+        }
+      ],
+      "exam_use_en": "Use this word in Näkövammainen / opaskoira questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-2-w1",
+      "set_id": "set-2",
+      "index": 1,
+      "total_in_set": 7,
+      "word_fi": "kieltäytyä",
+      "meaning_en": "to refuse / decline",
+      "forms_fi": [
+        {
+          "fi": "kieltäytyä",
+          "en": "to refuse"
+        },
+        {
+          "fi": "kieltää",
+          "en": "to forbid/deny"
+        },
+        {
+          "fi": "ei suostu",
+          "en": "does not agree"
+        },
+        {
+          "fi": "halua",
+          "en": "wants/desires"
+        },
+        {
+          "fi": "pelätä",
+          "en": "to fear"
+        }
+      ],
+      "exam_use_en": "Refusal keyword. Link with kieltäytyä, kieltää, ei suostu and halua. Often used when a customer refuses safety requirements or the driver may refuse unsafe service."
+    },
+    {
+      "id": "set-2-w2",
+      "set_id": "set-2",
+      "index": 2,
+      "total_in_set": 7,
+      "word_fi": "kiinnitys",
+      "meaning_en": "securing / fastening",
+      "forms_fi": [
+        {
+          "fi": "kiinnitys",
+          "en": "securing/fastening"
+        },
+        {
+          "fi": "kiinnittää",
+          "en": "to fasten/secure"
+        },
+        {
+          "fi": "valjaat",
+          "en": "harness"
+        },
+        {
+          "fi": "paarit",
+          "en": "stretcher"
+        },
+        {
+          "fi": "selinmakuu",
+          "en": "lying on back"
+        },
+        {
+          "fi": "lastata",
+          "en": "to load"
+        },
+        {
+          "fi": "runko",
+          "en": "frame/body"
+        }
+      ],
+      "exam_use_en": "Securing/fastening keyword. Link with kiinnittää, valjaat, paarit, selinmakuu and pyörätuolin kiinnitys. Correct securing is a major safety clue."
+    },
+    {
+      "id": "set-2-w3",
+      "set_id": "set-2",
+      "index": 3,
+      "total_in_set": 7,
+      "word_fi": "puhelin",
+      "meaning_en": "phone",
+      "forms_fi": [
+        {
+          "fi": "handsfree",
+          "en": "hands-free device"
+        },
+        {
+          "fi": "viestimet",
+          "en": "communication devices"
+        },
+        {
+          "fi": "handsfree-laite",
+          "en": "hands-free device"
+        },
+        {
+          "fi": "handsfree laitetta",
+          "en": "hands-free device as object"
+        },
+        {
+          "fi": "puhelin",
+          "en": "phone"
+        },
+        {
+          "fi": "puhelimeen",
+          "en": "into/on phone"
+        },
+        {
+          "fi": "puheluita",
+          "en": "calls"
+        }
+      ],
+      "exam_use_en": "Use this word in Puhelin / viestimet questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-2-w4",
+      "set_id": "set-2",
+      "index": 4,
+      "total_in_set": 7,
+      "word_fi": "kielitaito",
+      "meaning_en": "language skill",
+      "forms_fi": [
+        {
+          "fi": "kielitaidolla",
+          "en": "with language skill"
+        },
+        {
+          "fi": "riittävä kielitaito",
+          "en": "sufficient language skill"
+        }
+      ],
+      "exam_use_en": "Use this word in Communication / kielitaito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-2-w5",
+      "set_id": "set-2",
+      "index": 5,
+      "total_in_set": 7,
+      "word_fi": "kuulovammainen",
+      "meaning_en": "hearing impaired; hearing-impaired",
+      "forms_fi": [
+        {
+          "fi": "kuulovammainen",
+          "en": "hearing impaired"
+        },
+        {
+          "fi": "kuulovammaisen",
+          "en": "of the hearing-impaired person"
+        },
+        {
+          "fi": "kuuro",
+          "en": "deaf"
+        },
+        {
+          "fi": "huuli",
+          "en": "lip"
+        },
+        {
+          "fi": "huulilta lukeminen",
+          "en": "lip-reading"
+        },
+        {
+          "fi": "kommunikointi",
+          "en": "communication"
+        }
+      ],
+      "exam_use_en": "Hearing-impaired passenger keyword. Link with kuuro, kuulovammainen, huuli, kommunikointi, and writing/clear communication if speech is not enough."
+    },
+    {
+      "id": "set-2-w6",
+      "set_id": "set-2",
+      "index": 6,
+      "total_in_set": 7,
+      "word_fi": "kirjallisesti",
+      "meaning_en": "in writing",
+      "forms_fi": [
+        {
+          "fi": "kirjallisesti",
+          "en": "in writing"
+        }
+      ],
+      "exam_use_en": "Use this word in Communication / kielitaito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-2-w7",
+      "set_id": "set-2",
+      "index": 7,
+      "total_in_set": 7,
+      "word_fi": "poispäin",
+      "meaning_en": "away from / outwards",
+      "forms_fi": [
+        {
+          "fi": "poispäin",
+          "en": ""
+        },
+        {
+          "fi": "poispäin",
+          "en": "away from"
+        },
+        {
+          "fi": "poistua",
+          "en": "to leave/exit"
+        }
+      ],
+      "exam_use_en": "Use poispäin/poistua in movement or exit situations, especially when a passenger or wheelchair must move safely away from the vehicle or danger."
+    },
+    {
+      "id": "set-3-w1",
+      "set_id": "set-3",
+      "index": 1,
+      "total_in_set": 10,
+      "word_fi": "lapsi",
+      "meaning_en": "child / under-age passenger",
+      "forms_fi": [
+        {
+          "fi": "lapsi",
+          "en": "child"
+        },
+        {
+          "fi": "lapsen",
+          "en": "of the child"
+        },
+        {
+          "fi": "lasta",
+          "en": "child as object"
+        },
+        {
+          "fi": "lasten",
+          "en": "children’s"
+        },
+        {
+          "fi": "alle 15-vuotias",
+          "en": "under 15 years old"
+        },
+        {
+          "fi": "15 ikävuoteen asti",
+          "en": "until age 15"
+        },
+        {
+          "fi": "huoltaja",
+          "en": "guardian"
+        },
+        {
+          "fi": "yksin matkustava lapsi",
+          "en": "child travelling alone"
+        }
+      ],
+      "exam_use_en": "Child-passenger keyword. Link with yksin matkustava lapsi, alle 15-vuotias, huoltaja, turvavyö, and safely reaching sisätila/perille. The driver has stronger care responsibility."
+    },
+    {
+      "id": "set-3-w2",
+      "set_id": "set-3",
+      "index": 2,
+      "total_in_set": 10,
+      "word_fi": "turvavyö",
+      "meaning_en": "seat belt",
+      "forms_fi": [
+        {
+          "fi": "turvavyö",
+          "en": "seat belt"
+        },
+        {
+          "fi": "turvavyön",
+          "en": "of the seat belt"
+        },
+        {
+          "fi": "turvavyötä",
+          "en": "seat belt as object"
+        },
+        {
+          "fi": "turvavyön käyttö",
+          "en": "use of seat belt"
+        },
+        {
+          "fi": "turvalaite",
+          "en": "safety device"
+        },
+        {
+          "fi": "turvaistuin",
+          "en": "child safety seat"
+        },
+        {
+          "fi": "vyö",
+          "en": "belt"
+        }
+      ],
+      "exam_use_en": "Seat-belt safety keyword. Link with lapsi, alle 15-vuotias, kiinnittää turvavyö, suostua/ei suostu. The safe answer often requires stopping first and continuing only when turvavyö is kiinni."
+    },
+    {
+      "id": "set-3-w3",
+      "set_id": "set-3",
+      "index": 3,
+      "total_in_set": 10,
+      "word_fi": "alkolukko",
+      "meaning_en": "alcohol interlock",
+      "forms_fi": [
+        {
+          "fi": "alkolukko",
+          "en": "alcohol interlock"
+        },
+        {
+          "fi": "alkolukkoa",
+          "en": "alcohol interlock as object"
+        },
+        {
+          "fi": "alkolukko vaaditaan",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "fi": "pakollinen varuste",
+          "en": "mandatory equipment"
+        }
+      ],
+      "exam_use_en": "Alcohol-interlock keyword. Link with koulu- ja päivähoitokuljetus, pakollinen varuste and kuljettaja on nauttinut alkoholia. It prevents driving when alcohol is detected."
+    },
+    {
+      "id": "set-3-w4",
+      "set_id": "set-3",
+      "index": 4,
+      "total_in_set": 10,
+      "word_fi": "koulu",
+      "meaning_en": "school",
+      "forms_fi": [
+        {
+          "fi": "koulu",
+          "en": "school"
+        },
+        {
+          "fi": "koulukuljetus",
+          "en": "school transport"
+        },
+        {
+          "fi": "päivähoito",
+          "en": "day care"
+        },
+        {
+          "fi": "päivähoitokuljetus",
+          "en": "day-care transport"
+        },
+        {
+          "fi": "rikostaustaote",
+          "en": "criminal-record extract"
+        }
+      ],
+      "exam_use_en": "School/day-care transport keyword. Link with koulukuljetus, päivähoitokuljetus, alkolukko, rikostaustaote and child safety duties."
+    },
+    {
+      "id": "set-3-w5",
+      "set_id": "set-3",
+      "index": 5,
+      "total_in_set": 10,
+      "word_fi": "estää",
+      "meaning_en": "to prevent / stop",
+      "forms_fi": [
+        {
+          "fi": "estetään",
+          "en": "is prevented"
+        },
+        {
+          "fi": "estyy",
+          "en": "is prevented/stopped"
+        }
+      ],
+      "exam_use_en": "Use this word in Koulu / päivähoito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-3-w6",
+      "set_id": "set-3",
+      "index": 6,
+      "total_in_set": 10,
+      "word_fi": "pituus",
+      "meaning_en": "height / length",
+      "forms_fi": [
+        {
+          "fi": "120 cm pituinen",
+          "en": "120 cm tall"
+        },
+        {
+          "fi": "alle 135 cm pituinen",
+          "en": "under 135 cm tall"
+        }
+      ],
+      "exam_use_en": "Use this word in Lapsi + turvavyö / safety questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-3-w7",
+      "set_id": "set-3",
+      "index": 7,
+      "total_in_set": 10,
+      "word_fi": "asentaa",
+      "meaning_en": "to install",
+      "forms_fi": [
+        {
+          "fi": "asennettu",
+          "en": "installed"
+        }
+      ],
+      "exam_use_en": "Use this word in Koulu / päivähoito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-3-w8",
+      "set_id": "set-3",
+      "index": 8,
+      "total_in_set": 10,
+      "word_fi": "etukäteen",
+      "meaning_en": "in advance",
+      "forms_fi": [
+        {
+          "fi": "etukäteen",
+          "en": "in advance"
+        }
+      ],
+      "exam_use_en": "Use this word in Lapsi + turvavyö / safety questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-3-w9",
+      "set_id": "set-3",
+      "index": 9,
+      "total_in_set": 10,
+      "word_fi": "ilmoittaa",
+      "meaning_en": "to report / inform",
+      "forms_fi": [
+        {
+          "fi": "ilmoittaa asiasta",
+          "en": "report the matter"
+        },
+        {
+          "fi": "oppilaitokseen",
+          "en": "to the school/institution"
+        }
+      ],
+      "exam_use_en": "Use this word in Koulu / päivähoito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-3-w10",
+      "set_id": "set-3",
+      "index": 10,
+      "total_in_set": 10,
+      "word_fi": "myöhässä",
+      "meaning_en": "late; late / behind schedule",
+      "forms_fi": [
+        {
+          "fi": "myöhässä",
+          "en": "late"
+        },
+        {
+          "fi": "ehtiä",
+          "en": "to have time/manage"
+        }
+      ],
+      "exam_use_en": "Use this word in Koulu / päivähoito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-4-w1",
+      "set_id": "set-4",
+      "index": 1,
+      "total_in_set": 9,
+      "word_fi": "ajoneuvo",
+      "meaning_en": "vehicle / car",
+      "forms_fi": [
+        {
+          "fi": "ajoneuvo",
+          "en": "vehicle"
+        },
+        {
+          "fi": "auto",
+          "en": "car"
+        },
+        {
+          "fi": "autossa",
+          "en": "in the car"
+        },
+        {
+          "fi": "autoon",
+          "en": "into the car"
+        },
+        {
+          "fi": "autosta",
+          "en": "out of the car"
+        },
+        {
+          "fi": "etuistuin",
+          "en": "front seat"
+        },
+        {
+          "fi": "takapenkki",
+          "en": "back seat"
+        },
+        {
+          "fi": "tavaratila",
+          "en": "boot/trunk"
+        },
+        {
+          "fi": "turvatyyny",
+          "en": "airbag"
+        },
+        {
+          "fi": "istuinpaikkaluku",
+          "en": "number of seats"
+        },
+        {
+          "fi": "ajovalot",
+          "en": "headlights"
+        },
+        {
+          "fi": "jarru",
+          "en": "brake"
+        }
+      ],
+      "exam_use_en": "Vehicle keyword. Link with auto, istuinpaikkaluku, etuistuin, takapenkki, tavaratila, turvatyyny and vehicle equipment/safety."
+    },
+    {
+      "id": "set-4-w2",
+      "set_id": "set-4",
+      "index": 2,
+      "total_in_set": 9,
+      "word_fi": "liikenneturvallisuus",
+      "meaning_en": "traffic safety",
+      "forms_fi": [
+        {
+          "fi": "liikenneturvallisuus",
+          "en": "traffic safety"
+        },
+        {
+          "fi": "liikenneturvallisuuden",
+          "en": "of traffic safety"
+        },
+        {
+          "fi": "turvallinen",
+          "en": "safe"
+        },
+        {
+          "fi": "turvallisesti",
+          "en": "safely"
+        },
+        {
+          "fi": "vaara",
+          "en": "danger"
+        },
+        {
+          "fi": "välttämätön",
+          "en": "necessary"
+        },
+        {
+          "fi": "turvallisuusmääräys",
+          "en": "safety regulation"
+        }
+      ],
+      "exam_use_en": "Core safety trigger. In stopping, reversing, route, speed, or passenger-request questions, choose the option that protects liikenneturvallisuus and avoids vaarantaa muuta liikennettä."
+    },
+    {
+      "id": "set-4-w3",
+      "set_id": "set-4",
+      "index": 3,
+      "total_in_set": 9,
+      "word_fi": "liikenne",
+      "meaning_en": "traffic",
+      "forms_fi": [
+        {
+          "fi": "liikenne",
+          "en": "traffic"
+        },
+        {
+          "fi": "tienkäyttäjä",
+          "en": "road user"
+        },
+        {
+          "fi": "liikennemerkki",
+          "en": "traffic sign"
+        },
+        {
+          "fi": "vaikutusalue",
+          "en": "area of effect"
+        },
+        {
+          "fi": "liikennekelpoisuus",
+          "en": "roadworthiness"
+        },
+        {
+          "fi": "liikennekäyttäytyminen",
+          "en": "traffic behaviour"
+        }
+      ],
+      "exam_use_en": "Traffic keyword. Link with liikennemerkki, tienkäyttäjä, vaikutusalue, liikennekelpoisuus and legal road use."
+    },
+    {
+      "id": "set-4-w4",
+      "set_id": "set-4",
+      "index": 4,
+      "total_in_set": 9,
+      "word_fi": "pysähtyä",
+      "meaning_en": "to stop / stopping",
+      "forms_fi": [
+        {
+          "fi": "pysähtyä",
+          "en": "to stop"
+        },
+        {
+          "fi": "pysähtyminen",
+          "en": "stopping"
+        },
+        {
+          "fi": "pysäyttää",
+          "en": "to stop something/vehicle"
+        },
+        {
+          "fi": "pysähtymiskielto",
+          "en": "no-stopping rule/sign"
+        },
+        {
+          "fi": "poistua",
+          "en": "to exit/leave"
+        },
+        {
+          "fi": "poistuminen",
+          "en": "exit/leaving"
+        }
+      ],
+      "exam_use_en": "Stopping keyword. Link with pysähtyminen, pysäyttää, pysähtymiskielto and turvallinen poistuminen. The safest legal stop is often the correct answer."
+    },
+    {
+      "id": "set-4-w5",
+      "set_id": "set-4",
+      "index": 5,
+      "total_in_set": 9,
+      "word_fi": "ajotapa",
+      "meaning_en": "driving style / road conditions",
+      "forms_fi": [
+        {
+          "fi": "ajotapa",
+          "en": "driving style"
+        },
+        {
+          "fi": "ennakoiva ajotapa",
+          "en": "anticipatory driving"
+        },
+        {
+          "fi": "nopeus",
+          "en": "speed"
+        },
+        {
+          "fi": "ylinopeus",
+          "en": "speeding"
+        },
+        {
+          "fi": "keli",
+          "en": "road/weather condition"
+        },
+        {
+          "fi": "pimeä aika",
+          "en": "dark time"
+        },
+        {
+          "fi": "yöaika",
+          "en": "night-time"
+        },
+        {
+          "fi": "pakkanen",
+          "en": "freezing weather"
+        },
+        {
+          "fi": "hitaasti",
+          "en": "slowly"
+        }
+      ],
+      "exam_use_en": "Driving-style keyword. Link with ennakoiva ajotapa, nopeus, ylinopeus, keli, pimeä aika and safe driving in conditions."
+    },
+    {
+      "id": "set-4-w6",
+      "set_id": "set-4",
+      "index": 6,
+      "total_in_set": 9,
+      "word_fi": "turvaväli",
+      "meaning_en": "safe following distance",
+      "forms_fi": [
+        {
+          "fi": "turvaväli",
+          "en": "safe distance"
+        },
+        {
+          "fi": "turvavälin pitäminen",
+          "en": "keeping a safe distance"
+        }
+      ],
+      "exam_use_en": "Use this word in Ajotapa / nopeus / turvaväli questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-4-w7",
+      "set_id": "set-4",
+      "index": 7,
+      "total_in_set": 9,
+      "word_fi": "noudattaa",
+      "meaning_en": "to obey / follow",
+      "forms_fi": [
+        {
+          "fi": "noudattaa",
+          "en": "to obey/follow"
+        },
+        {
+          "fi": "noudattava",
+          "en": "following/obeying"
+        }
+      ],
+      "exam_use_en": "Use this word in Luvat / työaika / viranomaiset questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-4-w8",
+      "set_id": "set-4",
+      "index": 8,
+      "total_in_set": 9,
+      "word_fi": "oikea puoli",
+      "meaning_en": "right side; on the right side",
+      "forms_fi": [
+        {
+          "fi": "oikealla puolella",
+          "en": "on the right side"
+        },
+        {
+          "fi": "oikealla puolella",
+          "en": ""
+        }
+      ],
+      "exam_use_en": "Use this word in Yleinen taksinkuljettajan velvollisuus questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-4-w9",
+      "set_id": "set-4",
+      "index": 9,
+      "total_in_set": 9,
+      "word_fi": "pysäköintikiekko",
+      "meaning_en": "parking disc",
+      "forms_fi": [
+        {
+          "fi": "pysäköintikiekkoa",
+          "en": "parking disc as object"
+        },
+        {
+          "fi": "parkkikiekko",
+          "en": "parking disc, colloquial"
+        }
+      ],
+      "exam_use_en": "Use this word in Liikennesäännöt / ajotapa questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-5-w1",
+      "set_id": "set-5",
+      "index": 1,
+      "total_in_set": 9,
+      "word_fi": "poliisi",
+      "meaning_en": "police",
+      "forms_fi": [
+        {
+          "fi": "poliisi",
+          "en": "police"
+        },
+        {
+          "fi": "poliisin",
+          "en": "of the police"
+        },
+        {
+          "fi": "poliisille",
+          "en": "to the police"
+        },
+        {
+          "fi": "viranomainen",
+          "en": "authority"
+        },
+        {
+          "fi": "valvoja",
+          "en": "traffic/controller/supervisor"
+        }
+      ],
+      "exam_use_en": "Authority keyword. In traffic-control questions, follow the poliisi/viranomainen instruction. In drunk/aggressive passenger questions, call or contact police only when the situation cannot be managed safely."
+    },
+    {
+      "id": "set-5-w2",
+      "set_id": "set-5",
+      "index": 2,
+      "total_in_set": 9,
+      "word_fi": "hätätilanne",
+      "meaning_en": "emergency situation",
+      "forms_fi": [
+        {
+          "fi": "hätätilanne",
+          "en": "emergency"
+        },
+        {
+          "fi": "hätäkeskus",
+          "en": "emergency response centre"
+        },
+        {
+          "fi": "hätänumero",
+          "en": "emergency number"
+        },
+        {
+          "fi": "ensiapu",
+          "en": "first aid"
+        },
+        {
+          "fi": "ensiaputoimenpide",
+          "en": "first-aid measure"
+        },
+        {
+          "fi": "sairauskohtaus",
+          "en": "medical attack/seizure"
+        },
+        {
+          "fi": "hengitystiet",
+          "en": "airways"
+        },
+        {
+          "fi": "kylkiasento",
+          "en": "recovery position"
+        }
+      ],
+      "exam_use_en": "Emergency keyword. Link with hätäkeskus, hätänumero, ensiapu, hengitystiet, kylkiasento and sairauskohtaus. In exam logic, secure the situation and call help when necessary."
+    },
+    {
+      "id": "set-5-w3",
+      "set_id": "set-5",
+      "index": 3,
+      "total_in_set": 9,
+      "word_fi": "päihtynyt",
+      "meaning_en": "drunk / intoxicated",
+      "forms_fi": [
+        {
+          "fi": "päihtynyt",
+          "en": "intoxicated/drunk"
+        },
+        {
+          "fi": "humalainen",
+          "en": "drunk person"
+        },
+        {
+          "fi": "alkoholi",
+          "en": "alcohol"
+        },
+        {
+          "fi": "alkoholia",
+          "en": "alcohol as object"
+        },
+        {
+          "fi": "rattijuopumus",
+          "en": "drunk driving"
+        },
+        {
+          "fi": "uloshengitysilma",
+          "en": "exhaled air"
+        }
+      ],
+      "exam_use_en": "Use this for drunk passenger situations: päihtynyt/humalainen asiakas, aggressiivinen käyttäytyminen, häiriö, rauhallisesti toimiminen. If the situation cannot be handled safely, the exam logic may lead to poliisi."
+    },
+    {
+      "id": "set-5-w4",
+      "set_id": "set-5",
+      "index": 4,
+      "total_in_set": 9,
+      "word_fi": "syyllistyä",
+      "meaning_en": "to be guilty of / commit an offence",
+      "forms_fi": [
+        {
+          "fi": "syyllistynyt",
+          "en": "has committed / is guilty of"
+        },
+        {
+          "fi": "rikos",
+          "en": "offence/crime"
+        }
+      ],
+      "exam_use_en": "Use syyllistyä/syyllistynyt in legal responsibility or offence contexts."
+    },
+    {
+      "id": "set-5-w5",
+      "set_id": "set-5",
+      "index": 5,
+      "total_in_set": 9,
+      "word_fi": "aggressiivinen",
+      "meaning_en": "aggressive",
+      "forms_fi": [
+        {
+          "fi": "aggressiivisesti",
+          "en": "aggressively"
+        },
+        {
+          "fi": "aggressioon",
+          "en": "to aggression"
+        }
+      ],
+      "exam_use_en": "Use this word in Hätätilanne / poliisi / ensiapu questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-5-w6",
+      "set_id": "set-5",
+      "index": 6,
+      "total_in_set": 9,
+      "word_fi": "nukahtaa",
+      "meaning_en": "to fall asleep / be asleep",
+      "forms_fi": [
+        {
+          "fi": "nukahtaneena",
+          "en": "as fallen asleep"
+        },
+        {
+          "fi": "nukahtanut",
+          "en": "fallen asleep"
+        },
+        {
+          "fi": "nukahtaneena, hereille",
+          "en": ""
+        },
+        {
+          "fi": "nukahtaneena",
+          "en": "while/as asleep"
+        },
+        {
+          "fi": "hereille",
+          "en": "awake"
+        }
+      ],
+      "exam_use_en": "Use nukahtaa/nukahtanut when a passenger has fallen asleep or cannot respond. It often connects with safety, waking the passenger, or asking for help if the situation cannot be handled."
+    },
+    {
+      "id": "set-5-w7",
+      "set_id": "set-5",
+      "index": 7,
+      "total_in_set": 9,
+      "word_fi": "onnettomuus",
+      "meaning_en": "accident",
+      "forms_fi": [
+        {
+          "fi": "onnettomuuspaikalle",
+          "en": "to the accident scene"
+        },
+        {
+          "fi": "onnettomuuspaikan",
+          "en": "of the accident scene"
+        }
+      ],
+      "exam_use_en": "Use this word in Hätätilanne / poliisi / ensiapu questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-5-w8",
+      "set_id": "set-5",
+      "index": 8,
+      "total_in_set": 9,
+      "word_fi": "törkeä",
+      "meaning_en": "gross / serious",
+      "forms_fi": [
+        {
+          "fi": "törkeään liikenneturvallisuuden vaarantamiseen",
+          "en": "to gross endangerment of traffic safety"
+        }
+      ],
+      "exam_use_en": "Use this word in Luvat / työaika / viranomaiset questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-5-w9",
+      "set_id": "set-5",
+      "index": 9,
+      "total_in_set": 9,
+      "word_fi": "ulosajo",
+      "meaning_en": "driving off the road",
+      "forms_fi": [
+        {
+          "fi": "ulosajaneen auton",
+          "en": "a car that has driven off the road"
+        },
+        {
+          "fi": "ulosajanut",
+          "en": "has driven off the road"
+        },
+        {
+          "fi": "ulosajo",
+          "en": "driving off the road"
+        }
+      ],
+      "exam_use_en": "Use ulosajo/ulosajanut in accident or emergency contexts."
+    },
+    {
+      "id": "set-6-w1",
+      "set_id": "set-6",
+      "index": 1,
+      "total_in_set": 6,
+      "word_fi": "kuitti",
+      "meaning_en": "receipt",
+      "forms_fi": [
+        {
+          "fi": "kuitti",
+          "en": "receipt"
+        },
+        {
+          "fi": "kuitin",
+          "en": "receipt as object/of receipt"
+        },
+        {
+          "fi": "kuitin tarjoaminen",
+          "en": "offering a receipt"
+        }
+      ],
+      "exam_use_en": "Receipt keyword. Link with kuitin tarjoaminen. In payment questions, remember that the customer must be offered a receipt when required."
+    },
+    {
+      "id": "set-6-w2",
+      "set_id": "set-6",
+      "index": 2,
+      "total_in_set": 6,
+      "word_fi": "maksu",
+      "meaning_en": "payment",
+      "forms_fi": [
+        {
+          "fi": "maksu",
+          "en": "payment"
+        },
+        {
+          "fi": "maksaa",
+          "en": "to pay"
+        },
+        {
+          "fi": "maksukortti",
+          "en": "payment card"
+        },
+        {
+          "fi": "maksuväline",
+          "en": "payment method"
+        },
+        {
+          "fi": "käteinen",
+          "en": "cash"
+        },
+        {
+          "fi": "vaihtoraha",
+          "en": "change"
+        },
+        {
+          "fi": "omavastuu",
+          "en": "deductible/customer share"
+        },
+        {
+          "fi": "omavastuu",
+          "en": "customer share/deductible"
+        }
+      ],
+      "exam_use_en": "Payment keyword. Link with maksukortti, käteinen, maksuväline, vaihtoraha and omavastuu."
+    },
+    {
+      "id": "set-6-w3",
+      "set_id": "set-6",
+      "index": 3,
+      "total_in_set": 6,
+      "word_fi": "hinta",
+      "meaning_en": "price / fare; price",
+      "forms_fi": [
+        {
+          "fi": "hinta",
+          "en": "price/fare"
+        },
+        {
+          "fi": "hinnasta",
+          "en": "about the price"
+        },
+        {
+          "fi": "veloittaa",
+          "en": "to charge"
+        },
+        {
+          "fi": "edullinen",
+          "en": "affordable/cheaper"
+        },
+        {
+          "fi": "siivouslisämaksu",
+          "en": "cleaning extra fee"
+        }
+      ],
+      "exam_use_en": "Price/fare keyword. Link with hinta, veloittaa, edullinen, siivouslisämaksu and extra charges. Used when deciding what can be charged from the customer."
+    },
+    {
+      "id": "set-6-w4",
+      "set_id": "set-6",
+      "index": 4,
+      "total_in_set": 6,
+      "word_fi": "Kela",
+      "meaning_en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland",
+      "forms_fi": [
+        {
+          "fi": "KELA-kyydistä",
+          "en": "from Kela ride"
+        },
+        {
+          "fi": "kelakorvattavan",
+          "en": "Kela-reimbursed"
+        }
+      ],
+      "exam_use_en": "Use this word in Kela / vakiotaksi questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-6-w5",
+      "set_id": "set-6",
+      "index": 5,
+      "total_in_set": 6,
+      "word_fi": "sotkea",
+      "meaning_en": "to soil / make dirty",
+      "forms_fi": [
+        {
+          "fi": "sotkee",
+          "en": "soils/makes dirty"
+        }
+      ],
+      "exam_use_en": "Use this word in Maksu / kuitti / hinta questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-6-w6",
+      "set_id": "set-6",
+      "index": 6,
+      "total_in_set": 6,
+      "word_fi": "valtakirja",
+      "meaning_en": "power of attorney / authorisation letter",
+      "forms_fi": [
+        {
+          "fi": "kirjallinen valtakirja",
+          "en": "written authorisation"
+        }
+      ],
+      "exam_use_en": "Use this word in Pyörätuoli / esteetön / special assistance questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w1",
+      "set_id": "set-7",
+      "index": 1,
+      "total_in_set": 12,
+      "word_fi": "peruuttaa",
+      "meaning_en": "to revoke / cancel; to reverse / to cancel",
+      "forms_fi": [
+        {
+          "fi": "peruuttamiselle",
+          "en": "for revocation"
+        },
+        {
+          "fi": "voi peruuttaa",
+          "en": "can revoke"
+        }
+      ],
+      "exam_use_en": "Use this word in Turvavyö / lapsi / turvalaite questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w2",
+      "set_id": "set-7",
+      "index": 2,
+      "total_in_set": 12,
+      "word_fi": "perille",
+      "meaning_en": "destination / getting there safely",
+      "forms_fi": [
+        {
+          "fi": "perille",
+          "en": "to destination"
+        },
+        {
+          "fi": "määränpää",
+          "en": "destination"
+        },
+        {
+          "fi": "osoite",
+          "en": "address"
+        },
+        {
+          "fi": "sijainti",
+          "en": "location"
+        },
+        {
+          "fi": "päästä perille",
+          "en": "to arrive/reach destination"
+        },
+        {
+          "fi": "sisätila",
+          "en": "indoor area"
+        },
+        {
+          "fi": "päästä sisätilaan",
+          "en": "get indoors"
+        }
+      ],
+      "exam_use_en": "Destination keyword. Link with määränpää, osoite, sijainti, päästä perille and sisätila. Important with children, disabled passengers and safe drop-off."
+    },
+    {
+      "id": "set-7-w3",
+      "set_id": "set-7",
+      "index": 3,
+      "total_in_set": 12,
+      "word_fi": "reitti",
+      "meaning_en": "route",
+      "forms_fi": [
+        {
+          "fi": "reitti",
+          "en": "route"
+        },
+        {
+          "fi": "kartta",
+          "en": "map"
+        },
+        {
+          "fi": "navigaattori",
+          "en": "navigator/GPS"
+        },
+        {
+          "fi": "oikaista",
+          "en": "to take a shortcut"
+        },
+        {
+          "fi": "lyhyt",
+          "en": "short"
+        },
+        {
+          "fi": "ruuhka",
+          "en": "traffic jam"
+        }
+      ],
+      "exam_use_en": "Route keyword. Link with reitti, navigaattori, kartta, oikaista, ruuhka and customer’s chosen route versus safe/legal driving."
+    },
+    {
+      "id": "set-7-w4",
+      "set_id": "set-7",
+      "index": 4,
+      "total_in_set": 12,
+      "word_fi": "matka",
+      "meaning_en": "journey / trip / ride",
+      "forms_fi": [
+        {
+          "fi": "matkaa",
+          "en": "“journey/trip”"
+        },
+        {
+          "fi": "matkatavara",
+          "en": "luggage"
+        },
+        {
+          "fi": "matkavaroita",
+          "en": "luggage as object"
+        },
+        {
+          "fi": "matkatavaroiden",
+          "en": "of the luggage"
+        },
+        {
+          "fi": "painavia matkatavaroita",
+          "en": "heavy luggage"
+        },
+        {
+          "fi": "matkaa",
+          "en": "trip/journey as object"
+        },
+        {
+          "fi": "matkan",
+          "en": "of the trip"
+        },
+        {
+          "fi": "matkalla",
+          "en": "during the trip"
+        }
+      ],
+      "exam_use_en": "Use matka for taxi ride/trip questions. Related forms like matkaa and matkatavara appear with route, passenger journey, fare, luggage and assistance contexts."
+    },
+    {
+      "id": "set-7-w5",
+      "set_id": "set-7",
+      "index": 5,
+      "total_in_set": 12,
+      "word_fi": "valita",
+      "meaning_en": "to choose",
+      "forms_fi": [
+        {
+          "fi": "valita",
+          "en": "to choose"
+        },
+        {
+          "fi": "valitessaan",
+          "en": "when choosing"
+        }
+      ],
+      "exam_use_en": "Use this word in Maksu / kuitti / hinta questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w6",
+      "set_id": "set-7",
+      "index": 6,
+      "total_in_set": 12,
+      "word_fi": "pyytää",
+      "meaning_en": "to ask / request",
+      "forms_fi": [
+        {
+          "fi": "pyytää",
+          "en": "asks"
+        },
+        {
+          "fi": "pyytänyt",
+          "en": "has asked"
+        },
+        {
+          "fi": "pyynnöstä",
+          "en": "by request"
+        }
+      ],
+      "exam_use_en": "Use this word in Liikennesäännöt / ajotapa questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w7",
+      "set_id": "set-7",
+      "index": 7,
+      "total_in_set": 12,
+      "word_fi": "muistaa",
+      "meaning_en": "remember; to remember",
+      "forms_fi": [],
+      "exam_use_en": "Use this word in Näkövammainen / opaskoira questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w8",
+      "set_id": "set-7",
+      "index": 8,
+      "total_in_set": 12,
+      "word_fi": "tilanne",
+      "meaning_en": "situation",
+      "forms_fi": [
+        {
+          "fi": "tilanteen",
+          "en": ""
+        }
+      ],
+      "exam_use_en": "Use this word in Pyörätuoli / esteetön / special assistance questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w9",
+      "set_id": "set-7",
+      "index": 9,
+      "total_in_set": 12,
+      "word_fi": "ensisijainen",
+      "meaning_en": "primary / first / preferably",
+      "forms_fi": [
+        {
+          "fi": "ensisijaisesti",
+          "en": "primarily / preferably"
+        },
+        {
+          "fi": "ensisijaisesti",
+          "en": "primarily / first of all"
+        },
+        {
+          "fi": "ensisijaisesti",
+          "en": "primarily"
+        },
+        {
+          "fi": "ensisijaisesti",
+          "en": "primarily / first of all / preferably"
+        }
+      ],
+      "exam_use_en": "Use ensisijainen/ensisijaisesti when the question asks what should be done first or what is the preferred action. In exam logic it points to priority order."
+    },
+    {
+      "id": "set-7-w10",
+      "set_id": "set-7",
+      "index": 10,
+      "total_in_set": 12,
+      "word_fi": "kulkea",
+      "meaning_en": "to travel / go",
+      "forms_fi": [
+        {
+          "fi": "kulke",
+          "en": "travels / goes"
+        },
+        {
+          "fi": "matkustaa",
+          "en": "to travel"
+        }
+      ],
+      "exam_use_en": "Use this word in Lapsi + turvavyö / safety questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w11",
+      "set_id": "set-7",
+      "index": 11,
+      "total_in_set": 12,
+      "word_fi": "lähteä",
+      "meaning_en": "to leave / to go / to start moving",
+      "forms_fi": [],
+      "exam_use_en": "Use this word in Turvavyö / lapsi / turvalaite questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-7-w12",
+      "set_id": "set-7",
+      "index": 12,
+      "total_in_set": 12,
+      "word_fi": "pelisilmä",
+      "meaning_en": "situational judgement / practical sense",
+      "forms_fi": [
+        {
+          "fi": "peli+silmää sillä",
+          "en": ""
+        },
+        {
+          "fi": "pelisilmää",
+          "en": "practical judgement / ability to read the situation"
+        }
+      ],
+      "exam_use_en": "Pelisilmä means practical judgement: choosing the sensible action in a customer or traffic situation, not just following words mechanically."
+    },
+    {
+      "id": "set-8-w1",
+      "set_id": "set-8",
+      "index": 1,
+      "total_in_set": 7,
+      "word_fi": "taksinkuljettaja",
+      "meaning_en": "taxi driver / taxi operator",
+      "forms_fi": [
+        {
+          "fi": "taksinkuljettaja",
+          "en": "taxi driver"
+        },
+        {
+          "fi": "kuljettaja",
+          "en": "driver"
+        },
+        {
+          "fi": "vakiotaksi",
+          "en": "regular taxi"
+        },
+        {
+          "fi": "tilausvälitysyhtiö",
+          "en": "dispatch/intermediary company"
+        },
+        {
+          "fi": "Manner-Suomi",
+          "en": "mainland Finland"
+        }
+      ],
+      "exam_use_en": "Driver/operator keyword. Link with kuljettaja, taksinkuljettaja, vakiotaksi and tilausvälitysyhtiö."
+    },
+    {
+      "id": "set-8-w2",
+      "set_id": "set-8",
+      "index": 2,
+      "total_in_set": 7,
+      "word_fi": "vastuu",
+      "meaning_en": "responsibility / obligation / right",
+      "forms_fi": [
+        {
+          "fi": "vastuu",
+          "en": "responsibility"
+        },
+        {
+          "fi": "vastuulla",
+          "en": "under responsibility"
+        },
+        {
+          "fi": "vastata",
+          "en": "to be responsible/answer"
+        },
+        {
+          "fi": "velvollisuus",
+          "en": "obligation"
+        },
+        {
+          "fi": "oikeus",
+          "en": "right"
+        },
+        {
+          "fi": "oikeutettu",
+          "en": "entitled"
+        },
+        {
+          "fi": "määräys",
+          "en": "regulation/order"
+        },
+        {
+          "fi": "vaatimus",
+          "en": "requirement"
+        },
+        {
+          "fi": "seuraamus",
+          "en": "consequence"
+        }
+      ],
+      "exam_use_en": "Responsibility/legal-duty keyword. Link with vastuulla, velvollisuus, oikeus, määräys and vaatimus. Use it to decide who must do what."
+    },
+    {
+      "id": "set-8-w3",
+      "set_id": "set-8",
+      "index": 3,
+      "total_in_set": 7,
+      "word_fi": "ajolupa",
+      "meaning_en": "taxi driving permit / licence",
+      "forms_fi": [
+        {
+          "fi": "ajolupa",
+          "en": "taxi driving permit"
+        },
+        {
+          "fi": "ajoluvan",
+          "en": "of the permit"
+        },
+        {
+          "fi": "ajolupaa",
+          "en": "permit as object"
+        },
+        {
+          "fi": "liikennelupa",
+          "en": "transport licence"
+        },
+        {
+          "fi": "voimassa",
+          "en": "valid/in force"
+        },
+        {
+          "fi": "terveysvaatimus",
+          "en": "health requirement"
+        },
+        {
+          "fi": "lääkärintarkastus",
+          "en": "doctor’s examination"
+        },
+        {
+          "fi": "myöntää",
+          "en": "to grant/issue"
+        },
+        {
+          "fi": "suorittaa",
+          "en": "to complete/perform"
+        }
+      ],
+      "exam_use_en": "Permit/licence keyword. Link with ajolupa, liikennelupa, voimassa, terveysvaatimus and suorittaminen. Used in legal right-to-drive/service questions."
+    },
+    {
+      "id": "set-8-w4",
+      "set_id": "set-8",
+      "index": 4,
+      "total_in_set": 7,
+      "word_fi": "työaika",
+      "meaning_en": "working time / work relationship",
+      "forms_fi": [
+        {
+          "fi": "työaika",
+          "en": "working time"
+        },
+        {
+          "fi": "tauko",
+          "en": "break"
+        },
+        {
+          "fi": "työnantaja",
+          "en": "employer"
+        },
+        {
+          "fi": "työsuhde",
+          "en": "employment relationship"
+        },
+        {
+          "fi": "irtisanomisaika",
+          "en": "notice period"
+        },
+        {
+          "fi": "ajopäiväkirja",
+          "en": "driving logbook"
+        }
+      ],
+      "exam_use_en": "Work-rule keyword. Link with työaika, tauko, työnantaja, työsuhde, irtisanomisaika and ajopäiväkirja."
+    },
+    {
+      "id": "set-8-w5",
+      "set_id": "set-8",
+      "index": 5,
+      "total_in_set": 7,
+      "word_fi": "pakollinen",
+      "meaning_en": "mandatory",
+      "forms_fi": [
+        {
+          "fi": "pakollista",
+          "en": ""
+        }
+      ],
+      "exam_use_en": "Use this word in Maksu / kuitti / hinta questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-8-w6",
+      "set_id": "set-8",
+      "index": 6,
+      "total_in_set": 7,
+      "word_fi": "hyväksytty",
+      "meaning_en": "approved",
+      "forms_fi": [
+        {
+          "fi": "hyväksyttyyn",
+          "en": "to an approved"
+        },
+        {
+          "fi": "erikseen hyväksytty",
+          "en": "separately approved"
+        }
+      ],
+      "exam_use_en": "Use this word in Lapsi + turvavyö / safety questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-8-w7",
+      "set_id": "set-8",
+      "index": 7,
+      "total_in_set": 7,
+      "word_fi": "sallittu",
+      "meaning_en": "permitted / allowed",
+      "forms_fi": [
+        {
+          "fi": "sallittuun paikkaan",
+          "en": "to a permitted place"
+        }
+      ],
+      "exam_use_en": "Use this word in Liikennesäännöt / ajotapa questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-9-w1",
+      "set_id": "set-9",
+      "index": 1,
+      "total_in_set": 6,
+      "word_fi": "asiakas",
+      "meaning_en": "customer / passenger",
+      "forms_fi": [
+        {
+          "fi": "asiakas",
+          "en": "customer"
+        },
+        {
+          "fi": "matkustaja",
+          "en": "passenger"
+        },
+        {
+          "fi": "asiakkaan pyyntö",
+          "en": "customer’s request"
+        },
+        {
+          "fi": "asiakastilanne",
+          "en": "customer situation"
+        },
+        {
+          "fi": "henkilö",
+          "en": "person"
+        }
+      ],
+      "exam_use_en": "Customer/passenger keyword. Link with asiakkaan pyyntö, asiakastilanne, matkustaja, and safe service. The customer can request many things, but safety and law still decide the best answer."
+    },
+    {
+      "id": "set-9-w2",
+      "set_id": "set-9",
+      "index": 2,
+      "total_in_set": 6,
+      "word_fi": "palvelu",
+      "meaning_en": "service / customer service",
+      "forms_fi": [
+        {
+          "fi": "palvelu",
+          "en": "service"
+        },
+        {
+          "fi": "palvelusta",
+          "en": "about/from service"
+        },
+        {
+          "fi": "palveluun",
+          "en": "to service"
+        },
+        {
+          "fi": "asiakaspalvelu",
+          "en": "customer service"
+        },
+        {
+          "fi": "huono palvelu",
+          "en": "poor service"
+        },
+        {
+          "fi": "palvelun taso",
+          "en": "service level"
+        },
+        {
+          "fi": "palvelunumero",
+          "en": "service number"
+        },
+        {
+          "fi": "palvelutapa",
+          "en": "service method/manner"
+        },
+        {
+          "fi": "laatuvaatimus",
+          "en": "quality requirement"
+        },
+        {
+          "fi": "matkustusmukavuus",
+          "en": "travel comfort"
+        }
+      ],
+      "exam_use_en": "Service-quality keyword. Group palvelun taso, palvelutapa and palvelunumero here. It appears in customer service and complaint questions where the driver must behave professionally."
+    },
+    {
+      "id": "set-9-w3",
+      "set_id": "set-9",
+      "index": 3,
+      "total_in_set": 6,
+      "word_fi": "asiallinen",
+      "meaning_en": "appropriate / calm / polite",
+      "forms_fi": [
+        {
+          "fi": "asiallinen",
+          "en": "appropriate/proper"
+        },
+        {
+          "fi": "asianmukainen",
+          "en": "appropriate/proper"
+        },
+        {
+          "fi": "kohtelias",
+          "en": "polite"
+        },
+        {
+          "fi": "rauhallinen",
+          "en": "calm"
+        },
+        {
+          "fi": "keskustelu",
+          "en": "discussion"
+        },
+        {
+          "fi": "tilannetaju",
+          "en": "situational awareness"
+        },
+        {
+          "fi": "kommunikointi",
+          "en": "communication"
+        }
+      ],
+      "exam_use_en": "Professional-behaviour keyword. Link with asiallinen, asianmukainen, kohtelias, rauhallinen, keskustelu and tilannetaju."
+    },
+    {
+      "id": "set-9-w4",
+      "set_id": "set-9",
+      "index": 4,
+      "total_in_set": 6,
+      "word_fi": "valitus",
+      "meaning_en": "complaint",
+      "forms_fi": [
+        {
+          "fi": "valitus",
+          "en": "complaint"
+        },
+        {
+          "fi": "valittaa",
+          "en": "to complain"
+        },
+        {
+          "fi": "virheellinen",
+          "en": "incorrect/erroneous"
+        },
+        {
+          "fi": "ongelma",
+          "en": "problem"
+        },
+        {
+          "fi": "pahoitella",
+          "en": "to apologise/regret"
+        }
+      ],
+      "exam_use_en": "Complaint/error keyword. Link with valitus, valittaa, virheellinen, ongelma and pahoitella. Used in customer complaint and correction situations."
+    },
+    {
+      "id": "set-9-w5",
+      "set_id": "set-9",
+      "index": 5,
+      "total_in_set": 6,
+      "word_fi": "löytötavara",
+      "meaning_en": "lost property",
+      "forms_fi": [
+        {
+          "fi": "löytötavara",
+          "en": "lost property"
+        },
+        {
+          "fi": "löytötavaratoimisto",
+          "en": "lost-property office"
+        },
+        {
+          "fi": "käsilaukku",
+          "en": "handbag"
+        },
+        {
+          "fi": "lompakko",
+          "en": "wallet"
+        }
+      ],
+      "exam_use_en": "Lost-property keyword. Link with käsilaukku, lompakko and löytötavaratoimisto. Used when belongings are left in the taxi."
+    },
+    {
+      "id": "set-9-w6",
+      "set_id": "set-9",
+      "index": 6,
+      "total_in_set": 6,
+      "word_fi": "kiusaaminen",
+      "meaning_en": "bullying",
+      "forms_fi": [
+        {
+          "fi": "kusaamista",
+          "en": "bullying OCR form"
+        }
+      ],
+      "exam_use_en": "Use this word in Koulu / päivähoito questions. Learn it as taxi-exam vocabulary together with its forms and related Finnish clue words."
+    },
+    {
+      "id": "set-10-w1",
+      "set_id": "set-10",
+      "index": 1,
+      "total_in_set": 5,
+      "word_fi": "Connecting / Adding Words",
+      "meaning_en": "words that connect, add, or choose between ideas",
+      "forms_fi": [
+        {
+          "fi": "ja",
+          "en": "and"
+        },
+        {
+          "fi": "sekä",
+          "en": "and / as well as"
+        },
+        {
+          "fi": "myös",
+          "en": "also"
+        },
+        {
+          "fi": "tai",
+          "en": "or"
+        }
+      ],
+      "exam_use_en": "These words connect ideas. In exam questions, both connected parts may matter; do not ignore the second phrase after the connector."
+    },
+    {
+      "id": "set-10-w2",
+      "set_id": "set-10",
+      "index": 2,
+      "total_in_set": 5,
+      "word_fi": "Reason / Explanation / Purpose Words",
+      "meaning_en": "words that explain the reason, content, or purpose",
+      "forms_fi": [
+        {
+          "fi": "koska",
+          "en": "because"
+        },
+        {
+          "fi": "sillä",
+          "en": "because / for"
+        },
+        {
+          "fi": "jotta",
+          "en": "so that / in order to"
+        },
+        {
+          "fi": "että",
+          "en": "that"
+        },
+        {
+          "fi": "siten että",
+          "en": "so that / in such a way that"
+        }
+      ],
+      "exam_use_en": "These words often explain why the correct action is required, especially in safety, responsibility, and legal-rule questions."
+    },
+    {
+      "id": "set-10-w3",
+      "set_id": "set-10",
+      "index": 3,
+      "total_in_set": 5,
+      "word_fi": "Condition / Exception Words",
+      "meaning_en": "words that make the answer depend on a condition or exception",
+      "forms_fi": [
+        {
+          "fi": "jos",
+          "en": "if"
+        },
+        {
+          "fi": "mikäli",
+          "en": "if / provided that"
+        },
+        {
+          "fi": "ellei",
+          "en": "unless / if not"
+        },
+        {
+          "fi": "vaikka",
+          "en": "although / even if"
+        },
+        {
+          "fi": "silloin kun",
+          "en": "when / in the situation where"
+        },
+        {
+          "fi": "tarvittaessa",
+          "en": "if necessary / when needed"
+        }
+      ],
+      "exam_use_en": "These words tell you the rule applies only under a condition, exception, or special situation. They are strong exam clues."
+    },
+    {
+      "id": "set-10-w4",
+      "set_id": "set-10",
+      "index": 4,
+      "total_in_set": 5,
+      "word_fi": "Time / Order / Urgency Words",
+      "meaning_en": "words that show timing, order, duration, or urgency",
+      "forms_fi": [
+        {
+          "fi": "kun",
+          "en": "when"
+        },
+        {
+          "fi": "kunnes",
+          "en": "until"
+        },
+        {
+          "fi": "ennen kuin",
+          "en": "before"
+        },
+        {
+          "fi": "sen jälkeen kun",
+          "en": "after"
+        },
+        {
+          "fi": "mahdollisimman pian",
+          "en": "as soon as possible"
+        },
+        {
+          "fi": "viipymättä",
+          "en": "without delay"
+        },
+        {
+          "fi": "välittömästi",
+          "en": "immediately"
+        }
+      ],
+      "exam_use_en": "These words are useful in questions about safety, lost property, emergency actions, and sequence of actions."
+    },
+    {
+      "id": "set-10-w5",
+      "set_id": "set-10",
+      "index": 5,
+      "total_in_set": 5,
+      "word_fi": "Contrast / Limit / Strong Trap Words",
+      "meaning_en": "words that change, limit, or strengthen the meaning",
+      "forms_fi": [
+        {
+          "fi": "mutta",
+          "en": "but"
+        },
+        {
+          "fi": "kuitenkin",
+          "en": "however"
+        },
+        {
+          "fi": "vain",
+          "en": "only"
+        },
+        {
+          "fi": "aina",
+          "en": "always"
+        },
+        {
+          "fi": "ei koskaan",
+          "en": "never"
+        },
+        {
+          "fi": "joka",
+          "en": "who / which / what"
+        }
+      ],
+      "exam_use_en": "These words can create traps because they reverse meaning, limit the rule, or make the statement too absolute."
+    },
+    {
+      "id": "set-11-w1",
+      "set_id": "set-11",
+      "index": 1,
+      "total_in_set": 5,
+      "word_fi": "What / Which Questions",
+      "meaning_en": "words that ask for the correct thing, option, type, or meaning",
+      "forms_fi": [
+        {
+          "fi": "mikä",
+          "en": "what / which"
+        },
+        {
+          "fi": "mitä",
+          "en": "what"
+        },
+        {
+          "fi": "kumpi",
+          "en": "which of two"
+        },
+        {
+          "fi": "millainen",
+          "en": "what kind of"
+        }
+      ],
+      "exam_use_en": "These words tell you the question asks for the correct option, action, thing, or type."
+    },
+    {
+      "id": "set-11-w2",
+      "set_id": "set-11",
+      "index": 2,
+      "total_in_set": 5,
+      "word_fi": "Who / Responsibility Questions",
+      "meaning_en": "words that ask who is responsible, who has authority, or who is involved",
+      "forms_fi": [
+        {
+          "fi": "kuka",
+          "en": "who"
+        },
+        {
+          "fi": "kenen",
+          "en": "whose / who is responsible"
+        },
+        {
+          "fi": "kenellä",
+          "en": "who has / with whom"
+        }
+      ],
+      "exam_use_en": "These are among the most important taxi-exam question words because many questions ask about responsibility."
+    },
+    {
+      "id": "set-11-w3",
+      "set_id": "set-11",
+      "index": 3,
+      "total_in_set": 5,
+      "word_fi": "Place / Direction / Source Questions",
+      "meaning_en": "words that ask place, direction, source, cause, or limit",
+      "forms_fi": [
+        {
+          "fi": "missä",
+          "en": "where / in which"
+        },
+        {
+          "fi": "mistä",
+          "en": "from where / from what"
+        },
+        {
+          "fi": "mihin",
+          "en": "to where / until what / for what"
+        }
+      ],
+      "exam_use_en": "These words help identify whether the question asks location, origin/cause, destination, or limit."
+    },
+    {
+      "id": "set-11-w4",
+      "set_id": "set-11",
+      "index": 4,
+      "total_in_set": 5,
+      "word_fi": "Time / Duration Questions",
+      "meaning_en": "words that ask time or how long something lasts",
+      "forms_fi": [
+        {
+          "fi": "milloin",
+          "en": "when"
+        },
+        {
+          "fi": "kauanko / kuinka kauan",
+          "en": "how long"
+        }
+      ],
+      "exam_use_en": "These words are useful for parking, permit validity, waiting time, and time-limit questions."
+    },
+    {
+      "id": "set-11-w5",
+      "set_id": "set-11",
+      "index": 5,
+      "total_in_set": 5,
+      "word_fi": "Why / How / Amount Questions",
+      "meaning_en": "words that ask reason, method, amount, or way of acting",
+      "forms_fi": [
+        {
+          "fi": "miksi",
+          "en": "why"
+        },
+        {
+          "fi": "miten",
+          "en": "how"
+        },
+        {
+          "fi": "kuinka",
+          "en": "how / how much / how long"
+        },
+        {
+          "fi": "paljonko",
+          "en": "how much"
+        },
+        {
+          "fi": "millä tavoin",
+          "en": "in what way / how"
+        }
+      ],
+      "exam_use_en": "These words show whether the question asks for a reason, a method/action, or a number/amount."
+    }
+  ],
+  "questions": [
+    {
+      "id": "set-1-q1",
+      "set_id": "set-1",
+      "index": 1,
+      "prompt_word_fi": "toimia",
+      "options": [
+        {
+          "key": "A",
+          "en": "to act / handle the situation"
+        },
+        {
+          "key": "B",
+          "en": "wheelchair"
+        },
+        {
+          "key": "C",
+          "en": "assistant/helper"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to act / handle the situation",
+      "lesson_word_id": "set-1-w1"
+    },
+    {
+      "id": "set-1-q2",
+      "set_id": "set-1",
+      "index": 2,
+      "prompt_word_fi": "avustaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to assist"
+        },
+        {
+          "key": "B",
+          "en": "to continue"
+        },
+        {
+          "key": "C",
+          "en": "in the wheelchair"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to assist",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q3",
+      "set_id": "set-1",
+      "index": 3,
+      "prompt_word_fi": "pyörätuoli",
+      "options": [
+        {
+          "key": "A",
+          "en": "to act / handle the situation"
+        },
+        {
+          "key": "B",
+          "en": "assistant/helper"
+        },
+        {
+          "key": "C",
+          "en": "wheelchair"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "wheelchair",
+      "lesson_word_id": "set-1-w3"
+    },
+    {
+      "id": "set-1-q4",
+      "set_id": "set-1",
+      "index": 4,
+      "prompt_word_fi": "näkövammainen",
+      "options": [
+        {
+          "key": "A",
+          "en": "visually impaired"
+        },
+        {
+          "key": "B",
+          "en": "guide dog"
+        },
+        {
+          "key": "C",
+          "en": "help"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "visually impaired",
+      "lesson_word_id": "set-1-w4"
+    },
+    {
+      "id": "set-1-q5",
+      "set_id": "set-1",
+      "index": 5,
+      "prompt_word_fi": "liikuntarajoitteinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "mobility-restricted"
+        },
+        {
+          "key": "B",
+          "en": "to transfer by oneself"
+        },
+        {
+          "key": "C",
+          "en": "to make sure"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "mobility-restricted",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q6",
+      "set_id": "set-1",
+      "index": 6,
+      "prompt_word_fi": "siirtyä",
+      "options": [
+        {
+          "key": "A",
+          "en": "assistant/helper"
+        },
+        {
+          "key": "B",
+          "en": "to transfer / move"
+        },
+        {
+          "key": "C",
+          "en": "to ask"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to transfer / move",
+      "lesson_word_id": "set-1-w7"
+    },
+    {
+      "id": "set-1-q7",
+      "set_id": "set-1",
+      "index": 7,
+      "prompt_word_fi": "esteetön kuljetus",
+      "options": [
+        {
+          "key": "A",
+          "en": "special need"
+        },
+        {
+          "key": "B",
+          "en": "lift / lifting device"
+        },
+        {
+          "key": "C",
+          "en": "accessible transport"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "accessible transport",
+      "lesson_word_id": "set-1-w5"
+    },
+    {
+      "id": "set-1-q8",
+      "set_id": "set-1",
+      "index": 8,
+      "prompt_word_fi": "nostin",
+      "options": [
+        {
+          "key": "A",
+          "en": "lift / lifting device"
+        },
+        {
+          "key": "B",
+          "en": "special need"
+        },
+        {
+          "key": "C",
+          "en": "accessible transport"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "lift / lifting device",
+      "lesson_word_id": "set-1-w6"
+    },
+    {
+      "id": "set-1-q9",
+      "set_id": "set-1",
+      "index": 9,
+      "prompt_word_fi": "avustaja",
+      "options": [
+        {
+          "key": "A",
+          "en": "to transfer / move"
+        },
+        {
+          "key": "B",
+          "en": "to ask"
+        },
+        {
+          "key": "C",
+          "en": "assistant/helper"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "assistant/helper",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q10",
+      "set_id": "set-1",
+      "index": 10,
+      "prompt_word_fi": "kysyä",
+      "options": [
+        {
+          "key": "A",
+          "en": "to ask"
+        },
+        {
+          "key": "B",
+          "en": "assistant/helper"
+        },
+        {
+          "key": "C",
+          "en": "to transfer / move"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to ask",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q11",
+      "set_id": "set-1",
+      "index": 11,
+      "prompt_word_fi": "opaskoira",
+      "options": [
+        {
+          "key": "A",
+          "en": "visually impaired"
+        },
+        {
+          "key": "B",
+          "en": "guide dog"
+        },
+        {
+          "key": "C",
+          "en": "help"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "guide dog",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q12",
+      "set_id": "set-1",
+      "index": 12,
+      "prompt_word_fi": "apua",
+      "options": [
+        {
+          "key": "A",
+          "en": "visually impaired"
+        },
+        {
+          "key": "B",
+          "en": "guide dog"
+        },
+        {
+          "key": "C",
+          "en": "help"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "help",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q13",
+      "set_id": "set-1",
+      "index": 13,
+      "prompt_word_fi": "varmistaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "mobility-restricted"
+        },
+        {
+          "key": "B",
+          "en": "to make sure"
+        },
+        {
+          "key": "C",
+          "en": "to transfer by oneself"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to make sure",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q14",
+      "set_id": "set-1",
+      "index": 14,
+      "prompt_word_fi": "siirtyä itse",
+      "options": [
+        {
+          "key": "A",
+          "en": "mobility-restricted"
+        },
+        {
+          "key": "B",
+          "en": "to make sure"
+        },
+        {
+          "key": "C",
+          "en": "to transfer by oneself"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to transfer by oneself",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q15",
+      "set_id": "set-1",
+      "index": 15,
+      "prompt_word_fi": "tarjota",
+      "options": [
+        {
+          "key": "A",
+          "en": "of the guide dog"
+        },
+        {
+          "key": "B",
+          "en": "to consider"
+        },
+        {
+          "key": "C",
+          "en": "to offer"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to offer",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q16",
+      "set_id": "set-1",
+      "index": 16,
+      "prompt_word_fi": "ottaa huomioon",
+      "options": [
+        {
+          "key": "A",
+          "en": "to consider"
+        },
+        {
+          "key": "B",
+          "en": "working dog"
+        },
+        {
+          "key": "C",
+          "en": "needing assistance"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to consider",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q17",
+      "set_id": "set-1",
+      "index": 17,
+      "prompt_word_fi": "sokea",
+      "options": [
+        {
+          "key": "A",
+          "en": "needing assistance"
+        },
+        {
+          "key": "B",
+          "en": "blind"
+        },
+        {
+          "key": "C",
+          "en": "blind customer"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "blind",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q18",
+      "set_id": "set-1",
+      "index": 18,
+      "prompt_word_fi": "sähkömopo",
+      "options": [
+        {
+          "key": "A",
+          "en": "needing assistance"
+        },
+        {
+          "key": "B",
+          "en": "blind"
+        },
+        {
+          "key": "C",
+          "en": "electric mobility scooter/moped"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "electric mobility scooter/moped",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q19",
+      "set_id": "set-1",
+      "index": 19,
+      "prompt_word_fi": "avustettava",
+      "options": [
+        {
+          "key": "A",
+          "en": "needing assistance"
+        },
+        {
+          "key": "B",
+          "en": "blind"
+        },
+        {
+          "key": "C",
+          "en": "blind customer"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "needing assistance",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-1-q20",
+      "set_id": "set-1",
+      "index": 20,
+      "prompt_word_fi": "hoitohenkilökunta",
+      "options": [
+        {
+          "key": "A",
+          "en": "of the lift"
+        },
+        {
+          "key": "B",
+          "en": "care staff"
+        },
+        {
+          "key": "C",
+          "en": "with a visually impaired person"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "care staff",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q1",
+      "set_id": "set-2",
+      "index": 1,
+      "prompt_word_fi": "kieltäytyä",
+      "options": [
+        {
+          "key": "A",
+          "en": "to refuse / decline"
+        },
+        {
+          "key": "B",
+          "en": "communication devices"
+        },
+        {
+          "key": "C",
+          "en": "to forbid/deny"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to refuse / decline",
+      "lesson_word_id": "set-2-w1"
+    },
+    {
+      "id": "set-2-q2",
+      "set_id": "set-2",
+      "index": 2,
+      "prompt_word_fi": "kiinnitys",
+      "options": [
+        {
+          "key": "A",
+          "en": "my lips"
+        },
+        {
+          "key": "B",
+          "en": "securing / fastening"
+        },
+        {
+          "key": "C",
+          "en": "in writing"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "securing / fastening",
+      "lesson_word_id": "set-2-w2"
+    },
+    {
+      "id": "set-2-q3",
+      "set_id": "set-2",
+      "index": 3,
+      "prompt_word_fi": "kiinnittää",
+      "options": [
+        {
+          "key": "A",
+          "en": "phone"
+        },
+        {
+          "key": "B",
+          "en": "hands-free device"
+        },
+        {
+          "key": "C",
+          "en": "to fasten/secure"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to fasten/secure",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q4",
+      "set_id": "set-2",
+      "index": 4,
+      "prompt_word_fi": "kuulovammainen",
+      "options": [
+        {
+          "key": "A",
+          "en": "my lips"
+        },
+        {
+          "key": "B",
+          "en": "hearing impaired; hearing-impaired"
+        },
+        {
+          "key": "C",
+          "en": "securing / fastening"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "hearing impaired; hearing-impaired",
+      "lesson_word_id": "set-2-w5"
+    },
+    {
+      "id": "set-2-q5",
+      "set_id": "set-2",
+      "index": 5,
+      "prompt_word_fi": "kuuro",
+      "options": [
+        {
+          "key": "A",
+          "en": "deaf"
+        },
+        {
+          "key": "B",
+          "en": "my lips"
+        },
+        {
+          "key": "C",
+          "en": "securing / fastening"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "deaf",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q6",
+      "set_id": "set-2",
+      "index": 6,
+      "prompt_word_fi": "kielitaito",
+      "options": [
+        {
+          "key": "A",
+          "en": "language skill"
+        },
+        {
+          "key": "B",
+          "en": "wants/desires"
+        },
+        {
+          "key": "C",
+          "en": "hands-free device"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "language skill",
+      "lesson_word_id": "set-2-w4"
+    },
+    {
+      "id": "set-2-q7",
+      "set_id": "set-2",
+      "index": 7,
+      "prompt_word_fi": "riittävä kielitaito",
+      "options": [
+        {
+          "key": "A",
+          "en": "hands-free device as object"
+        },
+        {
+          "key": "B",
+          "en": "sufficient language skill"
+        },
+        {
+          "key": "C",
+          "en": "lip"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "sufficient language skill",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q8",
+      "set_id": "set-2",
+      "index": 8,
+      "prompt_word_fi": "puhelin",
+      "options": [
+        {
+          "key": "A",
+          "en": "to fasten/secure"
+        },
+        {
+          "key": "B",
+          "en": "hands-free device"
+        },
+        {
+          "key": "C",
+          "en": "phone"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "phone",
+      "lesson_word_id": "set-2-w3"
+    },
+    {
+      "id": "set-2-q9",
+      "set_id": "set-2",
+      "index": 9,
+      "prompt_word_fi": "handsfree",
+      "options": [
+        {
+          "key": "A",
+          "en": "hands-free device"
+        },
+        {
+          "key": "B",
+          "en": "wants/desires"
+        },
+        {
+          "key": "C",
+          "en": "language skill"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "hands-free device",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q10",
+      "set_id": "set-2",
+      "index": 10,
+      "prompt_word_fi": "viestimet",
+      "options": [
+        {
+          "key": "A",
+          "en": "to refuse / decline"
+        },
+        {
+          "key": "B",
+          "en": "communication devices"
+        },
+        {
+          "key": "C",
+          "en": "to forbid/deny"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "communication devices",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q11",
+      "set_id": "set-2",
+      "index": 11,
+      "prompt_word_fi": "kommunikointi",
+      "options": [
+        {
+          "key": "A",
+          "en": "communication"
+        },
+        {
+          "key": "B",
+          "en": "calls"
+        },
+        {
+          "key": "C",
+          "en": "does not agree"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "communication",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q12",
+      "set_id": "set-2",
+      "index": 12,
+      "prompt_word_fi": "pitää puhelinta kädessä",
+      "options": [
+        {
+          "key": "A",
+          "en": "does not agree"
+        },
+        {
+          "key": "B",
+          "en": "with language skill"
+        },
+        {
+          "key": "C",
+          "en": "hold the phone in hand"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "hold the phone in hand",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q13",
+      "set_id": "set-2",
+      "index": 13,
+      "prompt_word_fi": "kirjallisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "in writing"
+        },
+        {
+          "key": "B",
+          "en": "my lips"
+        },
+        {
+          "key": "C",
+          "en": "securing / fastening"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "in writing",
+      "lesson_word_id": "set-2-w6"
+    },
+    {
+      "id": "set-2-q14",
+      "set_id": "set-2",
+      "index": 14,
+      "prompt_word_fi": "ei suostu",
+      "options": [
+        {
+          "key": "A",
+          "en": "with language skill"
+        },
+        {
+          "key": "B",
+          "en": "on a stretcher"
+        },
+        {
+          "key": "C",
+          "en": "does not agree"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "does not agree",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q15",
+      "set_id": "set-2",
+      "index": 15,
+      "prompt_word_fi": "paarit",
+      "options": [
+        {
+          "key": "A",
+          "en": "of the hearing-impaired person"
+        },
+        {
+          "key": "B",
+          "en": "hands-free device as object"
+        },
+        {
+          "key": "C",
+          "en": "stretcher"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "stretcher",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q16",
+      "set_id": "set-2",
+      "index": 16,
+      "prompt_word_fi": "valjaat",
+      "options": [
+        {
+          "key": "A",
+          "en": "my lips"
+        },
+        {
+          "key": "B",
+          "en": "harness"
+        },
+        {
+          "key": "C",
+          "en": "securing / fastening"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "harness",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q17",
+      "set_id": "set-2",
+      "index": 17,
+      "prompt_word_fi": "tunniste valjaat",
+      "options": [
+        {
+          "key": "A",
+          "en": "my lips"
+        },
+        {
+          "key": "B",
+          "en": "identifying harness/markings"
+        },
+        {
+          "key": "C",
+          "en": "securing / fastening"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "identifying harness/markings",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q18",
+      "set_id": "set-2",
+      "index": 18,
+      "prompt_word_fi": "runko",
+      "options": [
+        {
+          "key": "A",
+          "en": "frame/body"
+        },
+        {
+          "key": "B",
+          "en": "hands-free device as object"
+        },
+        {
+          "key": "C",
+          "en": "lip"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "frame/body",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q19",
+      "set_id": "set-2",
+      "index": 19,
+      "prompt_word_fi": "selinmakuu",
+      "options": [
+        {
+          "key": "A",
+          "en": "hands-free device as object"
+        },
+        {
+          "key": "B",
+          "en": "lying on back"
+        },
+        {
+          "key": "C",
+          "en": "lip"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "lying on back",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-2-q20",
+      "set_id": "set-2",
+      "index": 20,
+      "prompt_word_fi": "lastata",
+      "options": [
+        {
+          "key": "A",
+          "en": "hands-free device as object"
+        },
+        {
+          "key": "B",
+          "en": "lip"
+        },
+        {
+          "key": "C",
+          "en": "to load"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to load",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q1",
+      "set_id": "set-3",
+      "index": 1,
+      "prompt_word_fi": "lapsi",
+      "options": [
+        {
+          "key": "A",
+          "en": "child / under-age passenger"
+        },
+        {
+          "key": "B",
+          "en": "seat belt"
+        },
+        {
+          "key": "C",
+          "en": "seat belt as object"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "child / under-age passenger",
+      "lesson_word_id": "set-3-w1"
+    },
+    {
+      "id": "set-3-q2",
+      "set_id": "set-3",
+      "index": 2,
+      "prompt_word_fi": "turvavyö",
+      "options": [
+        {
+          "key": "A",
+          "en": "seat belt as object"
+        },
+        {
+          "key": "B",
+          "en": "seat belt"
+        },
+        {
+          "key": "C",
+          "en": "school"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "seat belt",
+      "lesson_word_id": "set-3-w2"
+    },
+    {
+      "id": "set-3-q3",
+      "set_id": "set-3",
+      "index": 3,
+      "prompt_word_fi": "turvalaite",
+      "options": [
+        {
+          "key": "A",
+          "en": "of the child"
+        },
+        {
+          "key": "B",
+          "en": "safety device"
+        },
+        {
+          "key": "C",
+          "en": "day care"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "safety device",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q4",
+      "set_id": "set-3",
+      "index": 4,
+      "prompt_word_fi": "huoltaja",
+      "options": [
+        {
+          "key": "A",
+          "en": "use of seat belt"
+        },
+        {
+          "key": "B",
+          "en": "to report / inform"
+        },
+        {
+          "key": "C",
+          "en": "guardian"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "guardian",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q5",
+      "set_id": "set-3",
+      "index": 5,
+      "prompt_word_fi": "alkolukko",
+      "options": [
+        {
+          "key": "A",
+          "en": "child as object"
+        },
+        {
+          "key": "B",
+          "en": "restraint device as object"
+        },
+        {
+          "key": "C",
+          "en": "alcohol interlock"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "alcohol interlock",
+      "lesson_word_id": "set-3-w3"
+    },
+    {
+      "id": "set-3-q6",
+      "set_id": "set-3",
+      "index": 6,
+      "prompt_word_fi": "koulu",
+      "options": [
+        {
+          "key": "A",
+          "en": "school"
+        },
+        {
+          "key": "B",
+          "en": "seat belt as object"
+        },
+        {
+          "key": "C",
+          "en": "seat belt"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "school",
+      "lesson_word_id": "set-3-w4"
+    },
+    {
+      "id": "set-3-q7",
+      "set_id": "set-3",
+      "index": 7,
+      "prompt_word_fi": "päivähoito",
+      "options": [
+        {
+          "key": "A",
+          "en": "day care"
+        },
+        {
+          "key": "B",
+          "en": "safety device"
+        },
+        {
+          "key": "C",
+          "en": "of the child"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "day care",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q8",
+      "set_id": "set-3",
+      "index": 8,
+      "prompt_word_fi": "pituus",
+      "options": [
+        {
+          "key": "A",
+          "en": "until age 15"
+        },
+        {
+          "key": "B",
+          "en": "height / length"
+        },
+        {
+          "key": "C",
+          "en": "installed"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "height / length",
+      "lesson_word_id": "set-3-w6"
+    },
+    {
+      "id": "set-3-q9",
+      "set_id": "set-3",
+      "index": 9,
+      "prompt_word_fi": "estää",
+      "options": [
+        {
+          "key": "A",
+          "en": "120 cm tall"
+        },
+        {
+          "key": "B",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "key": "C",
+          "en": "to prevent / stop"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to prevent / stop",
+      "lesson_word_id": "set-3-w5"
+    },
+    {
+      "id": "set-3-q10",
+      "set_id": "set-3",
+      "index": 10,
+      "prompt_word_fi": "asentaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to install"
+        },
+        {
+          "key": "B",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "key": "C",
+          "en": "late; late / behind schedule"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to install",
+      "lesson_word_id": "set-3-w7"
+    },
+    {
+      "id": "set-3-q11",
+      "set_id": "set-3",
+      "index": 11,
+      "prompt_word_fi": "ilmoittaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "guardian"
+        },
+        {
+          "key": "B",
+          "en": "to report / inform"
+        },
+        {
+          "key": "C",
+          "en": "use of seat belt"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to report / inform",
+      "lesson_word_id": "set-3-w9"
+    },
+    {
+      "id": "set-3-q12",
+      "set_id": "set-3",
+      "index": 12,
+      "prompt_word_fi": "etukäteen",
+      "options": [
+        {
+          "key": "A",
+          "en": "alcohol interlock as object"
+        },
+        {
+          "key": "B",
+          "en": "of the restraint device"
+        },
+        {
+          "key": "C",
+          "en": "in advance"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "in advance",
+      "lesson_word_id": "set-3-w8"
+    },
+    {
+      "id": "set-3-q13",
+      "set_id": "set-3",
+      "index": 13,
+      "prompt_word_fi": "turvavyön käyttö",
+      "options": [
+        {
+          "key": "A",
+          "en": "use of seat belt"
+        },
+        {
+          "key": "B",
+          "en": "guardian"
+        },
+        {
+          "key": "C",
+          "en": "to report / inform"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "use of seat belt",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q14",
+      "set_id": "set-3",
+      "index": 14,
+      "prompt_word_fi": "turvaistuimessa",
+      "options": [
+        {
+          "key": "A",
+          "en": "on/with the child"
+        },
+        {
+          "key": "B",
+          "en": "in the child seat"
+        },
+        {
+          "key": "C",
+          "en": "alcohol interlock as object"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "in the child seat",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q15",
+      "set_id": "set-3",
+      "index": 15,
+      "prompt_word_fi": "15 ikävuoteen asti",
+      "options": [
+        {
+          "key": "A",
+          "en": "installed"
+        },
+        {
+          "key": "B",
+          "en": "is prevented"
+        },
+        {
+          "key": "C",
+          "en": "until age 15"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "until age 15",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q16",
+      "set_id": "set-3",
+      "index": 16,
+      "prompt_word_fi": "alle 15-vuotias",
+      "options": [
+        {
+          "key": "A",
+          "en": "under 15 years old"
+        },
+        {
+          "key": "B",
+          "en": "120 cm tall"
+        },
+        {
+          "key": "C",
+          "en": "alcohol interlock is required"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "under 15 years old",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q17",
+      "set_id": "set-3",
+      "index": 17,
+      "prompt_word_fi": "pakollinen varuste",
+      "options": [
+        {
+          "key": "A",
+          "en": "120 cm tall"
+        },
+        {
+          "key": "B",
+          "en": "mandatory equipment"
+        },
+        {
+          "key": "C",
+          "en": "alcohol interlock is required"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "mandatory equipment",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q18",
+      "set_id": "set-3",
+      "index": 18,
+      "prompt_word_fi": "päivähoitokuljetus",
+      "options": [
+        {
+          "key": "A",
+          "en": "120 cm tall"
+        },
+        {
+          "key": "B",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "key": "C",
+          "en": "day-care transport"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "day-care transport",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q19",
+      "set_id": "set-3",
+      "index": 19,
+      "prompt_word_fi": "120 cm pituinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "120 cm tall"
+        },
+        {
+          "key": "B",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "key": "C",
+          "en": "under 15 years old"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "120 cm tall",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-3-q20",
+      "set_id": "set-3",
+      "index": 20,
+      "prompt_word_fi": "yksin matkustava lapsi",
+      "options": [
+        {
+          "key": "A",
+          "en": "alcohol interlock is required"
+        },
+        {
+          "key": "B",
+          "en": "late; late / behind schedule"
+        },
+        {
+          "key": "C",
+          "en": "child travelling alone"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "child travelling alone",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q1",
+      "set_id": "set-4",
+      "index": 1,
+      "prompt_word_fi": "ajoneuvo",
+      "options": [
+        {
+          "key": "A",
+          "en": "vehicle / car"
+        },
+        {
+          "key": "B",
+          "en": "out of the car"
+        },
+        {
+          "key": "C",
+          "en": "safe"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "vehicle / car",
+      "lesson_word_id": "set-4-w1"
+    },
+    {
+      "id": "set-4-q2",
+      "set_id": "set-4",
+      "index": 2,
+      "prompt_word_fi": "liikenne",
+      "options": [
+        {
+          "key": "A",
+          "en": "necessary"
+        },
+        {
+          "key": "B",
+          "en": "you stop"
+        },
+        {
+          "key": "C",
+          "en": "traffic"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "traffic",
+      "lesson_word_id": "set-4-w3"
+    },
+    {
+      "id": "set-4-q3",
+      "set_id": "set-4",
+      "index": 3,
+      "prompt_word_fi": "liikenneturvallisuus",
+      "options": [
+        {
+          "key": "A",
+          "en": "to anticipate"
+        },
+        {
+          "key": "B",
+          "en": "traffic safety"
+        },
+        {
+          "key": "C",
+          "en": "right side; on the right side"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "traffic safety",
+      "lesson_word_id": "set-4-w2"
+    },
+    {
+      "id": "set-4-q4",
+      "set_id": "set-4",
+      "index": 4,
+      "prompt_word_fi": "ajotapa",
+      "options": [
+        {
+          "key": "A",
+          "en": "safely"
+        },
+        {
+          "key": "B",
+          "en": "driving style / road conditions"
+        },
+        {
+          "key": "C",
+          "en": "into the car"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "driving style / road conditions",
+      "lesson_word_id": "set-4-w5"
+    },
+    {
+      "id": "set-4-q5",
+      "set_id": "set-4",
+      "index": 5,
+      "prompt_word_fi": "ennakoida",
+      "options": [
+        {
+          "key": "A",
+          "en": "traffic safety"
+        },
+        {
+          "key": "B",
+          "en": "to anticipate"
+        },
+        {
+          "key": "C",
+          "en": "right side; on the right side"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to anticipate",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q6",
+      "set_id": "set-4",
+      "index": 6,
+      "prompt_word_fi": "turvaväli",
+      "options": [
+        {
+          "key": "A",
+          "en": "of other road users"
+        },
+        {
+          "key": "B",
+          "en": "slowly"
+        },
+        {
+          "key": "C",
+          "en": "safe following distance"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "safe following distance",
+      "lesson_word_id": "set-4-w6"
+    },
+    {
+      "id": "set-4-q7",
+      "set_id": "set-4",
+      "index": 7,
+      "prompt_word_fi": "turvavälin pitäminen",
+      "options": [
+        {
+          "key": "A",
+          "en": "slowly"
+        },
+        {
+          "key": "B",
+          "en": "traffic sign"
+        },
+        {
+          "key": "C",
+          "en": "keeping a safe distance"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "keeping a safe distance",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q8",
+      "set_id": "set-4",
+      "index": 8,
+      "prompt_word_fi": "liikennemerkki",
+      "options": [
+        {
+          "key": "A",
+          "en": "slowly"
+        },
+        {
+          "key": "B",
+          "en": "traffic sign"
+        },
+        {
+          "key": "C",
+          "en": "to obey / follow"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "traffic sign",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q9",
+      "set_id": "set-4",
+      "index": 9,
+      "prompt_word_fi": "pysäköintikiekko",
+      "options": [
+        {
+          "key": "A",
+          "en": "parking disc"
+        },
+        {
+          "key": "B",
+          "en": "to anticipate"
+        },
+        {
+          "key": "C",
+          "en": "traffic safety"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "parking disc",
+      "lesson_word_id": "set-4-w9"
+    },
+    {
+      "id": "set-4-q10",
+      "set_id": "set-4",
+      "index": 10,
+      "prompt_word_fi": "noudattaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "slowly"
+        },
+        {
+          "key": "B",
+          "en": "to obey / follow"
+        },
+        {
+          "key": "C",
+          "en": "traffic sign"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to obey / follow",
+      "lesson_word_id": "set-4-w7"
+    },
+    {
+      "id": "set-4-q11",
+      "set_id": "set-4",
+      "index": 11,
+      "prompt_word_fi": "pysähtyä",
+      "options": [
+        {
+          "key": "A",
+          "en": "to stop / stopping"
+        },
+        {
+          "key": "B",
+          "en": "in the car"
+        },
+        {
+          "key": "C",
+          "en": "as a road user"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to stop / stopping",
+      "lesson_word_id": "set-4-w4"
+    },
+    {
+      "id": "set-4-q12",
+      "set_id": "set-4",
+      "index": 12,
+      "prompt_word_fi": "pysäyttää",
+      "options": [
+        {
+          "key": "A",
+          "en": "about/of roadworthiness"
+        },
+        {
+          "key": "B",
+          "en": "to stop something/vehicle"
+        },
+        {
+          "key": "C",
+          "en": "speed"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to stop something/vehicle",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q13",
+      "set_id": "set-4",
+      "index": 13,
+      "prompt_word_fi": "pysähtyminen",
+      "options": [
+        {
+          "key": "A",
+          "en": "in the car"
+        },
+        {
+          "key": "B",
+          "en": "to stop / stopping"
+        },
+        {
+          "key": "C",
+          "en": "stopping"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "stopping",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q14",
+      "set_id": "set-4",
+      "index": 14,
+      "prompt_word_fi": "turvallinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "safe"
+        },
+        {
+          "key": "B",
+          "en": "out of the car"
+        },
+        {
+          "key": "C",
+          "en": "vehicle / car"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "safe",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q15",
+      "set_id": "set-4",
+      "index": 15,
+      "prompt_word_fi": "turvallisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "into the car"
+        },
+        {
+          "key": "B",
+          "en": "speeding / over speed limit"
+        },
+        {
+          "key": "C",
+          "en": "safely"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "safely",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q16",
+      "set_id": "set-4",
+      "index": 16,
+      "prompt_word_fi": "ylinopeutta",
+      "options": [
+        {
+          "key": "A",
+          "en": "into the car"
+        },
+        {
+          "key": "B",
+          "en": "speeding / over speed limit"
+        },
+        {
+          "key": "C",
+          "en": "safely"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "speeding / over speed limit",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q17",
+      "set_id": "set-4",
+      "index": 17,
+      "prompt_word_fi": "nopeus",
+      "options": [
+        {
+          "key": "A",
+          "en": "about/of roadworthiness"
+        },
+        {
+          "key": "B",
+          "en": "to stop something/vehicle"
+        },
+        {
+          "key": "C",
+          "en": "speed"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "speed",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q18",
+      "set_id": "set-4",
+      "index": 18,
+      "prompt_word_fi": "turvatyyny",
+      "options": [
+        {
+          "key": "A",
+          "en": "slowly"
+        },
+        {
+          "key": "B",
+          "en": "traffic sign"
+        },
+        {
+          "key": "C",
+          "en": "airbag"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "airbag",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q19",
+      "set_id": "set-4",
+      "index": 19,
+      "prompt_word_fi": "vaara",
+      "options": [
+        {
+          "key": "A",
+          "en": "danger"
+        },
+        {
+          "key": "B",
+          "en": "slowly"
+        },
+        {
+          "key": "C",
+          "en": "traffic sign"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "danger",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-4-q20",
+      "set_id": "set-4",
+      "index": 20,
+      "prompt_word_fi": "liikennekelpoisuudesta",
+      "options": [
+        {
+          "key": "A",
+          "en": "about/of roadworthiness"
+        },
+        {
+          "key": "B",
+          "en": "speed"
+        },
+        {
+          "key": "C",
+          "en": "to stop something/vehicle"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "about/of roadworthiness",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q1",
+      "set_id": "set-5",
+      "index": 1,
+      "prompt_word_fi": "poliisi",
+      "options": [
+        {
+          "key": "A",
+          "en": "police"
+        },
+        {
+          "key": "B",
+          "en": "first aid"
+        },
+        {
+          "key": "C",
+          "en": "emergency situation"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "police",
+      "lesson_word_id": "set-5-w1"
+    },
+    {
+      "id": "set-5-q2",
+      "set_id": "set-5",
+      "index": 2,
+      "prompt_word_fi": "hätätilanne",
+      "options": [
+        {
+          "key": "A",
+          "en": "first aid"
+        },
+        {
+          "key": "B",
+          "en": "emergency situation"
+        },
+        {
+          "key": "C",
+          "en": "alcohol as object"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "emergency situation",
+      "lesson_word_id": "set-5-w2"
+    },
+    {
+      "id": "set-5-q3",
+      "set_id": "set-5",
+      "index": 3,
+      "prompt_word_fi": "hätänumero",
+      "options": [
+        {
+          "key": "A",
+          "en": "to aggression"
+        },
+        {
+          "key": "B",
+          "en": "emergency number"
+        },
+        {
+          "key": "C",
+          "en": "alcoholic drink"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "emergency number",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q4",
+      "set_id": "set-5",
+      "index": 4,
+      "prompt_word_fi": "hätäkeskus",
+      "options": [
+        {
+          "key": "A",
+          "en": "emergency response centre"
+        },
+        {
+          "key": "B",
+          "en": "to aggression"
+        },
+        {
+          "key": "C",
+          "en": "alcoholic drink"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "emergency response centre",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q5",
+      "set_id": "set-5",
+      "index": 5,
+      "prompt_word_fi": "ensiapu",
+      "options": [
+        {
+          "key": "A",
+          "en": "emergency situation"
+        },
+        {
+          "key": "B",
+          "en": "first aid"
+        },
+        {
+          "key": "C",
+          "en": "alcohol as object"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "first aid",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q6",
+      "set_id": "set-5",
+      "index": 6,
+      "prompt_word_fi": "ensiaputoimenpide",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "airways"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "first-aid measure",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q7",
+      "set_id": "set-5",
+      "index": 7,
+      "prompt_word_fi": "hengitystiet",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "airways"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "airways",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q8",
+      "set_id": "set-5",
+      "index": 8,
+      "prompt_word_fi": "onnettomuus",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "accident"
+        },
+        {
+          "key": "C",
+          "en": "first-aid measure"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "accident",
+      "lesson_word_id": "set-5-w7"
+    },
+    {
+      "id": "set-5-q9",
+      "set_id": "set-5",
+      "index": 9,
+      "prompt_word_fi": "onnettomuuspaikalle",
+      "options": [
+        {
+          "key": "A",
+          "en": "to the accident scene"
+        },
+        {
+          "key": "B",
+          "en": "aggressively"
+        },
+        {
+          "key": "C",
+          "en": "has committed / is guilty of"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to the accident scene",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q10",
+      "set_id": "set-5",
+      "index": 10,
+      "prompt_word_fi": "päihtynyt",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "drunk / intoxicated"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "drunk / intoxicated",
+      "lesson_word_id": "set-5-w3"
+    },
+    {
+      "id": "set-5-q11",
+      "set_id": "set-5",
+      "index": 11,
+      "prompt_word_fi": "humalainen",
+      "options": [
+        {
+          "key": "A",
+          "en": "drunk person"
+        },
+        {
+          "key": "B",
+          "en": "aggressive"
+        },
+        {
+          "key": "C",
+          "en": "first-aid measure"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "drunk person",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q12",
+      "set_id": "set-5",
+      "index": 12,
+      "prompt_word_fi": "aggressiivinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "airways"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "aggressive",
+      "lesson_word_id": "set-5-w5"
+    },
+    {
+      "id": "set-5-q13",
+      "set_id": "set-5",
+      "index": 13,
+      "prompt_word_fi": "syyllistyä",
+      "options": [
+        {
+          "key": "A",
+          "en": "to be guilty of / commit an offence"
+        },
+        {
+          "key": "B",
+          "en": "aggressive"
+        },
+        {
+          "key": "C",
+          "en": "first-aid measure"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to be guilty of / commit an offence",
+      "lesson_word_id": "set-5-w4"
+    },
+    {
+      "id": "set-5-q14",
+      "set_id": "set-5",
+      "index": 14,
+      "prompt_word_fi": "törkeä",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "gross / serious"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "gross / serious",
+      "lesson_word_id": "set-5-w8"
+    },
+    {
+      "id": "set-5-q15",
+      "set_id": "set-5",
+      "index": 15,
+      "prompt_word_fi": "rattijuopumukseen",
+      "options": [
+        {
+          "key": "A",
+          "en": "your first-aid measure"
+        },
+        {
+          "key": "B",
+          "en": "to/for drunk driving"
+        },
+        {
+          "key": "C",
+          "en": "epileptic seizure"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to/for drunk driving",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q16",
+      "set_id": "set-5",
+      "index": 16,
+      "prompt_word_fi": "epileptinen kohtaus",
+      "options": [
+        {
+          "key": "A",
+          "en": "your first-aid measure"
+        },
+        {
+          "key": "B",
+          "en": "epileptic seizure"
+        },
+        {
+          "key": "C",
+          "en": "epileptic seizure as object"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "epileptic seizure",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q17",
+      "set_id": "set-5",
+      "index": 17,
+      "prompt_word_fi": "sairauskohtaus",
+      "options": [
+        {
+          "key": "A",
+          "en": "aggressive"
+        },
+        {
+          "key": "B",
+          "en": "to aggression"
+        },
+        {
+          "key": "C",
+          "en": "medical attack/seizure"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "medical attack/seizure",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q18",
+      "set_id": "set-5",
+      "index": 18,
+      "prompt_word_fi": "hereille",
+      "options": [
+        {
+          "key": "A",
+          "en": "awake"
+        },
+        {
+          "key": "B",
+          "en": "your first-aid measure"
+        },
+        {
+          "key": "C",
+          "en": "epileptic seizure"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "awake",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q19",
+      "set_id": "set-5",
+      "index": 19,
+      "prompt_word_fi": "viranomainen",
+      "options": [
+        {
+          "key": "A",
+          "en": "alcohol as object"
+        },
+        {
+          "key": "B",
+          "en": "to the scene"
+        },
+        {
+          "key": "C",
+          "en": "authority"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "authority",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-5-q20",
+      "set_id": "set-5",
+      "index": 20,
+      "prompt_word_fi": "valvoja",
+      "options": [
+        {
+          "key": "A",
+          "en": "traffic/controller/supervisor"
+        },
+        {
+          "key": "B",
+          "en": "aggressive"
+        },
+        {
+          "key": "C",
+          "en": "first-aid measure"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "traffic/controller/supervisor",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q1",
+      "set_id": "set-6",
+      "index": 1,
+      "prompt_word_fi": "kuitti",
+      "options": [
+        {
+          "key": "A",
+          "en": "receipt"
+        },
+        {
+          "key": "B",
+          "en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland"
+        },
+        {
+          "key": "C",
+          "en": "to pay"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "receipt",
+      "lesson_word_id": "set-6-w1"
+    },
+    {
+      "id": "set-6-q2",
+      "set_id": "set-6",
+      "index": 2,
+      "prompt_word_fi": "maksu",
+      "options": [
+        {
+          "key": "A",
+          "en": "to pay"
+        },
+        {
+          "key": "B",
+          "en": "payment"
+        },
+        {
+          "key": "C",
+          "en": "receipt"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "payment",
+      "lesson_word_id": "set-6-w2"
+    },
+    {
+      "id": "set-6-q3",
+      "set_id": "set-6",
+      "index": 3,
+      "prompt_word_fi": "maksaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to pay"
+        },
+        {
+          "key": "B",
+          "en": "receipt"
+        },
+        {
+          "key": "C",
+          "en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to pay",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q4",
+      "set_id": "set-6",
+      "index": 4,
+      "prompt_word_fi": "hinta",
+      "options": [
+        {
+          "key": "A",
+          "en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland"
+        },
+        {
+          "key": "B",
+          "en": "receipt"
+        },
+        {
+          "key": "C",
+          "en": "price / fare; price"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "price / fare; price",
+      "lesson_word_id": "set-6-w3"
+    },
+    {
+      "id": "set-6-q5",
+      "set_id": "set-6",
+      "index": 5,
+      "prompt_word_fi": "Kela",
+      "options": [
+        {
+          "key": "A",
+          "en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland"
+        },
+        {
+          "key": "B",
+          "en": "receipt"
+        },
+        {
+          "key": "C",
+          "en": "price / fare; price"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "Kela / Finnish social insurance institution; Kela / Social Insurance Institution of Finland",
+      "lesson_word_id": "set-6-w4"
+    },
+    {
+      "id": "set-6-q6",
+      "set_id": "set-6",
+      "index": 6,
+      "prompt_word_fi": "omavastuu",
+      "options": [
+        {
+          "key": "A",
+          "en": "deductible/customer share"
+        },
+        {
+          "key": "B",
+          "en": "at most the deductible"
+        },
+        {
+          "key": "C",
+          "en": "the most economical / cheapest suitable"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "deductible/customer share",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q7",
+      "set_id": "set-6",
+      "index": 7,
+      "prompt_word_fi": "enintään omavastuu",
+      "options": [
+        {
+          "key": "A",
+          "en": "deductible/customer share"
+        },
+        {
+          "key": "B",
+          "en": "at most the deductible"
+        },
+        {
+          "key": "C",
+          "en": "the most economical / cheapest suitable"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "at most the deductible",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q8",
+      "set_id": "set-6",
+      "index": 8,
+      "prompt_word_fi": "kelakorvattavan",
+      "options": [
+        {
+          "key": "A",
+          "en": "Kela-reimbursed"
+        },
+        {
+          "key": "B",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "C",
+          "en": "payment method to be used"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "Kela-reimbursed",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q9",
+      "set_id": "set-6",
+      "index": 9,
+      "prompt_word_fi": "KELA-kyydistä",
+      "options": [
+        {
+          "key": "A",
+          "en": "Kela-reimbursed"
+        },
+        {
+          "key": "B",
+          "en": "payment method to be used"
+        },
+        {
+          "key": "C",
+          "en": "from Kela ride"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "from Kela ride",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q10",
+      "set_id": "set-6",
+      "index": 10,
+      "prompt_word_fi": "maksukortti",
+      "options": [
+        {
+          "key": "A",
+          "en": "payment card"
+        },
+        {
+          "key": "B",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "C",
+          "en": "Kela-reimbursed"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "payment card",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q11",
+      "set_id": "set-6",
+      "index": 11,
+      "prompt_word_fi": "maksuväline",
+      "options": [
+        {
+          "key": "A",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "B",
+          "en": "payment method"
+        },
+        {
+          "key": "C",
+          "en": "Kela-reimbursed"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "payment method",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q12",
+      "set_id": "set-6",
+      "index": 12,
+      "prompt_word_fi": "käteisellä",
+      "options": [
+        {
+          "key": "A",
+          "en": "in cash / with cash"
+        },
+        {
+          "key": "B",
+          "en": "the most economical / cheapest suitable"
+        },
+        {
+          "key": "C",
+          "en": "to pay"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "in cash / with cash",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q13",
+      "set_id": "set-6",
+      "index": 13,
+      "prompt_word_fi": "lähimaksulla",
+      "options": [
+        {
+          "key": "A",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "B",
+          "en": "Kela-reimbursed"
+        },
+        {
+          "key": "C",
+          "en": "by contactless payment"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "by contactless payment",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q14",
+      "set_id": "set-6",
+      "index": 14,
+      "prompt_word_fi": "maksamatta",
+      "options": [
+        {
+          "key": "A",
+          "en": "unpaid"
+        },
+        {
+          "key": "B",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "C",
+          "en": "Kela-reimbursed"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "unpaid",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q15",
+      "set_id": "set-6",
+      "index": 15,
+      "prompt_word_fi": "maksuhetkellä",
+      "options": [
+        {
+          "key": "A",
+          "en": "from Kela ride"
+        },
+        {
+          "key": "B",
+          "en": "at payment moment"
+        },
+        {
+          "key": "C",
+          "en": "Kela-reimbursed"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "at payment moment",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q16",
+      "set_id": "set-6",
+      "index": 16,
+      "prompt_word_fi": "hinnan määräytymisperusteet",
+      "options": [
+        {
+          "key": "A",
+          "en": "pricing basis"
+        },
+        {
+          "key": "B",
+          "en": "with payment cards"
+        },
+        {
+          "key": "C",
+          "en": "cleaning surcharge OCR form"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "pricing basis",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q17",
+      "set_id": "set-6",
+      "index": 17,
+      "prompt_word_fi": "veloittaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "affordable/cheaper"
+        },
+        {
+          "key": "B",
+          "en": "to charge"
+        },
+        {
+          "key": "C",
+          "en": "about the price"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to charge",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q18",
+      "set_id": "set-6",
+      "index": 18,
+      "prompt_word_fi": "siivouslisämaksu",
+      "options": [
+        {
+          "key": "A",
+          "en": "cleaning extra fee"
+        },
+        {
+          "key": "B",
+          "en": "affordable/cheaper"
+        },
+        {
+          "key": "C",
+          "en": "about the price"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "cleaning extra fee",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-6-q19",
+      "set_id": "set-6",
+      "index": 19,
+      "prompt_word_fi": "sotkea",
+      "options": [
+        {
+          "key": "A",
+          "en": "affordable/cheaper"
+        },
+        {
+          "key": "B",
+          "en": "about the price"
+        },
+        {
+          "key": "C",
+          "en": "to soil / make dirty"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to soil / make dirty",
+      "lesson_word_id": "set-6-w5"
+    },
+    {
+      "id": "set-6-q20",
+      "set_id": "set-6",
+      "index": 20,
+      "prompt_word_fi": "valtakirja",
+      "options": [
+        {
+          "key": "A",
+          "en": "written authorisation"
+        },
+        {
+          "key": "B",
+          "en": "power of attorney / authorisation letter"
+        },
+        {
+          "key": "C",
+          "en": "from Kela ride"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "power of attorney / authorisation letter",
+      "lesson_word_id": "set-6-w6"
+    },
+    {
+      "id": "set-7-q1",
+      "set_id": "set-7",
+      "index": 1,
+      "prompt_word_fi": "peruuttaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to revoke / cancel; to reverse / to cancel"
+        },
+        {
+          "key": "B",
+          "en": "driving route"
+        },
+        {
+          "key": "C",
+          "en": "most economical appropriate route"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to revoke / cancel; to reverse / to cancel",
+      "lesson_word_id": "set-7-w1"
+    },
+    {
+      "id": "set-7-q2",
+      "set_id": "set-7",
+      "index": 2,
+      "prompt_word_fi": "perille",
+      "options": [
+        {
+          "key": "A",
+          "en": "primarily / preferably"
+        },
+        {
+          "key": "B",
+          "en": "destination / getting there safely"
+        },
+        {
+          "key": "C",
+          "en": "address"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "destination / getting there safely",
+      "lesson_word_id": "set-7-w2"
+    },
+    {
+      "id": "set-7-q3",
+      "set_id": "set-7",
+      "index": 3,
+      "prompt_word_fi": "reitti",
+      "options": [
+        {
+          "key": "A",
+          "en": "to the destination"
+        },
+        {
+          "key": "B",
+          "en": "primarily / preferably"
+        },
+        {
+          "key": "C",
+          "en": "route"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "route",
+      "lesson_word_id": "set-7-w3"
+    },
+    {
+      "id": "set-7-q4",
+      "set_id": "set-7",
+      "index": 4,
+      "prompt_word_fi": "ajoreitti",
+      "options": [
+        {
+          "key": "A",
+          "en": "most economical appropriate route"
+        },
+        {
+          "key": "B",
+          "en": "driving route"
+        },
+        {
+          "key": "C",
+          "en": "travels / goes"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "driving route",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q5",
+      "set_id": "set-7",
+      "index": 5,
+      "prompt_word_fi": "matka",
+      "options": [
+        {
+          "key": "A",
+          "en": "journey / trip / ride"
+        },
+        {
+          "key": "B",
+          "en": "to the lost-property office"
+        },
+        {
+          "key": "C",
+          "en": "short"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "journey / trip / ride",
+      "lesson_word_id": "set-7-w4"
+    },
+    {
+      "id": "set-7-q6",
+      "set_id": "set-7",
+      "index": 6,
+      "prompt_word_fi": "matkustaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to choose"
+        },
+        {
+          "key": "B",
+          "en": "to travel"
+        },
+        {
+          "key": "C",
+          "en": "journey/trip"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to travel",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q7",
+      "set_id": "set-7",
+      "index": 7,
+      "prompt_word_fi": "määränpäähän",
+      "options": [
+        {
+          "key": "A",
+          "en": "to the destination"
+        },
+        {
+          "key": "B",
+          "en": "primarily / preferably"
+        },
+        {
+          "key": "C",
+          "en": "address"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to the destination",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q8",
+      "set_id": "set-7",
+      "index": 8,
+      "prompt_word_fi": "osoite",
+      "options": [
+        {
+          "key": "A",
+          "en": "primarily / preferably"
+        },
+        {
+          "key": "B",
+          "en": "address"
+        },
+        {
+          "key": "C",
+          "en": "destination / getting there safely"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "address",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q9",
+      "set_id": "set-7",
+      "index": 9,
+      "prompt_word_fi": "valita",
+      "options": [
+        {
+          "key": "A",
+          "en": "to travel"
+        },
+        {
+          "key": "B",
+          "en": "to choose"
+        },
+        {
+          "key": "C",
+          "en": "journey/trip"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to choose",
+      "lesson_word_id": "set-7-w5"
+    },
+    {
+      "id": "set-7-q10",
+      "set_id": "set-7",
+      "index": 10,
+      "prompt_word_fi": "pyytää",
+      "options": [
+        {
+          "key": "A",
+          "en": "journey/trip"
+        },
+        {
+          "key": "B",
+          "en": "to travel"
+        },
+        {
+          "key": "C",
+          "en": "to ask / request"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to ask / request",
+      "lesson_word_id": "set-7-w6"
+    },
+    {
+      "id": "set-7-q11",
+      "set_id": "set-7",
+      "index": 11,
+      "prompt_word_fi": "muistaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "remember; to remember"
+        },
+        {
+          "key": "B",
+          "en": "to adjust/straighten"
+        },
+        {
+          "key": "C",
+          "en": "to the lost-property office"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "remember; to remember",
+      "lesson_word_id": "set-7-w7"
+    },
+    {
+      "id": "set-7-q12",
+      "set_id": "set-7",
+      "index": 12,
+      "prompt_word_fi": "tilanne",
+      "options": [
+        {
+          "key": "A",
+          "en": "primary / first / preferably"
+        },
+        {
+          "key": "B",
+          "en": "situation"
+        },
+        {
+          "key": "C",
+          "en": "to travel / go"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "situation",
+      "lesson_word_id": "set-7-w8"
+    },
+    {
+      "id": "set-7-q13",
+      "set_id": "set-7",
+      "index": 13,
+      "prompt_word_fi": "ensisijaisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "address"
+        },
+        {
+          "key": "B",
+          "en": "destination / getting there safely"
+        },
+        {
+          "key": "C",
+          "en": "primarily / preferably"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "primarily / preferably",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q14",
+      "set_id": "set-7",
+      "index": 14,
+      "prompt_word_fi": "pelisilmä",
+      "options": [
+        {
+          "key": "A",
+          "en": "primary / first / preferably"
+        },
+        {
+          "key": "B",
+          "en": "to travel / go"
+        },
+        {
+          "key": "C",
+          "en": "situational judgement / practical sense"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "situational judgement / practical sense",
+      "lesson_word_id": "set-7-w12"
+    },
+    {
+      "id": "set-7-q15",
+      "set_id": "set-7",
+      "index": 15,
+      "prompt_word_fi": "lyhyt",
+      "options": [
+        {
+          "key": "A",
+          "en": "short"
+        },
+        {
+          "key": "B",
+          "en": "of the luggage"
+        },
+        {
+          "key": "C",
+          "en": "to the lost-property office"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "short",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q16",
+      "set_id": "set-7",
+      "index": 16,
+      "prompt_word_fi": "painavia matkatavaroita",
+      "options": [
+        {
+          "key": "A",
+          "en": "heavy luggage"
+        },
+        {
+          "key": "B",
+          "en": "to take a shortcut"
+        },
+        {
+          "key": "C",
+          "en": "for revocation"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "heavy luggage",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q17",
+      "set_id": "set-7",
+      "index": 17,
+      "prompt_word_fi": "tavaratilaan",
+      "options": [
+        {
+          "key": "A",
+          "en": "to take a shortcut"
+        },
+        {
+          "key": "B",
+          "en": "into the trunk"
+        },
+        {
+          "key": "C",
+          "en": "heavy luggage"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "into the trunk",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q18",
+      "set_id": "set-7",
+      "index": 18,
+      "prompt_word_fi": "löytötavaratoimistoon",
+      "options": [
+        {
+          "key": "A",
+          "en": "journey / trip / ride"
+        },
+        {
+          "key": "B",
+          "en": "short"
+        },
+        {
+          "key": "C",
+          "en": "to the lost-property office"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "to the lost-property office",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q19",
+      "set_id": "set-7",
+      "index": 19,
+      "prompt_word_fi": "navigaattoriin",
+      "options": [
+        {
+          "key": "A",
+          "en": "driving route"
+        },
+        {
+          "key": "B",
+          "en": "into the navigator/GPS"
+        },
+        {
+          "key": "C",
+          "en": "most economical appropriate route"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "into the navigator/GPS",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-7-q20",
+      "set_id": "set-7",
+      "index": 20,
+      "prompt_word_fi": "edullisin tarkoituksenmukainen reitti",
+      "options": [
+        {
+          "key": "A",
+          "en": "driving route"
+        },
+        {
+          "key": "B",
+          "en": "travels / goes"
+        },
+        {
+          "key": "C",
+          "en": "most economical appropriate route"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "most economical appropriate route",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q1",
+      "set_id": "set-8",
+      "index": 1,
+      "prompt_word_fi": "taksinkuljettaja",
+      "options": [
+        {
+          "key": "A",
+          "en": "taxi driver / taxi operator"
+        },
+        {
+          "key": "B",
+          "en": "obligation"
+        },
+        {
+          "key": "C",
+          "en": "taxi driving permit / licence"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "taxi driver / taxi operator",
+      "lesson_word_id": "set-8-w1"
+    },
+    {
+      "id": "set-8-q2",
+      "set_id": "set-8",
+      "index": 2,
+      "prompt_word_fi": "ajolupa",
+      "options": [
+        {
+          "key": "A",
+          "en": "taxi driver / taxi operator"
+        },
+        {
+          "key": "B",
+          "en": "obligation"
+        },
+        {
+          "key": "C",
+          "en": "taxi driving permit / licence"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "taxi driving permit / licence",
+      "lesson_word_id": "set-8-w3"
+    },
+    {
+      "id": "set-8-q3",
+      "set_id": "set-8",
+      "index": 3,
+      "prompt_word_fi": "vastuu",
+      "options": [
+        {
+          "key": "A",
+          "en": "regular taxi"
+        },
+        {
+          "key": "B",
+          "en": "responsibility / obligation / right"
+        },
+        {
+          "key": "C",
+          "en": "valid/in force"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "responsibility / obligation / right",
+      "lesson_word_id": "set-8-w2"
+    },
+    {
+      "id": "set-8-q4",
+      "set_id": "set-8",
+      "index": 4,
+      "prompt_word_fi": "työaika",
+      "options": [
+        {
+          "key": "A",
+          "en": "working time / work relationship"
+        },
+        {
+          "key": "B",
+          "en": "taxi driving permit / licence"
+        },
+        {
+          "key": "C",
+          "en": "taxi driver / taxi operator"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "working time / work relationship",
+      "lesson_word_id": "set-8-w4"
+    },
+    {
+      "id": "set-8-q5",
+      "set_id": "set-8",
+      "index": 5,
+      "prompt_word_fi": "työaikalaki",
+      "options": [
+        {
+          "key": "A",
+          "en": "Working Hours Act"
+        },
+        {
+          "key": "B",
+          "en": "mandatory"
+        },
+        {
+          "key": "C",
+          "en": "meeting the health requirements"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "Working Hours Act",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q6",
+      "set_id": "set-8",
+      "index": 6,
+      "prompt_word_fi": "pakollinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "meeting the health requirements"
+        },
+        {
+          "key": "B",
+          "en": "mandatory"
+        },
+        {
+          "key": "C",
+          "en": "dispatch/intermediary company"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "mandatory",
+      "lesson_word_id": "set-8-w5"
+    },
+    {
+      "id": "set-8-q7",
+      "set_id": "set-8",
+      "index": 7,
+      "prompt_word_fi": "sallittu",
+      "options": [
+        {
+          "key": "A",
+          "en": "permitted / allowed"
+        },
+        {
+          "key": "B",
+          "en": "in anticipatory driving"
+        },
+        {
+          "key": "C",
+          "en": "approved"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "permitted / allowed",
+      "lesson_word_id": "set-8-w7"
+    },
+    {
+      "id": "set-8-q8",
+      "set_id": "set-8",
+      "index": 8,
+      "prompt_word_fi": "velvollisuus",
+      "options": [
+        {
+          "key": "A",
+          "en": "obligation"
+        },
+        {
+          "key": "B",
+          "en": "taxi driver / taxi operator"
+        },
+        {
+          "key": "C",
+          "en": "taxi driving permit / licence"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "obligation",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q9",
+      "set_id": "set-8",
+      "index": 9,
+      "prompt_word_fi": "oikeus",
+      "options": [
+        {
+          "key": "A",
+          "en": "taxi driver / taxi operator"
+        },
+        {
+          "key": "B",
+          "en": "right"
+        },
+        {
+          "key": "C",
+          "en": "obligation"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "right",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q10",
+      "set_id": "set-8",
+      "index": 10,
+      "prompt_word_fi": "vakiotaksi",
+      "options": [
+        {
+          "key": "A",
+          "en": "regular taxi"
+        },
+        {
+          "key": "B",
+          "en": "responsibility / obligation / right"
+        },
+        {
+          "key": "C",
+          "en": "valid/in force"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "regular taxi",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q11",
+      "set_id": "set-8",
+      "index": 11,
+      "prompt_word_fi": "voimassa",
+      "options": [
+        {
+          "key": "A",
+          "en": "regular taxi"
+        },
+        {
+          "key": "B",
+          "en": "valid/in force"
+        },
+        {
+          "key": "C",
+          "en": "responsibility / obligation / right"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "valid/in force",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q12",
+      "set_id": "set-8",
+      "index": 12,
+      "prompt_word_fi": "työnantaja",
+      "options": [
+        {
+          "key": "A",
+          "en": "regular taxi"
+        },
+        {
+          "key": "B",
+          "en": "responsibility / obligation / right"
+        },
+        {
+          "key": "C",
+          "en": "employer"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "employer",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q13",
+      "set_id": "set-8",
+      "index": 13,
+      "prompt_word_fi": "ajopäiväkirja",
+      "options": [
+        {
+          "key": "A",
+          "en": "entitled"
+        },
+        {
+          "key": "B",
+          "en": "driving logbook"
+        },
+        {
+          "key": "C",
+          "en": "the quality requirements"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "driving logbook",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q14",
+      "set_id": "set-8",
+      "index": 14,
+      "prompt_word_fi": "laatuvaatimukset",
+      "options": [
+        {
+          "key": "A",
+          "en": "the quality requirements"
+        },
+        {
+          "key": "B",
+          "en": "driving logbook"
+        },
+        {
+          "key": "C",
+          "en": "employer"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "the quality requirements",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q15",
+      "set_id": "set-8",
+      "index": 15,
+      "prompt_word_fi": "myöntää",
+      "options": [
+        {
+          "key": "A",
+          "en": "to grant/issue"
+        },
+        {
+          "key": "B",
+          "en": "right/entitlement as object"
+        },
+        {
+          "key": "C",
+          "en": "of the dispatch company"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to grant/issue",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q16",
+      "set_id": "set-8",
+      "index": 16,
+      "prompt_word_fi": "työsuhde",
+      "options": [
+        {
+          "key": "A",
+          "en": "employment relationship"
+        },
+        {
+          "key": "B",
+          "en": "permit as object"
+        },
+        {
+          "key": "C",
+          "en": "to grant/issue"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "employment relationship",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q17",
+      "set_id": "set-8",
+      "index": 17,
+      "prompt_word_fi": "irtisanomisaika",
+      "options": [
+        {
+          "key": "A",
+          "en": "notice period"
+        },
+        {
+          "key": "B",
+          "en": "break"
+        },
+        {
+          "key": "C",
+          "en": "responsible"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "notice period",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q18",
+      "set_id": "set-8",
+      "index": 18,
+      "prompt_word_fi": "tauko",
+      "options": [
+        {
+          "key": "A",
+          "en": "notice period"
+        },
+        {
+          "key": "B",
+          "en": "break"
+        },
+        {
+          "key": "C",
+          "en": "responsible"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "break",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q19",
+      "set_id": "set-8",
+      "index": 19,
+      "prompt_word_fi": "terveysvaatimusten täyttyminen",
+      "options": [
+        {
+          "key": "A",
+          "en": "mandatory"
+        },
+        {
+          "key": "B",
+          "en": "dispatch/intermediary company"
+        },
+        {
+          "key": "C",
+          "en": "meeting the health requirements"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "meeting the health requirements",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-8-q20",
+      "set_id": "set-8",
+      "index": 20,
+      "prompt_word_fi": "suorittaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "to complete/perform"
+        },
+        {
+          "key": "B",
+          "en": "to a permitted place"
+        },
+        {
+          "key": "C",
+          "en": "to the dispatch centre"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "to complete/perform",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q1",
+      "set_id": "set-9",
+      "index": 1,
+      "prompt_word_fi": "asiakas",
+      "options": [
+        {
+          "key": "A",
+          "en": "customer / passenger"
+        },
+        {
+          "key": "B",
+          "en": "politely"
+        },
+        {
+          "key": "C",
+          "en": "person"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "customer / passenger",
+      "lesson_word_id": "set-9-w1"
+    },
+    {
+      "id": "set-9-q2",
+      "set_id": "set-9",
+      "index": 2,
+      "prompt_word_fi": "matkustaja",
+      "options": [
+        {
+          "key": "A",
+          "en": "person"
+        },
+        {
+          "key": "B",
+          "en": "customer situation"
+        },
+        {
+          "key": "C",
+          "en": "passenger"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "passenger",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q3",
+      "set_id": "set-9",
+      "index": 3,
+      "prompt_word_fi": "palvelu",
+      "options": [
+        {
+          "key": "A",
+          "en": "bullying OCR form"
+        },
+        {
+          "key": "B",
+          "en": "service / customer service"
+        },
+        {
+          "key": "C",
+          "en": "lost property"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "service / customer service",
+      "lesson_word_id": "set-9-w2"
+    },
+    {
+      "id": "set-9-q4",
+      "set_id": "set-9",
+      "index": 4,
+      "prompt_word_fi": "asiakaspalvelu",
+      "options": [
+        {
+          "key": "A",
+          "en": "discussion"
+        },
+        {
+          "key": "B",
+          "en": "calmly"
+        },
+        {
+          "key": "C",
+          "en": "customer service"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "customer service",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q5",
+      "set_id": "set-9",
+      "index": 5,
+      "prompt_word_fi": "asiallinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "appropriate/proper"
+        },
+        {
+          "key": "B",
+          "en": "poor service"
+        },
+        {
+          "key": "C",
+          "en": "appropriate / calm / polite"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "appropriate / calm / polite",
+      "lesson_word_id": "set-9-w3"
+    },
+    {
+      "id": "set-9-q6",
+      "set_id": "set-9",
+      "index": 6,
+      "prompt_word_fi": "kohteliaasti",
+      "options": [
+        {
+          "key": "A",
+          "en": "politely"
+        },
+        {
+          "key": "B",
+          "en": "person"
+        },
+        {
+          "key": "C",
+          "en": "passenger"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "politely",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q7",
+      "set_id": "set-9",
+      "index": 7,
+      "prompt_word_fi": "valitus",
+      "options": [
+        {
+          "key": "A",
+          "en": "complaint"
+        },
+        {
+          "key": "B",
+          "en": "customer’s request"
+        },
+        {
+          "key": "C",
+          "en": "service method/manner"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "complaint",
+      "lesson_word_id": "set-9-w4"
+    },
+    {
+      "id": "set-9-q8",
+      "set_id": "set-9",
+      "index": 8,
+      "prompt_word_fi": "valittaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "customer service"
+        },
+        {
+          "key": "B",
+          "en": "to complain"
+        },
+        {
+          "key": "C",
+          "en": "discussion"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to complain",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q9",
+      "set_id": "set-9",
+      "index": 9,
+      "prompt_word_fi": "löytötavara",
+      "options": [
+        {
+          "key": "A",
+          "en": "bullying OCR form"
+        },
+        {
+          "key": "B",
+          "en": "lost property"
+        },
+        {
+          "key": "C",
+          "en": "service / customer service"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "lost property",
+      "lesson_word_id": "set-9-w5"
+    },
+    {
+      "id": "set-9-q10",
+      "set_id": "set-9",
+      "index": 10,
+      "prompt_word_fi": "löytötavaratoimisto",
+      "options": [
+        {
+          "key": "A",
+          "en": "appropriate / calm / polite"
+        },
+        {
+          "key": "B",
+          "en": "lost-property office"
+        },
+        {
+          "key": "C",
+          "en": "appropriate/proper"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "lost-property office",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q11",
+      "set_id": "set-9",
+      "index": 11,
+      "prompt_word_fi": "käsilaukku",
+      "options": [
+        {
+          "key": "A",
+          "en": "appropriate / calm / polite"
+        },
+        {
+          "key": "B",
+          "en": "appropriate/proper"
+        },
+        {
+          "key": "C",
+          "en": "handbag"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "handbag",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q12",
+      "set_id": "set-9",
+      "index": 12,
+      "prompt_word_fi": "kiusaaminen",
+      "options": [
+        {
+          "key": "A",
+          "en": "appropriate / calm / polite"
+        },
+        {
+          "key": "B",
+          "en": "appropriate/proper"
+        },
+        {
+          "key": "C",
+          "en": "bullying"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "bullying",
+      "lesson_word_id": "set-9-w6"
+    },
+    {
+      "id": "set-9-q13",
+      "set_id": "set-9",
+      "index": 13,
+      "prompt_word_fi": "keskustelu",
+      "options": [
+        {
+          "key": "A",
+          "en": "discussion"
+        },
+        {
+          "key": "B",
+          "en": "customer service"
+        },
+        {
+          "key": "C",
+          "en": "calmly"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "discussion",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q14",
+      "set_id": "set-9",
+      "index": 14,
+      "prompt_word_fi": "rauhallisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "customer service"
+        },
+        {
+          "key": "B",
+          "en": "discussion"
+        },
+        {
+          "key": "C",
+          "en": "calmly"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "calmly",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q15",
+      "set_id": "set-9",
+      "index": 15,
+      "prompt_word_fi": "asiakkaan pyyntö",
+      "options": [
+        {
+          "key": "A",
+          "en": "customer’s request"
+        },
+        {
+          "key": "B",
+          "en": "service method/manner"
+        },
+        {
+          "key": "C",
+          "en": "customer service"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "customer’s request",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q16",
+      "set_id": "set-9",
+      "index": 16,
+      "prompt_word_fi": "palvelun taso",
+      "options": [
+        {
+          "key": "A",
+          "en": "properly"
+        },
+        {
+          "key": "B",
+          "en": "to the service number"
+        },
+        {
+          "key": "C",
+          "en": "service level"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "service level",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q17",
+      "set_id": "set-9",
+      "index": 17,
+      "prompt_word_fi": "tilannetaju",
+      "options": [
+        {
+          "key": "A",
+          "en": "situational awareness"
+        },
+        {
+          "key": "B",
+          "en": "in appropriate/proper"
+        },
+        {
+          "key": "C",
+          "en": "incorrect/erroneous"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "situational awareness",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q18",
+      "set_id": "set-9",
+      "index": 18,
+      "prompt_word_fi": "virheellinen",
+      "options": [
+        {
+          "key": "A",
+          "en": "in appropriate/proper"
+        },
+        {
+          "key": "B",
+          "en": "incorrect/erroneous"
+        },
+        {
+          "key": "C",
+          "en": "situational awareness"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "incorrect/erroneous",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q19",
+      "set_id": "set-9",
+      "index": 19,
+      "prompt_word_fi": "pahoitella",
+      "options": [
+        {
+          "key": "A",
+          "en": "appropriate / calm / polite"
+        },
+        {
+          "key": "B",
+          "en": "to apologise/regret"
+        },
+        {
+          "key": "C",
+          "en": "appropriate/proper"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to apologise/regret",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-9-q20",
+      "set_id": "set-9",
+      "index": 20,
+      "prompt_word_fi": "lompakko",
+      "options": [
+        {
+          "key": "A",
+          "en": "wallet"
+        },
+        {
+          "key": "B",
+          "en": "appropriate / calm / polite"
+        },
+        {
+          "key": "C",
+          "en": "appropriate/proper"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "wallet",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q1",
+      "set_id": "set-10",
+      "index": 1,
+      "prompt_word_fi": "ellei",
+      "options": [
+        {
+          "key": "A",
+          "en": "unless / if not"
+        },
+        {
+          "key": "B",
+          "en": "because"
+        },
+        {
+          "key": "C",
+          "en": "also"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "unless / if not",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q2",
+      "set_id": "set-10",
+      "index": 2,
+      "prompt_word_fi": "viipymättä",
+      "options": [
+        {
+          "key": "A",
+          "en": "without delay"
+        },
+        {
+          "key": "B",
+          "en": "when needed"
+        },
+        {
+          "key": "C",
+          "en": "after"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "without delay",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q3",
+      "set_id": "set-10",
+      "index": 3,
+      "prompt_word_fi": "jotta",
+      "options": [
+        {
+          "key": "A",
+          "en": "although / even if"
+        },
+        {
+          "key": "B",
+          "en": "so that / in order to"
+        },
+        {
+          "key": "C",
+          "en": "only"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "so that / in order to",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q4",
+      "set_id": "set-10",
+      "index": 4,
+      "prompt_word_fi": "koska",
+      "options": [
+        {
+          "key": "A",
+          "en": "because"
+        },
+        {
+          "key": "B",
+          "en": "until"
+        },
+        {
+          "key": "C",
+          "en": "however"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "because",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q5",
+      "set_id": "set-10",
+      "index": 5,
+      "prompt_word_fi": "kuitenkin",
+      "options": [
+        {
+          "key": "A",
+          "en": "when"
+        },
+        {
+          "key": "B",
+          "en": "however"
+        },
+        {
+          "key": "C",
+          "en": "if"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "however",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q6",
+      "set_id": "set-10",
+      "index": 6,
+      "prompt_word_fi": "vain",
+      "options": [
+        {
+          "key": "A",
+          "en": "always"
+        },
+        {
+          "key": "B",
+          "en": "never"
+        },
+        {
+          "key": "C",
+          "en": "only"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "only",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q7",
+      "set_id": "set-10",
+      "index": 7,
+      "prompt_word_fi": "kunnes",
+      "options": [
+        {
+          "key": "A",
+          "en": "until"
+        },
+        {
+          "key": "B",
+          "en": "so that"
+        },
+        {
+          "key": "C",
+          "en": "or"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "until",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q8",
+      "set_id": "set-10",
+      "index": 8,
+      "prompt_word_fi": "mikäli",
+      "options": [
+        {
+          "key": "A",
+          "en": "after"
+        },
+        {
+          "key": "B",
+          "en": "if / provided that"
+        },
+        {
+          "key": "C",
+          "en": "and / as well as"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "if / provided that",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q9",
+      "set_id": "set-10",
+      "index": 9,
+      "prompt_word_fi": "siten että",
+      "options": [
+        {
+          "key": "A",
+          "en": "so that / in such a way that"
+        },
+        {
+          "key": "B",
+          "en": "but"
+        },
+        {
+          "key": "C",
+          "en": "before"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "so that / in such a way that",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-10-q10",
+      "set_id": "set-10",
+      "index": 10,
+      "prompt_word_fi": "myös",
+      "options": [
+        {
+          "key": "A",
+          "en": "also"
+        },
+        {
+          "key": "B",
+          "en": "from what"
+        },
+        {
+          "key": "C",
+          "en": "unless / if not"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "also",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q1",
+      "set_id": "set-11",
+      "index": 1,
+      "prompt_word_fi": "mikä",
+      "options": [
+        {
+          "key": "A",
+          "en": "what / which"
+        },
+        {
+          "key": "B",
+          "en": "who"
+        },
+        {
+          "key": "C",
+          "en": "why"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "what / which",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q2",
+      "set_id": "set-11",
+      "index": 2,
+      "prompt_word_fi": "mitä",
+      "options": [
+        {
+          "key": "A",
+          "en": "where / in which"
+        },
+        {
+          "key": "B",
+          "en": "what"
+        },
+        {
+          "key": "C",
+          "en": "how much"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "what",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q3",
+      "set_id": "set-11",
+      "index": 3,
+      "prompt_word_fi": "kenen",
+      "options": [
+        {
+          "key": "A",
+          "en": "whose / who is responsible"
+        },
+        {
+          "key": "B",
+          "en": "when"
+        },
+        {
+          "key": "C",
+          "en": "from what"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "whose / who is responsible",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q4",
+      "set_id": "set-11",
+      "index": 4,
+      "prompt_word_fi": "kenellä",
+      "options": [
+        {
+          "key": "A",
+          "en": "what kind of"
+        },
+        {
+          "key": "B",
+          "en": "who has / with whom"
+        },
+        {
+          "key": "C",
+          "en": "which of two"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "who has / with whom",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q5",
+      "set_id": "set-11",
+      "index": 5,
+      "prompt_word_fi": "mistä",
+      "options": [
+        {
+          "key": "A",
+          "en": "to where / until what"
+        },
+        {
+          "key": "B",
+          "en": "from where / from what"
+        },
+        {
+          "key": "C",
+          "en": "why"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "from where / from what",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q6",
+      "set_id": "set-11",
+      "index": 6,
+      "prompt_word_fi": "mihin",
+      "options": [
+        {
+          "key": "A",
+          "en": "when"
+        },
+        {
+          "key": "B",
+          "en": "to where / until what / for what"
+        },
+        {
+          "key": "C",
+          "en": "how"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "to where / until what / for what",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q7",
+      "set_id": "set-11",
+      "index": 7,
+      "prompt_word_fi": "milloin",
+      "options": [
+        {
+          "key": "A",
+          "en": "when"
+        },
+        {
+          "key": "B",
+          "en": "who"
+        },
+        {
+          "key": "C",
+          "en": "in what way / how"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "when",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q8",
+      "set_id": "set-11",
+      "index": 8,
+      "prompt_word_fi": "miksi",
+      "options": [
+        {
+          "key": "A",
+          "en": "why"
+        },
+        {
+          "key": "B",
+          "en": "what"
+        },
+        {
+          "key": "C",
+          "en": "how long"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "why",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q9",
+      "set_id": "set-11",
+      "index": 9,
+      "prompt_word_fi": "miten",
+      "options": [
+        {
+          "key": "A",
+          "en": "how"
+        },
+        {
+          "key": "B",
+          "en": "whose"
+        },
+        {
+          "key": "C",
+          "en": "which of two"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "how",
+      "lesson_word_id": null
+    },
+    {
+      "id": "set-11-q10",
+      "set_id": "set-11",
+      "index": 10,
+      "prompt_word_fi": "kumpi",
+      "options": [
+        {
+          "key": "A",
+          "en": "how much"
+        },
+        {
+          "key": "B",
+          "en": "where"
+        },
+        {
+          "key": "C",
+          "en": "which of two"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "which of two",
+      "lesson_word_id": null
+    }
+  ]
+}

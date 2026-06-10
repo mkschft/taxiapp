@@ -9,7 +9,7 @@ import { X, Clock } from 'lucide-react-native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-import { getModelTestById, getQuestionById, getClueWords } from '../data/loaders';
+import { getModelTestById, getQuestionById } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { TestStackParamList } from '../navigation/types';
 

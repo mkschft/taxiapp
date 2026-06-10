@@ -10,7 +10,7 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { CategoryIcon } from '../theme/icons';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats, useWeakQuestionIds, useCategoryProgress } from '../store/progressStore';
-import { getQuestions, getCategories, getVocabWords } from '../data/loaders';
+import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
 const CAT_Q_MAP: Record<string, string[]> = {};
@@ -19,7 +19,7 @@ getQuestions().forEach(q => {
   CAT_Q_MAP[q.category_id].push(q.id);
 });
 const CATEGORIES = getCategories();
-const TOTAL_VOCAB = getVocabWords().length;
+const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
   const navigation = useNavigation<any>();

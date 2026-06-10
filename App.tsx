@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useCallback } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
+import type { RootStackParamList } from './src/navigation/types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Platform, View, StyleSheet, Text, ActivityIndicator } from 'react-native';
@@ -26,6 +27,51 @@ function applyGlobalFont() {
   TextAny.defaultProps.style = [{ fontFamily: font.regular }, TextAny.defaultProps.style];
 }
 
+// URL ↔ route mapping. Web syncs the address bar; native uses the prefixes for
+// deep links. Vocab paths follow /vocab/sets/:setId/lesson/:index.
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: [],
+  config: {
+    screens: {
+      Home: '',
+      App: {
+        screens: {
+          Dashboard: 'home',
+          Study: {
+            screens: {
+              StudyHome: 'study',
+              Guide: 'guide',
+              VocabSets: 'vocab/sets',
+              VocabSetDetail: 'vocab/sets/:setId',
+              VocabLesson: 'vocab/sets/:setId/lesson/:index',
+              VocabQuiz: 'vocab/sets/:setId/quiz',
+              ClueWords: 'clue-words',
+              ClueLesson: 'clue-words/:groupId/lesson/:index',
+              ClueQuiz: 'clue-words/:groupId/quiz',
+              Practice: 'practice',
+              Result: 'result',
+            },
+          },
+          Test: {
+            screens: {
+              TestHome: 'tests',
+              ModelTest: 'tests/:testId',
+              Result: 'tests/result',
+            },
+          },
+          Progress: 'progress',
+          Profile: {
+            screens: {
+              ProfileHome: 'profile',
+              Referral: 'profile/referral',
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 export default function App() {
   const [loaded] = useFonts({
     Inter_400Regular,
@@ -44,7 +90,7 @@ export default function App() {
   ) : (
     <SafeAreaProvider>
       <ProgressProvider>
-        <NavigationContainer>
+        <NavigationContainer linking={linking}>
           <StatusBar style="dark" />
           <RootNavigator />
         </NavigationContainer>

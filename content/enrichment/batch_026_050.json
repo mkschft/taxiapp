@@ -1,0 +1,606 @@
+{
+  "Q026": {
+    "question_en": "Which of the following is correct regarding seat-belt use by a customer under 15 travelling alone?",
+    "options_en": {
+      "A": "The customer themselves is responsible for seat-belt use.",
+      "B": "If it is not a school ride, the driver does not need to see to the customer's seat-belt use.",
+      "C": "The taxi driver must see to the customer's seat-belt use."
+    },
+    "fw": [{"fi": "yksin matkustavan alle 15-vuotiaan asiakkaan", "en": "a customer under 15 travelling alone"}],
+    "pcw": [{"fi": "Taksinkuljettajan on huolehdittava", "en": "the taxi driver must see to"}],
+    "ncw": [
+      {"fi": "Asiakas itse huolehtii", "en": "the customer themselves is responsible"},
+      {"fi": "ei tarvitse huolehtia", "en": "does not need to see to"}
+    ],
+    "explanation_en": "For an under-15 passenger the driver is responsible for seat-belt use (C). A and B wrongly shift or remove that responsibility.",
+    "difficulty": "Easy",
+    "tags": ["seatbelt", "under 15", "driver responsibility"]
+  },
+  "Q027": {
+    "question_fi": "Miten alle 3-vuotiasta lasta tulee kuljettaa taksissa?",
+    "options_fi": {
+      "A": "Lasta voi kuljettaa ilman turvalaitetta, kunhan hän istuu takapenkillä turvavyöhön kytkettynä.",
+      "B": "Lasta voi kuljettaa täysi-ikäisen matkustajan sylissä takapenkillä.",
+      "C": "Lapsi tulee aina kuljettaa asianmukaisessa turvalaitteessa."
+    },
+    "question_en": "How must a child under 3 be transported in a taxi?",
+    "options_en": {
+      "A": "The child may be transported without a child restraint, as long as they sit in the back seat fastened with the seat belt.",
+      "B": "The child may be carried on an adult passenger's lap in the back seat.",
+      "C": "The child must always be transported in an appropriate child restraint."
+    },
+    "fw": [{"fi": "alle 3-vuotiasta lasta", "en": "a child under 3"}],
+    "pcw": [{"fi": "asianmukaisessa turvalaitteessa", "en": "in an appropriate child restraint"}],
+    "ncw": [
+      {"fi": "ilman turvalaitetta", "en": "without a child restraint"},
+      {"fi": "matkustajan sylissä", "en": "on a passenger's lap"}
+    ],
+    "explanation_en": "A child under 3 must always ride in a proper child restraint (C). Travelling without one (A) or on a lap (B) is not allowed.",
+    "difficulty": "Easy",
+    "tags": ["child", "under 3", "child restraint"]
+  },
+  "Q028": {
+    "question_fi": "Kuinka toimit, kun tilausosoitteeseen saapuessasi huomaat, että matkustaja on kolmevuotias lapsi eikä autossasi ole hänelle sopivaa turvalaitetta?",
+    "options_fi": {
+      "A": "Pahoittelet asiakkaille, ettet voi ottaa heitä kyytiin, ja ehdotat tilaavasi heille turvalaitteilla varustetun ajoneuvon.",
+      "B": "Toivotat asiakkaat tervetulleiksi, mutta lapsi joutuu istumaan ilman turvalaitetta etupenkillä turvavöissä.",
+      "C": "Toivotat asiakkaat tervetulleiksi taksiin, mutta lapsi joutuu istumaan ilman turvalaitetta."
+    },
+    "question_en": "How do you act when, arriving at the booking address, you notice a passenger is a three-year-old child and your car has no suitable child restraint for them?",
+    "options_en": {
+      "A": "You apologise that you cannot take them, and propose to order them a vehicle equipped with a child restraint.",
+      "B": "You welcome the customers, but the child must sit without a restraint in the front seat with the seat belt.",
+      "C": "You welcome the customers into the taxi, but the child must sit without a child restraint."
+    },
+    "fw": [
+      {"fi": "kolmevuotias lapsi", "en": "a three-year-old child"},
+      {"fi": "hänelle sopivaa turvalaitetta", "en": "a suitable child restraint for them"}
+    ],
+    "pcw": [{"fi": "turvalaitteilla varustetun ajoneuvon", "en": "a vehicle equipped with a child restraint"}],
+    "ncw": [
+      {"fi": "ilman turvalaitetta etupenkillä", "en": "without a restraint in the front seat"},
+      {"fi": "joutuu istumaan ilman turvalaitetta", "en": "must sit without a child restraint"}
+    ],
+    "explanation_en": "Without a suitable restraint you cannot carry a 3-year-old; arrange a properly equipped vehicle (A). Seating the child without a restraint (B, C) is unsafe and not permitted.",
+    "difficulty": "Medium",
+    "tags": ["child", "child restraint", "refusal", "alternative vehicle"]
+  },
+  "Q029": {
+    "question_fi": "Mikä seuraavista pyörätuolin käyttöä ja kiinnittämistä koskevista väitteistä pitää paikkansa?",
+    "options_fi": {
+      "A": "Sähköpyörätuolia ei tarvitse kiinnittää ajoneuvoon.",
+      "B": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
+      "C": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen."
+    },
+    "question_en": "Which of the following statements about wheelchair use and securing is true?",
+    "options_en": {
+      "A": "An electric wheelchair does not need to be secured to the vehicle.",
+      "B": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
+      "C": "The wheelchair must be secured so that it prevents only sideways movement."
+    },
+    "fw": [{"fi": "pyörätuolin käyttöä ja kiinnittämistä", "en": "wheelchair use and securing"}],
+    "pcw": [{"fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä", "en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive"}],
+    "ncw": [
+      {"fi": "Sähköpyörätuolia ei tarvitse kiinnittää", "en": "an electric wheelchair need not be secured"},
+      {"fi": "ainoastaan sivusuuntaisen liikkeen", "en": "only sideways movement"}
+    ],
+    "explanation_en": "The marked answer is B. A is false — every wheelchair, including an electric one, must be secured. C is false — securing must restrain movement in all directions, not only sideways.",
+    "difficulty": "Hard",
+    "tags": ["wheelchair", "securing", "seatbelt", "review-flag"],
+    "notes": "Marked-correct option B is pedagogically questionable: a wheelchair passenger normally should also use the vehicle's seat belt. Verify the answer key against the official source."
+  },
+  "Q030": {
+    "question_fi": "Mikä seuraavista pyörätuolin käyttöä ja kiinnittymistä koskevista väitteistä pitää paikkansa?",
+    "options_fi": {
+      "A": "Pyörätuoli on kiinnitettävä sen rungosta.",
+      "B": "Nimenomaan sisäkäyttöön tarkoitettua pyörätuolia ei tarvitse kiinnittää ajon aikana, jos taksimatkan pituus on alle kilometrin.",
+      "C": "Asiakas päättää, kiinnitetäänkö pyörätuoli."
+    },
+    "question_en": "Which of the following statements about wheelchair use and securing is true?",
+    "options_en": {
+      "A": "The wheelchair must be secured from its frame.",
+      "B": "A wheelchair specifically meant for indoor use need not be secured during the drive if the taxi trip is under one kilometre.",
+      "C": "The customer decides whether the wheelchair is secured."
+    },
+    "fw": [{"fi": "pyörätuolin käyttöä ja kiinnittymistä", "en": "wheelchair use and securing"}],
+    "pcw": [{"fi": "Pyörätuoli on kiinnitettävä sen rungosta", "en": "the wheelchair must be secured from its frame"}],
+    "ncw": [
+      {"fi": "ei tarvitse kiinnittää ajon aikana", "en": "need not be secured during the drive"},
+      {"fi": "Asiakas päättää, kiinnitetäänkö pyörätuoli", "en": "the customer decides whether to secure it"}
+    ],
+    "explanation_en": "A wheelchair must be secured by its frame (A). Trip length (B) and customer preference (C) do not remove the requirement.",
+    "difficulty": "Medium",
+    "tags": ["wheelchair", "securing", "frame"]
+  },
+  "Q031": {
+    "question_fi": "Kasvava osa taksinkuljetuksista hoidetaan esteettömillä takseilla. Miten pyörätuoli on kiinnitettävä, kun matkustaja istuu matkan ajan pyörätuolissa?",
+    "options_fi": {
+      "A": "Pyörätuolin jarrut laitetaan päälle ja pyörätuoli kiinnitetään auton turvavyöllä.",
+      "B": "Pyörätuolin jarrut laitetaan päälle ja pyörätuoli kiinnitetään tuolin rungosta neljästä pisteestä.",
+      "C": "Asiakas päättää, kiinnitetäänkö pyörätuoli."
+    },
+    "question_en": "Taxi transport is increasingly done with accessible vehicles. How must the wheelchair be secured when the passenger sits in the wheelchair throughout the journey?",
+    "options_en": {
+      "A": "The wheelchair brakes are applied and the wheelchair is secured with the car's seat belt.",
+      "B": "The wheelchair brakes are applied and the wheelchair is secured by its frame at four points.",
+      "C": "The customer decides whether the wheelchair is secured."
+    },
+    "fw": [
+      {"fi": "pyörätuoli on kiinnitettävä", "en": "the wheelchair must be secured"},
+      {"fi": "istuu matkan ajan pyörätuolissa", "en": "sits in the wheelchair throughout the journey"}
+    ],
+    "pcw": [
+      {"fi": "kiinnitetään tuolin rungosta neljästä pisteestä", "en": "secured by its frame at four points"},
+      {"fi": "jarrut laitetaan päälle", "en": "the brakes are applied"}
+    ],
+    "ncw": [
+      {"fi": "kiinnitetään auton turvavyöllä", "en": "secured with the car's seat belt"},
+      {"fi": "Asiakas päättää, kiinnitetäänkö pyörätuoli", "en": "the customer decides whether to secure it"}
+    ],
+    "explanation_en": "Secure the wheelchair by its frame at four points with the brakes on (B). The car seat belt alone (A) is not enough, and it is not the customer's choice (C).",
+    "difficulty": "Medium",
+    "tags": ["wheelchair", "four-point", "securing"]
+  },
+  "Q032": {
+    "question_fi": "Kenen vastuulla on pyörätuolin huolellinen kiinnittäminen taksiin, kun asiakkaalla on mukana henkilökohtainen avustaja?",
+    "options_fi": {
+      "A": "Asiakkaan.",
+      "B": "Taksinkuljettajan.",
+      "C": "Henkilökohtaisen avustajan."
+    },
+    "question_en": "Whose responsibility is the careful securing of the wheelchair in the taxi when the customer has a personal assistant with them?",
+    "options_en": {
+      "A": "The customer's.",
+      "B": "The taxi driver's.",
+      "C": "The personal assistant's."
+    },
+    "fw": [
+      {"fi": "pyörätuolin huolellinen kiinnittäminen", "en": "careful securing of the wheelchair"},
+      {"fi": "henkilökohtainen avustaja", "en": "a personal assistant"}
+    ],
+    "pcw": [{"fi": "Taksinkuljettajan", "en": "the taxi driver's"}],
+    "ncw": [
+      {"fi": "Asiakkaan", "en": "the customer's"},
+      {"fi": "Henkilökohtaisen avustajan", "en": "the personal assistant's"}
+    ],
+    "explanation_en": "Securing the wheelchair is always the taxi driver's responsibility (B), even when a personal assistant is present. It is not the customer's (A) or the assistant's (C) duty.",
+    "difficulty": "Easy",
+    "tags": ["wheelchair", "responsibility", "personal assistant"]
+  },
+  "Q033": {
+    "question_fi": "Taksit hoitavat merkittävän osan kuntien järjestämistä koulu- ja päiväkotikuljetuksista. Oppilaat ovat lapsia ja nuoria, mikä edellyttää kuljettajilta kykyä toimia heidän kanssaan. Oppilaskuljetuksia tekevän taksinkuljettajan kuuluu muun muassa:",
+    "options_fi": {
+      "A": "Oppilaan hakeminen ja vieminen sisältä, kotitehtävien tarkastaminen ja oppilaan saattaminen luokkaan.",
+      "B": "Oppilaan turvavyön varmistaminen ja vastuulliseen liikennekäyttäytymiseen opastaminen.",
+      "C": "Jatkuva yhteydenpito oppilaiden vanhempien kanssa: kuljettajan tulee soittaa kaikkien kyydissä olevien lasten vanhemmille, kun lapset tulevat kyytiin ja kun he poistuvat kyydistä."
+    },
+    "question_en": "Taxis handle a significant share of municipal school and daycare transport. The pupils are children and young people, which requires drivers able to work with them. A driver doing pupil transport should, among other things:",
+    "options_en": {
+      "A": "Fetch and bring the pupil from indoors, check homework, and escort the pupil to the classroom.",
+      "B": "Ensure the pupil's seat belt and guide them toward responsible behaviour in traffic.",
+      "C": "Keep continuous contact with the pupils' parents: the driver must call every child's parents when they board and when they leave."
+    },
+    "fw": [{"fi": "Oppilaskuljetuksia tekevän", "en": "doing pupil transport"}],
+    "pcw": [
+      {"fi": "turvavyön varmistaminen", "en": "ensuring the seat belt"},
+      {"fi": "vastuulliseen liikennekäyttäytymiseen opastaminen", "en": "guiding toward responsible traffic behaviour"}
+    ],
+    "ncw": [
+      {"fi": "kotitehtävien tarkastaminen", "en": "checking homework"},
+      {"fi": "soittaa kaikkien kyydissä olevien lasten vanhemmille", "en": "call the parents of every child in the car"}
+    ],
+    "explanation_en": "A pupil-transport driver ensures seat-belt use and models responsible road behaviour (B). Checking homework and escorting to class (A), or phoning every parent each trip (C), are not the driver's duties.",
+    "difficulty": "Medium",
+    "tags": ["school transport", "pupil", "seatbelt", "driver role"]
+  },
+  "Q034": {
+    "question_fi": "Mitä taksinkuljettajan tulee muistaa koulun ja päivähoidon kuljetuksiin liittyen?",
+    "options_fi": {
+      "A": "Lapsille ei saa puhua matkan aikana.",
+      "B": "Lapselle tulee tarjota riittävästi virvokkeita.",
+      "C": "Kuljettajan tulee käyttäytyä vastuullisen aikuisen ja esimerkillisen roolimallin mukaisesti."
+    },
+    "question_en": "What must a taxi driver keep in mind regarding school and daycare transport?",
+    "options_en": {
+      "A": "You must not talk to the children during the journey.",
+      "B": "The child must be offered enough refreshments.",
+      "C": "The driver must behave as a responsible adult and an exemplary role model."
+    },
+    "fw": [{"fi": "koulun ja päivähoidon kuljetuksiin", "en": "school and daycare transport"}],
+    "pcw": [{"fi": "vastuullisen aikuisen ja esimerkillisen roolimallin", "en": "a responsible adult and exemplary role model"}],
+    "ncw": [
+      {"fi": "ei saa puhua matkan aikana", "en": "must not talk during the journey"},
+      {"fi": "tarjota riittävästi virvokkeita", "en": "offer enough refreshments"}
+    ],
+    "explanation_en": "The driver must act as a responsible adult and role model (C). There is no rule against talking to children (A), and offering refreshments (B) is not a duty.",
+    "difficulty": "Easy",
+    "tags": ["school transport", "role model", "responsibility"]
+  },
+  "Q035": {
+    "question_fi": "Koulukuljetuksia hoitava taksinkuljettaja on lapsen elämässä tärkeä aikuinen. Mitä on hyvä muistaa turvavyön käytöstä?",
+    "options_fi": {
+      "A": "Kuljettajan ei tarvitse käyttää turvavyötä.",
+      "B": "Myös kuljettajan tulee käyttää turvavyötä.",
+      "C": "Takapenkillä matkustavan ei tarvitse käyttää turvavyötä."
+    },
+    "question_en": "A taxi driver doing school transport is an important adult in a child's life. What is good to remember about seat-belt use?",
+    "options_en": {
+      "A": "The driver does not need to use a seat belt.",
+      "B": "The driver too must use a seat belt.",
+      "C": "Someone travelling in the back seat does not need to use a seat belt."
+    },
+    "fw": [{"fi": "turvavyön käytöstä", "en": "seat-belt use"}, {"fi": "tärkeä aikuinen", "en": "an important adult"}],
+    "pcw": [{"fi": "Myös kuljettajan tulee käyttää turvavyötä", "en": "the driver too must use a seat belt"}],
+    "ncw": [
+      {"fi": "Kuljettajan ei tarvitse käyttää turvavyötä", "en": "the driver does not need to use a seat belt"},
+      {"fi": "Takapenkillä matkustavan ei tarvitse", "en": "a back-seat passenger does not need to"}
+    ],
+    "explanation_en": "The driver must also wear a seat belt and set an example (B). Both A and C falsely exempt people from belt use.",
+    "difficulty": "Easy",
+    "tags": ["seatbelt", "role model", "driver"]
+  },
+  "Q036": {
+    "question_fi": "Alkolukko on pakollinen varuste autoissa, joilla suoritetaan koulun tai päivähoidon kuljetuksia. Alkolukko säädetään siten, että ajoneuvon käynnistyminen estyy, jos kuljettajan uloshengitysilman alkoholipitoisuus on:",
+    "options_fi": {
+      "A": "0,10 milligrammaa alkoholia litrassa uloshengitysilmaa tai enemmän.",
+      "B": "0,50 milligrammaa litrassa uloshengitysilmaa tai enemmän.",
+      "C": "yli 0 milligrammaa litrassa uloshengitysilmaa."
+    },
+    "question_en": "An alcolock is mandatory equipment in cars used for school or daycare transport. The alcolock is set so that the vehicle is prevented from starting if the driver's exhaled-air alcohol content is:",
+    "options_en": {
+      "A": "0.10 milligrams of alcohol per litre of exhaled air or more.",
+      "B": "0.50 milligrams per litre of exhaled air or more.",
+      "C": "more than 0 milligrams per litre of exhaled air."
+    },
+    "fw": [{"fi": "Alkolukko", "en": "alcolock"}, {"fi": "alkoholipitoisuus", "en": "alcohol content"}],
+    "pcw": [{"fi": "0,10 milligrammaa alkoholia litrassa uloshengitysilmaa", "en": "0.10 milligrams of alcohol per litre of exhaled air"}],
+    "ncw": [
+      {"fi": "0,50 milligrammaa", "en": "0.50 milligrams"},
+      {"fi": "yli 0 milligrammaa", "en": "more than 0 milligrams"}
+    ],
+    "explanation_en": "The alcolock blocks starting at the marked legal limit (A). B and C state incorrect thresholds.",
+    "difficulty": "Hard",
+    "tags": ["alcolock", "school transport", "alcohol limit", "review-flag"],
+    "notes": "Source had option A as '10 milligrammaa ... litrassa'; corrected to 0,10 mg/l to match the standard alcolock limit. Confirm the exact legal value."
+  },
+  "Q037": {
+    "question_fi": "Lasten kanssa työskentelevältä vaaditaan moitteetonta taustaa. Tämän vuoksi jokaiselta koulun ja päivähoidon kuljetuksia hoitavalta kuljettajalta vaaditaan rikosrekisteriote. Kuka tuon otteen hankkii?",
+    "options_fi": {
+      "A": "Kuljettajan työnantaja.",
+      "B": "Kuljettaja.",
+      "C": "Kuljetuksen tilaaja."
+    },
+    "question_en": "Those who work with children must have a clean background, so every driver doing school and daycare transport needs a criminal-record extract. Who obtains that extract?",
+    "options_en": {
+      "A": "The driver's employer.",
+      "B": "The driver.",
+      "C": "The party ordering the transport."
+    },
+    "fw": [
+      {"fi": "rikosrekisteriote", "en": "criminal-record extract"},
+      {"fi": "moitteetonta taustaa", "en": "a clean background"}
+    ],
+    "pcw": [{"fi": "Kuljettaja.", "en": "the driver"}],
+    "ncw": [
+      {"fi": "Kuljettajan työnantaja", "en": "the driver's employer"},
+      {"fi": "Kuljetuksen tilaaja", "en": "the party ordering the transport"}
+    ],
+    "explanation_en": "The driver themselves obtains the criminal-record extract (B). It is not the employer's (A) or the orderer's (C) task.",
+    "difficulty": "Medium",
+    "tags": ["criminal record", "school transport", "background check"]
+  },
+  "Q038": {
+    "question_fi": "Miten tulee toimia, kun pyörätuolissa olevan asiakkaan vaatteet ovat jääneet siten, että asiakkaalla on epämiellyttävä istua?",
+    "options_fi": {
+      "A": "Varmistat, että asiakkaalla on mukava olla, ja autat tarvittaessa oikaisemaan asiakkaan vaatteet.",
+      "B": "Kuljettajan tehtävä ei ole suoristaa asiakkaan vaatteita.",
+      "C": "Kuljettajan tehtävä on aina pukea asiakas ennen kyytiin ottamista."
+    },
+    "question_en": "How should you act when a wheelchair customer's clothing has shifted so that they are uncomfortable sitting?",
+    "options_en": {
+      "A": "Ensure the customer is comfortable and, if needed, help straighten the customer's clothes.",
+      "B": "It is not the driver's job to straighten the customer's clothes.",
+      "C": "It is always the driver's job to dress the customer before taking them aboard."
+    },
+    "fw": [{"fi": "epämiellyttävä istua", "en": "uncomfortable to sit"}],
+    "pcw": [
+      {"fi": "Varmistat, että asiakkaalla on mukava olla", "en": "ensure the customer is comfortable"},
+      {"fi": "autat tarvittaessa oikaisemaan asiakkaan vaatteet", "en": "help straighten the customer's clothes if needed"}
+    ],
+    "ncw": [
+      {"fi": "ei ole suoristaa asiakkaan vaatteita", "en": "not to straighten the customer's clothes"},
+      {"fi": "aina pukea asiakas", "en": "always dress the customer"}
+    ],
+    "explanation_en": "The driver ensures comfort and helps straighten clothing when asked (A). B refuses help; C overstates the duty (dressing the customer). This mirrors Q014.",
+    "difficulty": "Medium",
+    "tags": ["wheelchair", "assistance", "passenger comfort"]
+  },
+  "Q039": {
+    "question_fi": "Taksisi kyytiin tulee 10-vuotias Elina, joka ilmoittaa, ettei halua käyttää turvavyötä, koska se tuntuu epämiellyttävältä, ja kertoo äidin antaneen hänelle luvan matkustaa ilman turvavyön kiinnittämistä. Mitä teet?",
+    "options_fi": {
+      "A": "Lapsen huoltajat voivat päättää, että Elina saa matkustaa ilman turvavyötä, joten Elinan ei tarvitse laittaa turvavyötä.",
+      "B": "Taksissa voi matkustaa ilman turvavyötä, joten Elinan ei tarvitse laittaa turvavyötä.",
+      "C": "Huolehdit, että Elina kiinnittää turvavyön. Yksin matkustava lapsi pitää taksissa aina turvavyötä."
+    },
+    "question_en": "A 10-year-old, Elina, gets into your taxi and says she does not want to use the seat belt because it feels uncomfortable, and that her mother has given permission to travel without fastening it. What do you do?",
+    "options_en": {
+      "A": "The child's guardians can decide that Elina may travel without a seat belt, so Elina need not put one on.",
+      "B": "One may travel in a taxi without a seat belt, so Elina need not put one on.",
+      "C": "You make sure Elina fastens the seat belt. A child travelling alone always wears a seat belt in a taxi."
+    },
+    "fw": [
+      {"fi": "10-vuotias Elina", "en": "10-year-old Elina"},
+      {"fi": "äidin antaneen hänelle luvan", "en": "her mother has given her permission"}
+    ],
+    "pcw": [
+      {"fi": "Huolehdit, että Elina kiinnittää turvavyön", "en": "you make sure Elina fastens the seat belt"},
+      {"fi": "Yksin matkustava lapsi pitää taksissa aina turvavyötä", "en": "a child travelling alone always wears a seat belt in a taxi"}
+    ],
+    "ncw": [
+      {"fi": "huoltajat voivat päättää", "en": "the guardians can decide"},
+      {"fi": "Taksissa voi matkustaa ilman turvavyötä", "en": "one may travel in a taxi without a seat belt"}
+    ],
+    "explanation_en": "For an under-15 travelling alone, the driver must ensure belt use (C) regardless of the child's or parent's wishes. A and B wrongly permit travel without a belt.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "child", "under 15", "guardian permission"]
+  },
+  "Q040": {
+    "question_fi": "Miksi alkolukko vaaditaan pakollisena varusteena kunnan tilaamissa koulu- ja päivähoidon kuljetuksissa?",
+    "options_fi": {
+      "A": "Sillä estetään ajoneuvon liikkuminen, jos kuljettaja on nauttinut alkoholia.",
+      "B": "Se on tarkoitettu ainoastaan työnantajan seurantavälineeksi kuljettajan alkoholinkäytöstä.",
+      "C": "Sillä poliisi tarkistaa liikenteenvalvonnassa kuljettajan ajokunnon."
+    },
+    "question_en": "Why is an alcolock required as mandatory equipment in municipally ordered school and daycare transport?",
+    "options_en": {
+      "A": "Because it prevents the vehicle from moving if the driver has consumed alcohol.",
+      "B": "It is intended only as the employer's monitoring tool for the driver's alcohol use.",
+      "C": "Because the police check the driver's fitness to drive during traffic enforcement."
+    },
+    "fw": [{"fi": "alkolukko", "en": "alcolock"}],
+    "pcw": [{"fi": "estetään ajoneuvon liikkuminen, jos kuljettaja on nauttinut alkoholia", "en": "prevents the vehicle from moving if the driver has consumed alcohol"}],
+    "ncw": [
+      {"fi": "ainoastaan työnantajan seurantavälineeksi", "en": "only the employer's monitoring tool"},
+      {"fi": "poliisi tarkistaa", "en": "the police check"}
+    ],
+    "explanation_en": "The alcolock stops the vehicle from starting if the driver has been drinking (A). It is not merely an employer tool (B) or a police-check device (C). The limiting word 'ainoastaan' (only) marks B as wrong.",
+    "difficulty": "Easy",
+    "tags": ["alcolock", "purpose", "alcohol"]
+  },
+  "Q041": {
+    "question_fi": "Miten tulee toimia, kun pyörätuolissa oleva asiakas haluaa itse siirtyä pyörätuolistaan?",
+    "options_fi": {
+      "A": "Asiakas ei voi koskaan siirtyä ilman kuljettajan apua.",
+      "B": "Annat asiakkaan siirtyä itse ja avustat tarvittaessa.",
+      "C": "Jos matkustaja haluaa siirtyä itse ajoneuvoon, voit siirtyä odottamaan kuljettajan paikalle."
+    },
+    "question_en": "How should you act when a customer in a wheelchair wants to transfer out of their wheelchair by themselves?",
+    "options_en": {
+      "A": "The customer can never transfer without the driver's help.",
+      "B": "You let the customer transfer themselves and assist if needed.",
+      "C": "If the passenger wants to transfer into the vehicle themselves, you may go and wait in the driver's seat."
+    },
+    "fw": [
+      {"fi": "pyörätuolissa oleva asiakas", "en": "a customer in a wheelchair"},
+      {"fi": "haluaa itse siirtyä", "en": "wants to transfer themselves"}
+    ],
+    "pcw": [
+      {"fi": "Annat asiakkaan siirtyä itse", "en": "you let the customer transfer themselves"},
+      {"fi": "avustat tarvittaessa", "en": "assist if needed"}
+    ],
+    "ncw": [
+      {"fi": "ei voi koskaan siirtyä ilman kuljettajan apua", "en": "can never transfer without the driver's help"},
+      {"fi": "voit siirtyä odottamaan kuljettajan paikalle", "en": "you may go and wait in the driver's seat"}
+    ],
+    "explanation_en": "Let the customer transfer themselves and help only if needed (B). The absolute 'never' (A) and abandoning them (C) are wrong. (Duplicate of Q016.)",
+    "difficulty": "Easy",
+    "tags": ["wheelchair", "autonomy", "assistance"]
+  },
+  "Q042": {
+    "question_fi": "Kuinka paljon taksissa saa enintään ylittää ajoneuvon istuinpaikkaluvun mukaisen henkilömäärän, jos kyseessä ei ole koulu- ja päivähoidon kuljetus?",
+    "options_fi": {
+      "A": "Ei yhtään.",
+      "B": "Ylitys saa olla enintään 30 %.",
+      "C": "Kuljettaja voi oman harkintansa mukaan päättää, kuinka paljon henkilömäärän voi ylittää."
+    },
+    "question_en": "By how much at most may the number of people in a taxi exceed the vehicle's seating capacity, if it is not school or daycare transport?",
+    "options_en": {
+      "A": "Not at all.",
+      "B": "The excess may be at most 30%.",
+      "C": "The driver may decide at their own discretion how much it can be exceeded."
+    },
+    "fw": [{"fi": "istuinpaikkaluvun mukaisen henkilömäärän", "en": "the number of people per seating capacity"}],
+    "pcw": [{"fi": "Ei yhtään", "en": "not at all"}],
+    "ncw": [
+      {"fi": "enintään 30 %", "en": "at most 30%"},
+      {"fi": "oman harkintansa mukaan", "en": "at their own discretion"}
+    ],
+    "explanation_en": "Seating capacity may not be exceeded at all (A). There is no 30% allowance (B), and it is not at the driver's discretion (C).",
+    "difficulty": "Easy",
+    "tags": ["seating capacity", "passengers", "rules"]
+  },
+  "Q043": {
+    "question_fi": "Seuraavassa on kolme väittämää taksinkuljettajan velvollisuuksista. Mikä niistä on mielestäsi oikein?",
+    "options_fi": {
+      "A": "Alle 135 cm:n pituinen lapsi tarvitsee aina turvalaitteen matkustaessaan taksissa.",
+      "B": "Lapsi voi matkustaa taksilla ilman turvalaitetta, kunhan hän istuu takapenkillä turvavyöt kiinnitettyinä.",
+      "C": "Alle 3-vuotias lapsi ei saa matkustaa taksissa ilman huoltajan kirjallista suostumusta."
+    },
+    "question_en": "Here are three statements about a taxi driver's obligations — which is correct?",
+    "options_en": {
+      "A": "A child under 135 cm always needs a child restraint when travelling in a taxi.",
+      "B": "A child may travel in a taxi without a restraint as long as they sit in the back seat with the seat belt fastened.",
+      "C": "A child under 3 may not travel in a taxi without the guardian's written consent."
+    },
+    "fw": [{"fi": "taksinkuljettajan velvollisuuksista", "en": "a taxi driver's obligations"}],
+    "pcw": [{"fi": "Alle 135 cm:n pituinen lapsi tarvitsee aina turvalaitteen", "en": "a child under 135 cm always needs a child restraint"}],
+    "ncw": [
+      {"fi": "ilman turvalaitetta, kunhan hän istuu takapenkillä", "en": "without a restraint as long as they sit in the back seat"},
+      {"fi": "ilman huoltajan kirjallista suostumusta", "en": "without the guardian's written consent"}
+    ],
+    "explanation_en": "A child under 135 cm always needs a child restraint (A). B wrongly waives it for back-seat belt use; C invents a written-consent rule.",
+    "difficulty": "Medium",
+    "tags": ["child restraint", "135 cm", "obligations"]
+  },
+  "Q044": {
+    "question_fi": "Kuka vastaa 15 vuotta täyttäneen turvavyön käytöstä?",
+    "options_fi": {
+      "A": "Kuljettaja.",
+      "B": "Asiakas.",
+      "C": "Taksissa turvavyön käyttö on aina vapaaehtoista, joten turvavyöstä ei tarvitse välittää."
+    },
+    "question_en": "Who is responsible for seat-belt use once a person has turned 15?",
+    "options_en": {
+      "A": "The driver.",
+      "B": "The customer.",
+      "C": "Seat-belt use in a taxi is always voluntary, so the seat belt need not be worn."
+    },
+    "fw": [{"fi": "15 vuotta täyttäneen", "en": "once turned 15"}],
+    "pcw": [{"fi": "Asiakas", "en": "the customer"}],
+    "ncw": [
+      {"fi": "Kuljettaja", "en": "the driver"},
+      {"fi": "turvavyön käyttö on aina vapaaehtoista", "en": "seat-belt use is always voluntary"}
+    ],
+    "explanation_en": "From age 15 the passenger is responsible for their own belt use (B). It is not the driver (A), and belt use is never voluntary (C).",
+    "difficulty": "Easy",
+    "tags": ["seatbelt", "over 15", "responsibility"]
+  },
+  "Q045": {
+    "question_fi": "Milloin taksissa tulee olla alkolukko?",
+    "options_fi": {
+      "A": "Aina, kun suoritetaan kunnan tilaamia koulu- ja päivähoidon kuljetuksia.",
+      "B": "Aina, kun asiakas otetaan kyytiin ilman ennakkotilausta.",
+      "C": "Vain jos kuljettajalla on taksinkuljettajan ajoluvassa alkolukkoa vastaava erityisehto."
+    },
+    "question_en": "When must a taxi have an alcolock?",
+    "options_en": {
+      "A": "Always when carrying out municipally ordered school and daycare transport.",
+      "B": "Always when a customer is picked up without advance booking.",
+      "C": "Only if the driver has a special condition corresponding to an alcolock in their taxi-driver permit."
+    },
+    "fw": [{"fi": "alkolukko", "en": "alcolock"}],
+    "pcw": [{"fi": "kunnan tilaamia koulu- ja päivähoidon kuljetuksia", "en": "municipally ordered school and daycare transport"}],
+    "ncw": [
+      {"fi": "ilman ennakkotilausta", "en": "without advance booking"},
+      {"fi": "alkolukkoa vastaava erityisehto", "en": "a special alcolock condition in the permit"}
+    ],
+    "explanation_en": "An alcolock is required for municipal school and daycare transport (A). It is unrelated to advance booking (B) or a permit condition (C).",
+    "difficulty": "Medium",
+    "tags": ["alcolock", "school transport", "requirement"]
+  },
+  "Q046": {
+    "question_fi": "Missä seuraavista tilanteista taksissa tulee olla kuljettajan nimi esillä?",
+    "options_fi": {
+      "A": "Vain ennakkotilauskuljetuksissa.",
+      "B": "Kaikissa kuljetuksissa.",
+      "C": "Vain koulu- ja päivähoidon kuljetuksissa."
+    },
+    "question_en": "In which of the following situations must the driver's name be displayed in the taxi?",
+    "options_en": {
+      "A": "Only in pre-booked transport.",
+      "B": "In all transport.",
+      "C": "Only in school and daycare transport."
+    },
+    "fw": [{"fi": "kuljettajan nimi esillä", "en": "the driver's name displayed"}],
+    "pcw": [{"fi": "Kaikissa kuljetuksissa", "en": "in all transport"}],
+    "ncw": [
+      {"fi": "Vain ennakkotilauskuljetuksissa", "en": "only in pre-booked transport"},
+      {"fi": "Vain koulu- ja päivähoidon kuljetuksissa", "en": "only in school and daycare transport"}
+    ],
+    "explanation_en": "The driver's name must be displayed in all transport (B). The 'only' options (A, C) wrongly limit it.",
+    "difficulty": "Easy",
+    "tags": ["driver name", "display", "all rides"]
+  },
+  "Q047": {
+    "question_fi": "Seuraavassa on kolme väittämää taksinkuljettajan velvollisuuksista. Mikä niistä on mielestäsi oikein?",
+    "options_fi": {
+      "A": "Alle 135 cm:n pituinen lapsi tarvitsee aina turvalaitteen matkustaessaan taksissa.",
+      "B": "Lapsi voi matkustaa taksissa ilman turvalaitetta, kunhan hän istuu takapenkillä ja on turvavöissä.",
+      "C": "Alle 3-vuotias istuu aina etupenkillä."
+    },
+    "question_en": "Here are three statements about a taxi driver's obligations. Which is correct?",
+    "options_en": {
+      "A": "A child under 135 cm always needs a child restraint when travelling in a taxi.",
+      "B": "A child may travel in a taxi without a restraint as long as they sit in the back seat with seat belts on.",
+      "C": "A child under 3 always sits in the front seat."
+    },
+    "fw": [{"fi": "taksinkuljettajan velvollisuuksista", "en": "a taxi driver's obligations"}],
+    "pcw": [{"fi": "Alle 135 cm:n pituinen lapsi tarvitsee aina turvalaitteen", "en": "a child under 135 cm always needs a child restraint"}],
+    "ncw": [
+      {"fi": "ilman turvalaitetta, kunhan hän istuu takapenkillä", "en": "without a restraint as long as they sit in the back seat"},
+      {"fi": "Alle 3-vuotias istuu aina etupenkillä", "en": "a child under 3 always sits in the front seat"}
+    ],
+    "explanation_en": "A child under 135 cm always needs a child restraint (A). B waives it incorrectly; C states a false front-seat rule.",
+    "difficulty": "Medium",
+    "tags": ["child restraint", "135 cm", "obligations"]
+  },
+  "Q048": {
+    "question_fi": "Mikä seuraavista lisää eniten taksinkuljettajan loukkaantumisriskiä liikenteessä?",
+    "options_fi": {
+      "A": "Ajoneuvon huono tekninen kunto.",
+      "B": "Turvavyön käyttämättömyys.",
+      "C": "Aggressiivisesti käyttäytyvät asiakkaat."
+    },
+    "question_en": "Which of the following most increases a taxi driver's risk of injury in traffic?",
+    "options_en": {
+      "A": "the vehicle's poor technical condition.",
+      "B": "not using the seat belt.",
+      "C": "aggressively behaving customers."
+    },
+    "fw": [{"fi": "loukkaantumisriskiä liikenteessä", "en": "risk of injury in traffic"}],
+    "pcw": [{"fi": "Turvavyön käyttämättömyys", "en": "not using the seat belt"}],
+    "ncw": [
+      {"fi": "huono tekninen kunto", "en": "poor technical condition"},
+      {"fi": "Aggressiivisesti käyttäytyvät asiakkaat", "en": "aggressively behaving customers"}
+    ],
+    "explanation_en": "Not wearing the seat belt most increases injury risk (B). Poor vehicle condition (A) and aggressive customers (C) are risks but not the leading injury factor. (Mirrors Q025.)",
+    "difficulty": "Easy",
+    "tags": ["seatbelt", "injury risk", "driver safety"]
+  },
+  "Q049": {
+    "question_fi": "17-vuotias Elviira kulkee viikoittain yksin tanssiharrastuksestaan kotiin Kuopion keskustasta pientaloalueelle. Kuka vastaa turvavyön käytöstä?",
+    "options_fi": {
+      "A": "Kuljettaja.",
+      "B": "Elviira itse.",
+      "C": "Taksissa turvavyön käyttö on aina vapaaehtoista, joten turvavyötä ei tarvitse laittaa kiinni."
+    },
+    "question_en": "17-year-old Elviira travels home alone each week from her dance hobby, from Kuopio centre to a residential area. Who is responsible for seat-belt use?",
+    "options_en": {
+      "A": "The driver.",
+      "B": "Elviira herself.",
+      "C": "Seat-belt use in a taxi is always voluntary, so the seat belt need not be fastened."
+    },
+    "fw": [{"fi": "17-vuotias Elviira", "en": "17-year-old Elviira"}, {"fi": "yksin", "en": "alone"}],
+    "pcw": [{"fi": "Elviira itse", "en": "Elviira herself"}],
+    "ncw": [
+      {"fi": "Kuljettaja", "en": "the driver"},
+      {"fi": "turvavyön käyttö on aina vapaaehtoista", "en": "seat-belt use is always voluntary"}
+    ],
+    "explanation_en": "At 17 (over 15) the passenger is responsible for their own belt use (B). It is not the driver (A); belt use is never voluntary (C).",
+    "difficulty": "Easy",
+    "tags": ["seatbelt", "over 15", "responsibility"]
+  },
+  "Q050": {
+    "question_fi": "Kuka vastaa asiakkaan turvavyön käytöstä, kun 14-vuotias Anna kulkee yksin tanssiharrastuksestaan kotiin Kuopion keskustasta pientaloalueelle?",
+    "options_fi": {
+      "A": "Anna itse.",
+      "B": "Kuljettaja.",
+      "C": "Taksissa turvavyön käyttö on aina vapaaehtoista, joten turvavyötä ei tarvitse laittaa kiinni."
+    },
+    "question_en": "Who is responsible for the customer's seat-belt use when 14-year-old Anna travels home alone from her dance hobby, from Kuopio centre to a residential area?",
+    "options_en": {
+      "A": "Anna herself.",
+      "B": "The driver.",
+      "C": "Seat-belt use in a taxi is always voluntary, so the seat belt need not be fastened."
+    },
+    "fw": [{"fi": "14-vuotias Anna", "en": "14-year-old Anna"}, {"fi": "yksin", "en": "alone"}],
+    "pcw": [{"fi": "Kuljettaja", "en": "the driver"}],
+    "ncw": [
+      {"fi": "Anna itse", "en": "Anna herself"},
+      {"fi": "turvavyön käyttö on aina vapaaehtoista", "en": "seat-belt use is always voluntary"}
+    ],
+    "explanation_en": "Anna is under 15, so the driver is responsible for her seat-belt use (B). It is not Anna herself (A), and belt use is never voluntary (C). Contrast with 17-year-old Elviira, who is responsible for herself.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "under 15", "responsibility"]
+  }
+}

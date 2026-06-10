@@ -37,8 +37,10 @@ export const OptionRow = memo(({ letter, text, state, onPress, disabled, index =
 
   return (
     <MotiView
-      from={{ opacity: 0, translateY: 8 }}
-      animate={{ opacity: 1, translateY: 0 }}
+      // Only the slide is animated — opacity stays 1 so options are never
+      // invisible if the entry animation doesn't run (e.g. cold mount on web).
+      from={{ translateY: 8 }}
+      animate={{ translateY: 0 }}
       transition={{ type: 'timing', duration: 260, delay: index * 60 }}
     >
       <Pressable

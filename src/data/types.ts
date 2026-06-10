@@ -25,27 +25,103 @@ export type Lesson = {
 
 export type ClueType = 'positive' | 'negative' | 'neutral';
 
-export type VocabWord = {
-  id: string;
-  page_no: number;
-  word_fi: string;
-  forms_fi: string[];
-  easy_en: string;
-  alt_en?: string;
-  clue_type: ClueType;
-  appears_in_question_ids: string[];
+/* ── Vocabulary — set-based flow (built by content/build_vocab.py) ─────────
+ * Vocabulary → practice sets → each Set has a Lesson (word cards) + a Quiz.
+ * URLs: /vocab/sets/{set_id}/lesson/{id}  ·  /vocab/sets/{set_id}/quiz/{id}
+ */
+
+/** A single inflected form / related word, with its English gloss. */
+export type VocabForm = { fi: string; en: string };
+
+/** A practice set (chapter) — groups one lesson + one quiz. */
+export type VocabSet = {
+  id: string;                 // "set-1" (slug, used in URLs)
+  set_no: number;             // 1..9
+  name: string;
+  category_id: string | null; // optional theme link → ExamCategory
+  order: number;
+  word_count: number;         // derived
+  question_count: number;     // derived
 };
 
-export type ClueGroup = 'positive' | 'negative' | 'wh' | 'conjunction';
+/** A lesson word card. URL: /vocab/sets/{set_id}/lesson/{id} */
+export type VocabLessonWord = {
+  id: string;                 // "set-1-w3"
+  set_id: string;             // → VocabSet.id
+  index: number;              // position within set
+  total_in_set: number;
+  word_fi: string;
+  meaning_en: string;
+  forms_fi: VocabForm[];
+  exam_use_en: string;
+};
 
-export type ClueWord = {
-  id: string;
-  group: ClueGroup;
+export type VocabQuizOption = { key: 'A' | 'B' | 'C'; en: string | null };
+
+/** A quiz question. URL: /vocab/sets/{set_id}/quiz/{id} */
+export type VocabQuizQuestion = {
+  id: string;                 // "set-1-q7"
+  set_id: string;             // → VocabSet.id
+  index: number;
+  prompt_word_fi: string;
+  options: VocabQuizOption[];
+  correct_option: 'A' | 'B' | 'C';
+  correct_meaning_en: string;
+  lesson_word_id: string | null;  // soft link → VocabLessonWord.id
+};
+
+/** Shape of vocab.json. */
+export type VocabData = {
+  sets: VocabSet[];
+  words: VocabLessonWord[];
+  questions: VocabQuizQuestion[];
+};
+
+/* ── Clue Words — group-based flow (built by content/build_clue.py) ────────
+ * Clue Words → group buttons (Positive / Negative / WH / Conjunction)
+ * → each group has a Lesson (clue cards) + a Quiz.
+ * URLs: /clue-words/:groupId/lesson/:index · /clue-words/:groupId/quiz
+ */
+export type ClueTone = 'positive' | 'negative' | 'neutral';
+
+export type ClueGroup = {
+  id: string;                 // "positive" (slug, used in URLs)
+  short: string;              // "Positive"
+  label: string;              // "Positive clue words"
+  tone: ClueTone;             // drives colour
+  blurb: string;
+  order: number;
+  word_count: number;         // derived
+  question_count: number;     // derived
+};
+
+export type ClueLessonWord = {
+  id: string;                 // "clue-positive-w3"
+  group_id: string;           // → ClueGroup.id
+  index: number;
+  total_in_group: number;
   phrase_fi: string;
-  phrase_en: string;
-  effect: string;
-  exceptions: string[];
-  linked_question_ids: string[];
+  meaning_en: string;
+  effect_en: string | null;   // "Often signals the CORRECT answer"
+  exception_en: string | null;
+};
+
+export type ClueQuizOption = { key: 'A' | 'B' | 'C'; en: string };
+
+export type ClueQuizQuestion = {
+  id: string;                 // "clue-positive-q3"
+  group_id: string;           // → ClueGroup.id
+  index: number;
+  prompt_fi: string;
+  options: ClueQuizOption[];
+  correct_option: 'A' | 'B' | 'C';
+  correct_meaning_en: string;
+};
+
+export type ClueData = {
+  groups: ClueGroup[];
+  words: ClueLessonWord[];
+  questions: ClueQuizQuestion[];
 };
 
 /** Inline clue annotation attached to a question — replaces the old clue_word_ids ref model */

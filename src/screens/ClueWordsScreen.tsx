@@ -1,106 +1,103 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity,
+  View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { CheckCircle2, AlertTriangle, HelpCircle, Link2, type LucideIcon } from 'lucide-react-native';
-import { AppButton } from '../components/ui/AppButton';
+import {
+  Check, AlertTriangle, HelpCircle, Link2, BookOpen, ClipboardCheck,
+  type LucideIcon,
+} from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { getClueWords, getQuestions } from '../data/loaders';
-import type { ClueGroup, ClueWord } from '../data/types';
+import { getClueGroups, getClueLesson } from '../data/loaders';
+import { useProgress } from '../store/progressStore';
+import type { ClueTone } from '../data/types';
 
-const TABS: { key: ClueGroup; label: string; Icon: LucideIcon }[] = [
-  { key: 'positive', label: 'Positive', Icon: CheckCircle2 },
-  { key: 'negative', label: 'Negative', Icon: AlertTriangle },
-  { key: 'wh', label: 'WH-words', Icon: HelpCircle },
-  { key: 'conjunction', label: 'Conjunctions', Icon: Link2 },
-];
+const GROUP_ICON: Record<string, LucideIcon> = {
+  positive: Check,
+  negative: AlertTriangle,
+  wh: HelpCircle,
+  conjunction: Link2,
+};
 
-function ClueCard({ cw }: { cw: ClueWord }) {
-  const isPos = cw.group === 'positive';
-  const isNeg = cw.group === 'negative';
-  return (
-    <View style={[styles.card, isPos && styles.cardPos, isNeg && styles.cardNeg]}>
-      <View style={styles.cardHeader}>
-        <View style={[styles.pill, isPos ? styles.pillPos : isNeg ? styles.pillNeg : styles.pillNeutral]}>
-          <Text style={[styles.pillText, isPos ? styles.pillTextPos : isNeg ? styles.pillTextNeg : styles.pillTextNeutral]}>
-            {cw.phrase_fi}
-          </Text>
-        </View>
-        <View style={[styles.signal, isPos ? styles.signalCorrect : isNeg ? styles.signalWrong : styles.signalNeutral]}>
-          <Text style={styles.signalText}>{isPos ? 'CORRECT' : isNeg ? 'WRONG' : 'CONTEXT'}</Text>
-        </View>
-      </View>
-      <Text style={styles.meaning}><Text style={{ fontFamily: font.semibold }}>Meaning: </Text>"{cw.phrase_en}"</Text>
-      <Text style={styles.effect}>{cw.effect}</Text>
-      {cw.exceptions.length > 0 && (
-        <View style={styles.trap}>
-          <Text style={styles.trapLabel}>EXCEPTION</Text>
-          {cw.exceptions.map((ex, i) => (
-            <Text key={i} style={styles.trapText}>{ex}</Text>
-          ))}
-        </View>
-      )}
-    </View>
-  );
+function toneColors(tone: ClueTone) {
+  if (tone === 'positive') return { fg: colors.success, bg: colors.successTint };
+  if (tone === 'negative') return { fg: colors.error, bg: colors.errorTint };
+  return { fg: colors.primary, bg: colors.primaryTint };
 }
+
+const GROUPS = getClueGroups();
 
 export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
-  const [activeTab, setActiveTab] = useState<ClueGroup>('positive');
-  const allClues = getClueWords();
-  const filtered = allClues.filter(c => c.group === activeTab);
-  const questions = getQuestions();
-
-  const practiceClueQIds = allClues
-    .filter(c => c.group === activeTab)
-    .flatMap(c => c.linked_question_ids);
-  const uniqueIds = [...new Set(practiceClueQIds)].slice(0, 8);
+  const { state } = useProgress();
 
   return (
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title="Clue Words" onBack={() => navigation.goBack()} />
 
-      <View style={styles.intro}>
-        <Text style={styles.introText}>
-          The Finnish exam has hidden patterns. Learn these words and predict the answer — even with weak Finnish.
-        </Text>
-      </View>
-
-      {/* Tabs */}
-      <View style={styles.tabs}>
-        {TABS.map(t => (
-          <TouchableOpacity
-            key={t.key}
-            style={[styles.tab, activeTab === t.key && styles.tabActive]}
-            onPress={() => setActiveTab(t.key)}
-          >
-            <t.Icon size={16} color={activeTab === t.key ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.tabLabel, activeTab === t.key && styles.tabLabelActive]}>
-              {t.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        {filtered.map(cw => <ClueCard key={cw.id} cw={cw} />)}
+        <Text style={styles.intro}>
+          Clue words are the answer-logic engine. Learn to spot them and you can
+          often pick the right option even with limited Finnish. Pick a group to
+          study, then test yourself.
+        </Text>
 
-        {uniqueIds.length > 0 && (
-          <View style={styles.practiceBtn}>
-            <AppButton
-              label={`Practice with ${filtered.length} clue pattern${filtered.length !== 1 ? 's' : ''} →`}
-              onPress={() => navigation.navigate('Practice', {
-                questionId: uniqueIds[0],
-                queue: uniqueIds,
-                queueIndex: 0,
-                sourceLabel: 'Clue Words Practice',
-              })}
-            />
-          </View>
-        )}
+        {GROUPS.map(group => {
+          const Icon = GROUP_ICON[group.id] ?? HelpCircle;
+          const tc = toneColors(group.tone);
+          const words = getClueLesson(group.id);
+          const seen = words.filter(w => state.vocab[w.id]?.seen).length;
+          const lessonDone = words.length > 0 && seen === words.length;
+          const best = state.quiz_scores
+            .filter(s => s.quiz_id === group.id)
+            .reduce<number | null>((m, s) => Math.max(m ?? 0, s.score), null);
+          const bestPct = best != null && group.question_count > 0
+            ? Math.round((best / group.question_count) * 100) : null;
+
+          return (
+            <View key={group.id} style={styles.card}>
+              <View style={styles.cardHead}>
+                <View style={[styles.iconChip, { backgroundColor: tc.bg }]}>
+                  <Icon size={22} color={tc.fg} strokeWidth={2.3} />
+                </View>
+                <View style={styles.headInfo}>
+                  <Text style={styles.cardTitle}>{group.label}</Text>
+                  <Text style={styles.cardBlurb}>{group.blurb}</Text>
+                </View>
+              </View>
+
+              <View style={styles.metaRow}>
+                <Text style={styles.meta}>{group.word_count} words · {group.question_count} quiz Qs</Text>
+                <View style={styles.tags}>
+                  <Text style={[styles.tag, lessonDone && { color: colors.success }]}>
+                    {seen}/{words.length} learned
+                  </Text>
+                  {bestPct != null && (
+                    <Text style={[styles.tag, { color: colors.success }]}>· best {bestPct}%</Text>
+                  )}
+                </View>
+              </View>
+
+              <View style={styles.actions}>
+                <Pressable
+                  onPress={() => navigation.navigate('ClueLesson', { groupId: group.id, index: 1 })}
+                  style={({ pressed }) => [styles.btn, styles.btnOutline, pressed && styles.btnPressed]}
+                >
+                  <BookOpen size={17} color={colors.text} strokeWidth={2.2} />
+                  <Text style={styles.btnOutlineText}>Lesson</Text>
+                </Pressable>
+                <Pressable
+                  onPress={() => navigation.navigate('ClueQuiz', { groupId: group.id })}
+                  style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
+                >
+                  <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
+                  <Text style={styles.btnFilledText}>Quiz</Text>
+                </Pressable>
+              </View>
+            </View>
+          );
+        })}
         <View style={{ height: 32 }} />
       </ScrollView>
     </SafeAreaView>
@@ -109,50 +106,32 @@ export function ClueWordsScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  intro: { padding: spacing.md, paddingBottom: 0 },
-  introText: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 20 },
-  tabs: {
-    flexDirection: 'row', paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm, gap: 8,
-  },
-  tab: {
-    flex: 1, alignItems: 'center', paddingVertical: 10, gap: 3,
-    borderRadius: radius.sm, borderWidth: 1, borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  tabActive: { backgroundColor: colors.primaryTint, borderColor: colors.primary },
-  tabLabel: { fontSize: 10, fontFamily: font.semibold, color: colors.textSecondary },
-  tabLabelActive: { color: colors.primary },
-  scroll: { padding: spacing.md },
+  scroll: { padding: spacing.md, gap: 12 },
+  intro: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 20, marginBottom: 2 },
   card: {
-    borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
-    marginBottom: 12, backgroundColor: colors.bg,
+    borderWidth: 1, borderColor: colors.border, borderRadius: radius.md,
+    backgroundColor: colors.bg, padding: spacing.md, gap: 12,
     ...shadow.sm,
   },
-  cardPos: { borderColor: colors.success + '55' },
-  cardNeg: { borderColor: colors.error + '55' },
-  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
-  pill: { borderRadius: radius.full, paddingHorizontal: 12, paddingVertical: 5, borderWidth: 1.5, maxWidth: '65%' },
-  pillPos: { backgroundColor: colors.successTint, borderColor: colors.success },
-  pillNeg: { backgroundColor: colors.errorTint, borderColor: colors.error },
-  pillNeutral: { backgroundColor: colors.surface, borderColor: colors.border },
-  pillText: { fontSize: 13, fontFamily: font.semibold },
-  pillTextPos: { color: colors.success },
-  pillTextNeg: { color: colors.error },
-  pillTextNeutral: { color: colors.textSecondary },
-  signal: { borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3 },
-  signalCorrect: { backgroundColor: colors.success },
-  signalWrong: { backgroundColor: colors.error },
-  signalNeutral: { backgroundColor: colors.textSecondary },
-  signalText: { fontSize: 10, fontFamily: font.bold, color: '#fff', letterSpacing: 0.5 },
-  meaning: { fontSize: 13, color: colors.textSecondary, marginBottom: 6, lineHeight: 18 },
-  effect: { fontSize: 13, color: colors.text, lineHeight: 18, marginBottom: 6 },
-  trap: {
-    backgroundColor: colors.warningTint, borderRadius: radius.sm,
-    padding: 10, marginTop: 4,
+  cardHead: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  iconChip: {
+    width: 44, height: 44, borderRadius: radius.sm,
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
-  trapLabel: { fontSize: 11, fontFamily: font.bold, color: colors.warning, marginBottom: 4, letterSpacing: 0.5 },
-  trapText: { fontSize: 12, color: colors.text, lineHeight: 17 },
-  practiceBtn: { marginTop: spacing.md },
+  headInfo: { flex: 1, gap: 2 },
+  cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  cardBlurb: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 18 },
+  metaRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 },
+  meta: { fontSize: fontSize.sm, color: colors.textSecondary },
+  tags: { flexDirection: 'row', gap: 4 },
+  tag: { fontSize: 12, fontFamily: font.semibold, color: colors.textTertiary },
+  actions: { flexDirection: 'row', gap: spacing.sm },
+  btn: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 6, height: 44, borderRadius: radius.sm,
+  },
+  btnOutline: { borderWidth: 1.5, borderColor: colors.borderStrong, backgroundColor: colors.bg },
+  btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
+  btnOutlineText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.text },
+  btnFilledText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
 });

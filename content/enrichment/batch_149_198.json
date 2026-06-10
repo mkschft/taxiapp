@@ -1,0 +1,965 @@
+{
+  "Q149": {
+    "question_fi": "Paljonko oheisen hinnaston mukaan on sunnuntaina ajettavan yhden henkilön kyydin kokonaishinta, kun matkan pituus on 20 km ja matka-aika on 30 minuuttia, eikä kiinteää hintaa sovita?",
+    "options_fi": {
+      "A": "65,00 €",
+      "B": "74,00 €",
+      "C": "83,00 €"
+    },
+    "question_en": "According to the attached price list, what is the total fare for a single-person ride on Sunday, when the distance is 20 km and the journey time is 30 minutes, and no fixed price is agreed?",
+    "options_en": {
+      "A": "€65.00",
+      "B": "€74.00",
+      "C": "€83.00"
+    },
+    "fw": [{"fi": "sunnuntaina", "en": "on Sunday"}, {"fi": "20 km", "en": "20 km"}, {"fi": "30 minuuttia", "en": "30 minutes"}],
+    "pcw": [{"fi": "65,00 €", "en": "€65.00"}],
+    "ncw": [{"fi": "74,00 €", "en": "€74.00"}, {"fi": "83,00 €", "en": "€83.00"}],
+    "explanation_en": "Based on the attached price list the Sunday fare for this distance and time is €65.00 (A). NOTE FOR REVIEWER: this question references an attached price list not included in this data. Confirm the fare calculation matches the actual exam price schedule.",
+    "difficulty": "Hard",
+    "tags": ["fare calculation", "Sunday", "price list", "review-flag"],
+    "notes": "Fare-calculation question references a price list image/table not in the master content. The correct answer A is marked; the calculation must be verified against the actual exam schedule."
+  },
+  "Q150": {
+    "question_fi": "Millä tavoin taksinkuljettajan tulee toimia liikenteessä, jotta hän täyttää tienkäyttäjän ennakointivelvollisuuden?",
+    "options_fi": {
+      "A": "Taksinkuljettajan on tienkäyttäjänä ennakoitava toisten tienkäyttäjien toimintaa.",
+      "B": "Taksinkuljettajan on tienkäyttäjänä käytettävä vain moottorijarrutusta liikenteessä.",
+      "C": "Taksinkuljettajan on tienkäyttäjänä ammattinsa kautta keskityttävä vain asiakaspalveluun."
+    },
+    "question_en": "How must a taxi driver act in traffic to fulfil the road user's duty to anticipate?",
+    "options_en": {
+      "A": "As a road user, the taxi driver must anticipate the actions of other road users.",
+      "B": "As a road user, the taxi driver must use only engine braking in traffic.",
+      "C": "As a road user, the taxi driver's professional role means focusing only on customer service."
+    },
+    "fw": [{"fi": "ennakointivelvollisuuden", "en": "duty to anticipate"}],
+    "pcw": [{"fi": "ennakoitava toisten tienkäyttäjien toimintaa", "en": "anticipate the actions of other road users"}],
+    "ncw": [{"fi": "vain moottorijarrutusta", "en": "only engine braking"}, {"fi": "keskityttävä vain asiakaspalveluun", "en": "focusing only on customer service"}],
+    "explanation_en": "The duty to anticipate means actively predicting how other road users will act (A). Engine-braking only (B) is arbitrary; focusing only on customer service (C) ignores traffic safety duties.",
+    "difficulty": "Easy",
+    "tags": ["road user", "anticipation", "traffic safety"]
+  },
+  "Q151": {
+    "question_fi": "Mikä seuraavista on oikein liittyen kuittiin?",
+    "options_fi": {
+      "A": "Taksinkuljettajan on tienkäyttäjänä ennakoitava toisten tienkäyttäjien toimintaa.",
+      "B": "Kuitin tarjoaminen asiakkaalle on pakollista.",
+      "C": "Kuljettajan tulee valita matkustajan kannalta edullisin ja tarkoituksenmukaisin reitti."
+    },
+    "question_en": "Which of the following is correct regarding the receipt?",
+    "options_en": {
+      "A": "As a road user, the taxi driver must anticipate the actions of other road users.",
+      "B": "Offering the customer a receipt is mandatory.",
+      "C": "The driver must choose the most cost-effective and appropriate route for the passenger."
+    },
+    "fw": [{"fi": "kuittiin", "en": "the receipt"}],
+    "pcw": [{"fi": "Kuitin tarjoaminen asiakkaalle on pakollista", "en": "offering a receipt is mandatory"}],
+    "ncw": [{"fi": "ennakoitava toisten tienkäyttäjien", "en": "anticipate other road users"}, {"fi": "edullisin ja tarkoituksenmukaisin reitti", "en": "most cost-effective route"}],
+    "explanation_en": "The driver must offer the customer a receipt (B). Options A and C state correct rules but are unrelated to receipts — they are distractor content from other questions mixed in.",
+    "difficulty": "Easy",
+    "tags": ["receipt", "mandatory", "review-flag"],
+    "notes": "Options A and C in the master appear to be content from other questions (anticipation duty; route selection). This looks like a copy-paste error in the source. The correct answer B is clearly about receipts; flag for source correction."
+  },
+  "Q152": {
+    "question_fi": "Miten kuljettajan tulee toimia, kun hän huomaa perille päästyään, ettei saa asiakasta hereille matkan päätyttyä ja kyyti on maksamatta?",
+    "options_fi": {
+      "A": "Otetaan asiakkaan lompakosta maksukortti ja veloitetaan kyyti lähimaksulla.",
+      "B": "Kuljettajan tulee puheella ensin yrittää herätellä asiakasta ja tarvittaessa soittaa poliisi paikalle.",
+      "C": "Kirjoitetaan asiakkaalle lasku ja sijoitetaan se asiakkaan taskuun. Asiakas siirretään taksin ulkopuolelle heräilemään ja soitetaan poliisi paikalle."
+    },
+    "question_en": "How should the driver act when, upon arrival, they cannot wake the customer at the end of the journey and the fare is unpaid?",
+    "options_en": {
+      "A": "Take the customer's payment card from their wallet and charge the fare by contactless payment.",
+      "B": "The driver must first try to wake the customer by speaking to them and, if needed, call the police.",
+      "C": "Write the customer a bill and place it in their pocket. Move the customer outside the taxi to wake up and call the police."
+    },
+    "fw": [{"fi": "asiakasta hereille", "en": "wake the customer"}, {"fi": "kyyti on maksamatta", "en": "the fare is unpaid"}],
+    "pcw": [{"fi": "puheella yrittää herätellä", "en": "try to wake by speaking"}, {"fi": "soittaa poliisi paikalle", "en": "call the police"}],
+    "ncw": [{"fi": "lompakosta maksukortti", "en": "take the card from the wallet"}, {"fi": "siirretään taksin ulkopuolelle", "en": "move the customer outside the taxi"}],
+    "explanation_en": "First try to wake the customer verbally; if unsuccessful, call the police (B). Taking the card without consent (A) is theft; placing a bill in the pocket and dumping them outside (C) is unsafe.",
+    "difficulty": "Medium",
+    "tags": ["unconscious passenger", "unpaid fare", "police"]
+  },
+  "Q153": {
+    "question_fi": "Mikä seuraavista on oikein, kun ulkona on pakkasta ja jätät asiakkaan hänen ilmoittamaansa osoitteeseen?",
+    "options_fi": {
+      "A": "Voit jatkaa matkaa, kun asiakas on poistunut taksista.",
+      "B": "Voit jatkaa matkaa, kun olet varmistunut, että asiakas on päässyt sisätilaan.",
+      "C": "Voit jatkaa matkaa, kun asiakas on päässyt pihalle."
+    },
+    "question_en": "Which is correct when it is freezing outside and you drop the customer at the address they gave?",
+    "options_en": {
+      "A": "You may continue once the customer has left the taxi.",
+      "B": "You may continue once you have made sure the customer has got indoors.",
+      "C": "You may continue once the customer has reached the yard."
+    },
+    "fw": [{"fi": "ulkona on pakkasta", "en": "it is freezing outside"}],
+    "pcw": [{"fi": "varmistunut, että asiakas on päässyt sisätilaan", "en": "made sure the customer has got indoors"}],
+    "ncw": [{"fi": "kun asiakas on poistunut taksista", "en": "once the customer has left the taxi"}, {"fi": "kun asiakas on päässyt pihalle", "en": "once the customer has reached the yard"}],
+    "explanation_en": "In freezing conditions make sure the customer is safely indoors before leaving (B). Leaving the taxi (A) or reaching the yard (C) is insufficient. (Mirrors Q056.)",
+    "difficulty": "Medium",
+    "tags": ["drop-off", "cold weather", "safety"]
+  },
+  "Q154": {
+    "question_fi": "Milloin saat pysäyttää taksin maksulliselle pysäköintipaikalle maksua suorittamatta?",
+    "options_fi": {
+      "A": "Et koskaan.",
+      "B": "Vain liikkumisesteistä asiakasta kyytiin ottaessasi tai kyydistä jättäessäsi.",
+      "C": "Aina asiakasta kyytiin ottaessasi tai kyydistä jättäessäsi."
+    },
+    "question_en": "When may you stop a taxi in a paid parking space without paying?",
+    "options_en": {
+      "A": "Never.",
+      "B": "Only when picking up or dropping off a customer with a mobility impairment.",
+      "C": "Always when picking up or dropping off a customer."
+    },
+    "fw": [{"fi": "maksulliselle pysäköintipaikalle", "en": "in a paid parking space"}, {"fi": "maksua suorittamatta", "en": "without paying"}],
+    "pcw": [{"fi": "Aina asiakasta kyytiin ottaessasi tai kyydistä jättäessäsi", "en": "always when picking up or dropping off a customer"}],
+    "ncw": [{"fi": "Et koskaan", "en": "never"}, {"fi": "Vain liikkumisesteistä asiakasta", "en": "only for a customer with a mobility impairment"}],
+    "explanation_en": "A taxi may stop in a paid parking space without paying whenever picking up or dropping off a customer (C). It is not limited to mobility-impaired customers (B), and it is not never (A).",
+    "difficulty": "Medium",
+    "tags": ["parking", "pickup", "drop-off", "exception"]
+  },
+  "Q155": {
+    "question_fi": "Mistä tunnistat, että asiakkaan mukana oleva koira on työkoira?",
+    "options_fi": {
+      "A": "Koira on vapaana.",
+      "B": "Koiralla on heijastin.",
+      "C": "Koiralla on tunnistevaljaat."
+    },
+    "question_en": "How do you recognise that the dog with the customer is a working dog?",
+    "options_en": {
+      "A": "The dog is loose.",
+      "B": "The dog has a reflector.",
+      "C": "The dog has identifying harness."
+    },
+    "fw": [{"fi": "koira on työkoira", "en": "the dog is a working dog"}],
+    "pcw": [{"fi": "tunnistevaljaat", "en": "identifying harness"}],
+    "ncw": [{"fi": "Koira on vapaana", "en": "the dog is loose"}, {"fi": "heijastin", "en": "a reflector"}],
+    "explanation_en": "A working dog wears official identifying harness (C). Being loose (A) or wearing a reflector (B) is not a recognised marker.",
+    "difficulty": "Easy",
+    "tags": ["working dog", "harness", "identification"]
+  },
+  "Q156": {
+    "question_fi": "Mikä seuraavista on oikein liittyen puhelimen hands-free-laitteeseen?",
+    "options_fi": {
+      "A": "Hands-free-laitetta ei tarvitse käyttää ajoneuvon liikkuessa, jos puhelu kestää alle minuutin.",
+      "B": "Kuljettaja saa ajoneuvon liikkuessa puhua puhelimeen hands-free-laitetta käyttäen, jos se on kuljetuksen suorittamiseksi välttämätöntä.",
+      "C": "Jos taksissa ei ole asiakkaita, kuljettaja saa ajoneuvon liikkuessa puhua puhelimeen ilman hands-free-laitetta."
+    },
+    "question_en": "Which of the following is correct regarding a hands-free device?",
+    "options_en": {
+      "A": "A hands-free device is not required when the vehicle is moving if the call lasts under a minute.",
+      "B": "The driver may use the phone with a hands-free device while the vehicle is moving, if it is essential for carrying out the transport.",
+      "C": "If there are no customers in the taxi, the driver may speak on the phone while the vehicle is moving without a hands-free device."
+    },
+    "fw": [{"fi": "hands-free-laitteeseen", "en": "hands-free device"}],
+    "pcw": [{"fi": "hands-free-laitetta käyttäen, jos se on kuljetuksen suorittamiseksi välttämätöntä", "en": "using a hands-free device if essential for the transport"}],
+    "ncw": [{"fi": "alle minuutin", "en": "under a minute"}, {"fi": "ilman hands-free-laitetta", "en": "without a hands-free device"}],
+    "explanation_en": "A phone call while moving requires a hands-free device and must be necessary for the transport (B). Duration (A) and passenger absence (C) are not valid exceptions.",
+    "difficulty": "Medium",
+    "tags": ["phone", "hands-free", "traffic law"]
+  },
+  "Q157": {
+    "question_fi": "Mikä seuraavista on hyvää asiakaspalvelua?",
+    "options_fi": {
+      "A": "Kuljettaja tervehtii kohteliaasti ja on valmis keskustelemaan vain ajoreittiin liittyvistä asioista.",
+      "B": "Kuljettaja tervehtii kohteliaasti ja arvioi, haluaako asiakas keskustella, ja antaa asiakkaan päättää aiheesta.",
+      "C": "Kuljettaja tervehtii kohteliaasti ja aloittaa keskustelun itselleen mieluisesta aiheesta."
+    },
+    "question_en": "Which of the following is good customer service?",
+    "options_en": {
+      "A": "The driver greets politely and is ready to discuss only matters related to the route.",
+      "B": "The driver greets politely, gauges whether the customer wants to talk, and lets the customer choose the topic.",
+      "C": "The driver greets politely and starts a conversation about a topic they personally enjoy."
+    },
+    "fw": [{"fi": "hyvää asiakaspalvelua", "en": "good customer service"}],
+    "pcw": [{"fi": "arvioi, haluaako asiakas keskustella", "en": "gauges whether the customer wants to talk"}, {"fi": "antaa asiakkaan päättää aiheesta", "en": "lets the customer choose the topic"}],
+    "ncw": [{"fi": "vain ajoreittiin liittyvistä asioista", "en": "only matters related to the route"}, {"fi": "itselleen mieluisesta aiheesta", "en": "a topic they personally enjoy"}],
+    "explanation_en": "Good service means reading the customer and following their lead on conversation (B). Only discussing the route (A) is too restrictive; forcing your own topic (C) ignores the customer's preference.",
+    "difficulty": "Easy",
+    "tags": ["customer service", "conversation", "social skills"]
+  },
+  "Q158": {
+    "question_fi": "Miten sinun tulee toimia, jos taksissasi matkustava asiakas käyttäytyy aggressiivisesti sinua kohtaan?",
+    "options_fi": {
+      "A": "Käskeä häntä huutamalla käyttäytymään rauhallisesti.",
+      "B": "Käyttäytyä kuin et huomaisikaan hänen aggressiivisuuttaan.",
+      "C": "Rauhoitella häntä puhumalla hänelle rauhallisesti ja ystävällisesti."
+    },
+    "question_en": "How should you act if a passenger in your taxi behaves aggressively toward you?",
+    "options_en": {
+      "A": "Tell them loudly to behave calmly.",
+      "B": "Act as if you have not noticed their aggression.",
+      "C": "Try to calm them down by speaking to them calmly and kindly."
+    },
+    "fw": [{"fi": "käyttäytyy aggressiivisesti", "en": "behaves aggressively"}],
+    "pcw": [{"fi": "puhumalla hänelle rauhallisesti ja ystävällisesti", "en": "speaking calmly and kindly"}],
+    "ncw": [{"fi": "huutamalla", "en": "telling them loudly"}, {"fi": "kuin et huomaisikaan", "en": "as if you had not noticed"}],
+    "explanation_en": "Stay calm and respond gently to de-escalate (C). Shouting back (A) escalates the situation; ignoring it entirely (B) may allow it to escalate further.",
+    "difficulty": "Easy",
+    "tags": ["aggressive passenger", "de-escalation", "calm response"]
+  },
+  "Q159": {
+    "question_fi": "Onko asiakkaalla oikeus valittaa taksimatkan aikana kokemastaan huonosta palvelusta?",
+    "options_fi": {
+      "A": "Taksin valitessaan asiakas sitoutuu tiettyyn palveluun, jolloin hänellä ei ole oikeutta valittaa.",
+      "B": "Asiakkaita kohtaan tulee aina käyttäytyä kohteliaasti ja asiallisesti, joten palvelun tasosta voi tehdä valituksen.",
+      "C": "Taksinkuljettajan toimintaa asiakaspalvelutilanteessa ei säädellä millään tavalla, joten palvelusta ei voi valittaa."
+    },
+    "question_en": "Does the customer have the right to complain about poor service experienced during a taxi ride?",
+    "options_en": {
+      "A": "When choosing a taxi, the customer commits to a certain service level and therefore has no right to complain.",
+      "B": "Customers must always be treated politely and professionally, so a complaint about service quality may be made.",
+      "C": "The taxi driver's conduct in a customer service situation is not regulated in any way, so service cannot be complained about."
+    },
+    "fw": [{"fi": "oikeus valittaa", "en": "right to complain"}, {"fi": "huonosta palvelusta", "en": "poor service"}],
+    "pcw": [{"fi": "käyttäytyä kohteliaasti ja asiallisesti", "en": "treated politely and professionally"}, {"fi": "voi tehdä valituksen", "en": "a complaint may be made"}],
+    "ncw": [{"fi": "ei ole oikeutta valittaa", "en": "has no right to complain"}, {"fi": "ei säädellä millään tavalla", "en": "not regulated in any way"}],
+    "explanation_en": "Taxi customer service is regulated and customers have the right to complain (B). A and C both falsely deny that right.",
+    "difficulty": "Easy",
+    "tags": ["complaint", "service quality", "customer rights"]
+  },
+  "Q160": {
+    "question_fi": "Kuinka tulee toimia tilanteessa, jossa kyydin päätyttyä huomaat asiakkaan unohtaneen ajoneuvoon käsilaukkunsa?",
+    "options_fi": {
+      "A": "Toimitat käsilaukun kuukauden kuluessa poliisin löytötavaratoimistoon.",
+      "B": "Voit jäädä odottamaan asiakkaan yhteydenottoa ja säilyttää käsilaukkua ajoneuvossa.",
+      "C": "Toimitat käsilaukun mahdollisimman pian tilausvälitysyhtiön toimistolle."
+    },
+    "question_en": "How should you act when, at the end of the ride, you notice the customer has left their handbag in the vehicle?",
+    "options_en": {
+      "A": "You deliver the handbag to the police lost-property office within one month.",
+      "B": "You may wait for the customer to contact you and keep the handbag in the vehicle.",
+      "C": "You deliver the handbag to the dispatch company's office as soon as possible."
+    },
+    "fw": [{"fi": "käsilaukkunsa", "en": "their handbag"}, {"fi": "kyydin päätyttyä", "en": "at the end of the ride"}],
+    "pcw": [{"fi": "mahdollisimman pian tilausvälitysyhtiön toimistolle", "en": "to the dispatch company's office as soon as possible"}],
+    "ncw": [{"fi": "kuukauden kuluessa", "en": "within one month"}, {"fi": "jäädä odottamaan asiakkaan yhteydenottoa", "en": "wait for the customer to contact you"}],
+    "explanation_en": "Hand the forgotten item to the dispatch office promptly (C). Waiting a month (A) or keeping it in the vehicle hoping the customer calls (B) are both insufficient.",
+    "difficulty": "Medium",
+    "tags": ["lost property", "dispatch office", "found items"]
+  },
+  "Q161": {
+    "question_fi": "Kuinka kuljettaja pystyy vaikuttamaan asiakkaan kokemaan matkustusmukavuuteen matkan aikana?",
+    "options_fi": {
+      "A": "Kuljettajan tulee ylläpitää jatkuvaa keskustelua asiakkaan kanssa.",
+      "B": "Kuljettajan tulee olla huomaamaton ja äänetön koko matkan ajan.",
+      "C": "Kuljettajalla tulee olla hyvä tilannetaju asiakkaan tarpeista."
+    },
+    "question_en": "How can the driver influence the travel comfort experienced by the customer during the journey?",
+    "options_en": {
+      "A": "The driver must maintain continuous conversation with the customer.",
+      "B": "The driver must be unobtrusive and silent for the entire journey.",
+      "C": "The driver must have good situational awareness of the customer's needs."
+    },
+    "fw": [{"fi": "matkustusmukavuuteen", "en": "travel comfort"}],
+    "pcw": [{"fi": "hyvä tilannetaju asiakkaan tarpeista", "en": "good situational awareness of the customer's needs"}],
+    "ncw": [{"fi": "jatkuvaa keskustelua", "en": "continuous conversation"}, {"fi": "äänetön koko matkan ajan", "en": "silent for the entire journey"}],
+    "explanation_en": "Good situational awareness of what the customer needs — including whether they want silence or chat — is the key (C). Continuous talking (A) and constant silence (B) are both extremes that ignore the customer.",
+    "difficulty": "Easy",
+    "tags": ["comfort", "situational awareness", "customer needs"]
+  },
+  "Q162": {
+    "question_fi": "Mikä seuraavista on hyvää asiakaspalvelua?",
+    "options_fi": {
+      "A": "Kuljettaja tervehtii kohteliaasti ja tunnustelee, onko asiakas halukas jutustelemaan, ja antaa asiakkaan päättää aiheesta.",
+      "B": "Kuljettaja tervehtii kohteliaasti ja suostuu keskustelemaan ainoastaan ajoreittiin liittyvistä asioista.",
+      "C": "Kuljettaja tervehtii kohteliaasti ja aloittaa keskustelun itselleen mieluisesta aiheesta."
+    },
+    "question_en": "Which of the following is good customer service?",
+    "options_en": {
+      "A": "The driver greets politely, gauges whether the customer is willing to chat, and lets the customer choose the topic.",
+      "B": "The driver greets politely and agrees to discuss only route-related matters.",
+      "C": "The driver greets politely and starts a conversation about a topic they personally enjoy."
+    },
+    "fw": [{"fi": "hyvää asiakaspalvelua", "en": "good customer service"}],
+    "pcw": [{"fi": "tunnustelee, onko asiakas halukas jutustelemaan", "en": "gauges whether the customer is willing to chat"}, {"fi": "antaa asiakkaan päättää aiheesta", "en": "lets the customer choose the topic"}],
+    "ncw": [{"fi": "ainoastaan ajoreittiin liittyvistä asioista", "en": "only route-related matters"}, {"fi": "itselleen mieluisesta aiheesta", "en": "a topic they personally enjoy"}],
+    "explanation_en": "Read the customer and follow their lead (A). (Mirrors Q157.)",
+    "difficulty": "Easy",
+    "tags": ["customer service", "conversation"]
+  },
+  "Q163": {
+    "question_fi": "Mikä seuraavista on hyvää viestimien käyttöön liittyvää asiakaspalvelua?",
+    "options_fi": {
+      "A": "Kuljettaja voi lähettää viestejä, jos puhelin on äänettömällä.",
+      "B": "Puhelun soittaminen, jos se on kuljetuksen suorittamiseksi välttämätöntä.",
+      "C": "Kuljettaja voi puhua henkilökohtaisia puheluita, jos asiakas nukkuu."
+    },
+    "question_en": "Which of the following is good customer service regarding device use?",
+    "options_en": {
+      "A": "The driver may send messages if the phone is on silent.",
+      "B": "Making a call if it is essential for carrying out the transport.",
+      "C": "The driver may make personal calls if the customer is sleeping."
+    },
+    "fw": [{"fi": "viestimien käyttöön", "en": "device use"}],
+    "pcw": [{"fi": "Puhelun soittaminen, jos se on kuljetuksen suorittamiseksi välttämätöntä", "en": "making a call if essential for the transport"}],
+    "ncw": [{"fi": "voi lähettää viestejä, jos puhelin on äänettömällä", "en": "may send messages if on silent"}, {"fi": "henkilökohtaisia puheluita, jos asiakas nukkuu", "en": "personal calls if the customer is sleeping"}],
+    "explanation_en": "Device use while driving is only permitted if essential for carrying out the transport — with hands-free (B). Silent mode (A) and sleeping customers (C) are not valid exceptions.",
+    "difficulty": "Medium",
+    "tags": ["phone", "device use", "driving", "essential calls"]
+  },
+  "Q164": {
+    "question_fi": null,
+    "question_en": null,
+    "options_en": {"A": null, "B": null, "C": null},
+    "fw": [], "pcw": [], "ncw": [],
+    "explanation_en": null,
+    "difficulty": null,
+    "tags": ["review-flag"],
+    "notes": "SOURCE MISSING: master has placeholder 'FI question EN question' with no real content. This question cannot be enriched. Mark as incomplete/skip."
+  },
+  "Q165": {
+    "question_fi": "Saako taksinkuljettaja käyttää puhelinta ajon aikana siten, että pitää puhelinta kädessään?",
+    "options_fi": {
+      "A": "Saa.",
+      "B": "Ei saa.",
+      "C": "Saa, jos asiakas ei ole kyydissä."
+    },
+    "question_en": "May a taxi driver use a phone while driving by holding it in their hand?",
+    "options_en": {
+      "A": "Yes.",
+      "B": "No.",
+      "C": "Yes, if there is no customer in the car."
+    },
+    "fw": [{"fi": "pitää puhelinta kädessään", "en": "holding the phone in their hand"}],
+    "pcw": [{"fi": "Ei saa", "en": "no"}],
+    "ncw": [{"fi": "Saa", "en": "yes"}, {"fi": "Saa, jos asiakas ei ole kyydissä", "en": "yes if no customer"}],
+    "explanation_en": "Holding a phone while driving is prohibited regardless of whether a customer is aboard (B).",
+    "difficulty": "Easy",
+    "tags": ["phone", "hand-held", "driving"]
+  },
+  "Q166": {
+    "question_fi": null,
+    "question_en": null,
+    "options_en": {"A": null, "B": null, "C": null},
+    "fw": [], "pcw": [], "ncw": [],
+    "explanation_en": null,
+    "difficulty": null,
+    "tags": ["review-flag"],
+    "notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched."
+  },
+  "Q167": {
+    "question_fi": "Mikä seuraavista on peruste taksinkuljettajan ajoluvan peruuttamiseksi?",
+    "options_fi": {
+      "A": "Kuljettaja ei ole työskennellyt viimeisen kolmen vuoden aikana taksinkuljettajana.",
+      "B": "Alueella toimivat taksinkuljettajat ja taksiyrittäjät suosittelevat ajoluvan peruuttamista.",
+      "C": "Kuljettaja on syyllistynyt törkeään liikenneturvallisuuden vaarantamiseen."
+    },
+    "question_en": "Which of the following is a ground for revoking a taxi driver's licence?",
+    "options_en": {
+      "A": "The driver has not worked as a taxi driver in the last three years.",
+      "B": "The taxi drivers and taxi operators in the area recommend revoking the licence.",
+      "C": "The driver has committed aggravated endangerment of traffic safety."
+    },
+    "fw": [{"fi": "ajoluvan peruuttamiseksi", "en": "revoking the licence"}],
+    "pcw": [{"fi": "törkeään liikenneturvallisuuden vaarantamiseen", "en": "aggravated endangerment of traffic safety"}],
+    "ncw": [{"fi": "ei ole työskennellyt viimeisen kolmen vuoden", "en": "has not worked in the last three years"}, {"fi": "suosittelevat peruuttamista", "en": "recommend revoking"}],
+    "explanation_en": "Committing a serious traffic safety offence is a legal ground for revocation (C). Not working for three years (A) and peer recommendations (B) are not grounds.",
+    "difficulty": "Medium",
+    "tags": ["licence revocation", "traffic offence", "legal grounds"]
+  },
+  "Q168": {
+    "question_fi": "Mitä seuraavista tiedoista kuljettajan ajopäiväkirjasta tulee ilmetä?",
+    "options_fi": {
+      "A": "Vuoron aikana ajettujen kyytien lukumäärä.",
+      "B": "Työvuoron aloitus- ja lopetusaika sekä pidettyjen taukojen ajankohdat.",
+      "C": "Selvitys työvuoron aikana asiakaspalveluun liittyneistä ongelmatilanteista."
+    },
+    "question_en": "Which of the following information must appear in the driver's logbook?",
+    "options_en": {
+      "A": "The number of rides driven during the shift.",
+      "B": "The start and end time of the work shift and the times of breaks taken.",
+      "C": "A description of customer service problem situations during the shift."
+    },
+    "fw": [{"fi": "ajopäiväkirjasta", "en": "the driver's logbook"}],
+    "pcw": [{"fi": "aloitus- ja lopetusaika sekä pidettyjen taukojen ajankohdat", "en": "start and end time and break times"}],
+    "ncw": [{"fi": "ajettujen kyytien lukumäärä", "en": "the number of rides"}, {"fi": "ongelmatilanteista", "en": "problem situations"}],
+    "explanation_en": "The logbook must record shift start/end times and break times (B). Ride counts (A) and incident descriptions (C) are not required logbook entries.",
+    "difficulty": "Medium",
+    "tags": ["logbook", "work hours", "breaks"]
+  },
+  "Q169": {
+    "question_fi": "Miten toimit, kun kyytiin tulee asiakas, joka ilmoittaa, ettei hän halua keskustella?",
+    "options_fi": {
+      "A": "Annan asiakkaan istua rauhassa kyydissä ja ainoastaan pyydän reittiin liittyviä täsmennyksiä.",
+      "B": "Kuljettajan tulee osoittaa asiakkaalle, että hänellä on huonot vuorovaikutustaidot.",
+      "C": "Kuljettaja yrittää keskustella koko matkan ajan, sillä taksinkuljettajan tehtävänä on huolehtia viihtyvyyden ylläpitämisestä."
+    },
+    "question_en": "How do you act when a customer boards and says they do not want to talk?",
+    "options_en": {
+      "A": "I let the customer sit in peace and only ask for route-related clarifications.",
+      "B": "The driver must show the customer that they have poor social skills.",
+      "C": "The driver tries to talk for the whole journey because the driver's job is to maintain comfort."
+    },
+    "fw": [{"fi": "ettei hän halua keskustella", "en": "they do not want to talk"}],
+    "pcw": [{"fi": "Annan asiakkaan istua rauhassa", "en": "I let the customer sit in peace"}, {"fi": "vain reittiin liittyviä täsmennyksiä", "en": "only route-related clarifications"}],
+    "ncw": [{"fi": "huonot vuorovaikutustaidot", "en": "poor social skills"}, {"fi": "yrittää keskustella koko matkan ajan", "en": "tries to talk the whole journey"}],
+    "explanation_en": "Respect the customer's wish for silence and only speak when needed for the route (A). Mocking them (B) or forcing conversation (C) are both wrong.",
+    "difficulty": "Easy",
+    "tags": ["quiet customer", "respect", "conversation"]
+  },
+  "Q170": {
+    "question_fi": "Ajat melko vilkasliikenteistä valtatietä kohti taksiasemaa. Yhtäkkiä huomaat tien reunalla kaatuneella polkupyöräilijän. Mikä on ensimmäinen toimenpide?",
+    "options_fi": {
+      "A": "Hengitysteiden avaaminen.",
+      "B": "Polkupyöräilijän tutkiminen mahdollisten murtumien ja verenvuotojen havaitsemiseksi.",
+      "C": "Polkupyöräilijän siirtäminen turvallisempaan paikkaan."
+    },
+    "question_en": "You are driving along a fairly busy main road toward the taxi rank. You suddenly notice a fallen cyclist by the roadside. What is the first thing to do?",
+    "options_en": {
+      "A": "Open the airway.",
+      "B": "Examine the cyclist to detect possible fractures and bleeding.",
+      "C": "Move the cyclist to a safer place."
+    },
+    "fw": [{"fi": "kaatuneella polkupyöräilijän", "en": "a fallen cyclist"}, {"fi": "ensimmäinen toimenpide", "en": "first action"}],
+    "pcw": [{"fi": "Hengitysteiden avaaminen", "en": "open the airway"}],
+    "ncw": [{"fi": "murtumien ja verenvuotojen havaitsemiseksi", "en": "to detect fractures and bleeding"}, {"fi": "siirtäminen turvallisempaan paikkaan", "en": "moving to a safer place"}],
+    "explanation_en": "In first aid the airway is the first priority — check it is open (A). Checking for fractures (B) comes later; moving someone with a possible spinal injury (C) risks further harm and is only done if they are in immediate danger.",
+    "difficulty": "Medium",
+    "tags": ["first aid", "airway", "accident", "priority"],
+    "notes": "OCR RECONSTRUCTION: source question was cut off ('huomaat tien reunalla'); reconstructed to include the full scenario ('kaatuneella polkupyöräilijän / a fallen cyclist'). Option A text also appears to be just the answer fragment; the full question is about first priority at an accident scene."
+  },
+  "Q171": {
+    "question_fi": null,
+    "question_en": null,
+    "options_en": {"A": null, "B": null, "C": null},
+    "fw": [], "pcw": [], "ncw": [],
+    "explanation_en": null,
+    "difficulty": null,
+    "tags": ["review-flag"],
+    "notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched."
+  },
+  "Q172": {
+    "question_fi": "Asiakas tulee taksiasemalta kyytiisi ja ilmoittaa haluavansa osoitteeseen, joka ei ole sinulle ennestään tuttu. Kuinka toimit?",
+    "options_fi": {
+      "A": "Lähdet ajamaan siihen suuntaan, jossa epäilet osoitteen sijaitsevan.",
+      "B": "Näpyttelet osoitteen navigaattoriin ja seuraat sen antamia neuvoja.",
+      "C": "Kerrot asiakkaalle, ettei osoite valitettavasti ole sinulle ennestään tuttu, ja tiedustelet samalla hiukan lisätietoja osoitteesta."
+    },
+    "question_en": "A customer boards your taxi from the rank and gives an address you do not know. How do you act?",
+    "options_en": {
+      "A": "You start driving in the direction you think the address might be.",
+      "B": "You type the address into the sat-nav and follow its instructions.",
+      "C": "You tell the customer that unfortunately the address is not familiar to you and ask for a little more information about it."
+    },
+    "fw": [{"fi": "osoite ei ole ennestään tuttu", "en": "an address you do not know"}],
+    "pcw": [{"fi": "Kerrot asiakkaalle", "en": "you tell the customer"}, {"fi": "tiedustelet hiukan lisätietoja osoitteesta", "en": "ask for a little more information about it"}],
+    "ncw": [{"fi": "ajamaan siihen suuntaan, jossa epäilet", "en": "driving in the direction you guess"}, {"fi": "Näpyttelet osoitteen navigaattoriin", "en": "type the address into the sat-nav"}],
+    "explanation_en": "Be transparent with the customer and ask for more information (C). Guessing (A) wastes time and money; using only the sat-nav (B) without confirming with the customer risks navigation errors.",
+    "difficulty": "Easy",
+    "tags": ["unknown address", "communication", "transparency"]
+  },
+  "Q173": {
+    "question_fi": "Mikä seuraavista väittämistä on virheellinen?",
+    "options_fi": {
+      "A": "Ajoneuvo tulee olla rekisteröity luvanvaraiseen liikenteeseen.",
+      "B": "Kuljettajalla tulee olla aina mukana taksinkuljettajan ajolupa.",
+      "C": "Jokaisessa taksissa tulee olla alkolukko."
+    },
+    "question_en": "Which of the following statements is incorrect?",
+    "options_en": {
+      "A": "The vehicle must be registered for licensed transport.",
+      "B": "The driver must always carry the taxi driver's licence.",
+      "C": "Every taxi must have an alcolock."
+    },
+    "fw": [{"fi": "virheellinen", "en": "incorrect"}],
+    "pcw": [{"fi": "Jokaisessa taksissa tulee olla alkolukko", "en": "every taxi must have an alcolock"}],
+    "ncw": [{"fi": "rekisteröity luvanvaraiseen liikenteeseen", "en": "registered for licensed transport"}, {"fi": "Kuljettajalla tulee olla aina mukana ajolupa", "en": "must always carry the licence"}],
+    "explanation_en": "C is the incorrect statement: an alcolock is only required in school and daycare transport vehicles, not every taxi. A and B are correct legal requirements.",
+    "difficulty": "Medium",
+    "tags": ["alcolock", "incorrect statement", "licence", "registration"]
+  },
+  "Q174": {
+    "question_fi": "Mitä teet, kun puhelimesi soi asiakkaan ollessa kyydissä eikä sinulla ole mukanasi hands-free-laitetta?",
+    "options_fi": {
+      "A": "Pahoittelen asiakkaalle häiriötä ja hoidan puhelun ajon aikana.",
+      "B": "Pahoittelen asiakkaalle häiriötä ja vastaan puhelimeen ajon aikana, ja pysähdyn tien varteen, jos puhelu kestää pitempään.",
+      "C": "Pahoittelet asiakkaalle häiriötä, et vastaa puheluun ja soitat takaisin kyydin päätyttyä."
+    },
+    "question_en": "What do you do when your phone rings with a customer aboard and you have no hands-free device?",
+    "options_en": {
+      "A": "I apologise to the customer for the disturbance and take the call while driving.",
+      "B": "I apologise for the disturbance and answer while driving, pulling over if the call goes on longer.",
+      "C": "You apologise for the disturbance, do not answer the call, and call back when the ride is over."
+    },
+    "fw": [{"fi": "ei ole mukana hands-free-laitetta", "en": "no hands-free device"}],
+    "pcw": [{"fi": "et vastaa puheluun", "en": "do not answer the call"}, {"fi": "soitat takaisin kyydin päätyttyä", "en": "call back when the ride is over"}],
+    "ncw": [{"fi": "hoidan puhelun ajon aikana", "en": "take the call while driving"}, {"fi": "vastaan puhelimeen ajon aikana", "en": "answer while driving"}],
+    "explanation_en": "Without a hands-free device you cannot legally answer the phone while driving; apologise and call back after the ride (C). A and B both involve taking a call without hands-free, which is illegal.",
+    "difficulty": "Medium",
+    "tags": ["phone", "no hands-free", "illegal", "call back"]
+  },
+  "Q175": {
+    "question_fi": "Mikä seuraavista on oikein, kun kyydissä olevan asiakkaan kohteeseen on valittavana useampi reitti?",
+    "options_fi": {
+      "A": "Asiakas saa valita reitin, mutta kuljettajan tulee neuvoa tarkoituksenmukaisimman reitin valinnassa.",
+      "B": "Kuljettajan tulee aina ajaa navigaattorin osoittamaa reittiä.",
+      "C": "Kuljettaja valitsee aina edullisimman reitin."
+    },
+    "question_en": "Which is correct when there are several possible routes to the customer's destination?",
+    "options_en": {
+      "A": "The customer may choose the route, but the driver must advise on the most appropriate route.",
+      "B": "The driver must always follow the sat-nav's route.",
+      "C": "The driver always chooses the cheapest route."
+    },
+    "fw": [{"fi": "useampi reitti", "en": "several routes"}],
+    "pcw": [{"fi": "Asiakas saa valita reitin", "en": "the customer may choose the route"}, {"fi": "neuvoa tarkoituksenmukaisimman reitin", "en": "advise on the most appropriate route"}],
+    "ncw": [{"fi": "aina ajaa navigaattorin osoittamaa reittiä", "en": "always follow the sat-nav"}, {"fi": "aina edullisimman reitin", "en": "always the cheapest route"}],
+    "explanation_en": "The customer has the right to choose, with the driver's guidance on the most appropriate option (A). The driver need not blindly follow the sat-nav (B) or always choose cheapest (C).",
+    "difficulty": "Easy",
+    "tags": ["route", "customer choice", "navigation"]
+  },
+  "Q176": {
+    "question_fi": "Miten toimit, kun kyytiin tulee asiakas, joka ilmoittaa, ettei hän halua keskustella?",
+    "options_fi": {
+      "A": "Annan asiakkaan istua rauhassa kyydissä ja ainoastaan pyydän reittiin liittyviä täsmennyksiä.",
+      "B": "Kuljettajan tulee osoittaa asiakkaalle, että hänellä on huonot vuorovaikutustaidot.",
+      "C": "Kuljettaja yrittää keskustella koko matkan ajan, sillä taksinkuljettajan tehtävänä on huolehtia keskustelun ylläpitämisestä."
+    },
+    "question_en": "How do you act when a customer boards and says they do not want to talk?",
+    "options_en": {
+      "A": "I let the customer sit in peace and only ask for route-related clarifications.",
+      "B": "The driver must show the customer that they have poor social skills.",
+      "C": "The driver tries to talk the whole journey because the driver's job is to maintain conversation."
+    },
+    "fw": [{"fi": "ettei hän halua keskustella", "en": "does not want to talk"}],
+    "pcw": [{"fi": "Annan asiakkaan istua rauhassa", "en": "let the customer sit in peace"}],
+    "ncw": [{"fi": "huonot vuorovaikutustaidot", "en": "poor social skills"}, {"fi": "yrittää keskustella koko matkan", "en": "tries to talk the whole journey"}],
+    "explanation_en": "Respect the customer's wish for silence (A). (Mirrors Q169.)",
+    "difficulty": "Easy",
+    "tags": ["quiet customer", "respect"]
+  },
+  "Q177": {
+    "question_fi": "Miten toimit, kun kyytiin tulee asiakas, joka ilmoittaa, ettei hän halua keskustella?",
+    "options_fi": {
+      "A": "Annan asiakkaan istua rauhassa kyydissä ja ainoastaan pyydän reittiin liittyviä asioita.",
+      "B": "Kuljettajan tulee osoittaa asiakkaalle, ettei hän itsekään halua keskustella.",
+      "C": "Kuljettaja yrittää keskustella koko matkan ajan, sillä taksinkuljettaja huolehtii keskustelun ylläpitämisestä."
+    },
+    "question_en": "How do you act when a customer boards and says they do not want to talk?",
+    "options_en": {
+      "A": "I let the customer sit in peace and only ask for route-related matters.",
+      "B": "The driver must show the customer that they too do not want to talk.",
+      "C": "The driver tries to talk the whole journey because the driver maintains conversation."
+    },
+    "fw": [{"fi": "ettei hän halua keskustella", "en": "does not want to talk"}],
+    "pcw": [{"fi": "Annan asiakkaan istua rauhassa", "en": "let the customer sit in peace"}],
+    "ncw": [{"fi": "ei itsekään halua keskustella", "en": "that they too do not want to talk"}, {"fi": "yrittää keskustella koko matkan", "en": "tries to talk the whole journey"}],
+    "explanation_en": "Respect the customer's wish for silence (A). (Mirrors Q169, Q176.)",
+    "difficulty": "Easy",
+    "tags": ["quiet customer", "respect"]
+  },
+  "Q178": {
+    "question_fi": null,
+    "question_en": null,
+    "options_en": {"A": null, "B": null, "C": null},
+    "fw": [], "pcw": [], "ncw": [],
+    "explanation_en": null,
+    "difficulty": null,
+    "tags": ["review-flag"],
+    "notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched."
+  },
+  "Q179": {
+    "question_fi": "Miten kuljettajan tulee valita käytettävä ajoreitti asiakkaan kohteeseen, jos matkustaja jättää valinnan kuljettajalle ja matkan hinta perustuu matkan pituuteen tai matkaan käytettävään aikaan?",
+    "options_fi": {
+      "A": "Kuljettajan ei tarvitse valita reittiä, koska asiakkaan tulee tietää reitti perille.",
+      "B": "Kuljettaja voi valita minkä reitin tahansa.",
+      "C": "Kuljettajan tulee valita matkustajan kannalta edullisin ja tarkoituksenmukaisin reitti."
+    },
+    "question_en": "How must the driver choose the route when the passenger leaves the choice to the driver and the fare is based on distance or time?",
+    "options_en": {
+      "A": "The driver does not need to choose a route because the customer must know the way.",
+      "B": "The driver may choose any route.",
+      "C": "The driver must choose the most cost-effective and appropriate route for the passenger."
+    },
+    "fw": [{"fi": "matkan hinta perustuu matkan pituuteen tai matkaan käytettävään aikaan", "en": "the fare is based on distance or time"}],
+    "pcw": [{"fi": "edullisin ja tarkoituksenmukaisin reitti", "en": "the most cost-effective and appropriate route"}],
+    "ncw": [{"fi": "ei tarvitse valita reittiä", "en": "does not need to choose a route"}, {"fi": "minkä reitin tahansa", "en": "any route"}],
+    "explanation_en": "When the fare is meter-based and the customer leaves the route to the driver, the driver must choose the cheapest appropriate route (C).",
+    "difficulty": "Medium",
+    "tags": ["route", "meter fare", "driver duty"]
+  },
+  "Q180": {
+    "question_fi": "Asiakkaanasi oleva kiireinen herra Möttönen pyytää sinua pysähtymään hyvin vilkkaasti liikennöidyssä paikassa, jotta hän voi jäädä pois. Mikä seuraavista tilannetta koskevista väittämistä on oikein?",
+    "options_fi": {
+      "A": "Herra Möttösellä on oikeus valita pysähtymispaikka, sillä hän maksaa kyydistä.",
+      "B": "Herra Möttösellä on velvollisuus maksaa mahdollinen sakkomaksu, mikäli hän on pyytänyt pysähtymään kielletyssä paikassa.",
+      "C": "Asiakkaan turvallinen autoon tulo ja poistuminen on aina kuljettajan vastuulla, joten jos pysähtymispaikka on sellainen, ettei herra Möttönen voi siinä turvallisesti poistua, etsit paremman paikan."
+    },
+    "question_en": "Your customer, Mr Möttönen in a hurry, asks you to stop in a very busy place so he can get out. Which of the following statements about the situation is correct?",
+    "options_en": {
+      "A": "Mr Möttönen has the right to choose the stopping place because he is paying for the ride.",
+      "B": "Mr Möttönen must pay any fine if he asked you to stop in a prohibited place.",
+      "C": "The safe boarding and alighting of the customer is always the driver's responsibility, so if the stopping place is unsafe, you find a better one."
+    },
+    "fw": [{"fi": "pysähtymään hyvin vilkkaasti liikennöidyssä paikassa", "en": "stop in a very busy place"}],
+    "pcw": [{"fi": "asiakkaan turvallinen poistuminen on kuljettajan vastuulla", "en": "safe alighting is the driver's responsibility"}, {"fi": "etsit paremman paikan", "en": "you find a better place"}],
+    "ncw": [{"fi": "oikeus valita pysähtymispaikka", "en": "has the right to choose the stopping place"}, {"fi": "velvollisuus maksaa sakkomaksu", "en": "must pay the fine"}],
+    "explanation_en": "Safe drop-off is always the driver's responsibility; if the requested spot is unsafe, find a safer one (C). The customer cannot dictate an unsafe stop (A), and fines are the driver's responsibility (B) — the driver should not have stopped there.",
+    "difficulty": "Medium",
+    "tags": ["stopping place", "safety", "driver responsibility"]
+  },
+  "Q181": {
+    "question_fi": "Mikä seuraavista väittämistä pitää paikkansa?",
+    "options_fi": {
+      "A": "Jos kuljettaja joutuu auton liikkuessa soittamaan puhelun, hänen ei tarvitse käyttää hands-free-laitetta.",
+      "B": "Mikäli taksissa ei ole asiakkaita, saa kuljettaja ajoneuvon liikkuessa katsella televisiokuvaa integroidusta näytöstä.",
+      "C": "Kuljettaja saa soittaa puhelun ajon aikana hands-free-laitetta käyttäen, jos se on kuljetuksen suorittamiseksi välttämätöntä."
+    },
+    "question_en": "Which of the following statements is true?",
+    "options_en": {
+      "A": "If the driver must make a call while the vehicle is moving, they do not need to use a hands-free device.",
+      "B": "If there are no customers in the taxi, the driver may watch television on an integrated screen while the vehicle is moving.",
+      "C": "The driver may make a phone call while driving using a hands-free device, if it is essential for carrying out the transport."
+    },
+    "fw": [{"fi": "ajon aikana", "en": "while driving"}],
+    "pcw": [{"fi": "hands-free-laitetta käyttäen, jos se on kuljetuksen suorittamiseksi välttämätöntä", "en": "using a hands-free device if essential for the transport"}],
+    "ncw": [{"fi": "ei tarvitse käyttää hands-free-laitetta", "en": "does not need a hands-free device"}, {"fi": "katsella televisiokuvaa", "en": "watch television"}],
+    "explanation_en": "Calls while driving require hands-free and must be necessary for the transport (C). No hands-free (A) and watching TV while driving (B) are both illegal.",
+    "difficulty": "Easy",
+    "tags": ["phone", "hands-free", "television", "driving"]
+  },
+  "Q182": {
+    "question_fi": "Olet ottanut asiakkaan kyytiin paikkakuntasi taksiasemalta. Olette ajaneet hyvän matkaa, kun taksin puhelin soi. Huomaat, että hands-free-laite on jäänyt kotiin. Mitä teet?",
+    "options_fi": {
+      "A": "Vastaan puhelimeen normaalisti, pahoittelen asiakkaalle puhelimen aiheuttamaa häiriötä ja vastaan sitten puheluun.",
+      "B": "Pysähdyn tien varteen, jotta voin kirjoittaa ylös välttämättömät tiedot. Voin pitää taksimittarin päällä.",
+      "C": "Pahoittelen asiakkaalle puhelimen aiheuttamaa häiriötä, en vastaa siihen, soitan takaisin kyydin päätyttyä."
+    },
+    "question_en": "You have taken a customer from your local taxi rank. You have driven a good distance when the taxi phone rings. You notice the hands-free device was left at home. What do you do?",
+    "options_en": {
+      "A": "I answer the phone normally, apologise to the customer for the interruption, and take the call.",
+      "B": "I pull over so I can write down essential information. I may keep the meter running.",
+      "C": "I apologise to the customer for the interruption, do not answer, and call back when the ride is over."
+    },
+    "fw": [{"fi": "hands-free-laite on jäänyt kotiin", "en": "the hands-free device was left at home"}],
+    "pcw": [{"fi": "en vastaa siihen", "en": "I do not answer"}, {"fi": "soitan takaisin kyydin päätyttyä", "en": "call back when the ride is over"}],
+    "ncw": [{"fi": "Vastaan puhelimeen normaalisti", "en": "I answer normally"}, {"fi": "Pysähdyn tien varteen", "en": "I pull over"}],
+    "explanation_en": "Without hands-free you cannot legally answer while driving; apologise and call back (C). Answering without hands-free (A) is illegal; pulling over to take notes (B) with the meter running exploits the customer.",
+    "difficulty": "Medium",
+    "tags": ["phone", "no hands-free", "call back"]
+  },
+  "Q183": {
+    "question_fi": "Mikä seuraavista vaihtoehdoista on oikein?",
+    "options_fi": {
+      "A": "Taksiluvan haltijalla on oikeus poikkeustapauksessa ohittaa kuljettajan alkolukon käyttövelvollisuus.",
+      "B": "Alkoholia ei tule nauttia ennen ajovuoroa, koska nautittu alkoholi aiheuttaa aina väsymystä ja heikentää ajokykyä.",
+      "C": "Jos kuljettaja ei saa puhalluksen jälkeen ajoneuvoa käyntiin, kuljettaja voi aina vaihtaa sellaiseen ajoneuvoon, jossa ei ole alkolukkoa."
+    },
+    "question_en": "Which of the following is correct?",
+    "options_en": {
+      "A": "The taxi licence holder has the right in exceptional cases to override the driver's alcolock obligation.",
+      "B": "Alcohol must not be consumed before a driving shift because alcohol always causes fatigue and impairs driving ability.",
+      "C": "If the driver cannot start the vehicle after blowing, the driver may always switch to a vehicle without an alcolock."
+    },
+    "fw": [{"fi": "alkoholia ennen ajovuoroa", "en": "alcohol before a driving shift"}],
+    "pcw": [{"fi": "aiheuttaa aina väsymystä ja heikentää ajokykyä", "en": "always causes fatigue and impairs driving ability"}],
+    "ncw": [{"fi": "ohittaa kuljettajan alkolukon käyttövelvollisuus", "en": "override the alcolock obligation"}, {"fi": "voi aina vaihtaa sellaiseen ajoneuvoon, jossa ei ole alkolukkoa", "en": "may always switch to a vehicle without an alcolock"}],
+    "explanation_en": "Alcohol before a shift is not permitted as it impairs driving (B). The licence holder cannot override the alcolock (A); switching to a vehicle without an alcolock to bypass it (C) is illegal.",
+    "difficulty": "Medium",
+    "tags": ["alcohol", "alcolock", "driving fitness"]
+  },
+  "Q184": {
+    "question_fi": "Miten tulee toimia, kun noudat hyvin iäkkään hitaasti liikkuvan asiakkaan liikenteisestä paikasta?",
+    "options_fi": {
+      "A": "Avustan häntä ottamalla käsivarresta kiinni kysymättä, tarvitseeko hän apua.",
+      "B": "Pyydän asiakasta kiirehtimään autoon, koska kaupan edessä on vilkas liikenne.",
+      "C": "Nouset ajoneuvosta ja tiedustelet, tarvitseeko hän apua."
+    },
+    "question_en": "How should you act when picking up a very elderly, slow-moving customer in a busy location?",
+    "options_en": {
+      "A": "I assist them by taking their arm without asking whether they need help.",
+      "B": "I ask the customer to hurry into the car because of the busy traffic in front of the shop.",
+      "C": "You get out of the vehicle and ask whether they need help."
+    },
+    "fw": [{"fi": "hyvin iäkkään hitaasti liikkuvan asiakkaan", "en": "a very elderly, slow-moving customer"}],
+    "pcw": [{"fi": "Nouset ajoneuvosta", "en": "you get out"}, {"fi": "tiedustelet, tarvitseeko hän apua", "en": "ask whether they need help"}],
+    "ncw": [{"fi": "kysymättä", "en": "without asking"}, {"fi": "kiirehtimään autoon", "en": "hurry into the car"}],
+    "explanation_en": "Get out and ask first (C). Taking the arm without consent (A) and rushing an elderly customer (B) are both wrong. (Mirrors Q012, Q126.)",
+    "difficulty": "Easy",
+    "tags": ["elderly", "slow-moving", "assistance", "consent"]
+  },
+  "Q185": {
+    "question_fi": "Mikä seuraavista on paras tapa toimia? Asiakkaanasi on ikääntynyt avustettava henkilö. Asiakas jätetään hoitolaitoksen luona.",
+    "options_fi": {
+      "A": "Kuljettajan vastuu päättyy, kun asiakas on noussut ulos autosta.",
+      "B": "Taksinkuljettajan tulee huolehtia, että asiakas pääsee tarvittaessa hoitohenkilökunnan luokse.",
+      "C": "Taksinkuljettajan tulee aina myös huolehtia asiakkaan ulkovaatteiden riisumisesta."
+    },
+    "question_en": "Which is the best course of action? Your customer is an elderly person who needs assistance. The customer is dropped at a care facility.",
+    "options_en": {
+      "A": "The driver's responsibility ends when the customer has got out of the car.",
+      "B": "The taxi driver must ensure the customer reaches the care staff if needed.",
+      "C": "The taxi driver must also always take care of removing the customer's outdoor clothes."
+    },
+    "fw": [{"fi": "ikääntynyt avustettava henkilö", "en": "an elderly person who needs assistance"}, {"fi": "hoitolaitoksen luona", "en": "at a care facility"}],
+    "pcw": [{"fi": "asiakas pääsee hoitohenkilökunnan luokse", "en": "the customer reaches the care staff"}],
+    "ncw": [{"fi": "vastuu päättyy, kun asiakas on noussut ulos", "en": "responsibility ends when out of the car"}, {"fi": "ulkovaatteiden riisumisesta", "en": "removing outdoor clothes"}],
+    "explanation_en": "Ensure the customer is handed to the care staff (B). Stopping at the car door (A) is insufficient; removing clothing (C) is not the driver's duty. (Mirrors Q109, Q138.)",
+    "difficulty": "Medium",
+    "tags": ["elderly", "care facility", "duty of care"]
+  },
+  "Q186": {
+    "question_fi": "Miten toimit, kun asiakas pyytää ajamaan ylinopeutta?",
+    "options_fi": {
+      "A": "Voit ajaa ylinopeutta, jos asiakas on sopinut, että hän maksaa ylinopeussakot.",
+      "B": "Kerrot asiakkaalle, ettet voi ajaa ylinopeutta, mutta teet parhaasi, jotta hän pääsee turvallisesti perille nopeinta mahdollista reittiä.",
+      "C": "Voit ajaa ylinopeutta, jos asiakkaalla on siihen perusteltu syy."
+    },
+    "question_en": "How do you act when a customer asks you to speed?",
+    "options_en": {
+      "A": "You may speed if the customer has agreed to pay the speeding fines.",
+      "B": "You tell the customer you cannot speed, but do your best to get them there safely via the fastest possible route.",
+      "C": "You may speed if the customer has a justified reason."
+    },
+    "fw": [{"fi": "pyytää ajamaan ylinopeutta", "en": "asks you to speed"}],
+    "pcw": [{"fi": "ettet voi ajaa ylinopeutta", "en": "you cannot speed"}, {"fi": "nopeinta mahdollista reittiä", "en": "the fastest possible route"}],
+    "ncw": [{"fi": "jos hän maksaa ylinopeussakot", "en": "if the customer pays the fines"}, {"fi": "jos asiakkaalla on perusteltu syy", "en": "if the customer has a justified reason"}],
+    "explanation_en": "You cannot speed regardless; explain this and use the fastest legal route (B). Neither payment (A) nor justification (C) makes speeding permissible.",
+    "difficulty": "Easy",
+    "tags": ["speeding", "illegal", "customer request"]
+  },
+  "Q187": {
+    "question_fi": "Miten tulee toimia, kun maksuhetkellä asiakas on haluton maksamaan matkansa?",
+    "options_fi": {
+      "A": "Kutsun paikalle poliisin selvittämään asiaa.",
+      "B": "Kutsun paikalle mahdollisimman monta muuta taksinkuljettajaa selvittämään asiaa.",
+      "C": "Otan asiakkaalta väkisin arvoesineensä maksun pantiksi."
+    },
+    "question_en": "How should you act when, at payment time, the customer is unwilling to pay for the journey?",
+    "options_en": {
+      "A": "I call the police to resolve the matter.",
+      "B": "I call as many other taxi drivers as possible to resolve the matter.",
+      "C": "I forcibly take a valuable item from the customer as a payment pledge."
+    },
+    "fw": [{"fi": "haluton maksamaan", "en": "unwilling to pay"}],
+    "pcw": [{"fi": "Kutsun paikalle poliisin", "en": "I call the police"}],
+    "ncw": [{"fi": "mahdollisimman monta muuta taksinkuljettajaa", "en": "as many other taxi drivers as possible"}, {"fi": "väkisin arvoesineen", "en": "forcibly take a valuable item"}],
+    "explanation_en": "Call the police to resolve a payment dispute (A). Calling other drivers (B) is not helpful; taking property by force (C) is illegal.",
+    "difficulty": "Easy",
+    "tags": ["payment refusal", "police", "non-payment"]
+  },
+  "Q188": {
+    "question_fi": "Taksinkuljettajalla on huono päivä eikä mikään tunnu menevän hyvin. Hän on töykeä eräälle asiakkaalle. Asiakas tekee tilanteesta valituksen. Onko asiakkaalla oikeus valittaa saamastaan palvelusta?",
+    "options_fi": {
+      "A": "Kyllä, sillä asiakkaita kohtaan tulee aina käyttäytyä kohteliaasti ja asiallisesti.",
+      "B": "Ei, sillä asiakas ei osta taksiin tullessaan iloista palvelua vaan kuljetuksen määränpäähän.",
+      "C": "Ei, sillä kyseinen tapa on Reinikaisen tapa toimia, eikä häntä siitä voi moittia."
+    },
+    "question_en": "The driver is having a bad day and is rude to one customer. The customer makes a complaint. Does the customer have the right to complain about the service they received?",
+    "options_en": {
+      "A": "Yes, because customers must always be treated politely and professionally.",
+      "B": "No, because when taking a taxi the customer is buying transport to a destination, not cheerful service.",
+      "C": "No, because that is just the way Reinikainen operates and cannot be criticised."
+    },
+    "fw": [{"fi": "töykeä eräälle asiakkaalle", "en": "rude to a customer"}],
+    "pcw": [{"fi": "asiakkaita kohtaan tulee aina käyttäytyä kohteliaasti ja asiallisesti", "en": "customers must always be treated politely and professionally"}],
+    "ncw": [{"fi": "ei osta iloista palvelua", "en": "not buying cheerful service"}, {"fi": "ei voi moittia", "en": "cannot be criticised"}],
+    "explanation_en": "Customers always have the right to complain about rude treatment (A). B and C both deny the right to basic polite service, which is regulated.",
+    "difficulty": "Easy",
+    "tags": ["complaint", "customer rights", "rude driver"]
+  },
+  "Q189": {
+    "question_fi": "Kyydissäsi on liikuntarajoitteinen asiakas, joka tarvitsisi kaksi pulloa viiniä. Asiakas pyytää sinua hakemaan viinipullot Alkosta, koska liikkuminen on hänelle hankalaa. Mitä vastaat asiakkaan pyyntöön?",
+    "options_fi": {
+      "A": "\"Valitettavasti laki kieltää minua hakemasta alkoholia asiakkaille.\"",
+      "B": "\"Tottahan toki voin hakea ne. Mutta älä ihmettele, jos Alkon myyjä tulee tarkistamaan autoon, kenelle juomat tulevat.\"",
+      "C": "\"Tottahan toki voin hakea, mutta sinun täytyy kirjoittaa minulle kirjallinen valtakirja, jossa valtuutat minut hakemaan itsellesi juomat.\""
+    },
+    "question_en": "You have a customer with limited mobility who needs two bottles of wine. They ask you to fetch the bottles from Alko because moving around is difficult. What do you reply?",
+    "options_en": {
+      "A": "\"Unfortunately the law prevents me from fetching alcohol for customers.\"",
+      "B": "\"Of course I can get them. But don't be surprised if an Alko staff member comes to the car to check who the drinks are for.\"",
+      "C": "\"Of course I can get them, but you must write me a written power of attorney authorising me to fetch the drinks for you.\""
+    },
+    "fw": [{"fi": "liikuntarajoitteinen asiakas", "en": "a customer with limited mobility"}, {"fi": "hakemaan viinipullot Alkosta", "en": "fetch wine bottles from Alko"}],
+    "pcw": [{"fi": "laki kieltää minua hakemasta alkoholia", "en": "the law prevents me from fetching alcohol"}],
+    "ncw": [{"fi": "Tottahan toki voin hakea", "en": "of course I can get them"}],
+    "explanation_en": "A taxi driver is legally prohibited from purchasing alcohol for customers (A). (Mirrors Q113.)",
+    "difficulty": "Medium",
+    "tags": ["alcohol", "legal prohibition", "customer request"]
+  },
+  "Q190": {
+    "question_fi": "Mikä seuraavista on hyvää asiakaspalvelua?",
+    "options_fi": {
+      "A": "Kuljettaja tervehtii kohteliaasti ja tunnustelee, onko asiakas halukas jutustelemaan, ja antaa asiakkaan päättää aiheesta.",
+      "B": "Kuljettaja tervehtii kohteliaasti ja suostuu keskustelemaan ainoastaan ajoreitiin liittyvistä asioista.",
+      "C": "Kuljettaja tervehtii kohteliaasti ja aloittaa keskustelun itselleen mieluisesta aiheesta."
+    },
+    "question_en": "Which of the following is good customer service?",
+    "options_en": {
+      "A": "The driver greets politely, gauges whether the customer wants to chat, and lets the customer choose the topic.",
+      "B": "The driver greets politely and agrees to discuss only route-related matters.",
+      "C": "The driver greets politely and starts a conversation about a topic they personally enjoy."
+    },
+    "fw": [{"fi": "hyvää asiakaspalvelua", "en": "good customer service"}],
+    "pcw": [{"fi": "tunnustelee, onko asiakas halukas jutustelemaan", "en": "gauges whether the customer wants to chat"}, {"fi": "antaa asiakkaan päättää aiheesta", "en": "lets the customer choose the topic"}],
+    "ncw": [{"fi": "ainoastaan ajoreitiin liittyvistä", "en": "only route-related"}, {"fi": "itselleen mieluisesta aiheesta", "en": "a topic they enjoy"}],
+    "explanation_en": "Read the customer and follow their lead (A). (Mirrors Q157, Q162.)",
+    "difficulty": "Easy",
+    "tags": ["customer service", "conversation"]
+  },
+  "Q191": {
+    "question_fi": "Erään helmikuisen torstai-yön ulkolämpötila on −30 °C. Olet saanut lentokentältä varsin väsyneen oloisen asiakkaan, joka on nauttinut muutaman alkoholiannoksen. Kyyti sujuu hyvin ja perille päästyänne asiakas lähtee hoippumaan kohti kotioveaan. Miten toimit?",
+    "options_fi": {
+      "A": "Varmistat, että asiakas pääsee kotiovesta sisään. Tämän jälkeen voit jatkaa matkaa.",
+      "B": "Asiakkaan poistuessa taksista hän ei ole enää sinun vastuullasi, joten voit jatkaa matkaasi.",
+      "C": "Puhautat asiakkaan ennen kuin päästät hänet ulos autosta. Jos hän puhaltaa yli 0,5 ‰, viet hänet poliisin selviämisasemalle."
+    },
+    "question_en": "On a February Thursday night the outdoor temperature is −30 °C. You have picked up a tired-looking customer from the airport who has had a few drinks. The ride goes well. On arrival the customer staggers toward their front door. How do you act?",
+    "options_en": {
+      "A": "You make sure the customer gets through the front door. After that you may continue.",
+      "B": "Once the customer has left the taxi they are no longer your responsibility, so you may continue your journey.",
+      "C": "You breathalyse the customer before letting them out of the car. If they blow over 0.5‰, you take them to the police sobering station."
+    },
+    "fw": [{"fi": "−30 °C", "en": "−30 °C"}, {"fi": "nauttinut muutaman alkoholiannoksen", "en": "had a few drinks"}],
+    "pcw": [{"fi": "Varmistat, että asiakas pääsee kotiovesta sisään", "en": "you make sure the customer gets through the front door"}],
+    "ncw": [{"fi": "ei ole enää sinun vastuullasi", "en": "no longer your responsibility"}, {"fi": "Puhautat asiakkaan", "en": "you breathalyse the customer"}],
+    "explanation_en": "In extreme cold with an intoxicated customer, make sure they get safely indoors (A). Abandoning them at −30 °C (B) risks their life; breathalysing a passenger (C) is not the driver's role.",
+    "difficulty": "Medium",
+    "tags": ["drop-off", "cold weather", "intoxicated", "duty of care"]
+  },
+  "Q192": {
+    "question_fi": "Kuinka tulee toimia tilanteessa, jossa kyydin päätyttyä huomaat asiakkaan unohtaneen ajoneuvoon käsilaukkunsa?",
+    "options_fi": {
+      "A": "Voit viedä käsilaukun kotiisi ja jäädä odottamaan asiakkaan yhteydenottoa.",
+      "B": "Toimitat käsilaukun tilausvälitysyhtiön toimistolle viimeistään viikon kuluessa.",
+      "C": "Toimitat käsilaukun viipymättä asiakkaalle tai poliisin löytötavaratoimistoon."
+    },
+    "question_en": "How should you act when, at the end of the ride, you notice the customer has left their handbag in the vehicle?",
+    "options_en": {
+      "A": "You may take the handbag home and wait for the customer to contact you.",
+      "B": "You deliver the handbag to the dispatch company within one week.",
+      "C": "You deliver the handbag to the customer or the police lost-property office without delay."
+    },
+    "fw": [{"fi": "unohtaneen ajoneuvoon käsilaukkunsa", "en": "left their handbag in the vehicle"}],
+    "pcw": [{"fi": "viipymättä asiakkaalle tai poliisin löytötavaratoimistoon", "en": "to the customer or police lost-property office without delay"}],
+    "ncw": [{"fi": "viedä käsilaukun kotiisi", "en": "take the handbag home"}, {"fi": "viimeistään viikon kuluessa", "en": "within one week"}],
+    "explanation_en": "Return the item to the customer or the police immediately (C). Taking it home (A) and waiting up to a week (B) are both too slow.",
+    "difficulty": "Medium",
+    "tags": ["lost property", "police", "prompt return"]
+  },
+  "Q193": {
+    "question_fi": "Kuljettaja pystyy vaikuttamaan merkittävästi asiakkaan matkustusmukavuuteen. Mitä sinulta odotetaan?",
+    "options_fi": {
+      "A": "Jatkuvaa keskustelun ylläpitoa.",
+      "B": "Hyvää pelisilmää, sillä joskus asiakkaat eivät halua keskustella ja taas toisinaan asiakas haluaa juttukumppanin.",
+      "C": "Huomaamatonta ja äänetöntä olemusta."
+    },
+    "question_en": "The driver can significantly influence the customer's travel comfort. What is expected of you?",
+    "options_en": {
+      "A": "Continuous conversation.",
+      "B": "Good situational awareness — sometimes customers do not want to talk, other times they want a conversation partner.",
+      "C": "An unobtrusive and silent demeanour."
+    },
+    "fw": [{"fi": "matkustusmukavuuteen", "en": "travel comfort"}],
+    "pcw": [{"fi": "Hyvää pelisilmää", "en": "good situational awareness"}, {"fi": "joskus asiakkaat eivät halua keskustella", "en": "sometimes customers do not want to talk"}],
+    "ncw": [{"fi": "Jatkuvaa keskustelun ylläpitoa", "en": "continuous conversation"}, {"fi": "äänetöntä olemusta", "en": "silent demeanour"}],
+    "explanation_en": "Read the customer and adapt (B). Continuous talking (A) and constant silence (C) are both extremes. (Mirrors Q161.)",
+    "difficulty": "Easy",
+    "tags": ["comfort", "situational awareness", "conversation"]
+  },
+  "Q194": {
+    "question_fi": "Liikenteessä on poikkeusjärjestelyjä liikenneonnettomuuden vuoksi. Saat samaan aikaan keskenään ristiriitaisia toimintaohjeita kolmelta taholta, jotka eivät tiedä toisistaan. Kenellä seuraavista on määräysvalta eli kenen ohjeita sinun tulee noudattaa?",
+    "options_fi": {
+      "A": "Liikennevirasto.",
+      "B": "Poliisi.",
+      "C": "Työnantajasi."
+    },
+    "question_en": "There are special traffic arrangements due to an accident. You receive contradictory instructions simultaneously from three parties who are unaware of each other. Who of the following has authority — whose instructions must you follow?",
+    "options_en": {
+      "A": "The Finnish Transport Agency.",
+      "B": "The police.",
+      "C": "Your employer."
+    },
+    "fw": [{"fi": "ristiriitaisia toimintaohjeita", "en": "contradictory instructions"}, {"fi": "määräysvalta", "en": "authority"}],
+    "pcw": [{"fi": "Poliisi", "en": "the police"}],
+    "ncw": [{"fi": "Liikennevirasto", "en": "the Transport Agency"}, {"fi": "Työnantajasi", "en": "your employer"}],
+    "explanation_en": "At an accident scene the police have authority and their instructions override others (B). The Transport Agency (A) issues regulations but does not direct on-site traffic; the employer (C) cannot override a police officer.",
+    "difficulty": "Medium",
+    "tags": ["accident", "police authority", "traffic management"]
+  },
+  "Q195": {
+    "question_fi": "Miten kuljettajan tulee valita käytettävä ajoreitti kohteeseen, jos matkustaja jättää valinnan kuljettajalle ja matkan hinta perustuu matkan pituuteen tai matkaan käytettävään aikaan?",
+    "options_fi": {
+      "A": "Kuljettajan ei tarvitse valita reittiä, koska asiakkaan tulee tietää reitti perille.",
+      "B": "Kuljettaja voi valita minkä reitin tahansa.",
+      "C": "Kuljettajan tulee valita matkustajan kannalta edullisin ja tarkoituksenmukainen reitti."
+    },
+    "question_en": "How must the driver choose the route when the passenger leaves the choice to the driver and the fare is based on distance or time?",
+    "options_en": {
+      "A": "The driver does not need to choose because the customer must know the way.",
+      "B": "The driver may choose any route.",
+      "C": "The driver must choose the most cost-effective and appropriate route for the passenger."
+    },
+    "fw": [{"fi": "matkan hinta perustuu matkan pituuteen tai matkaan käytettävään aikaan", "en": "fare based on distance or time"}],
+    "pcw": [{"fi": "edullisin ja tarkoituksenmukainen reitti", "en": "most cost-effective and appropriate route"}],
+    "ncw": [{"fi": "ei tarvitse valita reittiä", "en": "does not need to choose"}, {"fi": "minkä reitin tahansa", "en": "any route"}],
+    "explanation_en": "The driver must choose the most efficient route for the customer (C). (Mirrors Q179.)",
+    "difficulty": "Medium",
+    "tags": ["route", "meter fare", "driver duty"]
+  },
+  "Q196": {
+    "question_fi": "Mikä seuraavista on peruste taksinkuljettajan ajoluvan peruuttamiselle?",
+    "options_fi": {
+      "A": "Kuljettaja ei ole työskennellyt viimeisen kolmen vuoden aikana taksinkuljettajana.",
+      "B": "Alueella toimivat taksinkuljettajat ja taksiyrittäjät suosittelevat ajoluvan peruuttamista.",
+      "C": "Kuljettaja on syyllistynyt törkeään liikenneturvallisuuden vaarantamiseen."
+    },
+    "question_en": "Which of the following is a ground for revoking a taxi driver's licence?",
+    "options_en": {
+      "A": "The driver has not worked as a taxi driver in the last three years.",
+      "B": "The taxi drivers and taxi operators in the area recommend revoking the licence.",
+      "C": "The driver has committed aggravated endangerment of traffic safety."
+    },
+    "fw": [{"fi": "ajoluvan peruuttamiselle", "en": "revoking the licence"}],
+    "pcw": [{"fi": "törkeään liikenneturvallisuuden vaarantamiseen", "en": "aggravated endangerment of traffic safety"}],
+    "ncw": [{"fi": "ei ole työskennellyt viimeisen kolmen vuoden", "en": "has not worked in three years"}, {"fi": "suosittelevat peruuttamista", "en": "recommend revoking"}],
+    "explanation_en": "Committing a serious traffic offence is a ground for revocation (C). (Mirrors Q167.)",
+    "difficulty": "Medium",
+    "tags": ["licence revocation", "traffic offence"]
+  },
+  "Q197": {
+    "question_fi": "Mikä seuraavista väittämistä on virheellinen?",
+    "options_fi": {
+      "A": "Ajoneuvo tulee olla rekisteröity luvanvaraiseen liikenteeseen.",
+      "B": "Kuljettajalla tulee olla aina mukana taksinkuljettajan ajolupa.",
+      "C": "Jokaisessa taksissa tulee olla alkolukko."
+    },
+    "question_en": "Which of the following statements is incorrect?",
+    "options_en": {
+      "A": "The vehicle must be registered for licensed transport.",
+      "B": "The driver must always carry the taxi driver's licence.",
+      "C": "Every taxi must have an alcolock."
+    },
+    "fw": [{"fi": "virheellinen", "en": "incorrect"}],
+    "pcw": [{"fi": "Jokaisessa taksissa tulee olla alkolukko", "en": "every taxi must have an alcolock"}],
+    "ncw": [{"fi": "rekisteröity luvanvaraiseen liikenteeseen", "en": "registered for licensed transport"}, {"fi": "aina mukana taksinkuljettajan ajolupa", "en": "always carry the licence"}],
+    "explanation_en": "C is the incorrect statement — alcolocks are only required in school/daycare transport vehicles, not all taxis. (Mirrors Q173.)",
+    "difficulty": "Medium",
+    "tags": ["alcolock", "incorrect statement"]
+  },
+  "Q198": {
+    "question_fi": "Miten toimit, kun asiakas pyytää pysähtymään ja odottamaan paikassa, jossa pysähtyminen on kielletty?",
+    "options_fi": {
+      "A": "Asiakkaalla on oikeus valita pysähtymispaikka, sillä hän maksaa kyydistä.",
+      "B": "Taksinkuljettaja voi perustellusta syystä poiketa pysähtymissäännöistä.",
+      "C": "Voit jäädä odottamaan sellaiseen paikkaan, jossa pysähtyminen on sallittu."
+    },
+    "question_en": "How do you act when a customer asks you to stop and wait in a place where stopping is prohibited?",
+    "options_en": {
+      "A": "The customer has the right to choose the stopping place because they are paying for the ride.",
+      "B": "A taxi driver may deviate from stopping rules for a justified reason.",
+      "C": "You wait in a place where stopping is permitted."
+    },
+    "fw": [{"fi": "pysähtyminen on kielletty", "en": "stopping is prohibited"}],
+    "pcw": [{"fi": "paikkaan, jossa pysähtyminen on sallittu", "en": "a place where stopping is permitted"}],
+    "ncw": [{"fi": "oikeus valita pysähtymispaikka", "en": "the right to choose the stopping place"}, {"fi": "voi poiketa pysähtymissäännöistä", "en": "may deviate from stopping rules"}],
+    "explanation_en": "Wait where stopping is legal (C). The customer cannot dictate an illegal stop (A); taxis have no blanket exemption from stopping rules (B).",
+    "difficulty": "Easy",
+    "tags": ["stopping", "no-stopping zone", "traffic rules"]
+  }
+}

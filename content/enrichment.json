@@ -1,0 +1,344 @@
+{
+  "_meta": {
+    "description": "Human-reviewable AI-authored enrichment of master.xlsx questions, to the AppReady template standard. FI text and correct answers are NEVER authored here — only EN translations, clue annotations (fw/pcw/ncw with meanings), explanations, difficulty, tags. Every entry is status 'ai-draft' until a Finnish expert reviews it.",
+    "status_default": "ai-draft"
+  },
+  "Q011": {
+    "question_en": "Which of the following is correct regarding a taxi driver's conduct during school and daycare transport?",
+    "options_en": {
+      "A": "The driver must not talk to the children unnecessarily during the journey.",
+      "B": "The driver must behave in accordance with the role of a responsible driver.",
+      "C": "The driver must not require the passenger to fasten the seat belt."
+    },
+    "fw": [
+      {"fi": "koulu- ja päivähoitokuljetuksissa", "en": "school and daycare transport"},
+      {"fi": "taksinkuljettajan toimintaan", "en": "the taxi driver's conduct"}
+    ],
+    "pcw": [
+      {"fi": "vastuullisen kuljettajan", "en": "a responsible driver"},
+      {"fi": "tulee käyttäytyä", "en": "must behave"}
+    ],
+    "ncw": [
+      {"fi": "ei saa turhaan puhua", "en": "must not talk unnecessarily"},
+      {"fi": "ei saa vaatia", "en": "must not require"}
+    ],
+    "explanation_en": "The correct answer is B: a taxi driver must always act responsibly, especially with children. Option A invents a rule against speaking to children, and C is the opposite of the driver's duty — the driver must in fact ensure seat-belt use.",
+    "difficulty": "Easy",
+    "tags": ["school transport", "driver responsibility", "children"]
+  },
+  "Q012": {
+    "question_en": "How should you act when you pick up a very slow-moving customer?",
+    "options_en": {
+      "A": "I assist the customer by taking hold of their arm, without asking whether they need help.",
+      "B": "You get out of the vehicle and ask whether they need help moving or getting into the car.",
+      "C": "I order the customer to hurry into the car if there is very busy traffic at the pickup point."
+    },
+    "fw": [
+      {"fi": "hyvin hitaasti liikkuvan asiakkaan", "en": "a very slow-moving customer"}
+    ],
+    "pcw": [
+      {"fi": "Nouset ajoneuvosta", "en": "you get out of the vehicle"},
+      {"fi": "tiedustelet tarvitseeko hän apua", "en": "ask whether they need help"}
+    ],
+    "ncw": [
+      {"fi": "kysymättä tarvitseeko hän apua", "en": "without asking whether they need help"},
+      {"fi": "Käsken asiakasta kiirehtimään", "en": "order the customer to hurry"}
+    ],
+    "explanation_en": "B is correct: you exit the car and ask whether help is needed before acting. Grabbing the arm without consent (A) and rushing the customer in traffic (C) ignore the customer's dignity and safety.",
+    "difficulty": "Easy",
+    "tags": ["assistance", "consent", "mobility"]
+  },
+  "Q013": {
+    "question_en": "How must you check the passenger lift during the pre-departure inspection of an accessible taxi?",
+    "options_en": {
+      "A": "Not at all.",
+      "B": "By test-running the lift.",
+      "C": "By checking the lift visually."
+    },
+    "fw": [
+      {"fi": "henkilönostin", "en": "passenger lift"},
+      {"fi": "ajoonlähtötarkastuksessa", "en": "pre-departure inspection"}
+    ],
+    "pcw": [
+      {"fi": "Koekäyttämällä", "en": "by test-running"}
+    ],
+    "ncw": [
+      {"fi": "Ei mitenkään", "en": "not at all"},
+      {"fi": "silmämääräisesti", "en": "visually (a visual-only check)"}
+    ],
+    "explanation_en": "An accessibility lift must be test-run (B) during the pre-departure check, since only operating it confirms it works safely. A visual look (C) or no check (A) is not enough.",
+    "difficulty": "Medium",
+    "tags": ["accessible taxi", "lift", "pre-departure inspection"]
+  },
+  "Q014": {
+    "question_en": "How should the driver act when a wheelchair customer's clothing has shifted so that they are uncomfortable sitting, and the customer asks to have their position corrected?",
+    "options_en": {
+      "A": "It is not the driver's job to correct the position or otherwise attend to the customer's clothing.",
+      "B": "The driver may only tell the customer to straighten the clothes themselves, because the driver may not adjust the customer's clothing despite the customer's request.",
+      "C": "It is the driver's job to ensure the customer is comfortable and, if needed, help straighten the customer's clothes."
+    },
+    "fw": [
+      {"fi": "pyörätuoliasiakkaan", "en": "wheelchair customer"},
+      {"fi": "pyytää asennon korjaamiseen", "en": "asks for the position to be corrected"}
+    ],
+    "pcw": [
+      {"fi": "varmistaa, että asiakkaalla on mukava", "en": "ensure the customer is comfortable"},
+      {"fi": "auttaa oikaisemaan", "en": "help to straighten"}
+    ],
+    "ncw": [
+      {"fi": "ainoastaan", "en": "only (a limiting word)"},
+      {"fi": "ei saa oikaista", "en": "may not adjust"}
+    ],
+    "explanation_en": "C is correct: the driver should make sure the customer is comfortable and help when asked. A and B wrongly deny assistance; the limiting word 'ainoastaan' (only) and 'ei saa' (may not) are negative-restriction clues pointing to wrong answers.",
+    "difficulty": "Medium",
+    "tags": ["wheelchair", "assistance", "passenger comfort"]
+  },
+  "Q015": {
+    "question_en": "How do you act when a 14-year-old child gets into your taxi and states that their guardian has given permission to travel without a seat belt?",
+    "options_en": {
+      "A": "You make sure the child uses the seat belt for the whole journey.",
+      "B": "You let the child travel without fastening the seat belt if the guardian has settled the child into the seat.",
+      "C": "You let the child travel without a seat belt, because anyone may travel without a seat belt in a taxi."
+    },
+    "fw": [
+      {"fi": "14-vuotias lapsi", "en": "14-year-old child"},
+      {"fi": "huoltajan antaneen", "en": "the guardian has given"},
+      {"fi": "ilman turvavyötä", "en": "without a seat belt"}
+    ],
+    "pcw": [
+      {"fi": "Huolehdit, että lapsi käyttää turvavyötä", "en": "you make sure the child uses the seat belt"},
+      {"fi": "koko matkan ajan", "en": "for the whole journey"}
+    ],
+    "ncw": [
+      {"fi": "matkustaa kiinnittämättä turvavyötä", "en": "travel without fastening the seat belt"},
+      {"fi": "kuka tahansa matkustaa ilman turvavyötä", "en": "anyone may travel without a seat belt"}
+    ],
+    "explanation_en": "For a child under 15 the driver is responsible for seat-belt use, so A is correct regardless of any claim about the guardian's permission. B and C both wrongly allow the child to travel unbelted.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "child", "under 15", "guardian"]
+  },
+  "Q016": {
+    "question_en": "How should you act when a customer in a wheelchair wants to transfer out of their wheelchair by themselves?",
+    "options_en": {
+      "A": "The customer can never transfer without the driver's help.",
+      "B": "You let the customer transfer themselves and assist if needed.",
+      "C": "If the passenger wants to transfer into the vehicle themselves, you may go and wait in the driver's seat."
+    },
+    "fw": [
+      {"fi": "pyörätuolissa oleva asiakas", "en": "a customer in a wheelchair"},
+      {"fi": "haluaa itse siirtyä", "en": "wants to transfer themselves"}
+    ],
+    "pcw": [
+      {"fi": "Annat asiakkaan siirtyä itse", "en": "you let the customer transfer themselves"},
+      {"fi": "avustat tarvittaessa", "en": "assist if needed"}
+    ],
+    "ncw": [
+      {"fi": "ei voi koskaan siirtyä ilman kuljettajan apua", "en": "can never transfer without the driver's help"},
+      {"fi": "voit siirtyä odottamaan kuljettajan paikalle", "en": "you may go and wait in the driver's seat"}
+    ],
+    "explanation_en": "B respects the customer's autonomy: let them transfer themselves and assist only if needed. The absolute claim 'never without help' (A) and abandoning them to wait in the driver's seat (C) are both wrong.",
+    "difficulty": "Easy",
+    "tags": ["wheelchair", "autonomy", "assistance"]
+  },
+  "Q017": {
+    "question_en": "Which is the best way to act if a customer cannot use the seat belt because the seat belts are too short?",
+    "options_en": {
+      "A": "You order the customer another taxi in which it is safer to transport them.",
+      "B": "You let the customer travel without a seat belt.",
+      "C": "You extend the seat belt with an extension piece that you must always keep in the car."
+    },
+    "fw": [
+      {"fi": "turvavyöt ovat liian lyhyet", "en": "the seat belts are too short"}
+    ],
+    "pcw": [
+      {"fi": "Tilaat asiakkaalle toisen taksin", "en": "you order the customer another taxi"},
+      {"fi": "turvallisempi kuljettaa", "en": "safer to transport"}
+    ],
+    "ncw": [
+      {"fi": "matkustaa ilman turvavyötä", "en": "travel without a seat belt"},
+      {"fi": "Jatkat turvavyön pituutta jatkopalalla", "en": "extend the seat belt with an extension piece"}
+    ],
+    "explanation_en": "If a belt does not fit, the safe and correct solution is to arrange another suitable vehicle (A). Travelling unbelted (B) is unsafe, and improvised belt extenders (C) are not permitted.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "safety", "vehicle suitability"]
+  },
+  "Q018": {
+    "question_en": "How do you act when you are picking up a customer and they want to transfer themselves from the wheelchair to the taxi's front seat?",
+    "options_en": {
+      "A": "You tell the customer that they may not transfer from the wheelchair into the vehicle without the driver's help.",
+      "B": "You tell the customer that they have the right to transfer themselves from the wheelchair into the vehicle, and you assist if needed.",
+      "C": "You tell the customer that a customer arriving in a wheelchair may not sit in the vehicle's front seat."
+    },
+    "fw": [
+      {"fi": "siirtyä pyörätuolista taksin etuistuimelle", "en": "transfer from the wheelchair to the taxi's front seat"}
+    ],
+    "pcw": [
+      {"fi": "on oikeus siirtyä itse", "en": "has the right to transfer themselves"},
+      {"fi": "tarvittaessa avustan", "en": "I assist if needed"}
+    ],
+    "ncw": [
+      {"fi": "ei saa siirtyä", "en": "may not transfer"},
+      {"fi": "ei saa istua ajoneuvon etupenkillä", "en": "may not sit in the vehicle's front seat"}
+    ],
+    "explanation_en": "B is correct: the customer has the right to transfer independently and to sit in the front seat, and you help if needed. A and C invent prohibitions that do not exist.",
+    "difficulty": "Medium",
+    "tags": ["wheelchair", "autonomy", "front seat", "passenger rights"]
+  },
+  "Q019": {
+    "question_en": "Which is the most recommended course of action if an approximately 10-year-old child gets in alone and says they are going to a friend's place?",
+    "options_en": {
+      "A": "You ask the child for their guardian's phone number and ask the guardian whether the child may travel alone.",
+      "B": "You drive the child to the destination they state without asking the guardian for permission.",
+      "C": "You refuse to transport the child and politely ask them to leave the vehicle."
+    },
+    "fw": [
+      {"fi": "noin 10-vuotias lapsi", "en": "an approximately 10-year-old child"},
+      {"fi": "yksintään", "en": "alone"}
+    ],
+    "pcw": [
+      {"fi": "Pyydät lapselta hänen huoltajansa puhelinnumeroa", "en": "you ask the child for the guardian's phone number"},
+      {"fi": "kysyt huoltajalta", "en": "you ask the guardian"}
+    ],
+    "ncw": [
+      {"fi": "kysymättä hänen huoltajaltaan lupaa", "en": "without asking the guardian for permission"},
+      {"fi": "Kieltäydyt kuljettamasta lasta", "en": "you refuse to transport the child"}
+    ],
+    "explanation_en": "With a young child travelling alone, the safe step is to confirm with the guardian (A). Driving off without checking (B) ignores the risk, and refusing and ejecting the child (C) is inappropriate.",
+    "difficulty": "Medium",
+    "tags": ["child", "unaccompanied minor", "guardian"]
+  },
+  "Q020": {
+    "question_en": "Which is the least risky course of action when you are dropping an approximately 10-year-old child travelling alone off at their apartment-building home?",
+    "options_en": {
+      "A": "You leave the child in the yard of the apartment building they named as home and let them go in by themselves.",
+      "B": "You ask the child to call their guardian and to ask the guardian to come and meet the child in the building's yard.",
+      "C": "You ask some adult in the building's yard to make sure the child gets home."
+    },
+    "fw": [
+      {"fi": "yksinään matkustavaa noin 10-vuotiasta lasta", "en": "an approximately 10-year-old child travelling alone"},
+      {"fi": "kerrostalokotiinsa", "en": "to their apartment-building home"}
+    ],
+    "pcw": [
+      {"fi": "Pyydät lasta soittamaan huoltajalleen", "en": "you ask the child to call their guardian"},
+      {"fi": "tulemaan lasta vastaan", "en": "to come and meet the child"}
+    ],
+    "ncw": [
+      {"fi": "annat hänen mennä itsekseen kotiinsa", "en": "let them go home by themselves"},
+      {"fi": "jotakin kerrostalon pihalla olevaa aikuista", "en": "some adult in the building's yard (a stranger)"}
+    ],
+    "explanation_en": "The child should be handed over to the guardian (B). Leaving them alone (A) or entrusting them to a random stranger (C) both create unnecessary risk.",
+    "difficulty": "Medium",
+    "tags": ["child", "drop-off", "guardian", "safety"]
+  },
+  "Q021": {
+    "question_en": "Which is the best course of action if a passenger refuses to fasten the seat belt, citing a medical reason?",
+    "options_en": {
+      "A": "You must force the customer to use the seat belt.",
+      "B": "You must ask them to present a medical certificate concerning the reason.",
+      "C": "You must refuse to transport them if they do not use the seat belt."
+    },
+    "fw": [
+      {"fi": "ei suostu kiinnittämään turvavyötä", "en": "refuses to fasten the seat belt"},
+      {"fi": "terveydelliseen syyhyn vedoten", "en": "citing a medical reason"}
+    ],
+    "pcw": [
+      {"fi": "pyytää häntä esittämään syytä koskeva lääkärintodistus", "en": "ask them to present a medical certificate for the reason"}
+    ],
+    "ncw": [
+      {"fi": "pakottaa asiakas", "en": "force the customer"},
+      {"fi": "kieltäytyä kuljettamasta", "en": "refuse to transport"}
+    ],
+    "explanation_en": "A medical exemption from the seat belt must be backed by a doctor's certificate (B). You cannot physically force the passenger (A), and refusing service (C) is not the correct response when a medical reason is claimed.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "medical exemption", "certificate"]
+  },
+  "Q022": {
+    "question_en": "How should you act if you notice bullying between pupils during school transport?",
+    "options_en": {
+      "A": "You must remove the bullies from the car and inform the pupils' parents.",
+      "B": "You must not intervene in the bullying situation at all, but you must report it to the school.",
+      "C": "You must intervene, discuss the matter with the parties involved, and report it to the school."
+    },
+    "fw": [
+      {"fi": "koulukuljetuksen aikana", "en": "during school transport"},
+      {"fi": "oppilaiden välistä kiusaamista", "en": "bullying between pupils"}
+    ],
+    "pcw": [
+      {"fi": "puuttua asiaan", "en": "intervene"},
+      {"fi": "keskustella osapuolten kanssa", "en": "discuss with the parties involved"},
+      {"fi": "ilmoittaa asiasta oppilaitokseen", "en": "report the matter to the school"}
+    ],
+    "ncw": [
+      {"fi": "poistaa kiusaajat autosta", "en": "remove the bullies from the car"},
+      {"fi": "ei tule puuttua kiusaamistilanteeseen lainkaan", "en": "must not intervene in the bullying at all"}
+    ],
+    "explanation_en": "C is correct: intervene, talk with those involved, and notify the school. Ejecting children mid-journey (A) is unsafe, and ignoring the bullying (B) fails the driver's duty of care.",
+    "difficulty": "Medium",
+    "tags": ["school transport", "bullying", "intervention"]
+  },
+  "Q023": {
+    "question_en": "Can a taxi driver refuse to carry out the transport if a customer over 15 does not use the seat belt?",
+    "options_en": {
+      "A": "Yes, because the driver is responsible for the customer's safety.",
+      "B": "No, because a person over 15 is themselves responsible for seat-belt use.",
+      "C": "No, if the transport was booked in advance."
+    },
+    "fw": [
+      {"fi": "yli 15-vuotias asiakas", "en": "a customer over 15"},
+      {"fi": "ei käytä turvavyötä", "en": "does not use the seat belt"}
+    ],
+    "pcw": [
+      {"fi": "yli 15-vuotias vastaa itse turvavyön käytöstä", "en": "a person over 15 is responsible for their own seat-belt use"}
+    ],
+    "ncw": [
+      {"fi": "kuljettaja vastaa asiakkaan turvallisuudesta", "en": "the driver is responsible for the customer's safety (false basis here)"},
+      {"fi": "jos kuljetus on tilattu ennakkoon", "en": "if the transport was booked in advance (irrelevant condition)"}
+    ],
+    "explanation_en": "Passengers over 15 are responsible for their own seat-belt use, so the driver cannot refuse the trip on that basis (B). A misattributes the responsibility, and C adds an irrelevant booking condition.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "over 15", "responsibility"]
+  },
+  "Q024": {
+    "question_en": "Where must a 120 cm tall child be placed in a taxi if a child restraint is not available?",
+    "options_en": {
+      "A": "The child may be seated anywhere.",
+      "B": "The child must sit in the back seat using the seat belt.",
+      "C": "The child may be allowed to choose."
+    },
+    "fw": [
+      {"fi": "120 cm pituinen lapsi", "en": "a 120 cm tall child"},
+      {"fi": "lasten turvalaitetta ei ole käytettävissä", "en": "a child restraint is not available"}
+    ],
+    "pcw": [
+      {"fi": "istua takapenkille käyttäen turvavyötä", "en": "sit in the back seat using the seat belt"}
+    ],
+    "ncw": [
+      {"fi": "mille tahansa", "en": "anywhere"},
+      {"fi": "antaa itse valita", "en": "let the child choose"}
+    ],
+    "explanation_en": "Without a child restraint, a child of this height must travel in the back seat with the seat belt (B). Seating them anywhere (A) or letting them choose freely (C) is unsafe.",
+    "difficulty": "Medium",
+    "tags": ["child", "restraint", "back seat", "seatbelt"]
+  },
+  "Q025": {
+    "question_en": "Which of the following most increases taxi drivers' risk of injury in traffic?",
+    "options_en": {
+      "A": "the vehicle's poor technical condition.",
+      "B": "not using the seat belt.",
+      "C": "aggressively behaving customers."
+    },
+    "fw": [
+      {"fi": "loukkaantumisriskiä liikenteessä", "en": "risk of injury in traffic"}
+    ],
+    "pcw": [
+      {"fi": "Turvavyön käyttämättömyys", "en": "not using the seat belt"}
+    ],
+    "ncw": [
+      {"fi": "huono tekninen kunto", "en": "poor technical condition"},
+      {"fi": "Aggressiivisesti käyttäytyvät asiakkaat", "en": "aggressively behaving customers"}
+    ],
+    "explanation_en": "Not wearing the seat belt is the factor that most increases a driver's injury risk (B). Poor vehicle condition (A) and aggressive customers (C) are real risks but not the leading cause of injury.",
+    "difficulty": "Medium",
+    "tags": ["seatbelt", "injury risk", "driver safety"]
+  }
+}

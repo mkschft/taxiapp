@@ -9,7 +9,7 @@ import type { RootStackParamList } from '../navigation/types';
 type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Home'> };
 
 const FEATURES: { Icon: LucideIcon; tint: string; title: string; body: string }[] = [
-  { Icon: Type, tint: colors.primary, title: '137 key vocabulary words', body: 'Finnish inflections included — the exact words that appear on the exam.' },
+  { Icon: Type, tint: colors.primary, title: '11 vocabulary sets · 84 key words', body: 'Finnish inflections included — the exact words that appear on the exam.' },
   { Icon: Target, tint: colors.success, title: 'Trigger-word engine', body: 'Learn which Finnish words signal correct vs wrong answers, even with weak Finnish.' },
   { Icon: ClipboardList, tint: colors.warning, title: '300+ practice questions', body: 'Across all 4 official exam categories, with full clue-word explanations.' },
   { Icon: Timer, tint: colors.error, title: '2 timed model tests', body: 'Exam-realistic simulation with scoring and review.' },
@@ -69,7 +69,7 @@ export function HomeScreen({ navigation }: Props) {
             style={{ marginTop: spacing.sm }}
           />
           <Text style={styles.foot}>
-            Free: 1 vocab page + 4 practice questions. No card needed.
+            Free: 1 vocab set + 4 practice questions. No card needed.
           </Text>
         </View>
 

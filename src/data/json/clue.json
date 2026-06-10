@@ -1,0 +1,1078 @@
+{
+  "groups": [
+    {
+      "id": "positive",
+      "short": "Positive",
+      "label": "Positive clue words",
+      "tone": "positive",
+      "blurb": "Usually point to the CORRECT answer.",
+      "order": 1,
+      "word_count": 22,
+      "question_count": 15
+    },
+    {
+      "id": "negative",
+      "short": "Negative",
+      "label": "Negative clue words",
+      "tone": "negative",
+      "blurb": "Usually point to a WRONG answer.",
+      "order": 2,
+      "word_count": 17,
+      "question_count": 15
+    }
+  ],
+  "words": [
+    {
+      "id": "clue-positive-w1",
+      "group_id": "positive",
+      "index": 1,
+      "total_in_group": 22,
+      "phrase_fi": "varmistaa / varmistua / huolehtia",
+      "meaning_en": "make sure / take care",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Often correct in safety-duty answers"
+    },
+    {
+      "id": "clue-positive-w2",
+      "group_id": "positive",
+      "index": 2,
+      "total_in_group": 22,
+      "phrase_fi": "turvallinen / turvallisesti / turvallisuus",
+      "meaning_en": "safe / safely / safety",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Q86 has several safety-sounding options; source chooses dispatch help"
+    },
+    {
+      "id": "clue-positive-w3",
+      "group_id": "positive",
+      "index": 3,
+      "total_in_group": 22,
+      "phrase_fi": "kysyä / tiedustella / tarvitseeko apua",
+      "meaning_en": "ask / inquire / whether help is needed",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Strong positive clue for disabled/visually impaired/slow-moving customers"
+    },
+    {
+      "id": "clue-positive-w4",
+      "group_id": "positive",
+      "index": 4,
+      "total_in_group": 22,
+      "phrase_fi": "sisälle / sisätilaan / turvallisesti sisällä",
+      "meaning_en": "inside / indoors / safely inside",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct clue when leaving child, night, care institution, or assisted customer"
+    },
+    {
+      "id": "clue-positive-w5",
+      "group_id": "positive",
+      "index": 5,
+      "total_in_group": 22,
+      "phrase_fi": "poliisi / kutsun poliisin / soittaa poliisi",
+      "meaning_en": "police / call police",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Q83 is exception: source prefers refusing extremely drunk customer over automatically calling police"
+    },
+    {
+      "id": "clue-positive-w6",
+      "group_id": "positive",
+      "index": 6,
+      "total_in_group": 22,
+      "phrase_fi": "Kela palvelunumero / tilausvälitysyhtiö / välityskeskus",
+      "meaning_en": "Kela service number / dispatch",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Positive clue when driver cannot personally decide/arrange Kela or suitable vehicle alone"
+    },
+    {
+      "id": "clue-positive-w7",
+      "group_id": "positive",
+      "index": 7,
+      "total_in_group": 22,
+      "phrase_fi": "työnantaja / selvitän työnantajalta / soitan työnantajalle",
+      "meaning_en": "employer / check with employer / call employer",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Positive clue when authorization or route problem is not the driver's solo decision"
+    },
+    {
+      "id": "clue-positive-w8",
+      "group_id": "positive",
+      "index": 8,
+      "total_in_group": 22,
+      "phrase_fi": "alkolukko + aina / estää käynnistyminen",
+      "meaning_en": "alcohol interlock + always / prevents starting",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct in school/day-care transport context"
+    },
+    {
+      "id": "clue-positive-w9",
+      "group_id": "positive",
+      "index": 9,
+      "total_in_group": 22,
+      "phrase_fi": "asianmukainen / hyväksytty / sopiva",
+      "meaning_en": "appropriate / approved / suitable",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Strong positive safety-device clue"
+    },
+    {
+      "id": "clue-positive-w10",
+      "group_id": "positive",
+      "index": 10,
+      "total_in_group": 22,
+      "phrase_fi": "rungosta / neljästä pisteestä / jarrut päälle",
+      "meaning_en": "by frame / four points / brakes on",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct wheelchair securing clue"
+    },
+    {
+      "id": "clue-positive-w11",
+      "group_id": "positive",
+      "index": 11,
+      "total_in_group": 22,
+      "phrase_fi": "turvatyyny pois päältä",
+      "meaning_en": "airbag switched off",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct clue for rear-facing child seat in front"
+    },
+    {
+      "id": "clue-positive-w12",
+      "group_id": "positive",
+      "index": 12,
+      "total_in_group": 22,
+      "phrase_fi": "välttämätön",
+      "meaning_en": "necessary",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct clue for phone/hands-free communication only when needed for transport"
+    },
+    {
+      "id": "clue-positive-w13",
+      "group_id": "positive",
+      "index": 13,
+      "total_in_group": 22,
+      "phrase_fi": "kohteliaasti / asiallisesti / rauhallisesti / ystävällisesti",
+      "meaning_en": "politely / appropriately / calmly / kindly",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Positive service/de-escalation clue"
+    },
+    {
+      "id": "clue-positive-w14",
+      "group_id": "positive",
+      "index": 14,
+      "total_in_group": 22,
+      "phrase_fi": "kuitti / kuitin tarjoaminen",
+      "meaning_en": "receipt / offering a receipt",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Source treats receipt offer as concrete taxi-service obligation"
+    },
+    {
+      "id": "clue-positive-w15",
+      "group_id": "positive",
+      "index": 15,
+      "total_in_group": 22,
+      "phrase_fi": "tarjota apua",
+      "meaning_en": "offer help",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Positive when help is offered without forcing it"
+    },
+    {
+      "id": "clue-positive-w16",
+      "group_id": "positive",
+      "index": 16,
+      "total_in_group": 22,
+      "phrase_fi": "omavastuu / enintään omavastuu",
+      "meaning_en": "deductible / at most deductible",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct Kela-payment clue"
+    },
+    {
+      "id": "clue-positive-w17",
+      "group_id": "positive",
+      "index": 17,
+      "total_in_group": 22,
+      "phrase_fi": "huoltaja / vanhempi / etukäteen",
+      "meaning_en": "guardian / parent / in advance",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Q27 and Q38 are exceptions: source uses employer/Kela entitlement rather than simple guardian/mother clue"
+    },
+    {
+      "id": "clue-positive-w18",
+      "group_id": "positive",
+      "index": 18,
+      "total_in_group": 22,
+      "phrase_fi": "asiakkaan kanssa / asiakkaalta / asiakas itse",
+      "meaning_en": "with/from the customer / customer themself",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Exception Q1/Q10: seat-belt responsibility depends on age/source framing"
+    },
+    {
+      "id": "clue-positive-w19",
+      "group_id": "positive",
+      "index": 19,
+      "total_in_group": 22,
+      "phrase_fi": "pysäyttää ajoneuvo turvalliseen paikkaan",
+      "meaning_en": "stop vehicle in a safe place",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Positive for customer conflict and first-aid situations"
+    },
+    {
+      "id": "clue-positive-w20",
+      "group_id": "positive",
+      "index": 20,
+      "total_in_group": 22,
+      "phrase_fi": "koekäyttämällä",
+      "meaning_en": "by test-operating",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct clue for accessible taxi lift inspection"
+    },
+    {
+      "id": "clue-positive-w21",
+      "group_id": "positive",
+      "index": 21,
+      "total_in_group": 22,
+      "phrase_fi": "ennakoida / toisen tienkäyttäjän toimintaa",
+      "meaning_en": "anticipate / other road user's actions",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct road-user duty clue"
+    },
+    {
+      "id": "clue-positive-w22",
+      "group_id": "positive",
+      "index": 22,
+      "total_in_group": 22,
+      "phrase_fi": "puuttua + ilmoittaa oppilaitokseen",
+      "meaning_en": "intervene + report to school",
+      "effect_en": "Often signals the CORRECT answer",
+      "exception_en": "Correct clue for bullying during school transport"
+    },
+    {
+      "id": "clue-negative-w1",
+      "group_id": "negative",
+      "index": 1,
+      "total_in_group": 17,
+      "phrase_fi": "ei tarvitse",
+      "meaning_en": "does not need to",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q81: phrase is in the question; do not automatically choose an option only because of it"
+    },
+    {
+      "id": "clue-negative-w2",
+      "group_id": "negative",
+      "index": 2,
+      "total_in_group": 17,
+      "phrase_fi": "ilman",
+      "meaning_en": "without",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Usually wrong when it removes a safety device/permission; check context"
+    },
+    {
+      "id": "clue-negative-w3",
+      "group_id": "negative",
+      "index": 3,
+      "total_in_group": 17,
+      "phrase_fi": "vain / ainoastaan",
+      "meaning_en": "only",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q29 uses 'enintään' not 'vain' and is correct; Q52 has customer choosing topic as correct"
+    },
+    {
+      "id": "clue-negative-w4",
+      "group_id": "negative",
+      "index": 4,
+      "total_in_group": 17,
+      "phrase_fi": "ei koskaan / ei missään / ei voi koskaan",
+      "meaning_en": "never / in no situation",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No strong exception in this set; it is usually too absolute"
+    },
+    {
+      "id": "clue-negative-w5",
+      "group_id": "negative",
+      "index": 5,
+      "total_in_group": 17,
+      "phrase_fi": "asiakas päättää / oikeus valita",
+      "meaning_en": "customer decides / right to choose",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q45 and Q52 are exceptions because customer independence/topic choice is positive"
+    },
+    {
+      "id": "clue-negative-w6",
+      "group_id": "negative",
+      "index": 6,
+      "total_in_group": 17,
+      "phrase_fi": "ei kuljettajan vastuulla / asiakas vastuussa",
+      "meaning_en": "not driver's responsibility / customer responsible",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q95: parent/guardian is responsible for own child restraint"
+    },
+    {
+      "id": "clue-negative-w7",
+      "group_id": "negative",
+      "index": 7,
+      "total_in_group": 17,
+      "phrase_fi": "lyhyt / alle minuutti / alle kilometri",
+      "meaning_en": "short / under a minute / under a kilometre",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No safe shortcut exception; short trip/time usually does not remove duty"
+    },
+    {
+      "id": "clue-negative-w8",
+      "group_id": "negative",
+      "index": 8,
+      "total_in_group": 17,
+      "phrase_fi": "poikkeus / poikkeusajo",
+      "meaning_en": "exception / exceptional driving",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Access exceptions can exist in traffic signs, but not as a general excuse"
+    },
+    {
+      "id": "clue-negative-w9",
+      "group_id": "negative",
+      "index": 9,
+      "total_in_group": 17,
+      "phrase_fi": "jos asiakas pyytää",
+      "meaning_en": "if customer asks",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q53: helping when the customer asks for comfort help is correct"
+    },
+    {
+      "id": "clue-negative-w10",
+      "group_id": "negative",
+      "index": 10,
+      "total_in_group": 17,
+      "phrase_fi": "ei mukana avustaja / vaatii avustajan",
+      "meaning_en": "no assistant / requires assistant",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception: disability does not mean refusing the ride"
+    },
+    {
+      "id": "clue-negative-w11",
+      "group_id": "negative",
+      "index": 11,
+      "total_in_group": 17,
+      "phrase_fi": "odottaa autossa / ei tarvitse poistua",
+      "meaning_en": "wait in car / no need to leave car",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No strong exception in assisted-customer questions"
+    },
+    {
+      "id": "clue-negative-w12",
+      "group_id": "negative",
+      "index": 12,
+      "total_in_group": 17,
+      "phrase_fi": "ottaa maksukortti / ottaa käsilaukku itselle",
+      "meaning_en": "take payment card / keep handbag",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception: do not take customer property"
+    },
+    {
+      "id": "clue-negative-w13",
+      "group_id": "negative",
+      "index": 13,
+      "total_in_group": 17,
+      "phrase_fi": "estää fyysisesti / huutaa / vastaa aggressioon",
+      "meaning_en": "physically stop / shout / answer aggression",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception: use calm/legal help instead"
+    },
+    {
+      "id": "clue-negative-w14",
+      "group_id": "negative",
+      "index": 14,
+      "total_in_group": 17,
+      "phrase_fi": "jätät / hylkäät / jätät huomiotta",
+      "meaning_en": "leave / abandon / ignore",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception when safety or child/special-customer duty exists"
+    },
+    {
+      "id": "clue-negative-w15",
+      "group_id": "negative",
+      "index": 15,
+      "total_in_group": 17,
+      "phrase_fi": "ilman turvalaitetta",
+      "meaning_en": "without a safety restraint",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "Q67 asks if child restraint is unavailable, but answer still uses back seat + seat belt"
+    },
+    {
+      "id": "clue-negative-w16",
+      "group_id": "negative",
+      "index": 16,
+      "total_in_group": 17,
+      "phrase_fi": "tarkastamatta / vain silmämääräisesti",
+      "meaning_en": "without checking / visual check only",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception in lift/equipment check question"
+    },
+    {
+      "id": "clue-negative-w17",
+      "group_id": "negative",
+      "index": 17,
+      "total_in_group": 17,
+      "phrase_fi": "ylinopeus / ylittää nopeusrajoitus",
+      "meaning_en": "speeding / exceed speed limit",
+      "effect_en": "Often signals a WRONG answer",
+      "exception_en": "No exception from customer request or schedule pressure"
+    }
+  ],
+  "questions": [
+    {
+      "id": "clue-positive-q1",
+      "group_id": "positive",
+      "index": 1,
+      "prompt_fi": "Kela palvelunumero / tilausvälitysyhtiö / välityskeskus",
+      "options": [
+        {
+          "key": "A",
+          "en": "ask / inquire / whether help is needed"
+        },
+        {
+          "key": "B",
+          "en": "inside / indoors / safely inside"
+        },
+        {
+          "key": "C",
+          "en": "Kela service number / dispatch"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "Kela service number / dispatch"
+    },
+    {
+      "id": "clue-positive-q2",
+      "group_id": "positive",
+      "index": 2,
+      "prompt_fi": "välttämätön",
+      "options": [
+        {
+          "key": "A",
+          "en": "airbag switched off"
+        },
+        {
+          "key": "B",
+          "en": "alcohol interlock + always / prevents starting"
+        },
+        {
+          "key": "C",
+          "en": "necessary"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "necessary"
+    },
+    {
+      "id": "clue-positive-q3",
+      "group_id": "positive",
+      "index": 3,
+      "prompt_fi": "omavastuu / enintään omavastuu",
+      "options": [
+        {
+          "key": "A",
+          "en": "stop vehicle in a safe place"
+        },
+        {
+          "key": "B",
+          "en": "deductible / at most deductible"
+        },
+        {
+          "key": "C",
+          "en": "offer help"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "deductible / at most deductible"
+    },
+    {
+      "id": "clue-positive-q4",
+      "group_id": "positive",
+      "index": 4,
+      "prompt_fi": "sisälle / sisätilaan / turvallisesti sisällä",
+      "options": [
+        {
+          "key": "A",
+          "en": "inside / indoors / safely inside"
+        },
+        {
+          "key": "B",
+          "en": "anticipate / other road user's actions"
+        },
+        {
+          "key": "C",
+          "en": "safe / safely / safety"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "inside / indoors / safely inside"
+    },
+    {
+      "id": "clue-positive-q5",
+      "group_id": "positive",
+      "index": 5,
+      "prompt_fi": "turvallinen / turvallisesti / turvallisuus",
+      "options": [
+        {
+          "key": "A",
+          "en": "deductible / at most deductible"
+        },
+        {
+          "key": "B",
+          "en": "safe / safely / safety"
+        },
+        {
+          "key": "C",
+          "en": "stop vehicle in a safe place"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "safe / safely / safety"
+    },
+    {
+      "id": "clue-positive-q6",
+      "group_id": "positive",
+      "index": 6,
+      "prompt_fi": "ennakoida / toisen tienkäyttäjän toimintaa",
+      "options": [
+        {
+          "key": "A",
+          "en": "guardian / parent / in advance"
+        },
+        {
+          "key": "B",
+          "en": "politely / appropriately / calmly / kindly"
+        },
+        {
+          "key": "C",
+          "en": "anticipate / other road user's actions"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "anticipate / other road user's actions"
+    },
+    {
+      "id": "clue-positive-q7",
+      "group_id": "positive",
+      "index": 7,
+      "prompt_fi": "työnantaja / selvitän työnantajalta / soitan työnantajalle",
+      "options": [
+        {
+          "key": "A",
+          "en": "ask / inquire / whether help is needed"
+        },
+        {
+          "key": "B",
+          "en": "employer / check with employer / call employer"
+        },
+        {
+          "key": "C",
+          "en": "Kela service number / dispatch"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "employer / check with employer / call employer"
+    },
+    {
+      "id": "clue-positive-q8",
+      "group_id": "positive",
+      "index": 8,
+      "prompt_fi": "pysäyttää ajoneuvo turvalliseen paikkaan",
+      "options": [
+        {
+          "key": "A",
+          "en": "deductible / at most deductible"
+        },
+        {
+          "key": "B",
+          "en": "anticipate / other road user's actions"
+        },
+        {
+          "key": "C",
+          "en": "stop vehicle in a safe place"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "stop vehicle in a safe place"
+    },
+    {
+      "id": "clue-positive-q9",
+      "group_id": "positive",
+      "index": 9,
+      "prompt_fi": "kohteliaasti / asiallisesti / rauhallisesti / ystävällisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "receipt / offering a receipt"
+        },
+        {
+          "key": "B",
+          "en": "politely / appropriately / calmly / kindly"
+        },
+        {
+          "key": "C",
+          "en": "offer help"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "politely / appropriately / calmly / kindly"
+    },
+    {
+      "id": "clue-positive-q10",
+      "group_id": "positive",
+      "index": 10,
+      "prompt_fi": "koekäyttämällä",
+      "options": [
+        {
+          "key": "A",
+          "en": "by test-operating"
+        },
+        {
+          "key": "B",
+          "en": "intervene + report to school"
+        },
+        {
+          "key": "C",
+          "en": "airbag switched off"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "by test-operating"
+    },
+    {
+      "id": "clue-positive-q11",
+      "group_id": "positive",
+      "index": 11,
+      "prompt_fi": "varmistaa / varmistua / huolehtia",
+      "options": [
+        {
+          "key": "A",
+          "en": "inside / indoors / safely inside"
+        },
+        {
+          "key": "B",
+          "en": "make sure / take care"
+        },
+        {
+          "key": "C",
+          "en": "safe / safely / safety"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "make sure / take care"
+    },
+    {
+      "id": "clue-positive-q12",
+      "group_id": "positive",
+      "index": 12,
+      "prompt_fi": "kysyä / tiedustella / tarvitseeko apua",
+      "options": [
+        {
+          "key": "A",
+          "en": "employer / check with employer / call employer"
+        },
+        {
+          "key": "B",
+          "en": "ask / inquire / whether help is needed"
+        },
+        {
+          "key": "C",
+          "en": "by frame / four points / brakes on"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "ask / inquire / whether help is needed"
+    },
+    {
+      "id": "clue-positive-q13",
+      "group_id": "positive",
+      "index": 13,
+      "prompt_fi": "kuitti / kuitin tarjoaminen",
+      "options": [
+        {
+          "key": "A",
+          "en": "Kela service number / dispatch"
+        },
+        {
+          "key": "B",
+          "en": "receipt / offering a receipt"
+        },
+        {
+          "key": "C",
+          "en": "make sure / take care"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "receipt / offering a receipt"
+    },
+    {
+      "id": "clue-positive-q14",
+      "group_id": "positive",
+      "index": 14,
+      "prompt_fi": "rungosta / neljästä pisteestä / jarrut päälle",
+      "options": [
+        {
+          "key": "A",
+          "en": "alcohol interlock + always / prevents starting"
+        },
+        {
+          "key": "B",
+          "en": "police / call police"
+        },
+        {
+          "key": "C",
+          "en": "by frame / four points / brakes on"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "by frame / four points / brakes on"
+    },
+    {
+      "id": "clue-positive-q15",
+      "group_id": "positive",
+      "index": 15,
+      "prompt_fi": "turvatyyny pois päältä",
+      "options": [
+        {
+          "key": "A",
+          "en": "police / call police"
+        },
+        {
+          "key": "B",
+          "en": "airbag switched off"
+        },
+        {
+          "key": "C",
+          "en": "anticipate / other road user's actions"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "airbag switched off"
+    },
+    {
+      "id": "clue-negative-q1",
+      "group_id": "negative",
+      "index": 1,
+      "prompt_fi": "ylinopeus / ylittää nopeusrajoitus",
+      "options": [
+        {
+          "key": "A",
+          "en": "leave / abandon / ignore"
+        },
+        {
+          "key": "B",
+          "en": "not driver's responsibility / customer responsible"
+        },
+        {
+          "key": "C",
+          "en": "speeding / exceed speed limit"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "speeding / exceed speed limit"
+    },
+    {
+      "id": "clue-negative-q2",
+      "group_id": "negative",
+      "index": 2,
+      "prompt_fi": "ei tarvitse",
+      "options": [
+        {
+          "key": "A",
+          "en": "wait in car / no need to leave car"
+        },
+        {
+          "key": "B",
+          "en": "does not need to"
+        },
+        {
+          "key": "C",
+          "en": "only"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "does not need to"
+    },
+    {
+      "id": "clue-negative-q3",
+      "group_id": "negative",
+      "index": 3,
+      "prompt_fi": "poikkeus / poikkeusajo",
+      "options": [
+        {
+          "key": "A",
+          "en": "speeding / exceed speed limit"
+        },
+        {
+          "key": "B",
+          "en": "exception / exceptional driving"
+        },
+        {
+          "key": "C",
+          "en": "physically stop / shout / answer aggression"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "exception / exceptional driving"
+    },
+    {
+      "id": "clue-negative-q4",
+      "group_id": "negative",
+      "index": 4,
+      "prompt_fi": "tarkastamatta / vain silmämääräisesti",
+      "options": [
+        {
+          "key": "A",
+          "en": "without checking / visual check only"
+        },
+        {
+          "key": "B",
+          "en": "without"
+        },
+        {
+          "key": "C",
+          "en": "no assistant / requires assistant"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "without checking / visual check only"
+    },
+    {
+      "id": "clue-negative-q5",
+      "group_id": "negative",
+      "index": 5,
+      "prompt_fi": "ottaa maksukortti / ottaa käsilaukku itselle",
+      "options": [
+        {
+          "key": "A",
+          "en": "take payment card / keep handbag"
+        },
+        {
+          "key": "B",
+          "en": "short / under a minute / under a kilometre"
+        },
+        {
+          "key": "C",
+          "en": "wait in car / no need to leave car"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "take payment card / keep handbag"
+    },
+    {
+      "id": "clue-negative-q6",
+      "group_id": "negative",
+      "index": 6,
+      "prompt_fi": "jos asiakas pyytää",
+      "options": [
+        {
+          "key": "A",
+          "en": "if customer asks"
+        },
+        {
+          "key": "B",
+          "en": "only"
+        },
+        {
+          "key": "C",
+          "en": "without checking / visual check only"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "if customer asks"
+    },
+    {
+      "id": "clue-negative-q7",
+      "group_id": "negative",
+      "index": 7,
+      "prompt_fi": "lyhyt / alle minuutti / alle kilometri",
+      "options": [
+        {
+          "key": "A",
+          "en": "never / in no situation"
+        },
+        {
+          "key": "B",
+          "en": "short / under a minute / under a kilometre"
+        },
+        {
+          "key": "C",
+          "en": "no assistant / requires assistant"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "short / under a minute / under a kilometre"
+    },
+    {
+      "id": "clue-negative-q8",
+      "group_id": "negative",
+      "index": 8,
+      "prompt_fi": "odottaa autossa / ei tarvitse poistua",
+      "options": [
+        {
+          "key": "A",
+          "en": "exception / exceptional driving"
+        },
+        {
+          "key": "B",
+          "en": "wait in car / no need to leave car"
+        },
+        {
+          "key": "C",
+          "en": "not driver's responsibility / customer responsible"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "wait in car / no need to leave car"
+    },
+    {
+      "id": "clue-negative-q9",
+      "group_id": "negative",
+      "index": 9,
+      "prompt_fi": "ei koskaan / ei missään / ei voi koskaan",
+      "options": [
+        {
+          "key": "A",
+          "en": "wait in car / no need to leave car"
+        },
+        {
+          "key": "B",
+          "en": "take payment card / keep handbag"
+        },
+        {
+          "key": "C",
+          "en": "never / in no situation"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "never / in no situation"
+    },
+    {
+      "id": "clue-negative-q10",
+      "group_id": "negative",
+      "index": 10,
+      "prompt_fi": "ilman",
+      "options": [
+        {
+          "key": "A",
+          "en": "physically stop / shout / answer aggression"
+        },
+        {
+          "key": "B",
+          "en": "if customer asks"
+        },
+        {
+          "key": "C",
+          "en": "without"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "without"
+    },
+    {
+      "id": "clue-negative-q11",
+      "group_id": "negative",
+      "index": 11,
+      "prompt_fi": "asiakas päättää / oikeus valita",
+      "options": [
+        {
+          "key": "A",
+          "en": "customer decides / right to choose"
+        },
+        {
+          "key": "B",
+          "en": "never / in no situation"
+        },
+        {
+          "key": "C",
+          "en": "short / under a minute / under a kilometre"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "customer decides / right to choose"
+    },
+    {
+      "id": "clue-negative-q12",
+      "group_id": "negative",
+      "index": 12,
+      "prompt_fi": "ilman turvalaitetta",
+      "options": [
+        {
+          "key": "A",
+          "en": "without a safety restraint"
+        },
+        {
+          "key": "B",
+          "en": "no assistant / requires assistant"
+        },
+        {
+          "key": "C",
+          "en": "leave / abandon / ignore"
+        }
+      ],
+      "correct_option": "A",
+      "correct_meaning_en": "without a safety restraint"
+    },
+    {
+      "id": "clue-negative-q13",
+      "group_id": "negative",
+      "index": 13,
+      "prompt_fi": "vain / ainoastaan",
+      "options": [
+        {
+          "key": "A",
+          "en": "without checking / visual check only"
+        },
+        {
+          "key": "B",
+          "en": "only"
+        },
+        {
+          "key": "C",
+          "en": "not driver's responsibility / customer responsible"
+        }
+      ],
+      "correct_option": "B",
+      "correct_meaning_en": "only"
+    },
+    {
+      "id": "clue-negative-q14",
+      "group_id": "negative",
+      "index": 14,
+      "prompt_fi": "estää fyysisesti / huutaa / vastaa aggressioon",
+      "options": [
+        {
+          "key": "A",
+          "en": "does not need to"
+        },
+        {
+          "key": "B",
+          "en": "customer decides / right to choose"
+        },
+        {
+          "key": "C",
+          "en": "physically stop / shout / answer aggression"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "physically stop / shout / answer aggression"
+    },
+    {
+      "id": "clue-negative-q15",
+      "group_id": "negative",
+      "index": 15,
+      "prompt_fi": "jätät / hylkäät / jätät huomiotta",
+      "options": [
+        {
+          "key": "A",
+          "en": "if customer asks"
+        },
+        {
+          "key": "B",
+          "en": "wait in car / no need to leave car"
+        },
+        {
+          "key": "C",
+          "en": "leave / abandon / ignore"
+        }
+      ],
+      "correct_option": "C",
+      "correct_meaning_en": "leave / abandon / ignore"
+    }
+  ]
+}

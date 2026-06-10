@@ -1,0 +1,663 @@
+{
+  "Q116": {
+    "question_fi": "Miten tulee toimia, kun liikuntavammaisella asiakkaalla on avustaja ja runsaasti matkatavaroita mukanaan?",
+    "options_fi": {
+      "A": "Avustajan vastuulla on huolehtia matkatavaroiden lastaamisesta ja purkamisesta, sillä välin kun kuljettaja avustaa asiakasta.",
+      "B": "Avustaja avustaa matkustajaa kaikessa ja kuljettaja odottaa paikallaan, koska hänellä ei ole mitään tehtävää.",
+      "C": "Kuljettaja avustaa asiakkaan ajoneuvoon ja huolehtii matkatavaroiden turvallisesta lastaamisesta ja purkamisesta."
+    },
+    "question_en": "How should you act when a customer with a physical disability has an assistant and a lot of luggage?",
+    "options_en": {
+      "A": "The assistant is responsible for loading and unloading the luggage while the driver assists the customer.",
+      "B": "The assistant helps the passenger with everything and the driver waits in place because they have nothing to do.",
+      "C": "The driver assists the customer into the vehicle and takes care of safely loading and unloading the luggage."
+    },
+    "fw": [{"fi": "liikuntavammaisella asiakkaalla", "en": "a customer with a physical disability"}, {"fi": "avustaja", "en": "an assistant"}, {"fi": "runsaasti matkatavaroita", "en": "a lot of luggage"}],
+    "pcw": [{"fi": "Kuljettaja avustaa asiakkaan ajoneuvoon", "en": "the driver assists the customer into the vehicle"}, {"fi": "huolehtii matkatavaroiden lastaamisesta ja purkamisesta", "en": "takes care of loading and unloading the luggage"}],
+    "ncw": [{"fi": "Avustajan vastuulla on matkatavarat", "en": "the assistant's responsibility is the luggage"}, {"fi": "kuljettaja odottaa paikallaan", "en": "the driver waits in place"}],
+    "explanation_en": "The driver's duties are to assist the customer aboard and handle the luggage (C), regardless of the assistant. The assistant is there to support the customer, not to substitute for the driver's transport duties.",
+    "difficulty": "Medium",
+    "tags": ["disability", "luggage", "driver duty", "assistant"]
+  },
+  "Q117": {
+    "question_fi": "Uudella työnantajallasi on paljon näkövammaisia asiakkaita. Ensimmäinen asiakkaasi on 48-vuotias Elmeri, joka on näkövammainen. Mitä sinun tulee muistaa näkövammaisten asiakaspalvelusta?",
+    "options_fi": {
+      "A": "Näkövammaista palvellessa tulee muistaa puhua hiukan normaalia äänellä.",
+      "B": "Kuljettajan on hyvä kysyä asiakkaalta, miten häntä voi auttaa, ja kertoa sanallisesti sijainnista ja muista oleellisista asioista.",
+      "C": "Kuljettajan tehtäviin ei kuulu asiakkaan erityistarpeiden huomioiminen."
+    },
+    "question_en": "Your new employer has many visually impaired customers. Your first customer is 48-year-old Elmeri, who is visually impaired. What must you remember about serving visually impaired customers?",
+    "options_en": {
+      "A": "When serving a visually impaired person, remember to speak at a normal volume.",
+      "B": "It is good for the driver to ask the customer how they can be helped and to describe the location and other relevant matters verbally.",
+      "C": "It is not part of the driver's duties to take the customer's special needs into account."
+    },
+    "fw": [{"fi": "näkövammaisten asiakaspalvelusta", "en": "serving visually impaired customers"}],
+    "pcw": [{"fi": "kysyä asiakkaalta, miten häntä voi auttaa", "en": "ask the customer how to help them"}, {"fi": "kertoa sanallisesti sijainnista", "en": "describe the location verbally"}],
+    "ncw": [{"fi": "puhua hiukan normaalia äänellä", "en": "speak at a normal volume"}, {"fi": "ei kuulu erityistarpeiden huomioiminen", "en": "not part of duties to consider special needs"}],
+    "explanation_en": "Ask how to help and give verbal orientation (B). Volume is irrelevant for visual impairment (A); ignoring special needs entirely (C) is wrong.",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "ask first", "verbal orientation"]
+  },
+  "Q118": {
+    "question_fi": "Liikuntavammaisella asiakkaalla saattaa olla mukanaan avustaja. Miten toimit tällöin?",
+    "options_fi": {
+      "A": "Keskustelen aina vain avustajan kanssa.",
+      "B": "Keskustelen aina asiakkaan kanssa.",
+      "C": "Pyydän kirjalliset ohjeet siitä, miten tulee toimia."
+    },
+    "question_en": "A customer with a physical disability may have an assistant with them. How do you act in this case?",
+    "options_en": {
+      "A": "I always talk only with the assistant.",
+      "B": "I always talk with the customer.",
+      "C": "I ask for written instructions on how to act."
+    },
+    "fw": [{"fi": "avustaja", "en": "assistant"}],
+    "pcw": [{"fi": "Keskustelen aina asiakkaan kanssa", "en": "I always talk with the customer"}],
+    "ncw": [{"fi": "Keskustelen aina vain avustajan kanssa", "en": "I always talk only with the assistant"}, {"fi": "Pyydän kirjalliset ohjeet", "en": "I ask for written instructions"}],
+    "explanation_en": "Always address the customer directly (B). Talking only to the assistant (A) is disrespectful; written instructions (C) are unnecessary. (Mirrors Q096, Q107.)",
+    "difficulty": "Easy",
+    "tags": ["disability", "communication", "assistant", "respect"]
+  },
+  "Q119": {
+    "question_fi": "Eelis Auvinen on syntymäsokea. Hän käyttää liikkumisen apuna valkoista keppiä ja opaskoiraa. Eelis kulkee päivittäin taksilla kotoaan työpaikalleen. Mitä teet, kun haet Eeliksen aamulla etkä ole kuljettanut häntä koskaan aikaisemmin?",
+    "options_fi": {
+      "A": "Odotat kadunvarressa, että Eelis saapuu taksin luokse. Avaat hänelle sisäpuolelta oven ja teet takapenkille tilaa hänen opaskoiralleen.",
+      "B": "Soitat torvea, josta Eelis tietää, että olet saapunut.",
+      "C": "Nouset autosta, kerrot hänelle, että hänen taksinsa on saapunut, ja esittelet itsesi. Kerrot, missä taksi on, ja tiedustelet, missä hän haluaa istua."
+    },
+    "question_en": "Eelis Auvinen is born blind. He uses a white cane and a guide dog. Eelis travels by taxi daily from home to work. What do you do when you pick up Eelis in the morning for the first time?",
+    "options_en": {
+      "A": "You wait by the roadside for Eelis to come to the taxi. You open the door from the inside and make room on the back seat for his guide dog.",
+      "B": "You honk the horn, so Eelis knows you have arrived.",
+      "C": "You get out of the car, tell him his taxi has arrived, and introduce yourself. You tell him where the taxi is and ask where he would like to sit."
+    },
+    "fw": [{"fi": "syntymäsokea", "en": "born blind"}, {"fi": "opaskoira", "en": "guide dog"}],
+    "pcw": [{"fi": "Nouset autosta", "en": "you get out of the car"}, {"fi": "esittelet itsesi", "en": "introduce yourself"}, {"fi": "Kerrot, missä taksi on", "en": "tell him where the taxi is"}, {"fi": "tiedustelet, missä hän haluaa istua", "en": "ask where he would like to sit"}],
+    "ncw": [{"fi": "Odotat kadunvarressa", "en": "you wait by the roadside"}, {"fi": "Soitat torvea", "en": "you honk the horn"}],
+    "explanation_en": "Get out, announce your arrival, introduce yourself, orientate him to the taxi, and ask his seating preference (C). Staying in the car (A) leaves him without guidance; honking (B) is unhelpful and disrespectful.",
+    "difficulty": "Medium",
+    "tags": ["blind", "guide dog", "first-time", "introduction"]
+  },
+  "Q120": {
+    "question_fi": "Helmi on vaikeavammainen 8-vuotias tyttö, joka käy viikoittain kuntoutuksessa läheisessä hoitolaitoksessa. Hän käyttää pyörätuolia eikä pysty liikkumaan itsenäisesti lainkaan. Hänen äitinsä on kuullut, että Helmillä olisi oikeus saada itselleen Kansaneläkelaitoksen (Kela) korvaamana vakiotaksi. Helmin äiti tiedustelee sinulta, onko tämä mahdollista. Miten vastaat hänelle?",
+    "options_fi": {
+      "A": "Helmilla ei ole oikeutta vakiotaksiin, sillä siihen ovat oikeutettuja vain vanhukset ja työssä käyvät vaikeavammaiset aikuiset.",
+      "B": "Helmillä on oikeus vakiotaksiin vain, jos hänen äitinsä kulkee matkat hänen kanssaan.",
+      "C": "Helmi on oikeutettu vakiotaksiin."
+    },
+    "question_en": "Helmi is a severely disabled 8-year-old girl who attends weekly rehabilitation at a nearby care facility. She uses a wheelchair and cannot move independently at all. Her mother has heard that Helmi may be entitled to a Kela-reimbursed regular taxi. How do you answer?",
+    "options_en": {
+      "A": "Helmi is not entitled to a regular taxi — only elderly people and working disabled adults are entitled to one.",
+      "B": "Helmi is entitled to a regular taxi only if her mother travels with her.",
+      "C": "Helmi is entitled to a regular taxi."
+    },
+    "fw": [{"fi": "vaikeavammainen 8-vuotias", "en": "severely disabled 8-year-old"}, {"fi": "vakiotaksi", "en": "regular taxi"}, {"fi": "Kela", "en": "Kela"}],
+    "pcw": [{"fi": "Helmi on oikeutettu vakiotaksiin", "en": "Helmi is entitled to a regular taxi"}],
+    "ncw": [{"fi": "vain vanhukset ja työssä käyvät", "en": "only elderly and working disabled adults"}, {"fi": "vain jos äitinsä kulkee matkat hänen kanssaan", "en": "only if her mother travels with her"}],
+    "explanation_en": "Kela-reimbursed regular taxi entitlement covers severely disabled children too (C). A invents an age/employment restriction; B invents a guardian-accompaniment requirement.",
+    "difficulty": "Medium",
+    "tags": ["Kela", "regular taxi", "child", "severe disability"]
+  },
+  "Q121": {
+    "question_fi": "Asiakas on tilannut Kela-kyytinsä keskitetystä tilausvälitysnumerosta. Minkä verran asiakas maksaa?",
+    "options_fi": {
+      "A": "Koko matkan hinnan.",
+      "B": "Enintään omavastuun 50 euroa.",
+      "C": "Enintään omavastuun 25 euroa."
+    },
+    "question_en": "A customer has ordered their Kela ride from the centralised dispatch number. How much does the customer pay?",
+    "options_en": {
+      "A": "The full fare.",
+      "B": "At most the co-payment of 50 euros.",
+      "C": "At most the co-payment of 25 euros."
+    },
+    "fw": [{"fi": "Kela-kyytinsä", "en": "their Kela ride"}, {"fi": "tilausvälitysnumerosta", "en": "centralised dispatch number"}],
+    "pcw": [{"fi": "Enintään omavastuun 25 euroa", "en": "at most the co-payment of 25 euros"}],
+    "ncw": [{"fi": "Koko matkan hinnan", "en": "the full fare"}, {"fi": "omavastuun 50 euroa", "en": "the co-payment of 50 euros"}],
+    "explanation_en": "For a Kela ride ordered through the centralised dispatch number, the customer pays at most the current co-payment of €25 (C).",
+    "difficulty": "Medium",
+    "tags": ["Kela", "co-payment", "fare", "review-flag"],
+    "notes": "The co-payment amount is set by Kela and may change. As of 2024 it is €25 per one-way trip. Confirm the current value before publishing."
+  },
+  "Q122": {
+    "question_fi": "Miten neuvot asiakasta, kun hän tiedustelee sinulta vakiotaksioikeudesta Kela-korvattavien taksimatkojen osalta?",
+    "options_fi": {
+      "A": "Neuvon asiakasta soittamaan kenelle tahansa vapaana olevalle taksille.",
+      "B": "Neuvon asiakasta ottamaan taksitolpalta taksin.",
+      "C": "Neuvon asiakasta soittamaan Kelan palvelunumeroon."
+    },
+    "question_en": "How do you advise a customer who asks you about entitlement to a regular taxi for Kela-reimbursed trips?",
+    "options_en": {
+      "A": "I advise the customer to call any available taxi.",
+      "B": "I advise the customer to take a taxi from the taxi rank.",
+      "C": "I advise the customer to call Kela's service number."
+    },
+    "fw": [{"fi": "vakiotaksioikeudesta", "en": "entitlement to a regular taxi"}, {"fi": "Kela-korvattavien taksimatkojen", "en": "Kela-reimbursed trips"}],
+    "pcw": [{"fi": "soittamaan Kelan palvelunumeroon", "en": "call Kela's service number"}],
+    "ncw": [{"fi": "soittamaan kenelle tahansa vapaana olevalle taksille", "en": "call any available taxi"}, {"fi": "ottamaan taksitolpalta taksin", "en": "take a taxi from the taxi rank"}],
+    "explanation_en": "Kela entitlement questions go to Kela's service number (C). An unrelated taxi (A) or taxi rank (B) cannot answer entitlement questions.",
+    "difficulty": "Easy",
+    "tags": ["Kela", "regular taxi", "service number", "customer guidance"]
+  },
+  "Q123": {
+    "question_fi": "Mitä tarkoittaa taksinkuljettajalta vaadittavalla riittävällä kielitaidolla?",
+    "options_fi": {
+      "A": "Se tarkoittaa, että kuljettaja pystyy keskustelemaan asiakkaan kanssa sujuvasti päivän tapahtumista.",
+      "B": "Se tarkoittaa, että kuljettajan on pitänyt suorittaa kansalaisuuden kielikoe.",
+      "C": "Se tarkoittaa, että kuljettaja kykenee kommunikoimaan asiakkaan kanssa siten, että asiakas pääsee turvallisesti oikeaan määränpäähänsä."
+    },
+    "question_en": "What does the required adequate language proficiency for a taxi driver mean?",
+    "options_en": {
+      "A": "It means the driver is able to converse fluently with the customer about the day's events.",
+      "B": "It means the driver must have passed the citizenship language test.",
+      "C": "It means the driver is able to communicate with the customer such that the customer reaches their correct destination safely."
+    },
+    "fw": [{"fi": "riittävällä kielitaidolla", "en": "adequate language proficiency"}],
+    "pcw": [{"fi": "kykenee kommunikoimaan siten, että asiakas pääsee oikeaan määränpäähänsä", "en": "able to communicate so that the customer reaches their destination"}],
+    "ncw": [{"fi": "sujuvasti päivän tapahtumista", "en": "fluently about the day's events"}, {"fi": "kansalaisuuden kielikoe", "en": "the citizenship language test"}],
+    "explanation_en": "The language requirement is functional — communication sufficient to transport the customer safely to the right place (C). Fluent conversation (A) is a higher bar than required; the citizenship test (B) is irrelevant.",
+    "difficulty": "Easy",
+    "tags": ["language proficiency", "communication", "definition"]
+  },
+  "Q124": {
+    "question_fi": "Mitä taksinkuljettajalta edellytetään, jos asiakas on henkilö, joka ei kykene käyttämään puhuttua kieltä?",
+    "options_fi": {
+      "A": "Taksinkuljettajalta edellytetään viittomakielentaitoa.",
+      "B": "Taksinkuljettajan tulee huolehtia, että asiakas pääsee määränpäähän.",
+      "C": "Taksinkuljettajalta edellytetään erityisammattitutkinnon suorittamista."
+    },
+    "question_en": "What is required of a taxi driver if the customer is someone who cannot use spoken language?",
+    "options_en": {
+      "A": "The taxi driver is required to know sign language.",
+      "B": "The taxi driver must ensure the customer reaches their destination.",
+      "C": "The taxi driver is required to hold a special vocational qualification."
+    },
+    "fw": [{"fi": "ei kykene käyttämään puhuttua kieltä", "en": "cannot use spoken language"}],
+    "pcw": [{"fi": "asiakas pääsee määränpäähän", "en": "the customer reaches their destination"}],
+    "ncw": [{"fi": "viittomakielentaitoa", "en": "sign language"}, {"fi": "erityisammattitutkinnon suorittamista", "en": "a special vocational qualification"}],
+    "explanation_en": "The driver must ensure the customer reaches their destination (B), using whatever communication method works. Sign language (A) and a special qualification (C) are not legal requirements.",
+    "difficulty": "Easy",
+    "tags": ["communication", "non-verbal", "destination"]
+  },
+  "Q125": {
+    "question_fi": "Kenen vastuulla on pyörätuolin huolellinen kiinnittäminen taksiin, kun asiakkaalla on mukana henkilökohtainen avustaja?",
+    "options_fi": {
+      "A": "Asiakkaan.",
+      "B": "Taksinkuljettajan.",
+      "C": "Henkilökohtaisen avustajan."
+    },
+    "question_en": "Whose responsibility is the careful securing of the wheelchair in the taxi when the customer has a personal assistant with them?",
+    "options_en": {
+      "A": "The customer's.",
+      "B": "The taxi driver's.",
+      "C": "The personal assistant's."
+    },
+    "fw": [{"fi": "pyörätuolin huolellinen kiinnittäminen", "en": "careful securing of the wheelchair"}, {"fi": "henkilökohtainen avustaja", "en": "a personal assistant"}],
+    "pcw": [{"fi": "Taksinkuljettajan", "en": "the taxi driver's"}],
+    "ncw": [{"fi": "Asiakkaan", "en": "the customer's"}, {"fi": "Henkilökohtaisen avustajan", "en": "the personal assistant's"}],
+    "explanation_en": "Securing the wheelchair is always the taxi driver's responsibility (B), even with a personal assistant present. (Mirrors Q032, Q141.)",
+    "difficulty": "Easy",
+    "tags": ["wheelchair", "securing", "responsibility"]
+  },
+  "Q126": {
+    "question_fi": "Miten tulee toimia, kun otat kyytiin hyvin hitaasti liikkuvan asiakkaan?",
+    "options_fi": {
+      "A": "Avustan häntä ottamalla käsivarresta kiinni kysymättä asiakkaalta, tarvitseeko hän apua.",
+      "B": "Nouset ajoneuvosta ja tiedustelet, tarvitseeko hän apua liikkumisessa ja autoon nousemisessa.",
+      "C": "Käsken asiakasta kiirehtimään autoon, jos noutopaikassa on erittäin vilkas ajoneuvoliikenne."
+    },
+    "question_en": "How should you act when you pick up a very slow-moving customer?",
+    "options_en": {
+      "A": "I assist them by taking hold of their arm without asking whether they need help.",
+      "B": "You get out of the vehicle and ask whether they need help moving or getting into the car.",
+      "C": "I tell the customer to hurry into the car if there is very busy traffic at the pickup point."
+    },
+    "fw": [{"fi": "hyvin hitaasti liikkuvan asiakkaan", "en": "a very slow-moving customer"}],
+    "pcw": [{"fi": "Nouset ajoneuvosta", "en": "you get out of the vehicle"}, {"fi": "tiedustelet, tarvitseeko hän apua", "en": "ask whether they need help"}],
+    "ncw": [{"fi": "kysymättä asiakkaalta", "en": "without asking the customer"}, {"fi": "Käsken asiakasta kiirehtimään", "en": "I tell the customer to hurry"}],
+    "explanation_en": "Get out and ask first (B). Grabbing the arm without consent (A) and rushing the customer (C) both ignore the customer's dignity and autonomy. (Mirrors Q012.)",
+    "difficulty": "Easy",
+    "tags": ["slow-moving", "assistance", "consent"]
+  },
+  "Q127": {
+    "question_fi": "Miten kuljettajan tulee huomioida näkövammainen asiakas?",
+    "options_fi": {
+      "A": "Kuljettajan on hyvä näkövammaista palvellessa puhua hiukan kovemmalla äänellä.",
+      "B": "Taksinkuljettajan tulee aina ohjata asiakasta olkapäästä ja auttaa hänet autoon kevyesti työntäen.",
+      "C": "Taksinkuljettajan on hyvä kysyä asiakkaalta, miten häntä voi auttaa, ennen kuin ryhtyy avustamaan asiakasta."
+    },
+    "question_en": "How should the driver take a visually impaired customer into account?",
+    "options_en": {
+      "A": "It is good to speak a little louder when serving a visually impaired person.",
+      "B": "The driver must always guide the customer from the shoulder and help them into the car with a gentle push.",
+      "C": "It is good for the driver to ask the customer how they can be helped before starting to assist."
+    },
+    "fw": [{"fi": "näkövammainen asiakas", "en": "a visually impaired customer"}],
+    "pcw": [{"fi": "kysyä asiakkaalta, miten häntä voi auttaa", "en": "ask the customer how they can be helped"}],
+    "ncw": [{"fi": "puhua hiukan kovemmalla äänellä", "en": "speak a little louder"}, {"fi": "ohjata asiakasta olkapäästä", "en": "guide from the shoulder"}],
+    "explanation_en": "Ask first how to help (C). Louder voice (A) is irrelevant to visual impairment; guiding and pushing without consent (B) is presumptuous. (Mirrors Q105.)",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "ask first", "consent"]
+  },
+  "Q128": {
+    "question_fi": "Voitko toimia vakiotaksinkuljettajana säännöllisissä kuntoutukseen liittyvissä matkoissa, kun matkustajana on pyörätuolia käyttävä 15-vuotias lapsi?",
+    "options_fi": {
+      "A": "En voi toimia vakiotaksinkuljettajana, koska lapsella ei ole oikeutta vakiotaksiin.",
+      "B": "Selvitän työnantajaltani, voinko toimia vakiotaksinkuljettajana.",
+      "C": "Voin toimia vakiotaksinkuljettajana huoltajan valtuutuksella."
+    },
+    "question_en": "Can you act as a regular taxi driver for regular rehabilitation trips when the passenger is a 15-year-old wheelchair user?",
+    "options_en": {
+      "A": "I cannot act as a regular taxi driver because the child is not entitled to a regular taxi.",
+      "B": "I check with my employer whether I can act as a regular taxi driver.",
+      "C": "I can act as a regular taxi driver with the guardian's authorisation."
+    },
+    "fw": [{"fi": "vakiotaksinkuljettajana", "en": "a regular taxi driver"}, {"fi": "pyörätuolia käyttävä 15-vuotias lapsi", "en": "a 15-year-old wheelchair user"}],
+    "pcw": [{"fi": "Selvitän työnantajaltani", "en": "I check with my employer"}],
+    "ncw": [{"fi": "lapsella ei ole oikeutta vakiotaksiin", "en": "the child is not entitled to a regular taxi"}, {"fi": "huoltajan valtuutuksella", "en": "with the guardian's authorisation"}],
+    "explanation_en": "Check with the employer whether you are qualified and equipped for the assignment (B). (Mirrors Q106.)",
+    "difficulty": "Medium",
+    "tags": ["regular taxi", "rehabilitation", "wheelchair", "employer"]
+  },
+  "Q129": {
+    "question_fi": "Miten toimit, kun näkövammaisella asiakkaalla on opaskoira?",
+    "options_fi": {
+      "A": "Nouset autosta ja kerrot hänelle, että hänen taksinsa on saapunut, ja kerrot, että opaskoiran paikka on asiakkaan jalkatilassa.",
+      "B": "Nouset autosta ja kerrot hänelle, että hänen taksinsa on saapunut, ja huomioit opaskoiran rapsuttamalla sitä.",
+      "C": "Odotat ajoneuvossa asiakkaan saapumista ja avaat hänelle sisäpuolelta oven ja teet takapenkille tilaa hänen opaskoiralleen."
+    },
+    "question_en": "How do you act when a visually impaired customer has a guide dog?",
+    "options_en": {
+      "A": "You get out of the car and tell them their taxi has arrived, and tell them the guide dog's place is in the passenger footwell.",
+      "B": "You get out of the car and tell them their taxi has arrived, and acknowledge the guide dog by petting it.",
+      "C": "You wait in the vehicle for the customer to arrive, open the door from inside, and make room on the back seat for the guide dog."
+    },
+    "fw": [{"fi": "näkövammaisella asiakkaalla on opaskoira", "en": "a visually impaired customer has a guide dog"}],
+    "pcw": [{"fi": "Nouset autosta", "en": "you get out of the car"}, {"fi": "opaskoiran paikka on asiakkaan jalkatilassa", "en": "the guide dog's place is in the passenger footwell"}],
+    "ncw": [{"fi": "rapsuttamalla sitä", "en": "petting it"}, {"fi": "Odotat ajoneuvossa", "en": "you wait in the vehicle"}],
+    "explanation_en": "Get out, announce the taxi, and inform that the guide dog rides in the footwell (A). Never pet a working guide dog (B); staying in the car (C) leaves the blind customer without guidance. (Mirrors Q104.)",
+    "difficulty": "Medium",
+    "tags": ["guide dog", "visually impaired", "footwell"]
+  },
+  "Q130": {
+    "question_fi": "Minkä osuuden asiakas maksaa Kela-kyydistä kuljettajalle?",
+    "options_fi": {
+      "A": "Koko matkan hinnan.",
+      "B": "Enintään omavastuun.",
+      "C": "Omavastuun ylittävän osuuden."
+    },
+    "question_en": "What portion of the Kela ride does the customer pay to the driver?",
+    "options_en": {
+      "A": "The full fare.",
+      "B": "At most the co-payment.",
+      "C": "The portion exceeding the co-payment."
+    },
+    "fw": [{"fi": "Kela-kyydistä", "en": "Kela ride"}, {"fi": "asiakas maksaa", "en": "the customer pays"}],
+    "pcw": [{"fi": "Enintään omavastuun", "en": "at most the co-payment"}],
+    "ncw": [{"fi": "Koko matkan hinnan", "en": "the full fare"}, {"fi": "Omavastuun ylittävän osuuden", "en": "the portion exceeding the co-payment"}],
+    "explanation_en": "The customer pays only up to the co-payment; Kela covers the rest (B). (Mirrors Q100.)",
+    "difficulty": "Easy",
+    "tags": ["Kela", "co-payment"]
+  },
+  "Q131": {
+    "question_fi": "Missä seuraavista kuljetuksista ajoneuvossa tulee olla alkolukko?",
+    "options_fi": {
+      "A": "Kansaneläkelaitoksen tilaamissa kuljetuksissa.",
+      "B": "Koulu- ja päivähoitokuljetuksissa.",
+      "C": "Vammaispalvelulain mukaisissa terveydenhuollon tilaamissa kuljetuksissa."
+    },
+    "question_en": "In which of the following transport types must the vehicle have an alcolock?",
+    "options_en": {
+      "A": "Transports ordered by Kela.",
+      "B": "School and daycare transport.",
+      "C": "Healthcare transports ordered under the Disability Services Act."
+    },
+    "fw": [{"fi": "alkolukko", "en": "alcolock"}],
+    "pcw": [{"fi": "Koulu- ja päivähoitokuljetuksissa", "en": "school and daycare transport"}],
+    "ncw": [{"fi": "Kansaneläkelaitoksen tilaamissa", "en": "Kela-ordered"}, {"fi": "Vammaispalvelulain mukaisissa", "en": "Disability Services Act"}],
+    "explanation_en": "An alcolock is required only for school and daycare transport (B). (Mirrors Q103.)",
+    "difficulty": "Easy",
+    "tags": ["alcolock", "school transport"]
+  },
+  "Q132": {
+    "question_fi": "Miten tulee toimia, kun liikuntavammaisella asiakkaalla on ajoneuvon tavaratilaan meneviä matkatavaroita mukanaan ja hänellä on avustaja?",
+    "options_fi": {
+      "A": "Kuljettaja avustaa asiakasta ja avustajan tehtävänä on huolehtia matkatavaroiden lastaamisesta ja purkamisesta.",
+      "B": "Kuljettaja odottaa autossa, koska avustajan tehtävänä on avustaa asiakas ajoneuvoon sekä huolehtia matkatavaroista.",
+      "C": "Kuljettaja avustaa asiakkaan ajoneuvoon ja huolehtii matkatavaroiden lastaamisesta ja purkamisesta."
+    },
+    "question_en": "How should you act when a customer with a physical disability has luggage for the boot and they have an assistant?",
+    "options_en": {
+      "A": "The driver assists the customer and the assistant's job is to handle loading and unloading the luggage.",
+      "B": "The driver waits in the car because the assistant's job is to help the customer aboard and handle the luggage.",
+      "C": "The driver assists the customer into the vehicle and handles loading and unloading the luggage."
+    },
+    "fw": [{"fi": "liikuntavammaisella asiakkaalla", "en": "a customer with a physical disability"}, {"fi": "avustaja", "en": "an assistant"}],
+    "pcw": [{"fi": "Kuljettaja avustaa asiakkaan ajoneuvoon", "en": "the driver assists the customer into the vehicle"}, {"fi": "huolehtii matkatavaroiden lastaamisesta", "en": "handles loading and unloading the luggage"}],
+    "ncw": [{"fi": "avustajan tehtävänä on matkatavarat", "en": "the assistant's job is the luggage"}, {"fi": "Kuljettaja odottaa autossa", "en": "the driver waits in the car"}],
+    "explanation_en": "The driver assists the customer aboard and handles the luggage (C). (Mirrors Q098, Q116.)",
+    "difficulty": "Medium",
+    "tags": ["disability", "luggage", "driver duty", "assistant"]
+  },
+  "Q133": {
+    "question_fi": "Helmi on vaikeavammainen 8-vuotias tyttö, joka käy viikoittain kuntoutuksessa läheisessä hoitolaitoksessa. Hän käyttää pyörätuolia eikä pysty liikkumaan itsenäisesti lainkaan. Hänen äitinsä on kuullut, että Helmillä olisi oikeus saada itselleen Kansaneläkelaitoksen (Kela) korvaamana vakiotaksi, jolloin häntä kuljettaisivat saman yrittäjän palveluksessa olevat kuljettajat. Helmin äiti tiedustelee sinulta, onko tämä mahdollista. Miten vastaat hänelle?",
+    "options_fi": {
+      "A": "Helmilla ei ole oikeutta vakiotaksiin, sillä siihen ovat oikeutettuja vain vanhukset ja työssä käyvät vaikeavammaiset aikuiset.",
+      "B": "Helmillä on oikeus vakiotaksiin vain, jos hänen äitinsä kulkee matkat hänen kanssaan.",
+      "C": "Helmi on oikeutettu vakiotaksiin."
+    },
+    "question_en": "Helmi is a severely disabled 8-year-old who attends weekly rehabilitation. She uses a wheelchair and cannot move independently. Her mother asks whether Helmi is entitled to a Kela regular taxi. How do you answer?",
+    "options_en": {
+      "A": "Helmi is not entitled — only elderly and working disabled adults are.",
+      "B": "Helmi is entitled only if her mother travels with her.",
+      "C": "Helmi is entitled to a regular taxi."
+    },
+    "fw": [{"fi": "vaikeavammainen 8-vuotias", "en": "severely disabled 8-year-old"}, {"fi": "vakiotaksi", "en": "regular taxi"}],
+    "pcw": [{"fi": "Helmi on oikeutettu vakiotaksiin", "en": "Helmi is entitled to a regular taxi"}],
+    "ncw": [{"fi": "vain vanhukset", "en": "only elderly"}, {"fi": "vain jos äitinsä kulkee", "en": "only if her mother travels"}],
+    "explanation_en": "Severely disabled children are entitled to a Kela regular taxi (C). (Mirrors Q120.)",
+    "difficulty": "Medium",
+    "tags": ["Kela", "regular taxi", "child", "severe disability"]
+  },
+  "Q134": {
+    "question_fi": "Miten neuvot asiakasta, kun hän tiedustelee sinulta vakiotaksioikeudesta Kela-korvattavien taksimatkojen osalta?",
+    "options_fi": {
+      "A": "Neuvon asiakasta soittamaan kenelle tahansa vapaana olevalle taksille.",
+      "B": "Neuvon asiakasta ottamaan taksitolpalta taksin.",
+      "C": "Neuvon asiakasta soittamaan Kelan palvelunumeroon."
+    },
+    "question_en": "How do you advise a customer who asks about regular-taxi entitlement for Kela-reimbursed trips?",
+    "options_en": {
+      "A": "I advise the customer to call any available taxi.",
+      "B": "I advise the customer to take a taxi from the taxi rank.",
+      "C": "I advise the customer to call Kela's service number."
+    },
+    "fw": [{"fi": "vakiotaksioikeudesta", "en": "regular-taxi entitlement"}],
+    "pcw": [{"fi": "soittamaan Kelan palvelunumeroon", "en": "call Kela's service number"}],
+    "ncw": [{"fi": "vapaana olevalle taksille", "en": "any available taxi"}, {"fi": "taksitolpalta", "en": "from the taxi rank"}],
+    "explanation_en": "Kela entitlement queries go to Kela's service number (C). (Mirrors Q122.)",
+    "difficulty": "Easy",
+    "tags": ["Kela", "regular taxi", "service number"]
+  },
+  "Q135": {
+    "question_fi": "Kyytiisi nousee näkövammainen asiakas, jolla ei ole mukana avustajaa. Miten toimit tilanteessa?",
+    "options_fi": {
+      "A": "Nouset autosta ja kysyt asiakkaalta, miten voit auttaa.",
+      "B": "Istut autossa ja avaat oven sisäpuolelta.",
+      "C": "Et ota häntä kyytiin, jos hänellä ei ole mukana avustajaa."
+    },
+    "question_en": "A visually impaired customer boards your taxi without an assistant. How do you act?",
+    "options_en": {
+      "A": "You get out of the car and ask the customer how you can help.",
+      "B": "You stay in the car and open the door from the inside.",
+      "C": "You refuse to take them if they have no assistant."
+    },
+    "fw": [{"fi": "näkövammainen asiakas", "en": "a visually impaired customer"}, {"fi": "ei ole mukana avustajaa", "en": "without an assistant"}],
+    "pcw": [{"fi": "Nouset autosta ja kysyt", "en": "you get out and ask"}],
+    "ncw": [{"fi": "Istut autossa", "en": "you stay in the car"}, {"fi": "Et ota häntä kyytiin", "en": "you refuse to take them"}],
+    "explanation_en": "Get out and ask how to help (A). Staying in the car (B) leaves a blind customer without guidance; refusing service because there is no assistant (C) is discriminatory.",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "assistance", "no discrimination"]
+  },
+  "Q136": {
+    "question_fi": "Asiakas haluaa Kela-korvattavan kyydin, mutta et itse aja Kela-korvattavia kyytejä. Miten ohjaat asiakkaan?",
+    "options_fi": {
+      "A": "Otat asiakkaan kyytiin, viet hänet määränpäähän ja pyydät häntä hakemaan Kelalta korvausta taksikyydistä.",
+      "B": "Neuvon asiakasta soittamaan oman alueensa Kelan tilausvälitysyhtiön palvelunumeroon.",
+      "C": "Kehotan Kela-kyytejä ajavaa kuljettajaa olemaan yhteydessä asiakkaaseen."
+    },
+    "question_en": "A customer wants a Kela-reimbursed ride but you do not run Kela rides. How do you direct them?",
+    "options_en": {
+      "A": "You take the customer, drive them to the destination, and ask them to claim reimbursement from Kela.",
+      "B": "I advise the customer to call the Kela dispatch company's service number for their area.",
+      "C": "I tell a Kela driver to contact the customer."
+    },
+    "fw": [{"fi": "Kela-korvattavan kyydin", "en": "a Kela-reimbursed ride"}],
+    "pcw": [{"fi": "soittamaan oman alueensa Kelan tilausvälitysyhtiön palvelunumeroon", "en": "call the Kela dispatch company's service number for their area"}],
+    "ncw": [{"fi": "Otat asiakkaan kyytiin", "en": "you take the customer anyway"}, {"fi": "Kehotan Kela-kyytejä ajavaa kuljettajaa", "en": "I tell a Kela driver"}],
+    "explanation_en": "Direct to the Kela dispatch number (B). (Mirrors Q099.)",
+    "difficulty": "Medium",
+    "tags": ["Kela", "dispatch", "customer guidance"]
+  },
+  "Q137": {
+    "question_fi": "Kyytiisi tulee näkövammainen asiakas. Miten hoidat tilanteen?",
+    "options_fi": {
+      "A": "Vaadin, että näkövammaisella on avustaja mukana.",
+      "B": "En ota häntä kyytiin, koska en tiedä, miten näkövammaisen kanssa toimitaan.",
+      "C": "Kysyn, miten voin auttaa, ja kerron, missä suunnassa ajoneuvo on, ja tiedustelen, tarvitseeko hän apua."
+    },
+    "question_en": "A visually impaired customer boards your taxi. How do you handle the situation?",
+    "options_en": {
+      "A": "I demand the visually impaired person has an assistant.",
+      "B": "I do not take them because I do not know how to handle a visually impaired customer.",
+      "C": "I ask how I can help and tell them which direction the vehicle is in, and check whether they need assistance."
+    },
+    "fw": [{"fi": "näkövammainen asiakas", "en": "a visually impaired customer"}],
+    "pcw": [{"fi": "Kysyn, miten voin auttaa", "en": "I ask how I can help"}, {"fi": "missä suunnassa ajoneuvo on", "en": "which direction the vehicle is in"}],
+    "ncw": [{"fi": "Vaadin avustajan", "en": "I demand an assistant"}, {"fi": "En ota häntä kyytiin", "en": "I do not take them"}],
+    "explanation_en": "Ask how to help and orient to the vehicle (C). Demanding an assistant (A) and refusing service out of uncertainty (B) are both wrong.",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "ask first", "orientation"]
+  },
+  "Q138": {
+    "question_fi": "Mikä seuraavista on oikea tapa toimia, kun taksin asiakkaana on toimintarajoitteinen avustettava henkilö?",
+    "options_fi": {
+      "A": "Taksinkuljettajan vastuu asiakkaasta päättyy heti, kun asiakas on avustettu ulos autosta hoitolaitoksen pihassa.",
+      "B": "Taksinkuljettajan tulee varmistua, että asiakas pääsee sisälle hoitolaitokseen ja hoitohenkilökunta ottaa vastaan asiakkaan.",
+      "C": "Taksinkuljettajan tulee varmistua, että asiakas pääsee sisälle hoitolaitokseen, ja myös huolehtia asiakkaan ulkovaatteiden riisumisesta."
+    },
+    "question_en": "Which is the correct way to act when the taxi customer is a person with functional limitations who needs assistance?",
+    "options_en": {
+      "A": "The driver's responsibility ends as soon as the customer has been helped out of the car in the care facility's yard.",
+      "B": "The driver must make sure the customer gets inside the care facility and the care staff receive the customer.",
+      "C": "The driver must make sure the customer gets inside the care facility and also remove the customer's outdoor clothes."
+    },
+    "fw": [{"fi": "toimintarajoitteinen avustettava henkilö", "en": "a person with functional limitations who needs assistance"}],
+    "pcw": [{"fi": "pääsee sisälle hoitolaitokseen", "en": "gets inside the care facility"}, {"fi": "hoitohenkilökunta ottaa vastaan", "en": "the care staff receive the customer"}],
+    "ncw": [{"fi": "vastuu päättyy heti", "en": "responsibility ends immediately"}, {"fi": "ulkovaatteiden riisumisesta", "en": "removing outdoor clothes"}],
+    "explanation_en": "Ensure the customer reaches the care staff inside (B). The yard is not enough (A); removing clothes is not the driver's job (C). (Mirrors Q109.)",
+    "difficulty": "Medium",
+    "tags": ["assisted transport", "care facility", "duty of care"]
+  },
+  "Q139": {
+    "question_fi": "Mikä seuraavista on oikea kuljettajan toimintatapa, kun taksiin on tulossa näkövammainen asiakas?",
+    "options_fi": {
+      "A": "Kysyä asiakkaalta, miten häntä voi parhaiten auttaa, ja kertoa, missä suunnassa ajoneuvo on.",
+      "B": "Kysyä asiakkaalta, kuinka kovalla äänellä hänen kanssaan tulee kommunikoida.",
+      "C": "Kuljettajan tehtäviin ei kuulu asiakkaan erityistarpeiden huomioiminen."
+    },
+    "question_en": "Which is the correct driver approach when a visually impaired customer is about to board?",
+    "options_en": {
+      "A": "Ask the customer how you can best help them and tell them which direction the vehicle is in.",
+      "B": "Ask the customer how loudly you should communicate with them.",
+      "C": "It is not part of the driver's duties to consider the customer's special needs."
+    },
+    "fw": [{"fi": "näkövammainen asiakas", "en": "a visually impaired customer"}],
+    "pcw": [{"fi": "miten häntä voi parhaiten auttaa", "en": "how to best help them"}, {"fi": "missä suunnassa ajoneuvo on", "en": "which direction the vehicle is in"}],
+    "ncw": [{"fi": "kuinka kovalla äänellä", "en": "how loudly"}, {"fi": "ei kuulu erityistarpeiden huomioiminen", "en": "not part of duties"}],
+    "explanation_en": "Ask how to help and orient to the vehicle (A). (Mirrors Q111, Q112.)",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "ask first", "orientation"]
+  },
+  "Q140": {
+    "question_fi": "Mikä seuraavista on paras tapa toimia kohdatessasi näkövammaisen asiakkaan?",
+    "options_fi": {
+      "A": "Puhua hiukan normaalia puheääntä kovemmalla äänellä.",
+      "B": "Ottaa asiakasta olkapäästä kiinni ja avustaa hänet autoon kevyesti työntäen.",
+      "C": "Kysyä asiakkaalta, miten häntä voi parhaiten auttaa, ja kertoa, missä suunnassa ajoneuvo on."
+    },
+    "question_en": "Which is the best way to act when meeting a visually impaired customer?",
+    "options_en": {
+      "A": "Speak a little louder than your normal voice.",
+      "B": "Take the customer by the shoulder and help them into the car with a gentle push.",
+      "C": "Ask the customer how you can best help them and tell them which direction the vehicle is in."
+    },
+    "fw": [{"fi": "näkövammaisen asiakkaan", "en": "a visually impaired customer"}],
+    "pcw": [{"fi": "Kysyä asiakkaalta, miten häntä voi parhaiten auttaa", "en": "ask how to best help them"}, {"fi": "missä suunnassa ajoneuvo on", "en": "which direction the vehicle is in"}],
+    "ncw": [{"fi": "kovemmalla äänellä", "en": "louder voice"}, {"fi": "kevyesti työntäen", "en": "with a gentle push"}],
+    "explanation_en": "Ask first and give orientation (C). Louder voice (A) is irrelevant; pushing without consent (B) is inappropriate. (Mirrors Q110.)",
+    "difficulty": "Easy",
+    "tags": ["visually impaired", "ask first", "orientation"]
+  },
+  "Q141": {
+    "question_fi": "Kenen tulee varmistaa, että liikuntarajoitteinen asiakas pääsee taksin kyytiin ja myös pois?",
+    "options_fi": {
+      "A": "Matkustajan saattajan.",
+      "B": "Taksinkuljettajan.",
+      "C": "Poliisin."
+    },
+    "question_en": "Whose job is it to ensure that a customer with limited mobility can board and also leave the taxi?",
+    "options_en": {
+      "A": "The passenger's escort.",
+      "B": "The taxi driver.",
+      "C": "The police."
+    },
+    "fw": [{"fi": "liikuntarajoitteinen asiakas", "en": "a customer with limited mobility"}],
+    "pcw": [{"fi": "Taksinkuljettajan", "en": "the taxi driver"}],
+    "ncw": [{"fi": "Matkustajan saattajan", "en": "the passenger's escort"}, {"fi": "Poliisin", "en": "the police"}],
+    "explanation_en": "Ensuring the customer can board and alight safely is the taxi driver's responsibility (B).",
+    "difficulty": "Easy",
+    "tags": ["mobility", "boarding", "driver responsibility"]
+  },
+  "Q142": {
+    "question_fi": "Mistä tunnistat, että asiakkaan mukana oleva koira on työkoira?",
+    "options_fi": {
+      "A": "Koira on suuri ja rauhallinen.",
+      "B": "Asiakas sanoo sen olevan työkoira ilman mitään tunnistetta.",
+      "C": "Koiralla on tunnistusvaljaat."
+    },
+    "question_en": "How do you recognise that the dog the customer has with them is a working dog?",
+    "options_en": {
+      "A": "The dog is large and calm.",
+      "B": "The customer says it is a working dog with no identifying mark.",
+      "C": "The dog has identifying harness."
+    },
+    "fw": [{"fi": "koira on työkoira", "en": "the dog is a working dog"}],
+    "pcw": [{"fi": "tunnistusvaljaat", "en": "identifying harness"}],
+    "ncw": [{"fi": "suuri ja rauhallinen", "en": "large and calm"}, {"fi": "ilman mitään tunnistetta", "en": "with no identifying mark"}],
+    "explanation_en": "A working dog is identified by its official harness (C). Size and calmness (A) are not definitive; the customer's word alone without any identifier (B) is insufficient.",
+    "difficulty": "Easy",
+    "tags": ["guide dog", "working dog", "identification", "harness"]
+  },
+  "Q143": {
+    "question_fi": "Asiakas on henkilö, joka ei kykene kommunikoimaan kuljettajan kanssa. Mitä kuljettajalta vaaditaan?",
+    "options_fi": {
+      "A": "Kuljettajalta edellytetään, että asiakas pääsee oikeaan määränpäähän.",
+      "B": "Kuljettajalta edellytetään asiakkaiden kanssa saman kielen osaamista.",
+      "C": "Kuljettajalta edellytetään poikkeuslupaa kuljetuksen suorittamiseen."
+    },
+    "question_en": "The customer cannot communicate with the driver. What is required of the driver?",
+    "options_en": {
+      "A": "The driver is required to ensure the customer reaches the correct destination.",
+      "B": "The driver is required to speak the same language as the customer.",
+      "C": "The driver is required to have an exemption permit to carry out the transport."
+    },
+    "fw": [{"fi": "ei kykene kommunikoimaan kuljettajan kanssa", "en": "cannot communicate with the driver"}],
+    "pcw": [{"fi": "asiakas pääsee oikeaan määränpäähän", "en": "the customer reaches the correct destination"}],
+    "ncw": [{"fi": "saman kielen osaamista", "en": "speaking the same language"}, {"fi": "poikkeuslupaa", "en": "an exemption permit"}],
+    "explanation_en": "The driver must get the customer to their destination (A). (Mirrors Q092.)",
+    "difficulty": "Medium",
+    "tags": ["communication", "destination"]
+  },
+  "Q144": {
+    "question_fi": "Mitä sinun tulee ottaa huomioon kuuron asiakkaan kanssa ennen liikkeellelähtöä?",
+    "options_fi": {
+      "A": "Varmistan määränpään ja hinnan kirjallisesti tai näyttämällä karttaa.",
+      "B": "Pidän katsekontaktin ja varmistan, että asiakas näkee huuleni puhuessani.",
+      "C": "Pimeällä autossa tulisi pitää sisävalot päällä kommunikointitilanteissa."
+    },
+    "question_en": "What must you take into account with a deaf customer before setting off?",
+    "options_en": {
+      "A": "I confirm the destination and fare in writing or by showing a map.",
+      "B": "I maintain eye contact and make sure the customer can see my lips when I speak.",
+      "C": "In the dark, the interior lights should be on in communication situations."
+    },
+    "fw": [{"fi": "kuuron asiakkaan kanssa", "en": "with a deaf customer"}],
+    "pcw": [{"fi": "Varmistan määränpään ja hinnan kirjallisesti tai näyttämällä karttaa", "en": "confirm destination and fare in writing or by showing a map"}],
+    "ncw": [{"fi": "Pidän katsekontaktin", "en": "I maintain eye contact"}, {"fi": "sisävalot päällä", "en": "interior lights on"}],
+    "explanation_en": "Confirming the destination and fare in writing or via a map (A) is the most practical first step with a deaf customer. B and C describe valid techniques for specific moments (lip-reading, dark conditions) but A covers the key pre-departure step.",
+    "difficulty": "Medium",
+    "tags": ["deaf", "communication", "written confirmation"]
+  },
+  "Q145": {
+    "question_fi": "Voitko toimia vakiotaksinkuljettajana säännöllisissä kuntoutukseen liittyvissä matkoissa, kun matkustajana on pyörätuolia käyttävä 15-vuotias lapsi?",
+    "options_fi": {
+      "A": "Voin toimia kuljettajana vain, jos minulla on vaadittu koulutus ja soveltuvuus lasten sekä erityisryhmien kuljetuksiin.",
+      "B": "En voi toimia kuljettajana ilman tarvittavia lupia ja tilaajan hyväksyntää.",
+      "C": "Selvitän työnantajaltani, voinko toimia vakiotaksinkuljettajana."
+    },
+    "question_en": "Can you act as a regular taxi driver for regular rehabilitation trips when the passenger is a 15-year-old wheelchair user?",
+    "options_en": {
+      "A": "I can only act as the driver if I have the required training and suitability for transporting children and special groups.",
+      "B": "I cannot act as the driver without the necessary permits and the client's approval.",
+      "C": "I check with my employer whether I can act as a regular taxi driver."
+    },
+    "fw": [{"fi": "vakiotaksinkuljettajana", "en": "a regular taxi driver"}, {"fi": "pyörätuolia käyttävä 15-vuotias lapsi", "en": "a 15-year-old wheelchair user"}],
+    "pcw": [{"fi": "vaadittu koulutus ja soveltuvuus", "en": "required training and suitability"}],
+    "ncw": [{"fi": "ilman tarvittavia lupia", "en": "without the necessary permits"}, {"fi": "Selvitän työnantajaltani", "en": "I check with my employer"}],
+    "explanation_en": "You can only take on this assignment if you have the required training and suitability for children and special groups (A).",
+    "difficulty": "Medium",
+    "tags": ["regular taxi", "training", "suitability", "wheelchair"]
+  },
+  "Q146": {
+    "question_fi": "Miten tulee toimia, kun otat kyytiin hyvin hitaasti liikkuvan asiakkaan?",
+    "options_fi": {
+      "A": "Pysäytät ajoneuvon turvallisesti, menet asiakkaan luo rauhallisesti ja tarjoat tarvittaessa apua sekä varmistat turvallisen autoon nousun.",
+      "B": "Odotat kärsivällisesti, annat asiakkaalle riittävästi aikaa ja varmistat, että hän pääsee turvallisesti istumaan ennen liikkeellelähtöä.",
+      "C": "Nouset ajoneuvosta ja tiedustelet, tarvitseeko hän apua liikkumisessa ja autoon nousemisessa."
+    },
+    "question_en": "How should you act when you pick up a very slow-moving customer?",
+    "options_en": {
+      "A": "You stop the vehicle safely, approach the customer calmly, offer help if needed, and ensure safe boarding.",
+      "B": "You wait patiently, give the customer enough time, and make sure they are seated safely before setting off.",
+      "C": "You get out of the vehicle and ask whether they need help moving or boarding."
+    },
+    "fw": [{"fi": "hyvin hitaasti liikkuvan asiakkaan", "en": "a very slow-moving customer"}],
+    "pcw": [{"fi": "menet asiakkaan luo rauhallisesti", "en": "approach the customer calmly"}, {"fi": "tarjoat apua", "en": "offer help"}, {"fi": "turvallisen autoon nousun", "en": "safe boarding"}],
+    "ncw": [{"fi": "Odotat kärsivällisesti", "en": "you wait patiently"}, {"fi": "Nouset ajoneuvosta", "en": "you get out"}],
+    "explanation_en": "The ideal is proactive: stop safely, approach, offer help, and ensure safe boarding (A). B is passive (just waiting); C asks but doesn't proactively approach.",
+    "difficulty": "Medium",
+    "tags": ["slow-moving", "assistance", "boarding"]
+  },
+  "Q147": {
+    "question_fi": "Miten kuljettajan tulee huomioida näkövammainen asiakas?",
+    "options_fi": {
+      "A": "Taksinkuljettajan on hyvä kysyä asiakkaalta, miten häntä voi auttaa, ennen kuin ryhtyy auttamaan asiakasta.",
+      "B": "Kuljettajan tulee esitellä itsensä, kertoa selkeästi, missä ollaan, ja tarjota käsivartta opastamista varten asiakkaan toiveiden mukaisesti.",
+      "C": "Kuljettajan tulee antaa selkeät sanalliset ohjeet, kertoa esteistä tai korkeuseroista, ja varmistaa, että asiakas pääsee turvallisesti ajoneuvoon ja istumaan."
+    },
+    "question_en": "How should the driver take a visually impaired customer into account?",
+    "options_en": {
+      "A": "It is good for the driver to ask the customer how they can be helped before starting to assist.",
+      "B": "The driver should introduce themselves, clearly say where you are, and offer their arm for guiding according to the customer's wishes.",
+      "C": "The driver should give clear verbal instructions, describe obstacles or level changes, and ensure the customer boards and is seated safely."
+    },
+    "fw": [{"fi": "näkövammainen asiakas", "en": "a visually impaired customer"}],
+    "pcw": [{"fi": "esitellä itsensä", "en": "introduce themselves"}, {"fi": "tarjota käsivartta opastamista varten", "en": "offer their arm for guiding"}, {"fi": "asiakkaan toiveiden mukaisesti", "en": "according to the customer's wishes"}],
+    "ncw": [{"fi": "kysyä ennen kuin ryhtyy auttamaan", "en": "ask before starting to assist"}, {"fi": "antaa selkeät sanalliset ohjeet", "en": "give clear verbal instructions"}],
+    "explanation_en": "The most complete practice: introduce yourself, describe location, offer your arm per the customer's wishes (B). A (ask first) is valid but less complete; C is also good practice but B is the most structured approach.",
+    "difficulty": "Medium",
+    "tags": ["visually impaired", "introduction", "arm guiding"]
+  },
+  "Q148": {
+    "question_fi": "Taksisi kyytiin tulee sokea asiakas. Mihin hänen tulisi ensisijaisesti istua autossa?",
+    "options_fi": {
+      "A": "Asiakas istuu aina takapenkillä kuljettajan takana.",
+      "B": "Annetaan asiakkaan istua etupenkillä.",
+      "C": "Asiakas istuu tavaratilan vieressä takapenkillä."
+    },
+    "question_en": "A blind customer boards your taxi. Where should they primarily sit?",
+    "options_en": {
+      "A": "The customer always sits in the back seat behind the driver.",
+      "B": "The customer is allowed to sit in the front seat.",
+      "C": "The customer sits in the back seat next to the luggage area."
+    },
+    "fw": [{"fi": "sokea asiakas", "en": "a blind customer"}],
+    "pcw": [{"fi": "Annetaan asiakkaan istua etupenkillä", "en": "the customer is allowed to sit in the front seat"}],
+    "ncw": [{"fi": "aina takapenkillä kuljettajan takana", "en": "always in the back seat behind the driver"}, {"fi": "tavaratilan vieressä", "en": "next to the luggage area"}],
+    "explanation_en": "A blind customer should preferably sit in the front seat — this aids verbal communication with the driver (B). The back seat (A, C) is not preferred.",
+    "difficulty": "Easy",
+    "tags": ["blind", "front seat", "communication"]
+  }
+}
