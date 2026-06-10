@@ -120,10 +120,12 @@
         ]
       },
       {
-        "text_fi": "ilmoitat huoltajalleen",
+        "text_fi": "ilmoitat asiasta hänen huoltajalleen",
         "meaning_en": "inform the guardian",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "This is a child seat-belt responsibility question. The Finnish focus words ilman aikuista, alle 15-vuotias lapsi and turvavyö show that the driver must make sure the child uses the belt. The correct answer uses Pysäytät ajoneuvon, keskustelet and vasta sitten, meaning you stop, discuss, and continue only after the belt is fastened. Threatening to remove the child or allowing travel ilman turvavyötä are wrong-answer clues.",
@@ -179,10 +181,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "yksin matkustava lapsi",
+        "text_fi": "yksin matkustavan laps",
         "meaning_en": "child travelling alone",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "turvavyön käytöstä",
@@ -1016,10 +1020,12 @@
         ]
       },
       {
-        "text_fi": "ei kiinnitä turvavyötä",
+        "text_fi": "ei kehotuksestasi huolimatta kiinnitä turvavyötä",
         "meaning_en": "does not fasten the seat belt",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "keskustella oppilaan kanssa",
@@ -2423,10 +2429,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "yli 15-vuotias asiakas",
+        "text_fi": "yli 15- vuotias asiakas",
         "meaning_en": "a customer over 15",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "ei käytä turvavyötä",
@@ -7648,10 +7656,12 @@
         ]
       },
       {
-        "text_fi": "ei ole tarkoitettu kuljettamiseen taksissa",
+        "text_fi": "Ei saa, koska sähkömopoa ei ole tarkoitettu asiakkaan kuljettamiseen taksissa",
         "meaning_en": "not intended for transport in a taxi",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "A mobility scooter may only be used if both the vehicle and the scooter have been specifically approved and are properly secured to safety requirements (C). A and B state blanket prohibitions that are too absolute.",
@@ -8306,10 +8316,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "lapsia taksilla",
+        "text_fi": "taksilla lapsia",
         "meaning_en": "children by taxi",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Alle 135 cm:n pituinen lapsi tarvitsee aina turvalaitteen",
@@ -8768,10 +8780,12 @@
         ]
       },
       {
-        "text_fi": "jättää asiakkaan naapurin luokse",
+        "text_fi": "jättää asiakkaan esimerkiksi naapurin luokse",
         "meaning_en": "leave the customer with a neighbour",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "When the assistant is absent, the driver must stay with the customer until the assistant arrives (C). Returning to the start (A) is not always appropriate, and leaving them with a random neighbour (B) is unsafe.",
@@ -9130,10 +9144,12 @@
         ]
       },
       {
-        "text_fi": "avustajan tehtävänä on huolehtia matkatavaroista",
+        "text_fi": "avustajan tehtävänä on huolehtia matkatavaroi",
         "meaning_en": "the assistant's job is to handle the luggage",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "Kuljettaja odottaa autossa",
@@ -9298,10 +9314,12 @@
         ]
       },
       {
-        "text_fi": "asiakas maksaa kuljettajalle",
+        "text_fi": "asiakas maksaa Kela-kyydistä kuljettajalle",
         "meaning_en": "the customer pays the driver",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Enintään omavastuun",
@@ -9405,10 +9423,12 @@
         ]
       },
       {
-        "text_fi": "Vaadit, että on avustaja mukana",
+        "text_fi": "Vaadit, että näkövammaisella asiakkaalla on avustaja mukana",
         "meaning_en": "you require them to have an assistant",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "hän ei pelkää kyydissä",
@@ -10144,10 +10164,12 @@
         ]
       },
       {
-        "text_fi": "vastuu päättyy heti, kun asiakas on avustettu ulos autosta",
+        "text_fi": "vastuu asiakkaasta päättyy heti, kun asiakas on avustettu ulos autosta",
         "meaning_en": "responsibility ends as soon as the customer is helped out of the car",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "huolehtia asiakkaan ulkovaatteiden riisumisesta",
@@ -10494,10 +10516,12 @@
         ]
       },
       {
-        "text_fi": "hakemaan alkoholia Alkosta",
+        "text_fi": "hakemaan kaksi pulloa Alkosta",
         "meaning_en": "fetch alcohol from Alko",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "laki kieltää minua hakemasta alkoholia asiakkaille",
@@ -10781,16 +10805,20 @@
         ]
       },
       {
-        "text_fi": "huolehtii matkatavaroiden lastaamisesta ja purkamisesta",
+        "text_fi": "huolehtia matkatavaroiden lastaamisesta ja purkamisesta",
         "meaning_en": "takes care of loading and unloading the luggage",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
-        "text_fi": "Avustajan vastuulla on matkatavarat",
+        "text_fi": "Avustajan vastuulla on huolehtia matkatavar",
         "meaning_en": "the assistant's responsibility is the luggage",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "kuljettaja odottaa paikallaan",
@@ -10886,10 +10914,12 @@
         ]
       },
       {
-        "text_fi": "ei kuulu erityistarpeiden huomioiminen",
+        "text_fi": "ei kuulu asiakkaan erityistarpeiden huomioiminen",
         "meaning_en": "not part of duties to consider special needs",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Ask how to help and give verbal orientation (B). Volume is irrelevant for visual impairment (A); ignoring special needs entirely (C) is wrong.",
@@ -11191,10 +11221,12 @@
         ]
       },
       {
-        "text_fi": "vain jos äitinsä kulkee matkat hänen kanssaan",
+        "text_fi": "vain, jos hänen äitinsä kulkee matkat hänen kanssaan",
         "meaning_en": "only if her mother travels with her",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Kela-reimbursed regular taxi entitlement covers severely disabled children too (C). A invents an age/employment restriction; B invents a guardian-accompaniment requirement.",
@@ -11444,10 +11476,12 @@
         ]
       },
       {
-        "text_fi": "kykenee kommunikoimaan siten, että asiakas pääsee oikeaan määränpäähänsä",
+        "text_fi": "kykenee kommunikoimaan asiakkaan kanssa siten, että asiakas pääsee turvallisesti oikeaan määränpäähänsä",
         "meaning_en": "able to communicate so that the customer reaches their destination",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "sujuvasti päivän tapahtumista",
@@ -12267,10 +12301,12 @@
         ]
       },
       {
-        "text_fi": "avustajan tehtävänä on matkatavarat",
+        "text_fi": "avustajan tehtävänä on huolehtia matkatavar",
         "meaning_en": "the assistant's job is the luggage",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "Kuljettaja odottaa autossa",
@@ -12369,10 +12405,12 @@
         ]
       },
       {
-        "text_fi": "vain jos äitinsä kulkee",
+        "text_fi": "vain, jos hänen äitinsä kulkee",
         "meaning_en": "only if her mother travels",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Severely disabled children are entitled to a Kela regular taxi (C). (Mirrors Q120.)",
@@ -12713,10 +12751,12 @@
         ]
       },
       {
-        "text_fi": "Vaadin avustajan",
+        "text_fi": "Vaadin, että näkövammaisella on avustaja mukana",
         "meaning_en": "I demand an assistant",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "En ota häntä kyytiin",
@@ -12804,10 +12844,12 @@
         ]
       },
       {
-        "text_fi": "vastuu päättyy heti",
+        "text_fi": "vastuu asiakkaasta päättyy heti",
         "meaning_en": "responsibility ends immediately",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "ulkovaatteiden riisumisesta",
@@ -12902,10 +12944,12 @@
         ]
       },
       {
-        "text_fi": "ei kuulu erityistarpeiden huomioiminen",
+        "text_fi": "ei kuulu asiakkaan erityistarpeiden huomioiminen",
         "meaning_en": "not part of duties",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Ask how to help and orient to the vehicle (A). (Mirrors Q111, Q112.)",
@@ -13498,10 +13542,12 @@
         ]
       },
       {
-        "text_fi": "tarjoat apua",
+        "text_fi": "tarjoat tarvittaessa apua",
         "meaning_en": "offer help",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "turvallisen autoon nousun",
@@ -13612,10 +13658,12 @@
         ]
       },
       {
-        "text_fi": "kysyä ennen kuin ryhtyy auttamaan",
+        "text_fi": "kysyä asiakkaalta, miten häntä voi auttaa, ennen kuin ryhtyy auttamaan",
         "meaning_en": "ask before starting to assist",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "antaa selkeät sanalliset ohjeet",
@@ -14047,10 +14095,12 @@
         ]
       },
       {
-        "text_fi": "puheella yrittää herätellä",
+        "text_fi": "puheella ensin yrittää herätellä",
         "meaning_en": "try to wake by speaking",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "soittaa poliisi paikalle",
@@ -15106,7 +15156,7 @@
     "tags": [
       "review-flag"
     ],
-    "status": "ai-draft",
+    "status": "source-unclear",
     "fi_edited": false,
     "reviewer_notes": "SOURCE MISSING: master has placeholder 'FI question EN question' with no real content. This question cannot be enriched. Mark as incomplete/skip.",
     "enriched": false
@@ -15242,7 +15292,7 @@
     "tags": [
       "review-flag"
     ],
-    "status": "ai-draft",
+    "status": "source-unclear",
     "fi_edited": false,
     "reviewer_notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched.",
     "enriched": false
@@ -15311,10 +15361,12 @@
         ]
       },
       {
-        "text_fi": "suosittelevat peruuttamista",
+        "text_fi": "suosittelevat ajoluvan peruuttamista",
         "meaning_en": "recommend revoking",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Committing a serious traffic safety offence is a legal ground for revocation (C). Not working for three years (A) and peer recommendations (B) are not grounds.",
@@ -15469,10 +15521,12 @@
         ]
       },
       {
-        "text_fi": "vain reittiin liittyviä täsmennyksiä",
+        "text_fi": "n reittiin liittyviä täsmennyksiä",
         "meaning_en": "only route-related clarifications",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "huonot vuorovaikutustaidot",
@@ -15640,7 +15694,7 @@
     "tags": [
       "review-flag"
     ],
-    "status": "ai-draft",
+    "status": "source-unclear",
     "fi_edited": false,
     "reviewer_notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched.",
     "enriched": false
@@ -15685,10 +15739,13 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "osoite ei ole ennestään tuttu",
+        "text_fi": "ole sinulle ennestään tuttu",
         "meaning_en": "an address you do not know",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question",
+          "option_c"
+        ]
       },
       {
         "text_fi": "Kerrot asiakkaalle",
@@ -15699,10 +15756,12 @@
         ]
       },
       {
-        "text_fi": "tiedustelet hiukan lisätietoja osoitteesta",
+        "text_fi": "tiedustelet samalla hiukan lisätietoja osoitteesta",
         "meaning_en": "ask for a little more information about it",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "ajamaan siihen suuntaan, jossa epäilet",
@@ -15797,10 +15856,12 @@
         ]
       },
       {
-        "text_fi": "Kuljettajalla tulee olla aina mukana ajolupa",
+        "text_fi": "Kuljettajalla tulee olla aina mukana taksinkuljettajan ajolupa",
         "meaning_en": "must always carry the licence",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "C is the incorrect statement: an alcolock is only required in school and daycare transport vehicles, not every taxi. A and B are correct legal requirements.",
@@ -15856,10 +15917,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "ei ole mukana hands-free-laitetta",
+        "text_fi": "eikä sinulla ole mukanasi hands-free-laitetta",
         "meaning_en": "no hands-free device",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "et vastaa puheluun",
@@ -16138,10 +16201,12 @@
         ]
       },
       {
-        "text_fi": "ei itsekään halua keskustella",
+        "text_fi": "ei hän halua keskustella",
         "meaning_en": "that they too do not want to talk",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "yrittää keskustella koko matkan",
@@ -16207,7 +16272,7 @@
     "tags": [
       "review-flag"
     ],
-    "status": "ai-draft",
+    "status": "source-unclear",
     "fi_edited": false,
     "reviewer_notes": "SOURCE MISSING: master has placeholder text only. Cannot be enriched.",
     "enriched": false
@@ -16344,10 +16409,12 @@
         ]
       },
       {
-        "text_fi": "asiakkaan turvallinen poistuminen on kuljettajan vastuulla",
+        "text_fi": "Asiakkaan turvallinen autoon tulo ja poistuminen on aina kuljettajan vastuulla",
         "meaning_en": "safe alighting is the driver's responsibility",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "etsit paremman paikan",
@@ -16366,10 +16433,12 @@
         ]
       },
       {
-        "text_fi": "velvollisuus maksaa sakkomaksu",
+        "text_fi": "velvollisuus maksaa mahdollinen sakkomaksu",
         "meaning_en": "must pay the fine",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Safe drop-off is always the driver's responsibility; if the requested spot is unsafe, find a safer one (C). The customer cannot dictate an unsafe stop (A), and fines are the driver's responsibility (B) — the driver should not have stopped there.",
@@ -16601,10 +16670,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "alkoholia ennen ajovuoroa",
+        "text_fi": "Alkoholia ei tule nauttia ennen ajovuoroa",
         "meaning_en": "alcohol before a driving shift",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "aiheuttaa aina väsymystä ja heikentää ajokykyä",
@@ -16792,10 +16863,12 @@
         ]
       },
       {
-        "text_fi": "asiakas pääsee hoitohenkilökunnan luokse",
+        "text_fi": "asiakas pääsee tarvittaessa hoitohenkilökunnan luokse",
         "meaning_en": "the customer reaches the care staff",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "vastuu päättyy, kun asiakas on noussut ulos",
@@ -16890,16 +16963,20 @@
         ]
       },
       {
-        "text_fi": "jos hän maksaa ylinopeussakot",
+        "text_fi": "jos asiakas on sopinut, että hän maksaa ylinopeussakot",
         "meaning_en": "if the customer pays the fines",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
-        "text_fi": "jos asiakkaalla on perusteltu syy",
+        "text_fi": "jos asiakkaalla on siihen perusteltu syy",
         "meaning_en": "if the customer has a justified reason",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "You cannot speed regardless; explain this and use the fastest legal route (B). Neither payment (A) nor justification (C) makes speeding permissible.",
@@ -17054,16 +17131,20 @@
         ]
       },
       {
-        "text_fi": "ei osta iloista palvelua",
+        "text_fi": "Ei, sillä asiakas ei osta taksiin tullessaan iloista palvelua",
         "meaning_en": "not buying cheerful service",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
-        "text_fi": "ei voi moittia",
+        "text_fi": "voi moittia",
         "meaning_en": "cannot be criticised",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Customers always have the right to complain about rude treatment (A). B and C both deny the right to basic polite service, which is regulated.",
@@ -17763,10 +17844,12 @@
         ]
       },
       {
-        "text_fi": "suosittelevat peruuttamista",
+        "text_fi": "suosittelevat ajoluvan peruuttamista",
         "meaning_en": "recommend revoking",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Committing a serious traffic offence is a ground for revocation (C). (Mirrors Q167.)",
@@ -17927,10 +18010,12 @@
         ]
       },
       {
-        "text_fi": "voi poiketa pysähtymissäännöistä",
+        "text_fi": "voi perustellusta syystä poiketa pysähtymissäännöistä",
         "meaning_en": "may deviate from stopping rules",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Wait where stopping is legal (C). The customer cannot dictate an illegal stop (A); taxis have no blanket exemption from stopping rules (B).",
@@ -18077,10 +18162,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "osoite ei ole sinulle tuttu ennestään",
+        "text_fi": "ei ole sinulle tuttu ennestään",
         "meaning_en": "an address you do not know",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Kerrot asiakkaalle",
@@ -18091,10 +18178,12 @@
         ]
       },
       {
-        "text_fi": "tiedustelet lisätietoja osoitteesta",
+        "text_fi": "tiedustelet samalla hiukan lisätietoja osoitteesta",
         "meaning_en": "ask for more information",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "ajamaan siihen suuntaan, jossa epäilet",
@@ -18173,10 +18262,12 @@
         ]
       },
       {
-        "text_fi": "lupaa maksaa ylinopeussakot",
+        "text_fi": "lupaa maksaa mahdolliset ylinopeussakot",
         "meaning_en": "promises to pay fines",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "ettet voi ajaa ylinopeutta",
@@ -18372,10 +18463,12 @@
         ]
       },
       {
-        "text_fi": "omalla kirjallisella raportilla",
+        "text_fi": "Omalla kirjallisella terveydentilaa koskevalla raportilla",
         "meaning_en": "own written report",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "ei tarvitse todistaa",
@@ -18545,10 +18638,12 @@
         ]
       },
       {
-        "text_fi": "jos työnantaja kuuluu liittoon",
+        "text_fi": "jos työnantaja kuuluu taksiyrittäjäliittoon",
         "meaning_en": "if the employer belongs to the association",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Extended shifts up to 15 hours are permitted only when work cannot otherwise be arranged appropriately (A). The driver's own wish (B) or employer membership (C) are not sufficient grounds.",
@@ -19151,10 +19246,12 @@
         ]
       },
       {
-        "text_fi": "ensisijaisesti avustajan kanssa",
+        "text_fi": "ensisijaisesti keskustelemaan asia",
         "meaning_en": "primarily with the assistant",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "kirjalliset ohjeet",
@@ -19242,10 +19339,12 @@
         ]
       },
       {
-        "text_fi": "lapsia ei saa ottaa kyytiin ilman vanhempia",
+        "text_fi": "lapsia ei saa ottaa kyytiin, jos vanhemma",
         "meaning_en": "children may not travel without parents",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "ei ole minun vastuullani",
@@ -19439,10 +19538,12 @@
         ]
       },
       {
-        "text_fi": "jäädä odottamaan yhteydenottoa",
+        "text_fi": "jäädä odottamaan asiakkaan yhteydenottoa",
         "meaning_en": "wait for the customer to contact you",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "Deliver promptly to the dispatch office (C). (Mirrors Q160.)",
@@ -19670,10 +19771,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "hakemaan alkoholia Alkosta",
+        "text_fi": "hakemaan pullot Alkosta",
         "meaning_en": "fetch alcohol from Alko",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "laki kieltää minua hakemasta alkoholia",
@@ -19752,10 +19855,12 @@
         ]
       },
       {
-        "text_fi": "asiakkaan turvallinen ajoneuvosta poistuminen on vastuullasi",
+        "text_fi": "asiakkaan turvallinen ajoneuvosta poistuminen",
         "meaning_en": "safe alighting is your responsibility",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "etsin toisen paikan",
@@ -19774,10 +19879,12 @@
         ]
       },
       {
-        "text_fi": "asiakkaalla on velvollisuus maksaa sakkomaksu",
+        "text_fi": "Asiakkaalla on velvollisuus maksaa mahdollinen sakkomaksu",
         "meaning_en": "the customer must pay the fine",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Safe drop-off is the driver's responsibility; find a safe spot (A). (Mirrors Q180.)",
@@ -20023,10 +20130,12 @@
         ]
       },
       {
-        "text_fi": "puheella yrittää herätellä",
+        "text_fi": "puheella ensin yrittää herätellä",
         "meaning_en": "try to wake verbally",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "soittaa poliisi paikalle",
@@ -20221,16 +20330,20 @@
         ]
       },
       {
-        "text_fi": "keskustella osapuolten kanssa",
+        "text_fi": "keskustella asiasta osapuolten kanssa",
         "meaning_en": "discuss with those involved",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
-        "text_fi": "ilmoittaa oppilaitokseen",
+        "text_fi": "ilmoittaa asiasta oppilaitokseen",
         "meaning_en": "report to the school",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "Jätät asian huomiotta",
@@ -20501,10 +20614,12 @@
         ]
       },
       {
-        "text_fi": "asiallisesti ja turvallisuudesta",
+        "text_fi": "asiallisesti ja huolehtia matkustajien turvallisuudesta",
         "meaning_en": "professionally and safety",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "A receipt must always be offered (C). Options A and B are also correct rules, but the question asks what is correct 'regarding taxi service' and C is the specific rule tested. NOTE: all three options are arguably correct — if this is a single-answer question, C is the most specific receipt rule tested here.",
@@ -20559,10 +20674,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "osoite ei ole sinulle tuttu ennestään",
+        "text_fi": "ei ole sinulle tuttu ennestään",
         "meaning_en": "an address you do not know",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Kerrot asiakkaalle",
@@ -20573,10 +20690,12 @@
         ]
       },
       {
-        "text_fi": "tiedustelet lisätietoja osoitteesta",
+        "text_fi": "tiedustelet samalla lisätietoja osoitteesta",
         "meaning_en": "ask for more information",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "ajamaan siihen suuntaan, jossa epäilet",
@@ -20654,10 +20773,12 @@
         ]
       },
       {
-        "text_fi": "kykenee kommunikoimaan siten, että asiakas pääsee oikeaan määränpäähänsä",
+        "text_fi": "kykenee kommunikoimaan asiakkaan kanssa niin, että asiakas pääsee turvallisesti oikeaan määränpäähänsä",
         "meaning_en": "communicate so the customer reaches their destination",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "sujuvasti päivän tapahtumista",
@@ -20727,10 +20848,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "vaatii ajamaan ylinopeutta",
+        "text_fi": "vaatii sinua ajamaan ylinopeutta",
         "meaning_en": "demands you speed",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "ettet voi ajaa ylinopeutta",
@@ -21351,10 +21474,14 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "kuitti",
+        "text_fi": "Kuiti",
         "meaning_en": "receipt",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "option_a",
+          "option_b",
+          "option_c"
+        ]
       },
       {
         "text_fi": "Kuitin tarjoaminen asiakkaalle on pakollista",
@@ -21936,10 +22063,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "loukkaantunut henkilö siirtää",
+        "text_fi": "loukkaantunut henkilö tulee siirtää",
         "meaning_en": "moving an injured person",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "loukkaantuneen hengen pelastamiseksi välttämätöntä",
@@ -21958,10 +22087,12 @@
         ]
       },
       {
-        "text_fi": "Aina jos henkilö on ajoneuvon sisällä",
+        "text_fi": "Aina jos henkilö on loukkaantuneena ajoneuvon sisällä",
         "meaning_en": "always if inside the vehicle",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Only move an injured person if their life depends on it (A). Otherwise moving risks spinal injury. 'Always' (B) and 'always if inside the vehicle' (C) ignore that risk.",
@@ -22456,16 +22587,20 @@
         ]
       },
       {
-        "text_fi": "muut tienkäyttäjät näkevät ajoneuvosi",
+        "text_fi": "muut tienkäyttäjät näkevät tielle pysähtyneen ajoneuvosi",
         "meaning_en": "other road users can see your vehicle",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
-        "text_fi": "havaitset eläimet",
+        "text_fi": "havaitset paremmin tiealueella liikkuvat eläimet",
         "meaning_en": "spot animals",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "kuluttavat vähemmän virtaa",
@@ -22528,10 +22663,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "loukkaantunut henkilö siirtää",
+        "text_fi": "loukkaantunut henkilö tulee siirtää",
         "meaning_en": "moving an injured person",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "hengen pelastamiseksi välttämätöntä",
@@ -22550,10 +22687,12 @@
         ]
       },
       {
-        "text_fi": "Aina jos ajoneuvon sisällä",
+        "text_fi": "Aina jos henkilö on loukkaantuneena ajoneuvon sisällä",
         "meaning_en": "always if inside the vehicle",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Only move if life-saving (A). (Mirrors Q244.)",
@@ -22608,10 +22747,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "este taksinkuljettajan ajoluvan myöntämiselle",
+        "text_fi": "esteenä taksinkuljettajan ajoluvan myöntämiselle",
         "meaning_en": "obstacle to granting the licence",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Alle vuoden voimassa ollut B-luokan ajo-oikeus",
@@ -22883,10 +23024,12 @@
         ]
       },
       {
-        "text_fi": "tarkastettu B-luokan ajo-oikeuden yhteydessä",
+        "text_fi": "tarkastettu B-luokan ajo-oikeuden myöntämisen yhteydessä",
         "meaning_en": "checked at B-licence stage",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "Group 2 (professional driver) health requirements need a doctor's certificate (A). Self-declaration (B) is insufficient; group 2 is stricter than the group 1 check at B-licence stage (C).",
@@ -23041,10 +23184,12 @@
         ]
       },
       {
-        "text_fi": "pienentää myös riskiä, että takanani ajava ajaisi päälleni",
+        "text_fi": "pienentää myös sitä riskiä, että takanani ajava ajaisi päälleni",
         "meaning_en": "also reduces the risk of a rear-end from behind",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "ei ole merkitystä",
@@ -23124,10 +23269,12 @@
         ]
       },
       {
-        "text_fi": "Ei koske, jos sovittu työsopimuksessa",
+        "text_fi": "Ei koske, jos siitä on sovittu työsopimukse",
         "meaning_en": "no if agreed in contract",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "Ei koske missään tilanteessa",
@@ -23390,10 +23537,12 @@
         ]
       },
       {
-        "text_fi": "ajaa ylinopeudella",
+        "text_fi": "ajaa loppumatkan ylinopeudella",
         "meaning_en": "drive at speed",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "rikkoa liikennesääntöjä",
@@ -24092,10 +24241,12 @@
         ]
       },
       {
-        "text_fi": "14 päivää, alle viisi vuotta",
+        "text_fi": "14 päivää, sillä työsuhde on kestänyt alle viisi vuotta",
         "meaning_en": "14 days, less than five years",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "1 kuukausi",
@@ -24182,10 +24333,12 @@
         ]
       },
       {
-        "text_fi": "Ei koske, jos sovittu työnantajan kanssa",
+        "text_fi": "Ei koske, jos siitä on sovittu työnantajan kanssa",
         "meaning_en": "no if agreed",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "Ei koske missään tilanteissa",
@@ -24339,10 +24492,12 @@
         ]
       },
       {
-        "text_fi": "Työaika on myös kahden tunnin tauko",
+        "text_fi": "Työaika on myös kuljettajan työpäivän aikana pitämä kahden tunnin tauko",
         "meaning_en": "working time also includes the two-hour break",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       },
       {
         "text_fi": "enimmillään 11 tuntia",
@@ -24671,10 +24826,12 @@
         ]
       },
       {
-        "text_fi": "ensimmäinen ensiaputoimenpide",
+        "text_fi": "ensimmäinen ensiaputoimenpite",
         "meaning_en": "first first-aid action",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Hengitysteiden avaaminen",
@@ -24685,10 +24842,12 @@
         ]
       },
       {
-        "text_fi": "tutkiminen murtumien havaitsemiseksi",
+        "text_fi": "tutkiminen mahdollisten murtumien ja verenvuotojen havaitsemiseksi",
         "meaning_en": "examine for fractures",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "siirtäminen turvallisempaan paikkaan",
@@ -25557,10 +25716,12 @@
         ]
       },
       {
-        "text_fi": "poliisi tarkistaa ajokunnon",
+        "text_fi": "poliisi tarkistaa liikenteen valvonnassa kuljettajan ajokunnon",
         "meaning_en": "police check fitness",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "The alcolock's purpose is to prevent an intoxicated driver from starting the vehicle (A). It is not an employer tool (B) or a police enforcement device (C).",
@@ -25621,12 +25782,6 @@
         "found_in": [
           "question"
         ]
-      },
-      {
-        "text_fi": "määräysvalta",
-        "meaning_en": "authority",
-        "clue_type": "fw",
-        "found_in": []
       },
       {
         "text_fi": "Poliisin",
@@ -25890,10 +26045,12 @@
         ]
       },
       {
-        "text_fi": "muut tienkäyttäjät näkevät ajoneuvosi",
+        "text_fi": "muut tienkäyttäjät näkevät pysähtyneen ajoneuvosi",
         "meaning_en": "other road users can see your vehicle",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "villieläimet",
@@ -26048,10 +26205,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "liikennelupa on mukana",
+        "text_fi": "on mukana liikennelupa",
         "meaning_en": "the transport licence is in the taxi",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Taksinkuljettajan",
@@ -26230,10 +26389,12 @@
         ]
       },
       {
-        "text_fi": "Vain jos asiakas pyytää",
+        "text_fi": "Vain jos asiakas erikseen pyytää",
         "meaning_en": "only if asked",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "Ei koskaan",
@@ -26419,10 +26580,12 @@
         ]
       },
       {
-        "text_fi": "Jätät asiakkaan kadulle",
+        "text_fi": "Jätät asiakkaan välittömästi kadulle",
         "meaning_en": "leave on the street",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "päätät itse, minne viet",
@@ -26653,10 +26816,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "alkolukkoa käyttää",
+        "text_fi": "alkolukkoa tulee käyttää",
         "meaning_en": "use the alcolock",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "koulu- ja päivähoitokuljetuksissa",
@@ -26676,10 +26841,12 @@
         ]
       },
       {
-        "text_fi": "Poikkeustapauksessa voi olla käyttämättä",
+        "text_fi": "Poikkeustapauksessa taksiluvan haltijalla on oikeus olla käyttämättä alkolukkoa",
         "meaning_en": "may waive in exceptional cases",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
         "text_fi": "vaihtaa sellaiseen ajoneuvoon, jossa ei ole alkolukkoa",
@@ -26842,10 +27009,12 @@
         ]
       },
       {
-        "text_fi": "asiakas vaatii kotiin",
+        "text_fi": "asiakas vaatii, että viet hänet välittömästi kotiin",
         "meaning_en": "customer demands to go home",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Pysähdyt tapahtumapaikalla ja soitat hätänumeroon",
@@ -26864,10 +27033,12 @@
         ]
       },
       {
-        "text_fi": "Soitat 112 ja jatkat matkaa",
+        "text_fi": "Soitat yleiseen hätänumeroon 112 ja jatkat matkaa",
         "meaning_en": "call 112 and continue",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "The duty to assist at an accident scene overrides the current journey — stop and call 112 (C). Taking the customer home first (A) delays help; calling while continuing (B) is better than nothing but still wrong.",
@@ -26939,10 +27110,12 @@
         ]
       },
       {
-        "text_fi": "Ei koske, jos sovittu",
+        "text_fi": "Ei koske, jos siitä on sovittu",
         "meaning_en": "no if agreed",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "Ei koske missään",
@@ -27087,10 +27260,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "peruste ajoluvan peruuttamiselle",
+        "text_fi": "peruste taksinkuljettajan ajoluvan peruuttamiselle",
         "meaning_en": "ground for revoking the licence",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "syyllistynyt törkeään liikenneturvallisuuden vaarantamiseen",
@@ -27109,10 +27284,12 @@
         ]
       },
       {
-        "text_fi": "suosittelevat peruuttamista",
+        "text_fi": "suosittelevat ajoluvan peruuttamista",
         "meaning_en": "recommend revocation",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       }
     ],
     "explanation_en": "A serious traffic safety offence is the legal ground (C). (Mirrors Q167, Q196.)",
@@ -27682,10 +27859,12 @@
         ]
       },
       {
-        "text_fi": "tutkiminen murtumien havaitsemiseksi",
+        "text_fi": "tutkiminen mahdollisten murtumien ja verenvuotojen havaitsemiseksi",
         "meaning_en": "examine for fractures",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "siirtäminen turvallisempaan paikkaan",
@@ -27841,16 +28020,20 @@
         ]
       },
       {
-        "text_fi": "Lääkärin tarkastuksella ja todistuksella",
+        "text_fi": "Lääkärin tarkastuksella ja siitä saatavalla todistuksella",
         "meaning_en": "medical examination and certificate",
         "clue_type": "pcw",
-        "found_in": []
+        "found_in": [
+          "option_a"
+        ]
       },
       {
-        "text_fi": "omalla kirjallisella raportilla",
+        "text_fi": "Omalla kirjallisella terveydentilaa koskevalla raportilla",
         "meaning_en": "own report",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_b"
+        ]
       },
       {
         "text_fi": "ei tarvitse todistaa",
@@ -28380,10 +28563,12 @@
         ]
       },
       {
-        "text_fi": "jos työnantaja kuuluu liittoon",
+        "text_fi": "jos työnantaja kuuluu taksityönantajaliittoon",
         "meaning_en": "if employer belongs to association",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "15-hour shifts only when there is no other way to arrange the work appropriately (A). (Mirrors Q205.)",
@@ -28438,10 +28623,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "este ajoluvan myöntämiselle",
+        "text_fi": "esteenä taksinkuljettajan ajoluvan myöntämiselle",
         "meaning_en": "obstacle to granting the licence",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "Alle vuoden voimassa ollut B-luokan ajo-oikeus",
@@ -28778,10 +28965,12 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "30 min aikarajoitus",
+        "text_fi": "30 min -aikarajoitus",
         "meaning_en": "30-minute time limit",
         "clue_type": "fw",
-        "found_in": []
+        "found_in": [
+          "question"
+        ]
       },
       {
         "text_fi": "pysäköintikiekkoa",
@@ -28808,10 +28997,12 @@
         ]
       },
       {
-        "text_fi": "vain kun taksin valaisin on poistettu",
+        "text_fi": "vain silloin, kun taksin valaisin on poistettu",
         "meaning_en": "only when taxi sign removed",
         "clue_type": "ncw",
-        "found_in": []
+        "found_in": [
+          "option_c"
+        ]
       }
     ],
     "explanation_en": "A parking disc must always be used in a time-limited zone (A). There is no taxi exemption from parking disc requirements.",
