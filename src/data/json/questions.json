@@ -823,7 +823,7 @@
         ]
       }
     ],
-    "explanation_en": "The focus words alkolukkoa and koulu- ja päivähoitokuljetuksissa signal a strict safety rule. The positive clue is tulee aina käyttää together with asennettu alkolukko: always use a vehicle with the alcohol interlock installed.oikeus means right  and ei ole alkolukkoa are negative clues because they create unsafe exceptions.",
+    "explanation_en": "The focus words alkolukkoa and koulu- ja päivähoitokuljetuksissa signal a strict safety rule. The positive clue is tulee aina käyttää together with asennettu alkolukko: always use a vehicle with the alcohol interlock installed.oikeus means right and ei ole alkolukkoa are negative clues because they create unsafe exceptions.",
     "difficulty": "Easy",
     "tags": [
       "alcohol interlock",
@@ -3816,7 +3816,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver ensures comfort and helps straighten clothing when asked (A). B refuses help; C overstates the duty (dressing the customer). This mirrors Q014.",
+    "explanation_en": "The driver ensures comfort and helps straighten clothing when asked (A). B refuses help; C overstates the duty (dressing the customer).",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -4101,7 +4101,7 @@
         ]
       }
     ],
-    "explanation_en": "Let the customer transfer themselves and help only if needed (B). The absolute 'never' (A) and abandoning them (C) are wrong. (Duplicate of Q016.)",
+    "explanation_en": "Let the customer transfer themselves and help only if needed (B). The absolute 'never' (A) and abandoning them (C) are wrong.",
     "difficulty": "Easy",
     "tags": [
       "wheelchair",
@@ -4690,7 +4690,7 @@
         ]
       }
     ],
-    "explanation_en": "Not wearing the seat belt most increases injury risk (B). Poor vehicle condition (A) and aggressive customers (C) are risks but not the leading injury factor. (Mirrors Q025.)",
+    "explanation_en": "Not wearing the seat belt most increases injury risk (B). Poor vehicle condition (A) and aggressive customers (C) are risks but not the leading injury factor.",
     "difficulty": "Easy",
     "tags": [
       "seatbelt",
@@ -5673,7 +5673,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver must always act responsibly with children (B). A invents a rule against speaking to children, and C is the opposite of the driver's duty to ensure seat-belt use. (Mirrors Q011.)",
+    "explanation_en": "The driver must always act responsibly with children (B). A invents a rule against speaking to children, and C is the opposite of the driver's duty to ensure seat-belt use.",
     "difficulty": "Easy",
     "tags": [
       "school transport",
@@ -5866,7 +5866,7 @@
         ]
       }
     ],
-    "explanation_en": "A pupil-transport driver ensures seat-belt use and models responsible road behaviour (B). Checking homework and escorting to class (A), or phoning every parent each trip (C), are not the driver's duties. (Mirrors Q033.)",
+    "explanation_en": "A pupil-transport driver ensures seat-belt use and models responsible road behaviour (B). Checking homework and escorting to class (A), or phoning every parent each trip (C), are not the driver's duties.",
     "difficulty": "Medium",
     "tags": [
       "school transport",
@@ -5959,7 +5959,7 @@
         ]
       }
     ],
-    "explanation_en": "The customer has the right to transfer independently and to sit in the front seat, and you help if needed (B). A and C invent prohibitions that do not exist. (Mirrors Q018.)",
+    "explanation_en": "The customer has the right to transfer independently and to sit in the front seat, and you help if needed (B). A and C invent prohibitions that do not exist.",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -6060,7 +6060,7 @@
         ]
       }
     ],
-    "explanation_en": "Let the customer transfer themselves and help only if needed (B). The absolute 'never' (A) and abandoning them (C) are wrong. (Mirrors Q016/Q041.)",
+    "explanation_en": "Let the customer transfer themselves and help only if needed (B). The absolute 'never' (A) and abandoning them (C) are wrong.",
     "difficulty": "Easy",
     "tags": [
       "wheelchair",
@@ -6160,7 +6160,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver ensures comfort and helps straighten clothing when asked (C). A and B wrongly deny help; 'ainoastaan' (only) and 'ei saa' (may not) are negative-restriction clues. (Mirrors Q014.)",
+    "explanation_en": "The driver ensures comfort and helps straighten clothing when asked (C). A and B wrongly deny help; 'ainoastaan' (only) and 'ei saa' (may not) are negative-restriction clues.",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -6690,7 +6690,7 @@
         ]
       }
     ],
-    "explanation_en": "Without a restraint, the child rides in the back with the seat belt (A). Front seat without a belt (B) or standing (C) are unsafe. (Consistent with Q024.)",
+    "explanation_en": "Without a restraint, the child rides in the back with the seat belt (A). Front seat without a belt (B) or standing (C) are unsafe.",
     "difficulty": "Medium",
     "tags": [
       "child",
@@ -6866,7 +6866,7 @@
         ]
       }
     ],
-    "explanation_en": "The lift must be test-run (C). A visual-only look (A) or skipping it (B) cannot confirm safe operation. (Mirrors Q013.)",
+    "explanation_en": "The lift must be test-run (C). A visual-only look (A) or skipping it (B) cannot confirm safe operation.",
     "difficulty": "Easy",
     "tags": [
       "accessible taxi",
@@ -6958,7 +6958,7 @@
         ]
       }
     ],
-    "explanation_en": "Secure the wheelchair by its frame at four points with brakes on (C). Two points without brakes (A) or relying on the passenger holding on (B) are unsafe. (Mirrors Q031.)",
+    "explanation_en": "Secure the wheelchair by its frame at four points with brakes on (C). Two points without brakes (A) or relying on the passenger holding on (B) are unsafe.",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -7127,7 +7127,7 @@
         ]
       }
     ],
-    "explanation_en": "A rear-facing seat may be used in front only if the airbag is off (C). 'In no situation' (A) is too absolute, and using it with the airbag on (B) is dangerous. (Mirrors Q055.)",
+    "explanation_en": "A rear-facing seat may be used in front only if the airbag is off (C). 'In no situation' (A) is too absolute, and using it with the airbag on (B) is dangerous.",
     "difficulty": "Medium",
     "tags": [
       "child seat",
@@ -7470,7 +7470,7 @@
         ]
       }
     ],
-    "explanation_en": "When the vehicle is unsuitable, contact dispatch to arrange the right vehicle (C). A and B are reasonable but less operationally correct than involving dispatch. NOTE FOR REVIEWER: Q017 marks B (order a taxi directly) as correct for the same scenario — C (contact dispatch) may reflect a more procedure-compliant approach; confirm which answer the examining body intends.",
+    "explanation_en": "When the vehicle is unsuitable, contact dispatch to arrange the right vehicle (C). A and B are reasonable but less operationally correct than involving dispatch.",
     "difficulty": "Medium",
     "tags": [
       "seatbelt",
@@ -9993,7 +9993,7 @@
         ]
       }
     ],
-    "explanation_en": "Always address the customer directly (B). Talking only to the assistant (A) is disrespectful; written instructions (C) are unnecessary. (Mirrors Q096.)",
+    "explanation_en": "Always address the customer directly (B). Talking only to the assistant (A) is disrespectful; written instructions (C) are unnecessary.",
     "difficulty": "Easy",
     "tags": [
       "disability",
@@ -10087,7 +10087,7 @@
         ]
       }
     ],
-    "explanation_en": "Stop safely, protect the head, do not restrain the convulsions, then recovery position (B). Restraining (A) risks injury; driving on (C) is dangerous. (Mirrors Q060.)",
+    "explanation_en": "Stop safely, protect the head, do not restrain the convulsions, then recovery position (B). Restraining (A) risks injury; driving on (C) is dangerous.",
     "difficulty": "Hard",
     "tags": [
       "first aid",
@@ -10456,7 +10456,7 @@
         ]
       }
     ],
-    "explanation_en": "Ask how to help and give direction to the vehicle (A). (Near-duplicate of Q111 — both are valid exam items testing the same rule.)",
+    "explanation_en": "Ask how to help and give direction to the vehicle (A).",
     "difficulty": "Easy",
     "tags": [
       "visually impaired",
@@ -11007,7 +11007,7 @@
         ]
       }
     ],
-    "explanation_en": "Always address the customer directly (B). Talking only to the assistant (A) is disrespectful; written instructions (C) are unnecessary. (Mirrors Q096, Q107.)",
+    "explanation_en": "Always address the customer directly (B). Talking only to the assistant (A) is disrespectful; written instructions (C) are unnecessary.",
     "difficulty": "Easy",
     "tags": [
       "disability",
@@ -11676,7 +11676,7 @@
         ]
       }
     ],
-    "explanation_en": "Securing the wheelchair is always the taxi driver's responsibility (B), even with a personal assistant present. (Mirrors Q032, Q141.)",
+    "explanation_en": "Securing the wheelchair is always the taxi driver's responsibility (B), even with a personal assistant present.",
     "difficulty": "Easy",
     "tags": [
       "wheelchair",
@@ -11768,7 +11768,7 @@
         ]
       }
     ],
-    "explanation_en": "Get out and ask first (B). Grabbing the arm without consent (A) and rushing the customer (C) both ignore the customer's dignity and autonomy. (Mirrors Q012.)",
+    "explanation_en": "Get out and ask first (B). Grabbing the arm without consent (A) and rushing the customer (C) both ignore the customer's dignity and autonomy.",
     "difficulty": "Easy",
     "tags": [
       "slow-moving",
@@ -11852,7 +11852,7 @@
         ]
       }
     ],
-    "explanation_en": "Ask first how to help (C). Louder voice (A) is irrelevant to visual impairment; guiding and pushing without consent (B) is presumptuous. (Mirrors Q105.)",
+    "explanation_en": "Ask first how to help (C). Louder voice (A) is irrelevant to visual impairment; guiding and pushing without consent (B) is presumptuous.",
     "difficulty": "Easy",
     "tags": [
       "visually impaired",
@@ -11947,7 +11947,7 @@
         ]
       }
     ],
-    "explanation_en": "Check with the employer whether you are qualified and equipped for the assignment (B). (Mirrors Q106.)",
+    "explanation_en": "Check with the employer whether you are qualified and equipped for the assignment (B).",
     "difficulty": "Medium",
     "tags": [
       "regular taxi",
@@ -12041,7 +12041,7 @@
         ]
       }
     ],
-    "explanation_en": "Get out, announce the taxi, and inform that the guide dog rides in the footwell (A). Never pet a working guide dog (B); staying in the car (C) leaves the blind customer without guidance. (Mirrors Q104.)",
+    "explanation_en": "Get out, announce the taxi, and inform that the guide dog rides in the footwell (A). Never pet a working guide dog (B); staying in the car (C) leaves the blind customer without guidance.",
     "difficulty": "Medium",
     "tags": [
       "guide dog",
@@ -12133,7 +12133,7 @@
         ]
       }
     ],
-    "explanation_en": "The customer pays only up to the co-payment; Kela covers the rest (B). (Mirrors Q100.)",
+    "explanation_en": "The customer pays only up to the co-payment; Kela covers the rest (B).",
     "difficulty": "Easy",
     "tags": [
       "Kela",
@@ -12216,7 +12216,7 @@
         ]
       }
     ],
-    "explanation_en": "An alcolock is required only for school and daycare transport (B). (Mirrors Q103.)",
+    "explanation_en": "An alcolock is required only for school and daycare transport (B).",
     "difficulty": "Easy",
     "tags": [
       "alcolock",
@@ -12317,7 +12317,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver assists the customer aboard and handles the luggage (C). (Mirrors Q098, Q116.)",
+    "explanation_en": "The driver assists the customer aboard and handles the luggage (C).",
     "difficulty": "Medium",
     "tags": [
       "disability",
@@ -12413,7 +12413,7 @@
         ]
       }
     ],
-    "explanation_en": "Severely disabled children are entitled to a Kela regular taxi (C). (Mirrors Q120.)",
+    "explanation_en": "Severely disabled children are entitled to a Kela regular taxi (C).",
     "difficulty": "Medium",
     "tags": [
       "Kela",
@@ -12498,7 +12498,7 @@
         ]
       }
     ],
-    "explanation_en": "Kela entitlement queries go to Kela's service number (C). (Mirrors Q122.)",
+    "explanation_en": "Kela entitlement queries go to Kela's service number (C).",
     "difficulty": "Easy",
     "tags": [
       "Kela",
@@ -12675,7 +12675,7 @@
         ]
       }
     ],
-    "explanation_en": "Direct to the Kela dispatch number (B). (Mirrors Q099.)",
+    "explanation_en": "Direct to the Kela dispatch number (B).",
     "difficulty": "Medium",
     "tags": [
       "Kela",
@@ -12860,7 +12860,7 @@
         ]
       }
     ],
-    "explanation_en": "Ensure the customer reaches the care staff inside (B). The yard is not enough (A); removing clothes is not the driver's job (C). (Mirrors Q109.)",
+    "explanation_en": "Ensure the customer reaches the care staff inside (B). The yard is not enough (A); removing clothes is not the driver's job (C).",
     "difficulty": "Medium",
     "tags": [
       "assisted transport",
@@ -12952,7 +12952,7 @@
         ]
       }
     ],
-    "explanation_en": "Ask how to help and orient to the vehicle (A). (Mirrors Q111, Q112.)",
+    "explanation_en": "Ask how to help and orient to the vehicle (A).",
     "difficulty": "Easy",
     "tags": [
       "visually impaired",
@@ -13044,7 +13044,7 @@
         ]
       }
     ],
-    "explanation_en": "Ask first and give orientation (C). Louder voice (A) is irrelevant; pushing without consent (B) is inappropriate. (Mirrors Q110.)",
+    "explanation_en": "Ask first and give orientation (C). Louder voice (A) is irrelevant; pushing without consent (B) is inappropriate.",
     "difficulty": "Easy",
     "tags": [
       "visually impaired",
@@ -13297,7 +13297,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver must get the customer to their destination (A). (Mirrors Q092.)",
+    "explanation_en": "The driver must get the customer to their destination (A).",
     "difficulty": "Medium",
     "tags": [
       "communication",
@@ -13858,7 +13858,7 @@
         ]
       }
     ],
-    "explanation_en": "Based on the attached price list the Sunday fare for this distance and time is €65.00 (A). NOTE FOR REVIEWER: this question references an attached price list not included in this data. Confirm the fare calculation matches the actual exam price schedule.",
+    "explanation_en": "Based on the attached price list the Sunday fare for this distance and time is €65.00 (A).",
     "difficulty": "Hard",
     "tags": [
       "fare calculation",
@@ -14211,7 +14211,7 @@
         ]
       }
     ],
-    "explanation_en": "In freezing conditions make sure the customer is safely indoors before leaving (B). Leaving the taxi (A) or reaching the yard (C) is insufficient. (Mirrors Q056.)",
+    "explanation_en": "In freezing conditions make sure the customer is safely indoors before leaving (B). Leaving the taxi (A) or reaching the yard (C) is insufficient.",
     "difficulty": "Medium",
     "tags": [
       "drop-off",
@@ -15016,7 +15016,7 @@
         ]
       }
     ],
-    "explanation_en": "Read the customer and follow their lead (A). (Mirrors Q157.)",
+    "explanation_en": "Read the customer and follow their lead (A).",
     "difficulty": "Easy",
     "tags": [
       "customer service",
@@ -16134,7 +16134,7 @@
         ]
       }
     ],
-    "explanation_en": "Respect the customer's wish for silence (A). (Mirrors Q169.)",
+    "explanation_en": "Respect the customer's wish for silence (A).",
     "difficulty": "Easy",
     "tags": [
       "quiet customer",
@@ -16217,7 +16217,7 @@
         ]
       }
     ],
-    "explanation_en": "Respect the customer's wish for silence (A). (Mirrors Q169, Q176.)",
+    "explanation_en": "Respect the customer's wish for silence (A).",
     "difficulty": "Easy",
     "tags": [
       "quiet customer",
@@ -16794,7 +16794,7 @@
         ]
       }
     ],
-    "explanation_en": "Get out and ask first (C). Taking the arm without consent (A) and rushing an elderly customer (B) are both wrong. (Mirrors Q012, Q126.)",
+    "explanation_en": "Get out and ask first (C). Taking the arm without consent (A) and rushing an elderly customer (B) are both wrong.",
     "difficulty": "Easy",
     "tags": [
       "elderly",
@@ -16887,7 +16887,7 @@
         ]
       }
     ],
-    "explanation_en": "Ensure the customer is handed to the care staff (B). Stopping at the car door (A) is insufficient; removing clothing (C) is not the driver's duty. (Mirrors Q109, Q138.)",
+    "explanation_en": "Ensure the customer is handed to the care staff (B). Stopping at the car door (A) is insufficient; removing clothing (C) is not the driver's duty.",
     "difficulty": "Medium",
     "tags": [
       "elderly",
@@ -17232,7 +17232,7 @@
         ]
       }
     ],
-    "explanation_en": "A taxi driver is legally prohibited from purchasing alcohol for customers (A). (Mirrors Q113.)",
+    "explanation_en": "A taxi driver is legally prohibited from purchasing alcohol for customers (A).",
     "difficulty": "Medium",
     "tags": [
       "alcohol",
@@ -17324,7 +17324,7 @@
         ]
       }
     ],
-    "explanation_en": "Read the customer and follow their lead (A). (Mirrors Q157, Q162.)",
+    "explanation_en": "Read the customer and follow their lead (A).",
     "difficulty": "Easy",
     "tags": [
       "customer service",
@@ -17592,7 +17592,7 @@
         ]
       }
     ],
-    "explanation_en": "Read the customer and adapt (B). Continuous talking (A) and constant silence (C) are both extremes. (Mirrors Q161.)",
+    "explanation_en": "Read the customer and adapt (B). Continuous talking (A) and constant silence (C) are both extremes.",
     "difficulty": "Easy",
     "tags": [
       "comfort",
@@ -17768,7 +17768,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver must choose the most efficient route for the customer (C). (Mirrors Q179.)",
+    "explanation_en": "The driver must choose the most efficient route for the customer (C).",
     "difficulty": "Medium",
     "tags": [
       "route",
@@ -17852,7 +17852,7 @@
         ]
       }
     ],
-    "explanation_en": "Committing a serious traffic offence is a ground for revocation (C). (Mirrors Q167.)",
+    "explanation_en": "Committing a serious traffic offence is a ground for revocation (C).",
     "difficulty": "Medium",
     "tags": [
       "licence revocation",
@@ -17935,7 +17935,7 @@
         ]
       }
     ],
-    "explanation_en": "C is the incorrect statement — alcolocks are only required in school/daycare transport vehicles, not all taxis. (Mirrors Q173.)",
+    "explanation_en": "C is the incorrect statement — alcolocks are only required in school/daycare transport vehicles, not all taxis.",
     "difficulty": "Medium",
     "tags": [
       "alcolock",
@@ -18202,7 +18202,7 @@
         ]
       }
     ],
-    "explanation_en": "Be transparent and ask for more information (C). Guessing (A) risks taking a wrong route; relying only on the sat-nav (B) without confirming risks errors. (Mirrors Q172.)",
+    "explanation_en": "Be transparent and ask for more information (C). Guessing (A) risks taking a wrong route; relying only on the sat-nav (B) without confirming risks errors.",
     "difficulty": "Easy",
     "tags": [
       "unknown address",
@@ -18302,7 +18302,7 @@
         ]
       }
     ],
-    "explanation_en": "Refuse to speed, explain clearly, and use the fastest legal route (A). No agreement makes speeding legal (B); calling the police for this request is disproportionate (C). (Mirrors Q186, Q230.)",
+    "explanation_en": "Refuse to speed, explain clearly, and use the fastest legal route (A). No agreement makes speeding legal (B); calling the police for this request is disproportionate (C).",
     "difficulty": "Easy",
     "tags": [
       "speeding",
@@ -18386,7 +18386,7 @@
         ]
       }
     ],
-    "explanation_en": "Only calls essential for the transport are permitted, with hands-free (B). Silent mode (A) and customer unawareness (C) are not valid exceptions. (Mirrors Q163.)",
+    "explanation_en": "Only calls essential for the transport are permitted, with hands-free (B). Silent mode (A) and customer unawareness (C) are not valid exceptions.",
     "difficulty": "Medium",
     "tags": [
       "phone",
@@ -18563,7 +18563,7 @@
         ]
       }
     ],
-    "explanation_en": "Respect the customer's wish for silence and only speak for route matters (A). (Mirrors Q169, Q176, Q177.)",
+    "explanation_en": "Respect the customer's wish for silence and only speak for route matters (A).",
     "difficulty": "Easy",
     "tags": [
       "quiet customer",
@@ -18738,7 +18738,7 @@
         ]
       }
     ],
-    "explanation_en": "The customer has the right to pay by cash or common payment card (C). Cash-only (A) and driver-decides (B) are both incorrect. (Mirrors Q232.)",
+    "explanation_en": "The customer has the right to pay by cash or common payment card (C). Cash-only (A) and driver-decides (B) are both incorrect.",
     "difficulty": "Easy",
     "tags": [
       "payment",
@@ -18915,7 +18915,7 @@
         ]
       }
     ],
-    "explanation_en": "Without hands-free you cannot legally answer; apologise and call back (C). (Mirrors Q174, Q182.)",
+    "explanation_en": "Without hands-free you cannot legally answer; apologise and call back (C).",
     "difficulty": "Medium",
     "tags": [
       "phone",
@@ -18999,7 +18999,7 @@
         ]
       }
     ],
-    "explanation_en": "Only calls essential for the transport are permitted with hands-free (B). (Mirrors Q163, Q202.)",
+    "explanation_en": "Only calls essential for the transport are permitted with hands-free (B).",
     "difficulty": "Medium",
     "tags": [
       "phone",
@@ -19168,7 +19168,7 @@
         ]
       }
     ],
-    "explanation_en": "Always address the customer directly (B). (Mirrors Q096, Q107, Q118.)",
+    "explanation_en": "Always address the customer directly (B).",
     "difficulty": "Easy",
     "tags": [
       "disability",
@@ -19262,7 +19262,7 @@
         ]
       }
     ],
-    "explanation_en": "Always address the customer first (A). (Mirrors Q102.)",
+    "explanation_en": "Always address the customer first (A).",
     "difficulty": "Easy",
     "tags": [
       "disability",
@@ -19355,7 +19355,7 @@
         ]
       }
     ],
-    "explanation_en": "Ask for the guardian's number to verify it is safe for the child to travel alone (A). A blanket refusal (B) is wrong; taking the child with no check and no follow-through (C) is irresponsible. (Mirrors Q019.)",
+    "explanation_en": "Ask for the guardian's number to verify it is safe for the child to travel alone (A). A blanket refusal (B) is wrong; taking the child with no check and no follow-through (C) is irresponsible.",
     "difficulty": "Medium",
     "tags": [
       "child",
@@ -19455,7 +19455,7 @@
         ]
       }
     ],
-    "explanation_en": "Customers always have the right to complain about poor treatment (B). (Mirrors Q159, Q188.)",
+    "explanation_en": "Customers always have the right to complain about poor treatment (B).",
     "difficulty": "Easy",
     "tags": [
       "complaint",
@@ -19546,7 +19546,7 @@
         ]
       }
     ],
-    "explanation_en": "Deliver promptly to the dispatch office (C). (Mirrors Q160.)",
+    "explanation_en": "Deliver promptly to the dispatch office (C).",
     "difficulty": "Medium",
     "tags": [
       "lost property",
@@ -19629,7 +19629,7 @@
         ]
       }
     ],
-    "explanation_en": "Reading the customer and responding to their needs is key (C). (Mirrors Q161, Q193.)",
+    "explanation_en": "Reading the customer and responding to their needs is key (C).",
     "difficulty": "Easy",
     "tags": [
       "comfort",
@@ -19720,7 +19720,7 @@
         ]
       }
     ],
-    "explanation_en": "Read the customer and follow their lead (B). (Mirrors Q157, Q162, Q190.)",
+    "explanation_en": "Read the customer and follow their lead (B).",
     "difficulty": "Easy",
     "tags": [
       "customer service",
@@ -19796,7 +19796,7 @@
         ]
       }
     ],
-    "explanation_en": "A taxi driver is legally prohibited from purchasing alcohol for a customer (A). (Mirrors Q113, Q189.)",
+    "explanation_en": "A taxi driver is legally prohibited from purchasing alcohol for a customer (A).",
     "difficulty": "Medium",
     "tags": [
       "alcohol",
@@ -19887,7 +19887,7 @@
         ]
       }
     ],
-    "explanation_en": "Safe drop-off is the driver's responsibility; find a safe spot (A). (Mirrors Q180.)",
+    "explanation_en": "Safe drop-off is the driver's responsibility; find a safe spot (A).",
     "difficulty": "Medium",
     "tags": [
       "stopping place",
@@ -20162,7 +20162,7 @@
         ]
       }
     ],
-    "explanation_en": "Try to wake verbally first; if unsuccessful, call the police (B). (Mirrors Q152.)",
+    "explanation_en": "Try to wake verbally first; if unsuccessful, call the police (B).",
     "difficulty": "Medium",
     "tags": [
       "sleeping passenger",
@@ -20362,7 +20362,7 @@
         ]
       }
     ],
-    "explanation_en": "Intervene, discuss, and report to the school (B). (Mirrors Q022.)",
+    "explanation_en": "Intervene, discuss, and report to the school (B).",
     "difficulty": "Medium",
     "tags": [
       "bullying",
@@ -20446,7 +20446,7 @@
         ]
       }
     ],
-    "explanation_en": "Return immediately to the customer or police (A). Keeping it (B) is theft; leaving it (C) is irresponsible. (Mirrors Q192.)",
+    "explanation_en": "Return immediately to the customer or police (A). Keeping it (B) is theft; leaving it (C) is irresponsible.",
     "difficulty": "Easy",
     "tags": [
       "lost property",
@@ -20537,7 +20537,7 @@
         ]
       }
     ],
-    "explanation_en": "A taxi may stop in a paid space without paying whenever picking up or dropping off (A). (Mirrors Q154.)",
+    "explanation_en": "A taxi may stop in a paid space without paying whenever picking up or dropping off (A).",
     "difficulty": "Medium",
     "tags": [
       "parking",
@@ -20622,7 +20622,7 @@
         ]
       }
     ],
-    "explanation_en": "A receipt must always be offered (C). Options A and B are also correct rules, but the question asks what is correct 'regarding taxi service' and C is the specific rule tested. NOTE: all three options are arguably correct — if this is a single-answer question, C is the most specific receipt rule tested here.",
+    "explanation_en": "A receipt must always be offered (C). Options A and B are also correct rules, but the question asks what is correct 'regarding taxi service' and C is the specific rule tested.",
     "difficulty": "Medium",
     "tags": [
       "receipt",
@@ -20714,7 +20714,7 @@
         ]
       }
     ],
-    "explanation_en": "Be transparent and ask for clarification (C). (Mirrors Q172, Q200.)",
+    "explanation_en": "Be transparent and ask for clarification (C).",
     "difficulty": "Easy",
     "tags": [
       "unknown address",
@@ -20797,7 +20797,7 @@
         ]
       }
     ],
-    "explanation_en": "Functional communication to ensure safe delivery to the destination (C). (Mirrors Q123.)",
+    "explanation_en": "Functional communication to ensure safe delivery to the destination (C).",
     "difficulty": "Easy",
     "tags": [
       "language proficiency",
@@ -20888,7 +20888,7 @@
         ]
       }
     ],
-    "explanation_en": "Refuse to speed and use the fastest legal route (A). (Mirrors Q186, Q201.)",
+    "explanation_en": "Refuse to speed and use the fastest legal route (A).",
     "difficulty": "Easy",
     "tags": [
       "speeding",
@@ -20972,7 +20972,7 @@
         ]
       }
     ],
-    "explanation_en": "Respect the customer's wish (A). (Mirrors Q169, Q176, Q204.)",
+    "explanation_en": "Respect the customer's wish (A).",
     "difficulty": "Easy",
     "tags": [
       "quiet customer",
@@ -21055,7 +21055,7 @@
         ]
       }
     ],
-    "explanation_en": "Cash and common cards are both the customer's right (C). (Mirrors Q206.)",
+    "explanation_en": "Cash and common cards are both the customer's right (C).",
     "difficulty": "Easy",
     "tags": [
       "payment",
@@ -21334,7 +21334,7 @@
         ]
       }
     ],
-    "explanation_en": "Based on the exam price schedule, the Sunday fare for 25 km / 30 min is €65.00 (A). NOTE: this question references a specific price list. Confirm the calculation matches the current exam schedule.",
+    "explanation_en": "Based on the exam price schedule, the Sunday fare for 25 km / 30 min is €65.00 (A).",
     "difficulty": "Hard",
     "tags": [
       "fare calculation",
@@ -21422,7 +21422,7 @@
         ]
       }
     ],
-    "explanation_en": "Holding a phone while driving is always prohibited (B). (Mirrors Q165.)",
+    "explanation_en": "Holding a phone while driving is always prohibited (B).",
     "difficulty": "Easy",
     "tags": [
       "phone",
@@ -21591,7 +21591,7 @@
         ]
       }
     ],
-    "explanation_en": "Anticipating other road users' actions is the core of the duty (A). (Mirrors Q150.)",
+    "explanation_en": "Anticipating other road users' actions is the core of the duty (A).",
     "difficulty": "Easy",
     "tags": [
       "anticipation",
@@ -21675,7 +21675,7 @@
         ]
       }
     ],
-    "explanation_en": "Choose the most efficient route for the customer (C). (Mirrors Q179, Q195.)",
+    "explanation_en": "Choose the most efficient route for the customer (C).",
     "difficulty": "Medium",
     "tags": [
       "route",
@@ -22187,7 +22187,7 @@
         ]
       }
     ],
-    "explanation_en": "Stop legally and walk to the customer if needed (B). Abandoning (A) and claiming taxis are exempt from stopping rules (C) are both wrong. (Mirrors Q066.)",
+    "explanation_en": "Stop legally and walk to the customer if needed (B). Abandoning (A) and claiming taxis are exempt from stopping rules (C) are both wrong.",
     "difficulty": "Medium",
     "tags": [
       "no-stopping",
@@ -22356,7 +22356,7 @@
         ]
       }
     ],
-    "explanation_en": "Pickup or drop-off grants access (C). (Mirrors Q246.)",
+    "explanation_en": "Pickup or drop-off grants access (C).",
     "difficulty": "Medium",
     "tags": [
       "traffic sign",
@@ -22528,7 +22528,7 @@
         ]
       }
     ],
-    "explanation_en": "Quality requirements apply to every taxi driver (B). (Mirrors Q233, Q282.)",
+    "explanation_en": "Quality requirements apply to every taxi driver (B).",
     "difficulty": "Medium",
     "tags": [
       "quality requirements",
@@ -22695,7 +22695,7 @@
         ]
       }
     ],
-    "explanation_en": "Only move if life-saving (A). (Mirrors Q244.)",
+    "explanation_en": "Only move if life-saving (A).",
     "difficulty": "Medium",
     "tags": [
       "accident",
@@ -23553,7 +23553,7 @@
         ]
       }
     ],
-    "explanation_en": "Communicate the delay — that is the professional response (A). Speeding (B) or breaking rules (C) is never justified by a customer's schedule. (Mirrors Q234.)",
+    "explanation_en": "Communicate the delay — that is the professional response (A). Speeding (B) or breaking rules (C) is never justified by a customer's schedule.",
     "difficulty": "Easy",
     "tags": [
       "delay",
@@ -23645,7 +23645,7 @@
         ]
       }
     ],
-    "explanation_en": "Under five years of service: 14-day notice period (B). (Mirrors Q269, Q327.)",
+    "explanation_en": "Under five years of service: 14-day notice period (B).",
     "difficulty": "Easy",
     "tags": [
       "notice period",
@@ -23729,7 +23729,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver is responsible for carrying the licence in the vehicle (A). (Mirrors Q292.)",
+    "explanation_en": "The driver is responsible for carrying the licence in the vehicle (A).",
     "difficulty": "Easy",
     "tags": [
       "transport licence",
@@ -23837,7 +23837,7 @@
         ]
       }
     ],
-    "explanation_en": "Protect the head, do not restrain, then recovery position (B). Restraining risks injury (A); driving on is dangerous and irresponsible (C). (Mirrors Q060, Q108.)",
+    "explanation_en": "Protect the head, do not restrain, then recovery position (B). Restraining risks injury (A); driving on is dangerous and irresponsible (C).",
     "difficulty": "Hard",
     "tags": [
       "epilepsy",
@@ -23921,7 +23921,7 @@
         ]
       }
     ],
-    "explanation_en": "A taxi driver's licence is valid for up to five years (A). (Mirrors Q316.)",
+    "explanation_en": "A taxi driver's licence is valid for up to five years (A).",
     "difficulty": "Easy",
     "tags": [
       "licence",
@@ -24005,7 +24005,7 @@
         ]
       }
     ],
-    "explanation_en": "Traficom (formerly Trafi) grants taxi driver licences (B). ELY Centres no longer handle this; the police can revoke but do not grant. (Mirrors Q280, Q317, Q321.)",
+    "explanation_en": "Traficom (formerly Trafi) grants taxi driver licences (B). ELY Centres no longer handle this; the police can revoke but do not grant.",
     "difficulty": "Easy",
     "tags": [
       "Traficom",
@@ -24089,7 +24089,7 @@
         ]
       }
     ],
-    "explanation_en": "The licence covers all of mainland Finland — no local test needed (C). (Mirrors Q254, Q325.)",
+    "explanation_en": "The licence covers all of mainland Finland — no local test needed (C).",
     "difficulty": "Medium",
     "tags": [
       "licence",
@@ -24173,7 +24173,7 @@
         ]
       }
     ],
-    "explanation_en": "A driver may refuse a ride if accepting it would breach legal working-hour limits (B). Going to another traffic area (A) or municipality (C) are not valid grounds for refusal. (Mirrors Q326.)",
+    "explanation_en": "A driver may refuse a ride if accepting it would breach legal working-hour limits (B). Going to another traffic area (A) or municipality (C) are not valid grounds for refusal.",
     "difficulty": "Medium",
     "tags": [
       "refusal",
@@ -24349,7 +24349,7 @@
         ]
       }
     ],
-    "explanation_en": "The Working Hours Act always applies to employed taxi drivers (A). (Mirrors Q258, Q302.)",
+    "explanation_en": "The Working Hours Act always applies to employed taxi drivers (A).",
     "difficulty": "Easy",
     "tags": [
       "Working Hours Act",
@@ -24432,7 +24432,7 @@
         ]
       }
     ],
-    "explanation_en": "A taxi driver's licence is valid across all of mainland Finland (C). (Mirrors Q303.)",
+    "explanation_en": "A taxi driver's licence is valid across all of mainland Finland (C).",
     "difficulty": "Easy",
     "tags": [
       "licence",
@@ -24600,7 +24600,7 @@
         ]
       }
     ],
-    "explanation_en": "The logbook records shift times and breaks (A). Food (B) and incident reports (C) are not required entries. (Mirrors Q168, Q308.)",
+    "explanation_en": "The logbook records shift times and breaks (A). Food (B) and incident reports (C) are not required entries.",
     "difficulty": "Medium",
     "tags": [
       "logbook",
@@ -24684,7 +24684,7 @@
         ]
       }
     ],
-    "explanation_en": "112 is Finland's general emergency number (C). (Mirrors Q309.)",
+    "explanation_en": "112 is Finland's general emergency number (C).",
     "difficulty": "Easy",
     "tags": [
       "emergency number",
@@ -24767,7 +24767,7 @@
         ]
       }
     ],
-    "explanation_en": "Preventing danger before it arises is the essence of anticipatory driving (C). (Mirrors Q256, Q310.)",
+    "explanation_en": "Preventing danger before it arises is the essence of anticipatory driving (C).",
     "difficulty": "Medium",
     "tags": [
       "anticipatory driving",
@@ -24858,7 +24858,7 @@
         ]
       }
     ],
-    "explanation_en": "Airway first — check it is open and clear (A). Fracture check (B) comes later; moving a possible spinal injury (C) risks harm. (Mirrors Q170, Q311.)",
+    "explanation_en": "Airway first — check it is open and clear (A). Fracture check (B) comes later; moving a possible spinal injury (C) risks harm.",
     "difficulty": "Medium",
     "tags": [
       "first aid",
@@ -24944,7 +24944,7 @@
         ]
       }
     ],
-    "explanation_en": "A drink-driving conviction bars the applicant from a taxi licence for five years (C). (Mirrors Q312.)",
+    "explanation_en": "A drink-driving conviction bars the applicant from a taxi licence for five years (C).",
     "difficulty": "Medium",
     "tags": [
       "drink-driving",
@@ -25028,7 +25028,7 @@
         ]
       }
     ],
-    "explanation_en": "The police revoke taxi licences (A). (Mirrors Q259, Q314.)",
+    "explanation_en": "The police revoke taxi licences (A).",
     "difficulty": "Medium",
     "tags": [
       "licence revocation",
@@ -25111,7 +25111,7 @@
         ]
       }
     ],
-    "explanation_en": "The class B licence must have been valid for at least one year (A). (Mirrors Q315.)",
+    "explanation_en": "The class B licence must have been valid for at least one year (A).",
     "difficulty": "Easy",
     "tags": [
       "class B licence",
@@ -25195,7 +25195,7 @@
         ]
       }
     ],
-    "explanation_en": "Traficom grants taxi driver licences (B). (Mirrors Q266, Q317, Q321.)",
+    "explanation_en": "Traficom grants taxi driver licences (B).",
     "difficulty": "Easy",
     "tags": [
       "Traficom",
@@ -25381,7 +25381,7 @@
         ]
       }
     ],
-    "explanation_en": "Quality requirements apply to every taxi driver (B). (Mirrors Q233, Q249.)",
+    "explanation_en": "Quality requirements apply to every taxi driver (B).",
     "difficulty": "Medium",
     "tags": [
       "quality requirements",
@@ -25464,7 +25464,7 @@
         ]
       }
     ],
-    "explanation_en": "The limit must not be exceeded, full stop (A). (Mirrors Q240.)",
+    "explanation_en": "The limit must not be exceeded, full stop (A).",
     "difficulty": "Easy",
     "tags": [
       "speeding",
@@ -25548,7 +25548,7 @@
         ]
       }
     ],
-    "explanation_en": "Property access on that street is the permitted exception (A). (Mirrors Q243.)",
+    "explanation_en": "Property access on that street is the permitted exception (A).",
     "difficulty": "Medium",
     "tags": [
       "traffic sign",
@@ -25632,7 +25632,7 @@
         ]
       }
     ],
-    "explanation_en": "Phone calls while driving require hands-free and must be essential for the transport (B). (Mirrors Q156, Q181.)",
+    "explanation_en": "Phone calls while driving require hands-free and must be essential for the transport (B).",
     "difficulty": "Medium",
     "tags": [
       "phone",
@@ -25808,7 +25808,7 @@
         ]
       }
     ],
-    "explanation_en": "The police have on-scene authority (B). (Mirrors Q194.)",
+    "explanation_en": "The police have on-scene authority (B).",
     "difficulty": "Easy",
     "tags": [
       "police authority",
@@ -25892,7 +25892,7 @@
         ]
       }
     ],
-    "explanation_en": "The app sends GPS location automatically (B). (Mirrors Q241.)",
+    "explanation_en": "The app sends GPS location automatically (B).",
     "difficulty": "Easy",
     "tags": [
       "112 app",
@@ -26069,7 +26069,7 @@
         ]
       }
     ],
-    "explanation_en": "Making your vehicle visible to approaching traffic prevents rear-end collisions (A). (Mirrors Q250.)",
+    "explanation_en": "Making your vehicle visible to approaching traffic prevents rear-end collisions (A).",
     "difficulty": "Easy",
     "tags": [
       "lights",
@@ -26154,7 +26154,7 @@
         ]
       }
     ],
-    "explanation_en": "The on-site traffic controller's directions must be followed (C). (Mirrors Q242.)",
+    "explanation_en": "The on-site traffic controller's directions must be followed (C).",
     "difficulty": "Easy",
     "tags": [
       "traffic controller",
@@ -26237,7 +26237,7 @@
         ]
       }
     ],
-    "explanation_en": "The driver is responsible for carrying the licence (A). (Mirrors Q263.)",
+    "explanation_en": "The driver is responsible for carrying the licence (A).",
     "difficulty": "Easy",
     "tags": [
       "transport licence",
@@ -26320,7 +26320,7 @@
         ]
       }
     ],
-    "explanation_en": "Pickup or drop-off grants access (C). (Mirrors Q246, Q247.)",
+    "explanation_en": "Pickup or drop-off grants access (C).",
     "difficulty": "Medium",
     "tags": [
       "restricted zone",
@@ -26405,7 +26405,7 @@
         ]
       }
     ],
-    "explanation_en": "A receipt must always be offered for every ride (C). (Mirrors Q207, Q227, Q237.)",
+    "explanation_en": "A receipt must always be offered for every ride (C).",
     "difficulty": "Easy",
     "tags": [
       "receipt",
@@ -26489,7 +26489,7 @@
         ]
       }
     ],
-    "explanation_en": "Respond calmly to de-escalate (C). (Mirrors Q158.)",
+    "explanation_en": "Respond calmly to de-escalate (C).",
     "difficulty": "Easy",
     "tags": [
       "aggressive passenger",
@@ -26680,7 +26680,7 @@
         ]
       }
     ],
-    "explanation_en": "Anticipate other road users (C). (Mirrors Q150, Q238.)",
+    "explanation_en": "Anticipate other road users (C).",
     "difficulty": "Easy",
     "tags": [
       "anticipation",
@@ -26949,7 +26949,7 @@
         ]
       }
     ],
-    "explanation_en": "The direct functional purpose is to prevent an intoxicated driver from starting the vehicle (B). A is a downstream benefit; C describes the legal framing, not the technical purpose. (Mirrors Q286.)",
+    "explanation_en": "The direct functional purpose is to prevent an intoxicated driver from starting the vehicle (B). A is a downstream benefit; C describes the legal framing, not the technical purpose.",
     "difficulty": "Easy",
     "tags": [
       "alcolock",
@@ -27126,7 +27126,7 @@
         ]
       }
     ],
-    "explanation_en": "Yes, always (A). (Mirrors Q258, Q270.)",
+    "explanation_en": "Yes, always (A).",
     "difficulty": "Easy",
     "tags": [
       "Working Hours Act"
@@ -27208,7 +27208,7 @@
         ]
       }
     ],
-    "explanation_en": "Valid across mainland Finland (C). (Mirrors Q271.)",
+    "explanation_en": "Valid across mainland Finland (C).",
     "difficulty": "Easy",
     "tags": [
       "licence",
@@ -27292,7 +27292,7 @@
         ]
       }
     ],
-    "explanation_en": "A serious traffic safety offence is the legal ground (C). (Mirrors Q167, Q196.)",
+    "explanation_en": "A serious traffic safety offence is the legal ground (C).",
     "difficulty": "Medium",
     "tags": [
       "licence revocation",
@@ -27375,7 +27375,7 @@
         ]
       }
     ],
-    "explanation_en": "C is false: breaks are NOT working time (A and B are correct). (Mirrors Q272.)",
+    "explanation_en": "C is false: breaks are NOT working time (A and B are correct).",
     "difficulty": "Medium",
     "tags": [
       "working hours",
@@ -27459,7 +27459,7 @@
         ]
       }
     ],
-    "explanation_en": "C is incorrect — alcolocks are only required in school/daycare transport. (Mirrors Q173, Q197.)",
+    "explanation_en": "C is incorrect — alcolocks are only required in school/daycare transport.",
     "difficulty": "Medium",
     "tags": [
       "alcolock",
@@ -27542,7 +27542,7 @@
         ]
       }
     ],
-    "explanation_en": "The on-shift driver is responsible (A). (Mirrors Q199.)",
+    "explanation_en": "The on-shift driver is responsible (A).",
     "difficulty": "Medium",
     "tags": [
       "roadworthiness",
@@ -27626,7 +27626,7 @@
         ]
       }
     ],
-    "explanation_en": "Logbook records break times (B). Food is not a required entry. (Mirrors Q168, Q273.)",
+    "explanation_en": "Logbook records break times (B). Food is not a required entry.",
     "difficulty": "Medium",
     "tags": [
       "logbook",
@@ -27709,7 +27709,7 @@
         ]
       }
     ],
-    "explanation_en": "112 is Finland's general emergency number (C). (Mirrors Q274.)",
+    "explanation_en": "112 is Finland's general emergency number (C).",
     "difficulty": "Easy",
     "tags": [
       "emergency number",
@@ -27792,7 +27792,7 @@
         ]
       }
     ],
-    "explanation_en": "Prevent danger before it arises (C). (Mirrors Q256, Q275.)",
+    "explanation_en": "Prevent danger before it arises (C).",
     "difficulty": "Medium",
     "tags": [
       "anticipatory driving",
@@ -27875,7 +27875,7 @@
         ]
       }
     ],
-    "explanation_en": "Airway first (A). (Mirrors Q170, Q276.)",
+    "explanation_en": "Airway first (A).",
     "difficulty": "Medium",
     "tags": [
       "first aid",
@@ -27961,7 +27961,7 @@
         ]
       }
     ],
-    "explanation_en": "Five-year bar for drink-driving (C). (Mirrors Q277.)",
+    "explanation_en": "Five-year bar for drink-driving (C).",
     "difficulty": "Medium",
     "tags": [
       "drink-driving",
@@ -28044,7 +28044,7 @@
         ]
       }
     ],
-    "explanation_en": "Medical examination and certificate required (A). (Mirrors Q203, Q255.)",
+    "explanation_en": "Medical examination and certificate required (A).",
     "difficulty": "Medium",
     "tags": [
       "health requirements",
@@ -28127,7 +28127,7 @@
         ]
       }
     ],
-    "explanation_en": "NOTE: this question marks Traficom as the answer; Q259 and Q278 mark the police. Finnish law gives revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Kept master key C (Traficom) here and flagged for consistency review.",
+    "explanation_en": "Finnish law gives driving-licence revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Here the master answer is Traficom (C).",
     "difficulty": "Medium",
     "tags": [
       "licence revocation",
@@ -28221,7 +28221,7 @@
         ]
       }
     ],
-    "explanation_en": "Class B must have been held for at least one year (A). (Mirrors Q279.)",
+    "explanation_en": "Class B must have been held for at least one year (A).",
     "difficulty": "Easy",
     "tags": [
       "class B licence",
@@ -28304,7 +28304,7 @@
         ]
       }
     ],
-    "explanation_en": "Maximum five years (A). (Mirrors Q265.)",
+    "explanation_en": "Maximum five years (A).",
     "difficulty": "Easy",
     "tags": [
       "licence",
@@ -28388,7 +28388,7 @@
         ]
       }
     ],
-    "explanation_en": "Traficom grants taxi driver licences (B). (Mirrors Q266, Q280.)",
+    "explanation_en": "Traficom grants taxi driver licences (B).",
     "difficulty": "Easy",
     "tags": [
       "Traficom",
@@ -28487,7 +28487,7 @@
         ]
       }
     ],
-    "explanation_en": "5:30 + 5.5 h = 11:00 (B). (Mirrors Q281.)",
+    "explanation_en": "5:30 + 5.5 h = 11:00 (B).",
     "difficulty": "Medium",
     "tags": [
       "break",
@@ -28571,7 +28571,7 @@
         ]
       }
     ],
-    "explanation_en": "15-hour shifts only when there is no other way to arrange the work appropriately (A). (Mirrors Q205.)",
+    "explanation_en": "15-hour shifts only when there is no other way to arrange the work appropriately (A).",
     "difficulty": "Medium",
     "tags": [
       "15 hours",
@@ -28655,7 +28655,7 @@
         ]
       }
     ],
-    "explanation_en": "Class B held for under a year is a disqualifier (B). Education level and unemployment history are not. (Mirrors Q252.)",
+    "explanation_en": "Class B held for under a year is a disqualifier (B). Education level and unemployment history are not.",
     "difficulty": "Medium",
     "tags": [
       "licence",
@@ -28739,7 +28739,7 @@
         ]
       }
     ],
-    "explanation_en": "Traficom grants taxi licences (B). (Mirrors Q266, Q280, Q317.)",
+    "explanation_en": "Traficom grants taxi licences (B).",
     "difficulty": "Easy",
     "tags": [
       "Traficom",
@@ -28822,7 +28822,7 @@
         ]
       }
     ],
-    "explanation_en": "A safe gap provides reaction time and reduces chain-collision risk (B). A and C are clearly wrong. (Mirrors Q257.)",
+    "explanation_en": "A safe gap provides reaction time and reduces chain-collision risk (B). A and C are clearly wrong.",
     "difficulty": "Easy",
     "tags": [
       "following distance",
@@ -28913,7 +28913,7 @@
         ]
       }
     ],
-    "explanation_en": "Over five years of service: one-month notice (C). (Mirrors Q327.)",
+    "explanation_en": "Over five years of service: one-month notice (C).",
     "difficulty": "Easy",
     "tags": [
       "notice period",
@@ -29097,7 +29097,7 @@
         ]
       }
     ],
-    "explanation_en": "Valid across mainland Finland — no test needed (C). (Mirrors Q254, Q267.)",
+    "explanation_en": "Valid across mainland Finland — no test needed (C).",
     "difficulty": "Medium",
     "tags": [
       "licence",
@@ -29181,7 +29181,7 @@
         ]
       }
     ],
-    "explanation_en": "Working hours are the only valid refusal ground here (B). (Mirrors Q268.)",
+    "explanation_en": "Working hours are the only valid refusal ground here (B).",
     "difficulty": "Medium",
     "tags": [
       "refusal",
@@ -29272,7 +29272,7 @@
         ]
       }
     ],
-    "explanation_en": "Under five years: 14-day notice period (B). (Mirrors Q262, Q269.)",
+    "explanation_en": "Under five years: 14-day notice period (B).",
     "difficulty": "Easy",
     "tags": [
       "notice period",

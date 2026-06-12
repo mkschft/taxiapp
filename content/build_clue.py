@@ -59,6 +59,22 @@ GROUP_META = [
 ]
 EXCEL_TO_META = {k: v for k, v in GROUP_META}
 
+# The source "Exception / note" cells are the author's shorthand (they cite
+# question numbers like "Q83"). Rewrite the cited ones into self-contained,
+# learner-facing notes. Keyed by Clue ID.
+EXCEPTION_OVERRIDE = {
+    "CL002": "When several options all sound 'safe', look deeper — the exam often favours arranging proper help (e.g. through dispatch) over a vaguely safe-sounding action.",
+    "CL005": "Exception: with an extremely intoxicated passenger, politely refusing the ride can be the expected answer rather than automatically calling the police.",
+    "CL017": "Exception: sometimes the deciding factor is an employer's or Kela's entitlement to arrange the transport, not simply the presence of a parent or guardian.",
+    "CL018": "Exception: who is responsible for the seat belt can depend on the passenger's age and how the question is framed.",
+    "CL023": "Watch out: when this phrase appears in the question itself (not in an answer option), don't rule an option out just because it contains it.",
+    "CL025": "Not always wrong: 'enintään' (at most) sets a legitimate limit, and a passenger choosing the topic of conversation can be the correct, allowed option.",
+    "CL027": "Exception: a passenger's right to act independently — such as choosing the topic of conversation — is sometimes the correct answer, not a wrong one.",
+    "CL028": "Exception: a parent or guardian is responsible for their own child's restraint, so 'not the driver's responsibility' can be correct in that case.",
+    "CL031": "Exception: when the passenger actually asks for help (for example with comfort or positioning), giving it is the correct action.",
+    "CL037": "Note: if no child restraint is available, the correct action is still to use the back seat with the seat belt — not to skip safety entirely.",
+}
+
 
 def clean(s):
     if s is None:
@@ -88,7 +104,7 @@ def main():
             "phrase_fi": clean(r[2]),
             "meaning_en": clean(r[3]),
             "effect_en": clean(r[4]),
-            "exception_en": clean(r[5]),
+            "exception_en": EXCEPTION_OVERRIDE.get(clue_id, clean(r[5])),
         })
 
     words = []

@@ -20,6 +20,7 @@ Run from the project root:  python3 content/build_appready.py
 
 import json
 import os
+import re
 import openpyxl
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -66,6 +67,27 @@ def clean(v):
 
 def split_list(v):
     return [] if not v else [p.strip() for p in str(v).split(";") if p.strip()]
+
+
+# Author shorthand leaks into explanations (cross-refs like "Mirrors Q14." and
+# "NOTE FOR REVIEWER: ..."). Strip those so explanations are self-contained.
+EXPLANATION_OVERRIDE = {
+    "Q314": "Finnish law gives driving-licence revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Here the master answer is Traficom (C).",
+}
+
+
+def clean_explanation(e, qid=None):
+    if qid in EXPLANATION_OVERRIDE:
+        return EXPLANATION_OVERRIDE[qid]
+    if not e:
+        return e
+    e = re.sub(r"\s*NOTE(?:\s+FOR\s+REVIEWER)?:.*$", "", e, flags=re.I | re.S)
+    e = re.sub(r"\s*\([^)]*\bQ\d+[^)]*\)", "", e)
+    e = re.sub(
+        r"\s*(?:This\s+)?(?:Mirrors?|Duplicate of|Near-duplicate of|Consistent with|Same as)\b[^.]*?\bQ\d+[^.]*\.?",
+        "", e, flags=re.I,
+    )
+    return re.sub(r"\s+", " ", e).strip()
 
 
 def records(path, sheet, key):
@@ -239,7 +261,7 @@ def main():
             "correct_master": correct_master,
             "key_overridden": key_changed,
             "clue_annotations": annotations,
-            "explanation_en": (e or {}).get("explanation_en"),
+            "explanation_en": clean_explanation((e or {}).get("explanation_en"), qid),
             "difficulty": (e or {}).get("difficulty"),
             "tags": (e or {}).get("tags", []),
             "status": (e or {}).get("status", "needs-enrichment"),

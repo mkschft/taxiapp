@@ -40,7 +40,7 @@
       "phrase_fi": "turvallinen / turvallisesti / turvallisuus",
       "meaning_en": "safe / safely / safety",
       "effect_en": "Often signals the CORRECT answer",
-      "exception_en": "Q86 has several safety-sounding options; source chooses dispatch help"
+      "exception_en": "When several options all sound 'safe', look deeper — the exam often favours arranging proper help (e.g. through dispatch) over a vaguely safe-sounding action."
     },
     {
       "id": "clue-positive-w3",
@@ -70,7 +70,7 @@
       "phrase_fi": "poliisi / kutsun poliisin / soittaa poliisi",
       "meaning_en": "police / call police",
       "effect_en": "Often signals the CORRECT answer",
-      "exception_en": "Q83 is exception: source prefers refusing extremely drunk customer over automatically calling police"
+      "exception_en": "Exception: with an extremely intoxicated passenger, politely refusing the ride can be the expected answer rather than automatically calling the police."
     },
     {
       "id": "clue-positive-w6",
@@ -190,7 +190,7 @@
       "phrase_fi": "huoltaja / vanhempi / etukäteen",
       "meaning_en": "guardian / parent / in advance",
       "effect_en": "Often signals the CORRECT answer",
-      "exception_en": "Q27 and Q38 are exceptions: source uses employer/Kela entitlement rather than simple guardian/mother clue"
+      "exception_en": "Exception: sometimes the deciding factor is an employer's or Kela's entitlement to arrange the transport, not simply the presence of a parent or guardian."
     },
     {
       "id": "clue-positive-w18",
@@ -200,7 +200,7 @@
       "phrase_fi": "asiakkaan kanssa / asiakkaalta / asiakas itse",
       "meaning_en": "with/from the customer / customer themself",
       "effect_en": "Often signals the CORRECT answer",
-      "exception_en": "Exception Q1/Q10: seat-belt responsibility depends on age/source framing"
+      "exception_en": "Exception: who is responsible for the seat belt can depend on the passenger's age and how the question is framed."
     },
     {
       "id": "clue-positive-w19",
@@ -250,7 +250,7 @@
       "phrase_fi": "ei tarvitse",
       "meaning_en": "does not need to",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q81: phrase is in the question; do not automatically choose an option only because of it"
+      "exception_en": "Watch out: when this phrase appears in the question itself (not in an answer option), don't rule an option out just because it contains it."
     },
     {
       "id": "clue-negative-w2",
@@ -270,7 +270,7 @@
       "phrase_fi": "vain / ainoastaan",
       "meaning_en": "only",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q29 uses 'enintään' not 'vain' and is correct; Q52 has customer choosing topic as correct"
+      "exception_en": "Not always wrong: 'enintään' (at most) sets a legitimate limit, and a passenger choosing the topic of conversation can be the correct, allowed option."
     },
     {
       "id": "clue-negative-w4",
@@ -290,7 +290,7 @@
       "phrase_fi": "asiakas päättää / oikeus valita",
       "meaning_en": "customer decides / right to choose",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q45 and Q52 are exceptions because customer independence/topic choice is positive"
+      "exception_en": "Exception: a passenger's right to act independently — such as choosing the topic of conversation — is sometimes the correct answer, not a wrong one."
     },
     {
       "id": "clue-negative-w6",
@@ -300,7 +300,7 @@
       "phrase_fi": "ei kuljettajan vastuulla / asiakas vastuussa",
       "meaning_en": "not driver's responsibility / customer responsible",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q95: parent/guardian is responsible for own child restraint"
+      "exception_en": "Exception: a parent or guardian is responsible for their own child's restraint, so 'not the driver's responsibility' can be correct in that case."
     },
     {
       "id": "clue-negative-w7",
@@ -330,7 +330,7 @@
       "phrase_fi": "jos asiakas pyytää",
       "meaning_en": "if customer asks",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q53: helping when the customer asks for comfort help is correct"
+      "exception_en": "Exception: when the passenger actually asks for help (for example with comfort or positioning), giving it is the correct action."
     },
     {
       "id": "clue-negative-w10",
@@ -390,7 +390,7 @@
       "phrase_fi": "ilman turvalaitetta",
       "meaning_en": "without a safety restraint",
       "effect_en": "Often signals a WRONG answer",
-      "exception_en": "Q67 asks if child restraint is unavailable, but answer still uses back seat + seat belt"
+      "exception_en": "Note: if no child restraint is available, the correct action is still to use the back seat with the seat belt — not to skip safety entirely."
     },
     {
       "id": "clue-negative-w16",
@@ -422,11 +422,11 @@
       "options": [
         {
           "key": "A",
-          "en": "ask / inquire / whether help is needed"
+          "en": "deductible / at most deductible"
         },
         {
           "key": "B",
-          "en": "inside / indoors / safely inside"
+          "en": "appropriate / approved / suitable"
         },
         {
           "key": "C",
@@ -444,11 +444,11 @@
       "options": [
         {
           "key": "A",
-          "en": "airbag switched off"
+          "en": "Kela service number / dispatch"
         },
         {
           "key": "B",
-          "en": "alcohol interlock + always / prevents starting"
+          "en": "with/from the customer / customer themself"
         },
         {
           "key": "C",
@@ -466,7 +466,7 @@
       "options": [
         {
           "key": "A",
-          "en": "stop vehicle in a safe place"
+          "en": "airbag switched off"
         },
         {
           "key": "B",
@@ -474,7 +474,7 @@
         },
         {
           "key": "C",
-          "en": "offer help"
+          "en": "guardian / parent / in advance"
         }
       ],
       "correct_option": "B",
@@ -492,7 +492,7 @@
         },
         {
           "key": "B",
-          "en": "anticipate / other road user's actions"
+          "en": "politely / appropriately / calmly / kindly"
         },
         {
           "key": "C",
@@ -510,7 +510,7 @@
       "options": [
         {
           "key": "A",
-          "en": "deductible / at most deductible"
+          "en": "airbag switched off"
         },
         {
           "key": "B",
@@ -518,7 +518,7 @@
         },
         {
           "key": "C",
-          "en": "stop vehicle in a safe place"
+          "en": "by test-operating"
         }
       ],
       "correct_option": "B",
@@ -532,11 +532,11 @@
       "options": [
         {
           "key": "A",
-          "en": "guardian / parent / in advance"
+          "en": "stop vehicle in a safe place"
         },
         {
           "key": "B",
-          "en": "politely / appropriately / calmly / kindly"
+          "en": "Kela service number / dispatch"
         },
         {
           "key": "C",
@@ -554,7 +554,7 @@
       "options": [
         {
           "key": "A",
-          "en": "ask / inquire / whether help is needed"
+          "en": "stop vehicle in a safe place"
         },
         {
           "key": "B",
@@ -562,7 +562,7 @@
         },
         {
           "key": "C",
-          "en": "Kela service number / dispatch"
+          "en": "deductible / at most deductible"
         }
       ],
       "correct_option": "B",
@@ -576,11 +576,11 @@
       "options": [
         {
           "key": "A",
-          "en": "deductible / at most deductible"
+          "en": "airbag switched off"
         },
         {
           "key": "B",
-          "en": "anticipate / other road user's actions"
+          "en": "by frame / four points / brakes on"
         },
         {
           "key": "C",
@@ -598,7 +598,7 @@
       "options": [
         {
           "key": "A",
-          "en": "receipt / offering a receipt"
+          "en": "intervene + report to school"
         },
         {
           "key": "B",
@@ -606,7 +606,7 @@
         },
         {
           "key": "C",
-          "en": "offer help"
+          "en": "guardian / parent / in advance"
         }
       ],
       "correct_option": "B",
@@ -624,11 +624,11 @@
         },
         {
           "key": "B",
-          "en": "intervene + report to school"
+          "en": "ask / inquire / whether help is needed"
         },
         {
           "key": "C",
-          "en": "airbag switched off"
+          "en": "inside / indoors / safely inside"
         }
       ],
       "correct_option": "A",
@@ -642,7 +642,7 @@
       "options": [
         {
           "key": "A",
-          "en": "inside / indoors / safely inside"
+          "en": "politely / appropriately / calmly / kindly"
         },
         {
           "key": "B",
@@ -664,7 +664,7 @@
       "options": [
         {
           "key": "A",
-          "en": "employer / check with employer / call employer"
+          "en": "alcohol interlock + always / prevents starting"
         },
         {
           "key": "B",
@@ -672,7 +672,7 @@
         },
         {
           "key": "C",
-          "en": "by frame / four points / brakes on"
+          "en": "necessary"
         }
       ],
       "correct_option": "B",
@@ -686,7 +686,7 @@
       "options": [
         {
           "key": "A",
-          "en": "Kela service number / dispatch"
+          "en": "appropriate / approved / suitable"
         },
         {
           "key": "B",
@@ -708,11 +708,11 @@
       "options": [
         {
           "key": "A",
-          "en": "alcohol interlock + always / prevents starting"
+          "en": "offer help"
         },
         {
           "key": "B",
-          "en": "police / call police"
+          "en": "employer / check with employer / call employer"
         },
         {
           "key": "C",
@@ -730,7 +730,7 @@
       "options": [
         {
           "key": "A",
-          "en": "police / call police"
+          "en": "employer / check with employer / call employer"
         },
         {
           "key": "B",
@@ -738,7 +738,7 @@
         },
         {
           "key": "C",
-          "en": "anticipate / other road user's actions"
+          "en": "police / call police"
         }
       ],
       "correct_option": "B",
@@ -752,11 +752,11 @@
       "options": [
         {
           "key": "A",
-          "en": "leave / abandon / ignore"
+          "en": "customer decides / right to choose"
         },
         {
           "key": "B",
-          "en": "not driver's responsibility / customer responsible"
+          "en": "never / in no situation"
         },
         {
           "key": "C",
@@ -774,7 +774,7 @@
       "options": [
         {
           "key": "A",
-          "en": "wait in car / no need to leave car"
+          "en": "leave / abandon / ignore"
         },
         {
           "key": "B",
@@ -782,7 +782,7 @@
         },
         {
           "key": "C",
-          "en": "only"
+          "en": "not driver's responsibility / customer responsible"
         }
       ],
       "correct_option": "B",
@@ -796,7 +796,7 @@
       "options": [
         {
           "key": "A",
-          "en": "speeding / exceed speed limit"
+          "en": "physically stop / shout / answer aggression"
         },
         {
           "key": "B",
@@ -804,7 +804,7 @@
         },
         {
           "key": "C",
-          "en": "physically stop / shout / answer aggression"
+          "en": "without a safety restraint"
         }
       ],
       "correct_option": "B",
@@ -822,7 +822,7 @@
         },
         {
           "key": "B",
-          "en": "without"
+          "en": "without a safety restraint"
         },
         {
           "key": "C",
@@ -844,11 +844,11 @@
         },
         {
           "key": "B",
-          "en": "short / under a minute / under a kilometre"
+          "en": "leave / abandon / ignore"
         },
         {
           "key": "C",
-          "en": "wait in car / no need to leave car"
+          "en": "if customer asks"
         }
       ],
       "correct_option": "A",
@@ -866,11 +866,11 @@
         },
         {
           "key": "B",
-          "en": "only"
+          "en": "not driver's responsibility / customer responsible"
         },
         {
           "key": "C",
-          "en": "without checking / visual check only"
+          "en": "physically stop / shout / answer aggression"
         }
       ],
       "correct_option": "A",
@@ -884,7 +884,7 @@
       "options": [
         {
           "key": "A",
-          "en": "never / in no situation"
+          "en": "speeding / exceed speed limit"
         },
         {
           "key": "B",
@@ -892,7 +892,7 @@
         },
         {
           "key": "C",
-          "en": "no assistant / requires assistant"
+          "en": "without checking / visual check only"
         }
       ],
       "correct_option": "B",
@@ -906,7 +906,7 @@
       "options": [
         {
           "key": "A",
-          "en": "exception / exceptional driving"
+          "en": "does not need to"
         },
         {
           "key": "B",
@@ -914,7 +914,7 @@
         },
         {
           "key": "C",
-          "en": "not driver's responsibility / customer responsible"
+          "en": "never / in no situation"
         }
       ],
       "correct_option": "B",
@@ -928,11 +928,11 @@
       "options": [
         {
           "key": "A",
-          "en": "wait in car / no need to leave car"
+          "en": "customer decides / right to choose"
         },
         {
           "key": "B",
-          "en": "take payment card / keep handbag"
+          "en": "only"
         },
         {
           "key": "C",
@@ -950,11 +950,11 @@
       "options": [
         {
           "key": "A",
-          "en": "physically stop / shout / answer aggression"
+          "en": "no assistant / requires assistant"
         },
         {
           "key": "B",
-          "en": "if customer asks"
+          "en": "wait in car / no need to leave car"
         },
         {
           "key": "C",
@@ -976,11 +976,11 @@
         },
         {
           "key": "B",
-          "en": "never / in no situation"
+          "en": "speeding / exceed speed limit"
         },
         {
           "key": "C",
-          "en": "short / under a minute / under a kilometre"
+          "en": "leave / abandon / ignore"
         }
       ],
       "correct_option": "A",
@@ -998,11 +998,11 @@
         },
         {
           "key": "B",
-          "en": "no assistant / requires assistant"
+          "en": "without checking / visual check only"
         },
         {
           "key": "C",
-          "en": "leave / abandon / ignore"
+          "en": "take payment card / keep handbag"
         }
       ],
       "correct_option": "A",
@@ -1016,7 +1016,7 @@
       "options": [
         {
           "key": "A",
-          "en": "without checking / visual check only"
+          "en": "short / under a minute / under a kilometre"
         },
         {
           "key": "B",
@@ -1024,7 +1024,7 @@
         },
         {
           "key": "C",
-          "en": "not driver's responsibility / customer responsible"
+          "en": "never / in no situation"
         }
       ],
       "correct_option": "B",
@@ -1038,11 +1038,11 @@
       "options": [
         {
           "key": "A",
-          "en": "does not need to"
+          "en": "if customer asks"
         },
         {
           "key": "B",
-          "en": "customer decides / right to choose"
+          "en": "short / under a minute / under a kilometre"
         },
         {
           "key": "C",
@@ -1060,11 +1060,11 @@
       "options": [
         {
           "key": "A",
-          "en": "if customer asks"
+          "en": "wait in car / no need to leave car"
         },
         {
           "key": "B",
-          "en": "wait in car / no need to leave car"
+          "en": "customer decides / right to choose"
         },
         {
           "key": "C",
