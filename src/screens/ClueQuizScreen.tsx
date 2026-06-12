@@ -118,12 +118,19 @@ export function ClueQuizScreen({ navigation, route }: Props) {
           {wrong.length > 0 && (
             <>
               <Text style={styles.sectionHeader}>Review ({wrong.length})</Text>
-              {wrong.map(w => (
-                <View key={w.id} style={styles.wrongItem}>
-                  <Text style={styles.wrongWord}>{w.prompt}</Text>
-                  <Text style={styles.wrongMeaning}>{w.correct_answer}</Text>
-                </View>
-              ))}
+              {wrong.map(w => {
+                // Each question holds both sides; show them consistently
+                // (Finnish word on top, English meaning below) regardless of
+                // which direction it was asked in.
+                const fi = w.direction === 'fi_to_en' ? w.prompt : w.correct_answer;
+                const en = w.direction === 'fi_to_en' ? w.correct_answer : w.prompt;
+                return (
+                  <View key={w.id} style={styles.wrongItem}>
+                    <Text style={styles.wrongWord}>{fi}</Text>
+                    <Text style={styles.wrongMeaning}>{en}</Text>
+                  </View>
+                );
+              })}
             </>
           )}
 
