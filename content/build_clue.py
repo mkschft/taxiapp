@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
 """
-build_clue.py — compile the Clue Words section from the master workbook.
+build_clue.py — compile the Clue Words section from the clue workbook.
 
-Flow (mirrors vocabulary):
-    Clue Words  →  group buttons (Positive / Negative / WH / Conjunction)
+Flow:
+    Clue Words  →  group buttons (Positive / Negative)
                →  each group has a Lesson (clue cards) + a Quiz
 
 Input:
-  content/sources/master.xlsx  →  sheet "Clue_Words"  (the answer-logic engine)
-    Header on row 3; data from row 4.
-    Cols: Clue ID | Group | Finnish word/phrase | English meaning |
-          Effect in a question | Exception / note | Sample Qs | Count | Bangla
+  content/sources/clue_workbook.xlsx   (SOURCE OF TRUTH)
+    Sheets "Positive Clues" / "Negative Clues" — header on row 3, data from row 4.
+    Cols: Clue word/phrase | Meaning | General-use context | Watch-out/exception |
+          Sample source refs | Source sets covered | Matched question count
+  content/clue_fi_fixes.json           diacritic repairs for the FI phrase column
+    (the source export stripped many ä/ö; every fix here was verified against the
+    app's existing correctly-accented Finnish — see the homograph note below).
 
 Output:
   src/data/json/clue.json       { groups, words, questions } — the app reads this
   content/output/_clue_report.txt
 
-The lesson cards come straight from the dictionary. There is no authored MCQ
-quiz, so the quiz is GENERATED here: prompt = the Finnish clue, correct =
-its English meaning, two distractors = other meanings from the SAME group.
-A fixed RNG seed keeps the generated JSON stable across rebuilds.
+The lesson text (phrase / meaning / general-use / watch-out) is authored in the
+workbook. There is no authored MCQ quiz, so the quiz is GENERATED: prompt = the
+Finnish clue, correct = its English meaning, two distractors = other meanings
+from the SAME group. A fixed RNG seed keeps the generated JSON stable.
 
 Run from the project root:  python3 content/build_clue.py
 """
@@ -27,53 +30,41 @@ Run from the project root:  python3 content/build_clue.py
 import json
 import os
 import random
+import re
 
 import openpyxl
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-MASTER = os.path.join(HERE, "sources", "master.xlsx")
+WORKBOOK = os.path.join(HERE, "sources", "clue_workbook.xlsx")
+FIXES = os.path.join(HERE, "clue_fi_fixes.json")
 OUT_JSON = os.path.join(ROOT, "src", "data", "json", "clue.json")
 OUT_REPORT = os.path.join(HERE, "output", "_clue_report.txt")
 
-SHEET = "Clue_Words"
 HEADER_ROW = 3
-# Groups intentionally NOT in Clue Words (they live in Vocabulary sets 10–11).
-IGNORE_GROUPS = {"WH-word", "Conjunction"}
 OPTION_KEYS = ("A", "B", "C")
 QUIZ_CAP = 15            # max questions per group, for a friendly quiz length
 SEED = 20260611
 
-# Excel "Group" label → app group meta. Order here = display order.
-# WH-words and Conjunctions now live in Vocabulary (sets 10–11), so Clue Words
-# is just Positive + Negative.
+# Sheet name → app group meta. Order here = display order.
 GROUP_META = [
-    ("Positive", {
+    ("Positive Clues", {
         "id": "positive", "short": "Positive", "label": "Positive clue words",
         "tone": "positive", "blurb": "Usually point to the CORRECT answer.",
     }),
-    ("Negative", {
+    ("Negative Clues", {
         "id": "negative", "short": "Negative", "label": "Negative clue words",
         "tone": "negative", "blurb": "Usually point to a WRONG answer.",
     }),
 ]
-EXCEL_TO_META = {k: v for k, v in GROUP_META}
 
-# The source "Exception / note" cells are the author's shorthand (they cite
-# question numbers like "Q83"). Rewrite the cited ones into self-contained,
-# learner-facing notes. Keyed by Clue ID.
-EXCEPTION_OVERRIDE = {
-    "CL002": "When several options all sound 'safe', look deeper — the exam often favours arranging proper help (e.g. through dispatch) over a vaguely safe-sounding action.",
-    "CL005": "Exception: with an extremely intoxicated passenger, politely refusing the ride can be the expected answer rather than automatically calling the police.",
-    "CL017": "Exception: sometimes the deciding factor is an employer's or Kela's entitlement to arrange the transport, not simply the presence of a parent or guardian.",
-    "CL018": "Exception: who is responsible for the seat belt can depend on the passenger's age and how the question is framed.",
-    "CL023": "Watch out: when this phrase appears in the question itself (not in an answer option), don't rule an option out just because it contains it.",
-    "CL025": "Not always wrong: 'enintään' (at most) sets a legitimate limit, and a passenger choosing the topic of conversation can be the correct, allowed option.",
-    "CL027": "Exception: a passenger's right to act independently — such as choosing the topic of conversation — is sometimes the correct answer, not a wrong one.",
-    "CL028": "Exception: a parent or guardian is responsible for their own child's restraint, so 'not the driver's responsibility' can be correct in that case.",
-    "CL031": "Exception: when the passenger actually asks for help (for example with comfort or positioning), giving it is the correct action.",
-    "CL037": "Note: if no child restraint is available, the correct action is still to use the back seat with the seat belt — not to skip safety entirely.",
-}
+# Verified diacritic repairs for the FI phrase column. NOTE: 'valita' (to choose)
+# is deliberately NOT mapped to 'välitä' (to care) — they fold to the same ASCII,
+# and the clue phrases mean "choose". Applied to the Finnish column only.
+with open(FIXES, encoding="utf-8") as f:
+    FI_FIX = json.load(f)
+
+_TOK = re.compile(r"[a-zA-Zäöå]+")
 
 
 def clean(s):
@@ -83,34 +74,47 @@ def clean(s):
     return s or None
 
 
+def fix_fi(phrase):
+    """Repair stripped diacritics token-by-token, preserving separators/case."""
+    if not phrase:
+        return phrase
+    out = []
+    for tok in re.split(r"([^a-zA-Zäöå]+)", str(phrase)):
+        rep = FI_FIX.get(tok.lower())
+        if rep:
+            out.append(rep.capitalize() if tok[:1].isupper() else rep)
+        else:
+            out.append(tok)
+    return "".join(out)
+
+
+def to_int(v):
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def main():
     rng = random.Random(SEED)
-    wb = openpyxl.load_workbook(MASTER, data_only=True)
-    ws = wb[SHEET]
-    rows = [r for r in ws.iter_rows(min_row=HEADER_ROW + 1, values_only=True) if r and r[0]]
-
+    wb = openpyxl.load_workbook(WORKBOOK, data_only=True)
     report = ["CLUE BUILD REPORT", "=" * 50]
 
-    # ── Lesson words, grouped ────────────────────────────────────────────────
-    by_group = {meta["id"]: [] for _, meta in GROUP_META}
-    for r in rows:
-        clue_id, group_label = clean(r[0]), clean(r[1])
-        meta = EXCEL_TO_META.get(group_label)
-        if not meta:
-            if group_label not in IGNORE_GROUPS:
-                report.append(f"[WARN] {clue_id}: unknown group {group_label!r} — skipped")
-            continue
-        by_group[meta["id"]].append({
-            "phrase_fi": clean(r[2]),
-            "meaning_en": clean(r[3]),
-            "effect_en": clean(r[4]),
-            "exception_en": EXCEPTION_OVERRIDE.get(clue_id, clean(r[5])),
-        })
-
+    # ── Lesson words, grouped, sorted by exam frequency (most common first) ───
     words = []
-    for _, meta in GROUP_META:
+    for sheet, meta in GROUP_META:
         gid = meta["id"]
-        entries = by_group[gid]
+        rows = [r for r in wb[sheet].iter_rows(min_row=HEADER_ROW + 1, values_only=True) if r and r[0]]
+        entries = []
+        for r in rows:
+            entries.append({
+                "phrase_fi": fix_fi(clean(r[0])),
+                "meaning_en": clean(r[1]),
+                "effect_en": clean(r[2]),       # general-use context
+                "exception_en": clean(r[3]),    # watch-out / exception
+                "match_count": to_int(r[6]),
+            })
+        entries.sort(key=lambda e: (-(e["match_count"] or 0), e["phrase_fi"].lower()))
         total = len(entries)
         for i, e in enumerate(entries, start=1):
             words.append({
@@ -122,6 +126,7 @@ def main():
                 "meaning_en": e["meaning_en"],
                 "effect_en": e["effect_en"],
                 "exception_en": e["exception_en"],
+                "match_count": e["match_count"],
             })
 
     # ── Generated quiz ───────────────────────────────────────────────────────
@@ -129,33 +134,27 @@ def main():
     for _, meta in GROUP_META:
         gid = meta["id"]
         group_words = [w for w in words if w["group_id"] == gid]
-        # distinct meanings in this group, for distractor pools
         meanings = list({w["meaning_en"] for w in group_words if w["meaning_en"]})
-
-        # sample up to QUIZ_CAP words for the quiz (seeded, stable)
         picks = group_words[:]
         rng.shuffle(picks)
         picks = picks[:QUIZ_CAP]
-
         for qi, w in enumerate(picks, start=1):
             correct = w["meaning_en"]
             pool = [m for m in meanings if m != correct]
             rng.shuffle(pool)
-            distractors = pool[:2]
-            opts = [correct] + distractors
+            opts = [correct] + pool[:2]
             rng.shuffle(opts)
-            correct_key = OPTION_KEYS[opts.index(correct)]
             questions.append({
                 "id": f"clue-{gid}-q{qi}",
                 "group_id": gid,
                 "index": qi,
                 "prompt_fi": w["phrase_fi"],
                 "options": [{"key": OPTION_KEYS[k], "en": opts[k]} for k in range(len(opts))],
-                "correct_option": correct_key,
+                "correct_option": OPTION_KEYS[opts.index(correct)],
                 "correct_meaning_en": correct,
             })
 
-    # ── Group rows (with derived counts) ─────────────────────────────────────
+    # ── Group rows ───────────────────────────────────────────────────────────
     groups = []
     for order, (_, meta) in enumerate(GROUP_META, start=1):
         gid = meta["id"]
@@ -178,9 +177,10 @@ def main():
     report.append(f"groups:    {len(groups)}")
     report.append(f"words:     {len(words)}")
     report.append(f"questions: {len(questions)}  (cap {QUIZ_CAP}/group)")
+    report.append(f"fi diacritic fixes applied: {len(FI_FIX)} tokens")
     report.append("")
     for g in groups:
-        report.append(f"  {g['id']:>12}  {g['word_count']:>2}w / {g['question_count']:>2}q  [{g['tone']}]  {g['label']}")
+        report.append(f"  {g['id']:>9}  {g['word_count']:>2}w / {g['question_count']:>2}q  [{g['tone']}]  {g['label']}")
 
     os.makedirs(os.path.dirname(OUT_REPORT), exist_ok=True)
     with open(OUT_REPORT, "w", encoding="utf-8") as f:

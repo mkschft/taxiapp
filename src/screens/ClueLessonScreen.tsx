@@ -32,6 +32,12 @@ function ClueCard({ word, tone }: { word: ClueLessonWord; tone: ClueTone }) {
       <Text style={styles.phraseFi}>{word.phrase_fi}</Text>
       <Text style={styles.meaningEn}>{word.meaning_en}</Text>
 
+      {word.match_count != null && word.match_count > 0 && (
+        <View style={styles.freqChip}>
+          <Text style={styles.freqText}>Appears in ~{word.match_count} exam questions</Text>
+        </View>
+      )}
+
       {!!word.effect_en && (
         <View style={[styles.effect, { backgroundColor: es.bg }]}>
           <es.Icon size={15} color={es.fg} strokeWidth={2.6} />
@@ -164,6 +170,8 @@ const styles = StyleSheet.create({
   },
   phraseFi: { fontSize: 26, fontFamily: font.bold, color: colors.text, lineHeight: 32 },
   meaningEn: { fontSize: fontSize.lg, color: colors.primary, fontFamily: font.semibold, marginTop: -4 },
+  freqChip: { alignSelf: 'flex-start', backgroundColor: colors.surface, borderRadius: radius.full, paddingHorizontal: 10, paddingVertical: 3, marginTop: 2 },
+  freqText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
   effect: {
     flexDirection: 'row', gap: 10, alignItems: 'flex-start',
     borderRadius: radius.sm, padding: 12, marginTop: 4,

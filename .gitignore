@@ -24,3 +24,5 @@ content/output/
 **/__pycache__/
 *.pyc
 
+content/sources/master.pre-clue-update.xlsx
+content/sources/new/

@@ -102,8 +102,9 @@ export type ClueLessonWord = {
   total_in_group: number;
   phrase_fi: string;
   meaning_en: string;
-  effect_en: string | null;   // "Often signals the CORRECT answer"
-  exception_en: string | null;
+  effect_en: string | null;   // general-use context
+  exception_en: string | null;// watch-out / exception
+  match_count: number | null; // how many exam questions this clue appears in
 };
 
 export type ClueQuizOption = { key: 'A' | 'B' | 'C'; en: string };
