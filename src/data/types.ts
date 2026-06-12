@@ -106,16 +106,21 @@ export type ClueLessonWord = {
   exception_en: string | null;// watch-out / exception
 };
 
-export type ClueQuizOption = { key: 'A' | 'B' | 'C'; en: string };
+export type ClueQuizOption = { key: 'A' | 'B' | 'C'; text: string };
+
+/** fi_to_en: prompt is a Finnish word, options are English glosses (and v.v.).
+ * The quiz uses single canonical forms — see content/build_clue.py. */
+export type ClueQuizDirection = 'fi_to_en' | 'en_to_fi';
 
 export type ClueQuizQuestion = {
   id: string;                 // "clue-positive-q3"
   group_id: string;           // → ClueGroup.id
   index: number;
-  prompt_fi: string;
+  direction: ClueQuizDirection;
+  prompt: string;             // Finnish word (fi_to_en) or English gloss (en_to_fi)
   options: ClueQuizOption[];
   correct_option: 'A' | 'B' | 'C';
-  correct_meaning_en: string;
+  correct_answer: string;     // the correct option's text
 };
 
 export type ClueData = {

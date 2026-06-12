@@ -578,661 +578,691 @@
       "id": "clue-positive-q1",
       "group_id": "positive",
       "index": 1,
-      "prompt_fi": "viipymättä / mahdollisimman pian / heti",
+      "direction": "fi_to_en",
+      "prompt": "viipymättä",
       "options": [
         {
           "key": "A",
-          "en": "by frame / four points / brakes on"
+          "text": "open airways"
         },
         {
           "key": "B",
-          "en": "guide dog / working dog / identifying harness"
+          "text": "test-operating"
         },
         {
           "key": "C",
-          "en": "without delay / as soon as possible / immediately"
+          "text": "without delay"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "without delay / as soon as possible / immediately"
+      "correct_answer": "without delay"
     },
     {
       "id": "clue-positive-q2",
       "group_id": "positive",
       "index": 2,
-      "prompt_fi": "varmistaa / varmistua / huolehtia",
+      "direction": "en_to_fi",
+      "prompt": "make sure",
       "options": [
         {
           "key": "A",
-          "en": "hands-free / communication devices / making a call"
+          "text": "noudattaa"
         },
         {
           "key": "B",
-          "en": "politely / appropriately / calmly / kindly"
+          "text": "handsfree"
         },
         {
           "key": "C",
-          "en": "make sure / ensure / take care"
+          "text": "varmistaa"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "make sure / ensure / take care"
+      "correct_answer": "varmistaa"
     },
     {
       "id": "clue-positive-q3",
       "group_id": "positive",
       "index": 3,
-      "prompt_fi": "oikeaan määränpäähän / määränpäähän / määränpäähän",
+      "direction": "fi_to_en",
+      "prompt": "oikeaan määränpäähän",
       "options": [
         {
           "key": "A",
-          "en": "open airways / airways / recovery position / first aid"
+          "text": "alcohol interlock"
         },
         {
           "key": "B",
-          "en": "right destination / sufficient language skill / communicate"
+          "text": "right destination"
         },
         {
           "key": "C",
-          "en": "necessary / necessary for carrying out the transport"
+          "text": "obey/follow orders"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "right destination / sufficient language skill / communicate"
+      "correct_answer": "right destination"
     },
     {
       "id": "clue-positive-q4",
       "group_id": "positive",
       "index": 4,
-      "prompt_fi": "kela / palvelunumero / tilausvälitysyhtiö",
+      "direction": "en_to_fi",
+      "prompt": "Kela",
       "options": [
         {
           "key": "A",
-          "en": "obey/follow orders / traffic controller"
+          "text": "kysyä"
         },
         {
           "key": "B",
-          "en": "responsible / role model / exemplary"
+          "text": "kuitti"
         },
         {
           "key": "C",
-          "en": "Kela / service number / dispatch company"
+          "text": "kela"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "Kela / service number / dispatch company"
+      "correct_answer": "kela"
     },
     {
       "id": "clue-positive-q5",
       "group_id": "positive",
       "index": 5,
-      "prompt_fi": "kysyä / tiedustella / keskustella",
+      "direction": "fi_to_en",
+      "prompt": "kysyä",
       "options": [
         {
           "key": "A",
-          "en": "airbag switched off"
+          "text": "Kela"
         },
         {
           "key": "B",
-          "en": "ask / inquire / discuss / whether help is needed"
+          "text": "ask"
         },
         {
           "key": "C",
-          "en": "necessary / necessary for carrying out the transport"
+          "text": "safe"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "ask / inquire / discuss / whether help is needed"
+      "correct_answer": "ask"
     },
     {
       "id": "clue-positive-q6",
       "group_id": "positive",
       "index": 6,
-      "prompt_fi": "edullisin tarkoituksenmukainen reitti / tarkoituksenmukainen reitti / edullisin",
+      "direction": "en_to_fi",
+      "prompt": "most economical",
       "options": [
         {
           "key": "A",
-          "en": "guide dog / working dog / identifying harness"
+          "text": "hengitysteiden avaaminen"
         },
         {
           "key": "B",
-          "en": "most economical / appropriate route"
+          "text": "edullisin tarkoituksenmukainen reitti"
         },
         {
           "key": "C",
-          "en": "Kela / service number / dispatch company"
+          "text": "turvatyyny pois päältä"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "most economical / appropriate route"
+      "correct_answer": "edullisin tarkoituksenmukainen reitti"
     },
     {
       "id": "clue-positive-q7",
       "group_id": "positive",
       "index": 7,
-      "prompt_fi": "turvallinen / turvallisesti / turvallisuus",
+      "direction": "fi_to_en",
+      "prompt": "turvallinen",
       "options": [
         {
           "key": "A",
-          "en": "hands-free / communication devices / making a call"
+          "text": "Kela"
         },
         {
           "key": "B",
-          "en": "airbag switched off"
+          "text": "ask"
         },
         {
           "key": "C",
-          "en": "safe / safely / safety"
+          "text": "safe"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "safe / safely / safety"
+      "correct_answer": "safe"
     },
     {
       "id": "clue-positive-q8",
       "group_id": "positive",
       "index": 8,
-      "prompt_fi": "koekäyttämällä / koekäyttää / henkilönostin",
+      "direction": "en_to_fi",
+      "prompt": "test-operating",
       "options": [
         {
           "key": "A",
-          "en": "most economical / appropriate route"
+          "text": "ajopäiväkirja"
         },
         {
           "key": "B",
-          "en": "responsible / role model / exemplary"
+          "text": "asianmukainen"
         },
         {
           "key": "C",
-          "en": "test-operating / passenger lift"
+          "text": "koekäyttämällä"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "test-operating / passenger lift"
+      "correct_answer": "koekäyttämällä"
     },
     {
       "id": "clue-positive-q9",
       "group_id": "positive",
       "index": 9,
-      "prompt_fi": "välttämätön / tarpeellinen / kuljetuksen suorittamiseksi välttämätön",
+      "direction": "fi_to_en",
+      "prompt": "välttämätön",
       "options": [
         {
           "key": "A",
-          "en": "receipt / offering or giving a receipt"
+          "text": "make sure"
         },
         {
           "key": "B",
-          "en": "necessary / necessary for carrying out the transport"
+          "text": "necessary"
         },
         {
           "key": "C",
-          "en": "inside / indoors / received by staff/assistant"
+          "text": "guide dog"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "necessary / necessary for carrying out the transport"
+      "correct_answer": "necessary"
     },
     {
       "id": "clue-positive-q10",
       "group_id": "positive",
       "index": 10,
-      "prompt_fi": "tarvittaessa auttaa / tarvittaessa avustaa / tarvittaessa",
+      "direction": "en_to_fi",
+      "prompt": "help/assist if necessary",
       "options": [
         {
           "key": "A",
-          "en": "airbag switched off"
+          "text": "oikeaan määränpäähän"
         },
         {
           "key": "B",
-          "en": "help/assist if necessary"
+          "text": "tarvittaessa auttaa"
         },
         {
           "key": "C",
-          "en": "employer / check with employer"
+          "text": "turvatyyny pois päältä"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "help/assist if necessary"
+      "correct_answer": "tarvittaessa auttaa"
     },
     {
       "id": "clue-positive-q11",
       "group_id": "positive",
       "index": 11,
-      "prompt_fi": "handsfree / handsfree-laite / viestimet",
+      "direction": "fi_to_en",
+      "prompt": "handsfree",
       "options": [
         {
           "key": "A",
-          "en": "safe / safely / safety"
+          "text": "guide dog"
         },
         {
           "key": "B",
-          "en": "employer / check with employer"
+          "text": "deductible"
         },
         {
           "key": "C",
-          "en": "hands-free / communication devices / making a call"
+          "text": "hands-free"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "hands-free / communication devices / making a call"
+      "correct_answer": "hands-free"
     },
     {
       "id": "clue-positive-q12",
       "group_id": "positive",
       "index": 12,
-      "prompt_fi": "noudattaa / määräyksiä / liikenteen valvoja",
+      "direction": "en_to_fi",
+      "prompt": "obey/follow orders",
       "options": [
         {
           "key": "A",
-          "en": "politely / appropriately / calmly / kindly"
+          "text": "varmistaa"
         },
         {
           "key": "B",
-          "en": "responsible / role model / exemplary"
+          "text": "omavastuu"
         },
         {
           "key": "C",
-          "en": "obey/follow orders / traffic controller"
+          "text": "noudattaa"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "obey/follow orders / traffic controller"
+      "correct_answer": "noudattaa"
     },
     {
       "id": "clue-positive-q13",
       "group_id": "positive",
       "index": 13,
-      "prompt_fi": "sisälle / sisätilaan / kotiovesta sisään",
+      "direction": "fi_to_en",
+      "prompt": "sisälle",
       "options": [
         {
           "key": "A",
-          "en": "test-operating / passenger lift"
+          "text": "police"
         },
         {
           "key": "B",
-          "en": "safe / safely / safety"
+          "text": "receipt"
         },
         {
           "key": "C",
-          "en": "inside / indoors / received by staff/assistant"
+          "text": "inside"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "inside / indoors / received by staff/assistant"
+      "correct_answer": "inside"
     },
     {
       "id": "clue-positive-q14",
       "group_id": "positive",
       "index": 14,
-      "prompt_fi": "turvatyyny pois päältä / turvatyyny / airbag",
+      "direction": "en_to_fi",
+      "prompt": "airbag switched off",
       "options": [
         {
           "key": "A",
-          "en": "Kela / service number / dispatch company"
+          "text": "hengitysteiden avaaminen"
         },
         {
           "key": "B",
-          "en": "airbag switched off"
+          "text": "turvatyyny pois päältä"
         },
         {
           "key": "C",
-          "en": "receipt / offering or giving a receipt"
+          "text": "oikeaan määränpäähän"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "airbag switched off"
+      "correct_answer": "turvatyyny pois päältä"
     },
     {
       "id": "clue-positive-q15",
       "group_id": "positive",
       "index": 15,
-      "prompt_fi": "poliisi / liikenteen valvoja / hätäkeskus",
+      "direction": "fi_to_en",
+      "prompt": "poliisi",
       "options": [
         {
           "key": "A",
-          "en": "police / traffic controller / emergency centre / 112"
+          "text": "police"
         },
         {
           "key": "B",
-          "en": "help/assist if necessary"
+          "text": "inside"
         },
         {
           "key": "C",
-          "en": "by frame / four points / brakes on"
+          "text": "receipt"
         }
       ],
       "correct_option": "A",
-      "correct_meaning_en": "police / traffic controller / emergency centre / 112"
+      "correct_answer": "police"
     },
     {
       "id": "clue-negative-q1",
       "group_id": "negative",
       "index": 1,
-      "prompt_fi": "väkisin / fyysisesti / huutaa",
+      "direction": "fi_to_en",
+      "prompt": "väkisin",
       "options": [
         {
           "key": "A",
-          "en": "by force / physically / shout / push / hold tightly"
+          "text": "by force"
         },
         {
           "key": "B",
-          "en": "customer decides / right to choose"
+          "text": "without"
         },
         {
           "key": "C",
-          "en": "never / in no situation"
+          "text": "speeding"
         }
       ],
       "correct_option": "A",
-      "correct_meaning_en": "by force / physically / shout / push / hold tightly"
+      "correct_answer": "by force"
     },
     {
       "id": "clue-negative-q2",
       "group_id": "negative",
       "index": 2,
-      "prompt_fi": "käsipuhelin / puhelin kädessä / pitää puhelinta kädessä",
+      "direction": "en_to_fi",
+      "prompt": "handheld phone",
       "options": [
         {
           "key": "A",
-          "en": "guardian permission / authorisation"
+          "text": "ei koskaan"
         },
         {
           "key": "B",
-          "en": "handheld phone / phone in hand / without hands-free"
+          "text": "käsipuhelin"
         },
         {
           "key": "C",
-          "en": "does not need to"
+          "text": "ei tarvitse"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "handheld phone / phone in hand / without hands-free"
+      "correct_answer": "käsipuhelin"
     },
     {
       "id": "clue-negative-q3",
       "group_id": "negative",
       "index": 3,
-      "prompt_fi": "ei koskaan / missään tilanteessa / voi koskaan",
+      "direction": "fi_to_en",
+      "prompt": "ei koskaan",
       "options": [
         {
           "key": "A",
-          "en": "customer decides / right to choose"
+          "text": "short"
         },
         {
           "key": "B",
-          "en": "personal calls / send messages / watch screen"
+          "text": "hurry"
         },
         {
           "key": "C",
-          "en": "never / in no situation"
+          "text": "never"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "never / in no situation"
+      "correct_answer": "never"
     },
     {
       "id": "clue-negative-q4",
       "group_id": "negative",
       "index": 4,
-      "prompt_fi": "asiakas päättää / oikeus valita / saa valita pysähtymispaikan",
+      "direction": "en_to_fi",
+      "prompt": "customer decides",
       "options": [
         {
           "key": "A",
-          "en": "not driver responsibility / responsibility ends / customer responsible"
+          "text": "soittaa torvea"
         },
         {
           "key": "B",
-          "en": "customer decides / right to choose"
+          "text": "asiakas päättää"
         },
         {
           "key": "C",
-          "en": "take payment card/wallet/property as security"
+          "text": "odottaa autossa"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "customer decides / right to choose"
+      "correct_answer": "asiakas päättää"
     },
     {
       "id": "clue-negative-q5",
       "group_id": "negative",
       "index": 5,
-      "prompt_fi": "aina / aina silloin",
+      "direction": "fi_to_en",
+      "prompt": "aina",
       "options": [
         {
           "key": "A",
-          "en": "short / under a minute / under a kilometre"
+          "text": "never"
         },
         {
           "key": "B",
-          "en": "always"
+          "text": "always"
         },
         {
           "key": "C",
-          "en": "not driver responsibility / responsibility ends / customer responsible"
+          "text": "short"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "always"
+      "correct_answer": "always"
     },
     {
       "id": "clue-negative-q6",
       "group_id": "negative",
       "index": 6,
-      "prompt_fi": "ilman / kiinnittämättä / maksamatta",
+      "direction": "en_to_fi",
+      "prompt": "without",
       "options": [
         {
           "key": "A",
-          "en": "back-seat/driver does not need seat belt"
+          "text": "lyhyt"
         },
         {
           "key": "B",
-          "en": "honk horn / pet/pat guide dog"
+          "text": "kiire"
         },
         {
           "key": "C",
-          "en": "without / without doing"
+          "text": "ilman"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "without / without doing"
+      "correct_answer": "ilman"
     },
     {
       "id": "clue-negative-q7",
       "group_id": "negative",
       "index": 7,
-      "prompt_fi": "vain / ainoastaan",
+      "direction": "fi_to_en",
+      "prompt": "vain",
       "options": [
         {
           "key": "A",
-          "en": "speeding / exceed speed limit / speeding fines"
+          "text": "never"
         },
         {
           "key": "B",
-          "en": "take payment card/wallet/property as security"
+          "text": "leave"
         },
         {
           "key": "C",
-          "en": "only"
+          "text": "only"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "only"
+      "correct_answer": "only"
     },
     {
       "id": "clue-negative-q8",
       "group_id": "negative",
       "index": 8,
-      "prompt_fi": "kiire / kiireinen / myöhässä",
+      "direction": "en_to_fi",
+      "prompt": "hurry",
       "options": [
         {
           "key": "A",
-          "en": "wait in car / no need to leave car"
+          "text": "ilman"
         },
         {
           "key": "B",
-          "en": "hurry / busy / late / delay"
+          "text": "kiire"
         },
         {
           "key": "C",
-          "en": "by force / physically / shout / push / hold tightly"
+          "text": "lyhyt"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "hurry / busy / late / delay"
+      "correct_answer": "kiire"
     },
     {
       "id": "clue-negative-q9",
       "group_id": "negative",
       "index": 9,
-      "prompt_fi": "jättää / hylkää / jätät huomiotta",
+      "direction": "fi_to_en",
+      "prompt": "jättää",
       "options": [
         {
           "key": "A",
-          "en": "leave / abandon / ignore / continue normally"
+          "text": "leave"
         },
         {
           "key": "B",
-          "en": "only customer service / focus only on one thing"
+          "text": "never"
         },
         {
           "key": "C",
-          "en": "voluntary / optional"
+          "text": "hurry"
         }
       ],
       "correct_option": "A",
-      "correct_meaning_en": "leave / abandon / ignore / continue normally"
+      "correct_answer": "leave"
     },
     {
       "id": "clue-negative-q10",
       "group_id": "negative",
       "index": 10,
-      "prompt_fi": "ottaa maksukortti / lompakko / pantiksi",
+      "direction": "en_to_fi",
+      "prompt": "take payment card/wallet/property as security",
       "options": [
         {
           "key": "A",
-          "en": "take payment card/wallet/property as security"
+          "text": "ottaa maksukortti"
         },
         {
           "key": "B",
-          "en": "at own discretion / any route / anything"
+          "text": "vaatii avustajan"
         },
         {
           "key": "C",
-          "en": "by force / physically / shout / push / hold tightly"
+          "text": "jos asiakas pyytää"
         }
       ],
       "correct_option": "A",
-      "correct_meaning_en": "take payment card/wallet/property as security"
+      "correct_answer": "ottaa maksukortti"
     },
     {
       "id": "clue-negative-q11",
       "group_id": "negative",
       "index": 11,
-      "prompt_fi": "vaatii avustajan / ei mukana avustaja / avustaja ei ole mukana",
+      "direction": "fi_to_en",
+      "prompt": "vaatii avustajan",
       "options": [
         {
           "key": "A",
-          "en": "without checking / visually only"
+          "text": "guardian permission"
         },
         {
           "key": "B",
-          "en": "without safety restraint/device"
+          "text": "at own discretion"
         },
         {
           "key": "C",
-          "en": "requires assistant / no assistant"
+          "text": "requires assistant"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "requires assistant / no assistant"
+      "correct_answer": "requires assistant"
     },
     {
       "id": "clue-negative-q12",
       "group_id": "negative",
       "index": 12,
-      "prompt_fi": "kirjallinen valtakirja / valtakirja",
+      "direction": "en_to_fi",
+      "prompt": "written power of attorney",
       "options": [
         {
           "key": "A",
-          "en": "wait in car / no need to leave car"
+          "text": "vain asiakaspalveluun"
         },
         {
           "key": "B",
-          "en": "by force / physically / shout / push / hold tightly"
+          "text": "oman harkinnan mukaan"
         },
         {
           "key": "C",
-          "en": "written power of attorney"
+          "text": "kirjallinen valtakirja"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "written power of attorney"
+      "correct_answer": "kirjallinen valtakirja"
     },
     {
       "id": "clue-negative-q13",
       "group_id": "negative",
       "index": 13,
-      "prompt_fi": "tarkastamatta / silmämääräisesti / vain silmämääräisesti",
+      "direction": "fi_to_en",
+      "prompt": "tarkastamatta",
       "options": [
         {
           "key": "A",
-          "en": "short / under a minute / under a kilometre"
+          "text": "does not need to"
         },
         {
           "key": "B",
-          "en": "leave / abandon / ignore / continue normally"
+          "text": "if customer asks"
         },
         {
           "key": "C",
-          "en": "without checking / visually only"
+          "text": "without checking"
         }
       ],
       "correct_option": "C",
-      "correct_meaning_en": "without checking / visually only"
+      "correct_answer": "without checking"
     },
     {
       "id": "clue-negative-q14",
       "group_id": "negative",
       "index": 14,
-      "prompt_fi": "lyhyt / alle minuutti / alle kilometri",
+      "direction": "en_to_fi",
+      "prompt": "short",
       "options": [
         {
           "key": "A",
-          "en": "short / under a minute / under a kilometre"
+          "text": "lyhyt"
         },
         {
           "key": "B",
-          "en": "guardian permission / authorisation"
+          "text": "kiire"
         },
         {
           "key": "C",
-          "en": "not driver responsibility / responsibility ends / customer responsible"
+          "text": "ilman"
         }
       ],
       "correct_option": "A",
-      "correct_meaning_en": "short / under a minute / under a kilometre"
+      "correct_answer": "lyhyt"
     },
     {
       "id": "clue-negative-q15",
       "group_id": "negative",
       "index": 15,
-      "prompt_fi": "henkilökohtaisia puheluita / lähettää viestejä / katsella televisiokuvaa",
+      "direction": "fi_to_en",
+      "prompt": "henkilökohtaisia puheluita",
       "options": [
         {
           "key": "A",
-          "en": "only customer service / focus only on one thing"
+          "text": "handheld phone"
         },
         {
           "key": "B",
-          "en": "personal calls / send messages / watch screen"
+          "text": "personal calls"
         },
         {
           "key": "C",
-          "en": "voluntary / optional"
+          "text": "does not need to"
         }
       ],
       "correct_option": "B",
-      "correct_meaning_en": "personal calls / send messages / watch screen"
+      "correct_answer": "personal calls"
     }
   ]
 }

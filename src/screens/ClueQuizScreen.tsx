@@ -120,8 +120,8 @@ export function ClueQuizScreen({ navigation, route }: Props) {
               <Text style={styles.sectionHeader}>Review ({wrong.length})</Text>
               {wrong.map(w => (
                 <View key={w.id} style={styles.wrongItem}>
-                  <Text style={styles.wrongWord}>{w.prompt_fi}</Text>
-                  <Text style={styles.wrongMeaning}>{w.correct_meaning_en}</Text>
+                  <Text style={styles.wrongWord}>{w.prompt}</Text>
+                  <Text style={styles.wrongMeaning}>{w.correct_answer}</Text>
                 </View>
               ))}
             </>
@@ -168,8 +168,12 @@ export function ClueQuizScreen({ navigation, route }: Props) {
         </View>
 
         <View style={styles.promptCard}>
-          <Text style={styles.promptLabel}>WHAT DOES THIS CLUE WORD MEAN?</Text>
-          <Text style={styles.promptWord}>{q.prompt_fi}</Text>
+          <Text style={styles.promptLabel}>
+            {q.direction === 'en_to_fi'
+              ? 'WHICH FINNISH CLUE WORD MEANS THIS?'
+              : 'WHAT DOES THIS CLUE WORD MEAN?'}
+          </Text>
+          <Text style={styles.promptWord}>{q.prompt}</Text>
         </View>
 
         <View style={styles.options}>
@@ -177,7 +181,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
             <OptionRow
               key={opt.key}
               letter={opt.key}
-              text={opt.en ?? ''}
+              text={opt.text ?? ''}
               state={optionStates[opt.key]}
               onPress={() => handleSelect(opt.key)}
               disabled={answered}
@@ -199,7 +203,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
             <Text style={styles.feedbackText}>
               {gotItRight
                 ? 'Correct!'
-                : <>Correct answer: <Text style={{ fontFamily: font.semibold }}>{q.correct_meaning_en}</Text></>}
+                : <>Correct answer: <Text style={{ fontFamily: font.semibold }}>{q.correct_answer}</Text></>}
             </Text>
           </MotiView>
         )}
