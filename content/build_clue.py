@@ -126,7 +126,7 @@ def main():
                 "meaning_en": e["meaning_en"],
                 "effect_en": e["effect_en"],
                 "exception_en": e["exception_en"],
-                "match_count": e["match_count"],
+                # match_count drives the sort above but is not shipped (noisy heuristic)
             })
 
     # ── Generated quiz ───────────────────────────────────────────────────────

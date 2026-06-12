@@ -30,8 +30,7 @@
       "phrase_fi": "poliisi / liikenteen valvoja / hätäkeskus",
       "meaning_en": "police / traffic controller / emergency centre / 112",
       "effect_en": "Positive when authority help is needed: accident, threat, unpaid fare, traffic control, or a person who cannot safely be left.",
-      "exception_en": "Do not call police for every ordinary customer-service problem; first use calm communication where safe.",
-      "match_count": 31
+      "exception_en": "Do not call police for every ordinary customer-service problem; first use calm communication where safe."
     },
     {
       "id": "clue-positive-w2",
@@ -41,8 +40,7 @@
       "phrase_fi": "varmistaa / varmistua / huolehtia",
       "meaning_en": "make sure / ensure / take care",
       "effect_en": "Usually points to the driver checking safety, destination, seat belt use, assisted handover, or customer comfort.",
-      "exception_en": "Not enough by itself if the option asks the driver to do something illegal, unsafe, or beyond the taxi-driver role.",
-      "match_count": 24
+      "exception_en": "Not enough by itself if the option asks the driver to do something illegal, unsafe, or beyond the taxi-driver role."
     },
     {
       "id": "clue-positive-w3",
@@ -52,8 +50,7 @@
       "phrase_fi": "kysyä / tiedustella / keskustella",
       "meaning_en": "ask / inquire / discuss / whether help is needed",
       "effect_en": "Positive when the driver asks before assisting, confirms wishes, route details, or a problem calmly.",
-      "exception_en": "If immediate emergency action is required, asking too much first may not be the best first step.",
-      "match_count": 20
+      "exception_en": "If immediate emergency action is required, asking too much first may not be the best first step."
     },
     {
       "id": "clue-positive-w4",
@@ -63,8 +60,7 @@
       "phrase_fi": "tarvittaessa auttaa / tarvittaessa avustaa / tarvittaessa",
       "meaning_en": "help/assist if necessary",
       "effect_en": "Positive when help is offered respectfully without forcing the passenger.",
-      "exception_en": "Do not assume every passenger needs help; ask or observe first unless the situation is clearly urgent.",
-      "match_count": 17
+      "exception_en": "Do not assume every passenger needs help; ask or observe first unless the situation is clearly urgent."
     },
     {
       "id": "clue-positive-w5",
@@ -74,8 +70,7 @@
       "phrase_fi": "työnantaja / työnantajalta / selvität työnantajalta",
       "meaning_en": "employer / check with employer",
       "effect_en": "Positive when authorization, work assignment, regular-taxi arrangement, or company process must be confirmed.",
-      "exception_en": "Driver responsibility for immediate safety cannot be handed to employer after the ride has already started.",
-      "match_count": 16
+      "exception_en": "Driver responsibility for immediate safety cannot be handed to employer after the ride has already started."
     },
     {
       "id": "clue-positive-w6",
@@ -85,8 +80,7 @@
       "phrase_fi": "kela / palvelunumero / tilausvälitysyhtiö",
       "meaning_en": "Kela / service number / dispatch company",
       "effect_en": "Positive when the driver cannot personally decide Kela entitlement, regular-taxi rights, or suitable vehicle arrangement.",
-      "exception_en": "Do not replace official Kela/dispatch process with personal permission from the customer or guardian.",
-      "match_count": 14
+      "exception_en": "Do not replace official Kela/dispatch process with personal permission from the customer or guardian."
     },
     {
       "id": "clue-positive-w7",
@@ -96,8 +90,7 @@
       "phrase_fi": "turvallinen / turvallisesti / turvallisuus",
       "meaning_en": "safe / safely / safety",
       "effect_en": "Strong positive clue when the answer protects the passenger, road users, or the driver.",
-      "exception_en": "Check whether the option is practical and legal; a broad safety word can still be wrong if it ignores a specific rule.",
-      "match_count": 14
+      "exception_en": "Check whether the option is practical and legal; a broad safety word can still be wrong if it ignores a specific rule."
     },
     {
       "id": "clue-positive-w8",
@@ -107,8 +100,7 @@
       "phrase_fi": "alkolukko / asennettu alkolukko / estyy",
       "meaning_en": "alcohol interlock / installed / prevents starting",
       "effect_en": "Positive in school/day-care transport context where the vehicle must have an alcohol interlock.",
-      "exception_en": "Not every taxi requires an alcohol interlock; the school/day-care transport context matters.",
-      "match_count": 13
+      "exception_en": "Not every taxi requires an alcohol interlock; the school/day-care transport context matters."
     },
     {
       "id": "clue-positive-w9",
@@ -118,8 +110,7 @@
       "phrase_fi": "kohteliaasti / asiallisesti / rauhallisesti",
       "meaning_en": "politely / appropriately / calmly / kindly",
       "effect_en": "Positive in customer service, complaints, aggression, and passenger comfort situations.",
-      "exception_en": "Politeness cannot override legal/safety duties such as seat belts, safe stopping, or accident response.",
-      "match_count": 12
+      "exception_en": "Politeness cannot override legal/safety duties such as seat belts, safe stopping, or accident response."
     },
     {
       "id": "clue-positive-w10",
@@ -129,8 +120,7 @@
       "phrase_fi": "oikeaan määränpäähän / määränpäähän / määränpäähän",
       "meaning_en": "right destination / sufficient language skill / communicate",
       "effect_en": "Positive when the driver’s duty is ensuring the customer reaches the correct destination safely.",
-      "exception_en": "Sufficient language skill does not mean fluent conversation or same-language ability.",
-      "match_count": 11
+      "exception_en": "Sufficient language skill does not mean fluent conversation or same-language ability."
     },
     {
       "id": "clue-positive-w11",
@@ -140,8 +130,7 @@
       "phrase_fi": "viipymättä / mahdollisimman pian / heti",
       "meaning_en": "without delay / as soon as possible / immediately",
       "effect_en": "Usually positive for lost property, emergency response, safety reporting, and urgent assistance.",
-      "exception_en": "Time words are not enough if the action itself is wrong, such as abandoning a passenger quickly.",
-      "match_count": 8
+      "exception_en": "Time words are not enough if the action itself is wrong, such as abandoning a passenger quickly."
     },
     {
       "id": "clue-positive-w12",
@@ -151,8 +140,7 @@
       "phrase_fi": "välttämätön / tarpeellinen / kuljetuksen suorittamiseksi välttämätön",
       "meaning_en": "necessary / necessary for carrying out the transport",
       "effect_en": "Positive for phone/hands-free or communication only when it is genuinely needed for the transport.",
-      "exception_en": "Necessary does not permit speeding, unsafe stopping, or illegal customer requests.",
-      "match_count": 8
+      "exception_en": "Necessary does not permit speeding, unsafe stopping, or illegal customer requests."
     },
     {
       "id": "clue-positive-w13",
@@ -162,8 +150,7 @@
       "phrase_fi": "handsfree / handsfree-laite / viestimet",
       "meaning_en": "hands-free / communication devices / making a call",
       "effect_en": "Positive only when communication is necessary and safe, especially with hands-free while driving.",
-      "exception_en": "Handheld phone use, messaging, or personal calls during transport are generally negative clues.",
-      "match_count": 7
+      "exception_en": "Handheld phone use, messaging, or personal calls during transport are generally negative clues."
     },
     {
       "id": "clue-positive-w14",
@@ -173,8 +160,7 @@
       "phrase_fi": "sisälle / sisätilaan / kotiovesta sisään",
       "meaning_en": "inside / indoors / received by staff/assistant",
       "effect_en": "Positive in questions about children, vulnerable customers, freezing weather, care institutions, or agreed assistants.",
-      "exception_en": "Do not expand this into medical/nursing tasks such as undressing or personal care unless specifically required and appropriate.",
-      "match_count": 7
+      "exception_en": "Do not expand this into medical/nursing tasks such as undressing or personal care unless specifically required and appropriate."
     },
     {
       "id": "clue-positive-w15",
@@ -184,8 +170,7 @@
       "phrase_fi": "asianmukainen / asianmukaisessa / hyväksytty",
       "meaning_en": "appropriate / approved / suitable",
       "effect_en": "Positive for child restraints, seat belts, vehicles, equipment, and safe customer transport.",
-      "exception_en": "Still check the specific object: a suitable taxi or approved restraint is different from any improvised solution.",
-      "match_count": 5
+      "exception_en": "Still check the specific object: a suitable taxi or approved restraint is different from any improvised solution."
     },
     {
       "id": "clue-positive-w16",
@@ -195,8 +180,7 @@
       "phrase_fi": "edullisin tarkoituksenmukainen reitti / tarkoituksenmukainen reitti / edullisin",
       "meaning_en": "most economical / appropriate route",
       "effect_en": "Positive when passenger leaves route choice to the driver or asks for route advice.",
-      "exception_en": "Do not blindly choose any route; customer preference and fairness matter.",
-      "match_count": 5
+      "exception_en": "Do not blindly choose any route; customer preference and fairness matter."
     },
     {
       "id": "clue-positive-w17",
@@ -206,8 +190,7 @@
       "phrase_fi": "hengitysteiden avaaminen / hengitystiet / kylkiasento",
       "meaning_en": "open airways / airways / recovery position / first aid",
       "effect_en": "Positive in first-aid and seizure/accident questions.",
-      "exception_en": "Do not physically restrain convulsions or move an injured person unless necessary to save life/prevent further danger.",
-      "match_count": 5
+      "exception_en": "Do not physically restrain convulsions or move an injured person unless necessary to save life/prevent further danger."
     },
     {
       "id": "clue-positive-w18",
@@ -217,8 +200,7 @@
       "phrase_fi": "opaskoira / työkoira / tunnistevaljaat",
       "meaning_en": "guide dog / working dog / identifying harness",
       "effect_en": "Positive in special-needs questions about guide dogs and working dogs.",
-      "exception_en": "Do not distract, pet, or treat the guide dog as a normal pet during the job.",
-      "match_count": 5
+      "exception_en": "Do not distract, pet, or treat the guide dog as a normal pet during the job."
     },
     {
       "id": "clue-positive-w19",
@@ -228,8 +210,7 @@
       "phrase_fi": "kuitti / kuitin tarjoaminen / annettava kuitti",
       "meaning_en": "receipt / offering or giving a receipt",
       "effect_en": "Positive because receipt must be offered/given after the ride/payment.",
-      "exception_en": "Receipt duty is separate from payment disputes; do not take a customer’s card or property by yourself.",
-      "match_count": 4
+      "exception_en": "Receipt duty is separate from payment disputes; do not take a customer’s card or property by yourself."
     },
     {
       "id": "clue-positive-w20",
@@ -239,8 +220,7 @@
       "phrase_fi": "noudattaa / määräyksiä / liikenteen valvoja",
       "meaning_en": "obey/follow orders / traffic controller",
       "effect_en": "Positive when official traffic instructions override conflicting informal instructions.",
-      "exception_en": "Employer/customer instructions do not override police, traffic controller, or road rules.",
-      "match_count": 4
+      "exception_en": "Employer/customer instructions do not override police, traffic controller, or road rules."
     },
     {
       "id": "clue-positive-w21",
@@ -250,8 +230,7 @@
       "phrase_fi": "rungosta / neljästä pisteestä / jarrut päälle",
       "meaning_en": "by frame / four points / brakes on",
       "effect_en": "Strong positive clue for securing a wheelchair safely in an accessible taxi.",
-      "exception_en": "Wheelchair brakes alone or normal seat belt alone are not enough for wheelchair securing.",
-      "match_count": 4
+      "exception_en": "Wheelchair brakes alone or normal seat belt alone are not enough for wheelchair securing."
     },
     {
       "id": "clue-positive-w22",
@@ -261,8 +240,7 @@
       "phrase_fi": "ajopäiväkirja / ajopäiväkirja / työvuoron aloitus",
       "meaning_en": "driving logbook / shift start / break times",
       "effect_en": "Positive in work-time and driving-logbook duty questions.",
-      "exception_en": "Do not include irrelevant personal details such as meals unless the law/company rule specifically asks.",
-      "match_count": 3
+      "exception_en": "Do not include irrelevant personal details such as meals unless the law/company rule specifically asks."
     },
     {
       "id": "clue-positive-w23",
@@ -272,8 +250,7 @@
       "phrase_fi": "omavastuu / enintään omavastuu",
       "meaning_en": "deductible / at most the deductible",
       "effect_en": "Positive in Kela-ride payment questions.",
-      "exception_en": "Only applies when the ride is properly ordered as a Kela ride through the correct process.",
-      "match_count": 3
+      "exception_en": "Only applies when the ride is properly ordered as a Kela ride through the correct process."
     },
     {
       "id": "clue-positive-w24",
@@ -283,8 +260,7 @@
       "phrase_fi": "koekäyttämällä / koekäyttää / henkilönostin",
       "meaning_en": "test-operating / passenger lift",
       "effect_en": "Positive for accessible-taxi pre-departure equipment checks.",
-      "exception_en": "A visual check alone may be too weak if the question asks how to check the lift.",
-      "match_count": 2
+      "exception_en": "A visual check alone may be too weak if the question asks how to check the lift."
     },
     {
       "id": "clue-positive-w25",
@@ -294,8 +270,7 @@
       "phrase_fi": "turvatyyny pois päältä / turvatyyny / airbag",
       "meaning_en": "airbag switched off",
       "effect_en": "Positive clue for rear-facing child restraint on the front passenger seat.",
-      "exception_en": "Airbag clue is context-specific; it does not remove normal child-restraint and seat-belt duties.",
-      "match_count": 2
+      "exception_en": "Airbag clue is context-specific; it does not remove normal child-restraint and seat-belt duties."
     },
     {
       "id": "clue-positive-w26",
@@ -305,8 +280,7 @@
       "phrase_fi": "vastuullinen / roolimalli / esimerkillinen",
       "meaning_en": "responsible / role model / exemplary",
       "effect_en": "Positive in school/day-care transport and general professional behaviour.",
-      "exception_en": "Being friendly or role-model-like still does not mean doing parent/school duties outside the driver role.",
-      "match_count": 1
+      "exception_en": "Being friendly or role-model-like still does not mean doing parent/school duties outside the driver role."
     },
     {
       "id": "clue-negative-w1",
@@ -316,8 +290,7 @@
       "phrase_fi": "aina / aina silloin",
       "meaning_en": "always",
       "effect_en": "Can be suspicious because it may make an option too absolute.",
-      "exception_en": "Often correct where the rule truly is absolute in that context, such as always using proper alkolukko in school/day-care transport or always offering receipt.",
-      "match_count": 56
+      "exception_en": "Often correct where the rule truly is absolute in that context, such as always using proper alkolukko in school/day-care transport or always offering receipt."
     },
     {
       "id": "clue-negative-w2",
@@ -327,8 +300,7 @@
       "phrase_fi": "vain / ainoastaan",
       "meaning_en": "only",
       "effect_en": "Often too narrow when it limits a duty too much, such as only front seat, only customer service, only visual check.",
-      "exception_en": "Can be correct in questions about strict legal limits or defined exceptions.",
-      "match_count": 48
+      "exception_en": "Can be correct in questions about strict legal limits or defined exceptions."
     },
     {
       "id": "clue-negative-w3",
@@ -338,8 +310,7 @@
       "phrase_fi": "ilman / kiinnittämättä / maksamatta",
       "meaning_en": "without / without doing",
       "effect_en": "Often negative when it means without seat belt, restraint, hands-free, payment, checking, or permission.",
-      "exception_en": "Can be neutral as context, for example “without advance booking”; do not judge this word alone.",
-      "match_count": 42
+      "exception_en": "Can be neutral as context, for example “without advance booking”; do not judge this word alone."
     },
     {
       "id": "clue-negative-w4",
@@ -349,8 +320,7 @@
       "phrase_fi": "ei tarvitse / ei tarvi / tarvitse käyttää",
       "meaning_en": "does not need to",
       "effect_en": "Often wrong when it removes a safety, seat-belt, equipment, or service duty.",
-      "exception_en": "Can be correct when the law truly gives no duty in that exact context, so check who is responsible and the question wording.",
-      "match_count": 30
+      "exception_en": "Can be correct when the law truly gives no duty in that exact context, so check who is responsible and the question wording."
     },
     {
       "id": "clue-negative-w5",
@@ -360,8 +330,7 @@
       "phrase_fi": "kiire / kiireinen / myöhässä",
       "meaning_en": "hurry / busy / late / delay",
       "effect_en": "Negative if used to justify speeding, unsafe stopping, or breaking traffic rules.",
-      "exception_en": "Positive answer usually explains the delay, chooses the fastest legal route, and keeps the customer updated.",
-      "match_count": 11
+      "exception_en": "Positive answer usually explains the delay, chooses the fastest legal route, and keeps the customer updated."
     },
     {
       "id": "clue-negative-w6",
@@ -371,8 +340,7 @@
       "phrase_fi": "jos asiakas pyytää / asiakas pyytää / pyytää ajamaan ylinopeutta",
       "meaning_en": "if customer asks",
       "effect_en": "Customer request never permits speeding, unsafe stopping, illegal purchase, or abandoning safety duties.",
-      "exception_en": "Customer request can be valid for normal preferences, route selection, seat choice, or assistance style.",
-      "match_count": 10
+      "exception_en": "Customer request can be valid for normal preferences, route selection, seat choice, or assistance style."
     },
     {
       "id": "clue-negative-w7",
@@ -382,8 +350,7 @@
       "phrase_fi": "ei koskaan / missään tilanteessa / voi koskaan",
       "meaning_en": "never / in no situation",
       "effect_en": "Often too absolute and therefore wrong.",
-      "exception_en": "Can be correct for clearly prohibited behaviour, such as handheld phone use or illegal alcohol-purchase requests.",
-      "match_count": 9
+      "exception_en": "Can be correct for clearly prohibited behaviour, such as handheld phone use or illegal alcohol-purchase requests."
     },
     {
       "id": "clue-negative-w8",
@@ -393,8 +360,7 @@
       "phrase_fi": "ilman turvalaitetta / turvalaitetta ei / turvalaite ei",
       "meaning_en": "without safety restraint/device",
       "effect_en": "Usually negative for children and accessibility safety.",
-      "exception_en": "Taxi child-seat exceptions are narrow; under-3 and under-135 contexts need careful rule checking.",
-      "match_count": 9
+      "exception_en": "Taxi child-seat exceptions are narrow; under-3 and under-135 contexts need careful rule checking."
     },
     {
       "id": "clue-negative-w9",
@@ -404,8 +370,7 @@
       "phrase_fi": "poikkeus / poikkeusajo / poikkeustapauksessa",
       "meaning_en": "exception / exceptional driving",
       "effect_en": "Often suspicious when used to justify bypassing alkolukko, stopping rules, or phone rules.",
-      "exception_en": "Some legal exceptions exist, but they must be explicitly stated and not invented by the driver.",
-      "match_count": 9
+      "exception_en": "Some legal exceptions exist, but they must be explicitly stated and not invented by the driver."
     },
     {
       "id": "clue-negative-w10",
@@ -415,8 +380,7 @@
       "phrase_fi": "jättää / hylkää / jätät huomiotta",
       "meaning_en": "leave / abandon / ignore / continue normally",
       "effect_en": "Negative when safety, child, special-needs, accident, or lost-property duty exists.",
-      "exception_en": "Can be correct only after you have ensured the customer/property/situation is safely handled.",
-      "match_count": 8
+      "exception_en": "Can be correct only after you have ensured the customer/property/situation is safely handled."
     },
     {
       "id": "clue-negative-w11",
@@ -426,8 +390,7 @@
       "phrase_fi": "vapaaehtoista / vapaaehtoinen",
       "meaning_en": "voluntary / optional",
       "effect_en": "Usually wrong for seat belt, receipt, and mandatory driver duties.",
-      "exception_en": "Some customer choices are voluntary, but legal safety and service duties are not.",
-      "match_count": 8
+      "exception_en": "Some customer choices are voluntary, but legal safety and service duties are not."
     },
     {
       "id": "clue-negative-w12",
@@ -437,8 +400,7 @@
       "phrase_fi": "ylinopeus / ylinopeutta / ylittää nopeusrajoitus",
       "meaning_en": "speeding / exceed speed limit / speeding fines",
       "effect_en": "Strong negative clue: hurry or customer promise to pay fines never allows speeding.",
-      "exception_en": "Emergency vehicles/legal emergency rules do not apply to ordinary taxi rides.",
-      "match_count": 7
+      "exception_en": "Emergency vehicles/legal emergency rules do not apply to ordinary taxi rides."
     },
     {
       "id": "clue-negative-w13",
@@ -448,8 +410,7 @@
       "phrase_fi": "asiakas päättää / oikeus valita / saa valita pysähtymispaikan",
       "meaning_en": "customer decides / right to choose",
       "effect_en": "Negative when customer choice conflicts with safety, law, route fairness, payment rules, or driver responsibility.",
-      "exception_en": "Customer can choose or influence the route when legal and fair; driver may still need to advise.",
-      "match_count": 6
+      "exception_en": "Customer can choose or influence the route when legal and fair; driver may still need to advise."
     },
     {
       "id": "clue-negative-w14",
@@ -459,8 +420,7 @@
       "phrase_fi": "lyhyt / alle minuutti / alle kilometri",
       "meaning_en": "short / under a minute / under a kilometre",
       "effect_en": "Usually wrong when it says a short distance/time removes safety or equipment duties.",
-      "exception_en": "Short distance may matter only if the law or question explicitly sets that exception.",
-      "match_count": 6
+      "exception_en": "Short distance may matter only if the law or question explicitly sets that exception."
     },
     {
       "id": "clue-negative-w15",
@@ -470,8 +430,7 @@
       "phrase_fi": "takapenkillä ei tarvitse / kuljettajan ei tarvitse käyttää turvavyötä / ei tarvitse käyttää turvavyötä",
       "meaning_en": "back-seat/driver does not need seat belt",
       "effect_en": "Usually negative: driver and passengers must follow seat-belt rules.",
-      "exception_en": "Responsibility for a 15+ passenger may be the passenger’s, but that does not make seat-belt use optional.",
-      "match_count": 6
+      "exception_en": "Responsibility for a 15+ passenger may be the passenger’s, but that does not make seat-belt use optional."
     },
     {
       "id": "clue-negative-w16",
@@ -481,8 +440,7 @@
       "phrase_fi": "henkilökohtaisia puheluita / lähettää viestejä / katsella televisiokuvaa",
       "meaning_en": "personal calls / send messages / watch screen",
       "effect_en": "Negative while driving or with customer on board.",
-      "exception_en": "Work-related communication may be allowed only if necessary and handled safely.",
-      "match_count": 3
+      "exception_en": "Work-related communication may be allowed only if necessary and handled safely."
     },
     {
       "id": "clue-negative-w17",
@@ -492,8 +450,7 @@
       "phrase_fi": "käsipuhelin / puhelin kädessä / pitää puhelinta kädessä",
       "meaning_en": "handheld phone / phone in hand / without hands-free",
       "effect_en": "Negative while driving; communication should be hands-free and only when necessary.",
-      "exception_en": "If stopped safely and legally, communication may be handled differently.",
-      "match_count": 3
+      "exception_en": "If stopped safely and legally, communication may be handled differently."
     },
     {
       "id": "clue-negative-w18",
@@ -503,8 +460,7 @@
       "phrase_fi": "väkisin / fyysisesti / huutaa",
       "meaning_en": "by force / physically / shout / push / hold tightly",
       "effect_en": "Negative in aggression, assistance, disability, and seizure situations.",
-      "exception_en": "Physical action is only for immediate safety/first aid and must be proportionate; do not restrain convulsions.",
-      "match_count": 3
+      "exception_en": "Physical action is only for immediate safety/first aid and must be proportionate; do not restrain convulsions."
     },
     {
       "id": "clue-negative-w19",
@@ -514,8 +470,7 @@
       "phrase_fi": "ei alkolukkoa / ilman alkolukkoa / olla käyttämättä alkolukkoa",
       "meaning_en": "no alcohol interlock / without interlock / switch vehicle",
       "effect_en": "Negative in school/day-care transport where an alcohol interlock is required.",
-      "exception_en": "Not every taxi needs alkolukko, so this clue depends on the transport type.",
-      "match_count": 2
+      "exception_en": "Not every taxi needs alkolukko, so this clue depends on the transport type."
     },
     {
       "id": "clue-negative-w20",
@@ -525,8 +480,7 @@
       "phrase_fi": "huoltajan lupa / huoltajan valtuutus / kirjallinen lupa",
       "meaning_en": "guardian permission / authorisation",
       "effect_en": "Suspicious when used to override child seat-belt duties or official Kela/regular-taxi processes.",
-      "exception_en": "Guardian involvement can be relevant for a child travelling alone, but it does not cancel legal safety duties.",
-      "match_count": 2
+      "exception_en": "Guardian involvement can be relevant for a child travelling alone, but it does not cancel legal safety duties."
     },
     {
       "id": "clue-negative-w21",
@@ -536,8 +490,7 @@
       "phrase_fi": "kirjallinen valtakirja / valtakirja",
       "meaning_en": "written power of attorney",
       "effect_en": "Often negative when it is used to justify buying alcohol or bypassing a formal process.",
-      "exception_en": "A written authorisation may matter in other legal contexts, but not for illegal or unsafe requests.",
-      "match_count": 2
+      "exception_en": "A written authorisation may matter in other legal contexts, but not for illegal or unsafe requests."
     },
     {
       "id": "clue-negative-w22",
@@ -547,8 +500,7 @@
       "phrase_fi": "odottaa autossa / odotan autossa / ei tarvitse poistua",
       "meaning_en": "wait in car / no need to leave car",
       "effect_en": "Often wrong in assistance, slow passenger, visually impaired, wheelchair, or safe-exit questions.",
-      "exception_en": "May be acceptable when no help is needed and leaving the vehicle would create a safety problem.",
-      "match_count": 2
+      "exception_en": "May be acceptable when no help is needed and leaving the vehicle would create a safety problem."
     },
     {
       "id": "clue-negative-w23",
@@ -558,8 +510,7 @@
       "phrase_fi": "tarkastamatta / silmämääräisesti / vain silmämääräisesti",
       "meaning_en": "without checking / visually only",
       "effect_en": "Negative in passenger-lift or equipment check questions.",
-      "exception_en": "A visual check can be part of inspection, but not enough if functional testing is required.",
-      "match_count": 2
+      "exception_en": "A visual check can be part of inspection, but not enough if functional testing is required."
     },
     {
       "id": "clue-negative-w24",
@@ -569,8 +520,7 @@
       "phrase_fi": "vain asiakaspalveluun / keskittyä vain asiakaspalveluun / vain omaan ajoneuvoon",
       "meaning_en": "only customer service / focus only on one thing",
       "effect_en": "Wrong when it ignores traffic safety, anticipation, or special passenger needs.",
-      "exception_en": "Customer service is important but never replaces legal and safety duties.",
-      "match_count": 2
+      "exception_en": "Customer service is important but never replaces legal and safety duties."
     },
     {
       "id": "clue-negative-w25",
@@ -580,8 +530,7 @@
       "phrase_fi": "ei kuljettajan vastuulla / vastuu päättyy / ei ole sinun vastuullasi",
       "meaning_en": "not driver responsibility / responsibility ends / customer responsible",
       "effect_en": "Often negative when it tries to remove the driver’s duty to assist or ensure safety.",
-      "exception_en": "Can be correct for 15+ seat-belt responsibility, but driver still manages safe transport.",
-      "match_count": 1
+      "exception_en": "Can be correct for 15+ seat-belt responsibility, but driver still manages safe transport."
     },
     {
       "id": "clue-negative-w26",
@@ -591,8 +540,7 @@
       "phrase_fi": "oman harkinnan mukaan / minkä hyvänsä / minkä hyvänsä",
       "meaning_en": "at own discretion / any route / anything",
       "effect_en": "Often wrong when it ignores rules, passenger interest, route fairness, or legal limits.",
-      "exception_en": "Driver judgement matters only within legal and professional boundaries.",
-      "match_count": 1
+      "exception_en": "Driver judgement matters only within legal and professional boundaries."
     },
     {
       "id": "clue-negative-w27",
@@ -602,8 +550,7 @@
       "phrase_fi": "ottaa maksukortti / lompakko / pantiksi",
       "meaning_en": "take payment card/wallet/property as security",
       "effect_en": "Strong negative clue: driver should not take payment card, wallet, or valuables by force.",
-      "exception_en": "Use proper payment handling, discussion, dispatch/company process, or police if necessary.",
-      "match_count": 1
+      "exception_en": "Use proper payment handling, discussion, dispatch/company process, or police if necessary."
     },
     {
       "id": "clue-negative-w28",
@@ -613,8 +560,7 @@
       "phrase_fi": "soittaa torvea / rapsuttaa / napsuttaa",
       "meaning_en": "honk horn / pet/pat guide dog",
       "effect_en": "Negative in visually impaired/guide-dog service questions.",
-      "exception_en": "Guide dog may ride with the customer, but should not be distracted.",
-      "match_count": 1
+      "exception_en": "Guide dog may ride with the customer, but should not be distracted."
     },
     {
       "id": "clue-negative-w29",
@@ -624,8 +570,7 @@
       "phrase_fi": "vaatii avustajan / ei mukana avustaja / avustaja ei ole mukana",
       "meaning_en": "requires assistant / no assistant",
       "effect_en": "Negative when it assumes disability means refusing service or requiring an assistant.",
-      "exception_en": "If an agreed receiver/assistant is missing for a vulnerable person, wait or arrange safe handover.",
-      "match_count": 0
+      "exception_en": "If an agreed receiver/assistant is missing for a vulnerable person, wait or arrange safe handover."
     }
   ],
   "questions": [
@@ -637,11 +582,11 @@
       "options": [
         {
           "key": "A",
-          "en": "driving logbook / shift start / break times"
+          "en": "by frame / four points / brakes on"
         },
         {
           "key": "B",
-          "en": "help/assist if necessary"
+          "en": "guide dog / working dog / identifying harness"
         },
         {
           "key": "C",
@@ -659,11 +604,11 @@
       "options": [
         {
           "key": "A",
-          "en": "employer / check with employer"
+          "en": "hands-free / communication devices / making a call"
         },
         {
           "key": "B",
-          "en": "airbag switched off"
+          "en": "politely / appropriately / calmly / kindly"
         },
         {
           "key": "C",
@@ -681,7 +626,7 @@
       "options": [
         {
           "key": "A",
-          "en": "police / traffic controller / emergency centre / 112"
+          "en": "open airways / airways / recovery position / first aid"
         },
         {
           "key": "B",
@@ -689,7 +634,7 @@
         },
         {
           "key": "C",
-          "en": "driving logbook / shift start / break times"
+          "en": "necessary / necessary for carrying out the transport"
         }
       ],
       "correct_option": "B",
@@ -703,11 +648,11 @@
       "options": [
         {
           "key": "A",
-          "en": "test-operating / passenger lift"
+          "en": "obey/follow orders / traffic controller"
         },
         {
           "key": "B",
-          "en": "inside / indoors / received by staff/assistant"
+          "en": "responsible / role model / exemplary"
         },
         {
           "key": "C",
@@ -725,7 +670,7 @@
       "options": [
         {
           "key": "A",
-          "en": "police / traffic controller / emergency centre / 112"
+          "en": "airbag switched off"
         },
         {
           "key": "B",
@@ -733,7 +678,7 @@
         },
         {
           "key": "C",
-          "en": "driving logbook / shift start / break times"
+          "en": "necessary / necessary for carrying out the transport"
         }
       ],
       "correct_option": "B",
@@ -747,7 +692,7 @@
       "options": [
         {
           "key": "A",
-          "en": "help/assist if necessary"
+          "en": "guide dog / working dog / identifying harness"
         },
         {
           "key": "B",
@@ -755,7 +700,7 @@
         },
         {
           "key": "C",
-          "en": "safe / safely / safety"
+          "en": "Kela / service number / dispatch company"
         }
       ],
       "correct_option": "B",
@@ -769,11 +714,11 @@
       "options": [
         {
           "key": "A",
-          "en": "employer / check with employer"
+          "en": "hands-free / communication devices / making a call"
         },
         {
           "key": "B",
-          "en": "police / traffic controller / emergency centre / 112"
+          "en": "airbag switched off"
         },
         {
           "key": "C",
@@ -791,11 +736,11 @@
       "options": [
         {
           "key": "A",
-          "en": "make sure / ensure / take care"
+          "en": "most economical / appropriate route"
         },
         {
           "key": "B",
-          "en": "inside / indoors / received by staff/assistant"
+          "en": "responsible / role model / exemplary"
         },
         {
           "key": "C",
@@ -813,7 +758,7 @@
       "options": [
         {
           "key": "A",
-          "en": "appropriate / approved / suitable"
+          "en": "receipt / offering or giving a receipt"
         },
         {
           "key": "B",
@@ -821,7 +766,7 @@
         },
         {
           "key": "C",
-          "en": "make sure / ensure / take care"
+          "en": "inside / indoors / received by staff/assistant"
         }
       ],
       "correct_option": "B",
@@ -835,7 +780,7 @@
       "options": [
         {
           "key": "A",
-          "en": "responsible / role model / exemplary"
+          "en": "airbag switched off"
         },
         {
           "key": "B",
@@ -843,7 +788,7 @@
         },
         {
           "key": "C",
-          "en": "necessary / necessary for carrying out the transport"
+          "en": "employer / check with employer"
         }
       ],
       "correct_option": "B",
@@ -857,11 +802,11 @@
       "options": [
         {
           "key": "A",
-          "en": "ask / inquire / discuss / whether help is needed"
+          "en": "safe / safely / safety"
         },
         {
           "key": "B",
-          "en": "receipt / offering or giving a receipt"
+          "en": "employer / check with employer"
         },
         {
           "key": "C",
@@ -879,11 +824,11 @@
       "options": [
         {
           "key": "A",
-          "en": "airbag switched off"
+          "en": "politely / appropriately / calmly / kindly"
         },
         {
           "key": "B",
-          "en": "inside / indoors / received by staff/assistant"
+          "en": "responsible / role model / exemplary"
         },
         {
           "key": "C",
@@ -901,11 +846,11 @@
       "options": [
         {
           "key": "A",
-          "en": "make sure / ensure / take care"
+          "en": "test-operating / passenger lift"
         },
         {
           "key": "B",
-          "en": "ask / inquire / discuss / whether help is needed"
+          "en": "safe / safely / safety"
         },
         {
           "key": "C",
@@ -923,7 +868,7 @@
       "options": [
         {
           "key": "A",
-          "en": "safe / safely / safety"
+          "en": "Kela / service number / dispatch company"
         },
         {
           "key": "B",
@@ -931,7 +876,7 @@
         },
         {
           "key": "C",
-          "en": "appropriate / approved / suitable"
+          "en": "receipt / offering or giving a receipt"
         }
       ],
       "correct_option": "B",
@@ -949,11 +894,11 @@
         },
         {
           "key": "B",
-          "en": "right destination / sufficient language skill / communicate"
+          "en": "help/assist if necessary"
         },
         {
           "key": "C",
-          "en": "necessary / necessary for carrying out the transport"
+          "en": "by frame / four points / brakes on"
         }
       ],
       "correct_option": "A",
@@ -971,11 +916,11 @@
         },
         {
           "key": "B",
-          "en": "handheld phone / phone in hand / without hands-free"
+          "en": "customer decides / right to choose"
         },
         {
           "key": "C",
-          "en": "only"
+          "en": "never / in no situation"
         }
       ],
       "correct_option": "A",
@@ -989,7 +934,7 @@
       "options": [
         {
           "key": "A",
-          "en": "if customer asks"
+          "en": "guardian permission / authorisation"
         },
         {
           "key": "B",
@@ -997,7 +942,7 @@
         },
         {
           "key": "C",
-          "en": "by force / physically / shout / push / hold tightly"
+          "en": "does not need to"
         }
       ],
       "correct_option": "B",
@@ -1011,11 +956,11 @@
       "options": [
         {
           "key": "A",
-          "en": "handheld phone / phone in hand / without hands-free"
+          "en": "customer decides / right to choose"
         },
         {
           "key": "B",
-          "en": "guardian permission / authorisation"
+          "en": "personal calls / send messages / watch screen"
         },
         {
           "key": "C",
@@ -1041,7 +986,7 @@
         },
         {
           "key": "C",
-          "en": "speeding / exceed speed limit / speeding fines"
+          "en": "take payment card/wallet/property as security"
         }
       ],
       "correct_option": "B",
@@ -1055,7 +1000,7 @@
       "options": [
         {
           "key": "A",
-          "en": "honk horn / pet/pat guide dog"
+          "en": "short / under a minute / under a kilometre"
         },
         {
           "key": "B",
@@ -1077,7 +1022,7 @@
       "options": [
         {
           "key": "A",
-          "en": "does not need to"
+          "en": "back-seat/driver does not need seat belt"
         },
         {
           "key": "B",
@@ -1099,11 +1044,11 @@
       "options": [
         {
           "key": "A",
-          "en": "leave / abandon / ignore / continue normally"
+          "en": "speeding / exceed speed limit / speeding fines"
         },
         {
           "key": "B",
-          "en": "speeding / exceed speed limit / speeding fines"
+          "en": "take payment card/wallet/property as security"
         },
         {
           "key": "C",
@@ -1121,7 +1066,7 @@
       "options": [
         {
           "key": "A",
-          "en": "take payment card/wallet/property as security"
+          "en": "wait in car / no need to leave car"
         },
         {
           "key": "B",
@@ -1129,7 +1074,7 @@
         },
         {
           "key": "C",
-          "en": "guardian permission / authorisation"
+          "en": "by force / physically / shout / push / hold tightly"
         }
       ],
       "correct_option": "B",
@@ -1147,11 +1092,11 @@
         },
         {
           "key": "B",
-          "en": "without / without doing"
+          "en": "only customer service / focus only on one thing"
         },
         {
           "key": "C",
-          "en": "without safety restraint/device"
+          "en": "voluntary / optional"
         }
       ],
       "correct_option": "A",
@@ -1169,11 +1114,11 @@
         },
         {
           "key": "B",
-          "en": "no alcohol interlock / without interlock / switch vehicle"
+          "en": "at own discretion / any route / anything"
         },
         {
           "key": "C",
-          "en": "without checking / visually only"
+          "en": "by force / physically / shout / push / hold tightly"
         }
       ],
       "correct_option": "A",
@@ -1187,11 +1132,11 @@
       "options": [
         {
           "key": "A",
-          "en": "written power of attorney"
+          "en": "without checking / visually only"
         },
         {
           "key": "B",
-          "en": "at own discretion / any route / anything"
+          "en": "without safety restraint/device"
         },
         {
           "key": "C",
@@ -1209,11 +1154,11 @@
       "options": [
         {
           "key": "A",
-          "en": "take payment card/wallet/property as security"
+          "en": "wait in car / no need to leave car"
         },
         {
           "key": "B",
-          "en": "without checking / visually only"
+          "en": "by force / physically / shout / push / hold tightly"
         },
         {
           "key": "C",
@@ -1231,11 +1176,11 @@
       "options": [
         {
           "key": "A",
-          "en": "written power of attorney"
+          "en": "short / under a minute / under a kilometre"
         },
         {
           "key": "B",
-          "en": "guardian permission / authorisation"
+          "en": "leave / abandon / ignore / continue normally"
         },
         {
           "key": "C",
@@ -1257,11 +1202,11 @@
         },
         {
           "key": "B",
-          "en": "if customer asks"
+          "en": "guardian permission / authorisation"
         },
         {
           "key": "C",
-          "en": "customer decides / right to choose"
+          "en": "not driver responsibility / responsibility ends / customer responsible"
         }
       ],
       "correct_option": "A",
@@ -1275,7 +1220,7 @@
       "options": [
         {
           "key": "A",
-          "en": "without / without doing"
+          "en": "only customer service / focus only on one thing"
         },
         {
           "key": "B",
@@ -1283,7 +1228,7 @@
         },
         {
           "key": "C",
-          "en": "without safety restraint/device"
+          "en": "voluntary / optional"
         }
       ],
       "correct_option": "B",

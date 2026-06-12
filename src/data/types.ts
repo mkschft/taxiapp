@@ -104,7 +104,6 @@ export type ClueLessonWord = {
   meaning_en: string;
   effect_en: string | null;   // general-use context
   exception_en: string | null;// watch-out / exception
-  match_count: number | null; // how many exam questions this clue appears in
 };
 
 export type ClueQuizOption = { key: 'A' | 'B' | 'C'; en: string };
