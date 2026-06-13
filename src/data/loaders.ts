@@ -11,6 +11,7 @@ import vocabDataRaw from './json/vocab.json';
 import clueDataRaw from './json/clue.json';
 import questionsRaw from './json/questions.json';
 import modelTestsRaw from './json/model_tests.json';
+import modelTestQuestionsRaw from './json/model_test_questions.json';
 import guideRaw from './json/guide.json';
 import topicPracticeRaw from './json/topic_practice.json';
 
@@ -19,8 +20,15 @@ export const getTopics = (): Topic[] => topicsRaw as Topic[];
 export const getQuestions = (): Question[] => questionsRaw as unknown as Question[];
 export const getModelTests = (): ModelTest[] => modelTestsRaw as ModelTest[];
 
-export const getQuestionById = (id: string) =>
-  (questionsRaw as unknown as Question[]).find(q => q.id === id);
+// Model-test-only questions (not in the main bank) live in a separate file but
+// share the Question shape, so the runner resolves both via this lookup.
+const allQuestionsById: Record<string, Question> = Object.fromEntries(
+  [...(questionsRaw as unknown as Question[]), ...(modelTestQuestionsRaw as unknown as Question[])]
+    .map(q => [q.id, q]),
+);
+
+export const getQuestionById = (id: string): Question | undefined =>
+  allQuestionsById[id];
 
 export const getQuestionsByCategory = (catId: string) =>
   (questionsRaw as unknown as Question[]).filter(q => q.category_id === catId);

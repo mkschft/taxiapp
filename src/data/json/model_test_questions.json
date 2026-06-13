@@ -1,0 +1,3922 @@
+[
+  {
+    "id": "MTQ-001",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "17-vuotias Elviira kulkee viikoittain yksin tanssiharrastuksestaan kotiin Kuopion keskuksesta pientaloalueelle. Kuka vastaa turvavyön käytöstä?",
+      "en": "17-year-old Elviira travels home alone each week from her dance hobby, from Kuopio city centre to a residential area. Who is responsible for wearing a seat belt?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja.",
+        "fi_raw": null,
+        "en": "The driver.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Elviira itse.",
+        "fi_raw": null,
+        "en": "Elviira herself.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Taksissa turvavyön käyttö on aina vapaaehtoista, joten turvavyötä ei tarvitse laittaa kiinni.",
+        "fi_raw": null,
+        "en": "In a taxi, wearing a seat belt is always optional, so the seat belt does not need to be fastened.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A passenger aged 15 or over is personally responsible for wearing their own seat belt, so the 17-year-old Elviira is responsible for buckling up herself.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-002",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Ajat pimeällä sateessa ja huomaat, että näkyvyys heikkenee nopeasti. Asiakas pyytää ajamaan kovempaa, koska hän on myöhässä junasta. Miten toimit turvallisuuden kannalta?",
+      "en": "You are driving in the dark in rain and notice that visibility is deteriorating rapidly. The passenger asks you to drive faster because they are going to miss their train. What do you do from a safety perspective?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Sovitat nopeuden näkyvyyden, kelin ja liikennetilanteen mukaan, vaikka asiakas pyytää kiirehtimään.",
+        "fi_raw": null,
+        "en": "You adjust your speed to match visibility, road conditions, and traffic, even though the passenger is asking you to hurry.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Lisäät nopeutta, koska asiakas vastaa kiireestä.",
+        "fi_raw": null,
+        "en": "You increase your speed because the passenger is responsible for their own rush.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Sammutat ajovalot hetkeksi, jotta näet paremmin märän tien pinnan.",
+        "fi_raw": null,
+        "en": "You switch off the headlights briefly so you can see the wet road surface better.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver is always legally responsible for adapting speed to prevailing conditions; a passenger's request cannot override the duty to drive safely.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-003",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Ajoluvan asemapaikka on Vantaa. Aulis on kuitenkin muuttumassa Jyväskylään ja onkin jo löytänyt itselleen uuden työnantajan uudesta kaupungistaan. Voiko Aulis aloittaa työskentelyn tällä jyväskyläläisellä työnantajalla?",
+      "en": "Aulis's taxi driver's licence is based in Vantaa. He is, however, moving to Jyväskylä and has already found a new employer there. Can Aulis start working for this Jyväskylä-based employer?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Ei, sillä taksinkuljettajan ajolupa on voimassa vain kaksi vuotta.",
+        "fi_raw": null,
+        "en": "No, because a taxi driver's licence is valid for only two years.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kyllä, mutta suoritettuaan hyväksytysti Jyväskylän paikallistuntemuskokeen ja haettuaan ajoluvan kelpoisuusalueen laajentamista Liikenne- ja viestintävirasto Traficomilta.",
+        "fi_raw": null,
+        "en": "Yes, but only after passing the Jyväskylä local-knowledge test and applying to Traficom (the Finnish Transport and Communications Agency) for an extension of the licence's area of validity.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kyllä, sillä taksinkuljettajan ajolupa on voimassa koko Manner-Suomen alueella.",
+        "fi_raw": null,
+        "en": "Yes, because a taxi driver's licence is valid throughout mainland Finland.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A Finnish taxi driver's licence is granted without a geographic restriction and is valid across all of mainland Finland, so Aulis can work for any employer anywhere in the country without any additional test or application.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-004",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Ajon aikana puhelimeen tulee uusi tilausviesti ja navigaattori pyytää vahvistusta. Liikenne on tiheää ja lähestyt suojatietä. Miten toimit?",
+      "en": "While driving, a new booking message arrives on your phone and the sat-nav asks for confirmation. Traffic is heavy and you are approaching a pedestrian crossing. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Käsittelet viestin heti, koska tilausjärjestelmä on osa taksinkuljettajan työtä.",
+        "fi_raw": null,
+        "en": "You deal with the message immediately because the booking system is part of a taxi driver's job.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Keskityt ajamiseen ja käsittelet laitteen vasta, kun se voidaan tehdä turvallisesti.",
+        "fi_raw": null,
+        "en": "You concentrate on driving and deal with the device only when it is safe to do so.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Annat asiakkaan ottaa puhelimen käteensä ilman selitystä.",
+        "fi_raw": null,
+        "en": "You let the passenger take the phone without explanation.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "In heavy traffic near a pedestrian crossing, driver attention must stay on the road; interacting with devices must wait until conditions allow it safely.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-005",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Alkolukko on pakollinen varuste autoissa, joilla suoritetaan koulu- tai päivähoitokuljetuksia. Alkolukko säädetään siten, että ajoneuvon käynnistyminen estyy, jos kuljettajan uloshengitysilman alkoholipitoisuus on?",
+      "en": "An alcohol interlock is a mandatory fitting in vehicles used for school or day-care transport. The interlock is set so that the vehicle cannot be started if the alcohol concentration in the driver's exhaled breath is?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "0,10 milligrammaa alkoholia litrassa uloshengitysilmaa tai enemmän.",
+        "fi_raw": null,
+        "en": "0.10 milligrams of alcohol per litre of exhaled breath or more.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "0,50 milligrammaa alkoholia litrassa uloshengitysilmaa tai enemmän.",
+        "fi_raw": null,
+        "en": "0.50 milligrams of alcohol per litre of exhaled breath or more.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Yli 0 milligrammaa alkoholia litrassa uloshengitysilmaa.",
+        "fi_raw": null,
+        "en": "More than 0 milligrams of alcohol per litre of exhaled breath.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Finnish law requires the alcohol interlock fitted to school and day-care transport vehicles to prevent engine start at a threshold of 0.10 mg/l of exhaled breath, ensuring a strict near-zero tolerance for these vulnerable-passenger services.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-006",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas haluaa pitää suuren matkalaukun sylissään takapenkillä, koska hän pelkää sen rikkoutuvan tavaratilassa. Laukku voi kuitenkin liikkua äkkijarrutuksessa. Mikä on paras ratkaisu?",
+      "en": "A passenger wants to keep a large suitcase on their lap in the back seat because they are afraid it will get damaged in the boot. The bag could, however, shift in an emergency stop. What is the best solution?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Sallit laukun sylissä, koska asiakas omistaa sen.",
+        "fi_raw": null,
+        "en": "You allow the bag on their lap because the passenger owns it.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Sijoitat matkatavaran mahdollisimman turvallisesti niin, ettei se aiheuta vaaraa matkustajille äkkitilanteessa.",
+        "fi_raw": null,
+        "en": "You stow the luggage as safely as possible so that it does not endanger passengers in an emergency situation.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Asetat laukun kuljettajan jalkatilaan, jotta asiakas näkee sen.",
+        "fi_raw": null,
+        "en": "You place the bag in the driver's footwell so the passenger can see it.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver is responsible for ensuring that luggage is secured so it cannot become a dangerous projectile during sudden braking, regardless of the passenger's preference.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-007",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas haluaa poistua taksista keskellä kapeaa katua, koska määränpää näkyy jo tien toisella puolella. Takana on muuta liikennettä ja näkyvyys on huono. Mikä on paras tapa toimia?",
+      "en": "A passenger wants to get out in the middle of a narrow street because their destination is already visible on the other side of the road. There is traffic behind and visibility is poor. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pysäytät heti siihen kohtaan, johon asiakas pyytää.",
+        "fi_raw": null,
+        "en": "You stop immediately at the spot the passenger requests.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Jatkat lähimpään turvalliseen pysähtymispaikkaan ja selität asiakkaalle, että poistuminen täytyy tehdä turvallisessa kohdassa.",
+        "fi_raw": null,
+        "en": "You continue to the nearest safe stopping place and explain to the passenger that they must exit at a safe location.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Annat asiakkaan päättää, koska asiakas vastaa itse poistumisestaan.",
+        "fi_raw": null,
+        "en": "You let the passenger decide because they are responsible for their own exit.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Stopping in a dangerous position on a narrow street with poor visibility and following traffic puts both the passenger and other road users at risk, so the driver must proceed to a safe stopping point.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-008",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas huomaa matkan aikana, että suunniteltu reitti muuttuu tietöiden vuoksi pidemmäksi kuin tavallisesti. Hän epäilee heti, että kuljettaja kierrättää tarkoituksella. Mikä on paras asiakaspalvelutilanteen mukainen toimintatapa?",
+      "en": "During the journey a passenger notices that the planned route is longer than usual due to road works. They immediately suspect the driver is deliberately taking a longer route. What is the best customer-service approach?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja sanoo lyhyesti, että kuljettaja päättää reitin aina yksin eikä lisäselitystä tarvita.",
+        "fi_raw": null,
+        "en": "The driver says briefly that the driver always decides the route alone and no further explanation is needed.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja selittää rauhallisesti reittimuutoksen syyn, kertoo vaihtoehdoista ja etenee läpinäkyvästi asiakkaan kanssa.",
+        "fi_raw": null,
+        "en": "The driver calmly explains the reason for the route change, describes the alternatives, and proceeds transparently in agreement with the passenger.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja keskeyttää keskustelun ja pyytää asiakasta poistumaan autosta heti.",
+        "fi_raw": null,
+        "en": "The driver ends the conversation and asks the passenger to get out of the car immediately.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Transparent, calm communication about an unavoidable route change builds trust and resolves the passenger's concern without conflict, which is the core of good customer service.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-009",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas kertoo sairastavansa paniikkikohtauksia ja pyytää, että kerrot etukäteen, jos reitti muuttuu. Matkan aikana tie suljetaan ja joudut valitsemaan toisen reitin. Miten toimit?",
+      "en": "A passenger tells you they suffer from panic attacks and asks you to let them know in advance if the route changes. During the journey the road is closed and you have to take a different route. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Selität tilanteen rauhallisesti ja kerrot asiakkaalle reittimuutoksesta ennen kuin jatkat uutta reittiä.",
+        "fi_raw": null,
+        "en": "You calmly explain the situation and inform the passenger of the route change before you continue on the new route.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Et kerro mitään, koska reitin muuttaminen kuuluu kuljettajan päätösvaltaan.",
+        "fi_raw": null,
+        "en": "You say nothing, because changing the route falls within the driver's decision-making authority.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Pyydät asiakasta poistumaan autosta, jos hän ei pidä reittimuutoksista.",
+        "fi_raw": null,
+        "en": "You ask the passenger to leave the car if they do not like route changes.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The passenger has disclosed a medical condition and made a specific, reasonable request; honouring it by giving advance notice of the route change is both good customer service and a duty of care.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-010",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas kysyy ennen matkaa, miksi arvioitu hinta on korkeampi kuin hän odotti. Reitti kulkee ruuhka-alueen kautta ja asiakkaalla on kiire. Miten toimit asiakaspalvelun näkökulmasta?",
+      "en": "Before the journey a passenger asks why the estimated fare is higher than they expected. The route goes through a congested area and the passenger is in a hurry. What do you do from a customer-service perspective?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Selität hinnan muodostumisen asiallisesti ja kerrot, että lopullinen hinta voi riippua matkasta, ajasta ja reitistä.",
+        "fi_raw": null,
+        "en": "You explain how the fare is made up in a professional manner and state that the final price may depend on distance, time, and route.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Sanot, että hinta ei kuulu asiakkaalle ennen matkan päättymistä.",
+        "fi_raw": null,
+        "en": "You say that the fare is none of the passenger's concern until the journey ends.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Lupaat varmasti halvimman hinnan, vaikka et voi tietää lopullista matka-aikaa.",
+        "fi_raw": null,
+        "en": "You promise the cheapest possible fare even though you cannot know the final journey time.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A passenger has the right to understand how their fare is calculated; giving an honest, professional explanation maintains trust and meets the transparency requirements of good taxi service.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-011",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas käyttäytyy päihtyneenä ja puhuu epäasiallisesti, mutta ei ole väkivaltainen. Miten kuljettajan tulee toimia hyvän asiakaspalvelun ja turvallisuuden kannalta?",
+      "en": "A passenger is behaving as though intoxicated and is speaking inappropriately, but is not violent. How should the driver act in terms of good customer service and safety?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja vastaa samalla tavalla takaisin, jotta asiakas ymmärtää käytöksensä sopimattomuuden.",
+        "fi_raw": null,
+        "en": "The driver responds in kind so that the passenger understands their behaviour is inappropriate.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja pysyy rauhallisena ja asiallisena, asettaa tarvittaessa selkeät rajat ja arvioi turvallisuuden koko ajan.",
+        "fi_raw": null,
+        "en": "The driver remains calm and professional, sets clear boundaries if necessary, and continuously assesses the safety of the situation.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja jättää asiakkaan heti tienvarteen ilman lisäarviota tilanteesta.",
+        "fi_raw": null,
+        "en": "The driver immediately drops the passenger at the roadside without any further assessment of the situation.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Maintaining a calm, professional demeanour de-escalates the situation, while continuously monitoring safety allows the driver to decide whether further action — such as ending the journey — is warranted.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-012",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas käyttää kainalosauvoja ja pyytää sinua ajamaan aivan sisäänkäynnin eteen. Sisäänkäynnin edessä on kuitenkin suojatie ja pysähtyminen haittaisi jalankulkijoita. Miten toimit?",
+      "en": "A passenger uses crutches and asks you to drive right up to the entrance. In front of the entrance there is a pedestrian crossing, and stopping there would obstruct pedestrians. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pysäytät suojatielle, koska asiakas tarvitsee apua.",
+        "fi_raw": null,
+        "en": "You stop on the pedestrian crossing because the passenger needs assistance.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Pysähdyt lähimpään turvalliseen ja sallittuun paikkaan ja avustat asiakasta tilanteen mukaan.",
+        "fi_raw": null,
+        "en": "You stop at the nearest safe and permitted location and assist the passenger as the situation requires.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Jätät asiakkaan autoon odottamaan, kunnes suojatie on tyhjä.",
+        "fi_raw": null,
+        "en": "You leave the passenger in the car to wait until the pedestrian crossing is clear.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Stopping on a pedestrian crossing is illegal and dangerous; the driver should find the nearest lawful stopping point and then assist the mobility-impaired passenger appropriately.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-013",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas käyttää sähköpyörätuolia ja kysyy ennen matkaa, voidaanko apuväline kiinnittää turvallisesti. Mitä sinun tulee tehdä?",
+      "en": "A passenger uses a powered wheelchair and asks before the journey whether the mobility aid can be secured safely. What must you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Varmistat ennen lähtöä, että matkustaja ja apuväline voidaan kuljettaa turvallisesti ja kiinnittää oikein.",
+        "fi_raw": null,
+        "en": "Before setting off you confirm that the passenger and the mobility aid can be transported safely and secured correctly.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Lähdet liikkeelle heti ja tarkistat kiinnityksen ensimmäisissä liikennevaloissa.",
+        "fi_raw": null,
+        "en": "You set off immediately and check the securing at the first set of traffic lights.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Sanot, että kiinnittäminen ei ole tarpeen, jos matka on lyhyt.",
+        "fi_raw": null,
+        "en": "You tell the passenger that securing is not necessary if the journey is short.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A powered wheelchair must be properly secured before the vehicle moves; checking and confirming safe fastening in advance is a legal and safety obligation regardless of journey length.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-014",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas matkustaa opaskoiran kanssa ja kertoo, että koiran tulee pysyä hänen läheisyydessään koko matkan ajan. Mikä on oikea toimintatapa kuljettajalle?",
+      "en": "A passenger is travelling with a guide dog and explains that the dog must stay close to them throughout the journey. What is the correct procedure for the driver?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja sallii opaskoiran matkustaa asiakkaan mukana ja järjestää tilanteen turvallisesti.",
+        "fi_raw": null,
+        "en": "The driver allows the guide dog to travel with the passenger and arranges the journey safely.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja vaatii, että opaskoira kuljetetaan erillään asiakkaasta tavaratilassa.",
+        "fi_raw": null,
+        "en": "The driver insists that the guide dog is transported separately from the passenger in the boot.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja voi ottaa asiakkaan vain, jos tämä maksaa lisämaksun koirasta.",
+        "fi_raw": null,
+        "en": "The driver may only take the passenger if they pay an extra charge for the dog.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Finnish law requires taxi drivers to carry guide dogs at no extra charge and to allow them to remain with their owner, as guide dogs are an essential mobility aid for visually impaired passengers.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-015",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas näyttää sekavalta ja yrittää avata ovea ennen kuin auto on täysin pysähtynyt. Mitä kuljettajan tulee ensisijaisesti tehdä?",
+      "en": "A passenger appears confused and tries to open the door before the car has come to a complete stop. What should the driver do first?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Jatkaa ajoa normaalisti, koska asiakas vastaa omasta toiminnastaan.",
+        "fi_raw": null,
+        "en": "Continue driving normally because the passenger is responsible for their own actions.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Pysähtyä turvallisesti mahdollisimman pian ja varmistaa, ettei asiakas pääse poistumaan vaarallisesti.",
+        "fi_raw": null,
+        "en": "Stop safely as soon as possible and ensure that the passenger cannot exit in a dangerous manner.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Nostaa nopeutta, jotta asiakas ei ehdi avata ovea.",
+        "fi_raw": null,
+        "en": "Increase speed so that the passenger does not have time to open the door.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A confused passenger trying to open a moving car door is an immediate safety hazard; the driver must bring the vehicle to a safe stop promptly to prevent injury.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-016",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on loukannut jalkansa ja pyytää sinua jättämään hänet mahdollisimman lähelle rakennuksen ovea. Oven edessä on kuitenkin pysäyttäminen vaarallista muun liikenteen vuoksi. Miten toimit?",
+      "en": "A passenger has injured their leg and asks you to drop them as close as possible to the building entrance. However, stopping in front of the entrance is dangerous due to other traffic. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pysäytät oven eteen, koska asiakkaalla on vamma.",
+        "fi_raw": null,
+        "en": "You stop in front of the entrance because the passenger has an injury.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Etsit lähimmän turvallisen pysähtymispaikan ja autat asiakasta poistumaan turvallisesti tilanteen mukaan.",
+        "fi_raw": null,
+        "en": "You find the nearest safe stopping place and help the passenger to alight safely as the situation allows.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Jätät asiakkaan kauas määränpäästä, jotta sinun ei tarvitse odottaa.",
+        "fi_raw": null,
+        "en": "You drop the passenger far from their destination so that you do not have to wait.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A passenger's injury creates a duty to assist, but safety rules still apply; the driver must find the nearest safe and lawful stop and then help the passenger as much as practicable.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-017",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on poistumassa taksista vilkkaalla kadulla, jonka oikealla puolella kulkee pyöräliikennettä. Asiakas yrittää avata oven heti auton pysähdyttyä. Mikä on kuljettajan paras toimintatapa?",
+      "en": "A passenger is about to get out of the taxi on a busy street where there is cycle traffic on the right side. The passenger tries to open the door as soon as the car stops. What is the best course of action for the driver?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja antaa asiakkaan poistua heti, koska vastuu siirtyy asiakkaalle auton pysähdyttyä.",
+        "fi_raw": null,
+        "en": "The driver lets the passenger exit immediately because responsibility transfers to the passenger once the car has stopped.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja varmistaa, että poistuminen tapahtuu turvallisesti, varoittaa mahdollisesta pyöräliikenteestä ja auttaa tarvittaessa.",
+        "fi_raw": null,
+        "en": "The driver ensures that the exit takes place safely, warns the passenger about possible cycle traffic, and assists if necessary.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja käskee asiakkaan poistua aina vain tien puolelta, jotta jalkakäytävä ei ruuhkaudu.",
+        "fi_raw": null,
+        "en": "The driver always instructs the passenger to exit on the road side only, so that the pavement does not become congested.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver has an ongoing duty of care until the passenger has safely exited the vehicle; alerting them to cycle traffic on the right prevents a potentially serious 'dooring' collision.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-018",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on poistunut kyydistä, ja hetkeä myöhemmin huomaat takapenkillä puhelimen. Seuraava tilaus on jo tullut, mutta uusi asiakas ei ole vielä autossa. Mikä on paras toimintatapa?",
+      "en": "A passenger has left the taxi and a moment later you notice a phone on the back seat. Your next booking has already come in, but the new passenger is not yet in the car. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pidän puhelimen itselläni työvuoron loppuun ilman mitään ilmoitusta, jotta vältyn keskeytyksiltä.",
+        "fi_raw": null,
+        "en": "I keep the phone on me until the end of my shift without notifying anyone, so as to avoid interruptions.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Toimin yrityksen tai välityskeskuksen ohjeiden mukaisesti ja ryhdyn toimiin, jotta tavara voidaan palauttaa asiakkaalle mahdollisimman pian.",
+        "fi_raw": null,
+        "en": "I follow the procedures of my company or dispatch centre and take steps to ensure the item can be returned to the passenger as soon as possible.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Heitän puhelimen löytötavaroihin vasta seuraavana päivänä ilman mitään kirjausta.",
+        "fi_raw": null,
+        "en": "I hand the phone in to lost property only the next day and without making any record.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A taxi driver has a legal and professional obligation to handle found property according to company or dispatch-centre procedures and to act promptly to return it to its owner.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-019",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on tilannut kyydin tiettyyn osoitteeseen kiinteällä hinnalla, mutta matkan aikana hän pyytää ajamaan eri osoitteeseen, joka on selvästi kauempana. Mikä on paras toimintatapa?",
+      "en": "A passenger has booked a ride to a specific address at a fixed price, but during the journey they ask to be taken to a different address that is clearly further away. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja ajaa uuteen osoitteeseen kertomatta asiakkaalle mitään hinnan vaikutuksesta.",
+        "fi_raw": null,
+        "en": "The driver drives to the new address without telling the passenger anything about the effect on the fare.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja selittää rauhallisesti, että määränpään muutos voi vaikuttaa hintaan tai matkan ehtoihin, ja varmistaa asian ennen jatkamista.",
+        "fi_raw": null,
+        "en": "The driver calmly explains that a change of destination may affect the fare or the terms of the journey, and confirms this with the passenger before continuing.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja kieltäytyy kaikista muutoksista ilman poikkeuksia.",
+        "fi_raw": null,
+        "en": "The driver refuses all changes without exception.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Transparently informing the passenger about any fare or terms change before proceeding protects both parties and meets the legal requirement for clear pricing in taxi services.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-020",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on tilannut taksin sovelluksella, mutta noutopaikalla on useita autoja ja hän on epävarma oikeasta autosta. Miten toimit?",
+      "en": "A passenger has booked a taxi via an app, but there are several cars at the pick-up point and they are unsure which is the right one. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Varmistat asiakkaan ja tilauksen turvallisesti ennen matkan aloittamista.",
+        "fi_raw": null,
+        "en": "You confirm the passenger's identity and the booking safely before starting the journey.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Otat kyytiin ensimmäisen henkilön, joka avaa oven.",
+        "fi_raw": null,
+        "en": "You take the first person who opens the door.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Aloitat matkan ilman varmistusta, jos määränpää näkyy sovelluksessa.",
+        "fi_raw": null,
+        "en": "You start the journey without confirmation if the destination is visible in the app.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Verifying both the passenger's identity and the booking before departing prevents taking the wrong person, protects the genuine customer, and ensures correct billing.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-021",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas on tyytymätön valitsemaasi reittiin ja alkaa puhua epäystävällisesti. Reitti on kuitenkin liikennetilanteen takia turvallisin ja sujuvin. Mikä on paras tapa toimia?",
+      "en": "A passenger is unhappy with the route you have chosen and starts speaking rudely. The route is, however, the safest and most efficient given the traffic situation. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Vastaat samalla tavalla takaisin, jotta asiakas ymmärtää tilanteen.",
+        "fi_raw": null,
+        "en": "You respond in kind so that the passenger understands the situation.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Pysyt rauhallisena, selität reittivalinnan asiallisesti ja kuuntelet asiakkaan toiveen mahdollisuuksien mukaan.",
+        "fi_raw": null,
+        "en": "You remain calm, explain the route choice professionally, and listen to the passenger's preference where possible.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Keskeytät matkan heti aina, jos asiakas arvostelee reittiä.",
+        "fi_raw": null,
+        "en": "You always terminate the trip immediately if the passenger criticises the route.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Staying calm and explaining the reasoning professionally de-escalates tension while still serving the passenger's best interests and maintaining safety.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-022",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas pyytää jäämään pois kohdassa, jossa pysähtyminen jättäisi hänet suoraan vilkkaan pyöräväylän viereen eikä auton ovea olisi turvallista avata. Mikä on paras toimintatapa?",
+      "en": "A passenger asks to be dropped off at a point where stopping would leave them directly beside a busy cycle lane and the car door could not be opened safely. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja pysähtyy juuri asiakkaan toivomaan kohtaan, koska asiakas saa aina päättää poistumispaikan.",
+        "fi_raw": null,
+        "en": "The driver stops exactly where the passenger wishes, because the passenger always decides the drop-off point.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja etsii mahdollisimman lähellä olevan turvallisen pysähtymispaikan ja kertoo asiakkaalle, miksi se on turvallisempi poistumista varten.",
+        "fi_raw": null,
+        "en": "The driver finds the nearest safe stopping point and explains to the passenger why it is safer for alighting.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja pyytää asiakasta poistumaan ajon aikana hitaasta vauhdista, jotta pyöräväylää ei tukita.",
+        "fi_raw": null,
+        "en": "The driver asks the passenger to exit while the car is moving slowly so as not to block the cycle lane.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver is responsible for ensuring passengers can exit the vehicle safely, which means finding an alternative stopping point when the requested location poses a danger to the passenger or other road users.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-023",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas pyytää matkan jälkeen kuittia ja haluaa, että maksutiedot ovat selkeitä, koska hän tarvitsee tiedot myöhempää selvitystä varten. Mikä on paras toimintatapa?",
+      "en": "After the journey a passenger requests a receipt and wants the payment details to be clear, as they need the information for a later expense claim. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja kertoo, että kuitti annetaan vain erikseen pyydettäessä seuraavana päivänä.",
+        "fi_raw": null,
+        "en": "The driver says that a receipt is only provided upon separate request the following day.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja antaa asianmukaisen kuitin ja varmistaa, että asiakkaalle annetaan tarpeelliset maksutiedot selkeästi.",
+        "fi_raw": null,
+        "en": "The driver provides a proper receipt and ensures that the necessary payment details are given to the passenger clearly.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja sanoo, ettei maksutietoja tarvitse antaa, jos matka on maksettu kortilla.",
+        "fi_raw": null,
+        "en": "The driver says that payment details do not need to be provided if the trip was paid by card.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Providing a clear and complete receipt on request is a basic legal and customer-service obligation for taxi drivers, regardless of the payment method used.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-024",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas pyytää sinua ajamaan eri reittiä kuin navigaattori ehdottaa. Reitti on sallittu, turvallinen ja asiakkaan mielestä helpompi. Miten toimit?",
+      "en": "A passenger asks you to take a different route from the one the navigation system suggests. The route is permitted, safe, and in the passenger's view easier. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Voit noudattaa asiakkaan toivetta, jos reitti on turvallinen ja muuten asianmukainen.",
+        "fi_raw": null,
+        "en": "You may follow the passenger's preference if the route is safe and otherwise appropriate.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Kieltäydyt aina asiakkaan ehdottamasta reitistä.",
+        "fi_raw": null,
+        "en": "You always refuse a route suggested by the passenger.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Ajetaan aina pisintä reittiä, jos asiakas ei tiedä tarkkaa hintaa.",
+        "fi_raw": null,
+        "en": "You always take the longest route if the passenger does not know the exact fare.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A driver may accommodate a passenger's route preference when the alternative route is legal and safe, as good customer service includes respecting reasonable passenger wishes.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-025",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas pyytää sinua pitämään keskustelun mahdollisimman vähäisenä matkan aikana. Mitä hyvä asiakaspalvelu edellyttää?",
+      "en": "A passenger asks you to keep conversation to a minimum during the journey. What does good customer service require?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kunnioitat asiakkaan toivetta ja keskityt turvalliseen sekä asialliseen palveluun.",
+        "fi_raw": null,
+        "en": "You respect the passenger's wish and focus on safe and professional service.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Jatkat keskustelua, koska kuljettajan kuuluu viihdyttää asiakasta.",
+        "fi_raw": null,
+        "en": "You continue talking because it is the driver's job to entertain the passenger.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Lopetat kaiken viestinnän, myös turvallisuuteen liittyvät ohjeet.",
+        "fi_raw": null,
+        "en": "You cease all communication, including safety-related instructions.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Good customer service means respecting the passenger's personal preferences, including their wish for a quiet journey, while still fulfilling all safety duties.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-026",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas pyytää taksinkuljettajaa pysähtymään vilkkaasti liikennöidyllä kadulla, jotta hän voi poistua autosta. Mikä seuraavista väitteistä on oikein?",
+      "en": "A passenger asks the taxi driver to stop on a heavily trafficked street so that they can exit the vehicle. Which of the following statements is correct?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Asiakkaalla on oikeus päättää tarkka pysähtymispaikka tilanteesta riippumatta.",
+        "fi_raw": null,
+        "en": "The passenger has the right to decide the exact stopping point regardless of the circumstances.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan tulee huolehtia siitä, että asiakas voi poistua autosta turvallisesti.",
+        "fi_raw": null,
+        "en": "The driver must ensure that the passenger can exit the vehicle safely.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja voi pysähtyä missä tahansa, jos lähellä on taksitolppa tai taksimerkki.",
+        "fi_raw": null,
+        "en": "The driver may stop anywhere if there is a taxi stand or taxi sign nearby.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver has a duty of care to ensure that passengers can alight safely, which overrides an unsafe stopping request from the passenger.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-027",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakas väittää maksaneensa sovelluksessa, mutta järjestelmä näyttää maksun epäselvänä. Asiakas hermostuu ja haluaa poistua nopeasti. Miten toimit?",
+      "en": "A passenger claims to have paid via the app, but the system shows the payment as unclear. The passenger becomes agitated and wants to leave quickly. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Selvität tilanteen rauhallisesti palvelun ohjeiden mukaan ja kommunikoit asiakkaalle asiallisesti.",
+        "fi_raw": null,
+        "en": "You resolve the situation calmly in accordance with the service guidelines and communicate with the passenger professionally.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Syytät asiakasta maksun välttämisestä ennen asian tarkistamista.",
+        "fi_raw": null,
+        "en": "You accuse the passenger of fare evasion before checking the matter.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Annat asiakkaan poistua ilman mitään selvitystä aina, jos hänellä on kiire.",
+        "fi_raw": null,
+        "en": "You always let the passenger leave without any investigation if they are in a hurry.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Handling a payment dispute calmly and professionally, following the service's procedures, protects both the driver's interests and the passenger's dignity without making unfounded accusations.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-028",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Asiakkaalla on hengitysvaikeuksia ja hän pyytää ajon aikana rauhallista ajotapaa sekä ilmanvaihtoa. Tilanne ei näytä hätätilanteelta, mutta asiakas on huolissaan. Miten toimit?",
+      "en": "A passenger is experiencing breathing difficulties and asks during the journey for a calm driving style and ventilation. The situation does not appear to be an emergency, but the passenger is worried. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Huomioit asiakkaan tarpeen, ajat rauhallisesti ja pidät tilanteen hallinnassa turvallisuutta vaarantamatta.",
+        "fi_raw": null,
+        "en": "You acknowledge the passenger's need, drive calmly, and keep the situation under control without compromising safety.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Ohitat pyynnön, koska kuljettaja päättää aina ajotavan yksin.",
+        "fi_raw": null,
+        "en": "You ignore the request because the driver alone always decides the driving style.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Aja kovempaa, jotta matka päättyy mahdollisimman nopeasti.",
+        "fi_raw": null,
+        "en": "You drive faster so that the journey ends as quickly as possible.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Adapting your driving style to a passenger's health needs is part of the duty of care, and staying calm and in control ensures both passenger comfort and road safety.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-029",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Auto alkaa pitää epätavallista ääntä jarrutettaessa kesken työvuoron. Matka seuraavan asiakkaan luo olisi lyhyt. Miten toimit?",
+      "en": "The car starts making an unusual noise when braking during a shift. The trip to the next passenger would be short. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Tarkistutat tai selvität vian ennen uuden asiakkaan kuljettamista, jos jarrujen toiminta voi olla epävarmaa.",
+        "fi_raw": null,
+        "en": "You have the fault inspected or investigated before carrying a new passenger if the brakes may be unreliable.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Jatkat ajoa, koska lyhyt matka ei vaadi jarrujen tarkistamista.",
+        "fi_raw": null,
+        "en": "You continue driving because a short trip does not require a brake check.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Käytät käsijarrua normaalin jarrun sijasta koko seuraavan matkan ajan.",
+        "fi_raw": null,
+        "en": "You use the handbrake instead of the normal brake for the entire next trip.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Any uncertainty about brake function poses a direct safety risk to passengers and other road users, so the vehicle must be checked before carrying further passengers.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-030",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Eelis Auvisella on synnynnäinen näkövamma, jonka vuoksi hänellä ei ole lainkaan näkökykyä. Hän käyttää liikkumisen apuna valkoista keppiä ja hänellä on apuna myös opaskoira. Eelis kulkee päivittäin taksilla kotoaan työpaikalleen. Mitä teet, kun haet Eeliksen aamulla ja et ole kuljettanut häntä koskaan aikaisemmin?",
+      "en": "Eelis Auvinen has a congenital visual impairment that means he has no sight at all. He uses a white cane for mobility and also has a guide dog. Eelis travels by taxi every day from home to his workplace. What do you do when you pick Eelis up in the morning for the first time?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Odotat kadunvarressa, että Eelis saapuu taksin luokse. Avaat hänelle sisäpuolelta oven ja teet takapenkille tilaa hänen opaskoiralleen.",
+        "fi_raw": null,
+        "en": "You wait at the roadside for Eelis to come to the taxi. You open the door from the inside for him and make room on the back seat for his guide dog.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Soitat torvea, josta Eelis tietää, että olet saapunut.",
+        "fi_raw": null,
+        "en": "You sound the horn so that Eelis knows you have arrived.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Nouset autosta ja kerrot hänelle, että hänen taksinsa on saapunut ja esittelet itsesi. Kerrot missä taksi on ja tiedustelet missä hän haluaa istua.",
+        "fi_raw": null,
+        "en": "You get out of the car, tell him that his taxi has arrived, and introduce yourself. You tell him where the taxi is and ask where he would like to sit.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A passenger with no sight cannot locate the vehicle or navigate to it independently, so the driver must go to the passenger, announce their arrival, introduce themselves, and guide the passenger to ensure a safe and dignified boarding experience.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-031",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Ennen työvuoron alkua huomaat, että auton rengaspainevaroitus palaa ja auto tuntuu ohjauksessa epävakaalta. Mitä sinun tulee tehdä?",
+      "en": "Before the start of your shift you notice that the tyre pressure warning light is on and the car feels unstable when steering. What must you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Aloitat ajon normaalisti ja tarkistat asian työvuoron jälkeen.",
+        "fi_raw": null,
+        "en": "You start driving normally and check the matter after the shift.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Selvität vian ja varmistat auton turvallisen kunnon ennen asiakkaiden kuljettamista.",
+        "fi_raw": null,
+        "en": "You investigate the fault and ensure the vehicle is in a safe condition before carrying any passengers.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljetat vain lyhyitä matkoja, koska rengaspaine ei vaikuta kaupunkiajossa.",
+        "fi_raw": null,
+        "en": "You only carry passengers on short trips because tyre pressure does not affect urban driving.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Driving with a known tyre fault endangers passengers and other road users, so the vehicle must be roadworthy before any journey begins.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-032",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Huomaat ajon aikana, että asiakas ei käytä turvavyötä ja liikenne on moottoritiellä vilkasta. Mikä on turvallisin toimintatapa?",
+      "en": "During a journey on a busy motorway you notice that the passenger is not wearing a seat belt. What is the safest course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Muistutat asiakasta turvavyön käytöstä rauhallisesti ja jatkat turvallista ajoa.",
+        "fi_raw": null,
+        "en": "You calmly remind the passenger to wear their seat belt and continue driving safely.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Jarrutat voimakkaasti heti, jotta asiakas huomaa vaaran.",
+        "fi_raw": null,
+        "en": "You brake hard immediately so that the passenger notices the danger.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Käännät auton ympäri lähimmästä kohdasta.",
+        "fi_raw": null,
+        "en": "You turn the car around at the nearest point.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver has a duty to ensure passengers wear seat belts; a calm reminder is the appropriate first step and does not itself create a new safety hazard.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-033",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Iäkäs asiakas matkustaa yksin rollaattorin ja kahden ostoskassin kanssa. Hän liikkuu hitaasti ja tarvitsee aikaa autoon nousemiseen sekä poistumiseen. Mikä on kuljettajan paras toimintatapa?",
+      "en": "An elderly passenger is travelling alone with a walking frame and two shopping bags. They move slowly and need time to board and alight. What is the driver's best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja osoittaa kiirettä, jotta asiakas ymmärtää toimia nopeammin.",
+        "fi_raw": null,
+        "en": "The driver signals urgency so that the passenger understands to move faster.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja varaa tilanteeseen aikaa, auttaa tarvittaessa ja huolehtii, että sekä asiakas että tavarat liikkuvat turvallisesti.",
+        "fi_raw": null,
+        "en": "The driver allows adequate time for the situation, assists when needed, and ensures that both the passenger and their belongings are moved safely.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja ottaa vain ostoskassit, mutta ei voi auttaa asiakasta itseään missään tilanteessa.",
+        "fi_raw": null,
+        "en": "The driver takes only the shopping bags but cannot assist the passenger themselves in any situation.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Elderly and mobility-impaired passengers are entitled to assistance; the driver must allow sufficient time and provide hands-on help to ensure a safe and dignified journey.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-034",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Iäkäs asiakas nousee taksiin rollaattorin kanssa pimeänä talvi-iltana. Noutopaikan jalkakäytävä on liukas, ja asiakas pyytää apua sekä rollaattorin kanssa että autoon nousemisessa. Mikä on paras toimintatapa kuljettajalle?",
+      "en": "An elderly passenger is boarding a taxi with a walking frame on a dark winter evening. The pavement at the pick-up point is slippery, and the passenger asks for help both with the walking frame and with getting into the car. What is the best course of action for the driver?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pysyn autossa ja odotan, että asiakas järjestää tilanteen itse, jotta en viivästytä seuraavaa ajoa.",
+        "fi_raw": null,
+        "en": "I stay in the car and wait for the passenger to manage the situation themselves so as not to delay the next trip.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Autan asiakasta rauhallisesti, varmistan turvallisen nousun autoon ja sijoitan rollaattorin turvallisesti ennen ajoon lähtöä.",
+        "fi_raw": null,
+        "en": "I calmly help the passenger, ensure safe boarding into the car, and secure the walking frame safely before departing.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Pyydän asiakasta jättämään rollaattorin ulos, jos sen sijoittaminen vie liikaa aikaa.",
+        "fi_raw": null,
+        "en": "I ask the passenger to leave the walking frame outside if stowing it takes too long.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "On a slippery surface the risk of a fall is high, so the driver must get out and actively assist the passenger to board safely and stow their mobility aid before setting off.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-035",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Iäkäs asiakas tulee taksiin rollaattorin kanssa vilkkaalla katualueella. Hän liikkuu hitaasti ja kertoo, että tasapaino on tänään huono. Miten toimit ennen kuin lähdet liikkeelle?",
+      "en": "An elderly passenger boards the taxi with a walking frame in a busy street area. They move slowly and mention that their balance is poor today. What do you do before setting off?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Lähdet liikkeelle heti, koska asiakas on jo istunut autoon.",
+        "fi_raw": null,
+        "en": "You set off immediately because the passenger is already seated.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Varmistat rauhallisesti, että asiakas on päässyt turvallisesti istumaan, rollaattori on sijoitettu turvallisesti ja turvavyö on kiinnitetty ennen lähtöä.",
+        "fi_raw": null,
+        "en": "You calmly confirm that the passenger is safely seated, the walking frame has been stowed securely, and the seat belt is fastened before departing.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Pyydät asiakasta laittamaan rollaattorin itse takapenkille, jotta lähtö ei viivästy.",
+        "fi_raw": null,
+        "en": "You ask the passenger to put the walking frame on the back seat themselves so that departure is not delayed.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "When a passenger reports poor balance, the driver must take extra care to verify that they are safely seated, their mobility aid is secured, and they are belted before any movement begins.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-036",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Iäkäs asiakas vaikuttaa epävarmalta määränpäästä ja antaa kaksi hieman erilaista osoitetta. Tilanne ei ole kiireellinen. Mikä on kuljettajan paras toimintatapa?",
+      "en": "An elderly passenger appears uncertain about the destination and gives two slightly different addresses. The situation is not urgent. What is the driver's best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja valitsee itse todennäköisimmän osoitteen ja lähtee liikkeelle heti.",
+        "fi_raw": null,
+        "en": "The driver selects the most likely address themselves and sets off immediately.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja varmistaa määränpään rauhallisesti asiakkaalta ennen matkan aloittamista ja tarkentaa tiedot tarvittaessa.",
+        "fi_raw": null,
+        "en": "The driver calmly confirms the destination with the passenger before starting the journey and clarifies the details as needed.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja peruuttaa kyydin heti, koska epävarma asiakas on aina turvallisuusriski.",
+        "fi_raw": null,
+        "en": "The driver cancels the trip immediately because an uncertain passenger is always a safety risk.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Clarifying the destination before departure prevents taking the passenger to the wrong place and ensures both parties have a clear, agreed understanding of the journey.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-037",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kolme asiakasta saapuu asemalta kiireessä suuren matkatavaramäärän kanssa ja pyytää, että kaikki tavarat laitetaan kyytiin, vaikka osa niistä jäisi matkustamon puolelle löysästi. Mikä on paras toimintatapa?",
+      "en": "Three passengers arrive at a station in a hurry with a large amount of luggage and ask for all of it to be loaded, even though some of it would end up loosely in the passenger compartment. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja suostuu, jos asiakkaat itse hyväksyvät järjestelyn.",
+        "fi_raw": null,
+        "en": "The driver agrees if the passengers themselves accept the arrangement.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja kieltäytyy turvattomasta kuormauksesta ja järjestää matkan vain tavalla, joka on turvallinen sekä matkustajille että kuljettajalle.",
+        "fi_raw": null,
+        "en": "The driver refuses the unsafe loading and arranges the journey only in a way that is safe for both passengers and driver.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja sallii kuormauksen, jos matka on lyhyt.",
+        "fi_raw": null,
+        "en": "The driver allows the loading if the journey is short.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Loose luggage in the passenger compartment is a serious safety hazard in any collision or sudden stop, so the driver must refuse unsafe loading regardless of passenger consent or journey length.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-038",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Koulukuljetuksessa yksi lapsista alkaa häiritä muita matkustajia ja yrittää nousta seisomaan ajon aikana. Miten toimit?",
+      "en": "During a school transport run one of the children starts disturbing the other passengers and tries to stand up while the vehicle is moving. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Jatkat ajoa, koska lapsen käytös ei vaikuta kuljettajan vastuuseen.",
+        "fi_raw": null,
+        "en": "You continue driving because the child's behaviour does not affect the driver's responsibility.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Toimit rauhallisesti, pysäytät tarvittaessa turvalliseen paikkaan ja varmistat, että matkustaminen jatkuu turvallisesti.",
+        "fi_raw": null,
+        "en": "You act calmly, stop at a safe place if necessary, and ensure that the journey continues safely.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Poistat lapsen autosta tien varteen ilman yhteydenottoa.",
+        "fi_raw": null,
+        "en": "You remove the child from the vehicle at the roadside without contacting anyone.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A child standing in a moving vehicle is a direct safety risk; the driver must intervene calmly and, if needed, stop safely to restore order before continuing.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-039",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Koululainen matkustaa yksin, mutta autossa ei ole tilanteeseen sopivaa lasten turvalaitetta käytettävissä, vaikka sellainen olisi tarpeen turvalliseen kuljettamiseen. Mikä on kuljettajan paras toimintatapa?",
+      "en": "A schoolchild is travelling alone, but there is no suitable child restraint available in the vehicle even though one would be required for safe transport. What is the driver's best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja kuljettaa lapsen silti, jos matka on lyhyt ja sää hyvä.",
+        "fi_raw": null,
+        "en": "The driver transports the child anyway if the journey is short and the weather is fine.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja ei aloita kuljetusta turvattomasti, vaan toimii niin, että kuljetus voidaan järjestää turvallisesti asianmukaisella varustuksella.",
+        "fi_raw": null,
+        "en": "The driver does not begin the journey unsafely, but instead acts to ensure that the transport can be arranged safely with the appropriate equipment.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja pyytää lasta pitämään tavallista turvavyötä mahdollisimman tiukasti ja lähtee liikkeelle heti.",
+        "fi_raw": null,
+        "en": "The driver asks the child to wear a normal seat belt as tightly as possible and sets off immediately.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A child who requires a restraint system must not be transported without one; the driver's duty to protect the child's safety overrides any pressure to complete the trip.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-040",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuulovammainen asiakas ei kuule hyvin puhetta auton takaosasta ja näyttää epävarmalta siitä, onko kuljettaja ymmärtänyt oikean kohteen. Miten kuljettajan tulee toimia?",
+      "en": "A hearing-impaired passenger cannot hear speech well from the front of the car and appears uncertain about whether the driver has understood the correct destination. How should the driver act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettajan tulee puhua kovempaa taaksepäin katsomatta ja olettaa asiakkaan ymmärtävän.",
+        "fi_raw": null,
+        "en": "The driver should speak louder without looking back and assume the passenger will understand.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan tulee varmistaa tieto selkeästi esimerkiksi kasvot asiakkaaseen päin, rauhallisella puheella tai tarvittaessa näyttämällä tieto kirjallisesti.",
+        "fi_raw": null,
+        "en": "The driver should confirm the information clearly, for example by facing the passenger, speaking calmly, or if necessary showing the information in writing.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettajan tulee välttää kaikkea lisäviestintää, jotta asiakas ei häiriinny.",
+        "fi_raw": null,
+        "en": "The driver should avoid all further communication so as not to disturb the passenger.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "When a passenger has a hearing impairment, the driver must adapt their communication method — using eye contact, clear speech, or written confirmation — to ensure the destination and other key information are correctly understood.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-041",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuulovammainen asiakas ei kuule puhettasi hyvin ja osoittaa puhelimesta osoitteen. Autossa on kiireinen tilanne, mutta asiakas näyttää epävarmalta. Mikä on paras toimintatapa?",
+      "en": "A hearing-impaired passenger cannot hear you well and points to an address on their phone. The situation in the car is busy, but the passenger looks uncertain. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Puhut kovempaa ja jatkat ajoa, koska osoite näkyy puhelimessa.",
+        "fi_raw": null,
+        "en": "You speak louder and continue driving, because the address is visible on the phone.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Varmistat määränpään rauhallisesti esimerkiksi näyttämällä osoitteen, käyttämällä selkeää viestintää ja antamalla asiakkaalle aikaa vastata.",
+        "fi_raw": null,
+        "en": "You calmly confirm the destination, for example by showing the address back, using clear communication, and giving the passenger time to respond.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Pyydät asiakasta tilaamaan toisen taksin, jos hän ei vastaa puheeseen nopeasti.",
+        "fi_raw": null,
+        "en": "You ask the passenger to order another taxi if they do not respond to speech quickly.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A hearing-impaired passenger needs clear, non-verbal confirmation of the destination; calmly verifying via written or visual means ensures they feel understood and travel to the correct place safely.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-042",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuvassa näkyy ajoradassa merkintä \"BUS\" ja eteenpäin osoittava nuoli. Mitä merkintä ensisijaisesti tarkoittaa?",
+      "en": "The image shows the marking \"BUS\" and a forward-pointing arrow on the road surface. What does the marking primarily mean?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kaista on tarkoitettu vain linja-autoille tai muille erikseen sallituilla ajoneuvoille liikennemerkkien mukaisesti.",
+        "fi_raw": null,
+        "en": "The lane is reserved for buses or other vehicles specifically permitted by traffic signs.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Kaistaa saa käyttää vapaasti kaikki ajoneuvot ruuhka-aikana.",
+        "fi_raw": null,
+        "en": "All vehicles may freely use the lane during rush hour.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Merkintä tarkoittaa, että pysäköinti on sallittua, jos kuljettaja odottaa matkustajaa.",
+        "fi_raw": null,
+        "en": "The marking means that parking is permitted if the driver is waiting for a passenger.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A BUS lane marking restricts the lane to buses and any other vehicles explicitly authorised by accompanying traffic signs; taxis may only use it if a sign permits them.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-043",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuvassa on varoitusmerkki, jossa näkyy epätasaisen tien tai töyssyjen symboli. Mistä merkki varoittaa kuljettajaa?",
+      "en": "The image shows a warning sign with a symbol depicting an uneven road or bumps. What does the sign warn the driver about?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Se varoittaa liukkaasta tiestä sateella.",
+        "fi_raw": null,
+        "en": "It warns of a slippery road in rain.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Se varoittaa töyssyistä tai epätasaisesta tiestä edessä.",
+        "fi_raw": null,
+        "en": "It warns of bumps or an uneven road surface ahead.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Se osoittaa, että alueella on pakollinen alhainen nopeusrajoitus ilman muita merkkejä.",
+        "fi_raw": null,
+        "en": "It indicates that a mandatory low speed limit applies in the area without any additional signs.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The uneven road / bump warning sign alerts drivers to rough or bumpy road conditions ahead so they can reduce speed and protect passengers from jolts.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-044",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuvassa taksit A, B ja C ovat pysähtyneet matkustajan kyytiin nousua tai autosta poistumista varten. Mikä takseista on pysähtynyt oikein?",
+      "en": "In the image, taxis A, B and C have stopped to allow a passenger to board or alight. Which taxi has stopped correctly?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Taksi A, koska se on kokonaan pois ajoradalta eikä häiritse muuta liikennettä.",
+        "fi_raw": null,
+        "en": "Taxi A, because it is completely off the carriageway and does not obstruct other traffic.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Taksi B, koska se on osittain jalkakäytävällä ja osittain ajoradalla, jolloin matkustajan on helpompi nousta kyytiin.",
+        "fi_raw": null,
+        "en": "Taxi B, because it is partly on the pavement and partly on the road, making it easier for the passenger to board.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Taksi C, koska se on pysähtynyt ajoradalle lähelle reunakiveystä eikä ole ajanut jalkakäytävälle.",
+        "fi_raw": null,
+        "en": "Taxi C, because it has stopped on the road close to the kerb and has not driven onto the pavement.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Stopping on the carriageway close to the kerb (without mounting the pavement) is the correct and lawful way to set down or pick up passengers while keeping the pavement clear for pedestrians.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-045",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Lapsi matkustaa ilman huoltajaa ja sanoo, että hänen ei tarvitse käyttää turvavyötä, koska matka on hyvin lyhyt. Miten kuljettajan tulee toimia?",
+      "en": "A child is travelling unaccompanied and says they do not need to wear a seat belt because the journey is very short. How should the driver act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Huolehdit, että lapsi käyttää turvavyötä koko matkan ajan, vaikka matka olisi lyhyt.",
+        "fi_raw": null,
+        "en": "You ensure that the child wears a seat belt for the entire journey, even if it is short.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Sallit matkustamisen ilman turvavyötä, jos matka kestää alle viisi minuuttia.",
+        "fi_raw": null,
+        "en": "You allow travel without a seat belt if the journey takes less than five minutes.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kysyt lapselta luvan ja jatkat matkaa hänen päätöksensä mukaan.",
+        "fi_raw": null,
+        "en": "You ask the child for permission and continue the journey according to their decision.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver is legally responsible for ensuring all passengers wear seat belts; journey length is irrelevant, and a child cannot waive this legal safety requirement.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-046",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Lapsiasiakas kuormittuu helposti melusta ja jännittää matkustamista. Hän peittää korviaan ja vastaa hyvin lyhyesti. Miten kuljettajan tulee toimia?",
+      "en": "A child passenger is easily overwhelmed by noise and is anxious about travelling. They cover their ears and give very brief answers. How should the driver act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettajan tulee lisätä puhetta ja kysyä monta asiaa nopeasti, jotta tilanne etenee tehokkaasti.",
+        "fi_raw": null,
+        "en": "The driver should increase talk and ask several questions quickly so that the situation progresses efficiently.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan tulee pitää viestintä rauhallisena ja selkeänä, välttää turhaa kuormitusta ja antaa asiakkaalle aikaa.",
+        "fi_raw": null,
+        "en": "The driver should keep communication calm and clear, avoid unnecessary sensory load, and give the passenger time.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettajan tulee jättää lapsi täysin huomiotta koko matkan ajan.",
+        "fi_raw": null,
+        "en": "The driver should completely ignore the child for the entire journey.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A child showing signs of sensory overload needs a calm, low-stimulus environment; the driver must reduce unnecessary input and allow the child time to respond, ensuring a safe and comfortable journey.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-047",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Lähestyt pysäkkiä, jonka vieressä on paljon jalankulkijoita ja pyöräilijöitä. Asiakas pyytää sinua katsomaan hänen puhelimestaan uuden osoitteen samalla kun ajat. Mitä teet?",
+      "en": "You are approaching a stop where there are many pedestrians and cyclists. A passenger asks you to look at a new address on their phone while you are driving. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pyydät asiakasta odottamaan tai pysähdyt turvallisesti ennen osoitteen tarkistamista.",
+        "fi_raw": null,
+        "en": "You ask the passenger to wait or stop safely before checking the address.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Katsot puhelinta nopeasti, koska vauhti on alhainen.",
+        "fi_raw": null,
+        "en": "You glance at the phone quickly because the speed is low.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Suljet silmät hetkeksi häikäisyn takia ja jatkat ajoa.",
+        "fi_raw": null,
+        "en": "You close your eyes briefly due to glare and continue driving.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Looking away from the road — even briefly or at low speed — is dangerous near vulnerable road users; the driver must not be distracted and should only check new information when safely stopped.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-048",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Maksutilanteessa asiakas pyytää kuittia ja haluaa nähdä, mistä maksu muodostuu. Miten toimit?",
+      "en": "At the payment stage, the passenger asks for a receipt and wants to see how the fare is made up. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Annat kuitin ja kerrot maksun muodostumisen asiallisesti asiakkaan pyynnöstä.",
+        "fi_raw": null,
+        "en": "You provide a receipt and explain how the fare is made up in a professional manner at the passenger's request.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Kieltäydyt antamasta kuittia, jos asiakas maksoi kortilla.",
+        "fi_raw": null,
+        "en": "You refuse to give a receipt if the passenger paid by card.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Sanot, että hinnan yksityiskohtia ei tarvitse selittää taksipalvelussa.",
+        "fi_raw": null,
+        "en": "You say that the details of the fare do not need to be explained in a taxi service.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Passengers have the right to a receipt and a transparent breakdown of the fare; providing this is both a legal obligation and good customer service in the taxi profession.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-049",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Matkan aikana asiakas kertoo voivansa pahoin ja pyytää, että auto pysäytetään mahdollisimman pian. Hän vaikuttaa huimaantuneelta mutta pystyy puhumaan. Mikä on kuljettajan paras toimintatapa?",
+      "en": "During the journey a passenger says they feel unwell and asks for the car to be stopped as soon as possible. They appear dizzy but are able to speak. What is the driver's best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja jatkaa määränpäähän asti, koska matkaa on jäljellä vain muutama minuutti.",
+        "fi_raw": null,
+        "en": "The driver continues to the destination because only a few minutes of the journey remain.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja pysäyttää ajoneuvon turvalliseen paikkaan, arvioi tilanteen rauhallisesti ja hankkii tarvittaessa lisäapua.",
+        "fi_raw": null,
+        "en": "The driver stops the vehicle in a safe place, calmly assesses the situation, and obtains additional help if needed.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja pyytää asiakasta odottamaan hiljaa, jotta muut matkustajat eivät häiriinny.",
+        "fi_raw": null,
+        "en": "The driver asks the passenger to wait quietly so that other passengers are not disturbed.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Passenger safety takes priority; when a passenger reports feeling unwell the driver must stop safely as soon as possible and assess whether emergency assistance is needed.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-050",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Matkan jälkeen asiakas ilmoittaa, että hän unohti laukun takapenkille, mutta et ole vielä ehtinyt tarkistaa autoa. Miten toimit?",
+      "en": "After the journey a passenger reports that they left a bag on the back seat, but you have not yet had a chance to check the car. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Tarkistat auton mahdollisimman pian ja toimit löytötavaran käsittelyä koskevien ohjeiden mukaan.",
+        "fi_raw": null,
+        "en": "You check the car as soon as possible and act in accordance with the instructions for handling lost property.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Ilmoitat asiakkaalle, että kuljettaja ei koskaan vastaa autoon jääneistä tavaroista.",
+        "fi_raw": null,
+        "en": "You inform the passenger that the driver is never responsible for items left in the car.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Pidät laukun autossa seuraavaan päivään asti ilman ilmoitusta.",
+        "fi_raw": null,
+        "en": "You keep the bag in the car until the next day without notifying anyone.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The driver has a duty of care for property left in the vehicle; checking promptly and following lost-property procedures ensures the passenger's belongings are handled correctly and returned.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-051",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Mikä seuraavista on oikein koskien yksin matkustavan 15-vuotiaan asiakkaan turvavyön käyttöä?",
+      "en": "Which of the following is correct regarding seat belt use by a 15-year-old passenger travelling alone?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Asiakas itse huolehtii turvavyön käytöstä.",
+        "fi_raw": null,
+        "en": "The passenger is responsible for wearing their own seat belt.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Jos kyse ei ole koulunkyydeistä, kuljettajan ei tarvitse huolehtia asiakkaan turvavyön käytöstä.",
+        "fi_raw": null,
+        "en": "If it is not a school transport journey, the driver does not need to ensure the passenger wears a seat belt.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Taksinkuljettajan on huolehdittava asiakkaan turvavyön käytöstä.",
+        "fi_raw": null,
+        "en": "The taxi driver must ensure the passenger wears a seat belt.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Under Finnish law a taxi driver is responsible for ensuring all passengers wear seat belts, regardless of the passenger's age or whether the journey is a school transport service.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-052",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Mikä seuraavista pyörätuolin käyttöä ja kiinnittämistä koskevista väitteistä pitää paikkaansa?",
+      "en": "Which of the following statements about the use and securing of a wheelchair is correct?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Sähköpyörätuolia ei tarvitse kiinnittää ajoneuvoon.",
+        "fi_raw": null,
+        "en": "A power wheelchair does not need to be secured to the vehicle.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Asiakkaan ei tarvitse pyörätuolissa istuessa ajon aikana käyttää ajoneuvon turvavyötä.",
+        "fi_raw": null,
+        "en": "A passenger sitting in a wheelchair does not need to wear the vehicle's seat belt while the vehicle is in motion.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "fi_raw": null,
+        "en": "The wheelchair must be secured so that it prevents movement in all directions.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A wheelchair must be properly fastened to prevent movement in every direction, not only sideways, to keep the passenger safe in the event of sudden braking or a collision.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-053",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Milloin saat ajaa taksilla oheisella liikennemerkillä (moottoriajoneuvolla ajo kielletty) merkityllä kadulla?",
+      "en": "When may you drive a taxi on a street marked with the accompanying traffic sign (motor vehicles prohibited)?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kun olet menossa kadun varrella olevalle kiinteistölle.",
+        "fi_raw": null,
+        "en": "When you are heading to a property located along that street.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Taksilla on läpiajo-oikeus.",
+        "fi_raw": null,
+        "en": "A taxi has the right to drive through.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Et koskaan.",
+        "fi_raw": null,
+        "en": "Never.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A 'motor vehicles prohibited' sign includes an exception for access to properties on that street, so a taxi may enter the street when its destination is a property along it.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-054",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Miten kuljettajan tulee huomioida näkövammainen asiakas?",
+      "en": "How should the driver attend to a visually impaired passenger?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Taksinkuljettajan on hyvä kysyä asiakkaalta, miten häntä voi auttaa, ennen kuin ryhtyy auttamaan asiakasta.",
+        "fi_raw": null,
+        "en": "It is good practice for the taxi driver to ask the passenger how they can be helped before beginning to assist them.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan tulee esitellä itsensä, kertoa selkeästi missä ollaan ja tarjota käsivartta opastamista varten asiakkaan toiveiden mukaisesti.",
+        "fi_raw": null,
+        "en": "The driver should introduce themselves, clearly state where they are, and offer their arm for guidance in accordance with the passenger's wishes.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettajan tulee antaa selkeät sanalliset ohjeet, kertoa esteistä tai korkeuseroista ja varmistaa, että asiakas pääsee turvallisesti ajoneuvoon ja istumaan.",
+        "fi_raw": null,
+        "en": "The driver should give clear verbal instructions, describe obstacles or changes in level, and ensure the passenger can board the vehicle and be seated safely.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Introducing yourself, stating your location, and offering physical guidance respects the visually impaired passenger's autonomy and dignity while ensuring they can board safely.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-055",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Miten tulee toimia, kun otat kyytiin hyvin hitaasti liikkuvan asiakkaan?",
+      "en": "How should you act when picking up a passenger who moves very slowly?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pysäyttää ajoneuvo turvallisesti, mennä asiakkaan luo rauhallisesti ja tarjota tarvittaessa apua sekä varmistaa turvallinen autoon nousu.",
+        "fi_raw": null,
+        "en": "Stop the vehicle safely, approach the passenger calmly, offer assistance if needed, and ensure safe boarding.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Odottaa kärsivällisesti, antaa asiakkaalle riittävästi aikaa ja varmistaa, että hän pääsee turvallisesti istumaan ennen liikkeelle lähtöä.",
+        "fi_raw": null,
+        "en": "Wait patiently, give the passenger sufficient time, and make sure they are seated safely before setting off.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Nousta ajoneuvosta ja tiedustelee tarvitseeko hän apua liikkumisessa ja autoon nousemisessa.",
+        "fi_raw": null,
+        "en": "Get out of the vehicle and ask whether they need help with moving and boarding.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Stopping safely and proactively approaching a slow-moving passenger to offer assistance ensures their physical safety and dignity during boarding.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-056",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Mitä sinun tulee ottaa huomioon kuuron asiakkaan kanssa ennen liikkeellelähtöä?",
+      "en": "What must you take into account with a deaf passenger before setting off?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Varmistan määränpään ja hinnan kirjallisesti tai näyttämällä karttaa.",
+        "fi_raw": null,
+        "en": "I confirm the destination and the fare in writing or by showing a map.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Pidän katsekontaktin ja varmistan, että asiakas näkee huuleni puhuessani.",
+        "fi_raw": null,
+        "en": "I maintain eye contact and make sure the passenger can see my lips when I speak.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Pimeällä autossa tulisi pitää sisävalo päällä kommunikointitilanteissa.",
+        "fi_raw": null,
+        "en": "In the dark the interior light should be kept on during communication situations.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Confirming the destination and fare in writing or via a map ensures a deaf passenger fully understands the journey details before departure, preventing misunderstandings.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-057",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Mitä teet, kun puhelimesi soi asiakkaan ollessa kyydissä ja mukanasi ei ole puhelimeen liittyvää handsfree-laitetta?",
+      "en": "What do you do when your phone rings while a passenger is in the car and you do not have a hands-free device?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pahoittelen asiakkaalle häiriötä ja hoidan puhelun ajon aikana.",
+        "fi_raw": null,
+        "en": "I apologise to the passenger for the disturbance and handle the call while driving.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Pahoittelen asiakkaalle häiriötä ja vastaan puhelimeen ajon aikana ja pysähdyn tien varteen, jos puhelu kestää pitempään.",
+        "fi_raw": null,
+        "en": "I apologise to the passenger for the disturbance, answer the phone while driving, and pull over if the call goes on for longer.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Pahoittelet asiakkaalle häiriötä, etkä vastaa puheluun. Soitat takaisin kyydin päätyttyä.",
+        "fi_raw": null,
+        "en": "You apologise to the passenger for the disturbance and do not answer the call. You call back once the ride has ended.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Using a phone without a hands-free device while driving is illegal and dangerous; the driver must not answer and should call back after the journey.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-058",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Muistisairas asiakas ei ole varma määränpäästä ja antaa kaksi eri osoitetta. Hänellä on mukana lappu, jossa näkyy yhteyshenkilön numero. Miten toimit?",
+      "en": "A passenger with a memory disorder is unsure of their destination and gives two different addresses. They have a note with them showing a contact person's number. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Valitset itse lähimmän osoitteen ja ajat sinne kysymättä.",
+        "fi_raw": null,
+        "en": "You choose the nearest address yourself and drive there without asking.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Varmistat määränpään rauhallisesti esimerkiksi asiakkaan mukana olevien tietojen tai sovittujen yhteystietojen avulla.",
+        "fi_raw": null,
+        "en": "You calmly confirm the destination, for example by using the information the passenger has with them or by contacting the agreed contact person.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Keskeytät matkan heti, koska asiakas ei osaa antaa yhtä osoitetta.",
+        "fi_raw": null,
+        "en": "You terminate the journey immediately because the passenger cannot give a single address.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A passenger with a memory disorder must be handled with patience; using the contact information they are carrying to verify the correct destination ensures their safety and wellbeing.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-059",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Navigaattori ehdottaa reittiä, jossa on työmaa ja kapea väliaikainen ajokaista. Toinen reitti on hieman pidempi mutta turvallisempi ja sujuvampi. Mitä kuljettajan tulee painottaa?",
+      "en": "The navigation system suggests a route that has a construction site and a narrow temporary lane. An alternative route is slightly longer but safer and smoother. What should the driver prioritise?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Valitset turvallisen ja liikennetilanteeseen sopivan reitin, vaikka se olisi hieman pidempi.",
+        "fi_raw": null,
+        "en": "You choose the safe route that suits the traffic situation, even if it is slightly longer.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Valitset aina lyhimmän reitin riippumatta turvallisuudesta.",
+        "fi_raw": null,
+        "en": "You always choose the shortest route regardless of safety.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kysyt asiakkaalta luvan ajaa työmaan läpi mahdollisimman nopeasti.",
+        "fi_raw": null,
+        "en": "You ask the passenger's permission to drive through the construction site as quickly as possible.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Passenger and traffic safety must take precedence over journey time; a slightly longer but safer route is always the correct professional choice for a taxi driver.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-060",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Noutopaikalla asiakas soittaa ja kertoo seisovansa rakennuksen toisella puolella. Alueella on useita sisäänkäyntejä ja pysähtyminen on sallittua vain tietyssä kohdassa. Miten toimit?",
+      "en": "At the pick-up location the passenger calls to say they are standing on the other side of the building. The area has several entrances and stopping is only permitted at a specific point. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Sovit asiakkaan kanssa selkeän ja turvallisen kohtaamispaikan, jossa pysähtyminen on mahdollista.",
+        "fi_raw": null,
+        "en": "You agree with the passenger on a clear and safe meeting point where stopping is possible.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Ajetaan hitaasti kaikkien sisäänkäyntien ohi ja pysähdytään mihin tahansa asiakkaan nähdessä.",
+        "fi_raw": null,
+        "en": "You drive slowly past all the entrances and stop anywhere when the passenger spots you.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Perut tilauksen heti, koska asiakas ei ole täsmälleen karttapisteessä.",
+        "fi_raw": null,
+        "en": "You cancel the booking immediately because the passenger is not exactly at the map pin.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Agreeing on a lawful stopping point that is safe and accessible for the passenger is the professional approach, respecting both traffic rules and the passenger's needs.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-061",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Näkövammainen asiakas pyytää sinua kertomaan, milloin auto on pysähtynyt turvallisesti ja missä suunnassa rakennuksen ovi on. Mitä teet?",
+      "en": "A visually impaired customer asks you to tell them when the car has stopped safely and in which direction the building entrance is. What do you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Annat selkeän sanallisen ohjeen ja varmistat turvallisen poistumisen.",
+        "fi_raw": null,
+        "en": "You give clear verbal guidance and ensure a safe exit.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Olet hiljaa, jotta asiakas voi päätellä suunnan itse.",
+        "fi_raw": null,
+        "en": "You stay silent so the customer can figure out the direction on their own.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Osoitat kädellä ovea kohti sanomatta mitään.",
+        "fi_raw": null,
+        "en": "You point toward the door without saying anything.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A visually impaired passenger cannot see gestures or visual cues, so clear verbal instructions are the only way to guide them safely to the entrance.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-062",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Näkövammainen asiakas saapuu opaskoiran kanssa. Hän pyytää kuljettajaa kuvailemaan auton sijainnin, ohjaamaan hänet ovelle ja kertomaan, mihin opaskoira voi matkustuksen aikana asettua. Miten kuljettajan tulee toimia?",
+      "en": "A visually impaired customer arrives with a guide dog. They ask the driver to describe the car's location, guide them to the door, and explain where the guide dog can sit during the journey. How should the driver act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja kieltäytyy ottamasta opaskoiraa autoon, jotta sisätila pysyy siistinä.",
+        "fi_raw": null,
+        "en": "The driver refuses to take the guide dog in the car to keep the interior clean.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja antaa selkeitä suullisia ohjeita, auttaa asiakasta turvallisesti autoon ja sallii opaskoiran matkustaa mukana asianmukaisesti.",
+        "fi_raw": null,
+        "en": "The driver gives clear verbal instructions, helps the customer safely into the car, and allows the guide dog to travel along appropriately.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja pyytää asiakasta järjestämään avustajan ennen kuin kyyti voidaan aloittaa.",
+        "fi_raw": null,
+        "en": "The driver asks the customer to arrange an assistant before the ride can begin.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Finnish law requires taxi drivers to accept guide dogs, and good customer service means actively assisting the visually impaired passenger with verbal guidance and safe boarding.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-063",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Näkövammainen asiakas tulee taksiin opaskoiran kanssa. Asiakas kertoo, että koira matkustaa hänen jalkatilassaan. Miten sinun tulee toimia?",
+      "en": "A visually impaired customer gets into the taxi with a guide dog. The customer says the dog will travel in their foot well. How should you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kieltäydyt kuljetuksesta, koska eläimiä ei saa ottaa taksiin.",
+        "fi_raw": null,
+        "en": "You refuse the ride because animals are not allowed in a taxi.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Sallit opaskoiran matkustaa asiakkaan mukana ja varmistat, että asiakas pääsee autoon turvallisesti.",
+        "fi_raw": null,
+        "en": "You allow the guide dog to travel with the customer and ensure the customer boards safely.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Pyydät asiakasta jättämään opaskoiran lähtöpaikkaan, jos matka on lyhyt.",
+        "fi_raw": null,
+        "en": "You ask the customer to leave the guide dog at the pick-up point if the journey is short.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Drivers are legally obliged to transport guide dogs and must not refuse service; the dog's placement in the foot well is the passenger's decision and poses no problem.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-064",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Paljonko oheisen hinnaston mukaan on sunnuntaina ajettavan yhden henkilön kyydin kokonaishinta, kun matkan pituus on 20 km ja matka-aika on 30 minuuttia, eikä kiinteää hintaa sovita?",
+      "en": "According to the attached price list, what is the total fare for a single-person ride on a Sunday, where the distance is 20 km and the journey time is 30 minutes, with no fixed price agreed?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "65,00 €",
+        "fi_raw": null,
+        "en": "65.00 €",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "74,00 €",
+        "fi_raw": null,
+        "en": "74.00 €",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "83,00 €",
+        "fi_raw": null,
+        "en": "83.00 €",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Applying the Sunday tariff rates from the price list to a 20 km, 30-minute single-passenger journey yields a total of 65.00 €.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-065",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Perhe tulee taksiin pienen lapsen kanssa. Huoltaja sanoo, ettei lapsi tarvitse asianmukaista turvalaitetta, koska hän pitää lasta sylissä. Mikä on turvallisin toimintatapa?",
+      "en": "A family gets into the taxi with a small child. The guardian says the child does not need an appropriate safety device because they will hold the child in their lap. What is the safest course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Hyväksyt huoltajan ratkaisun, koska huoltaja päättää aina.",
+        "fi_raw": null,
+        "en": "You accept the guardian's decision, because the guardian always decides.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Huolehdit, että lapsi matkustaa turvallisesti ja käytettävissä olevaa asianmukaista turvalaitetta käytetään.",
+        "fi_raw": null,
+        "en": "You ensure the child travels safely and that any available appropriate safety device is used.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Pyydät lasta istumaan lattialla, jos turvalaitetta ei ole.",
+        "fi_raw": null,
+        "en": "You ask the child to sit on the floor if no safety device is available.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Road traffic law requires that children travel with appropriate restraints; a guardian's lap provides no protection in a collision, and the driver bears responsibility for passenger safety.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-066",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Pyörätuolia käyttävä asiakas tarvitsee apua autoon siirtymisessä. Hän kertoo itse, mistä kohdasta häntä saa tukea. Miten toimit?",
+      "en": "A wheelchair-using customer needs help transferring into the car. They tell you themselves where you may support them. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Toimit asiakkaan ohjeiden mukaan ja autat rauhallisesti turvallisuutta vaarantamatta.",
+        "fi_raw": null,
+        "en": "You follow the customer's instructions and assist calmly without compromising safety.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Nostat asiakkaan nopeasti ilman kysymistä, jotta matka alkaa nopeammin.",
+        "fi_raw": null,
+        "en": "You lift the customer quickly without asking so the journey can start faster.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kieltäydyt avustamisesta, koska kuljettaja ei saa koskaan auttaa siirtymisessä.",
+        "fi_raw": null,
+        "en": "You refuse to assist because a driver is never allowed to help with transfers.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Respecting the customer's own instructions ensures both safety and dignity; they know their body best, and calm, guided assistance prevents injury.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-067",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Pyörätuoliasiakas kertoo juuri ennen lähtöä, että hänen asentonsa tuntuu epämukavalta ja vaatteet sekä turvavyö ovat jääneet huonoon asentoon. Aikataulu on tiukka, mutta asiakas pyytää apua heti. Miten kuljettajan tulee toimia?",
+      "en": "A wheelchair passenger says just before departure that their position feels uncomfortable and that their clothes and seat belt are incorrectly positioned. The schedule is tight, but the customer asks for help immediately. How should the driver act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja lähtee ajamaan heti ja neuvoo asiakasta korjaamaan asennon myöhemmin matkan aikana.",
+        "fi_raw": null,
+        "en": "The driver sets off immediately and advises the customer to correct the position later during the journey.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja korjaa tilanteen tai auttaa sen korjaamisessa ennen ajoon lähtöä, jotta matkustus on turvallista ja mahdollisimman mukavaa.",
+        "fi_raw": null,
+        "en": "The driver corrects the situation or helps correct it before setting off, so that the journey is safe and as comfortable as possible.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja ilmoittaa, ettei asiakkaan asentoon tai vaatetukseen saa koskaan koskea missään tilanteessa.",
+        "fi_raw": null,
+        "en": "The driver states that the customer's position or clothing may never be touched under any circumstances.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A mispositioned seat belt on a wheelchair passenger is a safety hazard; it must be corrected before the vehicle moves, regardless of time pressure.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-068",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Saako yli 15-vuotias asiakas matkustaa isossa esteettömässä ajoneuvossa siten, että hän pyörätuolin sijaan istuu nelipyöräisessä sähkömopossa (senioriskootteri)?",
+      "en": "May a customer over 15 years of age travel in a large accessible vehicle by sitting in a four-wheeled electric moped (mobility scooter) instead of a wheelchair?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Ei saa, koska sähkömopoa ei ole tarkoitettu asiakkaan kuljettamiseen taksissa.",
+        "fi_raw": null,
+        "en": "No, because a mobility scooter is not designed for transporting a passenger in a taxi.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Kyllä saa, jos sähkömopo on sijoitettu siten, että asiakas matkustaa selkä menosuuntaan.",
+        "fi_raw": null,
+        "en": "Yes, if the mobility scooter is positioned so that the customer travels with their back to the direction of travel.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kyllä saa, jos kuljettaja huolehtii asiakkaan sähkömopon oikeaoppisesta kiinnittämisestä ajoneuvoon.",
+        "fi_raw": null,
+        "en": "Yes, if the driver ensures the customer's mobility scooter is properly secured to the vehicle.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Mobility scooters are not approved as passenger seats in vehicles; only purpose-built wheelchair restraint systems meet the required safety standards for transporting seated passengers.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-069",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Sinulle tulee näkövammainen asiakas kyytiin, miten hoidat tilanteen?",
+      "en": "A visually impaired customer gets into your taxi — how do you handle the situation?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Vaadin, että näkövammaisella on avustajan mukana.",
+        "fi_raw": null,
+        "en": "I demand that the visually impaired person has an assistant with them.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "En ota kyytiin, koska en tiedä miten näkövammaiseen suhtaudutaan.",
+        "fi_raw": null,
+        "en": "I refuse the ride because I do not know how to deal with a visually impaired person.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Kysyn miten voin auttaa ja kerron missä suunnassa ajoneuvo on ja tarvitseeko hän apua.",
+        "fi_raw": null,
+        "en": "I ask how I can help, tell them which direction the vehicle is in, and ask whether they need assistance.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Asking how you can help and providing verbal orientation are the basic duties of good customer service for a visually impaired passenger; drivers may not refuse or impose conditions.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-070",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Taksi mahdollistaa näkövammaisten asiakkaiden sujuvan liikkumisen. Myös sinun kyytiisi taksinkuljettajana tulee todennäköisesti näkövammaisia asiakkaita, ja joskus näkövammaisilla asiakkailla on mukana opaskoira. Mitä sinun on hyvä muistaa opaskoirasta?",
+      "en": "Taxis enable smooth travel for visually impaired customers. As a taxi driver you will likely carry visually impaired customers, and sometimes those customers will have a guide dog with them. What is important to remember about a guide dog?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Opaskoiraa tulee aina napsuttaa kiitokseksi hyvin tehdystä työstä.",
+        "fi_raw": null,
+        "en": "You should always snap your fingers at the guide dog as thanks for a job well done.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Opaskoira istuu joko asiakkaan jalkatilassa tai matkatavaran tilassa.",
+        "fi_raw": null,
+        "en": "The guide dog sits either in the customer's foot well or in the luggage area.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Opaskoira istuu aina takapenkillä.",
+        "fi_raw": null,
+        "en": "The guide dog always sits on the back seat.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "The guide dog travels in the foot well or luggage space — it is a working animal and should not be interfered with, and drivers must accept it in these designated spaces.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-071",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Taksin tavaratilassa on useita painavia laukkuja ja matkustamossa on lisäksi yksi irrallinen matkalaukku, joka voi liikkua äkkijarrutuksessa. Asiakkaalla on kiire lentokentälle. Mikä on paras toimintatapa?",
+      "en": "The taxi's boot contains several heavy bags and the passenger compartment also has one unsecured suitcase that could move in an emergency stop. The customer is in a hurry to catch a flight. What is the best course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja aloittaa matkan heti, jos matkustaja itse sanoo hyväksyvänsä riskin.",
+        "fi_raw": null,
+        "en": "The driver starts the journey immediately if the passenger says they accept the risk.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettaja varmistaa ennen lähtöä, että kaikki tavarat on sijoitettu ja kiinnitetty turvallisesti.",
+        "fi_raw": null,
+        "en": "The driver ensures before departure that all luggage is safely stored and secured.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja sijoittaa raskaimman laukun etupenkille, jotta tavaratilaan jää enemmän tilaa.",
+        "fi_raw": null,
+        "en": "The driver places the heaviest bag on the front seat to free up space in the boot.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "An unsecured suitcase becomes a dangerous projectile in an emergency stop; the driver is responsible for safe loading regardless of the passenger's time pressure.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-072",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Taksinkuljettajalla on huono päivä ja hänestä tuntuu, mikään ei ole mennyt päivän aikana kovinkaan hyvin. Hän ei tee mieli hymyillä eikä varsinkaan puhua asiakkaiden kanssa. Asiakkaiden mielipiteet ärsyttävät ja eräälle asiakkaalle hän on erityisen töykeä. Asiakas tekee tilanteesta valituksen. Onko asiakkaalla oikeus valittaa saamastaan palvelusta?",
+      "en": "A taxi driver is having a bad day and feels that nothing has gone well. They have no desire to smile or talk to customers. Customer comments irritate them and they are particularly rude to one customer. The customer makes a complaint about the situation. Does the customer have the right to complain about the service they received?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kyllä, sillä asiakkaita kohtaan tulee aina käyttäytyä kohteliaasti ja asiallisesti.",
+        "fi_raw": null,
+        "en": "Yes, because customers must always be treated politely and professionally.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Ei, sillä asiakas ei osta taksiin tullessaan iloista palvelua vaan kuljetuksen määränpäähän.",
+        "fi_raw": null,
+        "en": "No, because when a customer boards a taxi they are buying a ride to a destination, not cheerful service.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Ei, sillä kyseinen tapa on Reinikaisen tapa toimia, eikä häntä siitä voi moittia.",
+        "fi_raw": null,
+        "en": "No, because that is simply Reinikainen's way of operating and he cannot be criticised for it.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Taxi drivers are required by professional standards to treat all customers politely and respectfully at all times, regardless of personal mood, and customers are entitled to complain about rude treatment.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-073",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Talvella tie on jäinen ja asiakas pyytää sinua ohittamaan hitaasti ajavan ajoneuvon, jotta hän ehtii tapaamiseen. Näkyvyys on rajoittunut. Miten toimit?",
+      "en": "In winter the road is icy and a customer asks you to overtake a slowly moving vehicle so they can make it to a meeting. Visibility is limited. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Ohitat heti, koska asiakas on pyytänyt sitä.",
+        "fi_raw": null,
+        "en": "You overtake immediately because the customer has asked you to.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Et ohita, jos ohitus ei ole turvallinen keliin, näkyvyyteen ja liikennetilanteeseen nähden.",
+        "fi_raw": null,
+        "en": "You do not overtake if it is not safe given the road conditions, visibility, and traffic situation.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Ohitat vain osittain vastaantulevien kaistan kautta, jos tilaa näyttää olevan vähän.",
+        "fi_raw": null,
+        "en": "You overtake only partially into the oncoming lane if there appears to be a little space.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A driver is solely responsible for the safety of any manoeuvre; a passenger's request does not override the driver's legal duty to overtake only when it is safe to do so.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-074",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Talviaamuna kuljettaja huomaa ennen ajoon lähtöä, että ajoneuvon tuulilasi on osittain jäässä ja näkyvyys sivuille on heikko. Ensimmäinen tilaus odottaa. Mikä on oikea toimintatapa?",
+      "en": "On a winter morning the driver notices before setting off that the vehicle's windscreen is partly iced over and visibility to the sides is poor. The first booking is waiting. What is the correct course of action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Kuljettaja voi lähteä liikkeelle hitaasti ja puhdistaa loppulasin seuraavissa valoissa.",
+        "fi_raw": null,
+        "en": "The driver can set off slowly and clear the remaining ice at the next traffic lights.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan tulee varmistaa ennen lähtöä, että näkyvyys on riittävä ja ajoneuvo voidaan kuljettaa turvallisesti.",
+        "fi_raw": null,
+        "en": "The driver must ensure before departure that visibility is adequate and the vehicle can be driven safely.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettaja voi ajaa, jos matkustaja hyväksyy tilanteen.",
+        "fi_raw": null,
+        "en": "The driver may drive if the passenger accepts the situation.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Finnish road traffic law requires a clear field of vision before driving; an iced windscreen is a legal violation and a direct safety hazard that must be cleared before moving.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-075",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Työvuoron lopussa tunnet voimakasta väsymystä ja huomaat keskittymisen heikkenevän. Saat vielä uuden pitkän tilauksen. Mitä sinun tulee tehdä?",
+      "en": "At the end of your shift you feel severely fatigued and notice your concentration weakening. You receive one more long booking. What should you do?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Arvioit ajokykysi realistisesti etkä lähde kuljettamaan asiakasta, jos et voi ajaa turvallisesti.",
+        "fi_raw": null,
+        "en": "You assess your fitness to drive realistically and do not take the customer if you cannot drive safely.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Otat tilauksen, koska ammattikuljettajan pitää aina jatkaa työvuoro loppuun.",
+        "fi_raw": null,
+        "en": "You accept the booking because a professional driver must always complete their shift.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Juot kahvia ja ajat mahdollisimman nopeasti määränpäähän.",
+        "fi_raw": null,
+        "en": "You drink coffee and drive to the destination as quickly as possible.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Driving while fatigued is as dangerous as drink-driving; a professional driver is legally and ethically obliged to refuse to drive when they cannot do so safely.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-076",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Uudella työnantajallasi on paljon sellaisia asiakkaita, jotka ovat käyttäneet taksia jo useiden vuosien ajan. Erittäin suuren asiakasryhmän muodostavat näkövammaiset asiakkaat. Ensimmäinen vuorosi alkaa ja asiakkaaksesi tulee 48-vuotias Elmeri, joka on näkövammainen ja käy maanantaisin uimassa läheisellä uimahallilla. Mitä sinun tulee muistaa näkövammaisten asiakaspalvelusta?",
+      "en": "Your new employer has many customers who have been using the taxi service for several years. Visually impaired customers make up a very large group. Your first shift begins and your first customer is 48-year-old Elmeri, who is visually impaired and swims at a nearby pool every Monday. What should you remember about customer service for visually impaired passengers?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Näkövammaista palvellessa tulee muistaa puhua hiukan normaalia puheääntä kovemmalla äänellä.",
+        "fi_raw": null,
+        "en": "When serving a visually impaired person you should remember to speak slightly louder than your normal speaking voice.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Kuljettajan on hyvä kysyä asiakkaalta, miten häntä voi auttaa, ja kertoa sanallisesti sijainnista ja muista oleellisista asioista.",
+        "fi_raw": null,
+        "en": "The driver should ask the customer how they can help and describe the location and other relevant details verbally.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Kuljettajan tehtäviin ei kuulu asiakkaan erityistarpeiden huomioiminen.",
+        "fi_raw": null,
+        "en": "It is not part of the driver's duties to take a customer's special needs into account.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Good customer service for visually impaired passengers means asking how you can help and providing verbal information about the environment, since they cannot observe it themselves.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-077",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Vieraskielinen asiakas ei ymmärrä ohjettasi poistua autosta oikealta puolelta. Vieressä kulkee pyöräliikennettä. Miten toimit?",
+      "en": "A foreign-language customer does not understand your instruction to exit the car from the right side. There is cycle traffic nearby. How do you act?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Näytät selkeästi ja rauhallisesti turvallisen poistumissuunnan ja varmistat, että asiakas ymmärtää ennen oven avaamista.",
+        "fi_raw": null,
+        "en": "You clearly and calmly indicate the safe direction to exit and confirm that the customer understands before the door is opened.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "Annat asiakkaan avata minkä tahansa oven, koska hän päättää itse.",
+        "fi_raw": null,
+        "en": "You let the customer open any door they choose because it is their decision.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Nostat ääntä, jotta asiakas tottelee nopeammin.",
+        "fi_raw": null,
+        "en": "You raise your voice so the customer complies faster.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Opening a door into cycle traffic can cause serious injury to cyclists; the driver must ensure the passenger exits safely even when there is a language barrier, using clear gestures and confirming understanding.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-078",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Voiko toimia vakiotaksin kuljettajana säännöllisissä kuntoutukseen liittyvissä kuljetuksissa, kun matkustajana on pyörätuolia käyttävä 15-vuotias lapsi?",
+      "en": "Can you act as the driver of a contract taxi for regular rehabilitation-related transport when the passenger is a 15-year-old wheelchair user?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Voin toimia kuljettajana vain, jos minulla on vaadittu koulutus ja soveltuvuus lasten sekä erityisryhmien kuljetuksiin.",
+        "fi_raw": null,
+        "en": "I can act as driver only if I have the required training and suitability for transporting children and special groups.",
+        "is_correct": true
+      },
+      {
+        "key": "B",
+        "fi": "En voi toimia kuljettajana ilman tarvittavia lupia ja tilaajan hyväksyntää.",
+        "fi_raw": null,
+        "en": "I cannot act as driver without the necessary permits and the approval of the ordering party.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Selvitän työnantajalta, voinko toimia vakiotaksin kuljettajana.",
+        "fi_raw": null,
+        "en": "I find out from my employer whether I can act as a contract taxi driver.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "A",
+    "correct_master": "A",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Transporting children and wheelchair users in rehabilitation trips requires specific training and approval; operating without the required qualifications would violate the conditions of the contract and endanger the passenger.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-079",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Kuinka tulee toimia tilanteessa, jossa kyydin päätyttyä huomaat asiakkaan jättäneen ajoneuvoon käsilaukkunsa?",
+      "en": "How should you act when, after a ride has ended, you notice that the customer has left their handbag in the vehicle?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Voit viedä käsilaukun kotiisi ja jäädä odottamaan asiakkaan yhteydenottoa.",
+        "fi_raw": null,
+        "en": "You may take the handbag home and wait for the customer to contact you.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Toimitat käsilaukun tilausvälitysyhtiön toimistolle viimeistään viikon kuluessa.",
+        "fi_raw": null,
+        "en": "You deliver the handbag to the dispatch company's office within a week at the latest.",
+        "is_correct": false
+      },
+      {
+        "key": "C",
+        "fi": "Toimitat käsilaukun viipymättä asiakkaalle tai poliisin löytötavaratoimistoon.",
+        "fi_raw": null,
+        "en": "You deliver the handbag to the customer without delay or to the police lost-and-found office.",
+        "is_correct": true
+      }
+    ],
+    "correct_option": "C",
+    "correct_master": "C",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "A taxi driver is legally obliged to return found property immediately; taking it home or delaying could constitute misappropriation of lost property.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  },
+  {
+    "id": "MTQ-080",
+    "category_id": null,
+    "category_en": null,
+    "source_topic_fi": null,
+    "ref_no": null,
+    "source_set": "model-test",
+    "question": {
+      "fi": "Olet viemässä tuttua asiakasta paikalliseen elokuvateatteriin, kun yhtäkkiä huomaat, että asiakas saa kouristuskohtauksen. Asiakas on sinulle entuudestaan tuttu, joten tiedät asiakkaan sairastavan epilepsiaa. Mikä on ensimmäinen ensiaputoimenpiteesi?",
+      "en": "You are taking a regular customer to the local cinema when you suddenly notice the customer is having a seizure. You know the customer well and are aware they have epilepsy. What is your first first-aid action?",
+      "fi_raw": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "fi": "Pidän tiukasti kiinni asiakkaasta, jotta hän ei satuttaisi itseään kouristuskohtauksen aikana.",
+        "fi_raw": null,
+        "en": "I hold the customer firmly so they do not injure themselves during the seizure.",
+        "is_correct": false
+      },
+      {
+        "key": "B",
+        "fi": "Huolehdit, että asiakas ei kolhi päätään, mutta et pyri estämään kouristusliikkeita. Kun kouristukset vähenevät, käännät henkilön kylkiasentoon.",
+        "fi_raw": null,
+        "en": "You ensure the customer does not hit their head, but do not try to stop the convulsive movements. When the convulsions subside, you turn the person onto their side.",
+        "is_correct": true
+      },
+      {
+        "key": "C",
+        "fi": "Jatkat normaalisti matkaa, koska aikataulusi on tiukka ja arvelet kohtauksen menevän ohi.",
+        "fi_raw": null,
+        "en": "You continue the journey as normal because your schedule is tight and you expect the seizure to pass.",
+        "is_correct": false
+      }
+    ],
+    "correct_option": "B",
+    "correct_master": "B",
+    "key_overridden": false,
+    "clue_annotations": [],
+    "explanation_en": "Standard first aid for an epileptic seizure is to protect the head and place the person in the recovery position once convulsions ease; restraining the person or ignoring the seizure are both harmful and negligent.",
+    "difficulty": null,
+    "tags": [
+      "model-test"
+    ],
+    "status": "model-test",
+    "fi_edited": false,
+    "reviewer_notes": null,
+    "enriched": false
+  }
+]
