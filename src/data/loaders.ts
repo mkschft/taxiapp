@@ -2,6 +2,7 @@ import type {
   ExamCategory, Topic, Question, ModelTest, GuideSection,
   VocabData, VocabSet, VocabLessonWord, VocabQuizQuestion,
   ClueData, ClueGroup, ClueLessonWord, ClueQuizQuestion,
+  TopicData, TopicSection, TopicLesson,
 } from './types';
 
 import categoriesRaw from './json/categories.json';
@@ -11,6 +12,7 @@ import clueDataRaw from './json/clue.json';
 import questionsRaw from './json/questions.json';
 import modelTestsRaw from './json/model_tests.json';
 import guideRaw from './json/guide.json';
+import topicPracticeRaw from './json/topic_practice.json';
 
 export const getCategories = (): ExamCategory[] => categoriesRaw as ExamCategory[];
 export const getTopics = (): Topic[] => topicsRaw as Topic[];
@@ -66,6 +68,27 @@ export const getClueQuiz = (groupId: string): ClueQuizQuestion[] =>
 
 /** Total clue words across all groups (for dashboard/progress counts). */
 export const getClueWordTotal = (): number => clueData.words.length;
+
+/* ── Topic Practice — section/lesson flow (topic_practice.json) ───────────── */
+const topicData = topicPracticeRaw as TopicData;
+
+export const getTopicSections = (): TopicSection[] =>
+  [...topicData.sections].sort((a, b) => a.order - b.order);
+
+export const getTopicSection = (sectionId: string): TopicSection | undefined =>
+  topicData.sections.find(s => s.id === sectionId);
+
+export const getTopicLessons = (sectionId: string): TopicLesson[] =>
+  topicData.lessons
+    .filter(l => l.section_id === sectionId)
+    .sort((a, b) => a.order - b.order);
+
+export const getTopicLesson = (lessonId: string): TopicLesson | undefined =>
+  topicData.lessons.find(l => l.id === lessonId);
+
+/** All question ids in a section, in lesson order (for a whole-section run). */
+export const getTopicSectionQuestionIds = (sectionId: string): string[] =>
+  getTopicLessons(sectionId).flatMap(l => l.question_ids);
 
 export const getModelTestById = (id: string) =>
   (modelTestsRaw as ModelTest[]).find(t => t.id === id);

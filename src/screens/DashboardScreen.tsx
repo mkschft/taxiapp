@@ -8,13 +8,14 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { useQuestionStats } from '../store/progressStore';
-import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal } from '../data/loaders';
+import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
 const VOCAB_SETS = getVocabSets().length;
 const VOCAB_WORDS = getVocabWordTotal();
 const CLUE_GROUPS = getClueGroups().length;
 const CLUE_WORDS = getClueWordTotal();
+const TOPIC_SECTIONS = getTopicSections().length;
 
 type HubItem = {
   Icon: LucideIcon; tint: string; title: string; sub: string; paid: boolean;
@@ -25,7 +26,7 @@ const HUBS: HubItem[] = [
   { Icon: FileText, tint: colors.primary, title: 'Exam Guide', sub: 'Rules · categories · exam day', paid: false, screen: 'Guide', stack: 'Study' },
   { Icon: BookOpen, tint: colors.success, title: 'Vocabulary', sub: `${VOCAB_SETS} sets · ${VOCAB_WORDS} words`, paid: false, screen: 'VocabSets', stack: 'Study' },
   { Icon: Target, tint: colors.warning, title: 'Clue Words', sub: `${CLUE_GROUPS} groups · ${CLUE_WORDS} clue words`, paid: true, screen: 'ClueWords', stack: 'Study' },
-  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: '4 categories · 10 Qs', paid: true, screen: 'StudyHome', stack: 'Study' },
+  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: `${TOTAL_QUESTIONS} questions · ${TOPIC_SECTIONS} sections`, paid: true, screen: 'TopicSections', stack: 'Study' },
   { Icon: Timer, tint: '#7C3AED', title: 'Model Tests', sub: '2 full timed tests', paid: true, screen: 'TestHome', stack: 'Test' },
   { Icon: TrendingUp, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];

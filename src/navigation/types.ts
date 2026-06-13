@@ -21,6 +21,8 @@ export type StudyStackParamList = {
   ClueWords: undefined;
   ClueLesson: { groupId: string; index?: number };
   ClueQuiz: { groupId: string };
+  TopicSections: undefined;
+  TopicLessons: { sectionId: string };
   Practice: {
     questionId: string;
     queue?: string[];

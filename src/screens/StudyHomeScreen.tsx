@@ -4,13 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 import { BookOpen, Target, MessageSquare, FileText, type LucideIcon } from 'lucide-react-native';
 import { Badge } from '../components/ui/Badge';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { getVocabSets, getVocabWordTotal, getQuestions } from '../data/loaders';
+import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
   { Icon: FileText, tint: colors.primary, title: 'Exam Guide', sub: 'Rules, categories, exam day tips', screen: 'Guide', paid: false, params: {} },
   { Icon: BookOpen, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: false, params: {} },
   { Icon: Target, tint: colors.warning, title: 'Clue Words', sub: 'Positive & negative answer-logic words', screen: 'ClueWords', paid: true, params: {} },
-  { Icon: MessageSquare, tint: colors.error, title: 'Practice All Questions', sub: `${getQuestions().length} questions · by category`, screen: 'Practice', paid: true, params: { questionId: getQuestions()[0]?.id, queue: getQuestions().map(q => q.id), queueIndex: 0, sourceLabel: 'All Questions' } },
+  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: `${getQuestions().length} questions · ${getTopicSections().length} sections`, screen: 'TopicSections', paid: true, params: {} },
 ];
 
 export function StudyHomeScreen() {

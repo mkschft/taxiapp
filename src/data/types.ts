@@ -129,6 +129,40 @@ export type ClueData = {
   questions: ClueQuizQuestion[];
 };
 
+/* ── Topic Practice — section/lesson flow (built by content/build_topics.py) ─
+ * Topic Practice → 4 Sections → each Section has Lessons (sub-categories)
+ * → each Lesson runs its questions through the shared Practice runner.
+ * Question CONTENT lives in questions.json; a lesson only holds an ordered
+ * list of question_ids. URLs: /practice · /practice/:sectionId
+ */
+export type TopicSection = {
+  id: string;                 // == category_id ("passenger_safety")
+  category_id: string;        // → ExamCategory.id (icon/colour)
+  name_fi: string;            // official Finnish exam section name
+  name_en: string;
+  description: string;
+  pass_correct: number | null;// official pass mark, e.g. 12 of 15
+  pass_total: number | null;
+  order: number;
+  lesson_count: number;       // derived
+  question_count: number;     // derived
+};
+
+export type TopicLesson = {
+  id: string;                 // "passenger_safety__seatbelt-child-safety"
+  section_id: string;         // → TopicSection.id
+  name: string;
+  order: number;
+  total_in_section: number;
+  question_count: number;     // derived
+  question_ids: string[];     // ordered → Question.id
+};
+
+export type TopicData = {
+  sections: TopicSection[];
+  lessons: TopicLesson[];
+};
+
 /** Inline clue annotation attached to a question — replaces the old clue_word_ids ref model */
 export type ClueAnnotation = {
   text_fi: string;

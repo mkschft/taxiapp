@@ -7,6 +7,8 @@ import { VocabQuizScreen } from '../screens/VocabQuizScreen';
 import { ClueWordsScreen } from '../screens/ClueWordsScreen';
 import { ClueLessonScreen } from '../screens/ClueLessonScreen';
 import { ClueQuizScreen } from '../screens/ClueQuizScreen';
+import { TopicSectionsScreen } from '../screens/TopicSectionsScreen';
+import { TopicLessonsScreen } from '../screens/TopicLessonsScreen';
 import { PracticeScreen } from '../screens/PracticeScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import { StudyHomeScreen } from '../screens/StudyHomeScreen';
@@ -26,6 +28,8 @@ export function StudyStack() {
       <Stack.Screen name="ClueWords" component={ClueWordsScreen} />
       <Stack.Screen name="ClueLesson" component={ClueLessonScreen} />
       <Stack.Screen name="ClueQuiz" component={ClueQuizScreen} />
+      <Stack.Screen name="TopicSections" component={TopicSectionsScreen} />
+      <Stack.Screen name="TopicLessons" component={TopicLessonsScreen} />
       <Stack.Screen name="Practice" component={PracticeScreen} />
       <Stack.Screen name="Result" component={ResultScreen} />
       <Stack.Screen name="Guide" component={GuideScreen} />
