@@ -172,8 +172,8 @@ export function ModelTestScreen({ navigation, route }: Props) {
         <View style={styles.scoreRow}>
           {[
             { val: score, label: 'Correct', color: colors.success },
-            { val: qIndex + 1 - score - (answered ? 0 : 0), label: 'Wrong', color: colors.error },
-            { val: test.question_ids.length - qIndex - 1, label: 'Remaining', color: colors.textSecondary },
+            { val: wrongIds.length, label: 'Wrong', color: colors.error },
+            { val: test.question_ids.length - score - wrongIds.length, label: 'Remaining', color: colors.textSecondary },
           ].map(s => (
             <View key={s.label} style={styles.scoreChip}>
               <Text style={[styles.scoreVal, { color: s.color }]}>{s.val}</Text>
