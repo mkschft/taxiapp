@@ -14,6 +14,7 @@ export type AppTabParamList = {
 export type StudyStackParamList = {
   StudyHome: undefined;
   Guide: undefined;
+  HowTo: undefined;
   VocabSets: undefined;
   VocabSetDetail: { setId: string };
   VocabLesson: { setId: string; index?: number };

@@ -41,6 +41,7 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               StudyHome: 'study',
               Guide: 'guide',
+              HowTo: 'how-to-use',
               VocabSets: 'vocab/sets',
               VocabSetDetail: 'vocab/sets/:setId',
               VocabLesson: 'vocab/sets/:setId/lesson/:index',

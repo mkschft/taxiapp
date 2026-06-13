@@ -102,7 +102,7 @@
       { "label": "Device", "value": "Traficom provides the computer — no own device needed" },
       { "label": "Allowed", "value": "Nothing on the desk. No notes, no phone, no dictionary." },
       { "label": "Questions", "value": "Read every word carefully — Finnish is precise" },
-      { "label": "Flagging", "value": "You can mark questions to review before final submission" },
+      { "label": "Flagging", "value": "You can mark questions to review before final submission — but it's best to answer every question on the first sequential pass and only flag the ones you want to rethink" },
       { "label": "Results", "value": "You see your score immediately after submitting" }
     ],
     "note": "If your Finnish is weak, use this app's clue-word method. Many questions can be answered by spotting key Finnish words even without full comprehension."
