@@ -5,7 +5,8 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { MODULE_ICONS, iconStroke } from '../theme/icons';
+import { MODULE_ICONS } from '../theme/icons';
+import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { useQuestionStats } from '../store/progressStore';
@@ -84,9 +85,7 @@ export function DashboardScreen() {
             >
               {hub.wide ? (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                  <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
-                    <hub.Icon size={22} color={hub.tint} strokeWidth={iconStroke} />
-                  </View>
+                  <IconChip Icon={hub.Icon} tint={hub.tint} />
                   <View style={{ flex: 1 }}>
                     <Text style={styles.hubTitle}>{hub.title}</Text>
                     <Text style={styles.hubSub}>{hub.sub}</Text>
@@ -94,9 +93,7 @@ export function DashboardScreen() {
                 </View>
               ) : (
                 <>
-                  <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
-                    <hub.Icon size={22} color={hub.tint} strokeWidth={iconStroke} />
-                  </View>
+                  <IconChip Icon={hub.Icon} tint={hub.tint} />
                   <Text style={styles.hubTitle}>{hub.title}</Text>
                   <Text style={styles.hubSub}>{hub.sub}</Text>
                   <Badge type={hub.paid ? 'paid' : 'free'} />

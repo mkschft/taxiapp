@@ -3,8 +3,9 @@ import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } fr
 import { useNavigation } from '@react-navigation/native';
 import { type LucideIcon } from 'lucide-react-native';
 import { Badge } from '../components/ui/Badge';
+import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { MODULE_ICONS, iconStroke } from '../theme/icons';
+import { MODULE_ICONS } from '../theme/icons';
 import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
@@ -32,9 +33,7 @@ export function StudyHomeScreen() {
             onPress={() => navigation.navigate(item.screen, item.params)}
             activeOpacity={0.75}
           >
-            <View style={[styles.iconChip, { backgroundColor: item.tint + '18' }]}>
-              <item.Icon size={22} color={item.tint} strokeWidth={iconStroke} />
-            </View>
+            <IconChip Icon={item.Icon} tint={item.tint} />
             <View style={styles.info}>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardSub}>{item.sub}</Text>

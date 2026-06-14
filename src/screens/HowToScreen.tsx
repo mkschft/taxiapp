@@ -5,8 +5,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { MODULE_ICONS, iconStroke } from '../theme/icons';
+import { MODULE_ICONS } from '../theme/icons';
 
 // Where each module lives in the navigator, so cards are tappable.
 type Nav = { stack?: 'Study' | 'Test'; screen: string } | { tab: 'Progress' };
@@ -108,9 +109,7 @@ export function HowToScreen() {
               activeOpacity={0.75}
             >
               <View style={styles.modHeader}>
-                <View style={[styles.iconChip, { backgroundColor: m.tint + '18' }]}>
-                  <m.Icon size={20} color={m.tint} strokeWidth={iconStroke} />
-                </View>
+                <IconChip Icon={m.Icon} tint={m.tint} size={40} iconSize={20} />
                 <Text style={styles.modTitle}>{m.title}</Text>
                 <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
               </View>
