@@ -1,17 +1,18 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BookOpen, Target, MessageSquare, FileText, HelpCircle, type LucideIcon } from 'lucide-react-native';
+import { type LucideIcon } from 'lucide-react-native';
 import { Badge } from '../components/ui/Badge';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { MODULE_ICONS, iconStroke } from '../theme/icons';
 import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
-  { Icon: HelpCircle, tint: colors.textSecondary, title: 'How to use the app', sub: 'Start here — what each section is for', screen: 'HowTo', paid: false, params: {} },
-  { Icon: FileText, tint: colors.primary, title: 'Exam Guide', sub: 'Rules, categories, exam day tips', screen: 'Guide', paid: false, params: {} },
-  { Icon: BookOpen, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: false, params: {} },
-  { Icon: Target, tint: colors.warning, title: 'Clue Words', sub: 'Positive & negative answer-logic words', screen: 'ClueWords', paid: true, params: {} },
-  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: `${getQuestions().length} questions · ${getTopicSections().length} sections`, screen: 'TopicSections', paid: true, params: {} },
+  { Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, title: 'How to use the app', sub: 'Start here — what each section is for', screen: 'HowTo', paid: false, params: {} },
+  { Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide', sub: 'Rules, categories, exam day tips', screen: 'Guide', paid: false, params: {} },
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: false, params: {} },
+  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: 'Positive & negative answer-logic words', screen: 'ClueWords', paid: true, params: {} },
+  { Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice', sub: `${getQuestions().length} questions · ${getTopicSections().length} sections`, screen: 'TopicSections', paid: true, params: {} },
 ];
 
 export function StudyHomeScreen() {
@@ -32,7 +33,7 @@ export function StudyHomeScreen() {
             activeOpacity={0.75}
           >
             <View style={[styles.iconChip, { backgroundColor: item.tint + '18' }]}>
-              <item.Icon size={22} color={item.tint} strokeWidth={2.2} />
+              <item.Icon size={22} color={item.tint} strokeWidth={iconStroke} />
             </View>
             <View style={styles.info}>
               <Text style={styles.cardTitle}>{item.title}</Text>

@@ -3,8 +3,9 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BookOpen, Target, MessageSquare, Timer, TrendingUp, FileText, HelpCircle, type LucideIcon } from 'lucide-react-native';
+import { type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { MODULE_ICONS, iconStroke } from '../theme/icons';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { useQuestionStats } from '../store/progressStore';
@@ -24,13 +25,13 @@ type HubItem = {
 };
 
 const HUBS: HubItem[] = [
-  { Icon: HelpCircle, tint: colors.textSecondary, title: 'How to use the app', sub: 'New here? Start with this 1-minute guide', paid: false, screen: 'HowTo', stack: 'Study', wide: true },
-  { Icon: FileText, tint: colors.primary, title: 'Exam Guide', sub: 'Rules · categories · exam day', paid: false, screen: 'Guide', stack: 'Study' },
-  { Icon: BookOpen, tint: colors.success, title: 'Vocabulary', sub: `${VOCAB_SETS} sets · ${VOCAB_WORDS} words`, paid: false, screen: 'VocabSets', stack: 'Study' },
-  { Icon: Target, tint: colors.warning, title: 'Clue Words', sub: `${CLUE_GROUPS} groups · ${CLUE_WORDS} clue words`, paid: true, screen: 'ClueWords', stack: 'Study' },
-  { Icon: MessageSquare, tint: colors.error, title: 'Topic Practice', sub: `${TOTAL_QUESTIONS} questions · ${TOPIC_SECTIONS} sections`, paid: true, screen: 'TopicSections', stack: 'Study' },
-  { Icon: Timer, tint: '#7C3AED', title: 'Model Tests', sub: `${MODEL_TESTS} full timed tests`, paid: true, screen: 'TestHome', stack: 'Test' },
-  { Icon: TrendingUp, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
+  { Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, title: 'How to use the app', sub: 'New here? Start with this 1-minute guide', paid: false, screen: 'HowTo', stack: 'Study', wide: true },
+  { Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide', sub: 'Rules · categories · exam day', paid: false, screen: 'Guide', stack: 'Study' },
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${VOCAB_SETS} sets · ${VOCAB_WORDS} words`, paid: false, screen: 'VocabSets', stack: 'Study' },
+  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: `${CLUE_GROUPS} groups · ${CLUE_WORDS} clue words`, paid: true, screen: 'ClueWords', stack: 'Study' },
+  { Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice', sub: `${TOTAL_QUESTIONS} questions · ${TOPIC_SECTIONS} sections`, paid: true, screen: 'TopicSections', stack: 'Study' },
+  { Icon: MODULE_ICONS.modelTests, tint: '#7C3AED', title: 'Model Tests', sub: `${MODEL_TESTS} full timed tests`, paid: true, screen: 'TestHome', stack: 'Test' },
+  { Icon: MODULE_ICONS.progress, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];
 
 export function DashboardScreen() {
@@ -84,7 +85,7 @@ export function DashboardScreen() {
               {hub.wide ? (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
                   <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
-                    <hub.Icon size={22} color={hub.tint} strokeWidth={2.2} />
+                    <hub.Icon size={22} color={hub.tint} strokeWidth={iconStroke} />
                   </View>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.hubTitle}>{hub.title}</Text>
@@ -94,7 +95,7 @@ export function DashboardScreen() {
               ) : (
                 <>
                   <View style={[styles.iconChip, { backgroundColor: hub.tint + '18' }]}>
-                    <hub.Icon size={22} color={hub.tint} strokeWidth={2.2} />
+                    <hub.Icon size={22} color={hub.tint} strokeWidth={iconStroke} />
                   </View>
                   <Text style={styles.hubTitle}>{hub.title}</Text>
                   <Text style={styles.hubSub}>{hub.sub}</Text>

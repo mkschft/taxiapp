@@ -4,9 +4,28 @@ import {
   BookOpen, Target, MessageSquare, Timer, BarChart3,
   Type, ClipboardList, HelpCircle, Link2, Plus, Minus,
   Languages, Bell, CreditCard, Gift, Star, Trash2, CalendarDays,
+  GraduationCap, CarTaxiFront, Compass, TrendingUp,
   type LucideIcon,
 } from 'lucide-react-native';
 import { colors } from './tokens';
+
+// One stroke weight for the whole app — keeps icons visually consistent.
+export const iconStroke = 2;
+
+// Learning modules → canonical, topic-relevant glyphs. Reference these by key
+// (`MODULE_ICONS.vocabulary`) so the same concept shows the same icon on every
+// surface, and a glyph swap is a one-line change here.
+export const MODULE_ICONS = {
+  examGuide: GraduationCap,    // exam / qualification
+  vocabulary: Languages,       // Finnish words
+  clueWords: Target,           // spot-the-clue
+  topicPractice: CarTaxiFront, // the taxi domain anchor
+  modelTests: Timer,           // timed mock exam
+  progress: TrendingUp,        // weak areas / trend
+  howTo: Compass,              // get oriented
+} satisfies Record<string, LucideIcon>;
+
+export type ModuleKey = keyof typeof MODULE_ICONS;
 
 // Map official category IDs → lucide icons (replaces emoji in categories.json)
 const CATEGORY_ICONS: Record<string, LucideIcon> = {

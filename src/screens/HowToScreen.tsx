@@ -3,12 +3,10 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {
-  FileText, BookOpen, Target, MessageSquare, Timer, TrendingUp,
-  ChevronRight, type LucideIcon,
-} from 'lucide-react-native';
+import { ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { MODULE_ICONS, iconStroke } from '../theme/icons';
 
 // Where each module lives in the navigator, so cards are tappable.
 type Nav = { stack?: 'Study' | 'Test'; screen: string } | { tab: 'Progress' };
@@ -20,37 +18,37 @@ type Module = {
 
 const MODULES: Module[] = [
   {
-    Icon: FileText, tint: colors.primary, title: 'Exam Guide',
+    Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide',
     what: 'The facts of the real Traficom exam — format, the 4 official categories, and exam-day rules.',
     how: 'Read this first so you know exactly what you are training for: 50 questions, 60 minutes, 80% to pass, Finnish only.',
     nav: { stack: 'Study', screen: 'Guide' },
   },
   {
-    Icon: BookOpen, tint: colors.success, title: 'Vocabulary',
+    Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary',
     what: 'Core Finnish taxi words grouped into bite-size sets, each with a flashcard lesson and a quiz.',
     how: 'Learn a set, then take its quiz. Build the base words before tackling full questions.',
     nav: { stack: 'Study', screen: 'VocabSets' },
   },
   {
-    Icon: Target, tint: colors.warning, title: 'Clue Words',
+    Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words',
     what: 'The answer-logic words that quietly point to the right or wrong option.',
     how: 'Positive clues (varmistaa, huolehtia) lean correct; absolutes (aina, vain, koskaan) are usually traps. Train your eye here so you can answer even when you don’t understand every word.',
     nav: { stack: 'Study', screen: 'ClueWords' },
   },
   {
-    Icon: MessageSquare, tint: colors.error, title: 'Topic Practice',
+    Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice',
     what: 'Real exam-style questions sorted into lessons under the 4 official categories.',
     how: 'Work through a section lesson by lesson. Every answer shows the translation and explanation, so each question teaches you something.',
     nav: { stack: 'Study', screen: 'TopicSections' },
   },
   {
-    Icon: Timer, tint: '#7C3AED', title: 'Model Tests',
+    Icon: MODULE_ICONS.modelTests, tint: '#7C3AED', title: 'Model Tests',
     what: 'Full, timed mock exams that mirror the real thing — same length, same pass mark.',
     how: 'Use these near exam day to rehearse under pressure. Sit one in a quiet 50 minutes, then review every question you missed.',
     nav: { stack: 'Test', screen: 'TestHome' },
   },
   {
-    Icon: TrendingUp, tint: colors.primary, title: 'Progress & Weak Areas',
+    Icon: MODULE_ICONS.progress, tint: colors.primary, title: 'Progress & Weak Areas',
     what: 'Tracks what you’ve practiced and surfaces the questions you keep getting wrong.',
     how: 'Check it regularly and re-drill your weak areas until they stop showing up.',
     nav: { tab: 'Progress' },
@@ -111,7 +109,7 @@ export function HowToScreen() {
             >
               <View style={styles.modHeader}>
                 <View style={[styles.iconChip, { backgroundColor: m.tint + '18' }]}>
-                  <m.Icon size={20} color={m.tint} strokeWidth={2.2} />
+                  <m.Icon size={20} color={m.tint} strokeWidth={iconStroke} />
                 </View>
                 <Text style={styles.modTitle}>{m.title}</Text>
                 <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
