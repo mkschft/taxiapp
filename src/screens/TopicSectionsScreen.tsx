@@ -3,8 +3,9 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ChevronRight } from 'lucide-react-native';
+import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSections, getTopicSectionQuestionIds, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
@@ -37,7 +38,9 @@ export function TopicSectionsScreen({ navigation }: Props) {
           const qIds = getTopicSectionQuestionIds(section.id);
           const answered = qIds.filter(id => state.questions[id]?.answered).length;
           const correct = qIds.filter(id => state.questions[id]?.correct).length;
-          const pct = answered > 0 ? Math.round((correct / answered) * 100) : null;
+          const pctDone = section.question_count > 0 ? Math.round((answered / section.question_count) * 100) : 0;
+          const pctCorrect = answered > 0 ? Math.round((correct / answered) * 100) : null;
+          const done = section.question_count > 0 && answered >= section.question_count;
 
           return (
             <TouchableOpacity
@@ -46,9 +49,16 @@ export function TopicSectionsScreen({ navigation }: Props) {
               activeOpacity={0.78}
               onPress={() => navigation.navigate('TopicLessons', { sectionId: section.id })}
             >
-              <View style={[styles.iconChip, { backgroundColor: tint + '18' }]}>
-                <Text style={styles.emoji}>{cat?.icon ?? '📚'}</Text>
-              </View>
+              <ProgressRing
+                value={pctDone}
+                size={48}
+                strokeWidth={5}
+                color={tint}
+                trackColor={colors.surfaceAlt}
+                valueFontSize={12}
+              >
+                {done ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
+              </ProgressRing>
 
               <View style={styles.info}>
                 <Text style={styles.cardTitle} numberOfLines={2}>{section.name_en}</Text>
@@ -60,9 +70,9 @@ export function TopicSectionsScreen({ navigation }: Props) {
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>{answered}/{section.question_count} done</Text>
                   </View>
-                  {pct != null && (
+                  {pctCorrect != null && (
                     <View style={[styles.tag, { backgroundColor: colors.successTint }]}>
-                      <Text style={[styles.tagText, { color: colors.success }]}>{pct}% correct</Text>
+                      <Text style={[styles.tagText, { color: colors.success }]}>{pctCorrect}% correct</Text>
                     </View>
                   )}
                 </View>

@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
@@ -60,7 +61,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
         {lessons.map(lesson => {
           const answered = lesson.question_ids.filter(id => state.questions[id]?.answered).length;
           const correct = lesson.question_ids.filter(id => state.questions[id]?.correct).length;
-          const done = lesson.question_count > 0 && answered === lesson.question_count;
+          const done = lesson.question_count > 0 && answered >= lesson.question_count;
+          const pctDone = lesson.question_count > 0 ? Math.round((answered / lesson.question_count) * 100) : 0;
           const pct = answered > 0 ? Math.round((correct / answered) * 100) : null;
 
           return (
@@ -70,11 +72,16 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
               activeOpacity={0.78}
               onPress={() => startLesson(lesson.question_ids, lesson.name)}
             >
-              <View style={[styles.iconChip, { backgroundColor: tint + '18' }]}>
-                {done
-                  ? <Check size={20} color={tint} strokeWidth={2.8} />
-                  : <Text style={[styles.count, { color: tint }]}>{lesson.question_count}</Text>}
-              </View>
+              <ProgressRing
+                value={pctDone}
+                size={48}
+                strokeWidth={5}
+                color={tint}
+                trackColor={colors.surfaceAlt}
+                valueFontSize={12}
+              >
+                {done ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
+              </ProgressRing>
 
               <View style={styles.info}>
                 <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>

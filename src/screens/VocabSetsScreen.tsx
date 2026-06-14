@@ -3,8 +3,9 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { BookOpen, ChevronRight, Check } from 'lucide-react-native';
+import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getVocabLesson, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
@@ -39,6 +40,7 @@ export function VocabSetsScreen({ navigation }: Props) {
           const words = getVocabLesson(set.id);
           const seenCount = words.filter(w => state.vocab[w.id]?.seen).length;
           const lessonDone = words.length > 0 && seenCount === words.length;
+          const pctLearned = words.length > 0 ? Math.round((seenCount / words.length) * 100) : 0;
           const best = state.quiz_scores
             .filter(s => s.quiz_id === set.id)
             .reduce<number | null>((m, s) => Math.max(m ?? 0, s.score), null);
@@ -53,11 +55,16 @@ export function VocabSetsScreen({ navigation }: Props) {
               activeOpacity={0.78}
               onPress={() => navigation.navigate('VocabSetDetail', { setId: set.id })}
             >
-              <View style={[styles.iconChip, { backgroundColor: tint + '18' }]}>
-                {lessonDone
-                  ? <Check size={22} color={tint} strokeWidth={2.6} />
-                  : <BookOpen size={22} color={tint} strokeWidth={2.2} />}
-              </View>
+              <ProgressRing
+                value={pctLearned}
+                size={48}
+                strokeWidth={5}
+                color={tint}
+                trackColor={colors.surfaceAlt}
+                valueFontSize={12}
+              >
+                {lessonDone ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
+              </ProgressRing>
 
               <View style={styles.info}>
                 <Text style={styles.setNo}>SET {set.set_no}</Text>
