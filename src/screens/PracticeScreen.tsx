@@ -4,14 +4,15 @@ import {
   Pressable,
 } from 'react-native';
 import { MotiView } from 'moti';
-import { Languages, Lightbulb, ChevronLeft, Check, AlertTriangle } from 'lucide-react-native';
+import { BookOpen, Search, ChevronLeft } from 'lucide-react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { ClueHighlight } from '../components/question/ClueHighlight';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
-import { colors, spacing, fontSize, fontWeight, radius, font } from '../theme/tokens';
+import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
+import { cluesForScope, focusWords, optionVerdict } from '../utils/clueParser';
 import { getQuestionById } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
@@ -30,11 +31,12 @@ export function PracticeScreen({ navigation, route }: Props) {
 
   const [lang, setLang] = useState<Lang>('fi');
   const [selected, setSelected] = useState<string | null>(null);
-  const [showHint, setShowHint] = useState(false);
-  const [showClues, setShowClues] = useState(false);
+  const [showLens, setShowLens] = useState(false);
   const [answered, setAnswered] = useState(false);
 
   const clueAnnotations = question?.clue_annotations ?? [];
+  // Focus words = neutral comprehension aid, safe to show before answering.
+  const focus = focusWords(clueAnnotations);
 
   const cycleLang = useCallback(() => {
     setLang(l => l === 'fi' ? 'en' : 'fi');
@@ -44,7 +46,6 @@ export function PracticeScreen({ navigation, route }: Props) {
     if (answered || !question) return;
     setSelected(key);
     setAnswered(true);
-    setShowClues(true);
     const correct = key === question.correct_option;
     dispatch({ type: 'ANSWER_QUESTION', id: question.id, correct });
   }, [answered, question, dispatch]);
@@ -101,8 +102,9 @@ export function PracticeScreen({ navigation, route }: Props) {
   const qText = lang === 'fi' ? (question.question.fi ?? '') : (question.question.en ?? question.question.fi ?? '');
   const progress = queue.length > 0 ? ((queueIndex + 1) / queue.length) * 100 : 0;
 
-  // Clues for the hint panel: pcw (positive) and ncw (negative) only
-  const hintClues = clueAnnotations.filter(a => a.clue_type === 'pcw' || a.clue_type === 'ncw');
+  // Highlight focus words in the question whenever the lens is on or the answer
+  // is revealed. English is only highlighted when the FI phrases would match.
+  const highlightQuestion = (showLens || answered) && lang === 'fi';
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -130,21 +132,21 @@ export function PracticeScreen({ navigation, route }: Props) {
           <Text style={styles.qLabel}>{lang === 'fi' ? 'KYSYMYS' : 'QUESTION'}</Text>
           <ClueHighlight
             text={qText}
-            clueAnnotations={clueAnnotations}
-            showHighlights={showClues}
+            clueAnnotations={focus}
+            showHighlights={highlightQuestion}
             style={styles.qText}
           />
         </View>
 
-        {/* Action bar: Translate + Hint */}
+        {/* Action bar: Simple Meaning + Clue Lens */}
         <View style={styles.actionBar}>
           <Pressable
             style={({ pressed }) => [styles.actionBtn, lang === 'en' && styles.actionBtnActive, pressed && styles.actionPressed]}
             onPress={cycleLang}
           >
-            <Languages size={16} color={lang === 'en' ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.actionLabel, lang === 'en' && styles.actionLabelActive]}>
-              Translate
+            <BookOpen size={16} color={lang === 'en' ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
+            <Text style={[styles.actionLabel, lang === 'en' && styles.actionLabelActive]} numberOfLines={1}>
+              Simple Meaning
             </Text>
             <View style={[styles.langPill, lang === 'en' && styles.langPillActive]}>
               <Text style={styles.langPillText}>{lang.toUpperCase()}</Text>
@@ -152,62 +154,62 @@ export function PracticeScreen({ navigation, route }: Props) {
           </Pressable>
 
           <Pressable
-            style={({ pressed }) => [styles.actionBtn, showHint && styles.actionBtnHint, pressed && styles.actionPressed]}
-            onPress={() => setShowHint(h => !h)}
+            style={({ pressed }) => [styles.actionBtn, showLens && styles.actionBtnHint, pressed && styles.actionPressed]}
+            onPress={() => setShowLens(h => !h)}
           >
-            <Lightbulb size={16} color={showHint ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.actionLabel, showHint && styles.actionLabelHint]}>
-              Hint
+            <Search size={16} color={showLens ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
+            <Text style={[styles.actionLabel, showLens && styles.actionLabelHint]} numberOfLines={1}>
+              Clue Lens
             </Text>
           </Pressable>
         </View>
 
-        {/* Hint panel — shows pcw/ncw clue words */}
-        {showHint && hintClues.length > 0 && (
+        {/* Focus words box — neutral comprehension aid (no answer leak) */}
+        {showLens && focus.length > 0 && (
           <MotiView
             from={{ opacity: 0, translateY: -6 }}
             animate={{ opacity: 1, translateY: 0 }}
             transition={{ type: 'timing', duration: 220 }}
-            style={styles.hintPanel}
+            style={styles.focusPanel}
           >
-            <View style={styles.hintHeaderRow}>
-              <Lightbulb size={14} color={colors.warning} strokeWidth={2.4} />
-              <Text style={styles.hintTitle}>CLUE WORD HINT</Text>
-            </View>
-            {hintClues.map((ann, idx) => (
-              <View key={idx} style={styles.hintRow}>
-                <View style={[styles.hintDot, ann.clue_type === 'pcw' ? styles.dotPos : styles.dotNeg]} />
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.hintPhrase}>
-                    <Text style={{ fontStyle: 'italic' }}>{ann.text_fi}</Text>
-                    {ann.meaning_en ? ` (${ann.meaning_en})` : ''}
-                  </Text>
-                  <Text style={styles.hintEffect}>
-                    {ann.clue_type === 'pcw' ? 'Points toward the correct answer' : 'Points away from correct answer'}
-                  </Text>
+            <Text style={styles.focusTitle}>FOCUS WORDS IN THIS QUESTION</Text>
+            <View style={styles.focusGrid}>
+              {focus.map((ann, idx) => (
+                <View key={idx} style={styles.focusChip}>
+                  <Text style={styles.focusFi}>{ann.text_fi}</Text>
+                  {ann.meaning_en ? <Text style={styles.focusEn}>{ann.meaning_en}</Text> : null}
                 </View>
-              </View>
-            ))}
+              ))}
+            </View>
           </MotiView>
         )}
 
         {/* Options */}
         <View style={styles.options}>
-          {question.options.map((opt, i) => (
-            <OptionRow
-              key={opt.key}
-              letter={opt.key}
-              text={lang === 'fi' ? (opt.fi ?? '') : (opt.en ?? opt.fi ?? '')}
-              state={optionStates[opt.key]}
-              onPress={() => handleSelect(opt.key)}
-              disabled={answered}
-              index={i}
-            />
-          ))}
+          {question.options.map((opt, i) => {
+            // Highlights + chips only make sense on the Finnish text (clue
+            // phrases are Finnish). In EN mode show plain translated options.
+            const optionClues = lang === 'fi' ? cluesForScope(clueAnnotations, opt.key) : [];
+            const verdict = optionVerdict(cluesForScope(clueAnnotations, opt.key), opt.key === question.correct_option);
+            return (
+              <OptionRow
+                key={opt.key}
+                letter={opt.key}
+                text={lang === 'fi' ? (opt.fi ?? '') : (opt.en ?? opt.fi ?? '')}
+                state={optionStates[opt.key]}
+                onPress={() => handleSelect(opt.key)}
+                disabled={answered}
+                index={i}
+                optionClues={optionClues}
+                verdict={verdict}
+                reveal={answered}
+              />
+            );
+          })}
         </View>
 
         {/* Explanation */}
-        {answered && (
+        {answered && !!question.explanation_en && (
           <MotiView
             from={{ opacity: 0, translateY: 10 }}
             animate={{ opacity: 1, translateY: 0 }}
@@ -215,29 +217,6 @@ export function PracticeScreen({ navigation, route }: Props) {
             style={styles.explanation}
           >
             <Text style={styles.expText}>{question.explanation_en}</Text>
-            {hintClues.length > 0 && (
-              <View style={styles.cluePills}>
-                <Text style={styles.expSubLabel}>Clue words in this question:</Text>
-                <View style={styles.pillRow}>
-                  {hintClues.map((ann, idx) => {
-                    const isPos = ann.clue_type === 'pcw';
-                    return (
-                      <View
-                        key={idx}
-                        style={[styles.pill, isPos ? styles.pillPos : styles.pillNeg]}
-                      >
-                        {isPos
-                          ? <Check size={12} color={colors.success} strokeWidth={3} />
-                          : <AlertTriangle size={11} color={colors.error} strokeWidth={2.6} />}
-                        <Text style={[styles.pillText, isPos ? styles.pillTextPos : styles.pillTextNeg]}>
-                          {ann.text_fi}
-                        </Text>
-                      </View>
-                    );
-                  })}
-                </View>
-              </View>
-            )}
           </MotiView>
         )}
 
@@ -295,32 +274,23 @@ const styles = StyleSheet.create({
   },
   langPillActive: { backgroundColor: colors.primary },
   langPillText: { fontSize: 10, fontFamily: font.bold, color: '#fff', letterSpacing: 0.4 },
-  hintPanel: {
+  focusPanel: {
     backgroundColor: colors.warningTint, borderWidth: 1.5, borderColor: colors.warning,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 12,
   },
-  hintHeaderRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 },
-  hintTitle: { fontSize: fontSize.xs, fontFamily: font.bold, color: colors.warning, letterSpacing: 0.6 },
-  hintRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start', marginBottom: 6 },
-  hintDot: { width: 8, height: 8, borderRadius: 4, marginTop: 5, flexShrink: 0 },
-  dotPos: { backgroundColor: colors.success },
-  dotNeg: { backgroundColor: colors.error },
-  hintPhrase: { fontSize: 13, color: colors.text, lineHeight: 18 },
-  hintEffect: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
+  focusTitle: { fontSize: fontSize.xs, fontFamily: font.bold, color: colors.warning, letterSpacing: 0.6, marginBottom: 10 },
+  focusGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  focusChip: {
+    backgroundColor: colors.bg, borderWidth: 1, borderColor: colors.warning + '55',
+    borderRadius: radius.sm, paddingHorizontal: 10, paddingVertical: 7,
+  },
+  focusFi: { fontSize: 13, fontFamily: font.semibold, color: colors.text },
+  focusEn: { fontSize: 11.5, color: colors.textSecondary, marginTop: 1 },
   options: { marginBottom: 12 },
   explanation: {
     backgroundColor: colors.primaryTint,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 12,
   },
   expText: { fontSize: 13, lineHeight: 20, color: colors.text },
-  cluePills: { marginTop: spacing.sm },
-  expSubLabel: { fontSize: fontSize.xs, fontWeight: fontWeight.bold, color: colors.textSecondary, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 6 },
-  pillRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  pill: { flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: radius.full, paddingHorizontal: 10, paddingVertical: 4 },
-  pillPos: { backgroundColor: colors.successTint, borderWidth: 1, borderColor: colors.success },
-  pillNeg: { backgroundColor: colors.errorTint, borderWidth: 1, borderColor: colors.error },
-  pillText: { fontSize: 11, fontWeight: fontWeight.semibold },
-  pillTextPos: { color: colors.success },
-  pillTextNeg: { color: colors.error },
   nextBtn: { marginTop: 4 },
 });

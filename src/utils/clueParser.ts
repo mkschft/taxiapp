@@ -70,5 +70,42 @@ export function parseClues(
   return segments;
 }
 
+/**
+ * Returns only the annotations that appear in a given scope.
+ * Scope is "question" or an option key ("A" | "B" | "C") → matches
+ * the `found_in` markers "question" / "option_a" / "option_b" / "option_c".
+ */
+export function cluesForScope(
+  annotations: ClueAnnotation[] | undefined,
+  scope: 'question' | 'A' | 'B' | 'C',
+): ClueAnnotation[] {
+  if (!annotations?.length) return [];
+  const marker = scope === 'question' ? 'question' : `option_${scope.toLowerCase()}`;
+  return annotations.filter(a => (a.found_in ?? []).includes(marker));
+}
+
+/** Focus words (fw) that appear in the question — the neutral comprehension aid. */
+export function focusWords(annotations: ClueAnnotation[] | undefined): ClueAnnotation[] {
+  return cluesForScope(annotations, 'question').filter(a => a.clue_type === 'fw');
+}
+
+export type OptionVerdict = 'good' | 'trap' | null;
+
+/**
+ * Verdict shown on an answer option after the user commits.
+ *   good → the correct option (carries positive clues)
+ *   trap → a wrong option that carries a negative clue (ncw) — an active lure
+ *   null → wrong option with no decisive clue → no badge, just normal styling
+ * Logic is derived from the data, not the design sketches.
+ */
+export function optionVerdict(
+  optionClues: ClueAnnotation[],
+  isCorrect: boolean,
+): OptionVerdict {
+  if (isCorrect) return 'good';
+  if (optionClues.some(a => a.clue_type === 'ncw')) return 'trap';
+  return null;
+}
+
 // Legacy helper kept for ClueWordsScreen which still looks up by ClueWord id
 export type { ClueAnnotation };
