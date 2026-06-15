@@ -103,9 +103,11 @@ export function PracticeScreen({ navigation, route }: Props) {
   const qTextEn = question.question.en ?? '';
   const progress = queue.length > 0 ? ((queueIndex + 1) / queue.length) * 100 : 0;
 
-  // Highlight focus words in the (always-Finnish) question whenever the lens is
-  // on or the answer is revealed.
-  const highlightQuestion = showLens || answered;
+  // The Clue Lens is the single control for the clue layer. Answering gives the
+  // result + explanation; the word-level clue detail (highlights, chips, GOOD/
+  // TRAP badges) stays opt-in via the lens so it's progressive, not a dump.
+  const highlightQuestion = showLens;
+  const revealClues = answered && showLens;
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -205,7 +207,7 @@ export function PracticeScreen({ navigation, route }: Props) {
                 index={i}
                 optionClues={optionClues}
                 verdict={verdict}
-                reveal={answered}
+                reveal={revealClues}
               />
             );
           })}
