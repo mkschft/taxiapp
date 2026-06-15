@@ -18,47 +18,55 @@ type Props = {
   route: RouteProp<TestStackParamList, 'ModelTest'>;
 };
 
+type Choice = 'A' | 'B' | 'C';
+
 export function ModelTestScreen({ navigation, route }: Props) {
   const test = getModelTestById(route.params.testId);
   const { dispatch } = useProgress();
 
   const [qIndex, setQIndex] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [answered, setAnswered] = useState(false);
-  const [score, setScore] = useState(0);
-  const [wrongIds, setWrongIds] = useState<string[]>([]);
+  // Exam mode: answers are collected silently and stay changeable until submit.
+  // Nothing is graded or revealed while the test is in progress.
+  const [answers, setAnswers] = useState<Record<string, Choice>>({});
   const [secondsLeft, setSecondsLeft] = useState(test ? test.time_minutes * 60 : 0);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Keep the latest answers/flags reachable from the timer + submit without
+  // re-creating the interval on every keystroke.
+  const answersRef = useRef(answers);
+  answersRef.current = answers;
 
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setSecondsLeft(s => {
-        if (s <= 1) {
-          clearInterval(timerRef.current!);
-          handleSubmitTest();
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
-
-  const handleSubmitTest = useCallback(() => {
+  const submit = useCallback((auto: boolean) => {
     if (!test) return;
-    clearInterval(timerRef.current!);
-    const total = test.question_ids.length;
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    const ids = test.question_ids;
+    const finalAnswers = answersRef.current;
+    const wrongIds = ids.filter(id => {
+      const q = getQuestionById(id);
+      return !q || finalAnswers[id] !== q.correct_option;
+    });
+    const score = ids.length - wrongIds.length;
+    const total = ids.length;
+    const pct = Math.round((score / total) * 100);
     const timeTaken = test.time_minutes * 60 - secondsLeft;
+
+    // Grade once, at submit — only now do committed answers feed mastery stats.
+    ids.forEach(id => {
+      const q = getQuestionById(id);
+      if (!q) return;
+      dispatch({ type: 'ANSWER_QUESTION', id, correct: finalAnswers[id] === q.correct_option });
+    });
+
     dispatch({
       type: 'SAVE_TEST_SCORE',
       score: {
         test_id: test.id,
-        score: Math.round((score / total) * 100),
+        score: pct,
         time_taken_seconds: timeTaken,
         completed_at: Date.now(),
         wrong_question_ids: wrongIds,
-        passed: (score / total) * 100 >= test.pass_mark,
+        passed: pct >= test.pass_mark,
       },
     });
     navigation.replace('Result', {
@@ -69,46 +77,61 @@ export function ModelTestScreen({ navigation, route }: Props) {
       wrongIds,
       timeTaken,
     });
-  }, [test, score, wrongIds, secondsLeft, dispatch, navigation]);
+  }, [test, secondsLeft, dispatch, navigation]);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setSecondsLeft(s => {
+        if (s <= 1) {
+          if (timerRef.current) clearInterval(timerRef.current);
+          submit(true);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    // submit is intentionally read via closure-stable refs; recreating the
+    // interval on every answer would drift the countdown.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!test) return <SafeAreaView style={styles.safe}><Text style={{ padding: 24 }}>Test not found.</Text></SafeAreaView>;
 
-  const question = getQuestionById(test.question_ids[qIndex]);
+  const ids = test.question_ids;
+  const question = getQuestionById(ids[qIndex]);
   if (!question) return null;
 
+  const selected = answers[question.id];
+  const isLast = qIndex === ids.length - 1;
+  const answeredCount = ids.filter(id => answers[id]).length;
+
+  // During the test an option is only ever 'selected' or 'idle' — never graded.
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
-    if (!answered) optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
-    else {
-      if (o.key === question.correct_option) optionStates[o.key] = 'correct';
-      else if (o.key === selected) optionStates[o.key] = 'incorrect';
-      else optionStates[o.key] = 'idle';
-    }
+    optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
   });
 
   const handleSelect = (key: string) => {
-    if (answered) return;
-    setSelected(key);
-    setAnswered(true);
-    const correct = key === question.correct_option;
-    if (correct) setScore(s => s + 1);
-    else setWrongIds(ids => [...ids, question.id]);
-    dispatch({ type: 'ANSWER_QUESTION', id: question.id, correct });
+    setAnswers(prev => ({ ...prev, [question.id]: key as Choice }));
   };
 
-  const handleNext = () => {
-    if (qIndex < test.question_ids.length - 1) {
-      setQIndex(i => i + 1);
-      setSelected(null);
-      setAnswered(false);
-    } else {
-      handleSubmitTest();
-    }
+  const goNext = () => setQIndex(i => Math.min(ids.length - 1, i + 1));
+
+  const confirmSubmit = () => {
+    const unanswered = ids.length - answeredCount;
+    const detail = unanswered > 0
+      ? `You have ${unanswered} unanswered. Submit anyway?`
+      : 'Submit your test for grading?';
+    Alert.alert('Submit test?', detail, [
+      { text: 'Keep going' },
+      { text: 'Submit', style: 'default', onPress: () => submit(false) },
+    ]);
   };
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
   const ss = String(secondsLeft % 60).padStart(2, '0');
-  const progress = ((qIndex + 1) / test.question_ids.length) * 100;
+  const progress = ((qIndex + 1) / ids.length) * 100;
   const isLowTime = secondsLeft < 300;
 
   return (
@@ -120,7 +143,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
         ])} style={styles.backBtn}>
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
-        <Text style={styles.navTitle}>{test.title_en}</Text>
+        <Text style={styles.navTitle} numberOfLines={1}>{test.title_en}</Text>
       </View>
 
       {/* Timer + progress */}
@@ -132,14 +155,13 @@ export function ModelTestScreen({ navigation, route }: Props) {
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${progress}%` }]} />
         </View>
-        <Text style={styles.qCount}>{qIndex + 1}/{test.question_ids.length}</Text>
+        <Text style={styles.qCount}>{qIndex + 1}/{ids.length}</Text>
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.qCategory}>Q{qIndex + 1} OF {test.question_ids.length}</Text>
+        <Text style={styles.qCategory}>Q{qIndex + 1} OF {ids.length}</Text>
         <View style={styles.questionCard}>
           <Text style={styles.qText}>{question.question.fi}</Text>
-          <Text style={styles.qEn}>{question.question.en}</Text>
         </View>
 
         {question.options.map(opt => (
@@ -149,40 +171,25 @@ export function ModelTestScreen({ navigation, route }: Props) {
             text={opt.fi ?? ''}
             state={optionStates[opt.key]}
             onPress={() => handleSelect(opt.key)}
-            disabled={answered}
           />
         ))}
 
-        <View style={styles.btnRow}>
-          <TouchableOpacity
-            style={styles.skipBtn}
-            onPress={answered ? handleNext : handleNext}
-          >
-            <Text style={styles.skipText}>{answered ? '' : 'Skip'}</Text>
-          </TouchableOpacity>
-          <View style={{ flex: 1 }}>
-            <AppButton
-              label={qIndex < test.question_ids.length - 1 ? 'Next →' : 'Submit'}
-              onPress={handleNext}
-            />
-          </View>
-        </View>
-
-        {/* Running score */}
-        <View style={styles.scoreRow}>
-          {[
-            { val: score, label: 'Correct', color: colors.success },
-            { val: wrongIds.length, label: 'Wrong', color: colors.error },
-            { val: test.question_ids.length - score - wrongIds.length, label: 'Remaining', color: colors.textSecondary },
-          ].map(s => (
-            <View key={s.label} style={styles.scoreChip}>
-              <Text style={[styles.scoreVal, { color: s.color }]}>{s.val}</Text>
-              <Text style={styles.scoreLbl}>{s.label}</Text>
-            </View>
-          ))}
-        </View>
-        <View style={{ height: 32 }} />
+        <View style={{ height: 16 }} />
       </ScrollView>
+
+      {/* Footer nav */}
+      <View style={styles.footer}>
+        <Text style={styles.answeredHint}>{answeredCount}/{ids.length} answered</Text>
+        {isLast ? (
+          <View style={{ flex: 1 }}>
+            <AppButton label="Submit" onPress={confirmSubmit} />
+          </View>
+        ) : (
+          <TouchableOpacity style={[styles.navBtn, styles.navBtnPrimary]} onPress={goNext}>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Next →</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </SafeAreaView>
   );
 }
@@ -196,6 +203,7 @@ const styles = StyleSheet.create({
   },
   backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
   navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  flagBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginRight: -6 },
   timerRow: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     paddingHorizontal: spacing.md, paddingVertical: 10,
@@ -215,23 +223,24 @@ const styles = StyleSheet.create({
   progressFill: { height: '100%', backgroundColor: colors.primary, borderRadius: radius.full },
   qCount: { fontSize: fontSize.sm, color: colors.textSecondary, minWidth: 36, textAlign: 'right' },
   scroll: { flex: 1, padding: spacing.md },
-  qCategory: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 8, fontFamily: font.semibold },
+  qCategory: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.semibold, marginBottom: 8 },
   questionCard: {
     backgroundColor: colors.surface, borderRadius: radius.md,
     padding: spacing.md, marginBottom: spacing.md,
     borderWidth: 1, borderColor: colors.border,
   },
-  qText: { fontSize: 15, lineHeight: 24, color: colors.text, marginBottom: 8, fontFamily: font.medium },
-  qEn: { fontSize: 13, lineHeight: 18, color: colors.textSecondary, fontStyle: 'italic' },
-  btnRow: { flexDirection: 'row', gap: 10, marginTop: spacing.sm, marginBottom: spacing.md },
-  skipBtn: { justifyContent: 'center', paddingHorizontal: spacing.md },
-  skipText: { fontSize: fontSize.md, color: colors.textSecondary, fontFamily: font.semibold },
-  scoreRow: {
-    flexDirection: 'row', backgroundColor: colors.surface,
-    borderRadius: radius.md, padding: spacing.md,
-    justifyContent: 'space-around',
+  qText: { fontSize: 15, lineHeight: 24, color: colors.text, fontFamily: font.medium },
+  footer: {
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    paddingHorizontal: spacing.md, paddingVertical: spacing.sm,
+    borderTopWidth: 1, borderColor: colors.border,
   },
-  scoreChip: { alignItems: 'center' },
-  scoreVal: { fontSize: 20, fontFamily: font.bold },
-  scoreLbl: { fontSize: fontSize.xs, color: colors.textSecondary, marginTop: 2 },
+  navBtn: {
+    paddingHorizontal: spacing.md, paddingVertical: 12,
+    borderRadius: radius.md, borderWidth: 1.5, borderColor: colors.border,
+  },
+  navBtnPrimary: { backgroundColor: colors.primary, borderColor: colors.primary },
+  navBtnText: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  navBtnTextPrimary: { color: '#fff' },
+  answeredHint: { flex: 1, textAlign: 'left', fontSize: fontSize.xs, color: colors.textSecondary },
 });
