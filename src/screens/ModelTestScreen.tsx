@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert,
+  TouchableOpacity, Alert, Platform,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
@@ -19,6 +19,22 @@ type Props = {
 };
 
 type Choice = 'A' | 'B' | 'C';
+
+/**
+ * Confirm dialog that works on web too. react-native-web does not implement
+ * Alert.alert (it's a silent no-op), so we fall back to window.confirm there.
+ */
+function confirm(title: string, message: string, confirmLabel: string, onConfirm: () => void) {
+  if (Platform.OS === 'web') {
+    // eslint-disable-next-line no-alert
+    if (window.confirm(`${title}\n\n${message}`)) onConfirm();
+    return;
+  }
+  Alert.alert(title, message, [
+    { text: 'Cancel', style: 'cancel' },
+    { text: confirmLabel, style: 'default', onPress: onConfirm },
+  ]);
+}
 
 export function ModelTestScreen({ navigation, route }: Props) {
   const test = getModelTestById(route.params.testId);
@@ -123,10 +139,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
     const detail = unanswered > 0
       ? `You have ${unanswered} unanswered. Submit anyway?`
       : 'Submit your test for grading?';
-    Alert.alert('Submit test?', detail, [
-      { text: 'Keep going' },
-      { text: 'Submit', style: 'default', onPress: () => submit(false) },
-    ]);
+    confirm('Submit test?', detail, 'Submit', () => submit(false));
   };
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
@@ -137,10 +150,9 @@ export function ModelTestScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => Alert.alert('Quit test?', 'Your progress will be lost.', [
-          { text: 'Cancel' },
-          { text: 'Quit', style: 'destructive', onPress: () => navigation.goBack() },
-        ])} style={styles.backBtn}>
+        <TouchableOpacity onPress={() => confirm(
+          'Quit test?', 'Your progress will be lost.', 'Quit', () => navigation.goBack(),
+        )} style={styles.backBtn}>
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
         <Text style={styles.navTitle} numberOfLines={1}>{test.title_en}</Text>
