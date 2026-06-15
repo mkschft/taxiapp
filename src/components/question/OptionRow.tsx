@@ -17,6 +17,8 @@ type Props = {
   onPress: () => void;
   disabled?: boolean;
   index?: number;
+  /** English translation, shown as a secondary line when provided. */
+  translation?: string;
   /** Clue annotations scoped to THIS option (drives highlight + chips). */
   optionClues?: ClueAnnotation[];
   /** Verdict badge — only shown after the answer is revealed. */
@@ -27,7 +29,7 @@ type Props = {
 
 export const OptionRow = memo(({
   letter, text, state, onPress, disabled, index = 0,
-  optionClues, verdict, reveal = false,
+  translation, optionClues, verdict, reveal = false,
 }: Props) => {
   const s = styles;
 
@@ -105,6 +107,11 @@ export const OptionRow = memo(({
           )}
         </View>
 
+        {/* English translation (Simple Meaning) */}
+        {!!translation && (
+          <Text style={s.translation}>{translation}</Text>
+        )}
+
         {/* Gloss chips — clue phrase = English meaning, colour-coded */}
         {showClues && (
           <View style={s.chipRow}>
@@ -175,6 +182,7 @@ const styles = StyleSheet.create({
   badgeTextGood: { color: colors.success },
   badgeTextTrap: { color: colors.error },
 
+  translation: { fontSize: 12.5, lineHeight: 18, color: colors.textSecondary, marginTop: 6, marginLeft: 40 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 10, marginLeft: 40 },
   chip: {
     borderRadius: radius.sm, paddingHorizontal: 8, paddingVertical: 4,

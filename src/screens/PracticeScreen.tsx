@@ -22,14 +22,14 @@ type Props = {
   route: RouteProp<StudyStackParamList, 'Practice'>;
 };
 
-type Lang = 'fi' | 'en';
-
 export function PracticeScreen({ navigation, route }: Props) {
   const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice' } = route.params;
   const question = getQuestionById(questionId);
   const { dispatch } = useProgress();
 
-  const [lang, setLang] = useState<Lang>('fi');
+  // Finnish is always shown (it's the exam language); Simple Meaning toggles
+  // the English translation in/out as a secondary line beneath it.
+  const [showMeaning, setShowMeaning] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [showLens, setShowLens] = useState(false);
   const [answered, setAnswered] = useState(false);
@@ -38,8 +38,8 @@ export function PracticeScreen({ navigation, route }: Props) {
   // Focus words = neutral comprehension aid, safe to show before answering.
   const focus = focusWords(clueAnnotations);
 
-  const cycleLang = useCallback(() => {
-    setLang(l => l === 'fi' ? 'en' : 'fi');
+  const toggleMeaning = useCallback(() => {
+    setShowMeaning(m => !m);
   }, []);
 
   const handleSelect = useCallback((key: string) => {
@@ -99,12 +99,13 @@ export function PracticeScreen({ navigation, route }: Props) {
     }
   });
 
-  const qText = lang === 'fi' ? (question.question.fi ?? '') : (question.question.en ?? question.question.fi ?? '');
+  const qText = question.question.fi ?? '';
+  const qTextEn = question.question.en ?? '';
   const progress = queue.length > 0 ? ((queueIndex + 1) / queue.length) * 100 : 0;
 
-  // Highlight focus words in the question whenever the lens is on or the answer
-  // is revealed. English is only highlighted when the FI phrases would match.
-  const highlightQuestion = (showLens || answered) && lang === 'fi';
+  // Highlight focus words in the (always-Finnish) question whenever the lens is
+  // on or the answer is revealed.
+  const highlightQuestion = showLens || answered;
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -129,27 +130,30 @@ export function PracticeScreen({ navigation, route }: Props) {
 
         {/* Question card */}
         <View style={styles.questionCard}>
-          <Text style={styles.qLabel}>{lang === 'fi' ? 'KYSYMYS' : 'QUESTION'}</Text>
+          <Text style={styles.qLabel}>KYSYMYS</Text>
           <ClueHighlight
             text={qText}
             clueAnnotations={focus}
             showHighlights={highlightQuestion}
             style={styles.qText}
           />
+          {showMeaning && !!qTextEn && (
+            <Text style={styles.qTextEn}>{qTextEn}</Text>
+          )}
         </View>
 
         {/* Action bar: Simple Meaning + Clue Lens */}
         <View style={styles.actionBar}>
           <Pressable
-            style={({ pressed }) => [styles.actionBtn, lang === 'en' && styles.actionBtnActive, pressed && styles.actionPressed]}
-            onPress={cycleLang}
+            style={({ pressed }) => [styles.actionBtn, showMeaning && styles.actionBtnActive, pressed && styles.actionPressed]}
+            onPress={toggleMeaning}
           >
-            <BookOpen size={16} color={lang === 'en' ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.actionLabel, lang === 'en' && styles.actionLabelActive]} numberOfLines={1}>
+            <BookOpen size={16} color={showMeaning ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
+            <Text style={[styles.actionLabel, showMeaning && styles.actionLabelActive]} numberOfLines={1}>
               Simple Meaning
             </Text>
-            <View style={[styles.langPill, lang === 'en' && styles.langPillActive]}>
-              <Text style={styles.langPillText}>{lang.toUpperCase()}</Text>
+            <View style={[styles.langPill, showMeaning && styles.langPillActive]}>
+              <Text style={styles.langPillText}>EN</Text>
             </View>
           </Pressable>
 
@@ -187,15 +191,14 @@ export function PracticeScreen({ navigation, route }: Props) {
         {/* Options */}
         <View style={styles.options}>
           {question.options.map((opt, i) => {
-            // Highlights + chips only make sense on the Finnish text (clue
-            // phrases are Finnish). In EN mode show plain translated options.
-            const optionClues = lang === 'fi' ? cluesForScope(clueAnnotations, opt.key) : [];
-            const verdict = optionVerdict(cluesForScope(clueAnnotations, opt.key), opt.key === question.correct_option);
+            const optionClues = cluesForScope(clueAnnotations, opt.key);
+            const verdict = optionVerdict(optionClues, opt.key === question.correct_option);
             return (
               <OptionRow
                 key={opt.key}
                 letter={opt.key}
-                text={lang === 'fi' ? (opt.fi ?? '') : (opt.en ?? opt.fi ?? '')}
+                text={opt.fi ?? ''}
+                translation={showMeaning ? (opt.en ?? '') : undefined}
                 state={optionStates[opt.key]}
                 onPress={() => handleSelect(opt.key)}
                 disabled={answered}
@@ -256,6 +259,10 @@ const styles = StyleSheet.create({
   },
   qLabel: { fontSize: fontSize.xs, fontFamily: font.bold, color: colors.textTertiary, marginBottom: 6, letterSpacing: 0.8 },
   qText: { fontSize: 15, lineHeight: 24, color: colors.text, fontFamily: font.medium },
+  qTextEn: {
+    fontSize: 13, lineHeight: 20, color: colors.textSecondary, marginTop: 8,
+    paddingTop: 8, borderTopWidth: 1, borderTopColor: colors.border,
+  },
   actionBar: { flexDirection: 'row', gap: spacing.sm, marginBottom: 12 },
   actionBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
