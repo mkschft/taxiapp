@@ -23,16 +23,18 @@ type Props = {
 };
 
 export function PracticeScreen({ navigation, route }: Props) {
-  const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice' } = route.params;
+  const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice', review = false, answers } = route.params;
   const question = getQuestionById(questionId);
   const { dispatch } = useProgress();
 
   // Finnish is always shown (it's the exam language); Simple Meaning toggles
   // the English translation in/out as a secondary line beneath it.
   const [showMeaning, setShowMeaning] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  // In review mode the answer is already committed: pre-seed the user's original
+  // pick and treat it as answered so the correct answer is revealed immediately.
+  const [selected, setSelected] = useState<string | null>(review ? (answers?.[questionId] ?? null) : null);
   const [showLens, setShowLens] = useState(false);
-  const [answered, setAnswered] = useState(false);
+  const [answered, setAnswered] = useState(review);
 
   const clueAnnotations = question?.clue_annotations ?? [];
   // Focus words = neutral comprehension aid, safe to show before answering.
@@ -59,7 +61,12 @@ export function PracticeScreen({ navigation, route }: Props) {
         queue,
         queueIndex: nextIdx,
         sourceLabel,
+        review,
+        answers,
       });
+    } else if (review) {
+      // Reviewing wrong answers — return to the result page when done.
+      navigation.goBack();
     } else if (queue.length > 0) {
       const correct = answered && selected === question.correct_option ? 1 : 0;
       navigation.replace('Result', {
@@ -72,7 +79,7 @@ export function PracticeScreen({ navigation, route }: Props) {
     } else {
       navigation.goBack();
     }
-  }, [question, queue, queueIndex, navigation, sourceLabel, answered, selected]);
+  }, [question, queue, queueIndex, navigation, sourceLabel, answered, selected, review, answers]);
 
   if (!question) {
     return (

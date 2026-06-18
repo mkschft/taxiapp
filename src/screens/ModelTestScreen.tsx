@@ -92,6 +92,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       total,
       wrongIds,
       timeTaken,
+      answers: finalAnswers,
     });
   }, [test, secondsLeft, dispatch, navigation]);
 

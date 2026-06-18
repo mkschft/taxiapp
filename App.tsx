@@ -59,6 +59,7 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               TestHome: 'tests',
               ModelTest: 'tests/:testId',
+              Practice: 'tests/review',
               Result: 'tests/result',
             },
           },
