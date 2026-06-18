@@ -65,7 +65,7 @@ export function HomeScreen({ navigation }: Props) {
           <AppButton
             label="Sign up / Log in"
             variant="secondary"
-            onPress={() => navigation.navigate('App')}
+            onPress={() => navigation.navigate('Signup')}
             style={{ marginTop: spacing.sm }}
           />
           <Text style={styles.foot}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Switch, Alert,
+  TouchableOpacity, Switch, Alert, Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -11,6 +11,7 @@ import {
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
 import { getQuestions } from '../data/loaders';
 import { clearAll } from '../store/storage';
 
@@ -39,11 +40,34 @@ function SettingRow({
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
   const { state, dispatch } = useProgress();
+  const { clearAuth } = useAuth();
   const { completion, accuracy } = useQuestionStats(TOTAL_QS);
 
   const daysLeft = state.profile.exam_date
     ? Math.max(0, Math.round((new Date(state.profile.exam_date).getTime() - Date.now()) / 86400000))
     : null;
+
+  const handleLogout = () => {
+    const doLogout = async () => {
+      await clearAuth();
+      navigation.replace('Home');
+    };
+
+    if (Platform.OS === 'web') {
+      const confirmed = window.confirm('Log out? You will be returned to the home screen.');
+      if (confirmed) doLogout();
+      return;
+    }
+
+    Alert.alert(
+      'Log out?',
+      'You will be returned to the home screen.',
+      [
+        { text: 'Cancel' },
+        { text: 'Log out', style: 'destructive', onPress: doLogout },
+      ],
+    );
+  };
 
   const handleClearData = () => {
     Alert.alert(
@@ -146,7 +170,7 @@ export function ProfileScreen() {
         <AppButton
           label="Log out"
           variant="danger"
-          onPress={() => {}}
+          onPress={handleLogout}
           style={{ margin: spacing.md }}
         />
         <View style={{ height: 32 }} />

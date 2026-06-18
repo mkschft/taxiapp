@@ -15,6 +15,7 @@ import {
 } from '@expo-google-fonts/inter';
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { ProgressProvider } from './src/store/progressStore';
+import { AuthProvider } from './src/store/authStore';
 import { colors, font } from './src/theme/tokens';
 
 // Set Inter as the base font for all Text via defaultProps (safe on web + native).
@@ -89,12 +90,14 @@ export default function App() {
     </View>
   ) : (
     <SafeAreaProvider>
-      <ProgressProvider>
-        <NavigationContainer linking={linking}>
-          <StatusBar style="dark" />
-          <RootNavigator />
-        </NavigationContainer>
-      </ProgressProvider>
+      <AuthProvider>
+        <ProgressProvider>
+          <NavigationContainer linking={linking}>
+            <StatusBar style="dark" />
+            <RootNavigator />
+          </NavigationContainer>
+        </ProgressProvider>
+      </AuthProvider>
     </SafeAreaProvider>
   );
 
