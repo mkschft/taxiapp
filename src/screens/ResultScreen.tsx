@@ -18,12 +18,15 @@ type Props = {
 };
 
 export function ResultScreen({ navigation, route }: Props) {
-  const { mode, label, score, total, wrongIds, timeTaken, answers } = route.params;
+  const { mode, label, score, total, wrongIds, timeTaken, answers, categories } = route.params;
   const pct = Math.round((score / total) * 100);
-  // Official Traficom threshold: 38/50 = 76% overall. NOTE: the real exam also
-  // requires a minimum in each of the 4 categories (12/15, 12/15, 7/10, 7/10);
-  // that per-category gate is not yet modelled here — see EXAM_ACCURACY_AUDIT.md.
-  const passed = pct >= 76;
+  // The model test grades against the real Traficom gate (overall 38/50 AND a
+  // minimum in each of the 4 areas) and passes the authoritative flag through.
+  // Fall back to the overall 76% threshold for non-test modes.
+  const passed = route.params.passed ?? pct >= 76;
+  // Overall mark reached but failed on a category minimum — the exam's hidden trap.
+  const failedCats = categories?.filter(c => !c.passed) ?? [];
+  const gateFail = !passed && score >= 38 && failedCats.length > 0;
 
   const fmt = (s: number) => {
     const m = Math.floor(s / 60);
@@ -44,11 +47,41 @@ export function ResultScreen({ navigation, route }: Props) {
           <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
             {passed ? 'You passed!' : 'Keep studying'}
           </Text>
-          <Text style={styles.bannerSub}>Pass mark: 76% (38/50) · Your score: {pct}%</Text>
+          <Text style={styles.bannerSub}>Pass mark: 38/50 + minimum in each area · Your score: {score}/{total}</Text>
         </View>
 
+        {/* Why-failed note: reached 38 overall but missed a category gate */}
+        {gateFail && (
+          <View style={styles.gateNote}>
+            <Text style={styles.gateNoteText}>
+              You reached {score}/{total} overall, but fell below the required minimum in{' '}
+              {failedCats.map(c => c.label).join(', ')}. In the real exam, falling short in any
+              single area fails the whole test — even with enough correct answers overall.
+            </Text>
+          </View>
+        )}
+
+        {/* Per-category breakdown (model-test pass gate) */}
+        {categories && categories.length > 0 && (
+          <View style={styles.catCard}>
+            <Text style={styles.catHeader}>Category breakdown</Text>
+            {categories.map(c => (
+              <View key={c.category} style={styles.catRow}>
+                <Text style={styles.catName} numberOfLines={1}>{c.label}</Text>
+                <Text style={[styles.catScore, { color: c.passed ? colors.success : colors.error }]}>
+                  {c.correct}/{c.total}
+                </Text>
+                <Text style={styles.catMin}>min {c.min}</Text>
+                <Text style={[styles.catFlag, { color: c.passed ? colors.success : colors.error }]}>
+                  {c.passed ? '✓' : '✕'}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+
         {/* Score ring area */}
-        <View style={styles.scoreCircle}>
+        <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
           <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>
             {score}
           </Text>
@@ -133,7 +166,25 @@ const styles = StyleSheet.create({
   bannerPass: { backgroundColor: colors.successTint, borderColor: colors.success },
   bannerFail: { backgroundColor: colors.errorTint, borderColor: colors.error },
   bannerTitle: { fontSize: fontSize.lg, fontFamily: font.bold, marginBottom: 4 },
-  bannerSub: { fontSize: fontSize.sm, color: colors.textSecondary },
+  bannerSub: { fontSize: fontSize.sm, color: colors.textSecondary, textAlign: 'center' },
+  gateNote: {
+    backgroundColor: colors.warningTint, borderWidth: 1, borderColor: colors.warning + '66',
+    borderRadius: radius.md, padding: spacing.md, marginBottom: spacing.lg,
+  },
+  gateNoteText: { fontSize: 13, lineHeight: 19, color: colors.text },
+  catCard: {
+    backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
+    borderRadius: radius.md, padding: spacing.md, marginBottom: spacing.lg,
+  },
+  catHeader: {
+    fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
+    textTransform: 'uppercase', color: colors.textSecondary, marginBottom: spacing.sm,
+  },
+  catRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 6 },
+  catName: { flex: 1, fontSize: fontSize.sm, color: colors.text },
+  catScore: { width: 48, textAlign: 'right', fontSize: fontSize.sm, fontFamily: font.bold },
+  catMin: { width: 56, textAlign: 'right', fontSize: fontSize.xs, color: colors.textSecondary },
+  catFlag: { width: 24, textAlign: 'right', fontSize: fontSize.md, fontFamily: font.bold },
   scoreCircle: {
     width: 120, height: 120, borderRadius: 60,
     borderWidth: 8, borderColor: colors.success,

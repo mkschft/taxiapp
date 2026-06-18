@@ -40,6 +40,23 @@ OUT_REPORT = os.path.join(HERE, "output", "_model_test_report.txt")
 
 KEYS = ("A", "B", "C")
 
+# Official English label per category_id (matches the shipped bank).
+CAT_EN = {
+    "passenger_safety": "Passenger Help + Safety",
+    "special_needs": "Special Passenger Needs",
+    "customer_service": "Customer Service",
+    "traffic_safety": "Transport + Traffic Safety",
+}
+
+# Official Traficom exam split: 15/15/10/10 with per-area minimums. Mocks mirror
+# this 1:1 so the per-category pass gate applies. See EXAM_ACCURACY_AUDIT.md.
+EXAM_SPLIT = {
+    "passenger_safety": 15,
+    "special_needs": 15,
+    "customer_service": 10,
+    "traffic_safety": 10,
+}
+
 
 def rows(ws):
     head = [c.value for c in ws[1]]
@@ -50,7 +67,9 @@ def rows(ws):
 
 
 def main():
-    bank_ids = {q["id"] for q in json.load(open(QUESTIONS, encoding="utf-8"))}
+    bank = json.load(open(QUESTIONS, encoding="utf-8"))
+    bank_ids = {q["id"] for q in bank}
+    cat_of = {q["id"]: q["category_id"] for q in bank}
     wb = openpyxl.load_workbook(WORKBOOK, data_only=True)
     warnings = []
 
@@ -59,8 +78,12 @@ def main():
     new_ids = set()
     for r in rows(wb["New_Questions"]):
         new_ids.add(r["id"])
+        cid = r.get("category_id")
+        if cid not in CAT_EN:
+            warnings.append(f"New question {r['id']}: missing/invalid category_id ({cid!r})")
+        cat_of[r["id"]] = cid
         new_questions.append({
-            "id": r["id"], "category_id": None, "category_en": None,
+            "id": r["id"], "category_id": cid, "category_en": CAT_EN.get(cid),
             "source_topic_fi": None, "ref_no": None, "source_set": "model-test",
             "question": {"fi": r["question_fi"], "en": r["question_en"], "fi_raw": None},
             "options": [
@@ -94,8 +117,10 @@ def main():
             "time_minutes": m["time_minutes"], "pass_mark": m["pass_mark"],
         })
 
-    # ── Integrity: every test must have exactly 50 unique questions ──────────
-    # The real Traficom exam is 50 questions; mocks must mirror that 1:1.
+    # ── Integrity: every test = 50 unique questions, split 15/15/10/10 ───────
+    # The real Traficom exam is 50 questions across the 4 areas with per-area
+    # minimums; mocks must mirror that 1:1 for the pass gate to apply.
+    from collections import Counter
     for t in tests:
         ids = t["question_ids"]
         if len(ids) != 50 or len(set(ids)) != 50:
@@ -104,6 +129,13 @@ def main():
                 f"INTEGRITY ERROR: {t['id']} has {len(ids)} questions "
                 f"({len(set(ids))} unique) — expected exactly 50 unique. "
                 f"duplicates={dups or 'none'}; fix model_test_workbook.xlsx."
+            )
+        dist = Counter(cat_of.get(i) for i in ids)
+        actual = {c: dist.get(c, 0) for c in EXAM_SPLIT}
+        if actual != EXAM_SPLIT:
+            raise SystemExit(
+                f"INTEGRITY ERROR: {t['id']} category split {actual} "
+                f"!= official {EXAM_SPLIT}; fix model_test_workbook.xlsx."
             )
 
     with open(OUT_TESTS, "w", encoding="utf-8") as f:

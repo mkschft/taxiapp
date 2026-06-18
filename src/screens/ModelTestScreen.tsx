@@ -11,6 +11,7 @@ import { QuestionImage } from '../components/question/QuestionImage';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
+import { gradeExam, type CategoryId } from '../data/examStructure';
 import { useProgress } from '../store/progressStore';
 import type { TestStackParamList } from '../navigation/types';
 
@@ -68,12 +69,21 @@ export function ModelTestScreen({ navigation, route }: Props) {
     const pct = Math.round((score / total) * 100);
     const timeTaken = test.time_minutes * 60 - secondsLeft;
 
-    // Grade once, at submit — only now do committed answers feed mastery stats.
+    // Tally correct/total per official category, then apply the real exam's
+    // per-category pass gate (overall 38/50 AND each area's minimum).
+    const perCategory: Partial<Record<CategoryId, { correct: number; total: number }>> = {};
     ids.forEach(id => {
       const q = getQuestionById(id);
       if (!q) return;
-      dispatch({ type: 'ANSWER_QUESTION', id, correct: finalAnswers[id] === q.correct_option });
+      const cat = q.category_id as CategoryId;
+      const bucket = (perCategory[cat] ??= { correct: 0, total: 0 });
+      bucket.total += 1;
+      const correct = finalAnswers[id] === q.correct_option;
+      if (correct) bucket.correct += 1;
+      // Only now do committed answers feed mastery stats.
+      dispatch({ type: 'ANSWER_QUESTION', id, correct });
     });
+    const graded = gradeExam(perCategory);
 
     dispatch({
       type: 'SAVE_TEST_SCORE',
@@ -83,7 +93,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
         time_taken_seconds: timeTaken,
         completed_at: Date.now(),
         wrong_question_ids: wrongIds,
-        passed: pct >= test.pass_mark,
+        passed: graded.passed,
       },
     });
     navigation.replace('Result', {
@@ -94,6 +104,8 @@ export function ModelTestScreen({ navigation, route }: Props) {
       wrongIds,
       timeTaken,
       answers: finalAnswers,
+      passed: graded.passed,
+      categories: graded.categories,
     });
   }, [test, secondsLeft, dispatch, navigation]);
 

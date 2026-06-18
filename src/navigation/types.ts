@@ -1,3 +1,13 @@
+/** One row of the model-test per-category pass-gate breakdown. */
+export type ResultCategoryStat = {
+  category: string;
+  label: string;
+  correct: number;
+  total: number;
+  min: number;
+  passed: boolean;
+};
+
 export type RootStackParamList = {
   Home: undefined;
   Signup: undefined;
@@ -44,6 +54,10 @@ export type StudyStackParamList = {
     wrongIds: string[];
     timeTaken?: number;
     answers?: Record<string, string>;
+    /** Per-category pass-gate breakdown (model-test mode). */
+    categories?: ResultCategoryStat[];
+    /** Authoritative pass flag: overall threshold AND every category minimum. */
+    passed?: boolean;
   };
 };
 
@@ -66,6 +80,10 @@ export type TestStackParamList = {
     wrongIds: string[];
     timeTaken?: number;
     answers?: Record<string, string>;
+    /** Per-category pass-gate breakdown (model-test mode). */
+    categories?: ResultCategoryStat[];
+    /** Authoritative pass flag: overall threshold AND every category minimum. */
+    passed?: boolean;
   };
 };
 
