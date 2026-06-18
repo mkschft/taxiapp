@@ -16,7 +16,7 @@ export function TestHomeScreen() {
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
         <Text style={styles.title}>Model Tests</Text>
-        <Text style={styles.sub}>Timed, exam-realistic. Pass mark: 75%</Text>
+        <Text style={styles.sub}>Timed, exam-realistic. Pass mark: 76% (38 of 50)</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll}>

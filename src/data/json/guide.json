@@ -3,18 +3,18 @@
     "id": "exam_overview",
     "icon": "FileText",
     "title": "What is the taxi exam?",
-    "summary": "A computer-based multiple-choice test administered by Traficom (Finnish Transport and Communications Agency).",
+    "summary": "A computer-based multiple-choice test set under Traficom (Finnish Transport and Communications Agency) and delivered by its contracted provider, Ajovarma.",
     "items": [
       { "label": "Questions", "value": "50 multiple-choice questions" },
-      { "label": "Time", "value": "60 minutes" },
-      { "label": "Pass mark", "value": "80% (40 out of 50)" },
-      { "label": "Format", "value": "4 answer options per question — only one is correct" },
-      { "label": "Language", "value": "Finnish. No translation available during the exam." },
-      { "label": "Where", "value": "Traficom examination centres across Finland" },
-      { "label": "Cost", "value": "~€60–80 per attempt (check Traficom for current fee)" },
+      { "label": "Time", "value": "45 minutes (90 minutes for an oral exam on documented medical grounds)" },
+      { "label": "Pass mark", "value": "38 out of 50 correct (76%) — AND you must reach the minimum in each of the 4 subject areas (12/15, 12/15, 7/10, 7/10). Falling below the minimum in any one area fails the whole exam." },
+      { "label": "Format", "value": "Multiple-choice — each question has only one fully correct answer" },
+      { "label": "Language", "value": "Finnish or Swedish. No translation into other languages is available during the exam." },
+      { "label": "Where", "value": "Ajovarma exam locations across Finland — since Nov 2025 run as centralised group exams in 12 cities" },
+      { "label": "Cost", "value": "~€110 per written attempt (≈€150 for an oral exam on medical grounds). Fees rose on 1.1.2026 — verify the current amount with Ajovarma/Traficom before booking." },
       { "label": "Retakes", "value": "You can retake if you fail — no mandatory waiting period" }
     ],
-    "note": "The exam tests your knowledge of passenger safety, traffic rules, customer service, and special passenger needs — not your driving ability."
+    "note": "The exam tests your knowledge of passenger safety, traffic rules, customer service, and special passenger needs — not your driving ability. The authorities don't publish how many answer options each question shows, so this app trains the skill that always transfers: read the question carefully and identify the one fully correct answer."
   },
   {
     "id": "licence_process",
@@ -22,12 +22,12 @@
     "title": "How to get a taxi licence",
     "summary": "The taxi driver's licence (taksinkuljettajan ajolupa) is separate from a regular driving licence.",
     "items": [
-      { "label": "Step 1", "value": "Hold a valid driving licence (category B minimum)" },
-      { "label": "Step 2", "value": "Pass the taxi driver knowledge exam at Traficom" },
-      { "label": "Step 3", "value": "Pass a first-aid course (EA1 level)" },
+      { "label": "Step 1", "value": "Hold a category B driving licence (Finland or EU/EEA), held for at least one year before applying" },
+      { "label": "Step 2", "value": "Pass the taxi driver knowledge exam (delivered by Ajovarma)" },
+      { "label": "Step 3", "value": "Meet Group 2 medical fitness — a doctor's certificate no more than 6 months old" },
       { "label": "Step 4", "value": "Background check — no serious criminal record" },
-      { "label": "Step 5", "value": "Apply for the ajolupa at Traficom — valid for 5 years" },
-      { "label": "Renewal", "value": "Renew every 5 years — re-exam may be required" }
+      { "label": "Step 5", "value": "Apply for the ajolupa at Traficom — valid for 5 years (2 years if you are 68 or older)" },
+      { "label": "Renewal", "value": "Renew before it expires by meeting the Group 2 health and clean-record conditions. No re-exam — a passed exam stays valid indefinitely." }
     ],
     "note": "You must complete all steps before you can legally carry paying passengers in Finland."
   },
@@ -59,8 +59,8 @@
         "keyRules": [
           "Driver must ask if help is needed — never assume",
           "Wheelchair must be properly secured before driving",
-          "Child safety seats must be used for passengers under 135cm",
-          "Guide dogs and assistance animals must be accepted"
+          "Children under 135 cm normally need a child restraint; in a taxi a child aged 3+ may use the adult seatbelt if no suitable seat is available, but a child under 3 must always be properly restrained",
+          "Guide dogs and assistance animals must be accepted — unless the driver has a documented allergy, in which case they must arrange a replacement taxi"
         ]
       },
       {
@@ -70,10 +70,10 @@
         "color": "#D98E00",
         "description": "Receipts, pricing transparency, passenger rights, professional conduct, handling complaints.",
         "keyRules": [
-          "Driver must provide a receipt on request — no exceptions",
-          "Price estimate must be given if asked before the trip",
+          "Driver must offer a receipt for every trip — not only when asked",
+          "Before the trip the driver must state the price or pricing basis up front — proactively, not only when asked",
           "Driver must not discriminate against any passenger",
-          "Taxi meter must be switched on at the start of every trip"
+          "When the price is based on distance or time, the meter must be on from the start of the trip — but it isn't required when a fixed price has been agreed in advance"
         ]
       },
       {
@@ -85,7 +85,7 @@
         "keyRules": [
           "All traffic rules apply equally to taxi drivers — no exceptions",
           "Driver must not use a phone while driving without hands-free",
-          "Taxi rank rules must be followed (first in, first out)",
+          "Follow taxi-rank etiquette — note that customers may choose any taxi in the queue, so strict 'first in, first out' is courtesy, not law",
           "Vehicle must be in roadworthy condition before every shift"
         ]
       }
@@ -98,12 +98,12 @@
     "summary": "What to expect when you walk into the examination centre.",
     "items": [
       { "label": "Bring", "value": "Valid photo ID (passport or Finnish ID card)" },
-      { "label": "Arrive", "value": "15 minutes early — late arrivals may not be admitted" },
-      { "label": "Device", "value": "Traficom provides the computer — no own device needed" },
+      { "label": "Arrive", "value": "At least 15 minutes early — late arrivals may not be admitted" },
+      { "label": "Device", "value": "Ajovarma provides the computer/tablet on site — no own device needed" },
       { "label": "Allowed", "value": "Nothing on the desk. No notes, no phone, no dictionary." },
       { "label": "Questions", "value": "Read every word carefully — Finnish is precise" },
       { "label": "Flagging", "value": "You can mark questions to review before final submission — but it's best to answer every question on the first sequential pass and only flag the ones you want to rethink" },
-      { "label": "Results", "value": "You see your score immediately after submitting" }
+      { "label": "Results", "value": "The exam is graded electronically and your result is available quickly" }
     ],
     "note": "If your Finnish is weak, use this app's clue-word method. Many questions can be answered by spotting key Finnish words even without full comprehension."
   },

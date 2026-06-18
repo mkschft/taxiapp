@@ -94,6 +94,18 @@ def main():
             "time_minutes": m["time_minutes"], "pass_mark": m["pass_mark"],
         })
 
+    # ── Integrity: every test must have exactly 50 unique questions ──────────
+    # The real Traficom exam is 50 questions; mocks must mirror that 1:1.
+    for t in tests:
+        ids = t["question_ids"]
+        if len(ids) != 50 or len(set(ids)) != 50:
+            dups = sorted(q for q in set(ids) if ids.count(q) > 1)
+            raise SystemExit(
+                f"INTEGRITY ERROR: {t['id']} has {len(ids)} questions "
+                f"({len(set(ids))} unique) — expected exactly 50 unique. "
+                f"duplicates={dups or 'none'}; fix model_test_workbook.xlsx."
+            )
+
     with open(OUT_TESTS, "w", encoding="utf-8") as f:
         json.dump(tests, f, ensure_ascii=False, indent=2)
     with open(OUT_QS, "w", encoding="utf-8") as f:

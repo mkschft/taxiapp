@@ -33,3 +33,6 @@ content/sources/new/
 # Topic Practice: editor's raw (mangled-EN) workbook — provenance only. The
 # clean, ID-keyed source content/sources/topic_workbook.xlsx is tracked instead.
 content/Taxi_Exam_practise question+Model_Tests_5Sets_Final - rhidoy vai 2.xlsx
+
+# Launch credibility audit — local only, not committed
+EXAM_ACCURACY_AUDIT.md

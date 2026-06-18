@@ -138,7 +138,7 @@ export function GuideScreen() {
         <View style={styles.hero}>
           <View style={styles.heroTextBlock}>
             <Text style={styles.heroTitle}>Finnish Taxi Exam</Text>
-            <Text style={styles.heroSub}>50 questions · 60 min · 80% to pass</Text>
+            <Text style={styles.heroSub}>50 questions · 45 min · 38/50 to pass</Text>
           </View>
           <View style={styles.heroBadge}>
             <Text style={styles.heroBadgeText}>Traficom</Text>
@@ -149,8 +149,8 @@ export function GuideScreen() {
         <View style={styles.statsRow}>
           {[
             { val: '50', label: 'Questions' },
-            { val: '60', label: 'Minutes' },
-            { val: '80%', label: 'Pass mark' },
+            { val: '45', label: 'Minutes' },
+            { val: '38/50', label: 'Pass mark' },
             { val: '4', label: 'Categories' },
           ].map(s => (
             <View key={s.label} style={styles.statChip}>

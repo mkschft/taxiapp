@@ -21,7 +21,7 @@ const MODULES: Module[] = [
   {
     Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide',
     what: 'The facts of the real Traficom exam — format, the 4 official categories, and exam-day rules.',
-    how: 'Read this first so you know exactly what you are training for: 50 questions, 60 minutes, 80% to pass, Finnish only.',
+    how: 'Read this first so you know exactly what you are training for: 50 questions, 45 minutes, 38/50 to pass (with a minimum in each category), in Finnish or Swedish.',
     nav: { stack: 'Study', screen: 'Guide' },
   },
   {
@@ -44,8 +44,8 @@ const MODULES: Module[] = [
   },
   {
     Icon: MODULE_ICONS.modelTests, tint: '#7C3AED', title: 'Model Tests',
-    what: 'Full, timed mock exams that mirror the real thing — same length, same pass mark.',
-    how: 'Use these near exam day to rehearse under pressure. Sit one in a quiet 50 minutes, then review every question you missed.',
+    what: 'Full, timed mock exams that rehearse the real exam’s format and time pressure.',
+    how: 'Use these near exam day to rehearse under pressure. Sit one in a quiet 45 minutes, then review every question you missed.',
     nav: { stack: 'Test', screen: 'TestHome' },
   },
   {
@@ -123,7 +123,7 @@ export function HowToScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Tip: the exam is in Finnish with no translation. The clue-word method is your edge —
+            Tip: the exam is in Finnish (or Swedish), with no translation into other languages. The clue-word method is your edge —
             most mistakes come from misreading, not from not knowing.
           </Text>
         </View>

@@ -20,7 +20,10 @@ type Props = {
 export function ResultScreen({ navigation, route }: Props) {
   const { mode, label, score, total, wrongIds, timeTaken, answers } = route.params;
   const pct = Math.round((score / total) * 100);
-  const passed = pct >= 75;
+  // Official Traficom threshold: 38/50 = 76% overall. NOTE: the real exam also
+  // requires a minimum in each of the 4 categories (12/15, 12/15, 7/10, 7/10);
+  // that per-category gate is not yet modelled here — see EXAM_ACCURACY_AUDIT.md.
+  const passed = pct >= 76;
 
   const fmt = (s: number) => {
     const m = Math.floor(s / 60);
@@ -41,7 +44,7 @@ export function ResultScreen({ navigation, route }: Props) {
           <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
             {passed ? 'You passed!' : 'Keep studying'}
           </Text>
-          <Text style={styles.bannerSub}>Pass mark: 75% · Your score: {pct}%</Text>
+          <Text style={styles.bannerSub}>Pass mark: 76% (38/50) · Your score: {pct}%</Text>
         </View>
 
         {/* Score ring area */}
