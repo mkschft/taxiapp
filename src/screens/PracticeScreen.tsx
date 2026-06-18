@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { ClueHighlight } from '../components/question/ClueHighlight';
+import { QuestionImage } from '../components/question/QuestionImage';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
@@ -149,6 +150,7 @@ export function PracticeScreen({ navigation, route }: Props) {
           {showMeaning && !!qTextEn && (
             <Text style={styles.qTextEn}>{qTextEn}</Text>
           )}
+          <QuestionImage id={question.id} />
         </View>
 
         {/* Action bar: Simple Meaning + Clue Lens */}

@@ -17,6 +17,9 @@ web-build/
 # Local progress tracker — not committed
 PROGRESS.md
 
+# Internal session / decision log — not committed
+SESSION_LOG.md
+
 # Local backups / Python build artifacts
 old-backup-ignore/
 content/.venv/
