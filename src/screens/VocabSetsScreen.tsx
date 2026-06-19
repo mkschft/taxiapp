@@ -9,6 +9,8 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getVocabLesson, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { usePaywall } from '../store/paywallStore';
+import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -23,6 +25,19 @@ const SETS = getVocabSets();
 
 export function VocabSetsScreen({ navigation }: Props) {
   const { state } = useProgress();
+  const { isUnlocked, unlock } = usePaywall();
+
+  if (!isUnlocked('vocabulary')) {
+    return (
+      <Paywall
+        title="Vocabulary"
+        blurb="Learn the exact Finnish words the exam uses — with English meanings and inflected forms."
+        perks={[`${SETS.length} themed sets · the words that appear on the real exam`, 'Bilingual cards (Finnish + English)', 'Built-in quiz after every set']}
+        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
+        onSkip={() => unlock('vocabulary')}
+      />
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safe}>

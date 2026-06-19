@@ -9,6 +9,8 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSections, getTopicSectionQuestionIds, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { usePaywall } from '../store/paywallStore';
+import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -20,6 +22,19 @@ const SECTIONS = getTopicSections();
 
 export function TopicSectionsScreen({ navigation }: Props) {
   const { state } = useProgress();
+  const { isUnlocked, unlock } = usePaywall();
+
+  if (!isUnlocked('topic_practice')) {
+    return (
+      <Paywall
+        title="Topic Practice"
+        blurb="Drill real exam-style questions one official section at a time, with the real pass thresholds."
+        perks={[`${SECTIONS.length} official exam sections`, 'Every answer explained, with the clue lens', 'Practise at the real per-section pass mark']}
+        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
+        onSkip={() => unlock('topic_practice')}
+      />
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safe}>

@@ -16,6 +16,7 @@ import {
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { ProgressProvider } from './src/store/progressStore';
 import { AuthProvider } from './src/store/authStore';
+import { PaywallProvider } from './src/store/paywallStore';
 import { colors, font } from './src/theme/tokens';
 
 // Set Inter as the base font for all Text via defaultProps (safe on web + native).
@@ -96,12 +97,14 @@ export default function App() {
   ) : (
     <SafeAreaProvider>
       <AuthProvider>
-        <ProgressProvider>
-          <NavigationContainer linking={linking}>
-            <StatusBar style="dark" />
-            <RootNavigator />
-          </NavigationContainer>
-        </ProgressProvider>
+        <PaywallProvider>
+          <ProgressProvider>
+            <NavigationContainer linking={linking}>
+              <StatusBar style="dark" />
+              <RootNavigator />
+            </NavigationContainer>
+          </ProgressProvider>
+        </PaywallProvider>
       </AuthProvider>
     </SafeAreaProvider>
   );

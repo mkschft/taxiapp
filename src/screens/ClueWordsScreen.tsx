@@ -11,6 +11,8 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroups, getClueLesson } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { usePaywall } from '../store/paywallStore';
+import { Paywall } from '../components/Paywall';
 import type { ClueTone } from '../data/types';
 
 const GROUP_ICON: Record<string, LucideIcon> = {
@@ -31,6 +33,19 @@ const GROUPS = getClueGroups();
 export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
   const { state } = useProgress();
+  const { isUnlocked, unlock } = usePaywall();
+
+  if (!isUnlocked('clue_words')) {
+    return (
+      <Paywall
+        title="Clue Words"
+        blurb="The method that lets you answer questions even with weak Finnish — spot the words that signal right vs wrong."
+        perks={['Positive & negative clue words, with their exceptions', 'Read a question strategically, not word-by-word', 'Practice quiz for each clue group']}
+        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
+        onSkip={() => unlock('clue_words')}
+      />
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safe}>
