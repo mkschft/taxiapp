@@ -13,13 +13,17 @@ export function AuthGate<P extends object>(Component: React.ComponentType<P>) {
     const navigation = useNavigation<NavigationProp>();
     const { state } = useAuth();
 
+    const allowed = state.user || state.guest;
+
     useEffect(() => {
-      if (state.hydrated && !state.user) {
+      // Send unauthenticated visitors to Signup — unless they chose the
+      // local-first guest preview, which is allowed in without an account.
+      if (state.hydrated && !allowed) {
         navigation.navigate('Signup');
       }
-    }, [state.hydrated, state.user, navigation]);
+    }, [state.hydrated, allowed, navigation]);
 
-    if (!state.hydrated || !state.user) {
+    if (!state.hydrated || !allowed) {
       return (
         <View style={styles.loading}>
           <ActivityIndicator color={colors.primary} />

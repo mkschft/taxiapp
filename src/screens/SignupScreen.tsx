@@ -25,12 +25,14 @@ export function SignupScreen() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState<string | null>(null);
 
   const nameRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
+  const referralRef = useRef<TextInput>(null);
 
   const clearFormError = () => setFormError(null);
 
@@ -49,10 +51,12 @@ export function SignupScreen() {
     if (!validate()) return;
     setLoading(true);
     try {
+      const code = referralCode.trim().toUpperCase();
       const { accessToken, refreshToken } = await post<{ accessToken: string; refreshToken: string }>('/auth/register', {
         email: email.trim(),
         name: name.trim(),
         password,
+        ...(code ? { referredBy: code } : {}), // optional friend's referral code
       });
 
       const user = await getMe(accessToken);
@@ -133,11 +137,24 @@ export function SignupScreen() {
               secureTextEntry
               autoComplete="new-password"
               textContentType="newPassword"
-              returnKeyType="done"
-              onSubmitEditing={handleSignup}
+              returnKeyType="next"
+              onSubmitEditing={() => referralRef.current?.focus()}
               value={password}
               onChangeText={(text) => { setPassword(text); clearFormError(); }}
               error={errors.password}
+              style={{ marginTop: spacing.md }}
+            />
+
+            <AppInput
+              ref={referralRef}
+              label="Referral code (optional)"
+              placeholder="TAXIXXXX"
+              autoCapitalize="characters"
+              autoCorrect={false}
+              returnKeyType="done"
+              onSubmitEditing={handleSignup}
+              value={referralCode}
+              onChangeText={(text) => { setReferralCode(text); clearFormError(); }}
               style={{ marginTop: spacing.md }}
             />
 

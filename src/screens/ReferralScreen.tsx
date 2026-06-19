@@ -34,7 +34,9 @@ export function ReferralScreen() {
   const code = state.profile.referral_code || 'TAXI7';
   const [copied, setCopied] = useState(false);
 
-  const friendsJoined = 2;
+  // Real referral counts come from the backend (`referrals` table) once wired —
+  // see BACKEND.md. Until then show honest zeros rather than mock numbers.
+  const friendsJoined = 0;
   const daysEarned = friendsJoined * 7;
 
   const handleCopy = async () => {
@@ -45,7 +47,7 @@ export function ReferralScreen() {
 
   const handleShare = async () => {
     await Share.share({
-      message: `Use my code ${code} to get 7 days free on the Finnish Taxi Exam Prep app! https://taxiexam.app`,
+      message: `Use my code ${code} to get 7 days free on TaxiPilot — the Finnish taxi exam prep app! https://taxipilot.fi`,
     });
   };
 

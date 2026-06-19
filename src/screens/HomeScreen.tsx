@@ -5,6 +5,7 @@ import { Type, Target, ClipboardList, Timer, type LucideIcon } from 'lucide-reac
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
+import { useAuth } from '../store/authStore';
 
 type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Home'> };
 
@@ -12,10 +13,17 @@ const FEATURES: { Icon: LucideIcon; tint: string; title: string; body: string }[
   { Icon: Type, tint: colors.primary, title: '11 vocabulary sets · 84 key words', body: 'Finnish inflections included — the exact words that appear on the exam.' },
   { Icon: Target, tint: colors.success, title: 'Trigger-word engine', body: 'Learn which Finnish words signal correct vs wrong answers, even with weak Finnish.' },
   { Icon: ClipboardList, tint: colors.warning, title: '300+ practice questions', body: 'Across all 4 official exam categories, with full clue-word explanations.' },
-  { Icon: Timer, tint: colors.error, title: '2 timed model tests', body: 'Exam-realistic simulation with scoring and review.' },
+  { Icon: Timer, tint: colors.error, title: '5 timed model tests', body: 'Exam-realistic simulation with scoring and review.' },
 ];
 
 export function HomeScreen({ navigation }: Props) {
+  const { enterGuest } = useAuth();
+
+  const startPreview = async () => {
+    await enterGuest();
+    navigation.navigate('App');
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
@@ -60,7 +68,7 @@ export function HomeScreen({ navigation }: Props) {
         <View style={styles.actions}>
           <AppButton
             label="Try free preview →"
-            onPress={() => navigation.navigate('App')}
+            onPress={startPreview}
           />
           <AppButton
             label="Sign up / Log in"
