@@ -11,6 +11,10 @@ import { radius, colors, spacing } from '../../theme/tokens';
 const QUESTION_IMAGES: Record<string, ReturnType<typeof require>> = {
   Q284: require('../../../assets/questions/Q284.jpg'),
   Q293: require('../../../assets/questions/Q293.png'),
+  Q324: require('../../../assets/questions/Q324.png'),
+  // Q246 & Q247 are the same question (no-vehicles sign + taxi pickup/drop-off plate).
+  Q246: require('../../../assets/questions/Q246.png'),
+  Q247: require('../../../assets/questions/Q246.png'),
   'MTQ-026': require('../../../assets/questions/MTQ-026.jpeg'),
   'MTQ-042': require('../../../assets/questions/MTQ-042.jpg'),
   'MTQ-043': require('../../../assets/questions/MTQ-043.jpg'),

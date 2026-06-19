@@ -213,7 +213,7 @@ export function ProfileScreen() {
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
         <View style={styles.settingGroup}>
-          <SettingRow Icon={CreditCard} tint={colors.primary} title="Manage subscription" subtitle={isGuest ? 'Preview · full access' : 'Full Access · active'} onPress={handleManageSub} />
+          <SettingRow Icon={CreditCard} tint={colors.primary} title="Manage subscription" subtitle="Plans arrive at launch" onPress={handleManageSub} />
           <View style={styles.sep} />
           <SettingRow
             Icon={Gift} tint={colors.success} title="Referral — give & get free week"
