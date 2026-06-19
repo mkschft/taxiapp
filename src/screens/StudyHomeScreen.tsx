@@ -11,7 +11,7 @@ import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
   { Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, title: 'How to use the app', sub: 'Start here — what each section is for', screen: 'HowTo', paid: false, params: {} },
   { Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide', sub: 'Rules, categories, exam day tips', screen: 'Guide', paid: false, params: {} },
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: false, params: {} },
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: true, params: {} },
   { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: 'Positive & negative answer-logic words', screen: 'ClueWords', paid: true, params: {} },
   { Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice', sub: `${getQuestions().length} questions · ${getTopicSections().length} sections`, screen: 'TopicSections', paid: true, params: {} },
 ];

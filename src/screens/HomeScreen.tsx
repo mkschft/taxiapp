@@ -77,7 +77,7 @@ export function HomeScreen({ navigation }: Props) {
             style={{ marginTop: spacing.sm }}
           />
           <Text style={styles.foot}>
-            Free: 1 vocab set + 4 practice questions. No card needed.
+            Start with a free preview. No card needed.
           </Text>
         </View>
 

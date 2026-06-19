@@ -86,10 +86,9 @@ export function ReferralScreen() {
           </View>
         )}
 
-        {/* Share buttons */}
+        {/* Share */}
         <View style={styles.shareSection}>
-          <AppButton label="💬 Share via WhatsApp" onPress={handleShare} style={styles.whatsapp} />
-          <AppButton label="✉️ Share via SMS / other" variant="secondary" onPress={handleShare} style={{ marginTop: spacing.sm }} />
+          <AppButton label="Share your code" onPress={handleShare} />
         </View>
 
         {/* How it works */}
@@ -155,7 +154,6 @@ const styles = StyleSheet.create({
   },
   copyConfirmText: { fontSize: 13, fontFamily: font.semibold, color: colors.success },
   shareSection: { marginBottom: spacing.lg },
-  whatsapp: { backgroundColor: '#25D366' } as const,
   sectionHeader: {
     fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,
     color: colors.textSecondary, paddingBottom: spacing.sm,

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Switch, Alert, Platform, Modal, Pressable, Linking,
+  TouchableOpacity, Alert, Platform, Modal, Pressable, Linking,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
-  Target, Languages, Bell, CreditCard, Gift, HelpCircle, Star, Trash2,
+  Target, CreditCard, Gift, HelpCircle, Trash2,
   ChevronRight, CalendarDays, UserPlus, type LucideIcon,
 } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
@@ -65,8 +65,6 @@ export function ProfileScreen() {
   const [dateModal, setDateModal] = useState(false);
   const [dateInput, setDateInput] = useState(state.profile.exam_date ?? '');
   const [dateError, setDateError] = useState<string | null>(null);
-  const [langModal, setLangModal] = useState(false);
-  const [reminderOn, setReminderOn] = useState(true);
 
   const daysLeft = state.profile.exam_date
     ? Math.max(0, Math.round((new Date(state.profile.exam_date).getTime() - Date.now()) / 86400000))
@@ -92,11 +90,6 @@ export function ProfileScreen() {
     setExamDate(dateInput.trim());
   };
 
-  const setLanguage = (lang: 'en' | 'fi') => {
-    dispatch({ type: 'UPDATE_PROFILE', profile: { language_pref: lang } });
-    setLangModal(false);
-  };
-
   const handleManageSub = () => {
     Alert.alert(
       'Subscription',
@@ -108,10 +101,6 @@ export function ProfileScreen() {
     Linking.openURL(HELP_URL).catch(() =>
       Alert.alert('Help & FAQ', `Visit ${HELP_URL} for help and FAQs.`),
     );
-  };
-
-  const handleRate = () => {
-    Alert.alert('Rate the app', 'Thanks! In-store ratings open once the app launches.');
   };
 
   const handleLogout = () => {
@@ -165,12 +154,6 @@ export function ProfileScreen() {
             <Text style={styles.avatarText}>{initial}</Text>
           </View>
           <Text style={styles.name}>{state.profile.name || (isGuest ? 'Guest' : 'Your Name')}</Text>
-          <View style={[styles.planBadge, isGuest && styles.planBadgeGuest]}>
-            <Star size={12} color={isGuest ? colors.textSecondary : colors.primary} strokeWidth={2.4} fill={isGuest ? colors.textSecondary : colors.primary} />
-            <Text style={[styles.planText, isGuest && { color: colors.textSecondary }]}>
-              {isGuest ? 'Guest preview' : 'Full Access'}
-            </Text>
-          </View>
         </View>
 
         {/* Guest → create-account prompt: progress is local-only until they sign up */}
@@ -225,14 +208,6 @@ export function ProfileScreen() {
         <Text style={styles.sectionHeader}>Account</Text>
         <View style={styles.settingGroup}>
           <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={state.profile.exam_date ?? 'Not set'} onPress={openDateModal} />
-          <View style={styles.sep} />
-          <SettingRow Icon={Languages} tint={colors.primary} title="Interface language" subtitle={state.profile.language_pref === 'en' ? 'English' : 'Suomi (Finnish)'} onPress={() => setLangModal(true)} />
-          <View style={styles.sep} />
-          <SettingRow
-            Icon={Bell} tint={colors.warning} title="Daily reminder"
-            subtitle={reminderOn ? '08:00 every day' : 'Off'}
-            right={<Switch value={reminderOn} onValueChange={setReminderOn} trackColor={{ true: colors.success }} />}
-          />
         </View>
 
         {/* Subscription */}
@@ -251,8 +226,6 @@ export function ProfileScreen() {
         <Text style={styles.sectionHeader}>Support</Text>
         <View style={styles.settingGroup}>
           <SettingRow Icon={HelpCircle} title="Help & FAQ" onPress={handleHelp} />
-          <View style={styles.sep} />
-          <SettingRow Icon={Star} title="Rate the app" onPress={handleRate} />
           <View style={styles.sep} />
           <SettingRow Icon={Trash2} tint={colors.error} title="Clear progress data" onPress={handleClearData} />
         </View>
@@ -296,28 +269,6 @@ export function ProfileScreen() {
           </Pressable>
         </Pressable>
       </Modal>
-
-      {/* Interface language */}
-      <Modal visible={langModal} transparent animationType="fade" onRequestClose={() => setLangModal(false)}>
-        <Pressable style={styles.modalOverlay} onPress={() => setLangModal(false)}>
-          <Pressable style={styles.modalSheet} onPress={() => {}}>
-            <Text style={styles.modalTitle}>Interface language</Text>
-            {([['en', 'English'], ['fi', 'Suomi (Finnish)']] as const).map(([code, label]) => {
-              const active = state.profile.language_pref === code;
-              return (
-                <Pressable
-                  key={code}
-                  style={[styles.langRow, active && styles.langRowActive]}
-                  onPress={() => setLanguage(code)}
-                >
-                  <Text style={[styles.langText, active && { color: colors.primary, fontFamily: font.bold }]}>{label}</Text>
-                  {active && <Text style={styles.langCheck}>✓</Text>}
-                </Pressable>
-              );
-            })}
-          </Pressable>
-        </Pressable>
-      </Modal>
     </SafeAreaView>
   );
 }
@@ -337,13 +288,6 @@ const styles = StyleSheet.create({
   },
   avatarText: { fontSize: 32, fontFamily: font.bold, color: '#fff' },
   name: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
-  planBadge: {
-    flexDirection: 'row', alignItems: 'center', gap: 5,
-    backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
-    borderRadius: radius.full, paddingHorizontal: 12, paddingVertical: 5,
-  },
-  planText: { fontSize: 12, fontFamily: font.bold, color: colors.primary },
-  planBadgeGuest: { backgroundColor: colors.surfaceAlt, borderColor: colors.border },
   guestCard: {
     marginHorizontal: spacing.md, marginBottom: spacing.md,
     backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
@@ -371,14 +315,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
   },
   presetText: { fontSize: fontSize.sm, fontFamily: font.bold, color: colors.text },
-  langRow: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingVertical: 14, paddingHorizontal: spacing.md, marginTop: spacing.sm,
-    borderWidth: 1, borderColor: colors.border, borderRadius: radius.md,
-  },
-  langRowActive: { borderColor: colors.primary, backgroundColor: colors.primaryTint },
-  langText: { fontSize: fontSize.md, fontFamily: font.medium, color: colors.text },
-  langCheck: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.primary },
   examCard: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     marginHorizontal: spacing.md, marginBottom: spacing.md,
