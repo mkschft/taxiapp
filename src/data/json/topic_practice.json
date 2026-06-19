@@ -34,7 +34,7 @@
       "pass_total": 10,
       "order": 3,
       "lesson_count": 9,
-      "question_count": 91
+      "question_count": 87
     },
     {
       "id": "traffic_safety",
@@ -456,15 +456,11 @@
       "name": "Customer Requests, Alcohol & Difficult Situations",
       "order": 7,
       "total_in_section": 9,
-      "question_count": 18,
+      "question_count": 14,
       "question_ids": [
-        "Q164",
         "Q155",
-        "Q178",
-        "Q166",
         "Q167",
         "Q170",
-        "Q171",
         "Q173",
         "Q183",
         "Q194",

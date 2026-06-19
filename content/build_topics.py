@@ -52,8 +52,20 @@ def rows(ws):
         yield dict(zip(head, r))
 
 
+def _usable(q):
+    """A question is usable in practice only if it has exactly one correct
+    option and isn't a flagged 'source-unclear' placeholder. Filtering here
+    keeps empty/ungradeable questions (e.g. Q164/Q166/Q171/Q178) out of the
+    study flow — the same guard the model-test builder applies."""
+    if q.get("status") == "source-unclear":
+        return False
+    return sum(1 for o in q.get("options", []) if o.get("is_correct")) == 1
+
+
 def main():
-    valid_ids = {q["id"] for q in json.load(open(QUESTIONS, encoding="utf-8"))}
+    bank = json.load(open(QUESTIONS, encoding="utf-8"))
+    valid_ids = {q["id"] for q in bank if _usable(q)}
+    unusable_ids = {q["id"] for q in bank if not _usable(q)}
     wb = openpyxl.load_workbook(WORKBOOK, data_only=True)
     warnings = []
 
@@ -82,6 +94,8 @@ def main():
     seen = set()
     for r in qrows:
         qid, lid = r["question_id"], r["lesson_id"]
+        if qid in unusable_ids:
+            warnings.append(f"question_id {qid} is ungradeable/source-unclear — excluded from practice"); continue
         if qid not in valid_ids:
             warnings.append(f"question_id {qid} not in questions.json — skipped"); continue
         if lid not in les_by_id:

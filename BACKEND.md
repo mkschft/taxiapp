@@ -17,7 +17,7 @@ The content is deliberately staged — *understand the words → learn exam stra
 1. **Vocabulary** — "understand the words first." Small numbered sets of the Finnish words/phrases that appear in exam questions, each with English meaning, related forms, and how it's used in the exam. The foundation.
 2. **Clue Words** — "read a question strategically." The app's secret weapon: Finnish questions contain **clue words** that reliably signal right vs. wrong answers (**positive** clues point toward the correct answer; **negative** clues point away), taught with their exceptions. This is exam *technique* — a user can often reason out an unseen question.
 3. **Topic Practice** — "drill one exam section at a time." Mirrors the official exam sections (passenger safety, special-needs passengers, customer service, traffic safety), each with the **real pass threshold** (e.g. 12 correct of 15).
-4. **Model Tests** — "simulate the real exam." A fixed ~50-question set, a **countdown timer**, and a real **pass mark (75%)**.
+4. **Model Tests** — "simulate the real exam." A fixed **50-question set**, a **45-minute countdown timer**, and the real **pass mark (76% = 38/50) plus per-category minimums** (12/15, 12/15, 7/10, 7/10 — falling below any one area fails the whole test). See `src/data/examFacts.ts` / `examStructure.ts` for the canonical numbers.
 
 ## The key distinction: Practice vs. Exam behaviour
 This is the most important strategic point, because it determines what a "result" means.
@@ -75,7 +75,7 @@ ClueQuiz    { id:"clue-positive-q1", group_id, direction, prompt, options[], cor
 TopicSection { id (==category_id), name_fi, name_en, pass_correct, pass_total, order }   // e.g. 12 / 15
 TopicLesson  { id, section_id, name, order, question_ids[] }                              // → Question.id[]
 
-ModelTest    { id:"mt1", title_fi, title_en, question_ids[], time_minutes, pass_mark }    // ~50 ids, 75%
+ModelTest    { id:"mt1", title_fi, title_en, question_ids[], time_minutes, pass_mark }    // 50 ids, 45 min, pass_mark 76
 ```
 
 Rough scale: 4 categories, ~327 main questions (+ test-only questions), 11 vocab sets (~165 words / ~220 quiz Qs), 2 clue groups (~55 words), 4 topic sections (~29 lessons), several model tests.

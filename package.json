@@ -42,7 +42,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typegen": "bash scripts/typegen.sh",
-    "typegen:api": "bash scripts/typegen-api.sh"
+    "typegen:api": "bash scripts/typegen-api.sh",
+    "check:data": "node scripts/check-data-integrity.mjs"
   },
   "private": true
 }

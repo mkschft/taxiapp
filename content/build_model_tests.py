@@ -138,6 +138,34 @@ def main():
                 f"!= official {EXAM_SPLIT}; fix model_test_workbook.xlsx."
             )
 
+    # ── Integrity: every question used in a test must be gradeable ───────────
+    # A question is unusable in a graded test if it has no single correct option
+    # or is a flagged "source-unclear" placeholder. Without this guard such a
+    # question silently caps the user's score and skews the per-category gate
+    # (this is exactly how Q164/Q166 slipped into mt2/mt4 — see the audit).
+    rec_of = {q["id"]: q for q in bank}
+    rec_of.update({q["id"]: q for q in new_questions})
+    ungradeable = []
+    for t in tests:
+        for qid in t["question_ids"]:
+            q = rec_of.get(qid)
+            if q is None:
+                continue  # unresolvable ids are already reported above
+            n_correct = sum(1 for o in q.get("options", []) if o.get("is_correct"))
+            if n_correct != 1 or q.get("status") == "source-unclear":
+                ungradeable.append(
+                    f"{t['id']}: {qid} (status={q.get('status')!r}, "
+                    f"correct_options={n_correct})"
+                )
+    if ungradeable:
+        raise SystemExit(
+            "INTEGRITY ERROR: ungradeable question(s) used in a model test — "
+            "no single correct answer or 'source-unclear' placeholder:\n  "
+            + "\n  ".join(ungradeable)
+            + "\nFix model_test_workbook.xlsx: swap each for a valid "
+            "same-category question."
+        )
+
     with open(OUT_TESTS, "w", encoding="utf-8") as f:
         json.dump(tests, f, ensure_ascii=False, indent=2)
     with open(OUT_QS, "w", encoding="utf-8") as f:
