@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npx expo export --platform web && node scripts/postbuild-web.js",
+  "buildCommand": "node scripts/check-data-integrity.mjs && npx expo export --platform web && node scripts/postbuild-web.js",
   "outputDirectory": "dist",
   "framework": null,
   "rewrites": [
