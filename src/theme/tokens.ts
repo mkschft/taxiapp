@@ -14,11 +14,17 @@ export const colors = {
   success: '#1FA463',
   warning: '#D98E00',
   error: '#E23B3B',
+  // Model Tests module accent (distinct from the 4 category colours)
+  modelTest: '#7C3AED',
   // tints
   primaryTint: '#EDF3FE',
   successTint: '#E8F6EF',
   warningTint: '#FDF6E7',
   errorTint: '#FDECEC',
+  // named accent borders/surfaces that were previously hard-coded in screens
+  warningBorder: '#F0D070',
+  errorSurface: '#FFF8F8',
+  errorBorder: '#FECACA',
 };
 
 export const radius = {

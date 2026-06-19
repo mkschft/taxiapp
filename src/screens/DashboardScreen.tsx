@@ -31,7 +31,7 @@ const HUBS: HubItem[] = [
   { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${VOCAB_SETS} sets · ${VOCAB_WORDS} words`, paid: false, screen: 'VocabSets', stack: 'Study' },
   { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: `${CLUE_GROUPS} groups · ${CLUE_WORDS} clue words`, paid: true, screen: 'ClueWords', stack: 'Study' },
   { Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice', sub: `${TOTAL_QUESTIONS} questions · ${TOPIC_SECTIONS} sections`, paid: true, screen: 'TopicSections', stack: 'Study' },
-  { Icon: MODULE_ICONS.modelTests, tint: '#7C3AED', title: 'Model Tests', sub: `${MODEL_TESTS} full timed tests`, paid: true, screen: 'TestHome', stack: 'Test' },
+  { Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, title: 'Model Tests', sub: `${MODEL_TESTS} full timed tests`, paid: true, screen: 'TestHome', stack: 'Test' },
   { Icon: MODULE_ICONS.progress, tint: colors.primary, title: 'Progress & Weak Areas', sub: 'Spaced repetition · review what you missed', paid: false, screen: 'Progress', wide: true },
 ];
 

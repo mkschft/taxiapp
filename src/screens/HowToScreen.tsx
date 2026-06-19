@@ -43,7 +43,7 @@ const MODULES: Module[] = [
     nav: { stack: 'Study', screen: 'TopicSections' },
   },
   {
-    Icon: MODULE_ICONS.modelTests, tint: '#7C3AED', title: 'Model Tests',
+    Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, title: 'Model Tests',
     what: 'Full, timed mock exams that rehearse the real exam’s format and time pressure.',
     how: 'Use these near exam day to rehearse under pressure. Sit one in a quiet 45 minutes, then review every question you missed.',
     nav: { stack: 'Test', screen: 'TestHome' },

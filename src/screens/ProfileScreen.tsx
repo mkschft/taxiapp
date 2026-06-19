@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
   examCard: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     marginHorizontal: spacing.md, marginBottom: spacing.md,
-    backgroundColor: colors.warningTint, borderWidth: 1.5, borderColor: '#F0D070',
+    backgroundColor: colors.warningTint, borderWidth: 1.5, borderColor: colors.warningBorder,
     borderRadius: radius.md, padding: spacing.md,
   },
   examLabel: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 2 },

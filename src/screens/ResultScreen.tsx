@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     paddingTop: spacing.md, paddingBottom: spacing.sm,
   },
   wrongItem: {
-    backgroundColor: '#FFF8F8', borderWidth: 1, borderColor: '#FECACA',
+    backgroundColor: colors.errorSurface, borderWidth: 1, borderColor: colors.errorBorder,
     borderRadius: radius.md, padding: 12, marginBottom: spacing.sm,
   },
   wrongQ: { fontSize: 13, fontFamily: font.semibold, color: colors.text, marginBottom: 4 },
