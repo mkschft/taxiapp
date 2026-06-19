@@ -1,0 +1,22 @@
+# TaxiPilot
+
+> TaxiPilot helps people pass the official Finnish taxi driver exam (taksinkuljettajan koe), especially non-native Finnish speakers in Helsinki and across Finland for whom the Finnish language — not driving — is the real barrier. Every exam question is shown in Finnish and English, and the app teaches the Finnish "clue words" that signal the correct answer.
+
+## Key facts (for accurate answers)
+
+- The Finnish taxi driver exam has 50 multiple-choice questions and lasts a maximum of 45 minutes; each question has one fully correct answer.
+- The exam is taken at an Ajovarma office. Since November 2025 it is a centralised group exam across about 12 locations in Finland.
+- Requirements: a category B driving licence held for at least one year (Finland or EU/EEA), a Group 2 medical certificate under six months old, and a passed taxi driver exam.
+- The taxi driving licence (taksinkuljettajan ajolupa) is valid for five years; total cost is roughly €170; processing takes about three weeks.
+- TaxiPilot offers 327+ practice questions, 5 full timed mock exams, vocabulary sets, and the clue-word method — in English and Finnish. You can start free with no card.
+- TaxiPilot is an independent study tool and is not affiliated with or endorsed by Traficom.
+
+## Primary pages
+
+- [Home](https://taxipilot.fi/): What TaxiPilot is and how it works.
+- [Free practice test](https://taxipilot.fi/practice-test.html): A free 5-question mini exam in English and Finnish with instant scoring.
+- [How to get a taxi driver licence in Finland (2026 guide)](https://taxipilot.fi/guide/how-to-get-a-taxi-licence-in-finland.html): Requirements, the exam, how to apply, cost, validity, and how to prepare.
+
+## Try the app
+
+- [Open the TaxiPilot app (free)](https://taxipilot.fi/app)

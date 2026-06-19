@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TaxiPilot — Pass the Finnish Taxi Exam in English | Free Practice Test</title>
+<meta name="description" content="Pass the Finnish taxi driver exam (taksinkuljettajan koe) even if Finnish is the barrier. Free practice test, 327+ questions in English and Finnish, 5 timed mock exams, and the clue-word method. Built for drivers in Helsinki." />
+<link rel="canonical" href="https://taxipilot.fi/" />
+<meta name="theme-color" content="#0A2A66" />
+<meta property="og:title" content="Pass the Finnish Taxi Exam in English — TaxiPilot" />
+<meta property="og:description" content="Free practice test + 327 questions in English and Finnish. Learn the clue words that decide the answer." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://taxipilot.fi/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{--navy:#0A2A66;--navy-deep:#081F4A;--brand:#1F6FEB;--brand-dark:#1558C4;--ink:#16181D;--soft:#5A6577;--line:#E3E8F0;--surface:#F5F8FC;--success:#1FA463;--maxw:680px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{text-decoration:none}
+  .topbar{height:5px;background:var(--navy)}
+  .brandbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .brandbar .wrap{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:var(--ink)}
+  .logo .mk{width:30px;height:30px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff}
+  .nav{display:flex;align-items:center;gap:18px}
+  .nav .lnk{font-size:14.5px;font-weight:600;color:var(--soft)}
+  .nav .lnk:hover{color:var(--ink)}
+  .nav .btn{font-size:14px;font-weight:800;color:#fff;background:var(--brand);padding:9px 16px;border-radius:10px}
+  @media(max-width:560px){.nav .lnk{display:none}}
+
+  .hero{position:relative;color:#fff;text-align:center;background-color:var(--navy-deep);background-image:linear-gradient(180deg,rgba(8,23,48,.66),rgba(8,23,48,.90)),url('hero.jpg');background-size:cover;background-position:center 30%;padding:66px 20px 58px}
+  .hero .inner{max-width:var(--maxw);margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#C2D6FF;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);padding:7px 14px;border-radius:999px;margin-bottom:20px}
+  .eyebrow .fi{background:#fff;color:var(--navy);font-weight:800;border-radius:999px;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+  h1{font-size:clamp(32px,8vw,46px);line-height:1.07;font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
+  h1 .accent{color:#7FB0FF}
+  .sub{font-size:clamp(16px,4.4vw,19px);color:rgba(255,255,255,.87);max-width:460px;margin:0 auto 28px}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--brand);color:#fff;font-weight:800;font-size:18px;padding:18px 30px;border-radius:14px;width:100%;max-width:400px;box-shadow:0 14px 30px -10px rgba(31,111,235,.7);transition:background .15s,transform .12s}
+  .cta:hover{background:var(--brand-dark)}.cta:active{transform:translateY(1px)}
+  .cta.white{background:#fff;color:var(--navy)}.cta.white:hover{background:var(--surface)}
+  .cta.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.4);box-shadow:none;max-width:400px;margin-top:10px}
+  .cta.ghost:hover{background:rgba(255,255,255,.08)}
+  .reassure{margin-top:16px;font-size:14px;color:rgba(255,255,255,.74);display:flex;gap:6px 16px;justify-content:center;flex-wrap:wrap}
+  .reassure span{display:inline-flex;align-items:center;gap:6px}
+
+  .facts{background:var(--surface);border-bottom:1px solid var(--line)}
+  .facts .wrap{max-width:var(--maxw);margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center}
+  .facts b{display:block;font-size:21px;font-weight:900;color:var(--navy)}
+  .facts span{font-size:12px;color:var(--soft);font-weight:500}
+  .facts .src{grid-column:1/-1;font-size:11.5px;color:#9AA1AD;margin-top:2px}
+
+  section.block{max-width:var(--maxw);margin:0 auto;padding:54px 20px}
+  .kicker{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);text-align:center}
+  h2{font-size:clamp(25px,6vw,32px);line-height:1.15;font-weight:900;letter-spacing:-.02em;text-align:center;margin:10px 0 12px}
+  .lead{font-size:16.5px;color:var(--soft);text-align:center;max-width:460px;margin:0 auto}
+
+  .steps{margin-top:30px;display:grid;gap:14px}
+  @media(min-width:620px){.steps{grid-template-columns:1fr 1fr}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 18px -14px rgba(8,31,74,.5)}
+  .step.edge{border:2px solid rgba(31,111,235,.35);position:relative}
+  .badge{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;background:var(--brand);color:#fff;padding:4px 10px;border-radius:999px}
+  .step .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .step h3{font-size:18px;font-weight:800;margin-bottom:6px}
+  .step p{font-size:14.5px;color:var(--soft)}
+
+  .phone-wrap{margin:28px auto 0;width:280px;max-width:82%}
+  .phone{border-radius:34px;background:var(--ink);padding:9px;box-shadow:0 30px 60px -24px rgba(8,31,74,.55)}
+  .screen{border-radius:26px;background:#fff;overflow:hidden;text-align:left}
+  .s-head{padding:14px 18px 12px;border-bottom:1px solid var(--line)}
+  .s-row{display:flex;justify-content:space-between;align-items:center}
+  .s-test{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+  .s-timer{display:inline-flex;align-items:center;gap:5px;background:#FDF6E7;color:#B97A00;font-size:11px;font-weight:800;padding:4px 9px;border-radius:999px}
+  .s-bar{height:6px;border-radius:999px;background:var(--surface);margin-top:10px;overflow:hidden}
+  .s-bar i{display:block;height:100%;width:36%;background:var(--brand);border-radius:999px}
+  .s-prog{font-size:11px;color:#98A1B0;font-weight:600;margin-top:6px}
+  .s-body{padding:14px 18px 18px}
+  .q-fi{font-size:15px;font-weight:800;line-height:1.35}
+  .q-en{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:5px}
+  .opt{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 11px;margin-top:8px;font-size:13px}
+  .opt .k{width:24px;height:24px;border-radius:7px;background:var(--surface);color:var(--soft);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+  .opt.correct{border:2px solid var(--success);background:#E8F6EF}.opt.correct .k{background:var(--success);color:#fff}.opt.correct .t{font-weight:700}
+  .opt .t{color:var(--soft)}.opt .ck{margin-left:auto}
+  .lens{margin-top:12px;background:#EDF3FE;border:1px solid rgba(31,111,235,.16);border-radius:12px;padding:10px 12px}
+  .lens .lt{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:6px}
+  .lens p{font-size:12px;margin-top:4px;line-height:1.4}
+  .hl-bad{background:linear-gradient(180deg,transparent 58%,#FBC9C9 58%);padding:0 2px;border-radius:2px;font-weight:700}
+
+  .guidecard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:26px;text-align:center}
+  .guidecard h3{font-size:20px;font-weight:900;margin-bottom:6px}
+  .guidecard p{font-size:15px;color:var(--soft);margin-bottom:14px}
+  .guidecard a{font-weight:800;color:var(--brand)}
+
+  .faq{border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  summary{font-weight:800;font-size:16.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  .chev{width:11px;height:11px;border-right:2px solid #9AA1AD;border-bottom:2px solid #9AA1AD;transform:rotate(45deg);flex:none;margin-top:4px;transition:transform .2s}
+  details[open] .chev{transform:rotate(-135deg)}
+  details p{margin-top:10px;color:var(--soft);font-size:15px}
+
+  .final{background:var(--navy);color:#fff;text-align:center;padding:56px 20px 60px}
+  .final .inner{max-width:var(--maxw);margin:0 auto}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.82);font-size:16.5px;max-width:420px;margin:12px auto 26px}
+
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.62);text-align:center;font-size:12.5px;padding:24px 20px;line-height:1.6}
+  footer b{color:rgba(255,255,255,.82)}
+  footer a{color:#9FC0FF}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","@id":"https://taxipilot.fi/#org","name":"TaxiPilot","url":"https://taxipilot.fi/","areaServed":"FI","description":"Study tool that helps non-native Finnish speakers pass the Finnish taxi driver exam, with every question in Finnish and English and the clue-word method."},
+    {"@type":"WebSite","@id":"https://taxipilot.fi/#site","url":"https://taxipilot.fi/","name":"TaxiPilot","publisher":{"@id":"https://taxipilot.fi/#org"},"inLanguage":"en"},
+    {"@type":"Course","name":"Finnish Taxi Driver Exam Preparation (English + Finnish)","description":"Preparation for the Finnish taxi driver exam (taksinkuljettajan koe): 327+ practice questions, 5 timed mock exams, vocabulary, and the clue-word method, shown in Finnish and English.","provider":{"@id":"https://taxipilot.fi/#org"},"inLanguage":["en","fi"],"about":"Finnish taxi driver licence","hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT6H"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Can I prepare for the Finnish taxi exam in English?","acceptedAnswer":{"@type":"Answer","text":"Yes. The exam is in Finnish, but you can study in English. TaxiPilot shows every question in Finnish and English side by side and teaches the Finnish clue words that signal the correct answer."}},
+      {"@type":"Question","name":"How many questions are on the Finnish taxi driver exam?","acceptedAnswer":{"@type":"Answer","text":"The exam has 50 multiple-choice questions and lasts a maximum of 45 minutes, taken at an Ajovarma office."}},
+      {"@type":"Question","name":"Is TaxiPilot free to start?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can take a free 5-question practice test with no sign-up, and start the full app with a free set and practice questions — no card needed."}},
+      {"@type":"Question","name":"Who is TaxiPilot for?","acceptedAnswer":{"@type":"Answer","text":"Drivers in Helsinki and across Finland preparing for the official taxi driver exam, especially non-native Finnish speakers for whom the Finnish language is the main barrier."}}
+    ]}
+  ]
+}
+</script>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="brandbar">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 11l1.5-4.2A2 2 0 018.4 5.5h7.2a2 2 0 011.9 1.3L19 11m-14 0h14m-14 0a2 2 0 00-2 2v3a1 1 0 001 1h1m14-6a2 2 0 012 2v3a1 1 0 01-1 1h-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="color:var(--ink)">TaxiPilot</span></a>
+    <div class="nav">
+      <a class="lnk" href="practice-test.html">Free test</a>
+      <a class="lnk" href="guide/how-to-get-a-taxi-licence-in-finland.html">Guide</a>
+      <a class="btn" href="/app">Start free →</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="inner">
+    <span class="eyebrow"><span class="fi">FI</span> For drivers in Helsinki</span>
+    <h1>Pass the Finnish taxi exam.<br /><span class="accent">In your language.</span></h1>
+    <p class="sub">You already know how to drive. We help you get past the Finnish — so you can get back to work. Start with a free 2-minute test.</p>
+    <a class="cta" href="practice-test.html">Take the free practice test →</a>
+    <a class="cta ghost" href="/app">Or open the full app free</a>
+    <div class="reassure">
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7FE0AC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No sign-up to try</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7FE0AC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Finnish + English</span>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICIAL FACTS -->
+<div class="facts">
+  <div class="wrap">
+    <div><b>50</b><span>exam questions</span></div>
+    <div><b>45 min</b><span>time limit</span></div>
+    <div><b>327+</b><span>questions to practise</span></div>
+    <div><b>5 yrs</b><span>licence validity</span></div>
+    <p class="src">Official exam: 50 questions in 45 minutes, taken at Ajovarma. <a href="guide/how-to-get-a-taxi-licence-in-finland.html" style="color:var(--brand);font-weight:700">See the full guide →</a></p>
+  </div>
+</div>
+
+<!-- HOW -->
+<section class="block">
+  <p class="kicker">How it works</p>
+  <h2>Four steps, in the order that works</h2>
+  <p class="lead">Understand the words, learn the exam's logic, drill by topic, then simulate the real thing.</p>
+  <div class="steps">
+    <div class="step"><div class="ic" style="background:#EDF3FE;color:var(--brand)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7V5h16v2M9 19h6M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>1 · Vocabulary</h3><p>The exact Finnish words that appear on the exam — with English meaning and how each is used.</p></div>
+    <div class="step edge"><span class="badge">Our edge</span><div class="ic" style="background:#E8F6EF;color:var(--success)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg></div><h3>2 · Clue Words</h3><p>Learn the Finnish words that point to the right answer — so you can reason out questions you've never seen.</p></div>
+    <div class="step"><div class="ic" style="background:#FDF6E7;color:#B97A00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 014 0M9 13l1.5 1.5L15 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>3 · Topic Practice</h3><p>Drill one official exam section at a time, with instant explanations on every answer.</p></div>
+    <div class="step"><div class="ic" style="background:#FDECEC;color:#E23B3B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 9v4l2.5 2.5M9 2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>4 · Mock Exams</h3><p>Five full timed simulations — 50 questions, the clock running, just like exam day.</p></div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="block" style="padding-top:10px">
+  <p class="kicker">See it before you start</p>
+  <h2>Every question in Finnish and English</h2>
+  <p class="lead">The app highlights the Finnish word that decides the answer — and explains it.</p>
+  <div class="phone-wrap">
+    <div class="phone"><div class="screen">
+      <div class="s-head"><div class="s-row"><span class="s-test">Model Test 1</span><span class="s-timer"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 9v4l2.5 2.5M9 2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> 41:08</span></div><div class="s-bar"><i></i></div><p class="s-prog">Question 18 of 50</p></div>
+      <div class="s-body">
+        <p class="q-fi">Saako kuljettaja <span class="hl-bad">kieltäytyä</span> ottamasta kyytiin opaskoiran kanssa matkustavaa asiakasta?</p>
+        <p class="q-en">May a driver refuse a customer travelling with a guide dog?</p>
+        <div class="opt correct"><span class="k">A</span><span class="t">Ei — koiran on saatava tulla mukaan</span><svg class="ck" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#1FA463" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="opt"><span class="k">B</span><span class="t">Kyllä, aina</span></div>
+        <div class="opt"><span class="k">C</span><span class="t">Vain ruuhka-aikaan</span></div>
+        <div class="lens"><p class="lt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Clue word</p><p><span class="hl-bad">kieltäytyä</span> = "to refuse." The safe answer is almost always that the driver <strong>cannot</strong> refuse.</p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="guidecard">
+    <h3>New to all this?</h3>
+    <p>Read the full 2026 guide: requirements, the exam, how to apply, cost and validity.</p>
+    <a href="guide/how-to-get-a-taxi-licence-in-finland.html">How to get a taxi driver licence in Finland →</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block faq">
+  <p class="kicker">Questions</p>
+  <h2>Good to know</h2>
+  <div style="margin-top:18px">
+    <details open><summary>Can I prepare in English?<span class="chev"></span></summary><p>Yes. The exam is in Finnish, but you study in English. Every question is shown in Finnish and English side by side, and the Finnish clue words are highlighted and explained.</p></details>
+    <details><summary>How many questions are on the real exam?<span class="chev"></span></summary><p>50 multiple-choice questions, maximum 45 minutes, taken at an Ajovarma office. Since November 2025 it's a centralised group exam across about 12 locations.</p></details>
+    <details><summary>Is it free to start?<span class="chev"></span></summary><p>Yes — take the free 5-question practice test with no sign-up, then open the full app with a free set and practice questions. No card needed.</p></details>
+    <details><summary>Who is it for?<span class="chev"></span></summary><p>Drivers in Helsinki and across Finland preparing for the official taxi exam — especially non-native Finnish speakers, where the language is the real barrier.</p></details>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="inner">
+    <h2>Your exam date is coming.</h2>
+    <p>Start with the free test — two minutes, no sign-up. See exactly where you stand.</p>
+    <a class="cta white" href="practice-test.html">Take the free practice test →</a>
+  </div>
+</section>
+
+<footer>
+  <p><b>TaxiPilot · Helsinki, Finland</b></p>
+  <p><a href="practice-test.html">Free test</a> · <a href="guide/how-to-get-a-taxi-licence-in-finland.html">Guide</a> · <a href="/app">Open the app</a></p>
+  <p style="margin-top:6px">Independent study tool. Not affiliated with or endorsed by Traficom.</p>
+</footer>
+</body>
+</html>

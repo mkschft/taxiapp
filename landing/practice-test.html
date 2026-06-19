@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Finnish Taxi Exam Practice Test (English) — TaxiPilot</title>
+<meta name="description" content="Try 5 free real-style questions from the Finnish taxi driver exam (taksinkuljettajan koe), in English and Finnish. Get your score instantly and see the clue words that decide each answer." />
+<link rel="canonical" href="https://taxipilot.fi/practice-test.html" />
+<meta name="theme-color" content="#0A2A66" />
+<meta property="og:title" content="Free Finnish Taxi Exam Practice Test — score yourself in 2 minutes" />
+<meta property="og:description" content="5 real-style questions in English + Finnish. Instant score. See the clue words that decide the answer." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{--navy:#0A2A66;--navy-deep:#081F4A;--brand:#1F6FEB;--brand-dark:#1558C4;--ink:#16181D;--soft:#5A6577;--line:#E3E8F0;--surface:#F5F8FC;--success:#1FA463;--success-tint:#E8F6EF;--danger:#E23B3B;--danger-tint:#FDECEC;--maxw:620px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--surface);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{text-decoration:none;color:var(--brand)}
+  .topbar{height:5px;background:var(--navy)}
+  .brandbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .brandbar .wrap{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:var(--ink)}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff}
+  .logo a{color:inherit}
+  .back{font-size:13px;font-weight:600;color:var(--soft)}
+  main{max-width:var(--maxw);margin:0 auto;padding:28px 20px 60px}
+  .intro{text-align:center;margin-bottom:8px}
+  .kicker{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  h1{font-size:clamp(26px,6.5vw,34px);line-height:1.12;font-weight:900;letter-spacing:-.02em;margin:8px 0 10px}
+  .lead{font-size:16px;color:var(--soft);max-width:480px;margin:0 auto 6px}
+  .meta{font-size:13px;color:var(--soft);font-weight:600;margin-top:10px}
+
+  .progress{position:sticky;top:55px;z-index:40;background:var(--surface);padding:14px 0 6px}
+  .pbar{height:7px;border-radius:999px;background:#E0E6F0;overflow:hidden}
+  .pbar i{display:block;height:100%;width:0;background:var(--brand);border-radius:999px;transition:width .35s ease}
+  .pcount{font-size:12.5px;color:var(--soft);font-weight:700;margin-top:7px;text-align:center}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-top:16px;box-shadow:0 6px 24px -16px rgba(8,31,74,.5)}
+  .q-num{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  .q-fi{font-size:18px;font-weight:800;line-height:1.35;margin-top:8px}
+  .q-en{font-size:14.5px;color:var(--soft);font-style:italic;margin-top:6px;line-height:1.4}
+  .opts{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:13px;padding:13px 14px;cursor:pointer;background:#fff;transition:border-color .12s,background .12s;text-align:left;font:inherit;width:100%}
+  .opt:hover{border-color:#B9C6DD}
+  .opt .k{width:28px;height:28px;border-radius:8px;background:var(--surface);color:var(--soft);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+  .opt .t{font-size:14.5px;font-weight:600}
+  .opt .t .en{display:block;font-weight:400;font-size:12.5px;color:var(--soft);font-style:italic;margin-top:2px}
+  .opt[aria-disabled="true"]{cursor:default}
+  .opt.correct{border-color:var(--success);background:var(--success-tint)}
+  .opt.correct .k{background:var(--success);color:#fff}
+  .opt.wrong{border-color:var(--danger);background:var(--danger-tint)}
+  .opt.wrong .k{background:var(--danger);color:#fff}
+  .mark{margin-left:auto;flex:none}
+
+  .lens{margin-top:14px;background:#EDF3FE;border:1px solid rgba(31,111,235,.16);border-radius:12px;padding:12px 14px;display:none}
+  .lens.show{display:block}
+  .lens .lt{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:6px}
+  .lens p{font-size:13.5px;margin-top:5px;line-height:1.45}
+  .hl-bad{background:linear-gradient(180deg,transparent 58%,#FBC9C9 58%);padding:0 2px;border-radius:2px;font-weight:700}
+  .hl{background:linear-gradient(180deg,transparent 58%,#FFE08A 58%);padding:0 2px;border-radius:2px;font-weight:700}
+
+  .next{margin-top:16px;display:none}
+  .next.show{display:block}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--brand);color:#fff;font-weight:800;font-size:16px;padding:15px 26px;border-radius:13px;width:100%;border:none;cursor:pointer;transition:background .15s}
+  .btn:hover{background:var(--brand-dark)}
+  .btn.white{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn.white:hover{background:var(--surface)}
+
+  /* result */
+  #result{display:none}
+  .score-card{background:var(--navy);color:#fff;border-radius:20px;padding:30px 22px;text-align:center}
+  .ring{width:130px;height:130px;margin:6px auto 14px;position:relative}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .num b{font-size:38px;font-weight:900;line-height:1}
+  .ring .num span{font-size:12px;color:rgba(255,255,255,.7);font-weight:600;margin-top:2px}
+  .verdict{font-size:22px;font-weight:900;margin-bottom:6px}
+  .verdict-sub{font-size:15px;color:rgba(255,255,255,.82);max-width:380px;margin:0 auto 4px}
+  .result-cta{margin-top:22px}
+  .result-cta .btn{margin-top:10px}
+  .micro{font-size:13px;color:var(--soft);text-align:center;margin-top:16px}
+  .share{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  .share button{font:inherit;font-size:13.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 16px;cursor:pointer}
+
+  footer{text-align:center;font-size:12.5px;color:var(--soft);padding:26px 20px;line-height:1.6}
+  .disc{color:#9AA1AD}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="brandbar">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 11l1.5-4.2A2 2 0 018.4 5.5h7.2a2 2 0 011.9 1.3L19 11m-14 0h14m-14 0a2 2 0 00-2 2v3a1 1 0 001 1h1m14-6a2 2 0 012 2v3a1 1 0 01-1 1h-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span style="color:var(--ink)">TaxiPilot</span></a>
+    <a href="index.html" class="back">← Home</a>
+  </div>
+</div>
+
+<main>
+  <div id="quiz">
+    <div class="intro">
+      <p class="kicker">Free practice test</p>
+      <h1>Can you pass the Finnish taxi exam?</h1>
+      <p class="lead">5 real-style questions in English and Finnish. No sign-up. See your score and the clue words that decide each answer.</p>
+      <p class="meta">⏱ ~2 minutes · 🇫🇮 + 🇬🇧 · The real exam is 50 questions in 45 minutes</p>
+    </div>
+
+    <div class="progress">
+      <div class="pbar"><i id="pbar"></i></div>
+      <p class="pcount" id="pcount">Question 1 of 5</p>
+    </div>
+
+    <div id="qcard"></div>
+
+    <div class="next" id="nextWrap">
+      <button class="btn" id="nextBtn">Next question →</button>
+    </div>
+  </div>
+
+  <div id="result">
+    <div class="score-card">
+      <div class="ring">
+        <svg width="130" height="130" viewBox="0 0 130 130">
+          <circle cx="65" cy="65" r="58" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="11"/>
+          <circle id="ringFill" cx="65" cy="65" r="58" fill="none" stroke="#5BE0A0" stroke-width="11" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364" style="transition:stroke-dashoffset 1s ease"/>
+        </svg>
+        <div class="num"><b id="scoreNum">0/5</b><span>correct</span></div>
+      </div>
+      <p class="verdict" id="verdict"></p>
+      <p class="verdict-sub" id="verdictSub"></p>
+    </div>
+
+    <div class="result-cta">
+      <a class="btn" href="/app">Keep going — open the full app free →</a>
+      <a class="btn white" href="guide/how-to-get-a-taxi-licence-in-finland.html">Read the full 2026 licence guide</a>
+    </div>
+
+    <div class="share">
+      <button id="shareBtn">↗ Share this test</button>
+      <button id="retryBtn">↺ Try again</button>
+    </div>
+    <p class="micro">TaxiPilot has 327+ real practice questions, 5 full timed mock exams, and the clue-word method — all in English and Finnish.</p>
+  </div>
+</main>
+
+<footer>
+  <p style="font-weight:700;color:var(--ink)">TaxiPilot · Helsinki, Finland</p>
+  <p class="disc">Independent study tool. Not affiliated with or endorsed by Traficom. These are practice questions for preparation only.</p>
+</footer>
+
+<script>
+const QUESTIONS = [
+  {
+    fi: 'Saako kuljettaja kieltäytyä ottamasta kyytiin opaskoiran kanssa matkustavaa asiakasta?',
+    en: 'May a driver refuse a customer travelling with a guide dog?',
+    options: [
+      { k:'A', fi:'Ei — opaskoiran on saatava tulla mukaan', en:'No — the guide dog must be allowed', correct:true },
+      { k:'B', fi:'Kyllä, aina', en:'Yes, always', correct:false },
+      { k:'C', fi:'Vain ruuhka-aikaan', en:'Only during rush hour', correct:false },
+    ],
+    clue:'<span class="hl-bad">kieltäytyä</span> = "to refuse." When a question asks whether the driver may refuse a passenger with a guide dog or assistance need, the safe answer is almost always that the driver <strong>cannot</strong> refuse.'
+  },
+  {
+    fi: 'Kuljettajan on aina varmistettava matkustajan turvavyön käyttö.',
+    en: "The driver must always ensure the passenger's seatbelt is used.",
+    options: [
+      { k:'A', fi:'Totta — se on kuljettajan vastuulla', en:"True — it is the driver's responsibility", correct:true },
+      { k:'B', fi:'Väärin — se on matkustajan oma asia', en:"False — it is the passenger's own matter", correct:false },
+      { k:'C', fi:'Vain lapsille', en:'Only for children', correct:false },
+    ],
+    clue:'<span class="hl">on … -ttava</span> ("on varmistettava") is a duty form — "must / is obliged to." A strong positive clue: the responsible, safety-first option is almost always correct.'
+  },
+  {
+    fi: 'Asiakas on selvästi päihtynyt ja aggressiivinen. Mitä kuljettaja saa tehdä?',
+    en: 'A customer is clearly intoxicated and aggressive. What may the driver do?',
+    options: [
+      { k:'A', fi:'Kieltäytyä kuljetuksesta turvallisuussyistä', en:'Refuse the ride for safety reasons', correct:true },
+      { k:'B', fi:'Ajaa kovempaa päästäkseen perille', en:'Drive faster to get there sooner', correct:false },
+      { k:'C', fi:'Jättää asiakkaan moottoritien varteen', en:'Leave the customer by the motorway', correct:false },
+    ],
+    clue:'When safety is at risk, the driver <strong>may refuse</strong> the ride. Options that create danger (speeding, abandoning someone in an unsafe place) are always wrong — a useful elimination rule.'
+  },
+  {
+    fi: 'Kuinka kauan taksinkuljettajan ajolupa on voimassa kerrallaan?',
+    en: 'How long is a taxi driving licence valid at a time?',
+    options: [
+      { k:'A', fi:'5 vuotta', en:'5 years', correct:true },
+      { k:'B', fi:'1 vuosi', en:'1 year', correct:false },
+      { k:'C', fi:'Pysyvästi', en:'Permanently', correct:false },
+    ],
+    clue:'The taxi driving licence (taksinkuljettajan ajolupa) is valid for <strong>5 years</strong> at a time, then renewed. Knowing the key numbers — 5 years, 50 questions, 45 minutes — is easy marks.'
+  },
+  {
+    fi: 'Liikennevalo näyttää keltaista. Mitä kuljettajan tulee tehdä?',
+    en: 'The traffic light shows amber. What should the driver do?',
+    options: [
+      { k:'A', fi:'Pysähtyä, jos se on turvallista', en:'Stop, if it is safe to do so', correct:true },
+      { k:'B', fi:'Kiihdyttää risteyksen yli', en:'Accelerate through the junction', correct:false },
+      { k:'C', fi:'Soittaa äänimerkkiä', en:'Sound the horn', correct:false },
+    ],
+    clue:'Amber means prepare to stop — stop unless stopping would be unsafe. On traffic questions, the calm, rule-following option beats the aggressive one nearly every time.'
+  },
+];
+
+let current = 0, score = 0, answered = false;
+const qcard = document.getElementById('qcard');
+const pbar = document.getElementById('pbar');
+const pcount = document.getElementById('pcount');
+const nextWrap = document.getElementById('nextWrap');
+const nextBtn = document.getElementById('nextBtn');
+
+function render(){
+  answered = false;
+  const q = QUESTIONS[current];
+  pbar.style.width = ((current)/QUESTIONS.length*100) + '%';
+  pcount.textContent = `Question ${current+1} of ${QUESTIONS.length}`;
+  nextWrap.classList.remove('show');
+  nextBtn.textContent = current === QUESTIONS.length-1 ? 'See my result →' : 'Next question →';
+
+  let html = `<div class="card"><p class="q-num">Question ${current+1}</p>
+    <p class="q-fi">${q.fi}</p><p class="q-en">${q.en}</p><div class="opts">`;
+  q.options.forEach((o,i)=>{
+    html += `<button class="opt" data-i="${i}"><span class="k">${o.k}</span>
+      <span class="t">${o.fi}<span class="en">${o.en}</span></span><span class="mark" data-mark="${i}"></span></button>`;
+  });
+  html += `</div><div class="lens" id="lens"><p class="lt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Why</p><p>${q.clue}</p></div></div>`;
+  qcard.innerHTML = html;
+
+  qcard.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>choose(parseInt(btn.dataset.i), btn));
+  });
+}
+
+const tick = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#1FA463" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const cross = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#E23B3B" stroke-width="2.8" stroke-linecap="round"/></svg>';
+
+function choose(i, btn){
+  if(answered) return;
+  answered = true;
+  const q = QUESTIONS[current];
+  const opts = qcard.querySelectorAll('.opt');
+  opts.forEach((b,idx)=>{
+    b.setAttribute('aria-disabled','true');
+    const isCorrect = q.options[idx].correct;
+    if(isCorrect){ b.classList.add('correct'); b.querySelector('.mark').innerHTML = tick; }
+    if(idx===i && !isCorrect){ b.classList.add('wrong'); b.querySelector('.mark').innerHTML = cross; }
+  });
+  if(q.options[i].correct) score++;
+  document.getElementById('lens').classList.add('show');
+  nextWrap.classList.add('show');
+}
+
+nextBtn.addEventListener('click', ()=>{
+  if(!answered) return;
+  if(current < QUESTIONS.length-1){ current++; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else showResult();
+});
+
+function showResult(){
+  document.getElementById('quiz').style.display='none';
+  const res = document.getElementById('result');
+  res.style.display='block';
+  document.getElementById('scoreNum').textContent = `${score}/5`;
+  const pct = score/5;
+  const off = 364 - 364*pct;
+  const ring = document.getElementById('ringFill');
+  ring.style.stroke = pct>=0.8 ? '#5BE0A0' : pct>=0.6 ? '#FFD479' : '#FF8A8A';
+  setTimeout(()=>{ ring.style.strokeDashoffset = off; }, 80);
+
+  let v, s;
+  if(score===5){ v='Sharp. You read Finnish like a pro.'; s='You spotted every clue word. Imagine doing this across all 327 questions — that’s exam day, handled.'; }
+  else if(score>=3){ v='So close. The clue words are the gap.'; s='You’re most of the way there. Learn the Finnish clue words systematically and the rest falls into place fast.'; }
+  else { v='This is exactly why TaxiPilot exists.'; s='The exam isn’t about driving — it’s about reading the Finnish. Learn the clue words and watch your score climb.'; }
+  document.getElementById('verdict').textContent = v;
+  document.getElementById('verdictSub').textContent = s;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.getElementById('retryBtn').addEventListener('click', ()=>{
+  current=0; score=0; answered=false;
+  document.getElementById('result').style.display='none';
+  document.getElementById('quiz').style.display='block';
+  render(); window.scrollTo({top:0,behavior:'smooth'});
+});
+
+document.getElementById('shareBtn').addEventListener('click', async ()=>{
+  const text = `I scored ${score}/5 on the free Finnish taxi exam practice test. Try it:`;
+  const url = 'https://taxipilot.fi/practice-test.html';
+  if(navigator.share){ try{ await navigator.share({title:'Finnish Taxi Exam Practice Test', text, url}); }catch(e){} }
+  else { try{ await navigator.clipboard.writeText(text+' '+url); document.getElementById('shareBtn').textContent='✓ Link copied'; }catch(e){} }
+});
+
+render();
+</script>
+</body>
+</html>

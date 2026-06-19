@@ -1,11 +1,12 @@
 {
-  "buildCommand": "npx expo export --platform web",
+  "buildCommand": "npx expo export --platform web && node scripts/postbuild-web.js",
   "outputDirectory": "dist",
   "framework": null,
   "rewrites": [
+    { "source": "/app", "destination": "/app/index.html" },
     {
-      "source": "/((?!_expo/|assets/|favicon\\.ico|metadata\\.json).*)",
-      "destination": "/index.html"
+      "source": "/app/((?!_expo/|assets/|favicon\\.ico|metadata\\.json).*)",
+      "destination": "/app/index.html"
     }
   ]
 }

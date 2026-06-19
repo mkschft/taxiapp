@@ -34,8 +34,9 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [],
   config: {
     screens: {
-      Home: '',
+      Home: 'app',
       App: {
+        path: 'app',
         screens: {
           Dashboard: 'home',
           Study: {
