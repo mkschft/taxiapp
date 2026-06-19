@@ -72,23 +72,24 @@ export function LoginScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 24 : 0}
       >
+        <View style={styles.topBar}>
+          <AppButton
+            label=""
+            onPress={() => navigation.goBack()}
+            variant="secondary"
+            style={styles.backBtn}
+          />
+          <View style={styles.backIcon}>
+            <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
+          </View>
+          <Text style={styles.headerTitle}>Welcome back</Text>
+        </View>
+
         <ScrollView
           contentContainerStyle={styles.scroll}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.header}>
-            <AppButton
-              label=""
-              onPress={() => navigation.goBack()}
-              variant="secondary"
-              style={styles.backBtn}
-            />
-            <View style={styles.backIcon}>
-              <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
-            </View>
-            <Text style={styles.headerTitle}>Welcome back</Text>
-          </View>
 
           <View style={styles.form}>
             <AppInput
@@ -163,15 +164,16 @@ const styles = StyleSheet.create({
   scroll: {
     flexGrow: 1,
     padding: spacing.lg,
-    justifyContent: 'center',
   },
-  header: {
-    marginBottom: spacing.lg,
+  topBar: {
+    height: 44,
+    justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: spacing.sm,
   },
   backBtn: {
     position: 'absolute',
-    left: 0,
+    left: spacing.sm,
     top: 0,
     width: 44,
     height: 44,
@@ -181,8 +183,8 @@ const styles = StyleSheet.create({
   },
   backIcon: {
     position: 'absolute',
-    left: 12,
-    top: 10,
+    left: spacing.sm + 12,
+    top: 12,
     pointerEvents: 'none',
   },
   headerTitle: {
