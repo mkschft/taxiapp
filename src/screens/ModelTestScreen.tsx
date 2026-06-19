@@ -8,6 +8,7 @@ import { RouteProp } from '@react-navigation/native';
 import { X, Clock } from 'lucide-react-native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { QuestionImage } from '../components/question/QuestionImage';
+import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
@@ -189,6 +190,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
         <View style={styles.questionCard}>
           <Text style={styles.qText}>{question.question.fi}</Text>
           <QuestionImage id={question.id} />
+          <QuestionTariff id={question.id} />
         </View>
 
         {question.options.map(opt => (

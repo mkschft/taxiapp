@@ -10,6 +10,7 @@ import { RouteProp } from '@react-navigation/native';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { ClueHighlight } from '../components/question/ClueHighlight';
 import { QuestionImage } from '../components/question/QuestionImage';
+import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
@@ -151,6 +152,7 @@ export function PracticeScreen({ navigation, route }: Props) {
             <Text style={styles.qTextEn}>{qTextEn}</Text>
           )}
           <QuestionImage id={question.id} />
+          <QuestionTariff id={question.id} />
         </View>
 
         {/* Action bar: Simple Meaning + Clue Lens */}

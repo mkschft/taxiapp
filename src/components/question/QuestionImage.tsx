@@ -15,6 +15,8 @@ const QUESTION_IMAGES: Record<string, ReturnType<typeof require>> = {
   'MTQ-042': require('../../../assets/questions/MTQ-042.jpg'),
   'MTQ-043': require('../../../assets/questions/MTQ-043.jpg'),
   'MTQ-044': require('../../../assets/questions/MTQ-044.jpeg'),
+  // MTQ-053 asks about the same "no motor vehicles" sign as Q293 — reuse it.
+  'MTQ-053': require('../../../assets/questions/Q293.png'),
 };
 
 export function hasQuestionImage(id: string): boolean {
