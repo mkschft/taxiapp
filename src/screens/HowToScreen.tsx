@@ -114,7 +114,7 @@ export function HowToScreen() {
                 <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
               </View>
               <Text style={styles.modWhat}>{m.what}</Text>
-              <View style={[styles.modHow, { borderLeftColor: m.tint }]}>
+              <View style={styles.modHow}>
                 <Text style={styles.modHowText}>{m.how}</Text>
               </View>
             </TouchableOpacity>
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   modTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   modWhat: { fontSize: fontSize.sm, color: colors.text, lineHeight: 20 },
   modHow: {
-    marginTop: 10, paddingLeft: 10, borderLeftWidth: 3,
+    marginTop: 10, paddingLeft: 10, borderLeftWidth: 1, borderLeftColor: colors.border,
   },
   modHowText: { fontSize: 13, color: colors.textSecondary, lineHeight: 19, fontStyle: 'italic' },
 

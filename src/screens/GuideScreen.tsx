@@ -31,7 +31,7 @@ function CategoryCard({ cat }: { cat: GuideCategoryRule }) {
   const [open, setOpen] = useState(false);
   return (
     <Pressable
-      style={[styles.catCard, { borderLeftColor: cat.color }]}
+      style={styles.catCard}
       onPress={() => setOpen(o => !o)}
     >
       <View style={styles.catHeader}>
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
 
   // Category cards
   catCard: {
-    borderLeftWidth: 3, borderRadius: radius.sm,
+    borderWidth: 1, borderColor: colors.border, borderRadius: radius.md,
     backgroundColor: colors.surface,
     padding: 12, marginBottom: 8,
   },
