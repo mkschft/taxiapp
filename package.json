@@ -41,7 +41,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typegen": "bash scripts/typegen.sh"
+    "typegen": "bash scripts/typegen.sh",
+    "typegen:api": "bash scripts/typegen-api.sh"
   },
   "private": true
 }
