@@ -1,0 +1,48 @@
+page,local_id,label,problem_set_id,problem_count
+/vocab/sets/set-1,set-1,Vocab Set 1: Passenger Assistance & Accessibility — Part 1,jh7b6s39a6fjp2s7cb92yp1vkh8948s9,20
+/vocab/sets/set-2,set-2,Vocab Set 2: Passenger Assistance & Communication — Part 2,jh7dg1vwd0ej4d31010jk9k4r98954en,20
+/vocab/sets/set-3,set-3,"Vocab Set 3: Child, Seatbelt & School Transport Safety",jh79f18aw8b22g4rv0r5n7av89894xy3,20
+/vocab/sets/set-4,set-4,Vocab Set 4: Traffic Safety & Driving Rules,jh7at8kyrz4tyqk9qn44ds5xex894yhm,20
+/vocab/sets/set-5,set-5,"Vocab Set 5: Police, Emergency & Risky Behaviour",jh721pnrevye23j5ca13ka3mc5895dhz,20
+/vocab/sets/set-6,set-6,"Vocab Set 6: Payment, Receipt, Kela & Fare",jh720x35bv3zzja5d4rc19f28989448f,20
+/vocab/sets/set-7,set-7,"Vocab Set 7: Trip, Route, Luggage & Useful Action Words",jh7904pjhkekkem80y8mncc6f5895bhc,20
+/vocab/sets/set-8,set-8,"Vocab Set 8: Licence, Duties & Legal Rules",jh75j171y2ja9j3xj9k7wr2eh1894ar1,20
+/vocab/sets/set-9,set-9,"Vocab Set 9: Passenger Service, Communication & Complaints",jh75nvtpwexaj6bgnpcts2j96h894awt,20
+/vocab/sets/set-10,set-10,Vocab Set 10: Conjunctions,jh7cy9j62wza1cj118z5561nkx895vcd,10
+/vocab/sets/set-11,set-11,Vocab Set 11: WH / Question Words,jh7230afrgvygg4jpy29yaeexd8949nf,10
+/clue/positive,positive,Clue Words: Positive clue words,jh7946ndq1cvpg0skx20f95twx894wd1,15
+/clue/negative,negative,Clue Words: Negative clue words,jh75nw4chw3m4h61ezqrkhy3ad894gtx,15
+/model-test/mt1,mt1,Model Test 1,jh7955se50hb4p96zjzjjwx061895fds,50
+/model-test/mt2,mt2,Model Test 2,jh7ehnn76xc9426rk3dmrm22xs894tfm,50
+/model-test/mt3,mt3,Model Test 3,jh762x3k8cnkxbscrbck0xweg5895s4j,50
+/model-test/mt4,mt4,Model Test 4,jh7aavtstjv0gq6c2qybfj75j9895wq7,50
+/model-test/mt5,mt5,Model Test 5,jh7fj2m1qn45x7yp5qtxv2kkyx8944v7,50
+/topic/passenger_safety/lessons/passenger_safety__seatbelt-child-safety,passenger_safety__seatbelt-child-safety,Taking care of passenger assistance and safety - Seatbelt & Child Safety,jh70g16y2mqs8e716ebzm6vw9s894j2r,44
+/topic/passenger_safety/lessons/passenger_safety__passenger-assistance-safe-exit,passenger_safety__passenger-assistance-safe-exit,Taking care of passenger assistance and safety - Passenger Assistance & Safe Exit,jh72m9gqdt1b7b10bnpnyvmycn894d05,24
+/topic/passenger_safety/lessons/passenger_safety__school-daycare-transport-safety,passenger_safety__school-daycare-transport-safety,Taking care of passenger assistance and safety - School & Daycare Transport Safety,jh71qm8f63hpx6v45d07nvnrnd894xb4,10
+/topic/passenger_safety/lessons/passenger_safety__general-taxi-driver-responsibility,passenger_safety__general-taxi-driver-responsibility,Taking care of passenger assistance and safety - General Taxi Driver Responsibility,jh78h4hx96nvsrfdqd12868kqn8958wp,6
+/topic/passenger_safety/lessons/passenger_safety__accessibility-securement,passenger_safety__accessibility-securement,Taking care of passenger assistance and safety - Accessibility & Securement,jh7cm4yqvpgzqmqmxrdtmbfbds895w4x,3
+/topic/passenger_safety/lessons/passenger_safety__emergency-risky-behaviour-traffic-safety,passenger_safety__emergency-risky-behaviour-traffic-safety,"Taking care of passenger assistance and safety - Emergency, Risky Behaviour & Traffic Safety",jh7c9ka1he3n4p2f9szrehv61s895c7h,4
+/topic/special_needs/lessons/special_needs__communication-with-special-groups,special_needs__communication-with-special-groups,Special needs of different passenger groups - Communication with Special Groups,jh78x08216pzczdh5wc2k2hbhn894rdc,5
+/topic/special_needs/lessons/special_needs__hearing-impairment,special_needs__hearing-impairment,Special needs of different passenger groups - Hearing Impairment,jh79cy9tp1143es5xcp2rccht9895xrw,2
+/topic/special_needs/lessons/special_needs__visual-impairment-guide-dog,special_needs__visual-impairment-guide-dog,Special needs of different passenger groups - Visual Impairment & Guide Dog,jh71v84e0phtmv2sy1x11x1ja58945zx,10
+/topic/special_needs/lessons/special_needs__wheelchair-accessibility-assistance,special_needs__wheelchair-accessibility-assistance,Special needs of different passenger groups - Wheelchair & Accessibility Assistance,jh7bw6hb5bb7d1pkfr98f7dk4h8948ac,6
+/topic/special_needs/lessons/special_needs__medical-special-need-assistance,special_needs__medical-special-need-assistance,Special needs of different passenger groups - Medical / Special-Need Assistance,jh78txxzxxrzxfp61g0y0wh2sd895dc8,17
+/topic/special_needs/lessons/special_needs__payment-receipt-kela-fare,special_needs__payment-receipt-kela-fare,"Special needs of different passenger groups - Payment, Receipt, Kela & Fare",jh7efgj64tvex6xs79nas0zm39895cgm,9
+/topic/special_needs/lessons/special_needs__seatbelt-safety-devices,special_needs__seatbelt-safety-devices,Special needs of different passenger groups - Seatbelt & Safety Devices,jh70jy0earrjyf60srjh272vfh895z1g,4
+/topic/special_needs/lessons/special_needs__general-duties-school-traffic-rules,special_needs__general-duties-school-traffic-rules,"Special needs of different passenger groups - General Duties, School & Traffic Rules",jh73j8tj0t6tvmpyb7yete3k5h894yyy,4
+/topic/customer_service/lessons/customer_service__payment-receipt-kela-fare,customer_service__payment-receipt-kela-fare,"Customer-service situations in taxi services - Payment, Receipt, Kela & Fare",jh726g0azjwevqtd6rd0nyxp7h894haz,17
+/topic/customer_service/lessons/customer_service__general-customer-service-attitude,customer_service__general-customer-service-attitude,Customer-service situations in taxi services - General Customer Service & Attitude,jh7dt9bsseac7xatm6me04kxgx895vw0,4
+/topic/customer_service/lessons/customer_service__conversation-service-style-language,customer_service__conversation-service-style-language,"Customer-service situations in taxi services - Conversation, Service Style & Language",jh7bncffh15wdntdt2qta7pczx895t6c,12
+/topic/customer_service/lessons/customer_service__phone-messages-communication-tools,customer_service__phone-messages-communication-tools,"Customer-service situations in taxi services - Phone, Messages & Communication Tools",jh7d43rp4z2ne3hp87jjq6m2v98952a8,7
+/topic/customer_service/lessons/customer_service__trip-route-luggage-action-words,customer_service__trip-route-luggage-action-words,"Customer-service situations in taxi services - Trip, Route, Luggage & Action Words",jh75x2rcajj8x6r6fpgh7t6nvh895aqr,10
+/topic/customer_service/lessons/customer_service__complaints-service-quality,customer_service__complaints-service-quality,Customer-service situations in taxi services - Complaints & Service Quality,jh75w0eqrv5fymcpqr3g4xg8th8952bv,2
+/topic/customer_service/lessons/customer_service__customer-requests-alcohol-difficult-situations,customer_service__customer-requests-alcohol-difficult-situations,"Customer-service situations in taxi services - Customer Requests, Alcohol & Difficult Situations",jh7277czmsq322j7s0e1ajpfpx8950p6,14
+/topic/customer_service/lessons/customer_service__safety-police-emergency-legal-duties,customer_service__safety-police-emergency-legal-duties,"Customer-service situations in taxi services - Safety, Police/Emergency & Legal Duties",jh7bc7es7bj6a9c3c1jdcj1gf58949gj,17
+/topic/customer_service/lessons/customer_service__passenger-assistance-special-cases,customer_service__passenger-assistance-special-cases,Customer-service situations in taxi services - Passenger Assistance & Special Cases,jh74ngsxngv5ta2c14x9heq97h894yrj,4
+/topic/traffic_safety/lessons/traffic_safety__traffic-safety-driving-rules,traffic_safety__traffic-safety-driving-rules,Factors affecting transport and traffic safety - Traffic Safety & Driving Rules,jh70rkms5f1n863rmq2z61eh21895k2s,20
+/topic/traffic_safety/lessons/traffic_safety__police-emergency-risky-behaviour,traffic_safety__police-emergency-risky-behaviour,"Factors affecting transport and traffic safety - Police, Emergency & Risky Behaviour",jh7ccmb9cb3s003ydx17275k9d895dxp,18
+/topic/traffic_safety/lessons/traffic_safety__licences-duties-legal-rules,traffic_safety__licences-duties-legal-rules,"Factors affecting transport and traffic safety - Licences, Duties & Legal Rules",jh7ad28xq5qg4mepcggsv81a4s894wrk,38
+/topic/traffic_safety/lessons/traffic_safety__alcohol-interlock-alcohol-rules,traffic_safety__alcohol-interlock-alcohol-rules,Factors affecting transport and traffic safety - Alcohol Interlock & Alcohol Rules,jh72hdvvqmg99d8kpe3wyg0ew989541e,2
+/topic/traffic_safety/lessons/traffic_safety__general-taxi-driver-duties,traffic_safety__general-taxi-driver-duties,Factors affecting transport and traffic safety - General Taxi Driver Duties,jh76b4j5pwta2c4gfe4fpf2jjx894vxd,5
+/topic/traffic_safety/lessons/traffic_safety__school-daycare-transport-safety,traffic_safety__school-daycare-transport-safety,Factors affecting transport and traffic safety - School & Daycare Transport Safety,jh7erxhfpj32en186a969m7ygx895btg,5

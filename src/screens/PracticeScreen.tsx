@@ -151,7 +151,7 @@ export function PracticeScreen({ navigation, route }: Props) {
           {showMeaning && !!qTextEn && (
             <Text style={styles.qTextEn}>{qTextEn}</Text>
           )}
-          <QuestionImage id={question.id} />
+          <QuestionImage imageKey={question.id} />
           <QuestionTariff id={question.id} />
         </View>
 

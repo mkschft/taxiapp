@@ -6,6 +6,7 @@ import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 
@@ -13,6 +14,7 @@ export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
   const { state } = useProgress();
+  const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
 
   if (!isUnlocked('model_tests')) {
@@ -61,7 +63,8 @@ export function TestHomeScreen() {
               )}
               <AppButton
                 label={prevScore ? 'Retake test' : 'Start test →'}
-                onPress={() => navigation.navigate('ModelTest', { testId: t.id })}
+                disabled={loading}
+                onPress={() => startQuiz(`model-test/${t.id}`, 'ModelTest', { testId: t.id })}
                 style={{ marginTop: spacing.sm }}
               />
             </View>

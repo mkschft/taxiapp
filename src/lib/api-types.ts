@@ -140,6 +140,190 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/problems": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all problems (admin only) */
+        get: operations["ProblemsController_list"];
+        put?: never;
+        /** Create a new problem (admin only) */
+        post: operations["ProblemsController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/problems/{id}/clue-lens": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Clue Lens for a problem */
+        get: operations["ProblemsController_getClueLens"];
+        put?: never;
+        /** Create or replace Clue Lens for a problem (admin only) */
+        post: operations["ProblemsController_setClueLens"];
+        /** Delete Clue Lens for a problem (admin only) */
+        delete: operations["ProblemsController_deleteClueLens"];
+        options?: never;
+        head?: never;
+        /** Update Clue Lens for a problem (admin only) */
+        patch: operations["ProblemsController_updateClueLens"];
+        trace?: never;
+    };
+    "/problems/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a problem by id, optionally with translation */
+        get: operations["ProblemsController_get"];
+        put?: never;
+        post?: never;
+        /** Delete a problem (admin only) */
+        delete: operations["ProblemsController_delete"];
+        options?: never;
+        head?: never;
+        /** Update a problem (admin only) */
+        patch: operations["ProblemsController_update"];
+        trace?: never;
+    };
+    "/problems/{id}/translations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add a translation to a problem (admin only) */
+        post: operations["ProblemsController_createTranslation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/problems/{id}/translations/{locale}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a problem translation */
+        get: operations["ProblemsController_getTranslation"];
+        put?: never;
+        post?: never;
+        /** Delete a problem translation (admin only) */
+        delete: operations["ProblemsController_deleteTranslation"];
+        options?: never;
+        head?: never;
+        /** Update a problem translation (admin only) */
+        patch: operations["ProblemsController_updateTranslation"];
+        trace?: never;
+    };
+    "/problem-sets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all problem sets (admin only) */
+        get: operations["ProblemSetsController_list"];
+        put?: never;
+        /** Create a new problem set (admin only) */
+        post: operations["ProblemSetsController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/problem-sets/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a problem set with its problems */
+        get: operations["ProblemSetsController_get"];
+        put?: never;
+        post?: never;
+        /** Delete a problem set (admin only) */
+        delete: operations["ProblemSetsController_delete"];
+        options?: never;
+        head?: never;
+        /** Update a problem set (admin only) */
+        patch: operations["ProblemSetsController_update"];
+        trace?: never;
+    };
+    "/solution-sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List current user sessions */
+        get: operations["SolutionSessionsController_list"];
+        put?: never;
+        /** Start a new solution session */
+        post: operations["SolutionSessionsController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/solution-sessions/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a session with answers and progress */
+        get: operations["SolutionSessionsController_get"];
+        put?: never;
+        post?: never;
+        /** Delete a session */
+        delete: operations["SolutionSessionsController_delete"];
+        options?: never;
+        head?: never;
+        /** Update session status */
+        patch: operations["SolutionSessionsController_update"];
+        trace?: never;
+    };
+    "/solution-sessions/{id}/answers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Submit an answer for a problem */
+        post: operations["SolutionSessionsController_submitAnswer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -171,6 +355,165 @@ export interface components {
             token: string;
             /** @example newpassword123 */
             password: string;
+        };
+        FocusWordDto: {
+            /** @example 15 vuotta täyttäneen */
+            phrase: string;
+            /** @example once turned 15 */
+            translation: string;
+        };
+        WordTranslationDto: {
+            /** @example Kuljettaja */
+            word: string;
+            /** @example the driver */
+            translation: string;
+        };
+        OptionClueDto: {
+            /**
+             * @description Zero-based option index
+             * @example 0
+             */
+            optionIndex: number;
+            /** @enum {string} */
+            type: "trap" | "good";
+            wordTranslations: components["schemas"]["WordTranslationDto"][];
+        };
+        ClueLensDto: {
+            focusWords: components["schemas"]["FocusWordDto"][];
+            optionClues: components["schemas"]["OptionClueDto"][];
+        };
+        CreateProblemDto: {
+            /** @example What is 2 + 2? */
+            text: string;
+            /**
+             * @example [
+             *       "1",
+             *       "2",
+             *       "3",
+             *       "4"
+             *     ]
+             */
+            options: string[];
+            /**
+             * @description Zero-based index of correct option
+             * @example 3
+             */
+            correctAnswer: number;
+            /**
+             * @description Explanation shown after answering
+             * @example 2 + 2 equals 4 because we are adding two twos.
+             */
+            explanation?: string;
+            /**
+             * @description Static image asset key used by the frontend
+             * @example Q284
+             */
+            imageKey?: string;
+            clueLens?: components["schemas"]["ClueLensDto"];
+        };
+        CreateClueLensDto: {
+            focusWords: components["schemas"]["FocusWordDto"][];
+            optionClues: components["schemas"]["OptionClueDto"][];
+        };
+        UpdateClueLensDto: {
+            focusWords?: components["schemas"]["FocusWordDto"][];
+            optionClues?: components["schemas"]["OptionClueDto"][];
+        };
+        CreateProblemTranslationDto: {
+            /** @example en */
+            locale: string;
+            /** @example Which of the following is correct... */
+            text: string;
+            /**
+             * @example [
+             *       "Option A",
+             *       "Option B",
+             *       "Option C"
+             *     ]
+             */
+            options: string[];
+        };
+        UpdateProblemTranslationDto: {
+            /** @example Which of the following is correct... */
+            text?: string;
+            /**
+             * @example [
+             *       "Option A",
+             *       "Option B",
+             *       "Option C"
+             *     ]
+             */
+            options?: string[];
+        };
+        UpdateProblemDto: {
+            /** @example What is 2 + 2? */
+            text?: string;
+            /**
+             * @example [
+             *       "1",
+             *       "2",
+             *       "3",
+             *       "4"
+             *     ]
+             */
+            options?: string[];
+            /**
+             * @description Zero-based index of correct option
+             * @example 3
+             */
+            correctAnswer?: number;
+            /**
+             * @description Explanation shown after answering
+             * @example 2 + 2 equals 4 because we are adding two twos.
+             */
+            explanation?: string;
+            /**
+             * @description Static image asset key used by the frontend
+             * @example Q284
+             */
+            imageKey?: string;
+            clueLens?: components["schemas"]["UpdateClueLensDto"];
+        };
+        CreateProblemSetDto: {
+            /** @example Basic Math Quiz */
+            label: string;
+            /**
+             * @description Array of problem IDs
+             * @example []
+             */
+            problems: string[];
+        };
+        UpdateProblemSetDto: {
+            /** @example Basic Math Quiz */
+            label?: string;
+            /**
+             * @description Array of problem IDs
+             * @example []
+             */
+            problems?: string[];
+        };
+        CreateSolutionSessionDto: {
+            /**
+             * @description Problem set ID
+             * @example problemSet123
+             */
+            problemSetId: string;
+        };
+        SubmitAnswerDto: {
+            /**
+             * @description Problem ID
+             * @example problem123
+             */
+            problemId: string;
+            /**
+             * @description Zero-based index of selected option
+             * @example 1
+             */
+            selectedAnswer: number;
+        };
+        UpdateSolutionSessionDto: {
+            /** @enum {string} */
+            status?: "in_progress" | "completed" | "abandoned";
         };
     };
     responses: never;
@@ -373,6 +716,621 @@ export interface operations {
             };
             /** @description Unauthorized */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problems returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateProblemDto"];
+            };
+        };
+        responses: {
+            /** @description Problem created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_getClueLens: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue lens returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_setClueLens: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateClueLensDto"];
+            };
+        };
+        responses: {
+            /** @description Clue lens created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_deleteClueLens: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue lens deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue lens not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_updateClueLens: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateClueLensDto"];
+            };
+        };
+        responses: {
+            /** @description Clue lens updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue lens not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_get: {
+        parameters: {
+            query: {
+                locale: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateProblemDto"];
+            };
+        };
+        responses: {
+            /** @description Problem updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_createTranslation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateProblemTranslationDto"];
+            };
+        };
+        responses: {
+            /** @description Translation created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_getTranslation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                locale: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Translation returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Translation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_deleteTranslation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                locale: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Translation deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Translation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemsController_updateTranslation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                locale: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateProblemTranslationDto"];
+            };
+        };
+        responses: {
+            /** @description Translation updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Translation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemSetsController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem sets returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemSetsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateProblemSetDto"];
+            };
+        };
+        responses: {
+            /** @description Problem set created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemSetsController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem set returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemSetsController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem set deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProblemSetsController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateProblemSetDto"];
+            };
+        };
+        responses: {
+            /** @description Problem set updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Problem set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Sessions returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateSolutionSessionDto"];
+            };
+        };
+        responses: {
+            /** @description Session created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Session returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Session not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Session deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateSolutionSessionDto"];
+            };
+        };
+        responses: {
+            /** @description Session updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SolutionSessionsController_submitAnswer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SubmitAnswerDto"];
+            };
+        };
+        responses: {
+            /** @description Answer submitted */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid answer or session completed */
+            400: {
                 headers: {
                     [name: string]: unknown;
                 };

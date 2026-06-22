@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
+  View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable, ActivityIndicator,
 } from 'react-native';
 import { MotiView } from 'moti';
 import { ChevronLeft, PartyPopper, BookOpenCheck, Check, X } from 'lucide-react-native';
@@ -14,6 +14,8 @@ import { getClueGroup, getClueQuiz } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import type { ClueQuizQuestion } from '../data/types';
 import type { StudyStackParamList } from '../navigation/types';
+import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
+import type { BackendProblem } from '../lib/quizApi';
 
 type Props = {
   navigation: NativeStackNavigationProp<StudyStackParamList, 'ClueQuiz'>;
@@ -22,7 +24,6 @@ type Props = {
 
 const PASS_PCT = 75;
 
-/** Fisher–Yates shuffle — returns a new array, leaves the source untouched. */
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -32,37 +33,100 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+type Question = {
+  id: string;
+  prompt: string;
+  options: { key: string; text: string }[];
+  correctKey: string;
+  correctText: string;
+  label: string;
+};
+
+function fromLocal(q: ClueQuizQuestion): Question {
+  return {
+    id: q.id,
+    prompt: q.prompt,
+    options: q.options.map(o => ({ key: o.key, text: o.text })),
+    correctKey: q.correct_option,
+    correctText: q.correct_answer,
+    label: q.direction === 'en_to_fi'
+      ? 'WHICH FINNISH CLUE WORD MEANS THIS?'
+      : 'WHAT DOES THIS CLUE WORD MEAN?',
+  };
+}
+
+function fromBackend(p: BackendProblem): Question {
+  const options = p.options.map((text, i) => ({
+    key: String.fromCharCode(65 + i),
+    text,
+  }));
+  return {
+    id: p._id,
+    prompt: p.text,
+    options,
+    correctKey: String.fromCharCode(65 + p.correctAnswer),
+    correctText: p.options[p.correctAnswer] ?? '',
+    label: 'WHAT DOES THIS CLUE WORD MEAN?',
+  };
+}
+
 export function ClueQuizScreen({ navigation, route }: Props) {
-  const { groupId } = route.params;
+  const { groupId, sessionId, problemSetId } = route.params;
   const group = getClueGroup(groupId);
   const { dispatch } = useProgress();
 
+  const [loading, setLoading] = useState(!!problemSetId);
+  const [error, setError] = useState<string | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [attempt, setAttempt] = useState(0);
-  const questions = useMemo(() => shuffle(getClueQuiz(groupId)), [groupId, attempt]);
 
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
   const [score, setScore] = useState(0);
-  const [wrong, setWrong] = useState<ClueQuizQuestion[]>([]);
+  const [wrong, setWrong] = useState<Question[]>([]);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (problemSetId) {
+      setLoading(true);
+      getProblemSet(problemSetId)
+        .then(ps => setQuestions(shuffle(ps.problems.map(fromBackend))))
+        .catch(e => setError(e instanceof Error ? e.message : 'Failed to load quiz'))
+        .finally(() => setLoading(false));
+    } else {
+      setQuestions(shuffle(getClueQuiz(groupId).map(fromLocal)));
+    }
+  }, [problemSetId, groupId, attempt]);
 
   const q = questions[index];
 
-  const handleSelect = useCallback((key: string) => {
+  const handleSelect = useCallback(async (key: string) => {
     if (answered || !q) return;
     setSelected(key);
     setAnswered(true);
-    if (key === q.correct_option) setScore(s => s + 1);
+    if (key === q.correctKey) setScore(s => s + 1);
     else setWrong(w => [...w, q]);
-  }, [answered, q]);
 
-  const handleNext = useCallback(() => {
+    if (sessionId) {
+      const optionIndex = q.options.findIndex(o => o.key === key);
+      try {
+        await submitAnswer(sessionId, q.id, optionIndex);
+      } catch (e) {
+        console.warn('Failed to submit answer', e);
+      }
+    }
+  }, [answered, q, sessionId]);
+
+  const handleNext = useCallback(async () => {
     if (index < questions.length - 1) {
       setIndex(i => i + 1);
       setSelected(null);
       setAnswered(false);
-    } else {
+      return;
+    }
+
+    if (!sessionId) {
       dispatch({
         type: 'SAVE_QUIZ_SCORE',
         score: {
@@ -72,9 +136,16 @@ export function ClueQuizScreen({ navigation, route }: Props) {
           wrong_question_ids: wrong.map(w => w.id),
         },
       });
-      setDone(true);
+    } else {
+      try {
+        await completeSession(sessionId);
+      } catch (e) {
+        console.warn('Failed to complete session', e);
+      }
     }
-  }, [index, questions.length, dispatch, groupId, score, wrong]);
+
+    setDone(true);
+  }, [index, questions.length, dispatch, groupId, score, wrong, sessionId]);
 
   const restart = useCallback(() => {
     setIndex(0); setSelected(null); setAnswered(false);
@@ -82,12 +153,23 @@ export function ClueQuizScreen({ navigation, route }: Props) {
     setAttempt(a => a + 1);
   }, []);
 
-  if (!group || questions.length === 0) {
+  if (loading) {
     return (
       <SafeAreaView style={styles.safe}>
         <ScreenHeader title="Quiz" onBack={() => navigation.goBack()} />
         <View style={styles.center}>
-          <Text style={styles.emptyText}>No quiz questions for this group.</Text>
+          <ActivityIndicator size="large" color={colors.primary} />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (error || !group || questions.length === 0) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <ScreenHeader title="Quiz" onBack={() => navigation.goBack()} />
+        <View style={styles.center}>
+          <Text style={styles.emptyText}>{error || 'No quiz questions for this group.'}</Text>
         </View>
       </SafeAreaView>
     );
@@ -118,19 +200,12 @@ export function ClueQuizScreen({ navigation, route }: Props) {
           {wrong.length > 0 && (
             <>
               <Text style={styles.sectionHeader}>Review ({wrong.length})</Text>
-              {wrong.map(w => {
-                // Each question holds both sides; show them consistently
-                // (Finnish word on top, English meaning below) regardless of
-                // which direction it was asked in.
-                const fi = w.direction === 'fi_to_en' ? w.prompt : w.correct_answer;
-                const en = w.direction === 'fi_to_en' ? w.correct_answer : w.prompt;
-                return (
-                  <View key={w.id} style={styles.wrongItem}>
-                    <Text style={styles.wrongWord}>{fi}</Text>
-                    <Text style={styles.wrongMeaning}>{en}</Text>
-                  </View>
-                );
-              })}
+              {wrong.map(w => (
+                <View key={w.id} style={styles.wrongItem}>
+                  <Text style={styles.wrongWord}>{w.prompt}</Text>
+                  <Text style={styles.wrongMeaning}>{w.correctText}</Text>
+                </View>
+              ))}
             </>
           )}
 
@@ -152,12 +227,12 @@ export function ClueQuizScreen({ navigation, route }: Props) {
   const optionStates: Record<string, OptionState> = {};
   q.options.forEach(o => {
     if (!answered) optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
-    else if (o.key === q.correct_option) optionStates[o.key] = 'correct';
+    else if (o.key === q.correctKey) optionStates[o.key] = 'correct';
     else if (o.key === selected) optionStates[o.key] = 'incorrect';
     else optionStates[o.key] = 'idle';
   });
   const progress = ((index + 1) / questions.length) * 100;
-  const gotItRight = answered && selected === q.correct_option;
+  const gotItRight = answered && selected === q.correctKey;
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -175,11 +250,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
         </View>
 
         <View style={styles.promptCard}>
-          <Text style={styles.promptLabel}>
-            {q.direction === 'en_to_fi'
-              ? 'WHICH FINNISH CLUE WORD MEANS THIS?'
-              : 'WHAT DOES THIS CLUE WORD MEAN?'}
-          </Text>
+          <Text style={styles.promptLabel}>{q.label}</Text>
           <Text style={styles.promptWord}>{q.prompt}</Text>
         </View>
 
@@ -188,7 +259,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
             <OptionRow
               key={opt.key}
               letter={opt.key}
-              text={opt.text ?? ''}
+              text={opt.text}
               state={optionStates[opt.key]}
               onPress={() => handleSelect(opt.key)}
               disabled={answered}
@@ -210,7 +281,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
             <Text style={styles.feedbackText}>
               {gotItRight
                 ? 'Correct!'
-                : <>Correct answer: <Text style={{ fontFamily: font.semibold }}>{q.correct_answer}</Text></>}
+                : <>Correct answer: <Text style={{ fontFamily: font.semibold }}>{q.correctText}</Text></>}
             </Text>
           </MotiView>
         )}

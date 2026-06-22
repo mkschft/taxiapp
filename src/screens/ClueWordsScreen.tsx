@@ -11,6 +11,7 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroups, getClueLesson } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import type { ClueTone } from '../data/types';
@@ -33,6 +34,7 @@ const GROUPS = getClueGroups();
 export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
   const { state } = useProgress();
+  const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
 
   if (!isUnlocked('clue_words')) {
@@ -103,7 +105,8 @@ export function ClueWordsScreen() {
                   <Text style={styles.btnOutlineText}>Lesson</Text>
                 </Pressable>
                 <Pressable
-                  onPress={() => navigation.navigate('ClueQuiz', { groupId: group.id })}
+                  disabled={loading}
+                  onPress={() => startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })}
                   style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
                 >
                   <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />

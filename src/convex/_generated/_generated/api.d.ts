@@ -8,7 +8,13 @@
  * @module
  */
 
+import type * as answers from "../answers.js";
 import type * as auth from "../auth.js";
+import type * as migrations from "../migrations.js";
+import type * as problemSets from "../problemSets.js";
+import type * as problemTranslations from "../problemTranslations.js";
+import type * as problems from "../problems.js";
+import type * as solutionSessions from "../solutionSessions.js";
 import type * as users from "../users.js";
 
 import type {
@@ -18,7 +24,13 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  answers: typeof answers;
   auth: typeof auth;
+  migrations: typeof migrations;
+  problemSets: typeof problemSets;
+  problemTranslations: typeof problemTranslations;
+  problems: typeof problems;
+  solutionSessions: typeof solutionSessions;
   users: typeof users;
 }>;
 

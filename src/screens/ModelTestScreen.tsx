@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, Platform,
+  TouchableOpacity, Alert, Platform, ActivityIndicator,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
@@ -14,7 +14,10 @@ import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
 import { gradeExam, type CategoryId } from '../data/examStructure';
 import { useProgress } from '../store/progressStore';
+import type { Question } from '../data/types';
 import type { TestStackParamList } from '../navigation/types';
+import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
+import type { BackendProblem } from '../lib/quizApi';
 
 type Props = {
   navigation: NativeStackNavigationProp<TestStackParamList, 'ModelTest'>;
@@ -23,13 +26,42 @@ type Props = {
 
 type Choice = 'A' | 'B' | 'C';
 
-/**
- * Confirm dialog that works on web too. react-native-web does not implement
- * Alert.alert (it's a silent no-op), so we fall back to window.confirm there.
- */
+type TestQuestion = {
+  id: string;
+  text: string;
+  options: { key: Choice; fi: string }[];
+  correctKey: Choice;
+  imageKey?: string;
+  category_id?: string;
+};
+
+function fromLocal(q: Question): TestQuestion {
+  return {
+    id: q.id,
+    text: q.question.fi ?? '',
+    options: q.options
+      .filter(o => o.fi)
+      .map(o => ({ key: o.key as Choice, fi: o.fi! })),
+    correctKey: q.correct_option as Choice,
+    imageKey: q.id,
+    category_id: q.category_id,
+  };
+}
+
+function fromBackend(p: BackendProblem): TestQuestion {
+  const options = p.options
+    .map((text, i) => ({ key: String.fromCharCode(65 + i) as Choice, fi: text }));
+  return {
+    id: p._id,
+    text: p.text,
+    options,
+    correctKey: String.fromCharCode(65 + p.correctAnswer) as Choice,
+    imageKey: p.imageKey,
+  };
+}
+
 function confirm(title: string, message: string, confirmLabel: string, onConfirm: () => void) {
   if (Platform.OS === 'web') {
-    // eslint-disable-next-line no-alert
     if (window.confirm(`${title}\n\n${message}`)) onConfirm();
     return;
   }
@@ -40,48 +72,96 @@ function confirm(title: string, message: string, confirmLabel: string, onConfirm
 }
 
 export function ModelTestScreen({ navigation, route }: Props) {
-  const test = getModelTestById(route.params.testId);
+  const { testId, sessionId, problemSetId } = route.params;
+  const test = getModelTestById(testId);
   const { dispatch } = useProgress();
 
+  const [loading, setLoading] = useState(!!problemSetId);
+  const [error, setError] = useState<string | null>(null);
+  const [questions, setQuestions] = useState<TestQuestion[]>([]);
+
   const [qIndex, setQIndex] = useState(0);
-  // Exam mode: answers are collected silently and stay changeable until submit.
-  // Nothing is graded or revealed while the test is in progress.
   const [answers, setAnswers] = useState<Record<string, Choice>>({});
   const [secondsLeft, setSecondsLeft] = useState(test ? test.time_minutes * 60 : 0);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  // Keep the latest answers/flags reachable from the timer + submit without
-  // re-creating the interval on every keystroke.
+  const startTimeRef = useRef(Date.now());
   const answersRef = useRef(answers);
   answersRef.current = answers;
 
-  const submit = useCallback((auto: boolean) => {
-    if (!test) return;
+  useEffect(() => {
+    if (problemSetId) {
+      setLoading(true);
+      getProblemSet(problemSetId)
+        .then(ps => setQuestions(ps.problems.map(fromBackend)))
+        .catch(e => setError(e instanceof Error ? e.message : 'Failed to load test'))
+        .finally(() => setLoading(false));
+    } else if (test) {
+      setQuestions(test.question_ids.map(id => {
+        const q = getQuestionById(id);
+        return q ? fromLocal(q) : null;
+      }).filter(Boolean) as TestQuestion[]);
+    }
+  }, [problemSetId, testId, test]);
+
+  const submit = useCallback(async (auto: boolean) => {
+    if (questions.length === 0) return;
     if (timerRef.current) clearInterval(timerRef.current);
 
-    const ids = test.question_ids;
+    const ids = questions.map(q => q.id);
     const finalAnswers = answersRef.current;
     const wrongIds = ids.filter(id => {
-      const q = getQuestionById(id);
-      return !q || finalAnswers[id] !== q.correct_option;
+      const q = questions.find(x => x.id === id);
+      return !q || finalAnswers[id] !== q.correctKey;
     });
     const score = ids.length - wrongIds.length;
     const total = ids.length;
     const pct = Math.round((score / total) * 100);
-    const timeTaken = test.time_minutes * 60 - secondsLeft;
+    const timeTaken = Math.round((Date.now() - startTimeRef.current) / 1000);
 
-    // Tally correct/total per official category, then apply the real exam's
-    // per-category pass gate (overall 38/50 AND each area's minimum).
+    if (sessionId) {
+      for (const id of ids) {
+        const q = questions.find(x => x.id === id);
+        if (!q) continue;
+        const optionIndex = q.options.findIndex(o => o.key === finalAnswers[id]);
+        if (optionIndex >= 0) {
+          try {
+            await submitAnswer(sessionId, id, optionIndex);
+          } catch (e) {
+            console.warn('Failed to submit answer', e);
+          }
+        }
+      }
+      try {
+        await completeSession(sessionId);
+      } catch (e) {
+        console.warn('Failed to complete session', e);
+      }
+
+      navigation.replace('Result', {
+        mode: 'test',
+        label: test?.title_en ?? 'Model Test',
+        score,
+        total,
+        wrongIds,
+        timeTaken,
+        answers: finalAnswers,
+        passed: pct >= (test?.pass_mark ?? 76),
+      });
+      return;
+    }
+
+    if (!test) return;
+
     const perCategory: Partial<Record<CategoryId, { correct: number; total: number }>> = {};
     ids.forEach(id => {
-      const q = getQuestionById(id);
-      if (!q) return;
+      const q = questions.find(x => x.id === id);
+      if (!q || !q.category_id) return;
       const cat = q.category_id as CategoryId;
       const bucket = (perCategory[cat] ??= { correct: 0, total: 0 });
       bucket.total += 1;
-      const correct = finalAnswers[id] === q.correct_option;
+      const correct = finalAnswers[id] === q.correctKey;
       if (correct) bucket.correct += 1;
-      // Only now do committed answers feed mastery stats.
       dispatch({ type: 'ANSWER_QUESTION', id, correct });
     });
     const graded = gradeExam(perCategory);
@@ -97,6 +177,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
         passed: graded.passed,
       },
     });
+
     navigation.replace('Result', {
       mode: 'test',
       label: test.title_en,
@@ -108,36 +189,51 @@ export function ModelTestScreen({ navigation, route }: Props) {
       passed: graded.passed,
       categories: graded.categories,
     });
-  }, [test, secondsLeft, dispatch, navigation]);
+  }, [questions, dispatch, navigation, test, sessionId]);
+
+  const submitRef = useRef(submit);
+  submitRef.current = submit;
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setSecondsLeft(s => {
         if (s <= 1) {
           if (timerRef.current) clearInterval(timerRef.current);
-          submit(true);
+          submitRef.current(true);
           return 0;
         }
         return s - 1;
       });
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-    // submit is intentionally read via closure-stable refs; recreating the
-    // interval on every answer would drift the countdown.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!test) return <SafeAreaView style={styles.safe}><Text style={{ padding: 24 }}>Test not found.</Text></SafeAreaView>;
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.center}>
+          <ActivityIndicator size="large" color={colors.primary} />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
-  const ids = test.question_ids;
-  const question = getQuestionById(ids[qIndex]);
-  if (!question) return null;
+  if (error || !test || questions.length === 0) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.center}>
+          <Text style={styles.errorText}>{error || 'Test not found.'}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
+  const ids = questions.map(q => q.id);
+  const question = questions[qIndex];
   const selected = answers[question.id];
   const isLast = qIndex === ids.length - 1;
   const answeredCount = ids.filter(id => answers[id]).length;
 
-  // During the test an option is only ever 'selected' or 'idle' — never graded.
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
     optionStates[o.key] = selected === o.key ? 'selected' : 'idle';
@@ -173,7 +269,6 @@ export function ModelTestScreen({ navigation, route }: Props) {
         <Text style={styles.navTitle} numberOfLines={1}>{test.title_en}</Text>
       </View>
 
-      {/* Timer + progress */}
       <View style={styles.timerRow}>
         <View style={[styles.timerChip, isLowTime && styles.timerChipLow]}>
           <Clock size={13} color={isLowTime ? colors.error : colors.warning} strokeWidth={2.4} />
@@ -188,8 +283,8 @@ export function ModelTestScreen({ navigation, route }: Props) {
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.qCategory}>Q{qIndex + 1} OF {ids.length}</Text>
         <View style={styles.questionCard}>
-          <Text style={styles.qText}>{question.question.fi}</Text>
-          <QuestionImage id={question.id} />
+          <Text style={styles.qText}>{question.text}</Text>
+          <QuestionImage imageKey={question.imageKey ?? question.id} />
           <QuestionTariff id={question.id} />
         </View>
 
@@ -197,7 +292,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
           <OptionRow
             key={opt.key}
             letter={opt.key}
-            text={opt.fi ?? ''}
+            text={opt.fi}
             state={optionStates[opt.key]}
             onPress={() => handleSelect(opt.key)}
           />
@@ -206,7 +301,6 @@ export function ModelTestScreen({ navigation, route }: Props) {
         <View style={{ height: 16 }} />
       </ScrollView>
 
-      {/* Footer nav */}
       <View style={styles.footer}>
         <Text style={styles.answeredHint}>{answeredCount}/{ids.length} answered</Text>
         {isLast ? (
@@ -225,6 +319,8 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
+  errorText: { fontSize: fontSize.md, color: colors.textSecondary, textAlign: 'center' },
   navBar: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     paddingHorizontal: spacing.md, height: 52,
@@ -232,7 +328,6 @@ const styles = StyleSheet.create({
   },
   backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
   navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
-  flagBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginRight: -6 },
   timerRow: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     paddingHorizontal: spacing.md, paddingVertical: 10,

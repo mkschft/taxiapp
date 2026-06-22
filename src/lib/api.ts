@@ -54,7 +54,11 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
   const text = await res.text();
   if (!text) return undefined as T;
-  return JSON.parse(text) as T;
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return text as unknown as T;
+  }
 }
 
 export async function post<T>(path: string, body: unknown): Promise<T> {
@@ -66,4 +70,15 @@ export async function post<T>(path: string, body: unknown): Promise<T> {
 
 export async function get<T>(path: string): Promise<T> {
   return request<T>(path, { method: 'GET' });
+}
+
+export async function patch<T>(path: string, body: unknown): Promise<T> {
+  return request<T>(path, {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+  });
+}
+
+export async function del<T>(path: string): Promise<T> {
+  return request<T>(path, { method: 'DELETE' });
 }

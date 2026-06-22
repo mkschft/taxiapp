@@ -30,10 +30,10 @@ export type StudyStackParamList = {
   VocabSets: undefined;
   VocabSetDetail: { setId: string };
   VocabLesson: { setId: string; index?: number };
-  VocabQuiz: { setId: string };
+  VocabQuiz: { setId: string; sessionId?: string; problemSetId?: string };
   ClueWords: undefined;
   ClueLesson: { groupId: string; index?: number };
-  ClueQuiz: { groupId: string };
+  ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
   TopicSections: undefined;
   TopicLessons: { sectionId: string };
   Practice: {
@@ -41,6 +41,7 @@ export type StudyStackParamList = {
     queue?: string[];
     queueIndex?: number;
     sourceLabel?: string;
+    sessionId?: string;
     /** Review mode: reveal the correct answer immediately (no re-answering). */
     review?: boolean;
     /** Map of questionId -> the answer the user originally gave (for review). */
@@ -63,7 +64,7 @@ export type StudyStackParamList = {
 
 export type TestStackParamList = {
   TestHome: undefined;
-  ModelTest: { testId: string };
+  ModelTest: { testId: string; sessionId?: string; problemSetId?: string };
   Practice: {
     questionId: string;
     queue?: string[];

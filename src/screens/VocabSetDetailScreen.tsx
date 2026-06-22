@@ -9,6 +9,7 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson, getVocabQuiz, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useStartQuiz } from '../hooks/useStartQuiz';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -22,6 +23,7 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
   const { setId } = route.params;
   const set = getVocabSet(setId);
   const { state } = useProgress();
+  const { startQuiz, loading } = useStartQuiz();
 
   if (!set) {
     return (
@@ -95,7 +97,8 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
         <TouchableOpacity
           style={styles.actionCard}
           activeOpacity={0.82}
-          onPress={() => navigation.navigate('VocabQuiz', { setId: set.id })}
+          disabled={loading}
+          onPress={() => startQuiz(`vocab/sets/${set.id}`, 'VocabQuiz', { setId: set.id })}
         >
           <View style={[styles.actionIcon, { backgroundColor: colors.successTint }]}>
             <ClipboardCheck size={24} color={colors.success} strokeWidth={2.2} />

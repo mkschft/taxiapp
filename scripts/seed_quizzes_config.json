@@ -1,0 +1,19 @@
+{
+  "base_url": "https://api.taxipilot.fi",
+  "vocab": {
+    "enabled": true,
+    "page_template": "/vocab/sets/{set_id}"
+  },
+  "clue": {
+    "enabled": true,
+    "page_template": "/clue/{group_id}"
+  },
+  "model_tests": {
+    "enabled": true,
+    "page_template": "/model-test/{test_id}"
+  },
+  "topic_lessons": {
+    "enabled": true,
+    "page_template": "/topic/{section_id}/lessons/{lesson_id}"
+  }
+}
