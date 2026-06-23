@@ -105,8 +105,10 @@ export function ProfileScreen() {
 
   const handleLogout = () => {
     const doLogout = async () => {
+      // Clearing auth flips entry state; the root navigator removes the App
+      // screen and falls back to Welcome on its own. No navigation call here —
+      // Profile is nested, so it can't target the root stack anyway.
       await clearAuth();
-      navigation.replace('Home');
     };
 
     if (Platform.OS === 'web') {

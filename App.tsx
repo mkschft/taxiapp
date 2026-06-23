@@ -35,7 +35,10 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [],
   config: {
     screens: {
-      Home: 'app',
+      Welcome: 'app/welcome',
+      Onboarding: 'app/onboarding',
+      Signup: 'app/signup',
+      Login: 'app/login',
       App: {
         path: 'app',
         screens: {

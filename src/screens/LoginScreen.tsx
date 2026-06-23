@@ -19,7 +19,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export function LoginScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const { setAuth } = useAuth();
+  const { setAuth, markOnboardingSeen, state: auth } = useAuth();
   const { dispatch } = useProgress();
 
   const [email, setEmail] = useState('');
@@ -42,6 +42,7 @@ export function LoginScreen() {
 
   const handleLogin = async () => {
     if (!validate()) return;
+    const upgradingGuest = !!(auth.user || auth.guest);
     setLoading(true);
     try {
       const { accessToken, refreshToken } = await post<{ accessToken: string; refreshToken: string }>('/auth/login', {
@@ -52,7 +53,11 @@ export function LoginScreen() {
       const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
       dispatch({ type: 'UPDATE_PROFILE', profile: { name: user.name } });
-      navigation.replace('App');
+      // Returning users skip the first-run carousel. Marking onboarding seen
+      // flips entry state and the root navigator swaps in the App tabs; a guest
+      // upgrading is already inside the app, so just pop this screen.
+      await markOnboardingSeen();
+      if (upgradingGuest) navigation.goBack();
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 401) {

@@ -19,7 +19,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 
 export function SignupScreen() {
   const navigation = useNavigation<NavigationProp>();
-  const { setAuth } = useAuth();
+  const { setAuth, state: auth } = useAuth();
   const { dispatch } = useProgress();
 
   const [email, setEmail] = useState('');
@@ -49,6 +49,8 @@ export function SignupScreen() {
 
   const handleSignup = async () => {
     if (!validate()) return;
+    // A guest upgrading from inside the app vs. a brand-new visitor from Welcome.
+    const upgradingGuest = !!(auth.user || auth.guest);
     setLoading(true);
     try {
       const code = referralCode.trim().toUpperCase();
@@ -62,7 +64,10 @@ export function SignupScreen() {
       const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
       dispatch({ type: 'UPDATE_PROFILE', profile: { name: user.name } });
-      navigation.replace('App');
+      // A fresh signup flips entry state, so the root navigator swaps Signup out
+      // for the onboarding carousel automatically. A guest upgrading is already
+      // past onboarding and inside the app — just pop this screen off.
+      if (upgradingGuest) navigation.goBack();
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 409) {

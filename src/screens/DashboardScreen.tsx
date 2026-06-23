@@ -3,12 +3,14 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { type LucideIcon } from 'lucide-react-native';
+import { Lock, type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
+import { useAuth } from '../store/authStore';
+import { isGuestLocked } from '../lib/access';
 import { useQuestionStats } from '../store/progressStore';
 import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections, getModelTests } from '../data/loaders';
 
@@ -37,10 +39,15 @@ const HUBS: HubItem[] = [
 
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
+  const { state: auth } = useAuth();
   const { answered, accuracy, completion } = useQuestionStats(TOTAL_QUESTIONS);
 
+  const isGuest = auth.guest && !auth.user;
+
   const navigate = (hub: HubItem) => {
-    if (hub.screen === 'Progress') {
+    if (isGuestLocked(hub.screen, isGuest)) {
+      navigation.navigate('Signup');
+    } else if (hub.screen === 'Progress') {
       navigation.navigate('Progress');
     } else if (hub.stack) {
       navigation.navigate(hub.stack, { screen: hub.screen, params: {} });
@@ -76,31 +83,35 @@ export function DashboardScreen() {
 
         {/* Hub grid */}
         <View style={styles.grid}>
-          {HUBS.map(hub => (
-            <TouchableOpacity
-              key={hub.title}
-              style={[styles.hubCard, hub.wide && styles.hubCardWide]}
-              onPress={() => navigate(hub)}
-              activeOpacity={0.75}
-            >
-              {hub.wide ? (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                  <IconChip Icon={hub.Icon} tint={hub.tint} />
-                  <View style={{ flex: 1 }}>
+          {HUBS.map(hub => {
+            const locked = isGuestLocked(hub.screen, isGuest);
+            return (
+              <TouchableOpacity
+                key={hub.title}
+                style={[styles.hubCard, hub.wide && styles.hubCardWide]}
+                onPress={() => navigate(hub)}
+                activeOpacity={0.75}
+              >
+                {hub.wide ? (
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                    <IconChip Icon={hub.Icon} tint={hub.tint} />
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.hubTitle}>{hub.title}</Text>
+                      <Text style={styles.hubSub}>{hub.sub}</Text>
+                    </View>
+                    {locked && <Lock size={16} color={colors.textTertiary} strokeWidth={2.2} />}
+                  </View>
+                ) : (
+                  <>
+                    <IconChip Icon={hub.Icon} tint={hub.tint} />
                     <Text style={styles.hubTitle}>{hub.title}</Text>
                     <Text style={styles.hubSub}>{hub.sub}</Text>
-                  </View>
-                </View>
-              ) : (
-                <>
-                  <IconChip Icon={hub.Icon} tint={hub.tint} />
-                  <Text style={styles.hubTitle}>{hub.title}</Text>
-                  <Text style={styles.hubSub}>{hub.sub}</Text>
-                  <Badge type={hub.paid ? 'paid' : 'free'} />
-                </>
-              )}
-            </TouchableOpacity>
-          ))}
+                    <Badge type={locked ? 'locked' : hub.paid ? 'paid' : 'free'} />
+                  </>
+                )}
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>

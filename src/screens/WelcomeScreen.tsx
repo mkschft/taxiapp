@@ -7,7 +7,7 @@ import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { useAuth } from '../store/authStore';
 
-type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Home'> };
+type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Welcome'> };
 
 const FEATURES: { Icon: LucideIcon; tint: string; title: string; body: string }[] = [
   { Icon: Type, tint: colors.primary, title: '11 vocabulary sets · 84 key words', body: 'Finnish inflections included — the exact words that appear on the exam.' },
@@ -16,19 +16,20 @@ const FEATURES: { Icon: LucideIcon; tint: string; title: string; body: string }[
   { Icon: Timer, tint: colors.error, title: '5 timed model tests', body: 'Exam-realistic simulation with scoring and review.' },
 ];
 
-export function HomeScreen({ navigation }: Props) {
+export function WelcomeScreen({ navigation }: Props) {
   const { enterGuest } = useAuth();
 
-  const startPreview = async () => {
-    await enterGuest();
-    navigation.navigate('App');
-  };
+  // Local-first preview. Guests can browse "How to use the app" + the Exam
+  // Guide; everything else is locked until they create an account. Entering
+  // guest mode flips auth state — the root navigator reacts and shows the
+  // onboarding carousel next (no explicit navigation here).
+  const continueAsGuest = () => { void enterGuest(); };
 
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
 
-        {/* Top: hero + features + trust badges — grows to fill space */}
+        {/* Top: hero + features — grows to fill space */}
         <View style={styles.top}>
           <View style={styles.hero}>
             <Text style={styles.tagline}>FINNISH TAXI EXAM PREP</Text>
@@ -54,30 +55,22 @@ export function HomeScreen({ navigation }: Props) {
               </View>
             ))}
           </View>
-
-          <View style={styles.trust}>
-            <View style={styles.trustRow}>
-              <Text style={styles.trustChip}>Finnish</Text>
-              <Text style={styles.trustChip}>English</Text>
-              <Text style={styles.trustChip}>Traficom aligned</Text>
-            </View>
-          </View>
         </View>
 
-        {/* Bottom: CTAs always anchored to the bottom */}
+        {/* Bottom: auth choices anchored to the bottom */}
         <View style={styles.actions}>
           <AppButton
-            label="Try free preview →"
-            onPress={startPreview}
+            label="Create free account"
+            onPress={() => navigation.navigate('Signup')}
           />
           <AppButton
-            label="Sign up / Log in"
+            label="Log in"
             variant="secondary"
-            onPress={() => navigation.navigate('Signup')}
+            onPress={() => navigation.navigate('Login')}
             style={{ marginTop: spacing.sm }}
           />
-          <Text style={styles.foot}>
-            Start with a free preview. No card needed.
+          <Text style={styles.guestLink} onPress={continueAsGuest}>
+            Just looking? Browse a limited preview →
           </Text>
         </View>
 
@@ -111,14 +104,9 @@ const styles = StyleSheet.create({
   featureText: { flex: 1 },
   featureTitle: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.text },
   featureBody: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
-  trust: { marginBottom: spacing.lg },
-  trustRow: { flexDirection: 'row', gap: spacing.sm, flexWrap: 'wrap' },
-  trustChip: {
-    fontSize: fontSize.xs, backgroundColor: colors.surface,
-    borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.full, paddingHorizontal: 10, paddingVertical: 4,
-    color: colors.textSecondary, fontFamily: font.medium,
-  },
   actions: {},
-  foot: { fontSize: fontSize.xs, color: colors.textSecondary, textAlign: 'center', marginTop: spacing.sm },
+  guestLink: {
+    fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium,
+    textAlign: 'center', marginTop: spacing.md, paddingVertical: spacing.xs,
+  },
 });

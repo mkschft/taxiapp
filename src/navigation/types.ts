@@ -9,7 +9,8 @@ export type ResultCategoryStat = {
 };
 
 export type RootStackParamList = {
-  Home: undefined;
+  Welcome: undefined;
+  Onboarding: undefined;
   Signup: undefined;
   Login: undefined;
   App: undefined;

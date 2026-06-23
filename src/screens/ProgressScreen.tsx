@@ -10,6 +10,8 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { CategoryIcon } from '../theme/icons';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats, useWeakQuestionIds, useCategoryProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
+import { GuestGate } from '../components/GuestGate';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -24,10 +26,21 @@ const TOTAL_VOCAB = getVocabWordTotal();
 export function ProgressScreen() {
   const navigation = useNavigation<any>();
   const { state } = useProgress();
+  const { state: auth } = useAuth();
   const { answered, correct, accuracy, completion } = useQuestionStats(TOTAL_QS);
   const weakIds = useWeakQuestionIds();
   const catProgress = useCategoryProgress(CAT_Q_MAP);
   const vocabLearned = Object.values(state.vocab).filter(v => v.learned).length;
+
+  if (auth.guest && !auth.user) {
+    return (
+      <GuestGate
+        title="Progress"
+        blurb="Track your accuracy, streaks and weak areas across every section. Create a free account to start saving your progress."
+        perks={['Per-category mastery and accuracy', 'Spaced-repetition review of weak items', 'Streaks and exam-readiness over time']}
+      />
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safe}>

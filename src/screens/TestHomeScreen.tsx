@@ -8,7 +8,9 @@ import { getModelTests } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
+import { useAuth } from '../store/authStore';
 import { Paywall } from '../components/Paywall';
+import { GuestGate } from '../components/GuestGate';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
@@ -16,6 +18,19 @@ export function TestHomeScreen() {
   const { state } = useProgress();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
+  const { state: auth } = useAuth();
+
+  // Guests must sign up before reaching the (paid) model tests — check this
+  // before the mock paywall, which would otherwise let them "skip" to unlock.
+  if (auth.guest && !auth.user) {
+    return (
+      <GuestGate
+        title="Model Tests"
+        blurb="Full, timed mock exams that mirror the real Traficom test. Create a free account to take them and save your scores."
+        perks={[`${tests.length} full timed mock exams`, 'Scored like the real exam (38/50 + per-section gate)', 'Review every question you missed afterwards']}
+      />
+    );
+  }
 
   if (!isUnlocked('model_tests')) {
     return (
