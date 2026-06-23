@@ -6,7 +6,9 @@ import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
+import { AuthPrompt } from '../components/AuthPrompt';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 
@@ -14,8 +16,27 @@ export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
   const { state } = useProgress();
+  const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
+  const isAuthenticated = !!authState.user;
+
+  if (!isAuthenticated) {
+    return (
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Model Tests</Text>
+          <Text style={styles.sub}>Timed, exam-realistic. Pass mark: 76% (38 of 50)</Text>
+        </View>
+        <View style={styles.authPrompt}>
+          <AuthPrompt
+            title="Sign in to take model tests"
+            body="Full, timed mock exams that mirror the real thing — create a free account to start."
+          />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   if (!isUnlocked('model_tests')) {
     return (
@@ -104,4 +125,5 @@ const styles = StyleSheet.create({
   metaItem: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   meta: { fontSize: 13, color: colors.textSecondary },
   lastScore: { fontSize: 12, fontFamily: font.medium, marginTop: 2 },
+  authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });

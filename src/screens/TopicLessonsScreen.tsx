@@ -10,6 +10,8 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
+import { AuthPrompt } from '../components/AuthPrompt';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -24,6 +26,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const section = getTopicSection(sectionId);
   const lessons = getTopicLessons(sectionId);
   const { state } = useProgress();
+  const { state: authState } = useAuth();
+  const isAuthenticated = !!authState.user;
 
   if (!section) {
     return (
@@ -57,6 +61,14 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
         <Text style={styles.caption}>{section.description}</Text>
       </View>
 
+      {!isAuthenticated ? (
+        <View style={styles.authPrompt}>
+          <AuthPrompt
+            title="Sign in to practise this section"
+            body="Create a free account to drill real exam-style questions one lesson at a time."
+          />
+        </View>
+      ) : (
       <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
         {lessons.map(lesson => {
           const answered = lesson.question_ids.filter(id => state.questions[id]?.answered).length;
@@ -103,6 +115,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
         })}
         <View style={{ height: 32 }} />
       </ScrollView>
+      )}
     </SafeAreaView>
   );
 }
@@ -132,4 +145,5 @@ const styles = StyleSheet.create({
   metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
   tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
+  authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });

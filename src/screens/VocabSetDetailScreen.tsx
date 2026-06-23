@@ -9,7 +9,9 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson, getVocabQuiz, getCategories } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
+import { AuthPrompt } from '../components/AuthPrompt';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -23,7 +25,9 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
   const { setId } = route.params;
   const set = getVocabSet(setId);
   const { state } = useProgress();
+  const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
+  const isAuthenticated = !!authState.user;
 
   if (!set) {
     return (
@@ -94,32 +98,39 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
         </TouchableOpacity>
 
         {/* Quiz card */}
-        <TouchableOpacity
-          style={styles.actionCard}
-          activeOpacity={0.82}
-          disabled={loading}
-          onPress={() => startQuiz(`vocab/sets/${set.id}`, 'VocabQuiz', { setId: set.id })}
-        >
-          <View style={[styles.actionIcon, { backgroundColor: colors.successTint }]}>
-            <ClipboardCheck size={24} color={colors.success} strokeWidth={2.2} />
-          </View>
-          <View style={styles.actionInfo}>
-            <View style={styles.actionTitleRow}>
-              <Text style={styles.actionTitle}>Quiz</Text>
-              {best != null && (
-                <View style={styles.doneChip}>
-                  <Text style={styles.doneChipText}>
-                    Best {Math.round((best / set.question_count) * 100)}%
-                  </Text>
-                </View>
-              )}
+        {isAuthenticated ? (
+          <TouchableOpacity
+            style={styles.actionCard}
+            activeOpacity={0.82}
+            disabled={loading}
+            onPress={() => startQuiz(`vocab/sets/${set.id}`, 'VocabQuiz', { setId: set.id })}
+          >
+            <View style={[styles.actionIcon, { backgroundColor: colors.successTint }]}>
+              <ClipboardCheck size={24} color={colors.success} strokeWidth={2.2} />
             </View>
-            <Text style={styles.actionSub}>
-              {quiz.length} questions · match the Finnish word to its meaning
-            </Text>
-          </View>
-          <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-        </TouchableOpacity>
+            <View style={styles.actionInfo}>
+              <View style={styles.actionTitleRow}>
+                <Text style={styles.actionTitle}>Quiz</Text>
+                {best != null && (
+                  <View style={styles.doneChip}>
+                    <Text style={styles.doneChipText}>
+                      Best {Math.round((best / set.question_count) * 100)}%
+                    </Text>
+                  </View>
+                )}
+              </View>
+              <Text style={styles.actionSub}>
+                {quiz.length} questions · match the Finnish word to its meaning
+              </Text>
+            </View>
+            <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+          </TouchableOpacity>
+        ) : (
+          <AuthPrompt
+            title="Sign in to take the quiz"
+            body={`${quiz.length} questions · match the Finnish word to its meaning.`}
+          />
+        )}
 
         <Text style={styles.tip}>
           Tip: work through the Lesson first, then test yourself with the Quiz.

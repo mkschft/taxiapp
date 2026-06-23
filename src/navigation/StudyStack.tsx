@@ -14,6 +14,7 @@ import { ResultScreen } from '../screens/ResultScreen';
 import { StudyHomeScreen } from '../screens/StudyHomeScreen';
 import { GuideScreen } from '../screens/GuideScreen';
 import { HowToScreen } from '../screens/HowToScreen';
+import { RequireAuth } from '../components/RequireAuth';
 import type { StudyStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<StudyStackParamList>();
@@ -25,14 +26,14 @@ export function StudyStack() {
       <Stack.Screen name="VocabSets" component={VocabSetsScreen} />
       <Stack.Screen name="VocabSetDetail" component={VocabSetDetailScreen} />
       <Stack.Screen name="VocabLesson" component={VocabLessonScreen} />
-      <Stack.Screen name="VocabQuiz" component={VocabQuizScreen} />
+      <Stack.Screen name="VocabQuiz" component={RequireAuth(VocabQuizScreen, 'Study')} />
       <Stack.Screen name="ClueWords" component={ClueWordsScreen} />
       <Stack.Screen name="ClueLesson" component={ClueLessonScreen} />
-      <Stack.Screen name="ClueQuiz" component={ClueQuizScreen} />
+      <Stack.Screen name="ClueQuiz" component={RequireAuth(ClueQuizScreen, 'Study')} />
       <Stack.Screen name="TopicSections" component={TopicSectionsScreen} />
       <Stack.Screen name="TopicLessons" component={TopicLessonsScreen} />
-      <Stack.Screen name="Practice" component={PracticeScreen} />
-      <Stack.Screen name="Result" component={ResultScreen} />
+      <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Study')} />
+      <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Study')} />
       <Stack.Screen name="Guide" component={GuideScreen} />
       <Stack.Screen name="HowTo" component={HowToScreen} />
     </Stack.Navigator>

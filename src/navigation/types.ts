@@ -8,10 +8,16 @@ export type ResultCategoryStat = {
   passed: boolean;
 };
 
+export type AuthRedirectInfo = {
+  tab: keyof AppTabParamList;
+  screen: string;
+  params?: Record<string, unknown>;
+};
+
 export type RootStackParamList = {
   Home: undefined;
-  Signup: undefined;
-  Login: undefined;
+  Signup: { redirect?: AuthRedirectInfo } | undefined;
+  Login: { redirect?: AuthRedirectInfo } | undefined;
   App: undefined;
 };
 

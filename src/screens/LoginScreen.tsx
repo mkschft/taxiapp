@@ -4,7 +4,7 @@ import {
   Platform, ScrollView, TextInput,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { ChevronLeft } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
@@ -16,8 +16,11 @@ import { useAuth } from '../store/authStore';
 import { useProgress } from '../store/progressStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
+type Props = {
+  route: RouteProp<RootStackParamList, 'Login'>;
+};
 
-export function LoginScreen() {
+export function LoginScreen({ route }: Props) {
   const navigation = useNavigation<NavigationProp>();
   const { setAuth } = useAuth();
   const { dispatch } = useProgress();
@@ -52,7 +55,19 @@ export function LoginScreen() {
       const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
       dispatch({ type: 'UPDATE_PROFILE', profile: { name: user.name } });
-      navigation.replace('App');
+
+      const redirect = route.params?.redirect;
+      if (redirect) {
+        navigation.replace('App' as any, {
+          screen: redirect.tab,
+          params: {
+            screen: redirect.screen,
+            params: redirect.params,
+          },
+        });
+      } else {
+        navigation.replace('App');
+      }
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 401) {
@@ -139,7 +154,7 @@ export function LoginScreen() {
             <Text style={styles.footerText}>Don't have an account?</Text>
             <AppButton
               label="Sign up"
-              onPress={() => navigation.navigate('Signup')}
+              onPress={() => navigation.navigate('Signup', { redirect: route.params?.redirect })}
               variant="secondary"
               style={{ marginTop: spacing.sm }}
             />

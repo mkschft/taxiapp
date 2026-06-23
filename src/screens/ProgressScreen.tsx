@@ -10,6 +10,7 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { CategoryIcon } from '../theme/icons';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress, useQuestionStats, useWeakQuestionIds, useCategoryProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -28,6 +29,8 @@ export function ProgressScreen() {
   const weakIds = useWeakQuestionIds();
   const catProgress = useCategoryProgress(CAT_Q_MAP);
   const vocabLearned = Object.values(state.vocab).filter(v => v.learned).length;
+  const { state: authState } = useAuth();
+  const isAuthenticated = !!authState.user;
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -89,7 +92,7 @@ export function ProgressScreen() {
         </View>
 
         {/* Weak areas */}
-        {weakIds.length > 0 && (
+        {isAuthenticated && weakIds.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
             {weakIds.slice(0, 5).map(id => {

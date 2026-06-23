@@ -11,7 +11,9 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroups, getClueLesson } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
+import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
+import { AuthPrompt } from '../components/AuthPrompt';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import type { ClueTone } from '../data/types';
@@ -34,8 +36,10 @@ const GROUPS = getClueGroups();
 export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
   const { state } = useProgress();
+  const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
+  const isAuthenticated = !!authState.user;
 
   if (!isUnlocked('clue_words')) {
     return (
@@ -59,6 +63,13 @@ export function ClueWordsScreen() {
           often pick the right option even with limited Finnish. Pick a group to
           study, then test yourself.
         </Text>
+
+        {!isAuthenticated && (
+          <AuthPrompt
+            title="Sign in to take quizzes"
+            body="Create a free account to test yourself on each clue-word group."
+          />
+        )}
 
         {GROUPS.map(group => {
           const Icon = GROUP_ICON[group.id] ?? HelpCircle;
@@ -104,14 +115,16 @@ export function ClueWordsScreen() {
                   <BookOpen size={17} color={colors.text} strokeWidth={2.2} />
                   <Text style={styles.btnOutlineText}>Lesson</Text>
                 </Pressable>
-                <Pressable
-                  disabled={loading}
-                  onPress={() => startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })}
-                  style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
-                >
-                  <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
-                  <Text style={styles.btnFilledText}>Quiz</Text>
-                </Pressable>
+                {isAuthenticated && (
+                  <Pressable
+                    disabled={loading}
+                    onPress={() => startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })}
+                    style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
+                  >
+                    <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
+                    <Text style={styles.btnFilledText}>Quiz</Text>
+                  </Pressable>
+                )}
               </View>
             </View>
           );

@@ -17,7 +17,7 @@ export function useStartQuiz() {
       params: Record<string, unknown>,
     ) => {
       if (!authState.user) {
-        navigation.navigate(screen, params);
+        // Callers must render an AuthPrompt for unauthenticated users.
         return;
       }
 
