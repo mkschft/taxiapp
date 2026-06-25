@@ -8,33 +8,27 @@ import { getModelTests } from '../data/loaders';
 import { useProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
-import { AuthPrompt } from '../components/AuthPrompt';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
+import { GuestGate } from '../components/GuestGate';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
   const { state } = useProgress();
-  const { state: authState } = useAuth();
+  const { state: auth } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
-  const isAuthenticated = !!authState.user;
 
-  if (!isAuthenticated) {
+  // Guests must sign up before reaching the (paid) model tests — check this
+  // before the mock paywall, which would otherwise let them "skip" to unlock.
+  if (auth.guest && !auth.user) {
     return (
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Model Tests</Text>
-          <Text style={styles.sub}>Timed, exam-realistic. Pass mark: 76% (38 of 50)</Text>
-        </View>
-        <View style={styles.authPrompt}>
-          <AuthPrompt
-            title="Sign in to take model tests"
-            body="Full, timed mock exams that mirror the real thing — create a free account to start."
-          />
-        </View>
-      </SafeAreaView>
+      <GuestGate
+        title="Model Tests"
+        blurb="Full, timed mock exams that mirror the real Traficom test. Create a free account to take them and save your scores."
+        perks={[`${tests.length} full timed mock exams`, 'Scored like the real exam (38/50 + per-section gate)', 'Review every question you missed afterwards']}
+      />
     );
   }
 

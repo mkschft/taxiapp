@@ -22,7 +22,7 @@ type Props = {
 
 export function SignupScreen({ route }: Props) {
   const navigation = useNavigation<NavigationProp>();
-  const { setAuth } = useAuth();
+  const { setAuth, state: auth } = useAuth();
   const { dispatch } = useProgress();
 
   const [email, setEmail] = useState('');
@@ -52,6 +52,8 @@ export function SignupScreen({ route }: Props) {
 
   const handleSignup = async () => {
     if (!validate()) return;
+    // A guest upgrading from inside the app vs. a brand-new visitor from Welcome.
+    const upgradingGuest = !!(auth.user || auth.guest);
     setLoading(true);
     try {
       const code = referralCode.trim().toUpperCase();
@@ -75,8 +77,8 @@ export function SignupScreen({ route }: Props) {
             params: redirect.params,
           },
         });
-      } else {
-        navigation.replace('App');
+      } else if (upgradingGuest) {
+        navigation.goBack();
       }
     } catch (err: any) {
       const status = err?.statusCode;

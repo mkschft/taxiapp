@@ -15,7 +15,8 @@ export type AuthRedirectInfo = {
 };
 
 export type RootStackParamList = {
-  Home: undefined;
+  Welcome: undefined;
+  Onboarding: undefined;
   Signup: { redirect?: AuthRedirectInfo } | undefined;
   Login: { redirect?: AuthRedirectInfo } | undefined;
   App: undefined;
