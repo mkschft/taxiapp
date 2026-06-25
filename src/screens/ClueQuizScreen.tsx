@@ -11,7 +11,6 @@ import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getClueGroup, getClueQuiz } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import type { ClueQuizQuestion } from '../data/types';
 import type { StudyStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
@@ -73,7 +72,6 @@ function fromBackend(p: BackendProblem): Question {
 export function ClueQuizScreen({ navigation, route }: Props) {
   const { groupId, sessionId, problemSetId } = route.params;
   const group = getClueGroup(groupId);
-  const { dispatch } = useProgress();
 
   const [loading, setLoading] = useState(!!problemSetId);
   const [error, setError] = useState<string | null>(null);
@@ -126,17 +124,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
       return;
     }
 
-    if (!sessionId) {
-      dispatch({
-        type: 'SAVE_QUIZ_SCORE',
-        score: {
-          quiz_id: groupId,
-          score,
-          completed_at: Date.now(),
-          wrong_question_ids: wrong.map(w => w.id),
-        },
-      });
-    } else {
+    if (sessionId) {
       try {
         await completeSession(sessionId);
       } catch (e) {
@@ -145,7 +133,7 @@ export function ClueQuizScreen({ navigation, route }: Props) {
     }
 
     setDone(true);
-  }, [index, questions.length, dispatch, groupId, score, wrong, sessionId]);
+  }, [index, questions.length, sessionId]);
 
   const restart = useCallback(() => {
     setIndex(0); setSelected(null); setAnswered(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
@@ -8,7 +8,6 @@ import { Lightbulb, ChevronLeft, ChevronRight, ClipboardCheck } from 'lucide-rea
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import type { VocabLessonWord } from '../data/types';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -57,15 +56,9 @@ export function VocabLessonScreen({ navigation, route }: Props) {
   const rawIndex = Number(route.params.index) || 1;
   const current = Math.min(Math.max(rawIndex, 1), Math.max(total, 1));
   const word = words[current - 1];
-  const { dispatch } = useProgress();
 
   const isFirst = current <= 1;
   const isLast = current >= total;
-
-  // Mark the word seen as it comes into view; this also drives "N/N learned".
-  useEffect(() => {
-    if (word) dispatch({ type: 'MARK_VOCAB_SEEN', id: word.id });
-  }, [word?.id]);
 
   // setParams updates the URL (…/lesson/:index) in place — no stack growth,
   // only the single visible card re-renders.

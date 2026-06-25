@@ -12,8 +12,8 @@ import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
+import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
-import { useProgress } from '../store/progressStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 type Props = {
@@ -23,7 +23,6 @@ type Props = {
 export function SignupScreen({ route }: Props) {
   const navigation = useNavigation<NavigationProp>();
   const { setAuth, state: auth } = useAuth();
-  const { dispatch } = useProgress();
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -72,7 +71,6 @@ export function SignupScreen({ route }: Props) {
 
       const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
-      dispatch({ type: 'UPDATE_PROFILE', profile: { name: user.name } });
 
       const redirect = route.params?.redirect;
       if (redirect) {
@@ -212,14 +210,6 @@ export function SignupScreen({ route }: Props) {
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
-}
-
-async function getMe(token: string): Promise<{ id: string; email: string; name: string }> {
-  const res = await fetch('https://api.taxipilot.fi/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) throw new Error('Failed to fetch user');
-  return res.json();
 }
 
 const styles = StyleSheet.create({

@@ -8,7 +8,6 @@ import { BookOpen, ClipboardCheck, ChevronRight, Check } from 'lucide-react-nati
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson, getVocabQuiz, getCategories } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { AuthPrompt } from '../components/AuthPrompt';
@@ -24,7 +23,6 @@ const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 export function VocabSetDetailScreen({ navigation, route }: Props) {
   const { setId } = route.params;
   const set = getVocabSet(setId);
-  const { state } = useProgress();
   const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const isAuthenticated = !!authState.user;
@@ -42,11 +40,7 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
 
   const words = getVocabLesson(set.id);
   const quiz = getVocabQuiz(set.id);
-  const seenCount = words.filter(w => state.vocab[w.id]?.seen).length;
-  const lessonDone = words.length > 0 && seenCount === words.length;
-  const best = state.quiz_scores
-    .filter(s => s.quiz_id === set.id)
-    .reduce<number | null>((m, s) => Math.max(m ?? 0, s.score), null);
+  const seenCount = 0;
   const cat = set.category_id ? CAT[set.category_id] : null;
   const tint = cat?.color ?? colors.primary;
 
@@ -78,12 +72,6 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
           <View style={styles.actionInfo}>
             <View style={styles.actionTitleRow}>
               <Text style={styles.actionTitle}>Lesson</Text>
-              {lessonDone && (
-                <View style={styles.doneChip}>
-                  <Check size={11} color={colors.success} strokeWidth={3} />
-                  <Text style={styles.doneChipText}>Done</Text>
-                </View>
-              )}
             </View>
             <Text style={styles.actionSub}>Study {words.length} word cards · meanings, forms & exam use</Text>
             <View style={styles.barTrack}>
@@ -109,16 +97,9 @@ export function VocabSetDetailScreen({ navigation, route }: Props) {
               <ClipboardCheck size={24} color={colors.success} strokeWidth={2.2} />
             </View>
             <View style={styles.actionInfo}>
-              <View style={styles.actionTitleRow}>
-                <Text style={styles.actionTitle}>Quiz</Text>
-                {best != null && (
-                  <View style={styles.doneChip}>
-                    <Text style={styles.doneChipText}>
-                      Best {Math.round((best / set.question_count) * 100)}%
-                    </Text>
-                  </View>
-                )}
-              </View>
+            <View style={styles.actionTitleRow}>
+              <Text style={styles.actionTitle}>Quiz</Text>
+            </View>
               <Text style={styles.actionSub}>
                 {quiz.length} questions · match the Finnish word to its meaning
               </Text>

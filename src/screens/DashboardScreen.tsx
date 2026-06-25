@@ -11,7 +11,6 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
-import { useQuestionStats } from '../store/progressStore';
 import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections, getModelTests } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
@@ -40,7 +39,9 @@ const HUBS: HubItem[] = [
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
-  const { answered, accuracy, completion } = useQuestionStats(TOTAL_QUESTIONS);
+  const answered = 0;
+  const accuracy = 0;
+  const completion = 0;
 
   const isGuest = auth.guest && !auth.user;
 

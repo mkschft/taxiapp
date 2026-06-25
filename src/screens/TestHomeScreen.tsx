@@ -5,7 +5,6 @@ import { Clock, ClipboardList, CircleCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
@@ -15,7 +14,6 @@ import { GuestGate } from '../components/GuestGate';
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
-  const { state } = useProgress();
   const { state: auth } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
@@ -52,39 +50,24 @@ export function TestHomeScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll}>
-        {tests.map(t => {
-          const prevScore = state.test_scores.filter(s => s.test_id === t.id).slice(-1)[0];
-          return (
-            <View key={t.id} style={styles.testCard}>
-              <View style={styles.cardHeader}>
-                <Text style={styles.testTitle}>{t.title_en}</Text>
-                {prevScore && (
-                  <View style={[styles.scoreBadge, prevScore.passed ? styles.badgePass : styles.badgeFail]}>
-                    <Text style={[styles.scoreBadgeText, { color: prevScore.passed ? colors.success : colors.error }]}>
-                      {prevScore.score}%
-                    </Text>
-                  </View>
-                )}
-              </View>
-              <View style={styles.metaRow}>
-                <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.time_minutes} min</Text></View>
-                <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.question_ids.length} questions</Text></View>
-                <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>Pass {t.pass_mark}%</Text></View>
-              </View>
-              {prevScore && (
-                <Text style={[styles.lastScore, { color: prevScore.passed ? colors.success : colors.error }]}>
-                  Last attempt: {prevScore.score}% · {prevScore.passed ? 'Passed' : 'Failed'}
-                </Text>
-              )}
-              <AppButton
-                label={prevScore ? 'Retake test' : 'Start test →'}
-                disabled={loading}
-                onPress={() => startQuiz(`model-test/${t.id}`, 'ModelTest', { testId: t.id })}
-                style={{ marginTop: spacing.sm }}
-              />
+        {tests.map(t => (
+          <View key={t.id} style={styles.testCard}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.testTitle}>{t.title_en}</Text>
             </View>
-          );
-        })}
+            <View style={styles.metaRow}>
+              <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.time_minutes} min</Text></View>
+              <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.question_ids.length} questions</Text></View>
+              <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>Pass {t.pass_mark}%</Text></View>
+            </View>
+            <AppButton
+              label="Start test →"
+              disabled={loading}
+              onPress={() => startQuiz(`model-test/${t.id}`, 'ModelTest', { testId: t.id })}
+              style={{ marginTop: spacing.sm }}
+            />
+          </View>
+        ))}
         <View style={{ height: 32 }} />
       </ScrollView>
     </SafeAreaView>

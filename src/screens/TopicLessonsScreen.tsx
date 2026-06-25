@@ -9,7 +9,6 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { AuthPrompt } from '../components/AuthPrompt';
 import type { StudyStackParamList } from '../navigation/types';
@@ -25,7 +24,6 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const { sectionId } = route.params;
   const section = getTopicSection(sectionId);
   const lessons = getTopicLessons(sectionId);
-  const { state } = useProgress();
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
 
@@ -71,11 +69,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
       ) : (
       <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
         {lessons.map(lesson => {
-          const answered = lesson.question_ids.filter(id => state.questions[id]?.answered).length;
-          const correct = lesson.question_ids.filter(id => state.questions[id]?.correct).length;
-          const done = lesson.question_count > 0 && answered >= lesson.question_count;
-          const pctDone = lesson.question_count > 0 ? Math.round((answered / lesson.question_count) * 100) : 0;
-          const pct = answered > 0 ? Math.round((correct / answered) * 100) : null;
+          const answered = 0;
+          const pctDone = 0;
 
           return (
             <TouchableOpacity
@@ -91,9 +86,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
                 color={tint}
                 trackColor={colors.surfaceAlt}
                 valueFontSize={12}
-              >
-                {done ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
-              </ProgressRing>
+              />
 
               <View style={styles.info}>
                 <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
@@ -101,11 +94,6 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>{answered}/{lesson.question_count} done</Text>
                   </View>
-                  {pct != null && (
-                    <View style={[styles.tag, { backgroundColor: colors.successTint }]}>
-                      <Text style={[styles.tagText, { color: colors.success }]}>{pct}% correct</Text>
-                    </View>
-                  )}
                 </View>
               </View>
 

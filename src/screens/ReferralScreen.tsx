@@ -9,7 +9,6 @@ import { Gift } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-import { useProgress } from '../store/progressStore';
 
 const STEPS = [
   { n: 1, text: (code: string) => `Share your code **${code}** with a friend preparing for the taxi exam.` },
@@ -30,8 +29,7 @@ function BoldText({ text }: { text: string }) {
 
 export function ReferralScreen() {
   const navigation = useNavigation<any>();
-  const { state } = useProgress();
-  const code = state.profile.referral_code || 'TAXI7';
+  const code = 'TAXI7';
   const [copied, setCopied] = useState(false);
 
   // Real referral counts come from the backend (`referrals` table) once wired —

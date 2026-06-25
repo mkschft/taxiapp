@@ -14,7 +14,6 @@ import {
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
 import { RootNavigator } from './src/navigation/RootNavigator';
-import { ProgressProvider } from './src/store/progressStore';
 import { AuthProvider } from './src/store/authStore';
 import { PaywallProvider } from './src/store/paywallStore';
 import { colors, font } from './src/theme/tokens';
@@ -101,12 +100,10 @@ export default function App() {
     <SafeAreaProvider>
       <AuthProvider>
         <PaywallProvider>
-          <ProgressProvider>
-            <NavigationContainer linking={linking}>
-              <StatusBar style="dark" />
-              <RootNavigator />
-            </NavigationContainer>
-          </ProgressProvider>
+          <NavigationContainer linking={linking}>
+            <StatusBar style="dark" />
+            <RootNavigator />
+          </NavigationContainer>
         </PaywallProvider>
       </AuthProvider>
     </SafeAreaProvider>

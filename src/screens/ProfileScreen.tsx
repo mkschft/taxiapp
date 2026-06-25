@@ -11,13 +11,9 @@ import {
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { useProgress, useQuestionStats } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
-import { getQuestions } from '../data/loaders';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
-
-const TOTAL_QS = getQuestions().length;
 
 const HELP_URL = 'https://taxipilot.fi';
 
@@ -57,26 +53,29 @@ function SettingRow({
 
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
-  const { state, dispatch } = useProgress();
-  const { state: auth, clearAuth } = useAuth();
-  const { completion, accuracy } = useQuestionStats(TOTAL_QS);
+  const { state: auth, clearAuth, updateUser } = useAuth();
+  const completion = 0;
+  const accuracy = 0;
 
   const isGuest = auth.guest && !auth.user;
+  const userName = auth.user?.name ?? (isGuest ? 'Guest' : 'Your Name');
+  const initial = userName ? userName[0].toUpperCase() : '?';
+  const examDate = auth.user?.expectedExamDate ?? null;
 
   const [dateModal, setDateModal] = useState(false);
-  const [dateInput, setDateInput] = useState(state.profile.exam_date ?? '');
+  const [dateInput, setDateInput] = useState(examDate ?? '');
   const [dateError, setDateError] = useState<string | null>(null);
   const [savingDate, setSavingDate] = useState(false);
 
-  const daysLeft = state.profile.exam_date
-    ? Math.max(0, Math.round((new Date(state.profile.exam_date).getTime() - Date.now()) / 86400000))
+  const daysLeft = examDate
+    ? Math.max(0, Math.round((new Date(examDate).getTime() - Date.now()) / 86400000))
     : null;
 
   const setExamDate = async (iso: string | null) => {
-    dispatch({ type: 'UPDATE_PROFILE', profile: { exam_date: iso } });
     setDateError(null);
 
     if (isGuest) {
+      await updateUser({ expectedExamDate: iso });
       setDateModal(false);
       return;
     }
@@ -84,6 +83,7 @@ export function ProfileScreen() {
     setSavingDate(true);
     try {
       await updateExpectedExamDate(iso);
+      await updateUser({ expectedExamDate: iso });
       setDateModal(false);
     } catch (err: any) {
       setDateError(err?.message ?? 'Could not save exam date. Please try again.');
@@ -93,7 +93,7 @@ export function ProfileScreen() {
   };
 
   const openDateModal = () => {
-    setDateInput(state.profile.exam_date ?? '');
+    setDateInput(examDate ?? '');
     setDateError(null);
     setDateModal(true);
   };
@@ -157,8 +157,6 @@ export function ProfileScreen() {
     );
   };
 
-  const initial = state.profile.name ? state.profile.name[0].toUpperCase() : '?';
-
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
@@ -171,7 +169,7 @@ export function ProfileScreen() {
           <View style={styles.avatar}>
             <Text style={styles.avatarText}>{initial}</Text>
           </View>
-          <Text style={styles.name}>{state.profile.name || (isGuest ? 'Guest' : 'Your Name')}</Text>
+          <Text style={styles.name}>{userName}</Text>
         </View>
 
         {/* Guest → create-account prompt: progress is local-only until they sign up */}
@@ -199,7 +197,7 @@ export function ProfileScreen() {
           <View style={styles.examCard}>
             <View>
               <Text style={styles.examLabel}>Exam date</Text>
-              <Text style={styles.examDate}>{state.profile.exam_date}</Text>
+              <Text style={styles.examDate}>{examDate}</Text>
               <Text style={[styles.examDays, daysLeft < 7 && { color: colors.error }]}>
                 {daysLeft} days left
               </Text>
@@ -213,7 +211,7 @@ export function ProfileScreen() {
           {[
             { val: `${completion}%`, label: 'Complete' },
             { val: `${accuracy}%`, label: 'Accuracy', color: colors.success },
-            { val: `${state.streak}`, label: 'Day streak' },
+            { val: '0', label: 'Day streak' },
           ].map(s => (
             <View key={s.label} style={styles.statChip}>
               <Text style={[styles.statVal, s.color ? { color: s.color } : {}]}>{s.val}</Text>
@@ -223,10 +221,14 @@ export function ProfileScreen() {
         </View>
 
         {/* Account */}
-        <Text style={styles.sectionHeader}>Account</Text>
-        <View style={styles.settingGroup}>
-          <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={state.profile.exam_date ?? 'Not set'} onPress={openDateModal} />
-        </View>
+        {!isGuest && (
+          <>
+            <Text style={styles.sectionHeader}>Account</Text>
+            <View style={styles.settingGroup}>
+              <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={examDate ?? 'Not set'} onPress={openDateModal} />
+            </View>
+          </>
+        )}
 
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
@@ -287,7 +289,7 @@ export function ProfileScreen() {
               style={{ marginTop: spacing.md }}
             />
             <AppButton label="Save date" onPress={saveTypedDate} loading={savingDate} style={{ marginTop: spacing.md }} />
-            {state.profile.exam_date && (
+            {examDate && (
               <AppButton label="Clear date" variant="secondary" onPress={() => setExamDate(null)} loading={savingDate} style={{ marginTop: spacing.sm }} />
             )}
           </Pressable>

@@ -8,7 +8,6 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getVocabLesson, getCategories } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
@@ -24,7 +23,6 @@ const CAT_COLOR: Record<string, string> = Object.fromEntries(
 const SETS = getVocabSets();
 
 export function VocabSetsScreen({ navigation }: Props) {
-  const { state } = useProgress();
   const { isUnlocked, unlock } = usePaywall();
 
   if (!isUnlocked('vocabulary')) {
@@ -53,15 +51,8 @@ export function VocabSetsScreen({ navigation }: Props) {
         {SETS.map(set => {
           const tint = CAT_COLOR[set.category_id ?? ''] ?? colors.primary;
           const words = getVocabLesson(set.id);
-          const seenCount = words.filter(w => state.vocab[w.id]?.seen).length;
-          const lessonDone = words.length > 0 && seenCount === words.length;
-          const pctLearned = words.length > 0 ? Math.round((seenCount / words.length) * 100) : 0;
-          const best = state.quiz_scores
-            .filter(s => s.quiz_id === set.id)
-            .reduce<number | null>((m, s) => Math.max(m ?? 0, s.score), null);
-          const bestPct = best != null && set.question_count > 0
-            ? Math.round((best / set.question_count) * 100)
-            : null;
+          const seenCount = 0;
+          const pctLearned = 0;
 
           return (
             <TouchableOpacity
@@ -77,9 +68,7 @@ export function VocabSetsScreen({ navigation }: Props) {
                 color={tint}
                 trackColor={colors.surfaceAlt}
                 valueFontSize={12}
-              >
-                {lessonDone ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
-              </ProgressRing>
+              />
 
               <View style={styles.info}>
                 <Text style={styles.setNo}>SET {set.set_no}</Text>
@@ -91,13 +80,6 @@ export function VocabSetsScreen({ navigation }: Props) {
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>{seenCount}/{words.length} learned</Text>
                   </View>
-                  {bestPct != null && (
-                    <View style={[styles.tag, { backgroundColor: colors.successTint }]}>
-                      <Text style={[styles.tagText, { color: colors.success }]}>
-                        Quiz best {bestPct}%
-                      </Text>
-                    </View>
-                  )}
                 </View>
               </View>
 

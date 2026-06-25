@@ -10,7 +10,6 @@ import {
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroups, getClueLesson } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { AuthPrompt } from '../components/AuthPrompt';
@@ -35,7 +34,6 @@ const GROUPS = getClueGroups();
 
 export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
-  const { state } = useProgress();
   const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked, unlock } = usePaywall();
@@ -75,13 +73,7 @@ export function ClueWordsScreen() {
           const Icon = GROUP_ICON[group.id] ?? HelpCircle;
           const tc = toneColors(group.tone);
           const words = getClueLesson(group.id);
-          const seen = words.filter(w => state.vocab[w.id]?.seen).length;
-          const lessonDone = words.length > 0 && seen === words.length;
-          const best = state.quiz_scores
-            .filter(s => s.quiz_id === group.id)
-            .reduce<number | null>((m, s) => Math.max(m ?? 0, s.score), null);
-          const bestPct = best != null && group.question_count > 0
-            ? Math.round((best / group.question_count) * 100) : null;
+          const seen = 0;
 
           return (
             <View key={group.id} style={styles.card}>
@@ -98,12 +90,9 @@ export function ClueWordsScreen() {
               <View style={styles.metaRow}>
                 <Text style={styles.meta}>{group.word_count} words · {group.question_count} quiz Qs</Text>
                 <View style={styles.tags}>
-                  <Text style={[styles.tag, lessonDone && { color: colors.success }]}>
+                  <Text style={styles.tag}>
                     {seen}/{words.length} learned
                   </Text>
-                  {bestPct != null && (
-                    <Text style={[styles.tag, { color: colors.success }]}>· best {bestPct}%</Text>
-                  )}
                 </View>
               </View>
 

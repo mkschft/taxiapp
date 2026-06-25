@@ -16,7 +16,6 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
 import { cluesForScope, focusWords, optionVerdict } from '../utils/clueParser';
 import { getQuestionById } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -27,7 +26,6 @@ type Props = {
 export function PracticeScreen({ navigation, route }: Props) {
   const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice', review = false, answers } = route.params;
   const question = getQuestionById(questionId);
-  const { dispatch } = useProgress();
 
   // Finnish is always shown (it's the exam language); Simple Meaning toggles
   // the English translation in/out as a secondary line beneath it.
@@ -50,9 +48,7 @@ export function PracticeScreen({ navigation, route }: Props) {
     if (answered || !question) return;
     setSelected(key);
     setAnswered(true);
-    const correct = key === question.correct_option;
-    dispatch({ type: 'ANSWER_QUESTION', id: question.id, correct });
-  }, [answered, question, dispatch]);
+  }, [answered, question]);
 
   const handleNext = useCallback(() => {
     if (!question) return;

@@ -31,7 +31,7 @@ Order and group imports as follows:
 1. `React`
 2. `react-native` components/hooks
 3. Third-party libraries (navigation, icons, animation, etc.)
-4. Internal modules (relative paths: `../theme/tokens`, `../store/progressStore`, etc.)
+4. Internal modules (relative paths: `../theme/tokens`, `../store/authStore`, etc.)
 
 Use single quotes. No `.js` extensions on relative imports.
 
@@ -72,10 +72,10 @@ import { AppButton } from '../components/ui/AppButton';
 
 ## State Management
 
-- Global state lives in `src/store/progressStore.tsx` using React Context + `useReducer`.
-- Read state with `useProgress()`; use derived selectors like `useQuestionStats()`, `useWeakQuestionIds()`.
+- Auth state lives in `src/store/authStore.tsx` using React Context + `useState`.
+- Paywall/unlock state lives in `src/store/paywallStore.tsx`.
+- Progress is no longer stored locally; it is persisted on the backend.
 - Local state uses `useState`; effects use `useEffect`.
-- Async storage persistence is handled inside `ProgressProvider` (debounced 300ms).
 
 ## Navigation
 

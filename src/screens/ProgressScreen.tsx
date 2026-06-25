@@ -3,35 +3,28 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RotateCcw, CircleCheck } from 'lucide-react-native';
-import { AppButton } from '../components/ui/AppButton';
+import { CircleCheck } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { CategoryIcon } from '../theme/icons';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { useProgress, useQuestionStats, useWeakQuestionIds, useCategoryProgress } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { GuestGate } from '../components/GuestGate';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
-const CAT_Q_MAP: Record<string, string[]> = {};
-getQuestions().forEach(q => {
-  if (!CAT_Q_MAP[q.category_id]) CAT_Q_MAP[q.category_id] = [];
-  CAT_Q_MAP[q.category_id].push(q.id);
-});
 const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
   const navigation = useNavigation<any>();
-  const { state } = useProgress();
   const { state: auth } = useAuth();
-  const { answered, correct, accuracy, completion } = useQuestionStats(TOTAL_QS);
-  const weakIds = useWeakQuestionIds();
-  const catProgress = useCategoryProgress(CAT_Q_MAP);
-  const vocabLearned = Object.values(state.vocab).filter(v => v.learned).length;
-  const isAuthenticated = !!auth.user;
+  const answered = 0;
+  const accuracy = 0;
+  const completion = 0;
+  const streak = 0;
+  const testsDone = 0;
+  const vocabLearned = 0;
+  const catProgress = CATEGORIES.map(c => ({ catId: c.id, pct: 0 }));
 
   if (auth.guest && !auth.user) {
     return (
@@ -58,7 +51,7 @@ export function ProgressScreen() {
             <Text style={styles.overallSub}>{answered} of {TOTAL_QS} questions practiced</Text>
             <View style={styles.statRow}>
               <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.success }]}>{state.streak}</Text>
+                <Text style={[styles.statVal, { color: colors.success }]}>{streak}</Text>
                 <Text style={styles.statLbl}>Day streak</Text>
               </View>
               <View style={styles.statChip}>
@@ -66,7 +59,7 @@ export function ProgressScreen() {
                 <Text style={styles.statLbl}>Accuracy</Text>
               </View>
               <View style={styles.statChip}>
-                <Text style={styles.statVal}>{state.test_scores.length}</Text>
+                <Text style={styles.statVal}>{testsDone}</Text>
                 <Text style={styles.statLbl}>Tests done</Text>
               </View>
             </View>
@@ -78,13 +71,12 @@ export function ProgressScreen() {
           <Text style={styles.sectionHeader}>BY OFFICIAL CATEGORY</Text>
           {catProgress.map(cp => {
             const cat = CATEGORIES.find(c => c.id === cp.catId);
-            const barColor = cp.pct >= 75 ? colors.success : cp.pct >= 50 ? colors.warning : cp.pct > 0 ? colors.primary : colors.border;
             return (
               <ProgressBar
                 key={cp.catId}
                 label={cat?.name_en ?? cp.catId}
                 value={cp.pct}
-                color={barColor}
+                color={colors.border}
               />
             );
           })}
@@ -103,62 +95,13 @@ export function ProgressScreen() {
         </View>
 
         {/* Weak areas */}
-        {isAuthenticated && weakIds.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
-            {weakIds.slice(0, 5).map(id => {
-              const q = getQuestions().find(q => q.id === id);
-              const cat = CATEGORIES.find(c => c.id === q?.category_id);
-              return (
-                <View key={id} style={styles.weakRow}>
-                  <View style={styles.weakIconChip}>
-                    <CategoryIcon id={q?.category_id ?? ''} size={20} color={colors.error} />
-                  </View>
-                  <View style={styles.weakInfo}>
-                    <Text style={styles.weakTitle} numberOfLines={2}>{q?.question.en ?? q?.question.fi ?? id}</Text>
-                    <Text style={styles.weakSub}>{cat?.name_en}</Text>
-                  </View>
-                  <TouchableOpacity
-                    style={styles.retryBtn}
-                    onPress={() => navigation.navigate('Study', {
-                      screen: 'Practice',
-                      initial: false,
-                      params: { questionId: id, sourceLabel: 'Retry' },
-                    })}
-                  >
-                    <Text style={styles.retryText}>Retry</Text>
-                  </TouchableOpacity>
-                </View>
-              );
-            })}
-            <AppButton
-              label="Retry all weak items"
-              variant="success"
-              onPress={() => {
-                if (weakIds.length > 0) {
-                  navigation.navigate('Study', {
-                    screen: 'Practice',
-                    initial: false,
-                    params: {
-                      questionId: weakIds[0],
-                      queue: weakIds,
-                      queueIndex: 0,
-                      sourceLabel: 'Weak Items',
-                    },
-                  });
-                }
-              }}
-              style={{ marginTop: spacing.md }}
-            />
-          </View>
-        )}
-
-        {weakIds.length === 0 && answered > 0 && (
+        <View style={styles.section}>
+          <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
           <View style={styles.allGood}>
             <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
-            <Text style={styles.allGoodText}>No weak areas! Keep it up.</Text>
+            <Text style={styles.allGoodText}>No weak areas yet. Keep practising to see them here.</Text>
           </View>
-        )}
+        </View>
 
         <View style={{ height: 32 }} />
       </ScrollView>

@@ -12,8 +12,6 @@ import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
-import { gradeExam, type CategoryId } from '../data/examStructure';
-import { useProgress } from '../store/progressStore';
 import type { Question } from '../data/types';
 import type { TestStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
@@ -74,7 +72,6 @@ function confirm(title: string, message: string, confirmLabel: string, onConfirm
 export function ModelTestScreen({ navigation, route }: Props) {
   const { testId, sessionId, problemSetId } = route.params;
   const test = getModelTestById(testId);
-  const { dispatch } = useProgress();
 
   const [loading, setLoading] = useState(!!problemSetId);
   const [error, setError] = useState<string | null>(null);
@@ -153,30 +150,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
     if (!test) return;
 
-    const perCategory: Partial<Record<CategoryId, { correct: number; total: number }>> = {};
-    ids.forEach(id => {
-      const q = questions.find(x => x.id === id);
-      if (!q || !q.category_id) return;
-      const cat = q.category_id as CategoryId;
-      const bucket = (perCategory[cat] ??= { correct: 0, total: 0 });
-      bucket.total += 1;
-      const correct = finalAnswers[id] === q.correctKey;
-      if (correct) bucket.correct += 1;
-      dispatch({ type: 'ANSWER_QUESTION', id, correct });
-    });
-    const graded = gradeExam(perCategory);
-
-    dispatch({
-      type: 'SAVE_TEST_SCORE',
-      score: {
-        test_id: test.id,
-        score: pct,
-        time_taken_seconds: timeTaken,
-        completed_at: Date.now(),
-        wrong_question_ids: wrongIds,
-        passed: graded.passed,
-      },
-    });
+    const passed = pct >= test.pass_mark;
 
     navigation.replace('Result', {
       mode: 'test',
@@ -186,10 +160,9 @@ export function ModelTestScreen({ navigation, route }: Props) {
       wrongIds,
       timeTaken,
       answers: finalAnswers,
-      passed: graded.passed,
-      categories: graded.categories,
+      passed,
     });
-  }, [questions, dispatch, navigation, test, sessionId]);
+  }, [questions, navigation, test, sessionId]);
 
   const submitRef = useRef(submit);
   submitRef.current = submit;

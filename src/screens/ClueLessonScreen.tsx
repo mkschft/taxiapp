@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
@@ -10,7 +10,6 @@ import {
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroup, getClueLesson } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import type { ClueLessonWord, ClueTone } from '../data/types';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -61,14 +60,9 @@ export function ClueLessonScreen({ navigation, route }: Props) {
   const rawIndex = Number(route.params.index) || 1;
   const current = Math.min(Math.max(rawIndex, 1), Math.max(total, 1));
   const word = words[current - 1];
-  const { dispatch } = useProgress();
 
   const isFirst = current <= 1;
   const isLast = current >= total;
-
-  useEffect(() => {
-    if (word) dispatch({ type: 'MARK_VOCAB_SEEN', id: word.id });
-  }, [word?.id]);
 
   const goTo = useCallback((n: number) => {
     navigation.setParams({ index: n });

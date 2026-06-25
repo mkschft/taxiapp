@@ -8,7 +8,6 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSections, getTopicSectionQuestionIds, getCategories } from '../data/loaders';
-import { useProgress } from '../store/progressStore';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
@@ -21,7 +20,6 @@ const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 const SECTIONS = getTopicSections();
 
 export function TopicSectionsScreen({ navigation }: Props) {
-  const { state } = useProgress();
   const { isUnlocked, unlock } = usePaywall();
 
   if (!isUnlocked('topic_practice')) {
@@ -50,12 +48,8 @@ export function TopicSectionsScreen({ navigation }: Props) {
         {SECTIONS.map(section => {
           const cat = CAT[section.category_id];
           const tint = cat?.color ?? colors.primary;
-          const qIds = getTopicSectionQuestionIds(section.id);
-          const answered = qIds.filter(id => state.questions[id]?.answered).length;
-          const correct = qIds.filter(id => state.questions[id]?.correct).length;
-          const pctDone = section.question_count > 0 ? Math.round((answered / section.question_count) * 100) : 0;
-          const pctCorrect = answered > 0 ? Math.round((correct / answered) * 100) : null;
-          const done = section.question_count > 0 && answered >= section.question_count;
+          const answered = 0;
+          const pctDone = 0;
 
           return (
             <TouchableOpacity
@@ -71,9 +65,7 @@ export function TopicSectionsScreen({ navigation }: Props) {
                 color={tint}
                 trackColor={colors.surfaceAlt}
                 valueFontSize={12}
-              >
-                {done ? <Check size={20} color={tint} strokeWidth={2.8} /> : undefined}
-              </ProgressRing>
+              />
 
               <View style={styles.info}>
                 <Text style={styles.cardTitle} numberOfLines={2}>{section.name_en}</Text>
@@ -85,11 +77,6 @@ export function TopicSectionsScreen({ navigation }: Props) {
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>{answered}/{section.question_count} done</Text>
                   </View>
-                  {pctCorrect != null && (
-                    <View style={[styles.tag, { backgroundColor: colors.successTint }]}>
-                      <Text style={[styles.tagText, { color: colors.success }]}>{pctCorrect}% correct</Text>
-                    </View>
-                  )}
                 </View>
               </View>
 

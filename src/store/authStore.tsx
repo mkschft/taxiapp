@@ -6,6 +6,7 @@ export type AuthUser = {
   id: string;
   email: string;
   name: string;
+  expectedExamDate: string | null;
 };
 
 export type AuthState = {
@@ -33,12 +34,14 @@ const AUTH_STORAGE_KEYS = {
 const AuthContext = createContext<{
   state: AuthState;
   setAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;
+  updateUser: (patch: Partial<AuthUser>) => Promise<void>;
   enterGuest: () => Promise<void>;
   markOnboardingSeen: () => Promise<void>;
   clearAuth: () => Promise<void>;
 }>({
   state: { user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false, hydrated: false },
   setAuth: async () => {},
+  updateUser: async () => {},
   enterGuest: async () => {},
   markOnboardingSeen: async () => {},
   clearAuth: async () => {},
@@ -77,6 +80,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false }));
   }, []);
 
+  const updateUser = useCallback(async (patch: Partial<AuthUser>) => {
+    setState(prev => {
+      if (!prev.user) return prev;
+      const user = { ...prev.user, ...patch };
+      saveItem(AUTH_STORAGE_KEYS.USER, user);
+      return { ...prev, user };
+    });
+  }, []);
+
   const enterGuest = useCallback(async () => {
     await saveItem(AUTH_STORAGE_KEYS.GUEST, true);
     setState(prev => ({ ...prev, guest: true }));
@@ -106,7 +118,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [clearAuth]);
 
   return (
-    <AuthContext.Provider value={{ state, setAuth, enterGuest, markOnboardingSeen, clearAuth }}>
+    <AuthContext.Provider value={{ state, setAuth, updateUser, enterGuest, markOnboardingSeen, clearAuth }}>
       {children}
     </AuthContext.Provider>
   );
