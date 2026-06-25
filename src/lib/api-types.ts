@@ -140,6 +140,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/me/expected-exam-date": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Update current user's expected exam date */
+        patch: operations["AuthController_updateExpectedExamDate"];
+        trace?: never;
+    };
     "/problems": {
         parameters: {
             query?: never;
@@ -355,6 +372,13 @@ export interface components {
             token: string;
             /** @example newpassword123 */
             password: string;
+        };
+        UpdateExpectedExamDateDto: {
+            /**
+             * @description Expected exam date in YYYY-MM-DD format. Send null to clear.
+             * @example 2026-07-07
+             */
+            expectedExamDate?: Record<string, never> | null;
         };
         FocusWordDto: {
             /** @example 15 vuotta täyttäneen */
@@ -708,6 +732,35 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Current user returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_updateExpectedExamDate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateExpectedExamDateDto"];
+            };
+        };
+        responses: {
+            /** @description Expected exam date updated */
             200: {
                 headers: {
                     [name: string]: unknown;

@@ -9,6 +9,22 @@ export const AUTH_KEYS = {
 
 export type ApiError = { message: string; statusCode: number };
 
+type UnauthorizedHandler = () => void;
+
+let unauthorizedHandler: UnauthorizedHandler | null = null;
+
+export function setUnauthorizedHandler(handler: UnauthorizedHandler | null): void {
+  unauthorizedHandler = handler;
+}
+
+const AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER = new Set([
+  '/auth/register',
+  '/auth/login',
+  '/auth/refresh',
+  '/auth/forgot-password',
+  '/auth/reset-password',
+]);
+
 async function getAccessToken(): Promise<string | null> {
   return loadItem<string | null>(AUTH_KEYS.ACCESS_TOKEN, null);
 }
@@ -43,6 +59,9 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(url, { ...options, headers });
 
   if (!res.ok) {
+    if (res.status === 401 && !AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER.has(path) && unauthorizedHandler) {
+      unauthorizedHandler();
+    }
     let message = res.statusText;
     try {
       const body = await res.json();

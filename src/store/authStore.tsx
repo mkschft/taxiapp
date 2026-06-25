@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { loadItem, saveItem } from './storage';
+import { setUnauthorizedHandler } from '../lib/api';
 
 export type AuthUser = {
   id: string;
@@ -96,6 +97,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     ]);
     setState(prev => ({ ...prev, user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false }));
   }, []);
+
+  useEffect(() => {
+    setUnauthorizedHandler(() => {
+      clearAuth();
+    });
+    return () => setUnauthorizedHandler(null);
+  }, [clearAuth]);
 
   return (
     <AuthContext.Provider value={{ state, setAuth, enterGuest, markOnboardingSeen, clearAuth }}>

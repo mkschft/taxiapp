@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, KeyboardAvoidingView,
   Platform, ScrollView, TextInput,
@@ -32,6 +32,12 @@ export function LoginScreen({ route }: Props) {
   const [formError, setFormError] = useState<string | null>(null);
 
   const passwordRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    if (auth.hydrated && auth.user) {
+      navigation.replace('App');
+    }
+  }, [auth.hydrated, auth.user, navigation]);
 
   const clearFormError = () => setFormError(null);
 

@@ -15,6 +15,7 @@ import { useProgress, useQuestionStats } from '../store/progressStore';
 import { useAuth } from '../store/authStore';
 import { getQuestions } from '../data/loaders';
 import { clearAll } from '../store/storage';
+import { updateExpectedExamDate } from '../lib/authApi';
 
 const TOTAL_QS = getQuestions().length;
 
@@ -65,15 +66,30 @@ export function ProfileScreen() {
   const [dateModal, setDateModal] = useState(false);
   const [dateInput, setDateInput] = useState(state.profile.exam_date ?? '');
   const [dateError, setDateError] = useState<string | null>(null);
+  const [savingDate, setSavingDate] = useState(false);
 
   const daysLeft = state.profile.exam_date
     ? Math.max(0, Math.round((new Date(state.profile.exam_date).getTime() - Date.now()) / 86400000))
     : null;
 
-  const setExamDate = (iso: string | null) => {
+  const setExamDate = async (iso: string | null) => {
     dispatch({ type: 'UPDATE_PROFILE', profile: { exam_date: iso } });
     setDateError(null);
-    setDateModal(false);
+
+    if (isGuest) {
+      setDateModal(false);
+      return;
+    }
+
+    setSavingDate(true);
+    try {
+      await updateExpectedExamDate(iso);
+      setDateModal(false);
+    } catch (err: any) {
+      setDateError(err?.message ?? 'Could not save exam date. Please try again.');
+    } finally {
+      setSavingDate(false);
+    }
   };
 
   const openDateModal = () => {
@@ -82,12 +98,12 @@ export function ProfileScreen() {
     setDateModal(true);
   };
 
-  const saveTypedDate = () => {
+  const saveTypedDate = async () => {
     if (!isValidExamDate(dateInput.trim())) {
       setDateError('Enter a real date as YYYY-MM-DD (e.g. 2026-09-01).');
       return;
     }
-    setExamDate(dateInput.trim());
+    await setExamDate(dateInput.trim());
   };
 
   const handleManageSub = () => {
@@ -249,8 +265,13 @@ export function ProfileScreen() {
             <Text style={styles.modalSub}>Pick a quick option or type the exact date.</Text>
             <View style={styles.presetRow}>
               {[1, 2, 4, 8].map((w) => (
-                <Pressable key={w} style={styles.presetChip} onPress={() => setExamDate(weeksFromNow(w))}>
-                  <Text style={styles.presetText}>+{w}w</Text>
+                <Pressable
+                  key={w}
+                  style={[styles.presetChip, savingDate && styles.presetChipDisabled]}
+                  onPress={() => setExamDate(weeksFromNow(w))}
+                  disabled={savingDate}
+                >
+                  <Text style={[styles.presetText, savingDate && styles.presetTextDisabled]}>+{w}w</Text>
                 </Pressable>
               ))}
             </View>
@@ -262,11 +283,12 @@ export function ProfileScreen() {
               value={dateInput}
               onChangeText={(t) => { setDateInput(t); setDateError(null); }}
               error={dateError ?? undefined}
+              editable={!savingDate}
               style={{ marginTop: spacing.md }}
             />
-            <AppButton label="Save date" onPress={saveTypedDate} style={{ marginTop: spacing.md }} />
+            <AppButton label="Save date" onPress={saveTypedDate} loading={savingDate} style={{ marginTop: spacing.md }} />
             {state.profile.exam_date && (
-              <AppButton label="Clear date" variant="secondary" onPress={() => setExamDate(null)} style={{ marginTop: spacing.sm }} />
+              <AppButton label="Clear date" variant="secondary" onPress={() => setExamDate(null)} loading={savingDate} style={{ marginTop: spacing.sm }} />
             )}
           </Pressable>
         </Pressable>
@@ -316,7 +338,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md,
   },
+  presetChipDisabled: { opacity: 0.5 },
   presetText: { fontSize: fontSize.sm, fontFamily: font.bold, color: colors.text },
+  presetTextDisabled: { color: colors.textTertiary },
   examCard: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     marginHorizontal: spacing.md, marginBottom: spacing.md,
