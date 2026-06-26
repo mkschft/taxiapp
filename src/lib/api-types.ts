@@ -766,13 +766,6 @@ export interface operations {
                 };
                 content?: never;
             };
-            /** @description Email not verified */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
         };
     };
     AuthController_refresh: {

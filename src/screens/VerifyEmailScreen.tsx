@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  View, Text, StyleSheet, SafeAreaView, KeyboardAvoidingView,
-  Platform, ScrollView, Alert,
+  View, Text, StyleSheet, SafeAreaView, ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Mail } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
-import { AppInput } from '../components/ui/AppInput';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
@@ -24,48 +23,43 @@ export function VerifyEmailScreen({ route }: Props) {
   const { state: auth, setAuth, clearAuth } = useAuth();
   const isLoggedIn = !!auth.user;
 
-  const [token, setToken] = useState(route.params?.token ?? '');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [resendLoading, setResendLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
+  const hasAutoVerified = useRef(false);
+
   useEffect(() => {
-    if (route.params?.token) {
-      setToken(route.params.token);
-    }
-  }, [route.params?.token]);
-
-  const clearFormError = () => setFormError(null);
-
-  const handleVerify = async () => {
-    if (!token.trim()) {
-      setFormError('Please enter the verification token');
+    const token = route.params?.token;
+    if (!token) {
+      setFormError('Invalid or missing verification link.');
+      setLoading(false);
       return;
     }
-    setLoading(true);
-    clearFormError();
-    try {
-      await verifyEmail(token.trim());
-      setSuccessMessage('Email verified successfully');
 
-      if (isLoggedIn && auth.refreshToken) {
-        // Refresh tokens so the new access token has emailVerified=true.
-        const { accessToken, refreshToken } = await refreshTokens(auth.refreshToken);
-        const user = await getMe(accessToken);
-        await setAuth(user, accessToken, refreshToken);
-      }
-    } catch (err: any) {
-      const status = err?.statusCode;
-      if (status === 401) {
-        setFormError('Invalid or expired token. Please request a new verification email.');
-      } else {
-        setFormError(err?.message ?? 'Something went wrong. Please try again.');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+    if (hasAutoVerified.current) return;
+    hasAutoVerified.current = true;
+
+    verifyEmail(token)
+      .then(() => {
+        setSuccessMessage('Email verified successfully');
+        if (isLoggedIn && auth.refreshToken) {
+          return refreshTokens(auth.refreshToken).then(({ accessToken, refreshToken }) =>
+            getMe(accessToken).then((user) => setAuth(user, accessToken, refreshToken))
+          );
+        }
+      })
+      .catch((err: any) => {
+        const status = err?.statusCode;
+        if (status === 401) {
+          setFormError('Invalid or expired token. Please request a new verification email.');
+        } else {
+          setFormError(err?.message ?? 'Something went wrong. Please try again.');
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [route.params?.token, isLoggedIn, auth.refreshToken, setAuth]);
 
   const handleResend = async () => {
     const email = auth.user?.email;
@@ -74,7 +68,7 @@ export function VerifyEmailScreen({ route }: Props) {
       return;
     }
     setResendLoading(true);
-    clearFormError();
+    setFormError(null);
     try {
       const res = await resendVerification(email);
       Alert.alert('Verification email sent', res.message);
@@ -91,94 +85,77 @@ export function VerifyEmailScreen({ route }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <KeyboardAvoidingView
-        style={styles.flex}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 24 : 0}
-      >
-        <ScrollView
-          contentContainerStyle={styles.scroll}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.iconWrap}>
-            <Mail size={40} color={colors.primary} strokeWidth={2} />
+      <View style={styles.container}>
+        <View style={styles.iconWrap}>
+          <Mail size={40} color={colors.primary} strokeWidth={2} />
+        </View>
+
+        <Text style={styles.title}>Verify your email</Text>
+        <Text style={styles.subtitle}>
+          {isLoggedIn
+            ? `We sent a verification link to ${auth.user!.email}.`
+            : 'Verifying your email address...'}
+        </Text>
+
+        {loading && (
+          <View style={styles.statusBox}>
+            <ActivityIndicator color={colors.primary} />
+            <Text style={styles.statusText}>Verifying your email...</Text>
           </View>
+        )}
 
-          <Text style={styles.title}>Verify your email</Text>
-          <Text style={styles.subtitle}>
-            {isLoggedIn
-              ? `We sent a verification link to ${auth.user!.email}. Enter the token below or tap the link in the email.`
-              : 'Enter the verification token from your email to activate your account.'}
-          </Text>
+        {!loading && successMessage && (
+          <View style={styles.successBox}>
+            <Text style={styles.successText}>{successMessage}</Text>
+            {!isLoggedIn && (
+              <AppButton
+                label="Go to log in"
+                onPress={() => navigation.navigate('Login')}
+                variant="secondary"
+                style={{ marginTop: spacing.md }}
+              />
+            )}
+          </View>
+        )}
 
-          {successMessage ? (
-            <View style={styles.successBox}>
-              <Text style={styles.successText}>{successMessage}</Text>
-              {!isLoggedIn && (
+        {!loading && formError && (
+          <View style={styles.statusBox}>
+            <FormErrorBanner message={formError} />
+            {isLoggedIn && (
+              <View style={styles.actions}>
                 <AppButton
-                  label="Go to log in"
-                  onPress={() => navigation.navigate('Login')}
+                  label="Resend verification email"
+                  onPress={handleResend}
+                  loading={resendLoading}
                   variant="secondary"
+                />
+                <AppButton
+                  label="Log out"
+                  onPress={handleLogout}
+                  variant="danger"
                   style={{ marginTop: spacing.md }}
                 />
-              )}
-            </View>
-          ) : (
-            <>
-              <View style={styles.form}>
-                <AppInput
-                  label="Verification token"
-                  placeholder="Paste token here"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  value={token}
-                  onChangeText={(text) => { setToken(text); clearFormError(); }}
-                />
-
-                {formError && (
-                  <View style={{ marginTop: spacing.md }}>
-                    <FormErrorBanner message={formError} />
-                  </View>
-                )}
-
-                <AppButton
-                  label="Verify email"
-                  onPress={handleVerify}
-                  loading={loading}
-                  style={{ marginTop: spacing.lg }}
-                />
               </View>
-
-              {isLoggedIn && (
-                <View style={styles.actions}>
-                  <AppButton
-                    label="Resend verification email"
-                    onPress={handleResend}
-                    loading={resendLoading}
-                    variant="secondary"
-                  />
-                  <AppButton
-                    label="Log out"
-                    onPress={handleLogout}
-                    variant="danger"
-                    style={{ marginTop: spacing.md }}
-                  />
-                </View>
-              )}
-            </>
-          )}
-        </ScrollView>
-      </KeyboardAvoidingView>
+            )}
+            {!isLoggedIn && (
+              <AppButton
+                label="Go to log in"
+                onPress={() => navigation.navigate('Login')}
+                variant="secondary"
+                style={{ marginTop: spacing.md }}
+              />
+            )}
+          </View>
+        )}
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  flex: { flex: 1 },
-  scroll: {
-    flexGrow: 1,
+  container: {
+    flex: 1,
     padding: spacing.lg,
     alignItems: 'center',
   },
@@ -206,9 +183,17 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
     lineHeight: 22,
   },
-  form: {
+  statusBox: {
     width: '100%',
     marginTop: spacing.xl,
+    alignItems: 'center',
+  },
+  statusText: {
+    marginTop: spacing.md,
+    fontSize: fontSize.md,
+    fontFamily: font.regular,
+    color: colors.textSecondary,
+    textAlign: 'center',
   },
   actions: {
     width: '100%',
