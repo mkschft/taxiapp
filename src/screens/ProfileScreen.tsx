@@ -14,6 +14,7 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { useAuth } from '../store/authStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
+import { useProgress } from '../hooks/useProgress';
 
 const HELP_URL = 'https://taxipilot.fi';
 
@@ -54,10 +55,13 @@ function SettingRow({
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
   const { state: auth, clearAuth, updateUser } = useAuth();
-  const completion = 0;
-  const accuracy = 0;
-
   const isGuest = auth.guest && !auth.user;
+  const { data: progress } = useProgress(!isGuest);
+
+  const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
+  const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
+  const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
+  const accuracy = 0;
   const userName = auth.user?.name ?? (isGuest ? 'Guest' : 'Your Name');
   const initial = userName ? userName[0].toUpperCase() : '?';
   const examDate = auth.user?.expectedExamDate ?? null;

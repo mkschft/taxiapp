@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
+  View, Text, ScrollView, StyleSheet, SafeAreaView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { CircleCheck } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useAuth } from '../store/authStore';
 import { GuestGate } from '../components/GuestGate';
+import { useProgress } from '../hooks/useProgress';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -16,15 +16,22 @@ const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
-  const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
-  const answered = 0;
-  const accuracy = 0;
-  const completion = 0;
-  const streak = 0;
-  const testsDone = 0;
-  const vocabLearned = 0;
-  const catProgress = CATEGORIES.map(c => ({ catId: c.id, pct: 0 }));
+  const { data: progress, loading } = useProgress(!auth.guest || !!auth.user);
+
+  const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
+  const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
+  const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
+
+  const vocabCategory = progress?.find(item => item.mainCategory.name === 'Vocabulary');
+  const vocabLearned = vocabCategory?.progress.completed ?? 0;
+  const vocabTotal = vocabCategory?.progress.total ?? TOTAL_VOCAB;
+
+  const officialCategory = progress?.find(item => item.mainCategory.name === 'Official');
+  const catProgress = CATEGORIES.map(cat => {
+    const sub = officialCategory?.subcategories.find(s => s.category.name === cat.name_en);
+    return { catId: cat.id, pct: sub?.percentage ?? 0 };
+  });
 
   if (auth.guest && !auth.user) {
     return (
@@ -48,18 +55,20 @@ export function ProgressScreen() {
           <ProgressRing value={completion} size={100} />
           <View style={styles.overallRight}>
             <Text style={styles.overallLabel}>Overall completion</Text>
-            <Text style={styles.overallSub}>{answered} of {TOTAL_QS} questions practiced</Text>
+            <Text style={styles.overallSub}>
+              {loading ? 'Loading...' : `${totalCompleted} of ${totalQuestions} questions practiced`}
+            </Text>
             <View style={styles.statRow}>
               <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.success }]}>{streak}</Text>
+                <Text style={[styles.statVal, { color: colors.success }]}>0</Text>
                 <Text style={styles.statLbl}>Day streak</Text>
               </View>
               <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.primary }]}>{accuracy}%</Text>
+                <Text style={[styles.statVal, { color: colors.primary }]}>0%</Text>
                 <Text style={styles.statLbl}>Accuracy</Text>
               </View>
               <View style={styles.statChip}>
-                <Text style={styles.statVal}>{testsDone}</Text>
+                <Text style={styles.statVal}>0</Text>
                 <Text style={styles.statLbl}>Tests done</Text>
               </View>
             </View>
@@ -87,11 +96,11 @@ export function ProgressScreen() {
           <Text style={styles.sectionHeader}>VOCABULARY</Text>
           <ProgressBar
             label={`Words learned`}
-            value={Math.round((vocabLearned / TOTAL_VOCAB) * 100)}
+            value={vocabTotal === 0 ? 0 : Math.round((vocabLearned / vocabTotal) * 100)}
             showPct={false}
             color={colors.primary}
           />
-          <Text style={styles.vocabCount}>{vocabLearned} / {TOTAL_VOCAB} words</Text>
+          <Text style={styles.vocabCount}>{vocabLearned} / {vocabTotal} words</Text>
         </View>
 
         {/* Weak areas */}

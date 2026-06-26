@@ -3,14 +3,16 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Lock, type LucideIcon } from 'lucide-react-native';
+import { Lock, UserPlus, type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
+import { AppButton } from '../components/ui/AppButton';
 import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
+import { useProgress } from '../hooks/useProgress';
 import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections, getModelTests } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
@@ -39,11 +41,12 @@ const HUBS: HubItem[] = [
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
-  const answered = 0;
-  const accuracy = 0;
-  const completion = 0;
-
   const isGuest = auth.guest && !auth.user;
+  const { data: progress, loading } = useProgress(!isGuest);
+
+  const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
+  const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
+  const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
   const navigate = (hub: HubItem) => {
     if (isGuestLocked(hub.screen, isGuest)) {
@@ -68,19 +71,38 @@ export function DashboardScreen() {
         </View>
 
         {/* Progress card */}
-        <View style={styles.progressCard}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.progressLabel}>Overall progress</Text>
-            <Text style={styles.progressPct}>{completion}%</Text>
-            <View style={styles.progressTrack}>
-              <View style={[styles.progressFill, { width: `${completion}%` }]} />
+        {isGuest ? (
+          <View style={styles.guestCard}>
+            <View style={styles.guestIcon}>
+              <UserPlus size={20} color={colors.primary} strokeWidth={2.1} />
             </View>
-            <Text style={styles.progressSub}>
-              {answered} of {TOTAL_QUESTIONS} questions practiced · {accuracy}% accuracy
-            </Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.guestTitle}>Track your progress</Text>
+              <Text style={styles.guestBody}>
+                Create a free account to save your progress and see how close you are to exam day.
+              </Text>
+            </View>
+            <AppButton
+              label="Create account"
+              onPress={() => navigation.navigate('Signup')}
+              style={{ marginTop: spacing.sm }}
+            />
           </View>
-          <ProgressRing value={completion} size={80} strokeWidth={7} color="#fff" />
-        </View>
+        ) : (
+          <View style={styles.progressCard}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.progressLabel}>Overall progress</Text>
+              <Text style={styles.progressPct}>{loading ? '—' : `${completion}%`}</Text>
+              <View style={styles.progressTrack}>
+                <View style={[styles.progressFill, { width: `${completion}%` }]} />
+              </View>
+              <Text style={styles.progressSub}>
+                {totalCompleted} of {totalQuestions} questions practiced
+              </Text>
+            </View>
+            <ProgressRing value={completion} size={80} strokeWidth={7} color="#fff" />
+          </View>
+        )}
 
         {/* Hub grid */}
         <View style={styles.grid}>
@@ -164,4 +186,19 @@ const styles = StyleSheet.create({
   },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
+  guestCard: {
+    margin: spacing.md,
+    backgroundColor: colors.primaryTint,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: radius.md,
+    padding: spacing.md,
+    gap: 8,
+  },
+  guestIcon: {
+    width: 34, height: 34, borderRadius: radius.sm,
+    backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center',
+  },
+  guestTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
+  guestBody: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
 });

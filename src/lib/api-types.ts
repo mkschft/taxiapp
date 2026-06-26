@@ -341,6 +341,60 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/categories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all categories */
+        get: operations["CategoriesController_list"];
+        put?: never;
+        /** Create a new category (admin only) */
+        post: operations["CategoriesController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/categories/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a category by id */
+        get: operations["CategoriesController_get"];
+        put?: never;
+        post?: never;
+        /** Delete a category (admin only) */
+        delete: operations["CategoriesController_delete"];
+        options?: never;
+        head?: never;
+        /** Update a category (admin only) */
+        patch: operations["CategoriesController_update"];
+        trace?: never;
+    };
+    "/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get user progress by category */
+        get: operations["ProgressController_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -506,6 +560,11 @@ export interface components {
              * @example []
              */
             problems: string[];
+            /**
+             * @description Category ID
+             * @example category-id
+             */
+            categoryId: string;
         };
         UpdateProblemSetDto: {
             /** @example Basic Math Quiz */
@@ -515,6 +574,11 @@ export interface components {
              * @example []
              */
             problems?: string[];
+            /**
+             * @description Category ID
+             * @example category-id
+             */
+            categoryId?: string;
         };
         CreateSolutionSessionDto: {
             /**
@@ -538,6 +602,53 @@ export interface components {
         UpdateSolutionSessionDto: {
             /** @enum {string} */
             status?: "in_progress" | "completed" | "abandoned";
+        };
+        CreateCategoryDto: {
+            /** @example Passenger Help & Safety */
+            name: string;
+            /** @enum {string} */
+            type: "main" | "sub";
+            /** @example parent-category-id */
+            parentCategoryId?: string;
+            /** @example 1 */
+            sortOrder?: number;
+        };
+        UpdateCategoryDto: {
+            /** @example Passenger Help & Safety */
+            name?: string;
+            /** @enum {string} */
+            type?: "main" | "sub";
+            /** @example parent-category-id */
+            parentCategoryId?: string;
+            /** @example 1 */
+            sortOrder?: number;
+        };
+        CategoryDto: {
+            _creationTime: number;
+            _id: string;
+            createdAt: number;
+            name: string;
+            parentCategoryId?: string;
+            sortOrder?: number;
+            /** @enum {string} */
+            type: "main" | "sub";
+            updatedAt: number;
+        };
+        ProgressStatsDto: {
+            total: number;
+            completed: number;
+            percentage: number;
+        };
+        SubcategoryProgressDto: {
+            category: components["schemas"]["CategoryDto"];
+            total: number;
+            completed: number;
+            percentage: number;
+        };
+        ProgressResponseDto: {
+            mainCategory: components["schemas"]["CategoryDto"];
+            progress: components["schemas"]["ProgressStatsDto"];
+            subcategories: components["schemas"]["SubcategoryProgressDto"][];
         };
     };
     responses: never;
@@ -1388,6 +1499,151 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    CategoriesController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Categories returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CategoriesController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateCategoryDto"];
+            };
+        };
+        responses: {
+            /** @description Category created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CategoriesController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Category returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Category not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CategoriesController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Category deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Category not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CategoriesController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateCategoryDto"];
+            };
+        };
+        responses: {
+            /** @description Category updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Category not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProgressController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Progress returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProgressResponseDto"][];
+                };
             };
         };
     };
