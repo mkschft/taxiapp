@@ -12,7 +12,7 @@ import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
-import { getMe, resendVerification } from '../lib/authApi';
+import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
@@ -40,19 +40,6 @@ export function LoginScreen({ route }: Props) {
 
   const clearFormError = () => setFormError(null);
 
-  const handleResendFromError = async () => {
-    if (!email.trim()) {
-      setFormError('Please enter your email first.');
-      return;
-    }
-    try {
-      await resendVerification(email.trim());
-      setFormError('Verification email resent. Please check your inbox.');
-    } catch (err: any) {
-      setFormError(err?.message ?? 'Failed to resend verification email.');
-    }
-  };
-
   const validate = () => {
     const next: Record<string, string> = {};
     if (!email.trim()) next.email = 'Email is required';
@@ -73,6 +60,11 @@ export function LoginScreen({ route }: Props) {
 
       const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
+
+      if (!user.emailVerified) {
+        navigation.replace('VerifyEmail');
+        return;
+      }
 
       // Returning users skip the first-run carousel. Marking onboarding seen
       // flips entry state and the root navigator swaps in the App tabs; a guest
@@ -97,8 +89,6 @@ export function LoginScreen({ route }: Props) {
       const status = err?.statusCode;
       if (status === 401) {
         setFormError('Incorrect email or password. Please try again.');
-      } else if (status === 403) {
-        setFormError('Please verify your email before logging in.');
       } else {
         setFormError(err?.message ?? 'Something went wrong. Please try again.');
       }
@@ -169,11 +159,7 @@ export function LoginScreen({ route }: Props) {
 
             {formError && (
               <View style={{ marginTop: spacing.md }}>
-                <FormErrorBanner
-                  message={formError}
-                  actionLabel={formError.includes('verify') ? 'Resend email' : undefined}
-                  onAction={formError.includes('verify') ? handleResendFromError : undefined}
-                />
+                <FormErrorBanner message={formError} />
               </View>
             )}
 

@@ -14,7 +14,6 @@ import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
 import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
-import { decodeJwtPayload } from '../lib/jwt';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 type Props = {
@@ -69,26 +68,12 @@ export function SignupScreen({ route }: Props) {
         ...(code ? { referredBy: code } : {}),
       });
 
-      try {
-        const user = await getMe(accessToken);
-        await setAuth(user, accessToken, refreshToken);
-      } catch (meErr: any) {
-        if (meErr?.statusCode === 403) {
-          // User registered but email not verified yet.
-          const payload = decodeJwtPayload(accessToken);
-          const user = {
-            id: payload?.sub ?? '',
-            email: email.trim(),
-            name: name.trim(),
-            expectedExamDate: null,
-            emailVerified: false,
-          };
-          await setAuth(user, accessToken, refreshToken);
-          // RootNavigator will automatically show VerifyEmail.
-          setLoading(false);
-          return;
-        }
-        throw meErr;
+      const user = await getMe(accessToken);
+      await setAuth(user, accessToken, refreshToken);
+
+      if (!user.emailVerified) {
+        navigation.replace('VerifyEmail');
+        return;
       }
 
       const redirect = route.params?.redirect;

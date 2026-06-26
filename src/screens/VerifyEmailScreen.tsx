@@ -23,7 +23,7 @@ export function VerifyEmailScreen({ route }: Props) {
   const { state: auth, setAuth, clearAuth } = useAuth();
   const isLoggedIn = !!auth.user;
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [resendLoading, setResendLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -33,13 +33,14 @@ export function VerifyEmailScreen({ route }: Props) {
   useEffect(() => {
     const token = route.params?.token;
     if (!token) {
-      setFormError('Invalid or missing verification link.');
-      setLoading(false);
+      // No token in URL — user arrived from login/signup.
+      // Show the info state and wait for them to click the email link.
       return;
     }
 
     if (hasAutoVerified.current) return;
     hasAutoVerified.current = true;
+    setLoading(true);
 
     verifyEmail(token)
       .then(() => {
@@ -83,6 +84,8 @@ export function VerifyEmailScreen({ route }: Props) {
     await clearAuth();
   };
 
+  const token = route.params?.token;
+
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
@@ -94,7 +97,7 @@ export function VerifyEmailScreen({ route }: Props) {
         <Text style={styles.subtitle}>
           {isLoggedIn
             ? `We sent a verification link to ${auth.user!.email}.`
-            : 'Verifying your email address...'}
+            : 'Please check your email and click the verification link.'}
         </Text>
 
         {loading && (
@@ -121,6 +124,38 @@ export function VerifyEmailScreen({ route }: Props) {
         {!loading && formError && (
           <View style={styles.statusBox}>
             <FormErrorBanner message={formError} />
+            {isLoggedIn && (
+              <View style={styles.actions}>
+                <AppButton
+                  label="Resend verification email"
+                  onPress={handleResend}
+                  loading={resendLoading}
+                  variant="secondary"
+                />
+                <AppButton
+                  label="Log out"
+                  onPress={handleLogout}
+                  variant="danger"
+                  style={{ marginTop: spacing.md }}
+                />
+              </View>
+            )}
+            {!isLoggedIn && (
+              <AppButton
+                label="Go to log in"
+                onPress={() => navigation.navigate('Login')}
+                variant="secondary"
+                style={{ marginTop: spacing.md }}
+              />
+            )}
+          </View>
+        )}
+
+        {!loading && !successMessage && !formError && !token && (
+          <View style={styles.statusBox}>
+            <Text style={styles.statusText}>
+              Check your inbox and tap the link in the email to verify your account.
+            </Text>
             {isLoggedIn && (
               <View style={styles.actions}>
                 <AppButton
