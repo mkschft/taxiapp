@@ -62,7 +62,7 @@ export function LoginScreen({ route }: Props) {
       await setAuth(user, accessToken, refreshToken);
 
       if (!user.emailVerified) {
-        navigation.replace('VerifyEmail');
+        setTimeout(() => navigation.replace('VerifyEmail'), 0);
         return;
       }
 
@@ -73,17 +73,17 @@ export function LoginScreen({ route }: Props) {
 
       const redirect = route.params?.redirect;
       if (redirect) {
-        navigation.replace('App' as any, {
+        setTimeout(() => navigation.replace('App' as any, {
           screen: redirect.tab,
           params: {
             screen: redirect.screen,
             params: redirect.params,
           },
-        });
+        }), 0);
       } else if (upgradingGuest) {
-        navigation.goBack();
+        setTimeout(() => navigation.goBack(), 0);
       } else {
-        navigation.replace('App');
+        setTimeout(() => navigation.replace('App'), 0);
       }
     } catch (err: any) {
       const status = err?.statusCode;
@@ -92,7 +92,6 @@ export function LoginScreen({ route }: Props) {
       } else {
         setFormError(err?.message ?? 'Something went wrong. Please try again.');
       }
-    } finally {
       setLoading(false);
     }
   };
