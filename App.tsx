@@ -38,6 +38,9 @@ const linking: LinkingOptions<RootStackParamList> = {
       Onboarding: 'app/onboarding',
       Signup: 'app/signup',
       Login: 'app/login',
+      VerifyEmail: 'verify-email',
+      ForgotPassword: 'forgot-password',
+      ResetPassword: 'reset-password',
       App: {
         path: 'app',
         screens: {

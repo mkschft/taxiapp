@@ -19,6 +19,9 @@ export type RootStackParamList = {
   Onboarding: undefined;
   Signup: { redirect?: AuthRedirectInfo } | undefined;
   Login: { redirect?: AuthRedirectInfo } | undefined;
+  VerifyEmail: { token?: string } | undefined;
+  ForgotPassword: undefined;
+  ResetPassword: { token: string };
   App: undefined;
 };
 

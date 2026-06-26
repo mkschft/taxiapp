@@ -7,6 +7,7 @@ export type AuthUser = {
   email: string;
   name: string;
   expectedExamDate: string | null;
+  emailVerified: boolean;
 };
 
 export type AuthState = {
@@ -59,13 +60,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     (async () => {
-      const [user, accessToken, refreshToken, guest, onboardingSeen] = await Promise.all([
+      const [rawUser, accessToken, refreshToken, guest, onboardingSeen] = await Promise.all([
         loadItem<AuthUser | null>(AUTH_STORAGE_KEYS.USER, null),
         loadItem<string | null>(AUTH_STORAGE_KEYS.ACCESS_TOKEN, null),
         loadItem<string | null>(AUTH_STORAGE_KEYS.REFRESH_TOKEN, null),
         loadItem<boolean>(AUTH_STORAGE_KEYS.GUEST, false),
         loadItem<boolean>(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, false),
       ]);
+      // Migrate legacy users that were created before email verification existed.
+      const user = rawUser ? { ...rawUser, emailVerified: rawUser.emailVerified ?? true } : null;
       setState({ user, accessToken, refreshToken, guest: !user && guest, onboardingSeen, hydrated: true });
     })();
   }, []);

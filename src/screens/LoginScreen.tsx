@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, KeyboardAvoidingView,
-  Platform, ScrollView, TextInput,
+  Platform, ScrollView, TextInput, Pressable,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
@@ -12,7 +12,7 @@ import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
-import { getMe } from '../lib/authApi';
+import { getMe, resendVerification } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
@@ -33,12 +33,25 @@ export function LoginScreen({ route }: Props) {
   const passwordRef = useRef<TextInput>(null);
 
   useEffect(() => {
-    if (auth.hydrated && auth.user) {
+    if (auth.hydrated && auth.user?.emailVerified) {
       navigation.replace('App');
     }
   }, [auth.hydrated, auth.user, navigation]);
 
   const clearFormError = () => setFormError(null);
+
+  const handleResendFromError = async () => {
+    if (!email.trim()) {
+      setFormError('Please enter your email first.');
+      return;
+    }
+    try {
+      await resendVerification(email.trim());
+      setFormError('Verification email resent. Please check your inbox.');
+    } catch (err: any) {
+      setFormError(err?.message ?? 'Failed to resend verification email.');
+    }
+  };
 
   const validate = () => {
     const next: Record<string, string> = {};
@@ -84,6 +97,8 @@ export function LoginScreen({ route }: Props) {
       const status = err?.statusCode;
       if (status === 401) {
         setFormError('Incorrect email or password. Please try again.');
+      } else if (status === 403) {
+        setFormError('Please verify your email before logging in.');
       } else {
         setFormError(err?.message ?? 'Something went wrong. Please try again.');
       }
@@ -148,9 +163,17 @@ export function LoginScreen({ route }: Props) {
               style={{ marginTop: spacing.md }}
             />
 
+            <Pressable onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink}>
+              <Text style={styles.forgotText}>Forgot password?</Text>
+            </Pressable>
+
             {formError && (
               <View style={{ marginTop: spacing.md }}>
-                <FormErrorBanner message={formError} />
+                <FormErrorBanner
+                  message={formError}
+                  actionLabel={formError.includes('verify') ? 'Resend email' : undefined}
+                  onAction={formError.includes('verify') ? handleResendFromError : undefined}
+                />
               </View>
             )}
 
@@ -215,6 +238,15 @@ const styles = StyleSheet.create({
   footer: {
     marginTop: spacing.lg,
     alignItems: 'center',
+  },
+  forgotLink: {
+    alignSelf: 'flex-end',
+    marginTop: spacing.sm,
+  },
+  forgotText: {
+    fontSize: fontSize.sm,
+    color: colors.primary,
+    fontFamily: font.semibold,
   },
   footerText: {
     fontSize: fontSize.sm,

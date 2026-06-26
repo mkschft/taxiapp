@@ -89,6 +89,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/verify-email": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Verify email with token */
+        post: operations["AuthController_verifyEmail"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/resend-verification": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Resend verification email */
+        post: operations["AuthController_resendVerification"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/forgot-password": {
         parameters: {
             query?: never;
@@ -417,6 +451,14 @@ export interface components {
             /** @example eyJhbGciOiJIUzI1NiIs... */
             refreshToken: string;
         };
+        VerifyEmailDto: {
+            /** @example abc123... */
+            token: string;
+        };
+        ResendVerificationDto: {
+            /** @example user@example.com */
+            email: string;
+        };
         ForgotPasswordDto: {
             /** @example user@example.com */
             email: string;
@@ -623,33 +665,6 @@ export interface components {
             /** @example 1 */
             sortOrder?: number;
         };
-        CategoryDto: {
-            _creationTime: number;
-            _id: string;
-            createdAt: number;
-            name: string;
-            parentCategoryId?: string;
-            sortOrder?: number;
-            /** @enum {string} */
-            type: "main" | "sub";
-            updatedAt: number;
-        };
-        ProgressStatsDto: {
-            total: number;
-            completed: number;
-            percentage: number;
-        };
-        SubcategoryProgressDto: {
-            category: components["schemas"]["CategoryDto"];
-            total: number;
-            completed: number;
-            percentage: number;
-        };
-        ProgressResponseDto: {
-            mainCategory: components["schemas"]["CategoryDto"];
-            progress: components["schemas"]["ProgressStatsDto"];
-            subcategories: components["schemas"]["SubcategoryProgressDto"][];
-        };
     };
     responses: never;
     parameters: never;
@@ -751,6 +766,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description Email not verified */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
         };
     };
     AuthController_refresh: {
@@ -775,6 +797,57 @@ export interface operations {
             };
             /** @description Invalid refresh token */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_verifyEmail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VerifyEmailDto"];
+            };
+        };
+        responses: {
+            /** @description Email verified successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Invalid or expired token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_resendVerification: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResendVerificationDto"];
+            };
+        };
+        responses: {
+            /** @description Verification email resent if account exists */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -856,6 +929,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description Email not verified */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
         };
     };
     AuthController_updateExpectedExamDate: {
@@ -880,6 +960,13 @@ export interface operations {
             };
             /** @description Unauthorized */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Email not verified */
+            403: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1641,9 +1728,7 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": components["schemas"]["ProgressResponseDto"][];
-                };
+                content?: never;
             };
         };
     };

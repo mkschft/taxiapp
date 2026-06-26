@@ -14,6 +14,7 @@ import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
 import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
+import { decodeJwtPayload } from '../lib/jwt';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 type Props = {
@@ -37,7 +38,7 @@ export function SignupScreen({ route }: Props) {
   const referralRef = useRef<TextInput>(null);
 
   useEffect(() => {
-    if (auth.hydrated && auth.user) {
+    if (auth.hydrated && auth.user?.emailVerified) {
       navigation.replace('App');
     }
   }, [auth.hydrated, auth.user, navigation]);
@@ -57,7 +58,6 @@ export function SignupScreen({ route }: Props) {
 
   const handleSignup = async () => {
     if (!validate()) return;
-    // A guest upgrading from inside the app vs. a brand-new visitor from Welcome.
     const upgradingGuest = !!(auth.user || auth.guest);
     setLoading(true);
     try {
@@ -66,11 +66,30 @@ export function SignupScreen({ route }: Props) {
         email: email.trim(),
         name: name.trim(),
         password,
-        ...(code ? { referredBy: code } : {}), // optional friend's referral code
+        ...(code ? { referredBy: code } : {}),
       });
 
-      const user = await getMe(accessToken);
-      await setAuth(user, accessToken, refreshToken);
+      try {
+        const user = await getMe(accessToken);
+        await setAuth(user, accessToken, refreshToken);
+      } catch (meErr: any) {
+        if (meErr?.statusCode === 403) {
+          // User registered but email not verified yet.
+          const payload = decodeJwtPayload(accessToken);
+          const user = {
+            id: payload?.sub ?? '',
+            email: email.trim(),
+            name: name.trim(),
+            expectedExamDate: null,
+            emailVerified: false,
+          };
+          await setAuth(user, accessToken, refreshToken);
+          // RootNavigator will automatically show VerifyEmail.
+          setLoading(false);
+          return;
+        }
+        throw meErr;
+      }
 
       const redirect = route.params?.redirect;
       if (redirect) {
