@@ -1,16 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
-import { loadItem, saveItem } from './storage';
-
-// ── Mock paywall (pre-Stripe) ────────────────────────────────────────────────
-// Paid features are locked until "unlocked". Real billing (Stripe) isn't wired
-// yet, so the Paywall screen offers a "Skip for now" link that unlocks the
-// feature locally — this lets us user-test the free→paid flow end to end.
-// When Stripe lands, replace `unlock` with a real entitlement check; the screen
-// gates stay the same.
+import React, { createContext, useContext, useCallback, useMemo } from 'react';
+import { useAuth, hasActivePaidPlan } from './authStore';
 
 export type PaidFeature = 'vocabulary' | 'clue_words' | 'topic_practice' | 'model_tests';
-
-const STORAGE_KEY = '@taxi/unlockedFeatures';
 
 type PaywallCtx = {
   hydrated: boolean;
@@ -25,28 +16,25 @@ const PaywallContext = createContext<PaywallCtx>({
 });
 
 export function PaywallProvider({ children }: { children: React.ReactNode }) {
-  const [unlocked, setUnlocked] = useState<Record<string, boolean>>({});
-  const [hydrated, setHydrated] = useState(false);
+  const { state } = useAuth();
 
-  useEffect(() => {
-    (async () => {
-      const stored = await loadItem<Record<string, boolean>>(STORAGE_KEY, {});
-      setUnlocked(stored ?? {});
-      setHydrated(true);
-    })();
+  const isUnlocked = useCallback(
+    (_feature: PaidFeature) => {
+      if (state.guest) return false;
+      if (!state.user) return false;
+      return hasActivePaidPlan(state.user.subscription);
+    },
+    [state.user, state.guest],
+  );
+
+  const unlock = useCallback(async (_feature: PaidFeature) => {
+    // No-op: real unlock happens via Stripe checkout, not local state
   }, []);
 
-  const unlock = useCallback(async (feature: PaidFeature) => {
-    setUnlocked(prev => {
-      const next = { ...prev, [feature]: true };
-      void saveItem(STORAGE_KEY, next);
-      return next;
-    });
-  }, []);
-
-  const isUnlocked = useCallback((feature: PaidFeature) => !!unlocked[feature], [unlocked]);
-
-  const value = useMemo(() => ({ hydrated, isUnlocked, unlock }), [hydrated, isUnlocked, unlock]);
+  const value = useMemo(
+    () => ({ hydrated: state.hydrated, isUnlocked, unlock }),
+    [state.hydrated, isUnlocked, unlock],
+  );
 
   return (
     <PaywallContext.Provider value={value}>

@@ -1,5 +1,5 @@
 import { patch, post } from './api';
-import type { AuthUser } from '../store/authStore';
+import type { AuthUser, SubscriptionInfo } from '../store/authStore';
 
 const BASE_URL = 'https://api.taxipilot.fi';
 
@@ -19,6 +19,7 @@ export async function getMe(accessToken: string): Promise<AuthUser> {
     name: string;
     expectedExamDate?: string | null;
     emailVerified?: boolean;
+    subscription?: SubscriptionInfo;
   };
   return {
     id: data.id,
@@ -26,6 +27,12 @@ export async function getMe(accessToken: string): Promise<AuthUser> {
     name: data.name,
     expectedExamDate: data.expectedExamDate ?? null,
     emailVerified: data.emailVerified ?? false,
+    subscription: data.subscription ?? {
+      planType: 'free_preview',
+      planName: 'Free Preview',
+      isActive: true,
+      expiresAt: null,
+    },
   };
 }
 

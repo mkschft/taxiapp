@@ -41,6 +41,9 @@ const linking: LinkingOptions<RootStackParamList> = {
       VerifyEmail: 'verify-email',
       ForgotPassword: 'forgot-password',
       ResetPassword: 'reset-password',
+      Pricing: 'pricing',
+      PaymentSuccess: 'payment/success',
+      PaymentCancel: 'payment/cancel',
       App: {
         path: 'app',
         screens: {

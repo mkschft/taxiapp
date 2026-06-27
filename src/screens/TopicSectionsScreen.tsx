@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -20,7 +21,8 @@ const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 const SECTIONS = getTopicSections();
 
 export function TopicSectionsScreen({ navigation }: Props) {
-  const { isUnlocked, unlock } = usePaywall();
+  const { isUnlocked } = usePaywall();
+  const rootNav = useNavigation<any>();
 
   if (!isUnlocked('topic_practice')) {
     return (
@@ -29,7 +31,7 @@ export function TopicSectionsScreen({ navigation }: Props) {
         blurb="Drill real exam-style questions one official section at a time, with the real pass thresholds."
         perks={[`${SECTIONS.length} official exam sections`, 'Every answer explained, with the clue lens', 'Practise at the real per-section pass mark']}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSkip={() => unlock('topic_practice')}
+        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'TopicSections' })}
       />
     );
   }

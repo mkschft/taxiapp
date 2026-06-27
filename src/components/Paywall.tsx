@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Pressable, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { Lock, Check } from 'lucide-react-native';
 import { AppButton } from './ui/AppButton';
 import { ScreenHeader } from './ui/ScreenHeader';
@@ -12,20 +12,13 @@ type Props = {
   blurb: string;
   /** A few value bullets. */
   perks: string[];
-  /** Mock "subscribe" — replace with Stripe checkout later. */
+  /** Navigate back out of the locked section. */
   onBack: () => void;
-  /** Unlock locally and proceed into the feature (pre-Stripe testing path). */
-  onSkip: () => void;
+  /** Navigate to the pricing screen to purchase access. */
+  onSubscribe: () => void;
 };
 
-export function Paywall({ title, blurb, perks, onBack, onSkip }: Props) {
-  const handleSubscribe = () => {
-    Alert.alert(
-      'Subscribe',
-      'Payments are coming soon — Stripe checkout is being integrated. For now, tap “Skip for now” to preview this section.',
-    );
-  };
-
+export function Paywall({ title, blurb, perks, onBack, onSubscribe }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={title} onBack={onBack} />
@@ -45,11 +38,7 @@ export function Paywall({ title, blurb, perks, onBack, onSkip }: Props) {
           ))}
         </View>
 
-        <AppButton label="Subscribe to unlock" onPress={handleSubscribe} style={{ marginTop: spacing.lg }} />
-
-        <Pressable onPress={onSkip} hitSlop={10} style={({ pressed }) => [styles.skip, pressed && { opacity: 0.6 }]}>
-          <Text style={styles.skipText}>Skip for now — feature in progress</Text>
-        </Pressable>
+        <AppButton label="Unlock full access" onPress={onSubscribe} style={{ marginTop: spacing.lg }} />
       </View>
     </SafeAreaView>
   );
@@ -71,9 +60,4 @@ const styles = StyleSheet.create({
   perks: { marginTop: spacing.lg, gap: 10, alignSelf: 'stretch', maxWidth: 360, width: '100%' },
   perkRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   perkText: { flex: 1, fontSize: fontSize.sm, color: colors.text, fontFamily: font.medium },
-  skip: { marginTop: spacing.lg, padding: spacing.sm },
-  skipText: {
-    fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.semibold,
-    textDecorationLine: 'underline',
-  },
 });

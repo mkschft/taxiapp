@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -23,7 +24,8 @@ const CAT_COLOR: Record<string, string> = Object.fromEntries(
 const SETS = getVocabSets();
 
 export function VocabSetsScreen({ navigation }: Props) {
-  const { isUnlocked, unlock } = usePaywall();
+  const { isUnlocked } = usePaywall();
+  const rootNav = useNavigation<any>();
 
   if (!isUnlocked('vocabulary')) {
     return (
@@ -32,7 +34,7 @@ export function VocabSetsScreen({ navigation }: Props) {
         blurb="Learn the exact Finnish words the exam uses — with English meanings and inflected forms."
         perks={[`${SETS.length} themed sets · the words that appear on the real exam`, 'Bilingual cards (Finnish + English)', 'Built-in quiz after every set']}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSkip={() => unlock('vocabulary')}
+        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'VocabSets' })}
       />
     );
   }

@@ -103,11 +103,14 @@ export function ProfileScreen() {
     await setExamDate(dateInput.trim());
   };
 
+  const subscription = auth.user?.subscription;
+  const isPaid = subscription && subscription.planType !== 'free_preview' && subscription.isActive;
+  const subDaysLeft = subscription?.expiresAt
+    ? Math.max(0, Math.ceil((subscription.expiresAt - Date.now()) / 86400000))
+    : null;
+
   const handleManageSub = () => {
-    Alert.alert(
-      'Subscription',
-      'Billing isn’t available yet — you have full access during the preview. Paid plans arrive at launch.',
-    );
+    navigation.navigate('Pricing');
   };
 
   const handleHelp = () => {
@@ -206,7 +209,13 @@ export function ProfileScreen() {
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
         <View style={styles.settingGroup}>
-          <SettingRow Icon={CreditCard} tint={colors.primary} title="Manage subscription" subtitle="Plans arrive at launch" onPress={handleManageSub} />
+          <SettingRow
+            Icon={CreditCard}
+            tint={colors.primary}
+            title={isPaid ? subscription!.planName : 'Manage subscription'}
+            subtitle={isPaid ? `${subDaysLeft} days left` : 'Upgrade to unlock full access'}
+            onPress={handleManageSub}
+          />
           <View style={styles.sep} />
           <SettingRow
             Icon={Gift} tint={colors.success} title="Referral — give & get free week"

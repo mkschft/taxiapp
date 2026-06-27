@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getUserProgress, type ProgressResponse } from '../lib/progressApi';
+import { getUserProgress, type ProgressItem } from '../lib/progressApi';
 
 export type ProgressState = {
-  data: ProgressResponse[] | null;
+  data: ProgressItem[] | null;
   loading: boolean;
   error: string | null;
 };

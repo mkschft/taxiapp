@@ -26,7 +26,7 @@ export function ProgressScreen() {
 
   const officialCategory = progress?.find(item => item.mainCategory.name === 'Official');
   const catProgress = CATEGORIES.map(cat => {
-    const sub = officialCategory?.subcategories.find(s => s.category.name === cat.name_en);
+    const sub = officialCategory?.subcategories.find((s: { category: { name: string } }) => s.category.name === cat.name_en);
     return { catId: cat.id, pct: sub?.percentage ?? 0 };
   });
 

@@ -12,11 +12,13 @@ import type * as answers from "../answers.js";
 import type * as auth from "../auth.js";
 import type * as categories from "../categories.js";
 import type * as migrations from "../migrations.js";
+import type * as plans from "../plans.js";
 import type * as problemSets from "../problemSets.js";
 import type * as problemTranslations from "../problemTranslations.js";
 import type * as problems from "../problems.js";
 import type * as progress from "../progress.js";
 import type * as solutionSessions from "../solutionSessions.js";
+import type * as subscriptions from "../subscriptions.js";
 import type * as users from "../users.js";
 
 import type {
@@ -30,11 +32,13 @@ declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   categories: typeof categories;
   migrations: typeof migrations;
+  plans: typeof plans;
   problemSets: typeof problemSets;
   problemTranslations: typeof problemTranslations;
   problems: typeof problems;
   progress: typeof progress;
   solutionSessions: typeof solutionSessions;
+  subscriptions: typeof subscriptions;
   users: typeof users;
 }>;
 

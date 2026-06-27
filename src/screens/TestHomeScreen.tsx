@@ -13,7 +13,7 @@ export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
   const { startQuiz, loading } = useStartQuiz();
-  const { isUnlocked, unlock } = usePaywall();
+  const { isUnlocked } = usePaywall();
 
   if (!isUnlocked('model_tests')) {
     return (
@@ -22,7 +22,7 @@ export function TestHomeScreen() {
         blurb="Full, timed mock exams that mirror the real thing — 50 questions, 45 minutes, the real pass gate."
         perks={[`${tests.length} full timed mock exams`, 'Scored like the real exam (38/50 + per-section gate)', 'Review every question you missed afterwards']}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
-        onSkip={() => unlock('model_tests')}
+        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
       />
     );
   }

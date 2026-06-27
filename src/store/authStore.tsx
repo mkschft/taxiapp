@@ -2,6 +2,13 @@ import React, { createContext, useContext, useState, useEffect, useCallback, use
 import { loadItem, saveItem } from './storage';
 import { setUnauthorizedHandler } from '../lib/api';
 
+export type SubscriptionInfo = {
+  planType: string;
+  planName: string;
+  isActive: boolean;
+  expiresAt: number | null;
+};
+
 export type AuthUser = {
   id: string;
   email: string;
@@ -9,6 +16,7 @@ export type AuthUser = {
   expectedExamDate: string | null;
   emailVerified: boolean;
   role?: 'user' | 'admin';
+  subscription: SubscriptionInfo;
 };
 
 export type AuthState = {
@@ -32,6 +40,13 @@ const AUTH_STORAGE_KEYS = {
   GUEST: '@taxi/guest',
   ONBOARDING_SEEN: '@taxi/onboardingSeen',
 } as const;
+
+export function hasActivePaidPlan(subscription: SubscriptionInfo): boolean {
+  if (subscription.planType === 'free_preview') return false;
+  if (!subscription.isActive) return false;
+  if (subscription.expiresAt && subscription.expiresAt <= Date.now()) return false;
+  return true;
+}
 
 const AuthContext = createContext<{
   state: AuthState;

@@ -36,7 +36,7 @@ export function ClueWordsScreen() {
   const navigation = useNavigation<any>();
   const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
-  const { isUnlocked, unlock } = usePaywall();
+  const { isUnlocked } = usePaywall();
   const isAuthenticated = !!authState.user;
 
   if (!isUnlocked('clue_words')) {
@@ -46,7 +46,7 @@ export function ClueWordsScreen() {
         blurb="The method that lets you answer questions even with weak Finnish — spot the words that signal right vs wrong."
         perks={['Positive & negative clue words, with their exceptions', 'Read a question strategically, not word-by-word', 'Practice quiz for each clue group']}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
-        onSkip={() => unlock('clue_words')}
+        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'ClueWords' })}
       />
     );
   }

@@ -22,6 +22,9 @@ export type RootStackParamList = {
   VerifyEmail: { token?: string } | undefined;
   ForgotPassword: undefined;
   ResetPassword: { token: string };
+  Pricing: { redirectTab?: keyof AppTabParamList; redirectScreen?: string } | undefined;
+  PaymentSuccess: { sessionId: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
+  PaymentCancel: undefined;
   App: undefined;
 };
 
