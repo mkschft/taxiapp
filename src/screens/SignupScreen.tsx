@@ -68,21 +68,21 @@ export function SignupScreen({ route }: Props) {
       await setAuth(user, accessToken, refreshToken);
 
       if (!user.emailVerified) {
-        setTimeout(() => navigation.replace('VerifyEmail'), 0);
+        navigation.replace('VerifyEmail');
         return;
       }
 
       const redirect = route.params?.redirect;
       if (redirect) {
-        setTimeout(() => navigation.replace('App' as any, {
+        navigation.replace('App' as any, {
           screen: redirect.tab,
           params: {
             screen: redirect.screen,
             params: redirect.params,
           },
-        }), 0);
+        });
       } else if (upgradingGuest) {
-        setTimeout(() => navigation.goBack(), 0);
+        navigation.goBack();
       }
     } catch (err: any) {
       const status = err?.statusCode;

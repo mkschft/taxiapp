@@ -58,7 +58,7 @@ export function LoginScreen({ route }: Props) {
 
       if (!user.emailVerified) {
         await setAuth(user, accessToken, refreshToken);
-        setTimeout(() => navigation.replace('VerifyEmail'), 0);
+        navigation.replace('VerifyEmail');
         return;
       }
 
@@ -68,17 +68,17 @@ export function LoginScreen({ route }: Props) {
 
       const redirect = route.params?.redirect;
       if (redirect) {
-        setTimeout(() => navigation.replace('App' as any, {
+        navigation.replace('App' as any, {
           screen: redirect.tab,
           params: {
             screen: redirect.screen,
             params: redirect.params,
           },
-        }), 0);
+        });
       } else if (upgradingGuest) {
-        setTimeout(() => navigation.goBack(), 0);
+        navigation.goBack();
       } else {
-        setTimeout(() => navigation.replace('App'), 0);
+        navigation.replace('App');
       }
     } catch (err: any) {
       const status = err?.statusCode;
