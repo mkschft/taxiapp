@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, KeyboardAvoidingView,
   Platform, ScrollView, TextInput, Pressable,
@@ -22,7 +22,7 @@ type Props = {
 
 export function LoginScreen({ route }: Props) {
   const navigation = useNavigation<NavigationProp>();
-  const { setAuth, markOnboardingSeen, state: auth } = useAuth();
+  const { setAuth, completeReturningUserAuth, state: auth } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,12 +31,6 @@ export function LoginScreen({ route }: Props) {
   const [formError, setFormError] = useState<string | null>(null);
 
   const passwordRef = useRef<TextInput>(null);
-
-  useEffect(() => {
-    if (auth.hydrated && auth.user?.emailVerified) {
-      navigation.replace('App');
-    }
-  }, [auth.hydrated, auth.user, navigation]);
 
   const clearFormError = () => setFormError(null);
 
@@ -59,17 +53,16 @@ export function LoginScreen({ route }: Props) {
       });
 
       const user = await getMe(accessToken);
-      await setAuth(user, accessToken, refreshToken);
 
       if (!user.emailVerified) {
+        await setAuth(user, accessToken, refreshToken);
         setTimeout(() => navigation.replace('VerifyEmail'), 0);
         return;
       }
 
-      // Returning users skip the first-run carousel. Marking onboarding seen
-      // flips entry state and the root navigator swaps in the App tabs; a guest
-      // upgrading is already inside the app, so just pop this screen.
-      await markOnboardingSeen();
+      // Returning users skip the first-run carousel. Batch auth + onboarding
+      // into a single state update to avoid a double full-app re-render.
+      await completeReturningUserAuth(user, accessToken, refreshToken);
 
       const redirect = route.params?.redirect;
       if (redirect) {

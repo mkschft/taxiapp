@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { loadItem, saveItem } from './storage';
 
 // ── Mock paywall (pre-Stripe) ────────────────────────────────────────────────
@@ -46,8 +46,10 @@ export function PaywallProvider({ children }: { children: React.ReactNode }) {
 
   const isUnlocked = useCallback((feature: PaidFeature) => !!unlocked[feature], [unlocked]);
 
+  const value = useMemo(() => ({ hydrated, isUnlocked, unlock }), [hydrated, isUnlocked, unlock]);
+
   return (
-    <PaywallContext.Provider value={{ hydrated, isUnlocked, unlock }}>
+    <PaywallContext.Provider value={value}>
       {children}
     </PaywallContext.Provider>
   );

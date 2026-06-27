@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, KeyboardAvoidingView,
   Platform, ScrollView, TextInput,
@@ -35,12 +35,6 @@ export function SignupScreen({ route }: Props) {
   const nameRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
   const referralRef = useRef<TextInput>(null);
-
-  useEffect(() => {
-    if (auth.hydrated && auth.user?.emailVerified) {
-      navigation.replace('App');
-    }
-  }, [auth.hydrated, auth.user, navigation]);
 
   const clearFormError = () => setFormError(null);
 

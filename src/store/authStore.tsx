@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { loadItem, saveItem } from './storage';
 import { setUnauthorizedHandler } from '../lib/api';
 
@@ -38,6 +38,7 @@ const AuthContext = createContext<{
   updateUser: (patch: Partial<AuthUser>) => Promise<void>;
   enterGuest: () => Promise<void>;
   markOnboardingSeen: () => Promise<void>;
+  completeReturningUserAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;
   clearAuth: () => Promise<void>;
 }>({
   state: { user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false, hydrated: false },
@@ -45,6 +46,7 @@ const AuthContext = createContext<{
   updateUser: async () => {},
   enterGuest: async () => {},
   markOnboardingSeen: async () => {},
+  completeReturningUserAuth: async () => {},
   clearAuth: async () => {},
 });
 
@@ -74,12 +76,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setAuth = useCallback(async (user: AuthUser, accessToken: string, refreshToken: string) => {
-    await Promise.all([
-      saveItem(AUTH_STORAGE_KEYS.USER, user),
-      saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken),
-      saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken),
-      saveItem(AUTH_STORAGE_KEYS.GUEST, false), // a real account supersedes guest
-    ]);
+    void saveItem(AUTH_STORAGE_KEYS.USER, user);
+    void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+    void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
+    void saveItem(AUTH_STORAGE_KEYS.GUEST, false); // a real account supersedes guest
     setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false }));
   }, []);
 
@@ -87,29 +87,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setState(prev => {
       if (!prev.user) return prev;
       const user = { ...prev.user, ...patch };
-      saveItem(AUTH_STORAGE_KEYS.USER, user);
+      void saveItem(AUTH_STORAGE_KEYS.USER, user);
       return { ...prev, user };
     });
   }, []);
 
   const enterGuest = useCallback(async () => {
-    await saveItem(AUTH_STORAGE_KEYS.GUEST, true);
+    void saveItem(AUTH_STORAGE_KEYS.GUEST, true);
     setState(prev => ({ ...prev, guest: true }));
   }, []);
 
   const markOnboardingSeen = useCallback(async () => {
-    await saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, true);
+    void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, true);
     setState(prev => ({ ...prev, onboardingSeen: true }));
   }, []);
 
+  const completeReturningUserAuth = useCallback(async (user: AuthUser, accessToken: string, refreshToken: string) => {
+    void saveItem(AUTH_STORAGE_KEYS.USER, user);
+    void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+    void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
+    void saveItem(AUTH_STORAGE_KEYS.GUEST, false);
+    void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, true);
+    setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false, onboardingSeen: true }));
+  }, []);
+
   const clearAuth = useCallback(async () => {
-    await Promise.all([
-      saveItem(AUTH_STORAGE_KEYS.USER, null),
-      saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, null),
-      saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, null),
-      saveItem(AUTH_STORAGE_KEYS.GUEST, false),
-      saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, false),
-    ]);
+    void saveItem(AUTH_STORAGE_KEYS.USER, null);
+    void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, null);
+    void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, null);
+    void saveItem(AUTH_STORAGE_KEYS.GUEST, false);
+    void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, false);
     setState(prev => ({ ...prev, user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false }));
   }, []);
 
@@ -120,8 +127,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => setUnauthorizedHandler(null);
   }, [clearAuth]);
 
+  const value = useMemo(() => ({
+    state,
+    setAuth,
+    updateUser,
+    enterGuest,
+    markOnboardingSeen,
+    completeReturningUserAuth,
+    clearAuth,
+  }), [state, setAuth, updateUser, enterGuest, markOnboardingSeen, completeReturningUserAuth, clearAuth]);
+
   return (
-    <AuthContext.Provider value={{ state, setAuth, updateUser, enterGuest, markOnboardingSeen, clearAuth }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
