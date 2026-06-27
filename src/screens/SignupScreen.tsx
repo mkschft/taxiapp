@@ -91,6 +91,7 @@ export function SignupScreen({ route }: Props) {
       } else {
         setFormError(err?.message ?? 'Something went wrong. Please try again.');
       }
+    } finally {
       setLoading(false);
     }
   };
