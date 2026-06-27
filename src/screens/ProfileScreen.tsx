@@ -6,7 +6,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import {
   Target, CreditCard, Gift, HelpCircle, Trash2,
-  ChevronRight, CalendarDays, UserPlus, type LucideIcon,
+  ChevronRight, CalendarDays, type LucideIcon,
 } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
@@ -55,14 +55,13 @@ function SettingRow({
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
   const { state: auth, clearAuth, updateUser } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-  const { data: progress } = useProgress(!isGuest);
+  const { data: progress } = useProgress(true);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
   const accuracy = 0;
-  const userName = auth.user?.name ?? (isGuest ? 'Guest' : 'Your Name');
+  const userName = auth.user?.name ?? 'Your Name';
   const initial = userName ? userName[0].toUpperCase() : '?';
   const examDate = auth.user?.expectedExamDate ?? null;
 
@@ -77,12 +76,6 @@ export function ProfileScreen() {
 
   const setExamDate = async (iso: string | null) => {
     setDateError(null);
-
-    if (isGuest) {
-      await updateUser({ expectedExamDate: iso });
-      setDateModal(false);
-      return;
-    }
 
     setSavingDate(true);
     try {
@@ -176,26 +169,6 @@ export function ProfileScreen() {
           <Text style={styles.name}>{userName}</Text>
         </View>
 
-        {/* Guest → create-account prompt: progress is local-only until they sign up */}
-        {isGuest && (
-          <View style={styles.guestCard}>
-            <View style={styles.guestIcon}>
-              <UserPlus size={20} color={colors.primary} strokeWidth={2.1} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.guestTitle}>Save your progress</Text>
-              <Text style={styles.guestBody}>
-                You’re in preview mode. Create a free account to keep your streak and sync across devices.
-              </Text>
-            </View>
-            <AppButton
-              label="Create account"
-              onPress={() => navigation.navigate('Signup')}
-              style={{ marginTop: spacing.sm }}
-            />
-          </View>
-        )}
-
         {/* Exam countdown */}
         {daysLeft !== null && (
           <View style={styles.examCard}>
@@ -225,14 +198,10 @@ export function ProfileScreen() {
         </View>
 
         {/* Account */}
-        {!isGuest && (
-          <>
-            <Text style={styles.sectionHeader}>Account</Text>
-            <View style={styles.settingGroup}>
-              <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={examDate ?? 'Not set'} onPress={openDateModal} />
-            </View>
-          </>
-        )}
+        <Text style={styles.sectionHeader}>Account</Text>
+        <View style={styles.settingGroup}>
+          <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={examDate ?? 'Not set'} onPress={openDateModal} />
+        </View>
 
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
@@ -255,7 +224,7 @@ export function ProfileScreen() {
         </View>
 
         <AppButton
-          label={isGuest ? 'Exit preview' : 'Log out'}
+          label={'Log out'}
           variant="danger"
           onPress={handleLogout}
           style={{ margin: spacing.md }}
@@ -318,17 +287,6 @@ const styles = StyleSheet.create({
   },
   avatarText: { fontSize: 32, fontFamily: font.bold, color: '#fff' },
   name: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
-  guestCard: {
-    marginHorizontal: spacing.md, marginBottom: spacing.md,
-    backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
-    borderRadius: radius.md, padding: spacing.md, gap: 8,
-  },
-  guestIcon: {
-    width: 34, height: 34, borderRadius: radius.sm,
-    backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center',
-  },
-  guestTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
-  guestBody: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
   modalOverlay: {
     flex: 1, backgroundColor: 'rgba(0,0,0,0.4)',
     justifyContent: 'center', padding: spacing.lg,

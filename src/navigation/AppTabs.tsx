@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { Home, BookOpen, Timer, TrendingUp, User } from 'lucide-react-native';
 import { DashboardScreen } from '../screens/DashboardScreen';
-import { ProgressScreen } from '../screens/ProgressScreen';
+import { ProgressStack } from './ProgressStack';
 import { StudyStack } from './StudyStack';
 import { TestStack } from './TestStack';
 import { ProfileStack } from './ProfileStack';
@@ -35,7 +35,7 @@ export function AppTabs() {
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Study" component={StudyStack} />
       <Tab.Screen name="Test" component={TestStack} options={{ title: 'Tests' }} />
-      <Tab.Screen name="Progress" component={ProgressScreen} />
+      <Tab.Screen name="Progress" component={ProgressStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );

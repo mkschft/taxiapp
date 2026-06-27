@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Lock, type LucideIcon } from 'lucide-react-native';
+import { type LucideIcon } from 'lucide-react-native';
 import { Badge } from '../components/ui/Badge';
 import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
-import { useAuth } from '../store/authStore';
-import { isGuestLocked } from '../lib/access';
 import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
@@ -20,9 +18,6 @@ const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen
 
 export function StudyHomeScreen() {
   const navigation = useNavigation<any>();
-  const { state: auth } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
@@ -30,25 +25,21 @@ export function StudyHomeScreen() {
         <Text style={styles.sub}>Build your Finnish foundation</Text>
       </View>
       <ScrollView contentContainerStyle={styles.scroll}>
-        {MENU.map(item => {
-          const locked = isGuestLocked(item.screen, isGuest);
-          return (
-            <TouchableOpacity
-              key={item.title}
-              style={styles.card}
-              onPress={() => locked ? navigation.navigate('Signup') : navigation.navigate(item.screen, item.params)}
-              activeOpacity={0.75}
-            >
-              <IconChip Icon={item.Icon} tint={item.tint} />
-              <View style={styles.info}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                <Text style={styles.cardSub}>{item.sub}</Text>
-              </View>
-              {locked && <Lock size={16} color={colors.textTertiary} strokeWidth={2.2} style={{ marginRight: 4 }} />}
-              <Badge type={locked ? 'locked' : item.paid ? 'paid' : 'free'} />
-            </TouchableOpacity>
-          );
-        })}
+        {MENU.map(item => (
+          <TouchableOpacity
+            key={item.title}
+            style={styles.card}
+            onPress={() => navigation.navigate(item.screen, item.params)}
+            activeOpacity={0.75}
+          >
+            <IconChip Icon={item.Icon} tint={item.tint} />
+            <View style={styles.info}>
+              <Text style={styles.cardTitle}>{item.title}</Text>
+              <Text style={styles.cardSub}>{item.sub}</Text>
+            </View>
+            <Badge type={item.paid ? 'paid' : 'free'} />
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

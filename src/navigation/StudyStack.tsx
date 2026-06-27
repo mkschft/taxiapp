@@ -22,20 +22,20 @@ const Stack = createNativeStackNavigator<StudyStackParamList>();
 export function StudyStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="StudyHome" component={StudyHomeScreen} />
-      <Stack.Screen name="VocabSets" component={VocabSetsScreen} />
-      <Stack.Screen name="VocabSetDetail" component={VocabSetDetailScreen} />
-      <Stack.Screen name="VocabLesson" component={VocabLessonScreen} />
+      <Stack.Screen name="StudyHome" component={RequireAuth(StudyHomeScreen, 'Study')} />
+      <Stack.Screen name="VocabSets" component={RequireAuth(VocabSetsScreen, 'Study')} />
+      <Stack.Screen name="VocabSetDetail" component={RequireAuth(VocabSetDetailScreen, 'Study')} />
+      <Stack.Screen name="VocabLesson" component={RequireAuth(VocabLessonScreen, 'Study')} />
       <Stack.Screen name="VocabQuiz" component={RequireAuth(VocabQuizScreen, 'Study')} />
-      <Stack.Screen name="ClueWords" component={ClueWordsScreen} />
-      <Stack.Screen name="ClueLesson" component={ClueLessonScreen} />
+      <Stack.Screen name="ClueWords" component={RequireAuth(ClueWordsScreen, 'Study')} />
+      <Stack.Screen name="ClueLesson" component={RequireAuth(ClueLessonScreen, 'Study')} />
       <Stack.Screen name="ClueQuiz" component={RequireAuth(ClueQuizScreen, 'Study')} />
-      <Stack.Screen name="TopicSections" component={TopicSectionsScreen} />
-      <Stack.Screen name="TopicLessons" component={TopicLessonsScreen} />
+      <Stack.Screen name="TopicSections" component={RequireAuth(TopicSectionsScreen, 'Study')} />
+      <Stack.Screen name="TopicLessons" component={RequireAuth(TopicLessonsScreen, 'Study')} />
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Study')} />
       <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Study')} />
-      <Stack.Screen name="Guide" component={GuideScreen} />
-      <Stack.Screen name="HowTo" component={HowToScreen} />
+      <Stack.Screen name="Guide" component={RequireAuth(GuideScreen, 'Study')} />
+      <Stack.Screen name="HowTo" component={RequireAuth(HowToScreen, 'Study')} />
     </Stack.Navigator>
   );
 }

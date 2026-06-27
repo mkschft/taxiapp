@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator<TestStackParamList>();
 export function TestStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="TestHome" component={TestHomeScreen} />
+      <Stack.Screen name="TestHome" component={RequireAuth(TestHomeScreen, 'Test')} />
       <Stack.Screen name="ModelTest" component={RequireAuth(ModelTestScreen, 'Test')} />
       {/* Reviewing wrong answers after a test stays inside the Tests tab. */}
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Test') as any} />

@@ -6,8 +6,6 @@ import { CircleCheck } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { useAuth } from '../store/authStore';
-import { GuestGate } from '../components/GuestGate';
 import { useProgress } from '../hooks/useProgress';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
@@ -16,8 +14,7 @@ const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
-  const { state: auth } = useAuth();
-  const { data: progress, loading } = useProgress(!auth.guest || !!auth.user);
+  const { data: progress, loading } = useProgress(true);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -32,16 +29,6 @@ export function ProgressScreen() {
     const sub = officialCategory?.subcategories.find(s => s.category.name === cat.name_en);
     return { catId: cat.id, pct: sub?.percentage ?? 0 };
   });
-
-  if (auth.guest && !auth.user) {
-    return (
-      <GuestGate
-        title="Progress"
-        blurb="Track your accuracy, streaks and weak areas across every section. Create a free account to start saving your progress."
-        perks={['Per-category mastery and accuracy', 'Spaced-repetition review of weak items', 'Streaks and exam-readiness over time']}
-      />
-    );
-  }
 
   return (
     <SafeAreaView style={styles.safe}>
