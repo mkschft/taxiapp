@@ -12,8 +12,8 @@ import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
-import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
+import type { AuthUser } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 type Props = {
@@ -47,12 +47,14 @@ export function LoginScreen({ route }: Props) {
     const upgradingGuest = !!(auth.user || auth.guest);
     setLoading(true);
     try {
-      const { accessToken, refreshToken } = await post<{ accessToken: string; refreshToken: string }>('/auth/login', {
+      const { accessToken, refreshToken, user } = await post<{
+        accessToken: string;
+        refreshToken: string;
+        user: AuthUser;
+      }>('/auth/login', {
         email: email.trim(),
         password,
       });
-
-      const user = await getMe(accessToken);
 
       if (!user.emailVerified) {
         await setAuth(user, accessToken, refreshToken);

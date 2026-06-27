@@ -12,8 +12,8 @@ import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { post } from '../lib/api';
-import { getMe } from '../lib/authApi';
 import { useAuth } from '../store/authStore';
+import type { AuthUser } from '../store/authStore';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Signup'>;
 type Props = {
@@ -55,14 +55,16 @@ export function SignupScreen({ route }: Props) {
     setLoading(true);
     try {
       const code = referralCode.trim().toUpperCase();
-      const { accessToken, refreshToken } = await post<{ accessToken: string; refreshToken: string }>('/auth/register', {
+      const { accessToken, refreshToken, user } = await post<{
+        accessToken: string;
+        refreshToken: string;
+        user: AuthUser;
+      }>('/auth/register', {
         email: email.trim(),
         name: name.trim(),
         password,
         ...(code ? { referredBy: code } : {}),
       });
-
-      const user = await getMe(accessToken);
       await setAuth(user, accessToken, refreshToken);
 
       if (!user.emailVerified) {

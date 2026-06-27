@@ -8,6 +8,7 @@ export type AuthUser = {
   name: string;
   expectedExamDate: string | null;
   emailVerified: boolean;
+  role?: 'user' | 'admin';
 };
 
 export type AuthState = {
