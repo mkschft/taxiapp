@@ -20,10 +20,11 @@ export function WelcomeScreen({ navigation }: Props) {
   const { enterGuest } = useAuth();
 
   // Local-first preview. Guests can browse "How to use the app" + the Exam
-  // Guide; everything else is locked until they create an account. Entering
-  // guest mode flips auth state — the root navigator reacts and shows the
-  // onboarding carousel next (no explicit navigation here).
-  const continueAsGuest = () => { void enterGuest(); };
+  // Guide; everything else is locked until they create an account.
+  const continueAsGuest = async () => {
+    await enterGuest();
+    navigation.replace('Onboarding');
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
