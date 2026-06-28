@@ -46,7 +46,6 @@ const SECONDARY: HubItem[] = [
 // Low-priority destinations rendered as lightweight text links.
 const LINKS: { title: string; screen: string; stack?: string }[] = [
   { title: 'How to use the app', screen: 'HowTo', stack: 'Study' },
-  { title: 'Progress & weak areas', screen: 'Progress' },
 ];
 
 export function DashboardScreen() {
