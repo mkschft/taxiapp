@@ -12,6 +12,7 @@ import { getVocabSets, getVocabLesson, getCategories } from '../data/loaders';
 import { usePaywall } from '../store/paywallStore';
 import { useAuth } from '../store/authStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
+import { formatRelativeDay } from '../lib/time';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
@@ -62,6 +63,7 @@ export function VocabSetsScreen({ navigation }: Props) {
           // ships, the map is empty → neutral ring with no fake count.
           const problemSetId = BACKEND_PROBLEM_SET_IDS[`vocab/sets/set-${set.set_no}`];
           const lp = problemSetId ? setProgress[problemSetId] : undefined;
+          const lastPracticed = formatRelativeDay(lp?.lastPracticedAt);
 
           return (
             <TouchableOpacity
@@ -90,7 +92,11 @@ export function VocabSetsScreen({ navigation }: Props) {
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>
-                      {lp ? `${lp.completed}/${lp.total} learned` : `${words.length} words`}
+                      {lastPracticed
+                        ? `Last practiced ${lastPracticed}`
+                        : lp
+                          ? `${lp.completed}/${lp.total} learned`
+                          : `${words.length} words`}
                     </Text>
                   </View>
                 </View>

@@ -9,7 +9,7 @@ export type ProgressItem = {
     sortOrder?: number;
     parentCategoryId?: string;
   };
-  progress: { total: number; completed: number; percentage: number };
+  progress: { total: number; completed: number; percentage: number; lastPracticedAt?: number | null };
   subcategories: {
     category: {
       _id: string;
@@ -22,6 +22,8 @@ export type ProgressItem = {
     total: number;
     completed: number;
     percentage: number;
+    // BE-1 (optional): epoch ms of the user's most recent answer in this category.
+    lastPracticedAt?: number | null;
   }[];
 };
 

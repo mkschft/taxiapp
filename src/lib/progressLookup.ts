@@ -5,7 +5,12 @@ import type { ProgressItem } from './progressApi';
 // subcategories (+ `Vocabulary`), so section-level and overall figures are real;
 // per-lesson / per-set figures come from useProblemSetProgress (BE-3) instead.
 
-export type CategoryProgress = { completed: number; total: number; percentage: number };
+export type CategoryProgress = {
+  completed: number;
+  total: number;
+  percentage: number;
+  lastPracticedAt?: number | null;
+};
 
 const empty: CategoryProgress = { completed: 0, total: 0, percentage: 0 };
 
@@ -25,5 +30,10 @@ export function getSectionProgress(
   const official = progress?.find(item => item.mainCategory.name === 'Official');
   const sub = official?.subcategories.find(s => s.category.name === categoryNameEn);
   if (!sub) return null;
-  return { completed: sub.completed, total: sub.total, percentage: sub.percentage };
+  return {
+    completed: sub.completed,
+    total: sub.total,
+    percentage: sub.percentage,
+    lastPracticedAt: sub.lastPracticedAt ?? null,
+  };
 }
