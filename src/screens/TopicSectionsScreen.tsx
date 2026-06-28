@@ -10,6 +10,9 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSections, getTopicSectionQuestionIds, getCategories } from '../data/loaders';
 import { usePaywall } from '../store/paywallStore';
+import { useAuth } from '../store/authStore';
+import { useProgress } from '../hooks/useProgress';
+import { getSectionProgress } from '../lib/progressLookup';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -22,6 +25,8 @@ const SECTIONS = getTopicSections();
 
 export function TopicSectionsScreen({ navigation }: Props) {
   const { isUnlocked } = usePaywall();
+  const { state: auth } = useAuth();
+  const { data: progress } = useProgress(!!auth.user);
   const rootNav = useNavigation<any>();
 
   if (!isUnlocked('topic_practice')) {
@@ -50,8 +55,10 @@ export function TopicSectionsScreen({ navigation }: Props) {
         {SECTIONS.map(section => {
           const cat = CAT[section.category_id];
           const tint = cat?.color ?? colors.primary;
-          const answered = 0;
-          const pctDone = 0;
+          const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
+          const answered = sectionProgress?.completed ?? 0;
+          const total = sectionProgress?.total ?? section.question_count;
+          const pctDone = sectionProgress?.percentage ?? 0;
 
           return (
             <TouchableOpacity
@@ -77,7 +84,7 @@ export function TopicSectionsScreen({ navigation }: Props) {
                 </Text>
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                    <Text style={styles.tagText}>{answered}/{section.question_count} done</Text>
+                    <Text style={styles.tagText}>{answered}/{total} done</Text>
                   </View>
                 </View>
               </View>

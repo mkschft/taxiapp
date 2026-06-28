@@ -11,6 +11,8 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
+import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
+import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
@@ -29,6 +31,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
   const { isUnlocked } = usePaywall();
+  const { data: setProgress } = useProblemSetProgress(isAuthenticated);
   const rootNav = useNavigation<any>();
 
   // The dashboard hero tiles deep-link straight here, bypassing TopicSections,
@@ -87,8 +90,11 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
       ) : (
       <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
         {lessons.map(lesson => {
-          const answered = 0;
-          const pctDone = 0;
+          // Per-lesson progress is keyed by the lesson's backend problem set. Until
+          // BE-3 ships, the map is empty → render a neutral ring with no fake count.
+          const problemSetId =
+            BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
+          const lp = problemSetId ? setProgress[problemSetId] : undefined;
 
           return (
             <TouchableOpacity
@@ -98,19 +104,23 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
               onPress={() => startLesson(lesson.question_ids, lesson.name)}
             >
               <ProgressRing
-                value={pctDone}
+                value={lp?.percentage ?? 0}
                 size={48}
                 strokeWidth={5}
                 color={tint}
                 trackColor={colors.surfaceAlt}
                 valueFontSize={12}
-              />
+              >
+                {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+              </ProgressRing>
 
               <View style={styles.info}>
                 <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                    <Text style={styles.tagText}>{answered}/{lesson.question_count} done</Text>
+                    <Text style={styles.tagText}>
+                      {lp ? `${lp.completed}/${lp.total} done` : `${lesson.question_count} questions`}
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -151,5 +161,6 @@ const styles = StyleSheet.create({
   metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
   tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
+  ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
   authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });

@@ -10,6 +10,9 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getVocabLesson, getCategories } from '../data/loaders';
 import { usePaywall } from '../store/paywallStore';
+import { useAuth } from '../store/authStore';
+import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
+import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -25,6 +28,8 @@ const SETS = getVocabSets();
 
 export function VocabSetsScreen({ navigation }: Props) {
   const { isUnlocked } = usePaywall();
+  const { state: auth } = useAuth();
+  const { data: setProgress } = useProblemSetProgress(!!auth.user);
   const rootNav = useNavigation<any>();
 
   if (!isUnlocked('vocabulary')) {
@@ -53,8 +58,10 @@ export function VocabSetsScreen({ navigation }: Props) {
         {SETS.map(set => {
           const tint = CAT_COLOR[set.category_id ?? ''] ?? colors.primary;
           const words = getVocabLesson(set.id);
-          const seenCount = 0;
-          const pctLearned = 0;
+          // Per-set progress is keyed by the set's backend problem set. Until BE-3
+          // ships, the map is empty → neutral ring with no fake count.
+          const problemSetId = BACKEND_PROBLEM_SET_IDS[`vocab/sets/set-${set.set_no}`];
+          const lp = problemSetId ? setProgress[problemSetId] : undefined;
 
           return (
             <TouchableOpacity
@@ -64,13 +71,15 @@ export function VocabSetsScreen({ navigation }: Props) {
               onPress={() => navigation.navigate('VocabSetDetail', { setId: set.id })}
             >
               <ProgressRing
-                value={pctLearned}
+                value={lp?.percentage ?? 0}
                 size={48}
                 strokeWidth={5}
                 color={tint}
                 trackColor={colors.surfaceAlt}
                 valueFontSize={12}
-              />
+              >
+                {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+              </ProgressRing>
 
               <View style={styles.info}>
                 <Text style={styles.setNo}>SET {set.set_no}</Text>
@@ -80,7 +89,9 @@ export function VocabSetsScreen({ navigation }: Props) {
                 </Text>
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                    <Text style={styles.tagText}>{seenCount}/{words.length} learned</Text>
+                    <Text style={styles.tagText}>
+                      {lp ? `${lp.completed}/${lp.total} learned` : `${words.length} words`}
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -118,4 +129,5 @@ const styles = StyleSheet.create({
   metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
   tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
+  ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
 });
