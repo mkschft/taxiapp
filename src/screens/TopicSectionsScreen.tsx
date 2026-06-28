@@ -13,6 +13,7 @@ import { usePaywall } from '../store/paywallStore';
 import { useAuth } from '../store/authStore';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
+import { formatRelativeDay } from '../lib/time';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -59,6 +60,7 @@ export function TopicSectionsScreen({ navigation }: Props) {
           const answered = sectionProgress?.completed ?? 0;
           const total = sectionProgress?.total ?? section.question_count;
           const pctDone = sectionProgress?.percentage ?? 0;
+          const lastPracticed = formatRelativeDay(sectionProgress?.lastPracticedAt);
 
           return (
             <TouchableOpacity
@@ -84,7 +86,9 @@ export function TopicSectionsScreen({ navigation }: Props) {
                 </Text>
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                    <Text style={styles.tagText}>{answered}/{total} done</Text>
+                    <Text style={styles.tagText}>
+                      {lastPracticed ? `Last practiced ${lastPracticed}` : `${answered}/${total} done`}
+                    </Text>
                   </View>
                 </View>
               </View>

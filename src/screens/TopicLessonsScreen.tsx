@@ -12,6 +12,7 @@ import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders
 import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
+import { formatRelativeDay } from '../lib/time';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
 import { Paywall } from '../components/Paywall';
@@ -95,6 +96,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
           const problemSetId =
             BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
           const lp = problemSetId ? setProgress[problemSetId] : undefined;
+          const lastPracticed = formatRelativeDay(lp?.lastPracticedAt);
 
           return (
             <TouchableOpacity
@@ -119,7 +121,11 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>
-                      {lp ? `${lp.completed}/${lp.total} done` : `${lesson.question_count} questions`}
+                      {lastPracticed
+                        ? `Last practiced ${lastPracticed}`
+                        : lp
+                          ? `${lp.completed}/${lp.total} done`
+                          : `${lesson.question_count} questions`}
                     </Text>
                   </View>
                 </View>
