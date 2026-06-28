@@ -6,7 +6,7 @@
   "step1": "Start with the Exam Guide so you know the format and the 4 categories.",
   "step2": "Build words in Vocabulary, then learn the Clue Words logic.",
   "step3": "Drill Topic Practice section by section — read every explanation.",
-  "step4": "Rehearse with timed Model Tests and review every miss.",
+  "step4": "Rehearse with timed Mock Exams and review every miss.",
   "step5": "Use Progress & Weak Areas to re-drill what you keep getting wrong.",
   "sectionLabel": "What each section does",
   "modules": {
@@ -31,7 +31,7 @@
       "how": "Work through a section lesson by lesson. Every answer shows the translation and explanation, so each question teaches you something."
     },
     "modelTests": {
-      "title": "Model Tests",
+      "title": "Mock Exams",
       "what": "Full, timed mock exams that rehearse the real exam’s format and time pressure.",
       "how": "Use these near exam day to rehearse under pressure. Sit one in a quiet 45 minutes, then review every question you missed."
     },

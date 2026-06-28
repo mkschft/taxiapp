@@ -27,7 +27,7 @@ Surfacing both forces the user to reason about two systems at once, and the 4 ca
 
 ### Copy
 - Section header: **"Start practising"** (`dashboard.studyTitle`; fi `Aloita harjoittelu`).
-- Kept module labels as-is for now ("Model Tests" not renamed to "Mock Exam" — revisit separately if desired).
+- **English "Model Tests" → "Mock Exams"** (decided 2026-06-29, executed on `feat/ui-polish`). English-only branding rename across `nav`, `testHome`, `dashboard`, `howto`, `modelTest`, `auth`, `pricing`, `studyHome`. Verb-form `Start test` → `Start exam`; `modelTest` dialogs → `Quit/Submit exam?`. Finnish unchanged (already `koe`/`mallikoe`). Incidental in-sentence "test" words left as-is.
 
 ## Implementation
 
@@ -35,7 +35,6 @@ Surfacing both forces the user to reason about two systems at once, and the 4 ca
 - `src/i18n/locales/{en,fi}/dashboard.json` — added `studyTitle`. All other keys reused; EN/FI parity kept.
 
 ## Out of scope
-- Renaming Model Tests → Mock Exam (copy decision, deferred).
 - Per-module progress on Vocab/Clue (needs backend tracking — BE-3).
 - Reworking the Study/Tests tabs (the dashboard intentionally overlaps as the home hub with progress context + cross-stack launch).
 

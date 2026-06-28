@@ -1,12 +1,12 @@
 {
-  "title": "Model Tests",
+  "title": "Mock Exams",
   "subtitle": "Timed, exam-realistic. Pass mark: 76% (38 of 50)",
   "minutes": "{{n}} min",
   "pass": "Pass {{n}}%",
-  "startTest": "Start test",
+  "startTest": "Start exam",
   "paywallBlurb": "Full, timed mock exams that mirror the real thing — 50 questions, 45 minutes, the real pass gate.",
   "perkExams": "{{n}} full timed mock exams",
   "perkScored": "Scored like the real exam (38/50 + per-section gate)",
   "perkReview": "Review every question you missed afterwards",
-  "guestBlurb": "Sign up or log in to take timed model tests and track your scores."
+  "guestBlurb": "Sign up or log in to take timed mock exams and track your scores."
 }
