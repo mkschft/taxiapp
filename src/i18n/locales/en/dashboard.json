@@ -11,6 +11,7 @@
   "pickTopic": "Pick a topic below to begin.",
   "overallProgress": "Overall progress",
   "practiced": "{{completed}} of {{total}} questions practiced",
+  "studyTitle": "Start practising",
   "topicPractice": {
     "title": "Topic Practice",
     "sub": "The core exam curriculum — practise by category"
@@ -21,8 +22,8 @@
     "sub": "Rules · categories"
   },
   "modelTests": {
-    "title": "Model Tests",
-    "sub": "{{n}} full timed tests"
+    "title": "Mock Exams",
+    "sub": "{{n}} full timed exams"
   },
   "vocabulary": {
     "title": "Vocabulary",
