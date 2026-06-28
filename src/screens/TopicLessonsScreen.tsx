@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
+  View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity, Pressable,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -12,6 +13,7 @@ import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders
 import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
+import { useStartQuiz } from '../hooks/useStartQuiz';
 import { formatRelativeDay } from '../lib/time';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
@@ -33,6 +35,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const isAuthenticated = !!authState.user;
   const { isUnlocked } = usePaywall();
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
+  const { startQuiz } = useStartQuiz();
+  const { t } = useTranslation();
   const rootNav = useNavigation<any>();
 
   // The dashboard hero tiles deep-link straight here, bypassing TopicSections,
@@ -131,6 +135,20 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
                 </View>
               </View>
 
+              <Pressable
+                style={({ pressed }) => [styles.quizBtn, pressed && { opacity: 0.8 }]}
+                hitSlop={6}
+                onPress={() =>
+                  startQuiz(
+                    `topic/${section.category_id}/lessons/${lesson.id}`,
+                    'TopicQuiz',
+                    { lessonId: lesson.id, sectionId: section.id },
+                  )
+                }
+              >
+                <Text style={styles.quizBtnText}>{t('quiz.title')}</Text>
+              </Pressable>
+
               <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
             </TouchableOpacity>
           );
@@ -168,5 +186,10 @@ const styles = StyleSheet.create({
   tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
   tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
   ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
+  quizBtn: {
+    backgroundColor: colors.primaryTint, borderWidth: 1, borderColor: colors.primary,
+    borderRadius: radius.sm, paddingHorizontal: 12, paddingVertical: 6,
+  },
+  quizBtnText: { fontSize: 12, fontFamily: font.semibold, color: colors.primary },
   authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });
