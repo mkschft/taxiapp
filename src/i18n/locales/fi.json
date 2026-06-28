@@ -38,7 +38,13 @@
     "preferences": "Asetukset",
     "appLanguage": "Sovelluksen kieli",
     "appLanguageHint": "Muuttaa vain painikkeet ja otsikot — ei kysymyksiä tai vastauksia",
+    "savedQuestions": "Tallennetut kysymykset",
     "english": "English",
     "finnish": "Suomi"
+  },
+  "saved": {
+    "title": "Tallennetut kysymykset",
+    "empty": "Ei tallennettuja kysymyksiä vielä. Paina ”Merkitse” kokeen aikana tallentaaksesi sen myöhemmäksi.",
+    "correctAnswer": "Oikea vastaus"
   }
 }
