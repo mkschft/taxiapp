@@ -104,3 +104,32 @@ The `backend/convex/` directory contains a separate NestJS + Convex backend with
 - The app targets **iOS, Android, and web** via Expo.
 - Web-specific styles (e.g. `boxShadow`) should be cast `as any` and guarded with `Platform.OS === 'web'`.
 - Use `react-native-web` compatible APIs only.
+
+## Workflow & Contribution Conventions
+
+Follow these on **every** task — they are how we ship.
+
+### Plan first, then execute
+- Non-trivial work starts as a spec in `docs/plans/*.md` with **locked decisions** (numbered, e.g. D-A…). Execute against the plan; if a decision must change mid-flight, update the plan doc.
+
+### Batch into an integration branch (don't merge straight to `master`)
+- Feature branches → PR into the current **integration branch** (e.g. `feat/next-changes`), not `master`.
+- `master` only receives the whole batch once it's coherent and approved, via a single `integration → master` PR.
+- Keep `master` releasable at all times.
+- **Guard against drift:** if `master` gets hotfixes while an integration branch is open, merge `master` *into* the integration branch periodically so the eventual promotion stays a clean diff.
+- Prefer **squash-merge** for the final `integration → master` PR (one clean commit); link the sub-PRs in its body so review can be incremental.
+
+### Always keep a minimal CI gate on PRs
+- Every PR must pass, at minimum: `npx tsc --noEmit` (clean) and the **i18n parity check** (en/fi key sets must match per namespace). Add/maintain a lightweight GitHub Action for this; never rely on manual checking alone.
+- Run `npx tsc --noEmit` locally before opening or updating any PR.
+
+### i18n rules (see also Data & Assets)
+- UI **chrome** only goes through i18n (`src/i18n`, split per-namespace under `locales/{en,fi}/`). **Never** translate content (questions, answers, vocab, clue words, lesson names, descriptions).
+- Keep `en.json` and `fi.json` namespaces at **full key parity** — a missing key must fail CI, not silently fall back to English.
+- For bilingual data fields (`*_fi`/`*_en` titles), use `localizedPair()` from `src/i18n/content.ts` (app-language primary, other as subtitle).
+
+### PR descriptions
+- The `integration → master` PR is the consolidated record: write it as a **decision log + checklist**, listing open questions, deferred items (e.g. backend BE-x, content gaps), and links to sub-PRs — not just a changelog.
+
+### Verify before promoting
+- Before suggesting the `integration → master` PR: `tsc` clean, run the app (Expo web is fine) and walk the changed screens (incl. Suomi for any i18n work).
