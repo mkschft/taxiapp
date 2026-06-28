@@ -10,7 +10,7 @@ import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { AppButton } from '../components/ui/AppButton';
-import { useAuth } from '../store/authStore';
+import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
 import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections, getModelTests } from '../data/loaders';
@@ -42,6 +42,7 @@ export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
+  const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const { data: progress, loading } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
@@ -129,7 +130,7 @@ export function DashboardScreen() {
                     <IconChip Icon={hub.Icon} tint={hub.tint} />
                     <Text style={styles.hubTitle}>{hub.title}</Text>
                     <Text style={styles.hubSub}>{hub.sub}</Text>
-                    <Badge type={locked ? 'locked' : hub.paid ? 'paid' : 'free'} />
+                    {(locked || !isPaid) && <Badge type={locked ? 'locked' : hub.paid ? 'paid' : 'free'} />}
                   </>
                 )}
               </TouchableOpacity>

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { type LucideIcon } from 'lucide-react-native';
+import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { Badge } from '../components/ui/Badge';
 import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -18,6 +19,8 @@ const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen
 
 export function StudyHomeScreen() {
   const navigation = useNavigation<any>();
+  const { state: auth } = useAuth();
+  const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
@@ -37,7 +40,7 @@ export function StudyHomeScreen() {
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardSub}>{item.sub}</Text>
             </View>
-            <Badge type={item.paid ? 'paid' : 'free'} />
+            {!isPaid && <Badge type={item.paid ? 'paid' : 'free'} />}
           </TouchableOpacity>
         ))}
       </ScrollView>
