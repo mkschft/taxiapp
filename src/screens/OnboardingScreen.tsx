@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, ScrollView,
   NativeSyntheticEvent, NativeScrollEvent, LayoutChangeEvent,
@@ -37,27 +37,47 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export function OnboardingScreen(_props: Props) {
+export function OnboardingScreen({ navigation }: Props) {
   const { markOnboardingSeen } = useAuth();
   const scrollRef = useRef<ScrollView>(null);
+  const indexRef = useRef(0);
+  const isProgrammaticScroll = useRef(false);
   const [width, setWidth] = useState(0);
   const [index, setIndex] = useState(0);
 
+  useEffect(() => { indexRef.current = index; }, [index]);
+
   const isLast = index === SLIDES.length - 1;
 
-  // Marking onboarding seen flips auth state; the root navigator swaps this
-  // screen out for the App tabs automatically.
-  const finish = () => { void markOnboardingSeen(); };
+  const finish = () => {
+    void markOnboardingSeen();
+    navigation.replace('App');
+  };
 
   const next = () => {
     if (isLast) { void finish(); return; }
-    scrollRef.current?.scrollTo({ x: width * (index + 1), animated: true });
+    const nextIndex = index + 1;
+    isProgrammaticScroll.current = true;
+    setIndex(nextIndex);
+    indexRef.current = nextIndex;
+    scrollRef.current?.scrollTo({ x: width * nextIndex, animated: true });
   };
 
-  const onScrollEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (width <= 0) return;
     const i = Math.round(e.nativeEvent.contentOffset.x / width);
-    if (i !== index) setIndex(i);
+
+    if (isProgrammaticScroll.current) {
+      if (i === indexRef.current) {
+        isProgrammaticScroll.current = false;
+      }
+      return;
+    }
+
+    if (i >= 0 && i < SLIDES.length && i !== indexRef.current) {
+      setIndex(i);
+      indexRef.current = i;
+    }
   };
 
   const onLayout = (e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width);
@@ -75,7 +95,8 @@ export function OnboardingScreen(_props: Props) {
             horizontal
             pagingEnabled
             showsHorizontalScrollIndicator={false}
-            onMomentumScrollEnd={onScrollEnd}
+            scrollEventThrottle={16}
+            onScroll={onScroll}
           >
             {SLIDES.map(s => (
               <View key={s.title} style={[styles.slide, { width }]}>
