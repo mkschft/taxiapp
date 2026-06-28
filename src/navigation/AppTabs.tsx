@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Home, BookOpen, Timer, TrendingUp, User } from 'lucide-react-native';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { ProgressStack } from './ProgressStack';
@@ -17,6 +18,7 @@ const ICONS: Record<string, any> = {
 };
 
 export function AppTabs() {
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -32,11 +34,11 @@ export function AppTabs() {
         tabBarItemStyle: { paddingTop: 6 },
       })}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
-      <Tab.Screen name="Study" component={StudyStack} />
-      <Tab.Screen name="Test" component={TestStack} options={{ title: 'Tests' }} />
-      <Tab.Screen name="Progress" component={ProgressStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} options={{ tabBarLabel: t('nav.dashboard') }} />
+      <Tab.Screen name="Study" component={StudyStack} options={{ tabBarLabel: t('nav.study') }} />
+      <Tab.Screen name="Test" component={TestStack} options={{ tabBarLabel: t('nav.tests') }} />
+      <Tab.Screen name="Progress" component={ProgressStack} options={{ tabBarLabel: t('nav.progress') }} />
+      <Tab.Screen name="Profile" component={ProfileStack} options={{ tabBarLabel: t('nav.profile') }} />
     </Tab.Navigator>
   );
 }

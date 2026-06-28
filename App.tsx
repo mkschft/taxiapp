@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { loadSavedLanguage } from './src/i18n';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import type { RootStackParamList } from './src/navigation/types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -97,6 +98,10 @@ export default function App() {
   });
 
   if (loaded) applyGlobalFont();
+
+  useEffect(() => {
+    void loadSavedLanguage();
+  }, []);
 
   const inner = !loaded ? (
     <View style={styles.loading}>

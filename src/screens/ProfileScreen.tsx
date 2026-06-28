@@ -6,11 +6,13 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import {
   Target, CreditCard, Gift, HelpCircle, Trash2,
-  ChevronRight, CalendarDays, type LucideIcon,
+  ChevronRight, CalendarDays, Languages, type LucideIcon,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { setAppLanguage, type AppLanguage } from '../i18n';
 import { useAuth } from '../store/authStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
@@ -58,6 +60,8 @@ export function ProfileScreen() {
   const { state: auth, clearAuth, updateUser } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress } = useProgress(!isGuest);
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language === 'fi' ? 'fi' : 'en') as AppLanguage;
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -206,6 +210,19 @@ export function ProfileScreen() {
           <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={examDate ?? 'Not set'} onPress={openDateModal} />
         </View>
 
+        {/* Preferences */}
+        <Text style={styles.sectionHeader}>{t('profile.preferences')}</Text>
+        <View style={styles.settingGroup}>
+          <SettingRow
+            Icon={Languages}
+            tint={colors.primary}
+            title={t('profile.appLanguage')}
+            subtitle={t('profile.appLanguageHint')}
+            onPress={() => setAppLanguage(lang === 'fi' ? 'en' : 'fi')}
+            right={<Text style={styles.langValue}>{lang === 'fi' ? 'Suomi' : 'English'}</Text>}
+          />
+        </View>
+
         {/* Subscription */}
         <Text style={styles.sectionHeader}>Subscription</Text>
         <View style={styles.settingGroup}>
@@ -352,5 +369,6 @@ const styles = StyleSheet.create({
   settingInfo: { flex: 1 },
   settingTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   settingSub: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
+  langValue: { fontSize: 13, fontFamily: font.semibold, color: colors.primary },
   sep: { height: 1, backgroundColor: colors.border, marginLeft: 62 },
 });
