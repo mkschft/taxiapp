@@ -56,7 +56,6 @@ const linking: LinkingOptions<RootStackParamList> = {
               Guide: 'guide',
               HowTo: 'how-to-use',
               VocabSets: 'vocab/sets',
-              VocabSetDetail: 'vocab/sets/:setId',
               VocabLesson: 'vocab/sets/:setId/lesson/:index',
               VocabQuiz: 'vocab/sets/:setId/quiz',
               ClueWords: 'clue-words',

@@ -1,0 +1,18 @@
+{
+  "headerTitle": "{{label}} — Tulos",
+  "passed": "Läpäisit!",
+  "keepStudying": "Jatka opiskelua",
+  "passMark": "Läpäisyraja: 38/50 + vähimmäismäärä kullakin osa-alueella · Tuloksesi: {{score}}/{{total}}",
+  "gateNote": "Sait yhteensä {{score}}/{{total}}, mutta jäit vaaditun vähimmäismäärän alle osa-alueella {{cats}}. Oikeassa kokeessa yhdenkin osa-alueen alittaminen kaataa koko kokeen — vaikka oikeita vastauksia olisi yhteensä riittävästi.",
+  "categoryBreakdown": "Osa-aluejaottelu",
+  "categoryMin": "väh. {{min}}",
+  "outOf": "/ {{total}}",
+  "correct": "Oikein",
+  "wrong": "Väärin",
+  "time": "Aika",
+  "score": "Tulos",
+  "reviewWrong": "Kertaa väärät vastaukset ({{count}})",
+  "tapToReview": "Napauta kertaaksesi →",
+  "retryWrong": "Yritä vääriä uudelleen →",
+  "backToDashboard": "Takaisin koontinäyttöön"
+}

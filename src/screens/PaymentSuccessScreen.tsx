@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { CheckCircle } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
@@ -17,6 +18,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'PaymentSucc
 export function PaymentSuccessScreen() {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteProp<RootStackParamList, 'PaymentSuccess'>>();
+  const { t } = useTranslation();
   const { state: auth, setAuth } = useAuth();
   const [verifying, setVerifying] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +34,7 @@ export function PaymentSuccessScreen() {
         await verifySession(sessionId);
         if (!auth.accessToken) {
           if (!cancelled) {
-            setError('Session verified, but you need to log in again to refresh your subscription.');
+            setError(t('pricing.errorLoginAgain'));
             setVerifying(false);
           }
           return;
@@ -44,7 +46,7 @@ export function PaymentSuccessScreen() {
         }
       } catch (err: any) {
         if (!cancelled) {
-          setError(err?.message ?? 'Could not verify payment. Please contact support.');
+          setError(err?.message ?? t('pricing.errorVerifyFailed'));
           setVerifying(false);
         }
       }
@@ -61,7 +63,7 @@ export function PaymentSuccessScreen() {
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
           <ActivityIndicator size="large" color={colors.primary} />
-          <Text style={styles.status}>Verifying your payment…</Text>
+          <Text style={styles.status}>{t('pricing.verifying')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -71,9 +73,9 @@ export function PaymentSuccessScreen() {
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <Text style={styles.h}>Something went wrong</Text>
+          <Text style={styles.h}>{t('pricing.errorTitle')}</Text>
           <Text style={styles.sub}>{error}</Text>
-          <AppButton label="Go to Dashboard" onPress={() => navigation.replace('App')} style={{ marginTop: spacing.lg }} />
+          <AppButton label={t('pricing.goToDashboard')} onPress={() => navigation.replace('App')} style={{ marginTop: spacing.lg }} />
         </View>
       </SafeAreaView>
     );
@@ -83,9 +85,9 @@ export function PaymentSuccessScreen() {
     <SafeAreaView style={styles.safe}>
       <View style={styles.center}>
         <CheckCircle size={64} color={colors.success} strokeWidth={1.8} />
-        <Text style={styles.h}>Payment successful!</Text>
-        <Text style={styles.sub}>Your subscription is now active. Enjoy full access to all features.</Text>
-        <AppButton label="Continue" onPress={handleContinue} style={{ marginTop: spacing.lg }} />
+        <Text style={styles.h}>{t('pricing.successTitle')}</Text>
+        <Text style={styles.sub}>{t('pricing.successBody')}</Text>
+        <AppButton label={t('common.continue')} onPress={handleContinue} style={{ marginTop: spacing.lg }} />
       </View>
     </SafeAreaView>
   );

@@ -1,0 +1,16 @@
+{
+  "title": "Topic Practice",
+  "practice": "Practice",
+  "sectionsCaption": "Practise by exam section — pick a topic, then a focused set of questions.",
+  "sectionNotFound": "Section not found.",
+  "sectionMeta": "{{questions}} questions · {{lessons}} lessons",
+  "lastPracticed": "Last practiced {{when}}",
+  "doneCount": "{{completed}}/{{total}} done",
+  "authTitle": "Sign in to practise this section",
+  "authBody": "Create a free account to drill real exam-style questions one lesson at a time.",
+  "paywallBlurb": "Drill real exam-style questions one official section at a time, with the real pass thresholds.",
+  "paywallPerkAll": "All 4 official exam sections",
+  "paywallPerkSections": "{{n}} official exam sections",
+  "paywallPerkExplained": "Every answer explained, with the clue lens",
+  "paywallPerkPassMark": "Practise at the real per-section pass mark"
+}

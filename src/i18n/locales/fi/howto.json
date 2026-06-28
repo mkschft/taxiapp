@@ -1,0 +1,45 @@
+{
+  "title": "Käyttöohje",
+  "heroTitle": "Läpäise Suomen taksikoe — vaikka suomen taito olisi rajallinen",
+  "heroSub": "Viisi työkalua, jotka toimivat yhdessä: opi sanat, tunnista vihjeet, harjoittele oikeita kysymyksiä ja harjoittele koeolosuhteissa.",
+  "planLabel": "Suositeltu opiskelusuunnitelma",
+  "step1": "Aloita Koeoppaasta, jotta tunnet koeformaatin ja 4 kategoriaa.",
+  "step2": "Rakenna sanavarastoa Sanastossa, opi sitten Vihjesanojen logiikka.",
+  "step3": "Harjoittele Aiheharjoittelua osio osiolta — lue jokainen selitys.",
+  "step4": "Harjoittele ajastetuilla Mallikokeilla ja käy läpi jokainen virhe.",
+  "step5": "Käytä Edistyminen ja heikot alueet -osiota kerrataksesi sen, mitä vastaat jatkuvasti väärin.",
+  "sectionLabel": "Mitä kukin osio tekee",
+  "modules": {
+    "examGuide": {
+      "title": "Koeopas",
+      "what": "Oikean Traficom-kokeen faktat — formaatti, 4 virallista kategoriaa ja koepäivän säännöt.",
+      "how": "Lue tämä ensin, jotta tiedät tarkalleen mihin harjoittelet: 50 kysymystä, 45 minuuttia, 38/50 läpäisyyn (vähimmäismäärä jokaisessa kategoriassa), suomeksi tai ruotsiksi."
+    },
+    "vocabulary": {
+      "title": "Sanasto",
+      "what": "Keskeiset suomalaiset taksisanat ryhmitelty pieniin sarjoihin, joissa kussakin on muistikorttioppitunti ja tietovisa.",
+      "how": "Opi sarja, tee sitten sen tietovisa. Rakenna perussanasto ennen kuin tartut kokonaisiin kysymyksiin."
+    },
+    "clueWords": {
+      "title": "Vihjesanat",
+      "what": "Vastauslogiikan sanat, jotka hiljaa viittaavat oikeaan tai väärään vaihtoehtoon.",
+      "how": "Myönteiset vihjeet (varmistaa, huolehtia) viittaavat oikeaan; ehdottomuudet (aina, vain, koskaan) ovat yleensä ansoja. Harjoita silmääsi täällä, jotta voit vastata vaikka et ymmärtäisi jokaista sanaa."
+    },
+    "topicPractice": {
+      "title": "Aiheharjoittelu",
+      "what": "Oikeita koetyylisiä kysymyksiä lajiteltuna oppitunneiksi 4 virallisen kategorian alle.",
+      "how": "Käy läpi osio oppitunti kerrallaan. Jokainen vastaus näyttää käännöksen ja selityksen, joten jokainen kysymys opettaa sinulle jotain."
+    },
+    "modelTests": {
+      "title": "Mallikokeet",
+      "what": "Täydet, ajastetut harjoituskokeet, jotka jäljittelevät oikean kokeen formaattia ja aikapainetta.",
+      "how": "Käytä näitä lähellä koepäivää harjoitellaksesi paineen alla. Suorita yksi rauhassa 45 minuutissa ja käy sitten läpi jokainen kysymys, jonka et osannut."
+    },
+    "progress": {
+      "title": "Edistyminen ja heikot alueet",
+      "what": "Seuraa mitä olet harjoitellut ja nostaa esiin kysymykset, joihin vastaat jatkuvasti väärin.",
+      "how": "Tarkista se säännöllisesti ja kertaa heikkoja alueitasi, kunnes ne lakkaavat ilmestymästä."
+    }
+  },
+  "footer": "Vinkki: koe on suomeksi (tai ruotsiksi), ilman käännöstä muille kielille. Vihjesanamenetelmä on valttisi — useimmat virheet johtuvat väärinlukemisesta, ei tietämättömyydestä."
+}

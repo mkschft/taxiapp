@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { XCircle } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
@@ -13,14 +14,15 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'PaymentCanc
 
 export function PaymentCancelScreen() {
   const navigation = useNavigation<NavigationProp>();
+  const { t } = useTranslation();
 
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.center}>
         <XCircle size={64} color={colors.error} strokeWidth={1.8} />
-        <Text style={styles.h}>Payment cancelled</Text>
-        <Text style={styles.sub}>No worries — you can try again whenever you are ready.</Text>
-        <AppButton label="Back to plans" onPress={() => navigation.replace('Pricing')} style={{ marginTop: spacing.lg }} />
+        <Text style={styles.h}>{t('pricing.cancelTitle')}</Text>
+        <Text style={styles.sub}>{t('pricing.cancelBody')}</Text>
+        <AppButton label={t('pricing.backToPlans')} onPress={() => navigation.replace('Pricing')} style={{ marginTop: spacing.lg }} />
       </View>
     </SafeAreaView>
   );

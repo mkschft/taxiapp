@@ -1,0 +1,12 @@
+{
+  "unlock": "Unlock {{title}}",
+  "unlockFullAccess": "Unlock full access",
+  "createAccountHeading": "Create a free account",
+  "createFreeAccount": "Create free account",
+  "haveAccount": "I already have an account",
+  "signUp": "Sign up",
+  "logIn": "Log in",
+  "badgeFree": "FREE",
+  "badgePaid": "PAID",
+  "badgeLocked": "LOCKED"
+}

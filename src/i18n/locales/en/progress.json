@@ -1,0 +1,16 @@
+{
+  "title": "My Progress",
+  "overallCompletion": "Overall completion",
+  "overallSub": "{{c}} of {{t}} questions practiced",
+  "byOfficialCategory": "BY OFFICIAL CATEGORY",
+  "mastered": "{{c}}/{{t}} mastered",
+  "vocabulary": "VOCABULARY",
+  "wordsLearned": "Words learned",
+  "vocabCount": "{{c}} / {{t}} words",
+  "weakAreasHeader": "WEAK AREAS — NEEDS ATTENTION",
+  "weakAreasSource": "Weak areas",
+  "noWeakAreas": "No weak areas yet. Keep practising to see them here.",
+  "toRevisit": "{{n}} to revisit",
+  "practise": "Practise",
+  "guestBlurb": "Sign up or log in to track your progress, see weak areas, and build your streak."
+}

@@ -4,6 +4,7 @@ import {
   Pressable,
 } from 'react-native';
 import { MotiView } from 'moti';
+import { useTranslation } from 'react-i18next';
 import { BookOpen, Search, ChevronLeft } from 'lucide-react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
@@ -24,6 +25,7 @@ type Props = {
 };
 
 export function PracticeScreen({ navigation, route }: Props) {
+  const { t } = useTranslation();
   const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice', review = false, answers } = route.params;
   const question = getQuestionById(questionId);
 
@@ -82,12 +84,12 @@ export function PracticeScreen({ navigation, route }: Props) {
   if (!question) {
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title="Practice" onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('practice.title')} onBack={() => navigation.goBack()} />
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <Text style={{ fontSize: 16, color: colors.textSecondary, textAlign: 'center' }}>
-            No question found. Please go back and try again.
+            {t('practice.noQuestion')}
           </Text>
-          <AppButton label="Go back" onPress={() => navigation.goBack()} style={{ marginTop: 16, width: 160 }} />
+          <AppButton label={t('practice.goBack')} onPress={() => navigation.goBack()} style={{ marginTop: 16, width: 160 }} />
         </View>
       </SafeAreaView>
     );
@@ -137,7 +139,7 @@ export function PracticeScreen({ navigation, route }: Props) {
 
         {/* Question card */}
         <View style={styles.questionCard}>
-          <Text style={styles.qLabel}>KYSYMYS</Text>
+          <Text style={styles.qLabel}>{t('quiz.question')}</Text>
           <ClueHighlight
             text={qText}
             clueAnnotations={focus}
@@ -159,7 +161,7 @@ export function PracticeScreen({ navigation, route }: Props) {
           >
             <BookOpen size={16} color={showMeaning ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
             <Text style={[styles.actionLabel, showMeaning && styles.actionLabelActive]} numberOfLines={1}>
-              Simple Meaning
+              {t('practice.simpleMeaning')}
             </Text>
             <View style={[styles.langPill, showMeaning && styles.langPillActive]}>
               <Text style={styles.langPillText}>EN</Text>
@@ -172,7 +174,7 @@ export function PracticeScreen({ navigation, route }: Props) {
           >
             <Search size={16} color={showLens ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
             <Text style={[styles.actionLabel, showLens && styles.actionLabelHint]} numberOfLines={1}>
-              Clue Lens
+              {t('practice.clueLens')}
             </Text>
           </Pressable>
         </View>
@@ -185,7 +187,7 @@ export function PracticeScreen({ navigation, route }: Props) {
             transition={{ type: 'timing', duration: 220 }}
             style={styles.focusPanel}
           >
-            <Text style={styles.focusTitle}>FOCUS WORDS IN THIS QUESTION</Text>
+            <Text style={styles.focusTitle}>{t('practice.focusWords')}</Text>
             <View style={styles.focusGrid}>
               {focus.map((ann, idx) => (
                 <View key={idx} style={styles.focusChip}>
@@ -235,7 +237,7 @@ export function PracticeScreen({ navigation, route }: Props) {
         <View style={styles.nextBtn}>
           {answered && (
             <AppButton
-              label={queue.length > 0 && queueIndex < queue.length - 1 ? 'Next question →' : 'Finish'}
+              label={queue.length > 0 && queueIndex < queue.length - 1 ? t('practice.nextQuestion') : t('common.finish')}
               onPress={handleNext}
             />
           )}

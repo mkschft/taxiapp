@@ -7,6 +7,7 @@ import { RouteProp } from '@react-navigation/native';
 import {
   ChevronLeft, ChevronRight, ClipboardCheck, Check, AlertTriangle, Info,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroup, getClueLesson } from '../data/loaders';
@@ -25,6 +26,7 @@ function effectStyle(tone: ClueTone) {
 }
 
 function ClueCard({ word, tone }: { word: ClueLessonWord; tone: ClueTone }) {
+  const { t } = useTranslation();
   const es = effectStyle(tone);
   return (
     <View style={styles.card}>
@@ -35,7 +37,7 @@ function ClueCard({ word, tone }: { word: ClueLessonWord; tone: ClueTone }) {
         <View style={[styles.effect, { backgroundColor: es.bg }]}>
           <es.Icon size={15} color={es.fg} strokeWidth={2.6} />
           <View style={{ flex: 1 }}>
-            <Text style={styles.effectLabel}>IN A QUESTION</Text>
+            <Text style={styles.effectLabel}>{t('clue.inQuestion')}</Text>
             <Text style={[styles.effectText, { color: es.fg }]}>{word.effect_en}</Text>
           </View>
         </View>
@@ -43,7 +45,7 @@ function ClueCard({ word, tone }: { word: ClueLessonWord; tone: ClueTone }) {
 
       {!!word.exception_en && (
         <View style={styles.note}>
-          <Text style={styles.noteLabel}>NOTE / EXAMPLE</Text>
+          <Text style={styles.noteLabel}>{t('clue.noteLabel')}</Text>
           <Text style={styles.noteText}>{word.exception_en}</Text>
         </View>
       )}
@@ -52,6 +54,7 @@ function ClueCard({ word, tone }: { word: ClueLessonWord; tone: ClueTone }) {
 }
 
 export function ClueLessonScreen({ navigation, route }: Props) {
+  const { t } = useTranslation();
   const { groupId } = route.params;
   const group = getClueGroup(groupId);
   const words = getClueLesson(groupId);
@@ -71,9 +74,9 @@ export function ClueLessonScreen({ navigation, route }: Props) {
   if (!group || !word) {
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title="Lesson" onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('clue.lesson')} onBack={() => navigation.goBack()} />
         <View style={styles.center}>
-          <Text style={styles.emptyText}>No clue words in this group.</Text>
+          <Text style={styles.emptyText}>{t('clue.lessonEmpty')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -113,7 +116,7 @@ export function ClueLessonScreen({ navigation, route }: Props) {
           ]}
         >
           <ChevronLeft size={20} color={isFirst ? colors.textTertiary : colors.text} strokeWidth={2.2} />
-          <Text style={[styles.navBtnText, isFirst && styles.navBtnTextDisabled]}>Previous</Text>
+          <Text style={[styles.navBtnText, isFirst && styles.navBtnTextDisabled]}>{t('common.previous')}</Text>
         </Pressable>
 
         {isLast ? (
@@ -122,14 +125,14 @@ export function ClueLessonScreen({ navigation, route }: Props) {
             style={({ pressed }) => [styles.navBtn, styles.navBtnPrimary, pressed && styles.navBtnPressed]}
           >
             <ClipboardCheck size={18} color="#fff" strokeWidth={2.4} />
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Take quiz</Text>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('clue.takeQuiz')}</Text>
           </Pressable>
         ) : (
           <Pressable
             onPress={() => goTo(current + 1)}
             style={({ pressed }) => [styles.navBtn, styles.navBtnPrimary, pressed && styles.navBtnPressed]}
           >
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Next</Text>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('common.next')}</Text>
             <ChevronRight size={20} color="#fff" strokeWidth={2.4} />
           </Pressable>
         )}

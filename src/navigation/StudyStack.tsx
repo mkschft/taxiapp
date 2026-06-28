@@ -1,7 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { VocabSetsScreen } from '../screens/VocabSetsScreen';
-import { VocabSetDetailScreen } from '../screens/VocabSetDetailScreen';
 import { VocabLessonScreen } from '../screens/VocabLessonScreen';
 import { VocabQuizScreen } from '../screens/VocabQuizScreen';
 import { ClueWordsScreen } from '../screens/ClueWordsScreen';
@@ -25,7 +24,6 @@ export function StudyStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="StudyHome" component={StudyHomeScreen} />
       <Stack.Screen name="VocabSets" component={RequireAuth(VocabSetsScreen, 'Study')} />
-      <Stack.Screen name="VocabSetDetail" component={RequireAuth(VocabSetDetailScreen, 'Study')} />
       <Stack.Screen name="VocabLesson" component={RequireAuth(VocabLessonScreen, 'Study')} />
       <Stack.Screen name="VocabQuiz" component={RequireAuth(VocabQuizScreen, 'Study')} />
       <Stack.Screen name="ClueWords" component={RequireAuth(ClueWordsScreen, 'Study')} />

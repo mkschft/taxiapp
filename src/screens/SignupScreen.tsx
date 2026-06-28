@@ -6,6 +6,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { ChevronLeft } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
@@ -21,6 +22,7 @@ type Props = {
 };
 
 export function SignupScreen({ route }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const { setAuth, state: auth } = useAuth();
 
@@ -40,11 +42,11 @@ export function SignupScreen({ route }: Props) {
 
   const validate = () => {
     const next: Record<string, string> = {};
-    if (!email.trim()) next.email = 'Email is required';
-    else if (!/^\S+@\S+\.\S+$/.test(email)) next.email = 'Enter a valid email';
-    if (!name.trim()) next.name = 'Name is required';
-    if (!password) next.password = 'Password is required';
-    else if (password.length < 6) next.password = 'Password must be at least 6 characters';
+    if (!email.trim()) next.email = t('auth.emailRequired');
+    else if (!/^\S+@\S+\.\S+$/.test(email)) next.email = t('auth.emailInvalid');
+    if (!name.trim()) next.name = t('auth.nameRequired');
+    if (!password) next.password = t('auth.passwordRequired');
+    else if (password.length < 6) next.password = t('auth.passwordTooShort');
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -93,9 +95,9 @@ export function SignupScreen({ route }: Props) {
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 409) {
-        setFormError('An account with this email already exists.');
+        setFormError(t('auth.emailExists'));
       } else {
-        setFormError(err?.message ?? 'Something went wrong. Please try again.');
+        setFormError(err?.message ?? t('auth.genericError'));
       }
     } finally {
       setLoading(false);
@@ -119,7 +121,7 @@ export function SignupScreen({ route }: Props) {
           <View style={styles.backIcon}>
             <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
           </View>
-          <Text style={styles.headerTitle}>Create account</Text>
+          <Text style={styles.headerTitle}>{t('auth.signupTitle')}</Text>
         </View>
 
         <ScrollView
@@ -130,8 +132,8 @@ export function SignupScreen({ route }: Props) {
 
           <View style={styles.form}>
             <AppInput
-              label="Email"
-              placeholder="you@example.com"
+              label={t('auth.emailLabel')}
+              placeholder={t('auth.emailPlaceholder')}
               keyboardType="email-address"
               autoCapitalize="none"
               autoComplete="email"
@@ -145,8 +147,8 @@ export function SignupScreen({ route }: Props) {
 
             <AppInput
               ref={nameRef}
-              label="Full name"
-              placeholder="John Doe"
+              label={t('auth.nameLabel')}
+              placeholder={t('auth.namePlaceholder')}
               autoComplete="name"
               textContentType="name"
               returnKeyType="next"
@@ -159,8 +161,8 @@ export function SignupScreen({ route }: Props) {
 
             <AppInput
               ref={passwordRef}
-              label="Password"
-              placeholder="Min 6 characters"
+              label={t('auth.passwordLabel')}
+              placeholder={t('auth.passwordMinPlaceholder')}
               secureTextEntry
               autoComplete="new-password"
               textContentType="newPassword"
@@ -174,8 +176,8 @@ export function SignupScreen({ route }: Props) {
 
             <AppInput
               ref={referralRef}
-              label="Referral code (optional)"
-              placeholder="TAXIXXXX"
+              label={t('auth.referralLabel')}
+              placeholder={t('auth.referralPlaceholder')}
               autoCapitalize="characters"
               autoCorrect={false}
               returnKeyType="done"
@@ -189,14 +191,14 @@ export function SignupScreen({ route }: Props) {
               <View style={{ marginTop: spacing.md }}>
                 <FormErrorBanner
                   message={formError}
-                  actionLabel={formError.includes('already exists') ? 'Log in instead' : undefined}
-                  onAction={formError.includes('already exists') ? () => navigation.navigate('Login', { redirect: route.params?.redirect }) : undefined}
+                  actionLabel={formError === t('auth.emailExists') ? t('auth.logInInstead') : undefined}
+                  onAction={formError === t('auth.emailExists') ? () => navigation.navigate('Login', { redirect: route.params?.redirect }) : undefined}
                 />
               </View>
             )}
 
             <AppButton
-              label="Sign up"
+              label={t('auth.signUp')}
               onPress={handleSignup}
               loading={loading}
               style={{ marginTop: spacing.lg }}
@@ -204,9 +206,9 @@ export function SignupScreen({ route }: Props) {
           </View>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Already have an account?</Text>
+            <Text style={styles.footerText}>{t('auth.haveAccount')}</Text>
             <AppButton
-              label="Log in"
+              label={t('auth.logIn')}
               onPress={() => navigation.navigate('Login', { redirect: route.params?.redirect })}
               variant="secondary"
               style={{ marginTop: spacing.sm }}

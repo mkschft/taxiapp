@@ -1,0 +1,50 @@
+{
+  "title": "Valitse tilaus",
+  "headline": "Täysi pääsy kaikkiin ominaisuuksiin",
+  "subtitle": "Sanasto, vihjesanat, aiheharjoittelu, selitykset ja mallikokeet. Vain käyttöaika vaihtelee.",
+  "mostPopular": "Suosituin",
+  "active": "Aktiivinen",
+  "plans": {
+    "free": {
+      "name": "Ilmainen esikatselu",
+      "description": "Kokeile sovellusta ilman sitoutumista.",
+      "perk1": "1 sanastosivu",
+      "perk2": "4 harjoituskysymystä",
+      "button": "Aloita ilmainen esikatselu"
+    },
+    "day3": {
+      "name": "3 päivän pääsy",
+      "description": "Nopea kertaus ennen koetta.",
+      "perk1": "Täysi pääsy 3 päivän ajan",
+      "button": "Hanki 3 päivän pääsy"
+    },
+    "day7": {
+      "name": "7 päivän pääsy",
+      "description": "Tasapainoinen ja keskittynyt valmistautuminen.",
+      "perk1": "Täysi pääsy 7 päivän ajan",
+      "button": "Hanki 7 päivän pääsy"
+    },
+    "day14": {
+      "name": "14 päivän pääsy",
+      "description": "Kattava valmistautuminen ja enemmän harjoittelua.",
+      "perk1": "Täysi pääsy 14 päivän ajan",
+      "button": "Hanki 14 päivän pääsy"
+    }
+  },
+  "signInRequiredTitle": "Kirjautuminen vaaditaan",
+  "signInRequiredBody": "Kirjaudu sisään tai luo tili ostaaksesi pääsyn.",
+  "activeSubTitle": "Aktiivinen tilaus",
+  "activeSubBody": "Sinulla on jo aktiivinen tilaus.",
+  "checkoutFailedTitle": "Maksun aloitus epäonnistui",
+  "checkoutFailedBody": "Maksua ei voitu aloittaa. Yritä uudelleen.",
+  "verifying": "Vahvistetaan maksuasi…",
+  "errorTitle": "Jokin meni pieleen",
+  "errorLoginAgain": "Istunto vahvistettiin, mutta sinun on kirjauduttava uudelleen päivittääksesi tilauksesi.",
+  "errorVerifyFailed": "Maksua ei voitu vahvistaa. Ota yhteyttä tukeen.",
+  "goToDashboard": "Siirry koontinäyttöön",
+  "successTitle": "Maksu onnistui!",
+  "successBody": "Tilauksesi on nyt aktiivinen. Nauti täydestä pääsystä kaikkiin ominaisuuksiin.",
+  "cancelTitle": "Maksu peruutettu",
+  "cancelBody": "Ei hätää — voit yrittää uudelleen milloin tahansa olet valmis.",
+  "backToPlans": "Takaisin tilauksiin"
+}

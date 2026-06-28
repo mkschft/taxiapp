@@ -1,0 +1,19 @@
+{
+  "headerTitle": "Suosittele kaverille",
+  "heroTitle": "Anna ilmainen viikko.\nSaa ilmainen viikko.",
+  "heroSub": "Jaa koodisi kaverille, joka valmistautuu taksikokeeseen. Kun hän rekisteröityy, saatte molemmat ilmaisen viikon lisää.",
+  "codeLabel": "SUOSITTELUKOODISI",
+  "copy": "📋 Kopioi koodi",
+  "copied": "✓ Kopioitu!",
+  "copyConfirm": "✓ Koodi kopioitu leikepöydälle!",
+  "share": "Jaa koodisi",
+  "howItWorks": "NÄIN SE TOIMII",
+  "step1": "Jaa koodisi **{{code}}** kaverille, joka valmistautuu taksikokeeseen.",
+  "step2": "Hän rekisteröityy ja syöttää koodisi. Hän saa **7 päivää ilmaiseksi** tilaukseensa.",
+  "step3": "Sinä saat automaattisesti **7 päivää lisää** tilillesi. Suositteluille ei ole rajaa.",
+  "statsTitle": "SUOSITTELUSI",
+  "friendsJoined": "Liittyneitä kavereita",
+  "daysEarned": "Ansaittuja ilmaispäiviä",
+  "noLimit": "Ei rajaa",
+  "shareMessage": "Käytä koodiani {{code}} ja saat 7 päivää ilmaiseksi TaxiPilotissa — suomalaiseen taksikokeeseen valmistavassa sovelluksessa! https://taxipilot.fi"
+}

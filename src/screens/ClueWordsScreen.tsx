@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import {
   Check, AlertTriangle, HelpCircle, Link2, BookOpen, ClipboardCheck,
   type LucideIcon,
@@ -37,14 +38,15 @@ export function ClueWordsScreen() {
   const { state: authState } = useAuth();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked } = usePaywall();
+  const { t } = useTranslation();
   const isAuthenticated = !!authState.user;
 
   if (!isUnlocked('clue_words')) {
     return (
       <Paywall
-        title="Clue Words"
-        blurb="The method that lets you answer questions even with weak Finnish — spot the words that signal right vs wrong."
-        perks={['Positive & negative clue words, with their exceptions', 'Read a question strategically, not word-by-word', 'Practice quiz for each clue group']}
+        title={t('clue.title')}
+        blurb={t('clue.paywallBlurb')}
+        perks={[t('clue.paywallPerk1'), t('clue.paywallPerk2'), t('clue.paywallPerk3')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
         onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'ClueWords' })}
       />
@@ -53,19 +55,17 @@ export function ClueWordsScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title="Clue Words" onBack={() => navigation.goBack()} />
+      <ScreenHeader title={t('clue.title')} onBack={() => navigation.goBack()} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.intro}>
-          Clue words are the answer-logic engine. Learn to spot them and you can
-          often pick the right option even with limited Finnish. Pick a group to
-          study, then test yourself.
+          {t('clue.intro')}
         </Text>
 
         {!isAuthenticated && (
           <AuthPrompt
-            title="Sign in to take quizzes"
-            body="Create a free account to test yourself on each clue-word group."
+            title={t('clue.authTitle')}
+            body={t('clue.authBody')}
           />
         )}
 
@@ -88,10 +88,10 @@ export function ClueWordsScreen() {
               </View>
 
               <View style={styles.metaRow}>
-                <Text style={styles.meta}>{group.word_count} words · {group.question_count} quiz Qs</Text>
+                <Text style={styles.meta}>{t('clue.meta', { words: group.word_count, quiz: group.question_count })}</Text>
                 <View style={styles.tags}>
                   <Text style={styles.tag}>
-                    {seen}/{words.length} learned
+                    {t('clue.learnedCount', { seen, total: words.length })}
                   </Text>
                 </View>
               </View>
@@ -102,7 +102,7 @@ export function ClueWordsScreen() {
                   style={({ pressed }) => [styles.btn, styles.btnOutline, pressed && styles.btnPressed]}
                 >
                   <BookOpen size={17} color={colors.text} strokeWidth={2.2} />
-                  <Text style={styles.btnOutlineText}>Lesson</Text>
+                  <Text style={styles.btnOutlineText}>{t('clue.lesson')}</Text>
                 </Pressable>
                 {isAuthenticated && (
                   <Pressable
@@ -111,7 +111,7 @@ export function ClueWordsScreen() {
                     style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
                   >
                     <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
-                    <Text style={styles.btnFilledText}>Quiz</Text>
+                    <Text style={styles.btnFilledText}>{t('quiz.title')}</Text>
                   </Pressable>
                 )}
               </View>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { Lock, Check } from 'lucide-react-native';
 import { AppButton } from './ui/AppButton';
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export function GuestGate({ title, blurb, perks }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
 
   return (
@@ -27,7 +29,7 @@ export function GuestGate({ title, blurb, perks }: Props) {
         <View style={styles.lockChip}>
           <Lock size={28} color={colors.primary} strokeWidth={2} />
         </View>
-        <Text style={styles.h}>Create a free account</Text>
+        <Text style={styles.h}>{t('components.createAccountHeading')}</Text>
         <Text style={styles.sub}>{blurb}</Text>
 
         <View style={styles.perks}>
@@ -40,12 +42,12 @@ export function GuestGate({ title, blurb, perks }: Props) {
         </View>
 
         <AppButton
-          label="Create free account"
+          label={t('components.createFreeAccount')}
           onPress={() => navigation.navigate('Signup')}
           style={{ marginTop: spacing.lg, alignSelf: 'stretch', maxWidth: 360 }}
         />
         <AppButton
-          label="I already have an account"
+          label={t('components.haveAccount')}
           variant="secondary"
           onPress={() => navigation.navigate('Login')}
           style={{ marginTop: spacing.sm, alignSelf: 'stretch', maxWidth: 360 }}
