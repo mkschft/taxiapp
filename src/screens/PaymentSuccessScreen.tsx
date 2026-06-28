@@ -21,8 +21,9 @@ export function PaymentSuccessScreen() {
   const [verifying, setVerifying] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { sessionId: sessionIdParam, redirectTab, redirectScreen } = route.params;
-  const sessionId = sessionIdParam ?? (route.params as any).session_id;
+  const params = route.params as any;
+  const sessionId = params.sessionId ?? params.session_id;
+  const { redirectTab, redirectScreen } = route.params;
 
   useEffect(() => {
     let cancelled = false;
