@@ -83,6 +83,12 @@ export function SignupScreen({ route }: Props) {
         });
       } else if (upgradingGuest) {
         navigation.goBack();
+      } else if (!auth.onboardingSeen) {
+        // Brand-new signup that comes back already verified: still show the
+        // first-run carousel before the app, then OnboardingScreen → 'App'.
+        navigation.replace('Onboarding');
+      } else {
+        navigation.replace('App');
       }
     } catch (err: any) {
       const status = err?.statusCode;

@@ -112,8 +112,8 @@ export function VerifyEmailScreen({ route }: Props) {
             <Text style={styles.successText}>{successMessage}</Text>
             {isLoggedIn && (
               <AppButton
-                label="Go to Dashboard"
-                onPress={() => navigation.replace('App')}
+                label="Continue"
+                onPress={() => navigation.replace(auth.onboardingSeen ? 'App' : 'Onboarding')}
                 variant="secondary"
                 style={{ marginTop: spacing.md }}
               />
