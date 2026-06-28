@@ -6,6 +6,7 @@ const BASE_URL = 'https://api.taxipilot.fi';
 export async function getMe(accessToken: string): Promise<AuthUser> {
   const res = await fetch(`${BASE_URL}/auth/me`, {
     headers: { Authorization: `Bearer ${accessToken}` },
+    cache: 'no-store',
   });
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));

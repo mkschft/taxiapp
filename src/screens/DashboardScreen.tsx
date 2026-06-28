@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
@@ -11,6 +11,7 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { AppButton } from '../components/ui/AppButton';
 import { useAuth } from '../store/authStore';
+import { getMe } from '../lib/authApi';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
 import { getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal, getTopicSections, getModelTests } from '../data/loaders';
@@ -40,9 +41,16 @@ const HUBS: HubItem[] = [
 
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
-  const { state: auth } = useAuth();
+  const { state: auth, updateUser } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress, loading } = useProgress(!isGuest);
+
+  useEffect(() => {
+    if (!auth.accessToken || isGuest) return;
+    getMe(auth.accessToken)
+      .then(user => updateUser(user))
+      .catch(() => {});
+  }, [auth.accessToken, isGuest, updateUser]);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
