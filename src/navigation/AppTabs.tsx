@@ -7,6 +7,7 @@ import { ProgressStack } from './ProgressStack';
 import { StudyStack } from './StudyStack';
 import { TestStack } from './TestStack';
 import { ProfileStack } from './ProfileStack';
+import { useAuth } from '../store/authStore';
 import { colors, fontSize, font } from '../theme/tokens';
 import type { AppTabParamList } from './types';
 
@@ -17,6 +18,12 @@ const ICONS: Record<string, any> = {
 };
 
 export function AppTabs() {
+  const { state } = useAuth();
+  // Guests only get the tabs with browsable content (Dashboard + the Study
+  // menu). The login-gated tabs appear once they have an account, so a guest
+  // never taps into a sign-up wall from the tab bar.
+  const isGuest = state.guest && !state.user;
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -34,9 +41,9 @@ export function AppTabs() {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Study" component={StudyStack} />
-      <Tab.Screen name="Test" component={TestStack} options={{ title: 'Tests' }} />
-      <Tab.Screen name="Progress" component={ProgressStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
+      {!isGuest && <Tab.Screen name="Test" component={TestStack} options={{ title: 'Tests' }} />}
+      {!isGuest && <Tab.Screen name="Progress" component={ProgressStack} />}
+      {!isGuest && <Tab.Screen name="Profile" component={ProfileStack} />}
     </Tab.Navigator>
   );
 }
