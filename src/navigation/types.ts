@@ -105,4 +105,5 @@ export type TestStackParamList = {
 export type ProfileStackParamList = {
   ProfileHome: undefined;
   Referral: undefined;
+  SavedQuestions: undefined;
 };

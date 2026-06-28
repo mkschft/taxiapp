@@ -6,7 +6,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import {
   Target, CreditCard, Gift, HelpCircle, Trash2,
-  ChevronRight, CalendarDays, Languages, type LucideIcon,
+  ChevronRight, CalendarDays, Languages, Bookmark, type LucideIcon,
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
@@ -14,6 +14,7 @@ import { AppInput } from '../components/ui/AppInput';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { setAppLanguage, type AppLanguage } from '../i18n';
 import { useAuth } from '../store/authStore';
+import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
 import { useProgress } from '../hooks/useProgress';
@@ -62,6 +63,7 @@ export function ProfileScreen() {
   const { data: progress } = useProgress(!isGuest);
   const { t, i18n } = useTranslation();
   const lang = (i18n.language === 'fi' ? 'fi' : 'en') as AppLanguage;
+  const { saved } = useSavedQuestions();
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -221,6 +223,18 @@ export function ProfileScreen() {
             onPress={() => setAppLanguage(lang === 'fi' ? 'en' : 'fi')}
             right={<Text style={styles.langValue}>{lang === 'fi' ? 'Suomi' : 'English'}</Text>}
           />
+          <SettingRow
+            Icon={Bookmark}
+            tint={colors.primary}
+            title={t('profile.savedQuestions')}
+            onPress={() => navigation.navigate('SavedQuestions')}
+            right={
+              <View style={styles.countRow}>
+                {saved.length > 0 && <Text style={styles.langValue}>{saved.length}</Text>}
+                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+              </View>
+            }
+          />
         </View>
 
         {/* Subscription */}
@@ -370,5 +384,6 @@ const styles = StyleSheet.create({
   settingTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   settingSub: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
   langValue: { fontSize: 13, fontFamily: font.semibold, color: colors.primary },
+  countRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   sep: { height: 1, backgroundColor: colors.border, marginLeft: 62 },
 });

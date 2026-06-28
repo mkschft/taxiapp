@@ -38,7 +38,13 @@
     "preferences": "Preferences",
     "appLanguage": "App language",
     "appLanguageHint": "Changes buttons and labels only — not questions or answers",
+    "savedQuestions": "Saved questions",
     "english": "English",
     "finnish": "Suomi"
+  },
+  "saved": {
+    "title": "Saved questions",
+    "empty": "No saved questions yet. Tap “Mark” during a test to save one for later.",
+    "correctAnswer": "Correct answer"
   }
 }
