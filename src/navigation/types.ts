@@ -49,6 +49,7 @@ export type StudyStackParamList = {
   ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
   TopicSections: undefined;
   TopicLessons: { sectionId: string };
+  TopicQuiz: { lessonId: string; sectionId: string; sessionId?: string; problemSetId?: string };
   Practice: {
     questionId: string;
     queue?: string[];

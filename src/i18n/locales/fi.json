@@ -20,6 +20,20 @@
     "answered": "{{count}}/{{total}} vastattu",
     "question": "Kysymys {{n}}/{{total}}"
   },
+  "quiz": {
+    "title": "Tietovisa",
+    "next": "Seuraava",
+    "seeResult": "Näytä tulos",
+    "tryAgain": "Yritä uudelleen",
+    "back": "Takaisin aiheisiin",
+    "passMark": "Läpäisyraja {{pct}}% · Sait {{score}}%",
+    "passTitle": "Hienoa työtä!",
+    "failTitle": "Jatka harjoittelua",
+    "scoreOf": "/ {{total}}",
+    "review": "Kertaa ({{count}})",
+    "correctAnswer": "Oikea vastaus",
+    "empty": "Tälle aiheelle ei ole kysymyksiä."
+  },
   "profile": {
     "preferences": "Asetukset",
     "appLanguage": "Sovelluksen kieli",

@@ -9,6 +9,7 @@ import { ClueLessonScreen } from '../screens/ClueLessonScreen';
 import { ClueQuizScreen } from '../screens/ClueQuizScreen';
 import { TopicSectionsScreen } from '../screens/TopicSectionsScreen';
 import { TopicLessonsScreen } from '../screens/TopicLessonsScreen';
+import { TopicQuizScreen } from '../screens/TopicQuizScreen';
 import { PracticeScreen } from '../screens/PracticeScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import { StudyHomeScreen } from '../screens/StudyHomeScreen';
@@ -32,6 +33,7 @@ export function StudyStack() {
       <Stack.Screen name="ClueQuiz" component={RequireAuth(ClueQuizScreen, 'Study')} />
       <Stack.Screen name="TopicSections" component={RequireAuth(TopicSectionsScreen, 'Study')} />
       <Stack.Screen name="TopicLessons" component={RequireAuth(TopicLessonsScreen, 'Study')} />
+      <Stack.Screen name="TopicQuiz" component={RequireAuth(TopicQuizScreen, 'Study')} />
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Study')} />
       <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Study')} />
       <Stack.Screen name="Guide" component={GuideScreen} />
