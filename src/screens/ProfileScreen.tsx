@@ -6,12 +6,15 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import {
   Target, CreditCard, Gift, HelpCircle, Trash2,
-  ChevronRight, CalendarDays, type LucideIcon,
+  ChevronRight, CalendarDays, Languages, Bookmark, type LucideIcon,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { setAppLanguage, type AppLanguage } from '../i18n';
 import { useAuth } from '../store/authStore';
+import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
 import { useProgress } from '../hooks/useProgress';
@@ -58,12 +61,14 @@ export function ProfileScreen() {
   const { state: auth, clearAuth, updateUser } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress } = useProgress(!isGuest);
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language === 'fi' ? 'fi' : 'en') as AppLanguage;
+  const { saved } = useSavedQuestions();
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
-  const accuracy = 0;
-  const userName = auth.user?.name ?? 'Your Name';
+  const userName = auth.user?.name ?? t('profile.yourName');
   const initial = userName ? userName[0].toUpperCase() : '?';
   const examDate = auth.user?.expectedExamDate ?? null;
 
@@ -85,7 +90,7 @@ export function ProfileScreen() {
       await updateUser({ expectedExamDate: iso });
       setDateModal(false);
     } catch (err: any) {
-      setDateError(err?.message ?? 'Could not save exam date. Please try again.');
+      setDateError(err?.message ?? t('profile.examDateSaveError'));
     } finally {
       setSavingDate(false);
     }
@@ -99,7 +104,7 @@ export function ProfileScreen() {
 
   const saveTypedDate = async () => {
     if (!isValidExamDate(dateInput.trim())) {
-      setDateError('Enter a real date as YYYY-MM-DD (e.g. 2026-09-01).');
+      setDateError(t('profile.examDateInvalid'));
       return;
     }
     await setExamDate(dateInput.trim());
@@ -117,7 +122,7 @@ export function ProfileScreen() {
 
   const handleHelp = () => {
     Linking.openURL(HELP_URL).catch(() =>
-      Alert.alert('Help & FAQ', `Visit ${HELP_URL} for help and FAQs.`),
+      Alert.alert(t('profile.helpFaq'), t('profile.helpFaqBody', { url: HELP_URL })),
     );
   };
 
@@ -128,30 +133,30 @@ export function ProfileScreen() {
     };
 
     if (Platform.OS === 'web') {
-      const confirmed = window.confirm('Log out? You will be returned to the home screen.');
+      const confirmed = window.confirm(`${t('profile.logoutTitle')} ${t('profile.logoutBody')}`);
       if (confirmed) doLogout();
       return;
     }
 
     Alert.alert(
-      'Log out?',
-      'You will be returned to the home screen.',
+      t('profile.logoutTitle'),
+      t('profile.logoutBody'),
       [
-        { text: 'Cancel' },
-        { text: 'Log out', style: 'destructive', onPress: doLogout },
+        { text: t('common.cancel') },
+        { text: t('profile.logout'), style: 'destructive', onPress: doLogout },
       ],
     );
   };
 
   const handleClearData = () => {
     Alert.alert(
-      'Clear all data?',
-      'This will reset all your progress. This cannot be undone.',
+      t('profile.clearTitle'),
+      t('profile.clearBody'),
       [
-        { text: 'Cancel' },
+        { text: t('common.cancel') },
         {
-          text: 'Clear', style: 'destructive',
-          onPress: async () => { await clearAll(); Alert.alert('Done', 'All progress cleared.'); },
+          text: t('profile.clear'), style: 'destructive',
+          onPress: async () => { await clearAll(); Alert.alert(t('common.done'), t('profile.clearedBody')); },
         },
       ],
     );
@@ -160,7 +165,7 @@ export function ProfileScreen() {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>Profile</Text>
+        <Text style={styles.title}>{t('profile.title')}</Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -176,64 +181,83 @@ export function ProfileScreen() {
         {daysLeft !== null && (
           <View style={styles.examCard}>
             <View>
-              <Text style={styles.examLabel}>Exam date</Text>
+              <Text style={styles.examLabel}>{t('profile.examDate')}</Text>
               <Text style={styles.examDate}>{examDate}</Text>
               <Text style={[styles.examDays, daysLeft < 7 && { color: colors.error }]}>
-                {daysLeft} days left
+                {t('profile.daysLeft', { n: daysLeft })}
               </Text>
             </View>
             <CalendarDays size={36} color={colors.warning} strokeWidth={1.8} />
           </View>
         )}
 
-        {/* Mini stats */}
+        {/* Overall completion (real progress data) */}
         <View style={styles.statRow}>
-          {[
-            { val: `${completion}%`, label: 'Complete' },
-            { val: `${accuracy}%`, label: 'Accuracy', color: colors.success },
-            { val: '0', label: 'Day streak' },
-          ].map(s => (
-            <View key={s.label} style={styles.statChip}>
-              <Text style={[styles.statVal, s.color ? { color: s.color } : {}]}>{s.val}</Text>
-              <Text style={styles.statLbl}>{s.label}</Text>
-            </View>
-          ))}
+          <View style={styles.statChip}>
+            <Text style={styles.statVal}>{`${completion}%`}</Text>
+            <Text style={styles.statLbl}>{t('profile.complete')}</Text>
+          </View>
         </View>
 
         {/* Account */}
-        <Text style={styles.sectionHeader}>Account</Text>
+        <Text style={styles.sectionHeader}>{t('profile.account')}</Text>
         <View style={styles.settingGroup}>
-          <SettingRow Icon={Target} tint={colors.primary} title="Set exam date" subtitle={examDate ?? 'Not set'} onPress={openDateModal} />
+          <SettingRow Icon={Target} tint={colors.primary} title={t('profile.setExamDate')} subtitle={examDate ?? t('profile.notSet')} onPress={openDateModal} />
+        </View>
+
+        {/* Preferences */}
+        <Text style={styles.sectionHeader}>{t('profile.preferences')}</Text>
+        <View style={styles.settingGroup}>
+          <SettingRow
+            Icon={Languages}
+            tint={colors.primary}
+            title={t('profile.appLanguage')}
+            subtitle={t('profile.appLanguageHint')}
+            onPress={() => setAppLanguage(lang === 'fi' ? 'en' : 'fi')}
+            right={<Text style={styles.langValue}>{lang === 'fi' ? 'Suomi' : 'English'}</Text>}
+          />
+          <SettingRow
+            Icon={Bookmark}
+            tint={colors.primary}
+            title={t('profile.savedQuestions')}
+            onPress={() => navigation.navigate('SavedQuestions')}
+            right={
+              <View style={styles.countRow}>
+                {saved.length > 0 && <Text style={styles.langValue}>{saved.length}</Text>}
+                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+              </View>
+            }
+          />
         </View>
 
         {/* Subscription */}
-        <Text style={styles.sectionHeader}>Subscription</Text>
+        <Text style={styles.sectionHeader}>{t('profile.subscription')}</Text>
         <View style={styles.settingGroup}>
           <SettingRow
             Icon={CreditCard}
             tint={colors.primary}
-            title={isPaid ? subscription!.planName : 'Manage subscription'}
-            subtitle={isPaid ? `${subDaysLeft} days left` : 'Upgrade to unlock full access'}
+            title={isPaid ? subscription!.planName : t('profile.manageSubscription')}
+            subtitle={isPaid ? t('profile.daysLeft', { n: subDaysLeft }) : t('profile.upgradeHint')}
             onPress={handleManageSub}
           />
           <View style={styles.sep} />
           <SettingRow
-            Icon={Gift} tint={colors.success} title="Referral — give & get free week"
-            subtitle="Share your code, earn rewards"
+            Icon={Gift} tint={colors.success} title={t('profile.referralTitle')}
+            subtitle={t('profile.referralHint')}
             onPress={() => navigation.navigate('Referral')}
           />
         </View>
 
         {/* Support */}
-        <Text style={styles.sectionHeader}>Support</Text>
+        <Text style={styles.sectionHeader}>{t('profile.support')}</Text>
         <View style={styles.settingGroup}>
-          <SettingRow Icon={HelpCircle} title="Help & FAQ" onPress={handleHelp} />
+          <SettingRow Icon={HelpCircle} title={t('profile.helpFaq')} onPress={handleHelp} />
           <View style={styles.sep} />
-          <SettingRow Icon={Trash2} tint={colors.error} title="Clear progress data" onPress={handleClearData} />
+          <SettingRow Icon={Trash2} tint={colors.error} title={t('profile.clearProgressData')} onPress={handleClearData} />
         </View>
 
         <AppButton
-          label={'Log out'}
+          label={t('profile.logout')}
           variant="danger"
           onPress={handleLogout}
           style={{ margin: spacing.md }}
@@ -245,8 +269,8 @@ export function ProfileScreen() {
       <Modal visible={dateModal} transparent animationType="fade" onRequestClose={() => setDateModal(false)}>
         <Pressable style={styles.modalOverlay} onPress={() => setDateModal(false)}>
           <Pressable style={styles.modalSheet} onPress={() => {}}>
-            <Text style={styles.modalTitle}>Set exam date</Text>
-            <Text style={styles.modalSub}>Pick a quick option or type the exact date.</Text>
+            <Text style={styles.modalTitle}>{t('profile.setExamDate')}</Text>
+            <Text style={styles.modalSub}>{t('profile.examDateModalSub')}</Text>
             <View style={styles.presetRow}>
               {[1, 2, 4, 8].map((w) => (
                 <Pressable
@@ -260,7 +284,7 @@ export function ProfileScreen() {
               ))}
             </View>
             <AppInput
-              label="Exact date (YYYY-MM-DD)"
+              label={t('profile.exactDate')}
               placeholder="2026-09-01"
               autoCapitalize="none"
               keyboardType="numbers-and-punctuation"
@@ -270,14 +294,14 @@ export function ProfileScreen() {
               editable={!savingDate}
               style={{ marginTop: spacing.md }}
             />
-            <AppButton label="Save date" onPress={saveTypedDate} loading={savingDate} style={{ marginTop: spacing.md }} />
+            <AppButton label={t('profile.saveDate')} onPress={saveTypedDate} loading={savingDate} style={{ marginTop: spacing.md }} />
             {examDate && (
-              <AppButton label="Clear date" variant="secondary" onPress={() => setExamDate(null)} loading={savingDate} style={{ marginTop: spacing.sm }} />
+              <AppButton label={t('profile.clearDate')} variant="secondary" onPress={() => setExamDate(null)} loading={savingDate} style={{ marginTop: spacing.sm }} />
             )}
           </Pressable>
         </Pressable>
       </Modal>
-      <GuestOverlay blurb="Sign up or log in to manage your profile, set your exam date, and view your subscription." />
+      <GuestOverlay blurb={t('profile.guestBlurb')} />
     </SafeAreaView>
   );
 }
@@ -352,5 +376,7 @@ const styles = StyleSheet.create({
   settingInfo: { flex: 1 },
   settingTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   settingSub: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
+  langValue: { fontSize: 13, fontFamily: font.semibold, color: colors.primary },
+  countRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   sep: { height: 1, backgroundColor: colors.border, marginLeft: 62 },
 });

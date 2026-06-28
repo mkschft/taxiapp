@@ -1,20 +1,22 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors, radius, fontSize } from '../../theme/tokens';
 
 type Props = { type: 'free' | 'paid' | 'locked' };
 
 const VARIANTS = {
-  free: { box: 'free', text: 'freeText', label: 'FREE' },
-  paid: { box: 'paid', text: 'paidText', label: 'PAID' },
-  locked: { box: 'locked', text: 'lockedText', label: 'LOCKED' },
+  free: { box: 'free', text: 'freeText', label: 'components.badgeFree' },
+  paid: { box: 'paid', text: 'paidText', label: 'components.badgePaid' },
+  locked: { box: 'locked', text: 'lockedText', label: 'components.badgeLocked' },
 } as const;
 
 export function Badge({ type }: Props) {
+  const { t } = useTranslation();
   const v = VARIANTS[type];
   return (
     <View style={[styles.base, styles[v.box]]}>
-      <Text style={[styles.text, styles[v.text]]}>{v.label}</Text>
+      <Text style={[styles.text, styles[v.text]]}>{t(v.label)}</Text>
     </View>
   );
 }

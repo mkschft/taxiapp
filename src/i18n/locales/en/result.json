@@ -1,0 +1,18 @@
+{
+  "headerTitle": "{{label}} — Result",
+  "passed": "You passed!",
+  "keepStudying": "Keep studying",
+  "passMark": "Pass mark: 38/50 + minimum in each area · Your score: {{score}}/{{total}}",
+  "gateNote": "You reached {{score}}/{{total}} overall, but fell below the required minimum in {{cats}}. In the real exam, falling short in any single area fails the whole test — even with enough correct answers overall.",
+  "categoryBreakdown": "Category breakdown",
+  "categoryMin": "min {{min}}",
+  "outOf": "out of {{total}}",
+  "correct": "Correct",
+  "wrong": "Wrong",
+  "time": "Time",
+  "score": "Score",
+  "reviewWrong": "Review wrong answers ({{count}})",
+  "tapToReview": "Tap to review →",
+  "retryWrong": "Retry wrong answers →",
+  "backToDashboard": "Back to dashboard"
+}

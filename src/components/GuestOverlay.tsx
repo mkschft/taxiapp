@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { Lock } from 'lucide-react-native';
 import { AppButton } from './ui/AppButton';
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export function GuestOverlay({ title = 'Create a free account', blurb = 'Sign up or log in to unlock full access and track your progress.' }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
@@ -27,12 +29,12 @@ export function GuestOverlay({ title = 'Create a free account', blurb = 'Sign up
         <Text style={styles.h}>{title}</Text>
         <Text style={styles.sub}>{blurb}</Text>
         <AppButton
-          label="Create free account"
+          label={t('components.createFreeAccount')}
           onPress={() => navigation.navigate('Signup')}
           style={{ marginTop: spacing.md, alignSelf: 'stretch' }}
         />
         <AppButton
-          label="I already have an account"
+          label={t('components.haveAccount')}
           variant="secondary"
           onPress={() => navigation.navigate('Login')}
           style={{ marginTop: spacing.sm, alignSelf: 'stretch' }}

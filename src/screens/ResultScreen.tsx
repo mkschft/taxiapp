@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { PartyPopper, BookOpenCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ProgressBar } from '../components/ui/ProgressBar';
@@ -18,6 +19,7 @@ type Props = {
 };
 
 export function ResultScreen({ navigation, route }: Props) {
+  const { t } = useTranslation();
   const { mode, label, score, total, wrongIds, timeTaken, answers, categories } = route.params;
   const pct = Math.round((score / total) * 100);
   // The model test grades against the real Traficom gate (overall 38/50 AND a
@@ -36,7 +38,7 @@ export function ResultScreen({ navigation, route }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={`${label} — Result`} onBack={() => navigation.popToTop()} />
+      <ScreenHeader title={t('result.headerTitle', { label })} onBack={() => navigation.popToTop()} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Pass / fail banner */}
@@ -45,18 +47,16 @@ export function ResultScreen({ navigation, route }: Props) {
             ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
             : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
           <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
-            {passed ? 'You passed!' : 'Keep studying'}
+            {passed ? t('result.passed') : t('result.keepStudying')}
           </Text>
-          <Text style={styles.bannerSub}>Pass mark: 38/50 + minimum in each area · Your score: {score}/{total}</Text>
+          <Text style={styles.bannerSub}>{t('result.passMark', { score, total })}</Text>
         </View>
 
         {/* Why-failed note: reached 38 overall but missed a category gate */}
         {gateFail && (
           <View style={styles.gateNote}>
             <Text style={styles.gateNoteText}>
-              You reached {score}/{total} overall, but fell below the required minimum in{' '}
-              {failedCats.map(c => c.label).join(', ')}. In the real exam, falling short in any
-              single area fails the whole test — even with enough correct answers overall.
+              {t('result.gateNote', { score, total, cats: failedCats.map(c => c.label).join(', ') })}
             </Text>
           </View>
         )}
@@ -64,14 +64,14 @@ export function ResultScreen({ navigation, route }: Props) {
         {/* Per-category breakdown (model-test pass gate) */}
         {categories && categories.length > 0 && (
           <View style={styles.catCard}>
-            <Text style={styles.catHeader}>Category breakdown</Text>
+            <Text style={styles.catHeader}>{t('result.categoryBreakdown')}</Text>
             {categories.map(c => (
               <View key={c.category} style={styles.catRow}>
                 <Text style={styles.catName} numberOfLines={1}>{c.label}</Text>
                 <Text style={[styles.catScore, { color: c.passed ? colors.success : colors.error }]}>
                   {c.correct}/{c.total}
                 </Text>
-                <Text style={styles.catMin}>min {c.min}</Text>
+                <Text style={styles.catMin}>{t('result.categoryMin', { min: c.min })}</Text>
                 <Text style={[styles.catFlag, { color: c.passed ? colors.success : colors.error }]}>
                   {c.passed ? '✓' : '✕'}
                 </Text>
@@ -85,15 +85,15 @@ export function ResultScreen({ navigation, route }: Props) {
           <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>
             {score}
           </Text>
-          <Text style={styles.scoreOf}>out of {total}</Text>
+          <Text style={styles.scoreOf}>{t('result.outOf', { total })}</Text>
         </View>
 
         {/* Stat chips */}
         <View style={styles.statRow}>
           {[
-            { val: String(score), label: 'Correct', color: colors.success },
-            { val: String(total - score), label: 'Wrong', color: colors.error },
-            { val: timeTaken ? fmt(timeTaken) : `${pct}%`, label: timeTaken ? 'Time' : 'Score', color: colors.text },
+            { val: String(score), label: t('result.correct'), color: colors.success },
+            { val: String(total - score), label: t('result.wrong'), color: colors.error },
+            { val: timeTaken ? fmt(timeTaken) : `${pct}%`, label: timeTaken ? t('result.time') : t('result.score'), color: colors.text },
           ].map(s => (
             <View key={s.label} style={styles.statChip}>
               <Text style={[styles.statVal, { color: s.color }]}>{s.val}</Text>
@@ -105,7 +105,7 @@ export function ResultScreen({ navigation, route }: Props) {
         {/* Wrong answers */}
         {wrongIds.length > 0 && (
           <>
-            <Text style={styles.sectionHeader}>Review wrong answers ({wrongIds.length})</Text>
+            <Text style={styles.sectionHeader}>{t('result.reviewWrong', { count: wrongIds.length })}</Text>
             {wrongIds.map(id => {
               const q = getQuestionById(id);
               if (!q) return null;
@@ -124,7 +124,7 @@ export function ResultScreen({ navigation, route }: Props) {
                   activeOpacity={0.8}
                 >
                   <Text style={styles.wrongQ} numberOfLines={2}>{q.question.fi ?? q.question.en}</Text>
-                  <Text style={styles.wrongMeta}>Tap to review →</Text>
+                  <Text style={styles.wrongMeta}>{t('result.tapToReview')}</Text>
                 </TouchableOpacity>
               );
             })}
@@ -134,7 +134,7 @@ export function ResultScreen({ navigation, route }: Props) {
         <View style={styles.actions}>
           {wrongIds.length > 0 && (
             <AppButton
-              label="Retry wrong answers →"
+              label={t('result.retryWrong')}
               onPress={() => navigation.replace('Practice', {
                 questionId: wrongIds[0],
                 queue: wrongIds,
@@ -144,7 +144,7 @@ export function ResultScreen({ navigation, route }: Props) {
             />
           )}
           <AppButton
-            label="Back to dashboard"
+            label={t('result.backToDashboard')}
             variant="secondary"
             onPress={() => navigation.popToTop()}
             style={{ marginTop: spacing.sm }}

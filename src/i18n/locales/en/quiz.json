@@ -1,0 +1,15 @@
+{
+  "title": "Quiz",
+  "next": "Next",
+  "seeResult": "See result",
+  "tryAgain": "Try again",
+  "back": "Back to lessons",
+  "passMark": "Pass mark {{pct}}% · You scored {{score}}%",
+  "passTitle": "Nice work!",
+  "failTitle": "Keep practising",
+  "scoreOf": "out of {{total}}",
+  "review": "Review ({{count}})",
+  "correctAnswer": "Correct answer",
+  "empty": "No questions for this lesson.",
+  "question": "QUESTION"
+}

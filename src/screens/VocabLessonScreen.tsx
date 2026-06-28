@@ -5,6 +5,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { Lightbulb, ChevronLeft, ChevronRight, ClipboardCheck } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson } from '../data/loaders';
@@ -17,6 +18,7 @@ type Props = {
 };
 
 function WordCard({ word }: { word: VocabLessonWord }) {
+  const { t } = useTranslation();
   return (
     <View style={styles.card}>
       <Text style={styles.wordFi}>{word.word_fi}</Text>
@@ -24,7 +26,7 @@ function WordCard({ word }: { word: VocabLessonWord }) {
 
       {word.forms_fi.length > 0 && (
         <View style={styles.formsWrap}>
-          <Text style={styles.sectionLabel}>FORMS & RELATED</Text>
+          <Text style={styles.sectionLabel}>{t('vocab.formsLabel')}</Text>
           <View style={styles.formsList}>
             {word.forms_fi.map((f, i) => (
               <View key={i} style={styles.formRow}>
@@ -47,6 +49,7 @@ function WordCard({ word }: { word: VocabLessonWord }) {
 }
 
 export function VocabLessonScreen({ navigation, route }: Props) {
+  const { t } = useTranslation();
   const { setId } = route.params;
   const set = getVocabSet(setId);
   const words = getVocabLesson(setId);
@@ -69,9 +72,9 @@ export function VocabLessonScreen({ navigation, route }: Props) {
   if (!set || !word) {
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title="Lesson" onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('vocab.lesson')} onBack={() => navigation.goBack()} />
         <View style={styles.center}>
-          <Text style={styles.emptyText}>No lesson words for this set.</Text>
+          <Text style={styles.emptyText}>{t('vocab.lessonEmpty')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -80,7 +83,7 @@ export function VocabLessonScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <ScreenHeader
-        title={`Lesson · Set ${set.set_no}`}
+        title={t('vocab.lessonHeader', { n: set.set_no })}
         onBack={() => navigation.goBack()}
         right={<Text style={styles.counter}>{current} / {total}</Text>}
       />
@@ -118,7 +121,7 @@ export function VocabLessonScreen({ navigation, route }: Props) {
           ]}
         >
           <ChevronLeft size={20} color={isFirst ? colors.textTertiary : colors.text} strokeWidth={2.2} />
-          <Text style={[styles.navBtnText, isFirst && styles.navBtnTextDisabled]}>Previous</Text>
+          <Text style={[styles.navBtnText, isFirst && styles.navBtnTextDisabled]}>{t('common.previous')}</Text>
         </Pressable>
 
         {isLast ? (
@@ -127,14 +130,14 @@ export function VocabLessonScreen({ navigation, route }: Props) {
             style={({ pressed }) => [styles.navBtn, styles.navBtnPrimary, pressed && styles.navBtnPressed]}
           >
             <ClipboardCheck size={18} color="#fff" strokeWidth={2.4} />
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Take quiz</Text>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('vocab.takeQuiz')}</Text>
           </Pressable>
         ) : (
           <Pressable
             onPress={() => goTo(current + 1)}
             style={({ pressed }) => [styles.navBtn, styles.navBtnPrimary, pressed && styles.navBtnPressed]}
           >
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Next</Text>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('common.next')}</Text>
             <ChevronRight size={20} color="#fff" strokeWidth={2.4} />
           </Pressable>
         )}

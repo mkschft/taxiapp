@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Lock, Check } from 'lucide-react-native';
 import { AppButton } from './ui/AppButton';
 import { ScreenHeader } from './ui/ScreenHeader';
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export function Paywall({ title, blurb, perks, onBack, onSubscribe }: Props) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={title} onBack={onBack} />
@@ -26,7 +28,7 @@ export function Paywall({ title, blurb, perks, onBack, onSubscribe }: Props) {
         <View style={styles.lockChip}>
           <Lock size={28} color={colors.primary} strokeWidth={2} />
         </View>
-        <Text style={styles.h}>Unlock {title}</Text>
+        <Text style={styles.h}>{t('components.unlock', { title })}</Text>
         <Text style={styles.sub}>{blurb}</Text>
 
         <View style={styles.perks}>
@@ -38,7 +40,7 @@ export function Paywall({ title, blurb, perks, onBack, onSubscribe }: Props) {
           ))}
         </View>
 
-        <AppButton label="Unlock full access" onPress={onSubscribe} style={{ marginTop: spacing.lg }} />
+        <AppButton label={t('components.unlockFullAccess')} onPress={onSubscribe} style={{ marginTop: spacing.lg }} />
       </View>
     </SafeAreaView>
   );

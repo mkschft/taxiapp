@@ -1,0 +1,12 @@
+{
+  "title": "Mallikokeet",
+  "subtitle": "Aikarajoitettu, koetta vastaava. Läpäisyraja: 76 % (38/50)",
+  "minutes": "{{n}} min",
+  "pass": "Läpäisyraja {{n}} %",
+  "startTest": "Aloita koe",
+  "paywallBlurb": "Täydet, aikarajoitetut harjoituskokeet, jotka vastaavat oikeaa koetta — 50 kysymystä, 45 minuuttia, todellinen läpäisyraja.",
+  "perkExams": "{{n}} täyttä aikarajoitettua harjoituskoetta",
+  "perkScored": "Pisteytys kuten oikeassa kokeessa (38/50 + osakohtainen raja)",
+  "perkReview": "Käy jälkeenpäin läpi jokainen väärin mennyt kysymys",
+  "guestBlurb": "Rekisteröidy tai kirjaudu sisään tehdäksesi aikarajoitettuja mallikokeita ja seurataksesi tuloksiasi."
+}

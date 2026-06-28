@@ -41,7 +41,6 @@ export type StudyStackParamList = {
   Guide: undefined;
   HowTo: undefined;
   VocabSets: undefined;
-  VocabSetDetail: { setId: string };
   VocabLesson: { setId: string; index?: number };
   VocabQuiz: { setId: string; sessionId?: string; problemSetId?: string };
   ClueWords: undefined;
@@ -49,6 +48,7 @@ export type StudyStackParamList = {
   ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
   TopicSections: undefined;
   TopicLessons: { sectionId: string };
+  TopicQuiz: { lessonId: string; sectionId: string; sessionId?: string; problemSetId?: string };
   Practice: {
     questionId: string;
     queue?: string[];
@@ -104,4 +104,5 @@ export type TestStackParamList = {
 export type ProfileStackParamList = {
   ProfileHome: undefined;
   Referral: undefined;
+  SavedQuestions: undefined;
 };

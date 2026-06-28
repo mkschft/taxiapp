@@ -6,6 +6,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { ChevronLeft } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
@@ -21,6 +22,7 @@ type Props = {
 };
 
 export function LoginScreen({ route }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const { setAuth, completeReturningUserAuth, markOnboardingSeen, state: auth } = useAuth();
 
@@ -36,8 +38,8 @@ export function LoginScreen({ route }: Props) {
 
   const validate = () => {
     const next: Record<string, string> = {};
-    if (!email.trim()) next.email = 'Email is required';
-    if (!password) next.password = 'Password is required';
+    if (!email.trim()) next.email = t('auth.emailRequired');
+    if (!password) next.password = t('auth.passwordRequired');
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -87,9 +89,9 @@ export function LoginScreen({ route }: Props) {
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 401) {
-        setFormError('Incorrect email or password. Please try again.');
+        setFormError(t('auth.incorrectCredentials'));
       } else {
-        setFormError(err?.message ?? 'Something went wrong. Please try again.');
+        setFormError(err?.message ?? t('auth.genericError'));
       }
     } finally {
       setLoading(false);
@@ -113,7 +115,7 @@ export function LoginScreen({ route }: Props) {
           <View style={styles.backIcon}>
             <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
           </View>
-          <Text style={styles.headerTitle}>Welcome back</Text>
+          <Text style={styles.headerTitle}>{t('auth.loginTitle')}</Text>
         </View>
 
         <ScrollView
@@ -124,8 +126,8 @@ export function LoginScreen({ route }: Props) {
 
           <View style={styles.form}>
             <AppInput
-              label="Email"
-              placeholder="you@example.com"
+              label={t('auth.emailLabel')}
+              placeholder={t('auth.emailPlaceholder')}
               keyboardType="email-address"
               autoCapitalize="none"
               autoComplete="email"
@@ -139,8 +141,8 @@ export function LoginScreen({ route }: Props) {
 
             <AppInput
               ref={passwordRef}
-              label="Password"
-              placeholder="Your password"
+              label={t('auth.passwordLabel')}
+              placeholder={t('auth.loginPasswordPlaceholder')}
               secureTextEntry
               autoComplete="current-password"
               textContentType="password"
@@ -153,7 +155,7 @@ export function LoginScreen({ route }: Props) {
             />
 
             <Pressable onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink}>
-              <Text style={styles.forgotText}>Forgot password?</Text>
+              <Text style={styles.forgotText}>{t('auth.forgotPasswordLink')}</Text>
             </Pressable>
 
             {formError && (
@@ -163,7 +165,7 @@ export function LoginScreen({ route }: Props) {
             )}
 
             <AppButton
-              label="Log in"
+              label={t('auth.logIn')}
               onPress={handleLogin}
               loading={loading}
               style={{ marginTop: spacing.lg }}
@@ -171,9 +173,9 @@ export function LoginScreen({ route }: Props) {
           </View>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Don't have an account?</Text>
+            <Text style={styles.footerText}>{t('auth.noAccount')}</Text>
             <AppButton
-              label="Sign up"
+              label={t('auth.signUp')}
               onPress={() => navigation.navigate('Signup', { redirect: route.params?.redirect })}
               variant="secondary"
               style={{ marginTop: spacing.sm }}

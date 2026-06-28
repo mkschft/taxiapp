@@ -1,0 +1,19 @@
+{
+  "next": "Seuraava",
+  "back": "Takaisin",
+  "previous": "Edellinen",
+  "done": "Valmis",
+  "cancel": "Peruuta",
+  "finish": "Valmis",
+  "save": "Tallenna",
+  "retry": "Yritä uudelleen",
+  "continue": "Jatka",
+  "loading": "Ladataan…",
+  "close": "Sulje",
+  "ok": "OK",
+  "delete": "Poista",
+  "remove": "Poista",
+  "error": "Virhe",
+  "questionsCount": "{{n}} kysymystä",
+  "wordsCount": "{{n}} sanaa"
+}

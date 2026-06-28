@@ -5,11 +5,14 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
-import { X, Clock } from 'lucide-react-native';
+import { X, Clock, Bookmark } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
+import { localizedPair } from '../i18n/content';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
+import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
 import type { Question } from '../data/types';
@@ -58,13 +61,13 @@ function fromBackend(p: BackendProblem): TestQuestion {
   };
 }
 
-function confirm(title: string, message: string, confirmLabel: string, onConfirm: () => void) {
+function confirm(title: string, message: string, confirmLabel: string, cancelLabel: string, onConfirm: () => void) {
   if (Platform.OS === 'web') {
     if (window.confirm(`${title}\n\n${message}`)) onConfirm();
     return;
   }
   Alert.alert(title, message, [
-    { text: 'Cancel', style: 'cancel' },
+    { text: cancelLabel, style: 'cancel' },
     { text: confirmLabel, style: 'default', onPress: onConfirm },
   ]);
 }
@@ -72,6 +75,8 @@ function confirm(title: string, message: string, confirmLabel: string, onConfirm
 export function ModelTestScreen({ navigation, route }: Props) {
   const { testId, sessionId, problemSetId } = route.params;
   const test = getModelTestById(testId);
+  const { t, i18n } = useTranslation();
+  const { isSaved, toggle } = useSavedQuestions();
 
   const [loading, setLoading] = useState(!!problemSetId);
   const [error, setError] = useState<string | null>(null);
@@ -91,7 +96,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       setLoading(true);
       getProblemSet(problemSetId)
         .then(ps => setQuestions(ps.problems.map(fromBackend)))
-        .catch(e => setError(e instanceof Error ? e.message : 'Failed to load test'))
+        .catch(e => setError(e instanceof Error ? e.message : t('modelTest.loadError')))
         .finally(() => setLoading(false));
     } else if (test) {
       setQuestions(test.question_ids.map(id => {
@@ -137,7 +142,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
       navigation.replace('Result', {
         mode: 'test',
-        label: test?.title_en ?? 'Model Test',
+        label: test ? localizedPair(test.title_fi, test.title_en, i18n.language).primary : t('modelTest.titleFallback'),
         score,
         total,
         wrongIds,
@@ -154,7 +159,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
     navigation.replace('Result', {
       mode: 'test',
-      label: test.title_en,
+      label: localizedPair(test.title_fi, test.title_en, i18n.language).primary,
       score,
       total,
       wrongIds,
@@ -162,7 +167,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       answers: finalAnswers,
       passed,
     });
-  }, [questions, navigation, test, sessionId]);
+  }, [questions, navigation, test, sessionId, i18n.language, t]);
 
   const submitRef = useRef(submit);
   submitRef.current = submit;
@@ -195,7 +200,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <Text style={styles.errorText}>{error || 'Test not found.'}</Text>
+          <Text style={styles.errorText}>{error || t('modelTest.notFound')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -206,6 +211,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const selected = answers[question.id];
   const isLast = qIndex === ids.length - 1;
   const answeredCount = ids.filter(id => answers[id]).length;
+  const { primary: testTitle } = localizedPair(test.title_fi, test.title_en, i18n.language);
 
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
@@ -221,9 +227,9 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const confirmSubmit = () => {
     const unanswered = ids.length - answeredCount;
     const detail = unanswered > 0
-      ? `You have ${unanswered} unanswered. Submit anyway?`
-      : 'Submit your test for grading?';
-    confirm('Submit test?', detail, 'Submit', () => submit(false));
+      ? t('modelTest.submitUnanswered', { n: unanswered })
+      : t('modelTest.submitConfirm');
+    confirm(t('modelTest.submitTitle'), detail, t('modelTest.submit'), t('common.cancel'), () => submit(false));
   };
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
@@ -235,11 +241,11 @@ export function ModelTestScreen({ navigation, route }: Props) {
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
         <TouchableOpacity onPress={() => confirm(
-          'Quit test?', 'Your progress will be lost.', 'Quit', () => navigation.goBack(),
+          t('modelTest.quitTitle'), t('modelTest.quitMessage'), t('modelTest.quit'), t('common.cancel'), () => navigation.goBack(),
         )} style={styles.backBtn}>
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
-        <Text style={styles.navTitle} numberOfLines={1}>{test.title_en}</Text>
+        <Text style={styles.navTitle} numberOfLines={1}>{testTitle}</Text>
       </View>
 
       <View style={styles.timerRow}>
@@ -254,7 +260,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.qCategory}>Q{qIndex + 1} OF {ids.length}</Text>
+        <Text style={styles.qCategory}>{t('modelTest.question', { n: qIndex + 1, total: ids.length })}</Text>
         <View style={styles.questionCard}>
           <Text style={styles.qText}>{question.text}</Text>
           <QuestionImage imageKey={question.imageKey ?? question.id} />
@@ -275,14 +281,36 @@ export function ModelTestScreen({ navigation, route }: Props) {
       </ScrollView>
 
       <View style={styles.footer}>
-        <Text style={styles.answeredHint}>{answeredCount}/{ids.length} answered</Text>
+        <Text style={styles.answeredHint}>
+          {t('modelTest.answered', { count: answeredCount, total: ids.length })}
+        </Text>
+        <TouchableOpacity
+          style={[styles.markBtn, isSaved(question.id) && styles.markBtnActive]}
+          onPress={() => toggle({
+            id: question.id,
+            text: question.text,
+            options: question.options.map(o => ({ key: o.key, text: o.fi })),
+            correctKey: question.correctKey,
+            source: testTitle,
+          })}
+        >
+          <Bookmark
+            size={15}
+            color={isSaved(question.id) ? colors.primary : colors.textSecondary}
+            fill={isSaved(question.id) ? colors.primary : 'transparent'}
+            strokeWidth={2.2}
+          />
+          <Text style={[styles.markText, isSaved(question.id) && styles.markTextActive]}>
+            {isSaved(question.id) ? t('modelTest.marked') : t('modelTest.mark')}
+          </Text>
+        </TouchableOpacity>
         {isLast ? (
-          <View style={{ flex: 1 }}>
-            <AppButton label="Submit" onPress={confirmSubmit} />
+          <View style={styles.submitWrap}>
+            <AppButton label={t('modelTest.finish')} onPress={confirmSubmit} />
           </View>
         ) : (
           <TouchableOpacity style={[styles.navBtn, styles.navBtnPrimary]} onPress={goNext}>
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>Next →</Text>
+            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('modelTest.next')} →</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -340,4 +368,13 @@ const styles = StyleSheet.create({
   navBtnText: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   navBtnTextPrimary: { color: '#fff' },
   answeredHint: { flex: 1, textAlign: 'left', fontSize: fontSize.xs, color: colors.textSecondary },
+  submitWrap: { minWidth: 130 },
+  markBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    paddingHorizontal: 12, paddingVertical: 10,
+    borderRadius: radius.md, borderWidth: 1.5, borderColor: colors.border,
+  },
+  markBtnActive: { borderColor: colors.primary, backgroundColor: colors.primaryTint },
+  markText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.textSecondary },
+  markTextActive: { color: colors.primary },
 });

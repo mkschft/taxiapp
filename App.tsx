@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { loadSavedLanguage } from './src/i18n';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import type { RootStackParamList } from './src/navigation/types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -16,6 +17,7 @@ import {
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { AuthProvider } from './src/store/authStore';
 import { PaywallProvider } from './src/store/paywallStore';
+import { SavedQuestionsProvider } from './src/store/savedQuestionsStore';
 import { colors, font } from './src/theme/tokens';
 
 // Set Inter as the base font for all Text via defaultProps (safe on web + native).
@@ -54,7 +56,6 @@ const linking: LinkingOptions<RootStackParamList> = {
               Guide: 'guide',
               HowTo: 'how-to-use',
               VocabSets: 'vocab/sets',
-              VocabSetDetail: 'vocab/sets/:setId',
               VocabLesson: 'vocab/sets/:setId/lesson/:index',
               VocabQuiz: 'vocab/sets/:setId/quiz',
               ClueWords: 'clue-words',
@@ -98,6 +99,10 @@ export default function App() {
 
   if (loaded) applyGlobalFont();
 
+  useEffect(() => {
+    void loadSavedLanguage();
+  }, []);
+
   const inner = !loaded ? (
     <View style={styles.loading}>
       <ActivityIndicator color={colors.primary} />
@@ -106,10 +111,12 @@ export default function App() {
     <SafeAreaProvider>
       <AuthProvider>
         <PaywallProvider>
-          <NavigationContainer linking={linking}>
-            <StatusBar style="dark" />
-            <RootNavigator />
-          </NavigationContainer>
+          <SavedQuestionsProvider>
+            <NavigationContainer linking={linking}>
+              <StatusBar style="dark" />
+              <RootNavigator />
+            </NavigationContainer>
+          </SavedQuestionsProvider>
         </PaywallProvider>
       </AuthProvider>
     </SafeAreaProvider>

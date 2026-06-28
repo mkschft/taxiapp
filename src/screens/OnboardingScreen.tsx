@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Languages, Target, ClipboardList, Lock, type LucideIcon } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
@@ -12,32 +13,33 @@ import { useAuth } from '../store/authStore';
 
 type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Onboarding'> };
 
-type Slide = { Icon: LucideIcon; tint: string; title: string; body: string };
+type Slide = { Icon: LucideIcon; tint: string; titleKey: string; bodyKey: string };
 
 const SLIDES: Slide[] = [
   {
     Icon: Languages, tint: colors.primary,
-    title: 'Study in your language',
-    body: 'The exam is in Finnish, but you don’t have to be. Read every question and answer in English alongside the original Finnish.',
+    titleKey: 'auth.slide1Title',
+    bodyKey: 'auth.slide1Body',
   },
   {
     Icon: Target, tint: colors.success,
-    title: 'Learn the clue words',
-    body: 'Finnish “trigger words” quietly signal the right answer. We teach you to spot them — so you pass even with weak Finnish.',
+    titleKey: 'auth.slide2Title',
+    bodyKey: 'auth.slide2Body',
   },
   {
     Icon: ClipboardList, tint: colors.warning,
-    title: 'Practice the real exam',
-    body: '300+ questions across all 4 official categories, plus 5 timed model tests scored exactly like Traficom’s.',
+    titleKey: 'auth.slide3Title',
+    bodyKey: 'auth.slide3Body',
   },
   {
     Icon: Lock, tint: colors.modelTest,
-    title: 'Free preview vs full access',
-    body: 'Browsing as a guest? You get “How to use the app” and the Exam Guide. Create a free account to unlock vocabulary, practice, clue words and model tests.',
+    titleKey: 'auth.slide4Title',
+    bodyKey: 'auth.slide4Body',
   },
 ];
 
 export function OnboardingScreen({ navigation }: Props) {
+  const { t } = useTranslation();
   const { markOnboardingSeen } = useAuth();
   const scrollRef = useRef<ScrollView>(null);
   const indexRef = useRef(0);
@@ -85,7 +87,7 @@ export function OnboardingScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.topBar}>
-        <Text style={styles.skip} onPress={finish}>Skip</Text>
+        <Text style={styles.skip} onPress={finish}>{t('auth.skip')}</Text>
       </View>
 
       <View style={styles.carousel} onLayout={onLayout}>
@@ -99,12 +101,12 @@ export function OnboardingScreen({ navigation }: Props) {
             onScroll={onScroll}
           >
             {SLIDES.map(s => (
-              <View key={s.title} style={[styles.slide, { width }]}>
+              <View key={s.titleKey} style={[styles.slide, { width }]}>
                 <View style={[styles.iconChip, { backgroundColor: s.tint + '18' }]}>
                   <s.Icon size={40} color={s.tint} strokeWidth={2} />
                 </View>
-                <Text style={styles.title}>{s.title}</Text>
-                <Text style={styles.body}>{s.body}</Text>
+                <Text style={styles.title}>{t(s.titleKey)}</Text>
+                <Text style={styles.body}>{t(s.bodyKey)}</Text>
               </View>
             ))}
           </ScrollView>
@@ -118,7 +120,7 @@ export function OnboardingScreen({ navigation }: Props) {
       </View>
 
       <View style={styles.actions}>
-        <AppButton label={isLast ? 'Get started' : 'Next'} onPress={next} />
+        <AppButton label={isLast ? t('auth.getStarted') : t('common.next')} onPress={next} />
       </View>
     </SafeAreaView>
   );

@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "study": "Study",
+    "tests": "Tests",
+    "progress": "Progress",
+    "profile": "Profile"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "done": "Done",
+    "cancel": "Cancel"
+  },
+  "modelTest": {
+    "mark": "Mark",
+    "marked": "Marked",
+    "next": "Next",
+    "finish": "Finish",
+    "answered": "{{count}}/{{total}} answered",
+    "question": "Q{{n}} OF {{total}}"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "next": "Next",
+    "seeResult": "See result",
+    "tryAgain": "Try again",
+    "back": "Back to lessons",
+    "passMark": "Pass mark {{pct}}% · You scored {{score}}%",
+    "passTitle": "Nice work!",
+    "failTitle": "Keep practising",
+    "scoreOf": "out of {{total}}",
+    "review": "Review ({{count}})",
+    "correctAnswer": "Correct answer",
+    "empty": "No questions for this lesson."
+  },
+  "profile": {
+    "preferences": "Preferences",
+    "appLanguage": "App language",
+    "appLanguageHint": "Changes buttons and labels only — not questions or answers",
+    "savedQuestions": "Saved questions",
+    "english": "English",
+    "finnish": "Suomi"
+  },
+  "saved": {
+    "title": "Saved questions",
+    "empty": "No saved questions yet. Tap “Mark” during a test to save one for later.",
+    "correctAnswer": "Correct answer"
+  }
+}

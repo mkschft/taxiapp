@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { type LucideIcon } from 'lucide-react-native';
 import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { Badge } from '../components/ui/Badge';
@@ -10,42 +11,58 @@ import { MODULE_ICONS } from '../theme/icons';
 import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
 import { GuestOverlay } from '../components/GuestOverlay';
 
-const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
-  { Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, title: 'How to use the app', sub: 'Start here — what each section is for', screen: 'HowTo', paid: false, params: {} },
-  { Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide', sub: 'Rules, categories, exam day tips', screen: 'Guide', paid: false, params: {} },
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${getVocabSets().length} sets · ${getVocabWordTotal()} words`, screen: 'VocabSets', paid: true, params: {} },
-  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: 'Positive & negative answer-logic words', screen: 'ClueWords', paid: true, params: {} },
-  { Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice', sub: `${getQuestions().length} questions · ${getTopicSections().length} sections`, screen: 'TopicSections', paid: true, params: {} },
+const MENU: { id: string; Icon: LucideIcon; tint: string; screen: string; paid: boolean; params: any }[] = [
+  { id: 'howTo', Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, screen: 'HowTo', paid: false, params: {} },
+  { id: 'examGuide', Icon: MODULE_ICONS.examGuide, tint: colors.primary, screen: 'Guide', paid: false, params: {} },
+  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, screen: 'VocabSets', paid: true, params: {} },
+  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, screen: 'ClueWords', paid: true, params: {} },
+  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, screen: 'TopicSections', paid: true, params: {} },
 ];
 
 export function StudyHomeScreen() {
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
   const { state: auth } = useAuth();
   const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
+
+  const menuText: Record<string, { title: string; sub: string }> = {
+    howTo: { title: t('studyHome.howToTitle'), sub: t('studyHome.howToSub') },
+    examGuide: { title: t('studyHome.examGuideTitle'), sub: t('studyHome.examGuideSub') },
+    vocabulary: {
+      title: t('studyHome.vocabularyTitle'),
+      sub: t('studyHome.vocabSub', { sets: getVocabSets().length, words: getVocabWordTotal() }),
+    },
+    clueWords: { title: t('studyHome.clueWordsTitle'), sub: t('studyHome.clueWordsSub') },
+    topicPractice: {
+      title: t('studyHome.topicPracticeTitle'),
+      sub: t('studyHome.topicSub', { questions: getQuestions().length, sections: getTopicSections().length }),
+    },
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>Learn</Text>
-        <Text style={styles.sub}>Build your Finnish foundation</Text>
+        <Text style={styles.title}>{t('studyHome.title')}</Text>
+        <Text style={styles.sub}>{t('studyHome.subtitle')}</Text>
       </View>
       <ScrollView contentContainerStyle={styles.scroll}>
         {MENU.map(item => (
           <TouchableOpacity
-            key={item.title}
+            key={item.id}
             style={styles.card}
             onPress={() => navigation.navigate(item.screen, item.params)}
             activeOpacity={0.75}
           >
             <IconChip Icon={item.Icon} tint={item.tint} />
             <View style={styles.info}>
-              <Text style={styles.cardTitle}>{item.title}</Text>
-              <Text style={styles.cardSub}>{item.sub}</Text>
+              <Text style={styles.cardTitle}>{menuText[item.id].title}</Text>
+              <Text style={styles.cardSub}>{menuText[item.id].sub}</Text>
             </View>
             {!isPaid && <Badge type={item.paid ? 'paid' : 'free'} />}
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <GuestOverlay blurb="Sign up or log in to unlock vocabulary, clue words, topic practice and model tests." />
+      <GuestOverlay blurb={t('studyHome.guestBlurb')} />
     </SafeAreaView>
   );
 }

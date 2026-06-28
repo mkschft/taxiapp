@@ -1,0 +1,12 @@
+{
+  "unlock": "Avaa {{title}}",
+  "unlockFullAccess": "Avaa täysi käyttöoikeus",
+  "createAccountHeading": "Luo ilmainen tili",
+  "createFreeAccount": "Luo ilmainen tili",
+  "haveAccount": "Minulla on jo tili",
+  "signUp": "Rekisteröidy",
+  "logIn": "Kirjaudu",
+  "badgeFree": "ILMAINEN",
+  "badgePaid": "MAKSULLINEN",
+  "badgeLocked": "LUKITTU"
+}

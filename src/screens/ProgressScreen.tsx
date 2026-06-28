@@ -1,14 +1,17 @@
 import React from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView,
+  View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
-import { CircleCheck } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import { CircleCheck, ChevronRight } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress } from '../hooks/useProgress';
 import { GuestOverlay } from '../components/GuestOverlay';
 import { useAuth } from '../store/authStore';
+import { localizedPair } from '../i18n/content';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -16,6 +19,8 @@ const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
+  const navigation = useNavigation<any>();
+  const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress, loading } = useProgress(!isGuest);
@@ -30,14 +35,45 @@ export function ProgressScreen() {
 
   const officialCategory = progress?.find(item => item.mainCategory.name === 'Official');
   const catProgress = CATEGORIES.map(cat => {
-    const sub = officialCategory?.subcategories.find((s: { category: { name: string } }) => s.category.name === cat.name_en);
-    return { catId: cat.id, pct: sub?.percentage ?? 0 };
+    const sub = officialCategory?.subcategories.find(s => s.category.name === cat.name_en);
+    return {
+      catId: cat.id,
+      pct: sub?.percentage ?? 0,
+      completed: sub?.completed ?? 0,
+      total: sub?.total ?? 0,
+    };
   });
+
+  // Weak areas = subcategories with questions attempted but not yet correct
+  // (BE-2). Until the backend supplies wrongCount, this is empty → the "all
+  // good" state shows. wrongQuestionIds feed a focused "Practice these" run.
+  const weakAreas = (officialCategory?.subcategories ?? [])
+    .filter(s => (s.wrongCount ?? 0) > 0)
+    .sort((a, b) => (b.wrongCount ?? 0) - (a.wrongCount ?? 0))
+    .slice(0, 3)
+    .map(s => {
+      const cat = CATEGORIES.find(c => c.name_en === s.category.name);
+      return {
+        catId: cat?.id ?? s.category.name,
+        nameFi: cat?.name_fi ?? s.category.name,
+        nameEn: cat?.name_en ?? s.category.name,
+        wrongCount: s.wrongCount ?? 0,
+        wrongQuestionIds: s.wrongQuestionIds ?? [],
+      };
+    });
+
+  const practiceWeak = (ids: string[]) => {
+    if (ids.length === 0) return;
+    navigation.navigate('Study', {
+      screen: 'Practice',
+      params: { questionId: ids[0], queue: ids, queueIndex: 0, sourceLabel: t('progress.weakAreasSource') },
+    });
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>My Progress</Text>
+        <Text style={styles.title}>{t('progress.title')}</Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -45,38 +81,28 @@ export function ProgressScreen() {
         <View style={styles.overallCard}>
           <ProgressRing value={completion} size={100} />
           <View style={styles.overallRight}>
-            <Text style={styles.overallLabel}>Overall completion</Text>
+            <Text style={styles.overallLabel}>{t('progress.overallCompletion')}</Text>
             <Text style={styles.overallSub}>
-              {loading ? 'Loading...' : `${totalCompleted} of ${totalQuestions} questions practiced`}
+              {loading ? t('common.loading') : t('progress.overallSub', { c: totalCompleted, t: totalQuestions })}
             </Text>
-            <View style={styles.statRow}>
-              <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.success }]}>0</Text>
-                <Text style={styles.statLbl}>Day streak</Text>
-              </View>
-              <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.primary }]}>0%</Text>
-                <Text style={styles.statLbl}>Accuracy</Text>
-              </View>
-              <View style={styles.statChip}>
-                <Text style={styles.statVal}>0</Text>
-                <Text style={styles.statLbl}>Tests done</Text>
-              </View>
-            </View>
           </View>
         </View>
 
         {/* By category */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>BY OFFICIAL CATEGORY</Text>
+          <Text style={styles.sectionHeader}>{t('progress.byOfficialCategory')}</Text>
           {catProgress.map(cp => {
             const cat = CATEGORIES.find(c => c.id === cp.catId);
+            const { primary } = cat
+              ? localizedPair(cat.name_fi, cat.name_en, i18n.language)
+              : { primary: cp.catId };
             return (
               <ProgressBar
                 key={cp.catId}
-                label={cat?.name_en ?? cp.catId}
+                label={primary}
                 value={cp.pct}
-                color={colors.border}
+                rightLabel={t('progress.mastered', { c: cp.completed, t: cp.total })}
+                color={colors.primary}
               />
             );
           })}
@@ -84,28 +110,51 @@ export function ProgressScreen() {
 
         {/* Vocabulary */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>VOCABULARY</Text>
+          <Text style={styles.sectionHeader}>{t('progress.vocabulary')}</Text>
           <ProgressBar
-            label={`Words learned`}
+            label={t('progress.wordsLearned')}
             value={vocabTotal === 0 ? 0 : Math.round((vocabLearned / vocabTotal) * 100)}
             showPct={false}
             color={colors.primary}
           />
-          <Text style={styles.vocabCount}>{vocabLearned} / {vocabTotal} words</Text>
+          <Text style={styles.vocabCount}>{t('progress.vocabCount', { c: vocabLearned, t: vocabTotal })}</Text>
         </View>
 
         {/* Weak areas */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
-          <View style={styles.allGood}>
-            <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
-            <Text style={styles.allGoodText}>No weak areas yet. Keep practising to see them here.</Text>
-          </View>
+          <Text style={styles.sectionHeader}>{t('progress.weakAreasHeader')}</Text>
+          {weakAreas.length === 0 ? (
+            <View style={styles.allGood}>
+              <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
+              <Text style={styles.allGoodText}>{t('progress.noWeakAreas')}</Text>
+            </View>
+          ) : (
+            weakAreas.map(w => (
+              <TouchableOpacity
+                key={w.catId}
+                style={styles.weakRow}
+                activeOpacity={0.78}
+                disabled={w.wrongQuestionIds.length === 0}
+                onPress={() => practiceWeak(w.wrongQuestionIds)}
+              >
+                <View style={styles.weakInfo}>
+                  <Text style={styles.weakTitle}>{localizedPair(w.nameFi, w.nameEn, i18n.language).primary}</Text>
+                  <Text style={styles.weakSub}>{t('progress.toRevisit', { n: w.wrongCount })}</Text>
+                </View>
+                {w.wrongQuestionIds.length > 0 && (
+                  <View style={styles.retryBtn}>
+                    <Text style={styles.retryText}>{t('progress.practise')}</Text>
+                  </View>
+                )}
+                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+              </TouchableOpacity>
+            ))
+          )}
         </View>
 
         <View style={{ height: 32 }} />
       </ScrollView>
-      <GuestOverlay blurb="Sign up or log in to track your progress, see weak areas, and build your streak." />
+      <GuestOverlay blurb={t('progress.guestBlurb')} />
     </SafeAreaView>
   );
 }
@@ -127,13 +176,6 @@ const styles = StyleSheet.create({
   overallRight: { flex: 1 },
   overallLabel: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 2 },
   overallSub: { fontSize: 12, color: colors.textSecondary, marginBottom: spacing.sm },
-  statRow: { flexDirection: 'row', gap: 8 },
-  statChip: {
-    flex: 1, backgroundColor: colors.surface, borderRadius: radius.sm,
-    padding: 8, alignItems: 'center',
-  },
-  statVal: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
-  statLbl: { fontSize: 10, color: colors.textSecondary, marginTop: 1 },
   section: { paddingHorizontal: spacing.md, marginBottom: spacing.sm },
   sectionHeader: {
     fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,

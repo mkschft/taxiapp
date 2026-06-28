@@ -1,0 +1,16 @@
+{
+  "title": "Aiheharjoittelu",
+  "practice": "Harjoittele",
+  "sectionsCaption": "Harjoittele koeosioittain — valitse aihe ja sitten keskitetty kysymyssarja.",
+  "sectionNotFound": "Osiota ei löytynyt.",
+  "sectionMeta": "{{questions}} kysymystä · {{lessons}} oppituntia",
+  "lastPracticed": "Viimeksi harjoiteltu {{when}}",
+  "doneCount": "{{completed}}/{{total}} tehty",
+  "authTitle": "Kirjaudu harjoitellaksesi tätä osiota",
+  "authBody": "Luo ilmainen tili harjoitellaksesi oikeita koekysymyksiä oppitunti kerrallaan.",
+  "paywallBlurb": "Harjoittele oikeita koekysymyksiä yksi virallinen osio kerrallaan, oikeilla läpäisyrajoilla.",
+  "paywallPerkAll": "Kaikki 4 virallista koeosiota",
+  "paywallPerkSections": "{{n}} virallista koeosiota",
+  "paywallPerkExplained": "Jokainen vastaus selitetty vihjesanojen avulla",
+  "paywallPerkPassMark": "Harjoittele oikealla osiokohtaisella läpäisyrajalla"
+}

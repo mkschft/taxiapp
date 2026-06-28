@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Type, Target, ClipboardList, Timer, type LucideIcon } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
@@ -9,14 +10,15 @@ import { useAuth } from '../store/authStore';
 
 type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Welcome'> };
 
-const FEATURES: { Icon: LucideIcon; tint: string; title: string; body: string }[] = [
-  { Icon: Type, tint: colors.primary, title: '11 vocabulary sets · 84 key words', body: 'Finnish inflections included — the exact words that appear on the exam.' },
-  { Icon: Target, tint: colors.success, title: 'Trigger-word engine', body: 'Learn which Finnish words signal correct vs wrong answers, even with weak Finnish.' },
-  { Icon: ClipboardList, tint: colors.warning, title: '300+ practice questions', body: 'Across all 4 official exam categories, with full clue-word explanations.' },
-  { Icon: Timer, tint: colors.error, title: '5 timed model tests', body: 'Exam-realistic simulation with scoring and review.' },
+const FEATURES: { Icon: LucideIcon; tint: string; titleKey: string; bodyKey: string }[] = [
+  { Icon: Type, tint: colors.primary, titleKey: 'auth.feature1Title', bodyKey: 'auth.feature1Body' },
+  { Icon: Target, tint: colors.success, titleKey: 'auth.feature2Title', bodyKey: 'auth.feature2Body' },
+  { Icon: ClipboardList, tint: colors.warning, titleKey: 'auth.feature3Title', bodyKey: 'auth.feature3Body' },
+  { Icon: Timer, tint: colors.error, titleKey: 'auth.feature4Title', bodyKey: 'auth.feature4Body' },
 ];
 
 export function WelcomeScreen({ navigation }: Props) {
+  const { t } = useTranslation();
   const { enterGuest } = useAuth();
 
   // Local-first preview. Guests can browse "How to use the app" + the Exam
@@ -33,25 +35,25 @@ export function WelcomeScreen({ navigation }: Props) {
         {/* Top: hero + features — grows to fill space */}
         <View style={styles.top}>
           <View style={styles.hero}>
-            <Text style={styles.tagline}>FINNISH TAXI EXAM PREP</Text>
+            <Text style={styles.tagline}>{t('auth.welcomeTagline')}</Text>
             <Text style={styles.headline}>
-              Pass the exam by reading the{' '}
-              <Text style={{ color: colors.primary }}>language</Text>
+              {t('auth.welcomeHeadlinePrefix')}
+              <Text style={{ color: colors.primary }}>{t('auth.welcomeHeadlineHighlight')}</Text>
             </Text>
             <Text style={styles.subtitle}>
-              Study in English. Spot the Finnish clue words. Pass.
+              {t('auth.welcomeSubtitle')}
             </Text>
           </View>
 
           <View style={styles.features}>
             {FEATURES.map(f => (
-              <View key={f.title} style={styles.featureRow}>
+              <View key={f.titleKey} style={styles.featureRow}>
                 <View style={[styles.featureIconChip, { backgroundColor: f.tint + '18' }]}>
                   <f.Icon size={20} color={f.tint} strokeWidth={2.2} />
                 </View>
                 <View style={styles.featureText}>
-                  <Text style={styles.featureTitle}>{f.title}</Text>
-                  <Text style={styles.featureBody}>{f.body}</Text>
+                  <Text style={styles.featureTitle}>{t(f.titleKey)}</Text>
+                  <Text style={styles.featureBody}>{t(f.bodyKey)}</Text>
                 </View>
               </View>
             ))}
@@ -61,17 +63,17 @@ export function WelcomeScreen({ navigation }: Props) {
         {/* Bottom: auth choices anchored to the bottom */}
         <View style={styles.actions}>
           <AppButton
-            label="Create free account"
+            label={t('auth.createFreeAccount')}
             onPress={() => navigation.navigate('Signup')}
           />
           <AppButton
-            label="Log in"
+            label={t('auth.logIn')}
             variant="secondary"
             onPress={() => navigation.navigate('Login')}
             style={{ marginTop: spacing.sm }}
           />
           <Text style={styles.guestLink} onPress={continueAsGuest}>
-            Just looking? Browse a limited preview →
+            {t('auth.guestPreview')}
           </Text>
         </View>
 

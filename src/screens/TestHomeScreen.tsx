@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { Clock, ClipboardList, CircleCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
+import { localizedPair } from '../i18n/content';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
 import { useStartQuiz } from '../hooks/useStartQuiz';
@@ -13,6 +15,7 @@ import { GuestOverlay } from '../components/GuestOverlay';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
+  const { t, i18n } = useTranslation();
   const tests = getModelTests();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked } = usePaywall();
@@ -22,9 +25,9 @@ export function TestHomeScreen() {
   if (!isGuest && !isUnlocked('model_tests')) {
     return (
       <Paywall
-        title="Model Tests"
-        blurb="Full, timed mock exams that mirror the real thing — 50 questions, 45 minutes, the real pass gate."
-        perks={[`${tests.length} full timed mock exams`, 'Scored like the real exam (38/50 + per-section gate)', 'Review every question you missed afterwards']}
+        title={t('testHome.title')}
+        blurb={t('testHome.paywallBlurb')}
+        perks={[t('testHome.perkExams', { n: tests.length }), t('testHome.perkScored'), t('testHome.perkReview')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
         onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
       />
@@ -34,32 +37,35 @@ export function TestHomeScreen() {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>Model Tests</Text>
-        <Text style={styles.sub}>Timed, exam-realistic. Pass mark: 76% (38 of 50)</Text>
+        <Text style={styles.title}>{t('testHome.title')}</Text>
+        <Text style={styles.sub}>{t('testHome.subtitle')}</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll}>
-        {tests.map(t => (
-          <View key={t.id} style={styles.testCard}>
+        {tests.map(test => {
+          const { primary } = localizedPair(test.title_fi, test.title_en, i18n.language);
+          return (
+          <View key={test.id} style={styles.testCard}>
             <View style={styles.cardHeader}>
-              <Text style={styles.testTitle}>{t.title_en}</Text>
+              <Text style={styles.testTitle}>{primary}</Text>
             </View>
             <View style={styles.metaRow}>
-              <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.time_minutes} min</Text></View>
-              <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t.question_ids.length} questions</Text></View>
-              <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>Pass {t.pass_mark}%</Text></View>
+              <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.minutes', { n: test.time_minutes })}</Text></View>
+              <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('common.questionsCount', { n: test.question_ids.length })}</Text></View>
+              <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.pass', { n: test.pass_mark })}</Text></View>
             </View>
             <AppButton
-              label="Start test →"
+              label={`${t('testHome.startTest')} →`}
               disabled={loading}
-              onPress={() => startQuiz(`model-test/${t.id}`, 'ModelTest', { testId: t.id })}
+              onPress={() => startQuiz(`model-test/${test.id}`, 'ModelTest', { testId: test.id })}
               style={{ marginTop: spacing.sm }}
             />
           </View>
-        ))}
+          );
+        })}
         <View style={{ height: 32 }} />
       </ScrollView>
-      <GuestOverlay blurb="Sign up or log in to take timed model tests and track your scores." />
+      <GuestOverlay blurb={t('testHome.guestBlurb')} />
     </SafeAreaView>
   );
 }
