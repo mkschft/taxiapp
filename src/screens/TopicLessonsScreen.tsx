@@ -3,14 +3,16 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useAuth } from '../store/authStore';
+import { usePaywall } from '../store/paywallStore';
 import { AuthPrompt } from '../components/AuthPrompt';
+import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -26,6 +28,22 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
+  const { isUnlocked } = usePaywall();
+  const rootNav = useNavigation<any>();
+
+  // The dashboard hero tiles deep-link straight here, bypassing TopicSections,
+  // so the topic_practice paywall must also hold here for signed-in users.
+  if (isAuthenticated && !isUnlocked('topic_practice')) {
+    return (
+      <Paywall
+        title="Topic Practice"
+        blurb="Drill real exam-style questions one official section at a time, with the real pass thresholds."
+        perks={['All 4 official exam sections', 'Every answer explained, with the clue lens', 'Practise at the real per-section pass mark']}
+        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
+        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'TopicSections' })}
+      />
+    );
+  }
 
   if (!section) {
     return (
