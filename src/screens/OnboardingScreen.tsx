@@ -37,7 +37,7 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export function OnboardingScreen(_props: Props) {
+export function OnboardingScreen({ navigation }: Props) {
   const { markOnboardingSeen } = useAuth();
   const scrollRef = useRef<ScrollView>(null);
   const [width, setWidth] = useState(0);
@@ -45,9 +45,13 @@ export function OnboardingScreen(_props: Props) {
 
   const isLast = index === SLIDES.length - 1;
 
-  // Marking onboarding seen flips auth state; the root navigator swaps this
-  // screen out for the App tabs automatically.
-  const finish = () => { void markOnboardingSeen(); };
+  // Persist that onboarding is done (so cold launches skip the carousel), then
+  // move into the app. Without the explicit navigate the screen just sits here,
+  // since the root navigator only reads its entry route at mount.
+  const finish = () => {
+    void markOnboardingSeen();
+    navigation.replace('App');
+  };
 
   const next = () => {
     if (isLast) { void finish(); return; }

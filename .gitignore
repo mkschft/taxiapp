@@ -20,6 +20,9 @@ PROGRESS.md
 # Internal session / decision log — not committed
 SESSION_LOG.md
 
+# Claude's holistic project overview — local working notes, not committed
+PROJECT_OVERVIEW.md
+
 # Local backups / Python build artifacts
 old-backup-ignore/
 content/.venv/

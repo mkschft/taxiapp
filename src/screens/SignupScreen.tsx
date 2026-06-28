@@ -82,7 +82,13 @@ export function SignupScreen({ route }: Props) {
           },
         });
       } else if (upgradingGuest) {
+        // Guest upgrading in place (e.g. from a content gate) — return to where
+        // they were, now signed in.
         navigation.goBack();
+      } else {
+        // Fresh signup with no redirect: previously this hit no branch and
+        // dead-ended on the form. Move the new account holder into the app.
+        navigation.replace('App');
       }
     } catch (err: any) {
       const status = err?.statusCode;

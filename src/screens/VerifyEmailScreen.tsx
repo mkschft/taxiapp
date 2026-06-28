@@ -47,7 +47,12 @@ export function VerifyEmailScreen({ route }: Props) {
         setSuccessMessage('Email verified successfully');
         if (isLoggedIn && auth.refreshToken) {
           return refreshTokens(auth.refreshToken).then(({ accessToken, refreshToken }) =>
-            getMe(accessToken).then((user) => setAuth(user, accessToken, refreshToken))
+            getMe(accessToken).then((user) => {
+              setAuth(user, accessToken, refreshToken);
+              // Verified while signed in — forward into the app instead of
+              // leaving them stranded on the success screen.
+              navigation.replace('App');
+            })
           );
         }
       })
