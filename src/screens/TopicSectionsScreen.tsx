@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight, Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -14,6 +15,7 @@ import { useAuth } from '../store/authStore';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
 import { formatRelativeDay } from '../lib/time';
+import { localizedPair } from '../i18n/content';
 import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
@@ -28,14 +30,15 @@ export function TopicSectionsScreen({ navigation }: Props) {
   const { isUnlocked } = usePaywall();
   const { state: auth } = useAuth();
   const { data: progress } = useProgress(!!auth.user);
+  const { t, i18n } = useTranslation();
   const rootNav = useNavigation<any>();
 
   if (!isUnlocked('topic_practice')) {
     return (
       <Paywall
-        title="Topic Practice"
-        blurb="Drill real exam-style questions one official section at a time, with the real pass thresholds."
-        perks={[`${SECTIONS.length} official exam sections`, 'Every answer explained, with the clue lens', 'Practise at the real per-section pass mark']}
+        title={t('topic.title')}
+        blurb={t('topic.paywallBlurb')}
+        perks={[t('topic.paywallPerkSections', { n: SECTIONS.length }), t('topic.paywallPerkExplained'), t('topic.paywallPerkPassMark')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
         onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'TopicSections' })}
       />
@@ -44,11 +47,11 @@ export function TopicSectionsScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title="Topic Practice" onBack={() => navigation.goBack()} />
+      <ScreenHeader title={t('topic.title')} onBack={() => navigation.goBack()} />
 
       <View style={styles.subHeader}>
         <Text style={styles.caption}>
-          Practise by exam section — pick a topic, then a focused set of questions.
+          {t('topic.sectionsCaption')}
         </Text>
       </View>
 
@@ -61,6 +64,7 @@ export function TopicSectionsScreen({ navigation }: Props) {
           const total = sectionProgress?.total ?? section.question_count;
           const pctDone = sectionProgress?.percentage ?? 0;
           const lastPracticed = formatRelativeDay(sectionProgress?.lastPracticedAt);
+          const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
           return (
             <TouchableOpacity
@@ -79,15 +83,17 @@ export function TopicSectionsScreen({ navigation }: Props) {
               />
 
               <View style={styles.info}>
-                <Text style={styles.cardTitle} numberOfLines={2}>{section.name_en}</Text>
-                <Text style={styles.cardFi} numberOfLines={1}>{section.name_fi}</Text>
+                <Text style={styles.cardTitle} numberOfLines={2}>{primary}</Text>
+                <Text style={styles.cardFi} numberOfLines={1}>{secondary}</Text>
                 <Text style={styles.cardSub}>
-                  {section.question_count} questions · {section.lesson_count} lessons
+                  {t('topic.sectionMeta', { questions: section.question_count, lessons: section.lesson_count })}
                 </Text>
                 <View style={styles.metaRow}>
                   <View style={[styles.tag, { backgroundColor: colors.surface }]}>
                     <Text style={styles.tagText}>
-                      {lastPracticed ? `Last practiced ${lastPracticed}` : `${answered}/${total} done`}
+                      {lastPracticed
+                        ? t('topic.lastPracticed', { when: lastPracticed })
+                        : t('topic.doneCount', { completed: answered, total })}
                     </Text>
                   </View>
                 </View>

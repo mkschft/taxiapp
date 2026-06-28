@@ -1,0 +1,19 @@
+{
+  "headerTitle": "Refer a friend",
+  "heroTitle": "Give 7 days free.\nGet 7 days free.",
+  "heroSub": "Share your code with a friend who needs the Finnish taxi exam. When they sign up, you both get a free week added.",
+  "codeLabel": "YOUR REFERRAL CODE",
+  "copy": "📋 Copy code",
+  "copied": "✓ Copied!",
+  "copyConfirm": "✓ Code copied to clipboard!",
+  "share": "Share your code",
+  "howItWorks": "HOW IT WORKS",
+  "step1": "Share your code **{{code}}** with a friend preparing for the taxi exam.",
+  "step2": "They sign up and enter your code. They get **7 days free** on their subscription.",
+  "step3": "You automatically get **7 days added** to your account. No limit on referrals.",
+  "statsTitle": "YOUR REFERRALS",
+  "friendsJoined": "Friends joined",
+  "daysEarned": "Free days earned",
+  "noLimit": "No limit",
+  "shareMessage": "Use my code {{code}} to get 7 days free on TaxiPilot — the Finnish taxi exam prep app! https://taxipilot.fi"
+}

@@ -3,8 +3,10 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { Lock, UserPlus, ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { localizedPair } from '../i18n/content';
 import { MODULE_ICONS, CategoryIcon } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -31,25 +33,27 @@ const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 const TOPIC_SECTIONS = [...getTopicSections()].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
 type HubItem = {
-  Icon: LucideIcon; tint: string; title: string; sub: string; paid: boolean;
+  Icon: LucideIcon; tint: string; titleKey: string; subKey: string;
+  subParams?: Record<string, number>; paid: boolean;
   screen: string; stack?: string;
 };
 
 // Everything below the hero. Topic Practice is no longer here — it's the hero.
 const SECONDARY: HubItem[] = [
-  { Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide', sub: 'Rules · categories', paid: false, screen: 'Guide', stack: 'Study' },
-  { Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, title: 'Model Tests', sub: `${MODEL_TESTS} full timed tests`, paid: true, screen: 'TestHome', stack: 'Test' },
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary', sub: `${VOCAB_SETS} sets · ${VOCAB_WORDS} words`, paid: true, screen: 'VocabSets', stack: 'Study' },
-  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words', sub: `${CLUE_GROUPS} groups · ${CLUE_WORDS} clue words`, paid: true, screen: 'ClueWords', stack: 'Study' },
+  { Icon: MODULE_ICONS.examGuide, tint: colors.primary, titleKey: 'dashboard.examGuide.title', subKey: 'dashboard.examGuide.sub', paid: false, screen: 'Guide', stack: 'Study' },
+  { Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, titleKey: 'dashboard.modelTests.title', subKey: 'dashboard.modelTests.sub', subParams: { n: MODEL_TESTS }, paid: true, screen: 'TestHome', stack: 'Test' },
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { sets: VOCAB_SETS, words: VOCAB_WORDS }, paid: true, screen: 'VocabSets', stack: 'Study' },
+  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, paid: true, screen: 'ClueWords', stack: 'Study' },
 ];
 
 // Low-priority destinations rendered as lightweight text links.
-const LINKS: { title: string; screen: string; stack?: string }[] = [
-  { title: 'How to use the app', screen: 'HowTo', stack: 'Study' },
+const LINKS: { titleKey: string; screen: string; stack?: string }[] = [
+  { titleKey: 'dashboard.howTo', screen: 'HowTo', stack: 'Study' },
 ];
 
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
+  const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
@@ -90,8 +94,8 @@ export function DashboardScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.greeting}>Good morning</Text>
-            <Text style={styles.caption}>Keep going — exam day is coming!</Text>
+            <Text style={styles.greeting}>{t('dashboard.greeting')}</Text>
+            <Text style={styles.caption}>{t('dashboard.tagline')}</Text>
           </View>
         </View>
 
@@ -102,13 +106,13 @@ export function DashboardScreen() {
               <UserPlus size={20} color={colors.primary} strokeWidth={2.1} />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={styles.guestTitle}>Track your progress</Text>
+              <Text style={styles.guestTitle}>{t('dashboard.guest.title')}</Text>
               <Text style={styles.guestBody}>
-                Create a free account to save your progress and see how close you are to exam day.
+                {t('dashboard.guest.body')}
               </Text>
             </View>
             <AppButton
-              label="Create account"
+              label={t('dashboard.guest.cta')}
               onPress={() => navigation.navigate('Signup')}
               style={{ marginTop: spacing.sm }}
             />
@@ -117,11 +121,11 @@ export function DashboardScreen() {
           // Fresh signed-in user: an encouraging start card instead of a flat 0%.
           <View style={styles.progressCard}>
             <View style={{ flex: 1 }}>
-              <Text style={styles.progressLabel}>Ready to start?</Text>
+              <Text style={styles.progressLabel}>{t('dashboard.ready')}</Text>
               <Text style={styles.startTitle}>
-                {totalQuestions || TOTAL_QUESTIONS} questions across your exam topics
+                {t('dashboard.startTitle', { n: totalQuestions || TOTAL_QUESTIONS })}
               </Text>
-              <Text style={styles.progressSub}>Pick a topic below to begin.</Text>
+              <Text style={styles.progressSub}>{t('dashboard.pickTopic')}</Text>
             </View>
           </View>
         ) : (
@@ -129,9 +133,9 @@ export function DashboardScreen() {
           // big number or bar.
           <View style={styles.progressCard}>
             <View style={{ flex: 1 }}>
-              <Text style={styles.progressLabel}>Overall progress</Text>
+              <Text style={styles.progressLabel}>{t('dashboard.overallProgress')}</Text>
               <Text style={styles.progressSub}>
-                {loading ? 'Loading…' : `${totalCompleted} of ${totalQuestions} questions practiced`}
+                {loading ? t('common.loading') : t('dashboard.practiced', { completed: totalCompleted, total: totalQuestions })}
               </Text>
             </View>
             <ProgressRing value={completion} size={80} strokeWidth={7} color="#fff" />
@@ -140,14 +144,19 @@ export function DashboardScreen() {
 
         {/* HERO — Topic Practice categories (core curriculum) */}
         <View style={styles.sectionHead}>
-          <Text style={styles.sectionTitle}>Topic Practice</Text>
-          <Text style={styles.sectionSub}>The core exam curriculum — practise by category</Text>
+          <Text style={styles.sectionTitle}>{t('dashboard.topicPractice.title')}</Text>
+          <Text style={styles.sectionSub}>{t('dashboard.topicPractice.sub')}</Text>
         </View>
         <View style={styles.grid}>
           {TOPIC_SECTIONS.map(section => {
             const cat = CAT[section.category_id];
             const tint = cat?.color ?? colors.primary;
             const pct = sectionPct(section.category_id, section.name_en);
+            const { primary, secondary } = localizedPair(
+              cat?.name_fi ?? section.name_fi,
+              cat?.name_en ?? section.name_en,
+              i18n.language,
+            );
             return (
               <TouchableOpacity
                 key={section.id}
@@ -161,9 +170,9 @@ export function DashboardScreen() {
                   </View>
                   {topicLocked && <Lock size={15} color={colors.textTertiary} strokeWidth={2.2} />}
                 </View>
-                <Text style={styles.topicTitle} numberOfLines={2}>{cat?.name_en ?? section.name_en}</Text>
-                <Text style={styles.topicFi} numberOfLines={1}>{cat?.name_fi ?? section.name_fi}</Text>
-                <Text style={styles.topicSub}>{section.question_count} questions</Text>
+                <Text style={styles.topicTitle} numberOfLines={2}>{primary}</Text>
+                <Text style={styles.topicFi} numberOfLines={1}>{secondary}</Text>
+                <Text style={styles.topicSub}>{t('common.questionsCount', { n: section.question_count })}</Text>
                 <View style={styles.topicTrack}>
                   <View style={[styles.topicFill, { width: `${pct}%`, backgroundColor: tint }]} />
                 </View>
@@ -174,22 +183,22 @@ export function DashboardScreen() {
 
         {/* SECONDARY — other modules, as full-width rows */}
         <View style={styles.sectionHead}>
-          <Text style={styles.sectionTitle}>More</Text>
+          <Text style={styles.sectionTitle}>{t('dashboard.more')}</Text>
         </View>
         <View style={styles.rows}>
           {SECONDARY.map(hub => {
             const locked = isGuestLocked(hub.screen, isGuest);
             return (
               <TouchableOpacity
-                key={hub.title}
+                key={hub.screen}
                 style={styles.hubRow}
                 onPress={() => openHub(hub.screen, hub.stack)}
                 activeOpacity={0.78}
               >
                 <IconChip Icon={hub.Icon} tint={hub.tint} />
                 <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle}>{hub.title}</Text>
-                  <Text style={styles.hubSub}>{hub.sub}</Text>
+                  <Text style={styles.hubTitle}>{t(hub.titleKey)}</Text>
+                  <Text style={styles.hubSub}>{t(hub.subKey, hub.subParams)}</Text>
                 </View>
                 {(locked || !isPaid) && <Badge type={locked ? 'locked' : hub.paid ? 'paid' : 'free'} />}
               </TouchableOpacity>
@@ -201,12 +210,12 @@ export function DashboardScreen() {
         <View style={styles.links}>
           {LINKS.map(link => (
             <TouchableOpacity
-              key={link.title}
+              key={link.screen}
               style={styles.linkRow}
               onPress={() => openHub(link.screen, link.stack)}
               activeOpacity={0.6}
             >
-              <Text style={styles.linkText}>{link.title}</Text>
+              <Text style={styles.linkText}>{t(link.titleKey)}</Text>
               <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
             </TouchableOpacity>
           ))}

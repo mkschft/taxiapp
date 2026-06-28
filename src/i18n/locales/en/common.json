@@ -1,0 +1,19 @@
+{
+  "next": "Next",
+  "back": "Back",
+  "previous": "Previous",
+  "done": "Done",
+  "cancel": "Cancel",
+  "finish": "Finish",
+  "save": "Save",
+  "retry": "Retry",
+  "continue": "Continue",
+  "loading": "Loading…",
+  "close": "Close",
+  "ok": "OK",
+  "delete": "Delete",
+  "remove": "Remove",
+  "error": "Error",
+  "questionsCount": "{{n}} questions",
+  "wordsCount": "{{n}} words"
+}

@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { CircleCheck, ChevronRight } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -10,6 +11,7 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { useProgress } from '../hooks/useProgress';
 import { GuestOverlay } from '../components/GuestOverlay';
 import { useAuth } from '../store/authStore';
+import { localizedPair } from '../i18n/content';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -18,6 +20,7 @@ const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
   const navigation = useNavigation<any>();
+  const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress, loading } = useProgress(!isGuest);
@@ -52,7 +55,8 @@ export function ProgressScreen() {
       const cat = CATEGORIES.find(c => c.name_en === s.category.name);
       return {
         catId: cat?.id ?? s.category.name,
-        name: cat?.name_en ?? s.category.name,
+        nameFi: cat?.name_fi ?? s.category.name,
+        nameEn: cat?.name_en ?? s.category.name,
         wrongCount: s.wrongCount ?? 0,
         wrongQuestionIds: s.wrongQuestionIds ?? [],
       };
@@ -62,14 +66,14 @@ export function ProgressScreen() {
     if (ids.length === 0) return;
     navigation.navigate('Study', {
       screen: 'Practice',
-      params: { questionId: ids[0], queue: ids, queueIndex: 0, sourceLabel: 'Weak areas' },
+      params: { questionId: ids[0], queue: ids, queueIndex: 0, sourceLabel: t('progress.weakAreasSource') },
     });
   };
 
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>My Progress</Text>
+        <Text style={styles.title}>{t('progress.title')}</Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -77,24 +81,27 @@ export function ProgressScreen() {
         <View style={styles.overallCard}>
           <ProgressRing value={completion} size={100} />
           <View style={styles.overallRight}>
-            <Text style={styles.overallLabel}>Overall completion</Text>
+            <Text style={styles.overallLabel}>{t('progress.overallCompletion')}</Text>
             <Text style={styles.overallSub}>
-              {loading ? 'Loading...' : `${totalCompleted} of ${totalQuestions} questions practiced`}
+              {loading ? t('common.loading') : t('progress.overallSub', { c: totalCompleted, t: totalQuestions })}
             </Text>
           </View>
         </View>
 
         {/* By category */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>BY OFFICIAL CATEGORY</Text>
+          <Text style={styles.sectionHeader}>{t('progress.byOfficialCategory')}</Text>
           {catProgress.map(cp => {
             const cat = CATEGORIES.find(c => c.id === cp.catId);
+            const { primary } = cat
+              ? localizedPair(cat.name_fi, cat.name_en, i18n.language)
+              : { primary: cp.catId };
             return (
               <ProgressBar
                 key={cp.catId}
-                label={cat?.name_en ?? cp.catId}
+                label={primary}
                 value={cp.pct}
-                rightLabel={`${cp.completed}/${cp.total} mastered`}
+                rightLabel={t('progress.mastered', { c: cp.completed, t: cp.total })}
                 color={colors.primary}
               />
             );
@@ -103,23 +110,23 @@ export function ProgressScreen() {
 
         {/* Vocabulary */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>VOCABULARY</Text>
+          <Text style={styles.sectionHeader}>{t('progress.vocabulary')}</Text>
           <ProgressBar
-            label={`Words learned`}
+            label={t('progress.wordsLearned')}
             value={vocabTotal === 0 ? 0 : Math.round((vocabLearned / vocabTotal) * 100)}
             showPct={false}
             color={colors.primary}
           />
-          <Text style={styles.vocabCount}>{vocabLearned} / {vocabTotal} words</Text>
+          <Text style={styles.vocabCount}>{t('progress.vocabCount', { c: vocabLearned, t: vocabTotal })}</Text>
         </View>
 
         {/* Weak areas */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
+          <Text style={styles.sectionHeader}>{t('progress.weakAreasHeader')}</Text>
           {weakAreas.length === 0 ? (
             <View style={styles.allGood}>
               <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
-              <Text style={styles.allGoodText}>No weak areas yet. Keep practising to see them here.</Text>
+              <Text style={styles.allGoodText}>{t('progress.noWeakAreas')}</Text>
             </View>
           ) : (
             weakAreas.map(w => (
@@ -131,12 +138,12 @@ export function ProgressScreen() {
                 onPress={() => practiceWeak(w.wrongQuestionIds)}
               >
                 <View style={styles.weakInfo}>
-                  <Text style={styles.weakTitle}>{w.name}</Text>
-                  <Text style={styles.weakSub}>{w.wrongCount} to revisit</Text>
+                  <Text style={styles.weakTitle}>{localizedPair(w.nameFi, w.nameEn, i18n.language).primary}</Text>
+                  <Text style={styles.weakSub}>{t('progress.toRevisit', { n: w.wrongCount })}</Text>
                 </View>
                 {w.wrongQuestionIds.length > 0 && (
                   <View style={styles.retryBtn}>
-                    <Text style={styles.retryText}>Practise</Text>
+                    <Text style={styles.retryText}>{t('progress.practise')}</Text>
                   </View>
                 )}
                 <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
@@ -147,7 +154,7 @@ export function ProgressScreen() {
 
         <View style={{ height: 32 }} />
       </ScrollView>
-      <GuestOverlay blurb="Sign up or log in to track your progress, see weak areas, and build your streak." />
+      <GuestOverlay blurb={t('progress.guestBlurb')} />
     </SafeAreaView>
   );
 }

@@ -1,0 +1,16 @@
+{
+  "title": "Oma edistyminen",
+  "overallCompletion": "Kokonaisedistyminen",
+  "overallSub": "{{c}}/{{t}} kysymystä harjoiteltu",
+  "byOfficialCategory": "VIRALLISEN KATEGORIAN MUKAAN",
+  "mastered": "{{c}}/{{t}} hallittu",
+  "vocabulary": "SANASTO",
+  "wordsLearned": "Opitut sanat",
+  "vocabCount": "{{c}} / {{t}} sanaa",
+  "weakAreasHeader": "HEIKOT ALUEET — VAATII HUOMIOTA",
+  "weakAreasSource": "Heikot alueet",
+  "noWeakAreas": "Ei heikkoja alueita vielä. Jatka harjoittelua.",
+  "toRevisit": "{{n}} kerrattavaa",
+  "practise": "Kertaa",
+  "guestBlurb": "Rekisteröidy tai kirjaudu sisään seurataksesi edistymistäsi, nähdäksesi heikot alueet ja rakentaaksesi putkesi."
+}

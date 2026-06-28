@@ -5,16 +5,11 @@ import {
 } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { Gift } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-
-const STEPS = [
-  { n: 1, text: (code: string) => `Share your code **${code}** with a friend preparing for the taxi exam.` },
-  { n: 2, text: () => 'They sign up and enter your code. They get **7 days free** on their subscription.' },
-  { n: 3, text: () => 'You automatically get **7 days added** to your account. No limit on referrals.' },
-];
 
 function BoldText({ text }: { text: string }) {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -29,8 +24,15 @@ function BoldText({ text }: { text: string }) {
 
 export function ReferralScreen() {
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
   const code = 'TAXI7';
   const [copied, setCopied] = useState(false);
+
+  const steps = [
+    { n: 1, text: t('referral.step1', { code }) },
+    { n: 2, text: t('referral.step2') },
+    { n: 3, text: t('referral.step3') },
+  ];
 
   // Real referral counts come from the backend (`referrals` table) once wired —
   // see BACKEND.md. Until then show honest zeros rather than mock numbers.
@@ -45,13 +47,13 @@ export function ReferralScreen() {
 
   const handleShare = async () => {
     await Share.share({
-      message: `Use my code ${code} to get 7 days free on TaxiPilot — the Finnish taxi exam prep app! https://taxipilot.fi`,
+      message: t('referral.shareMessage', { code }),
     });
   };
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title="Refer a friend" onBack={() => navigation.goBack()} />
+      <ScreenHeader title={t('referral.headerTitle')} onBack={() => navigation.goBack()} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Hero */}
@@ -59,19 +61,16 @@ export function ReferralScreen() {
           <View style={styles.heroIconChip}>
             <Gift size={36} color={colors.success} strokeWidth={1.9} />
           </View>
-          <Text style={styles.heroTitle}>Give 7 days free.{'\n'}Get 7 days free.</Text>
-          <Text style={styles.heroSub}>
-            Share your code with a friend who needs the Finnish taxi exam.
-            When they sign up, you both get a free week added.
-          </Text>
+          <Text style={styles.heroTitle}>{t('referral.heroTitle')}</Text>
+          <Text style={styles.heroSub}>{t('referral.heroSub')}</Text>
         </View>
 
         {/* Code card */}
         <View style={styles.codeCard}>
-          <Text style={styles.codeLabel}>YOUR REFERRAL CODE</Text>
+          <Text style={styles.codeLabel}>{t('referral.codeLabel')}</Text>
           <Text style={styles.code}>{code}</Text>
           <AppButton
-            label={copied ? '✓ Copied!' : '📋 Copy code'}
+            label={copied ? t('referral.copied') : t('referral.copy')}
             onPress={handleCopy}
             variant={copied ? 'success' : 'primary'}
             style={{ marginTop: spacing.sm }}
@@ -80,36 +79,36 @@ export function ReferralScreen() {
 
         {copied && (
           <View style={styles.copyConfirm}>
-            <Text style={styles.copyConfirmText}>✓ Code copied to clipboard!</Text>
+            <Text style={styles.copyConfirmText}>{t('referral.copyConfirm')}</Text>
           </View>
         )}
 
         {/* Share */}
         <View style={styles.shareSection}>
-          <AppButton label="Share your code" onPress={handleShare} />
+          <AppButton label={t('referral.share')} onPress={handleShare} />
         </View>
 
         {/* How it works */}
-        <Text style={styles.sectionHeader}>HOW IT WORKS</Text>
+        <Text style={styles.sectionHeader}>{t('referral.howItWorks')}</Text>
         <View style={styles.steps}>
-          {STEPS.map(s => (
+          {steps.map(s => (
             <View key={s.n} style={styles.stepRow}>
               <View style={[styles.stepNum, s.n === 3 && { backgroundColor: colors.success }]}>
                 <Text style={styles.stepNumText}>{s.n}</Text>
               </View>
-              <BoldText text={s.text(code)} />
+              <BoldText text={s.text} />
             </View>
           ))}
         </View>
 
         {/* Stats */}
         <View style={styles.statsCard}>
-          <Text style={styles.statsTitle}>YOUR REFERRALS</Text>
+          <Text style={styles.statsTitle}>{t('referral.statsTitle')}</Text>
           <View style={styles.statsRow}>
             {[
-              { val: friendsJoined, label: 'Friends joined', color: colors.primary },
-              { val: daysEarned, label: 'Free days earned', color: colors.success },
-              { val: '∞', label: 'No limit', color: colors.text },
+              { val: friendsJoined, label: t('referral.friendsJoined'), color: colors.primary },
+              { val: daysEarned, label: t('referral.daysEarned'), color: colors.success },
+              { val: '∞', label: t('referral.noLimit'), color: colors.text },
             ].map((s, i) => (
               <React.Fragment key={s.label}>
                 {i > 0 && <View style={styles.statsDivider} />}

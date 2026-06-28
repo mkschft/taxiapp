@@ -1,0 +1,18 @@
+{
+  "mark": "Mark",
+  "marked": "Marked",
+  "next": "Next",
+  "finish": "Finish",
+  "answered": "{{count}}/{{total}} answered",
+  "question": "Q{{n}} OF {{total}}",
+  "titleFallback": "Model Test",
+  "loadError": "Failed to load test",
+  "notFound": "Test not found.",
+  "quitTitle": "Quit test?",
+  "quitMessage": "Your progress will be lost.",
+  "quit": "Quit",
+  "submitTitle": "Submit test?",
+  "submitUnanswered": "You have {{n}} unanswered. Submit anyway?",
+  "submitConfirm": "Submit your test for grading?",
+  "submit": "Submit"
+}

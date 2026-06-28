@@ -6,6 +6,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ChevronLeft, CheckCircle2 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export function ResetPasswordScreen({ route }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const token = route.params?.token ?? '';
 
@@ -31,17 +33,17 @@ export function ResetPasswordScreen({ route }: Props) {
 
   useEffect(() => {
     if (!token) {
-      setFormError('Invalid or missing reset token. Please request a new reset link.');
+      setFormError(t('auth.invalidResetToken'));
     }
-  }, [token]);
+  }, [token, t]);
 
   const clearFormError = () => setFormError(null);
 
   const validate = () => {
     const next: Record<string, string> = {};
-    if (!password) next.password = 'Password is required';
-    else if (password.length < 6) next.password = 'Password must be at least 6 characters';
-    if (password !== confirmPassword) next.confirmPassword = 'Passwords do not match';
+    if (!password) next.password = t('auth.passwordRequired');
+    else if (password.length < 6) next.password = t('auth.passwordTooShort');
+    if (password !== confirmPassword) next.confirmPassword = t('auth.passwordsNoMatch');
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -56,9 +58,9 @@ export function ResetPasswordScreen({ route }: Props) {
     } catch (err: any) {
       const status = err?.statusCode;
       if (status === 401) {
-        setFormError('Invalid or expired token. Please request a new reset link.');
+        setFormError(t('auth.expiredResetToken'));
       } else {
-        setFormError(err?.message ?? 'Something went wrong. Please try again.');
+        setFormError(err?.message ?? t('auth.genericError'));
       }
     } finally {
       setLoading(false);
@@ -82,7 +84,7 @@ export function ResetPasswordScreen({ route }: Props) {
           <View style={styles.backIcon}>
             <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
           </View>
-          <Text style={styles.headerTitle}>Reset password</Text>
+          <Text style={styles.headerTitle}>{t('auth.resetPassword')}</Text>
         </View>
 
         <ScrollView
@@ -93,12 +95,12 @@ export function ResetPasswordScreen({ route }: Props) {
           {success ? (
             <View style={styles.successBox}>
               <CheckCircle2 size={40} color={colors.success} strokeWidth={2} />
-              <Text style={styles.successTitle}>Password reset</Text>
+              <Text style={styles.successTitle}>{t('auth.resetSuccessTitle')}</Text>
               <Text style={styles.successText}>
-                Your password has been reset successfully. You can now log in with your new password.
+                {t('auth.resetSuccessText')}
               </Text>
               <AppButton
-                label="Go to log in"
+                label={t('auth.goToLogIn')}
                 onPress={() => navigation.navigate('Login')}
                 variant="secondary"
                 style={{ marginTop: spacing.lg }}
@@ -107,13 +109,13 @@ export function ResetPasswordScreen({ route }: Props) {
           ) : (
             <>
               <Text style={styles.instructions}>
-                Enter your new password below.
+                {t('auth.resetInstructions')}
               </Text>
 
               <View style={styles.form}>
                 <AppInput
-                  label="New password"
-                  placeholder="Min 6 characters"
+                  label={t('auth.newPasswordLabel')}
+                  placeholder={t('auth.passwordMinPlaceholder')}
                   secureTextEntry
                   autoComplete="new-password"
                   textContentType="newPassword"
@@ -124,8 +126,8 @@ export function ResetPasswordScreen({ route }: Props) {
                 />
 
                 <AppInput
-                  label="Confirm password"
-                  placeholder="Repeat password"
+                  label={t('auth.confirmPasswordLabel')}
+                  placeholder={t('auth.confirmPasswordPlaceholder')}
                   secureTextEntry
                   autoComplete="new-password"
                   textContentType="newPassword"
@@ -144,7 +146,7 @@ export function ResetPasswordScreen({ route }: Props) {
                 )}
 
                 <AppButton
-                  label="Reset password"
+                  label={t('auth.resetPassword')}
                   onPress={handleSubmit}
                   loading={loading}
                   style={{ marginTop: spacing.lg }}

@@ -1,0 +1,50 @@
+{
+  "title": "Choose a plan",
+  "headline": "Full access to all features",
+  "subtitle": "Vocabulary, clue words, topic practice, explanations, and model tests. Only the access duration changes.",
+  "mostPopular": "Most Popular",
+  "active": "Active",
+  "plans": {
+    "free": {
+      "name": "Free Preview",
+      "description": "Try the app without any commitment.",
+      "perk1": "1 vocabulary page",
+      "perk2": "4 practice questions",
+      "button": "Start free preview"
+    },
+    "day3": {
+      "name": "3-Day Pass",
+      "description": "Quick revision before the exam.",
+      "perk1": "Full access for 3 days",
+      "button": "Get 3-day access"
+    },
+    "day7": {
+      "name": "7-Day Pass",
+      "description": "Balanced and focused preparation.",
+      "perk1": "Full access for 7 days",
+      "button": "Get 7-day access"
+    },
+    "day14": {
+      "name": "14-Day Pass",
+      "description": "Complete preparation with more practice.",
+      "perk1": "Full access for 14 days",
+      "button": "Get 14-day access"
+    }
+  },
+  "signInRequiredTitle": "Sign in required",
+  "signInRequiredBody": "Please log in or create an account to purchase access.",
+  "activeSubTitle": "Active subscription",
+  "activeSubBody": "You already have an active subscription.",
+  "checkoutFailedTitle": "Checkout failed",
+  "checkoutFailedBody": "Could not start checkout. Please try again.",
+  "verifying": "Verifying your payment…",
+  "errorTitle": "Something went wrong",
+  "errorLoginAgain": "Session verified, but you need to log in again to refresh your subscription.",
+  "errorVerifyFailed": "Could not verify payment. Please contact support.",
+  "goToDashboard": "Go to Dashboard",
+  "successTitle": "Payment successful!",
+  "successBody": "Your subscription is now active. Enjoy full access to all features.",
+  "cancelTitle": "Payment cancelled",
+  "cancelBody": "No worries — you can try again whenever you are ready.",
+  "backToPlans": "Back to plans"
+}

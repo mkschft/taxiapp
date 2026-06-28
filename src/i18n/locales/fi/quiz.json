@@ -1,0 +1,15 @@
+{
+  "title": "Tietovisa",
+  "next": "Seuraava",
+  "seeResult": "Näytä tulos",
+  "tryAgain": "Yritä uudelleen",
+  "back": "Takaisin aiheisiin",
+  "passMark": "Läpäisyraja {{pct}}% · Sait {{score}}%",
+  "passTitle": "Hienoa työtä!",
+  "failTitle": "Jatka harjoittelua",
+  "scoreOf": "/ {{total}}",
+  "review": "Kertaa ({{count}})",
+  "correctAnswer": "Oikea vastaus",
+  "empty": "Tälle aiheelle ei ole kysymyksiä.",
+  "question": "KYSYMYS"
+}

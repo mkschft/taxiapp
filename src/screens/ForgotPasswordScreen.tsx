@@ -6,6 +6,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronLeft, Send } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
@@ -16,6 +17,7 @@ import { forgotPassword } from '../lib/authApi';
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ForgotPassword'>;
 
 export function ForgotPasswordScreen() {
+  const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
 
   const [email, setEmail] = useState('');
@@ -26,8 +28,8 @@ export function ForgotPasswordScreen() {
   const clearFormError = () => setFormError(null);
 
   const validate = () => {
-    if (!email.trim()) return 'Email is required';
-    if (!/^\S+@\S+\.\S+$/.test(email)) return 'Enter a valid email';
+    if (!email.trim()) return t('auth.emailRequired');
+    if (!/^\S+@\S+\.\S+$/.test(email)) return t('auth.emailInvalid');
     return null;
   };
 
@@ -43,7 +45,7 @@ export function ForgotPasswordScreen() {
       await forgotPassword(email.trim());
       setSent(true);
     } catch (err: any) {
-      setFormError(err?.message ?? 'Something went wrong. Please try again.');
+      setFormError(err?.message ?? t('auth.genericError'));
     } finally {
       setLoading(false);
     }
@@ -66,7 +68,7 @@ export function ForgotPasswordScreen() {
           <View style={styles.backIcon}>
             <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
           </View>
-          <Text style={styles.headerTitle}>Forgot password</Text>
+          <Text style={styles.headerTitle}>{t('auth.forgotTitle')}</Text>
         </View>
 
         <ScrollView
@@ -77,12 +79,12 @@ export function ForgotPasswordScreen() {
           {sent ? (
             <View style={styles.sentBox}>
               <Send size={32} color={colors.primary} strokeWidth={2} />
-              <Text style={styles.sentTitle}>Check your email</Text>
+              <Text style={styles.sentTitle}>{t('auth.checkEmailTitle')}</Text>
               <Text style={styles.sentText}>
-                If an account exists for {email}, we have sent a password reset link.
+                {t('auth.resetLinkSent', { email })}
               </Text>
               <AppButton
-                label="Back to log in"
+                label={t('auth.backToLogIn')}
                 onPress={() => navigation.navigate('Login')}
                 variant="secondary"
                 style={{ marginTop: spacing.lg }}
@@ -91,13 +93,13 @@ export function ForgotPasswordScreen() {
           ) : (
             <>
               <Text style={styles.instructions}>
-                Enter your email address and we will send you a link to reset your password.
+                {t('auth.forgotInstructions')}
               </Text>
 
               <View style={styles.form}>
                 <AppInput
-                  label="Email"
-                  placeholder="you@example.com"
+                  label={t('auth.emailLabel')}
+                  placeholder={t('auth.emailPlaceholder')}
                   keyboardType="email-address"
                   autoCapitalize="none"
                   autoComplete="email"
@@ -115,7 +117,7 @@ export function ForgotPasswordScreen() {
                 )}
 
                 <AppButton
-                  label="Send reset link"
+                  label={t('auth.sendResetLink')}
                   onPress={handleSubmit}
                   loading={loading}
                   style={{ marginTop: spacing.lg }}

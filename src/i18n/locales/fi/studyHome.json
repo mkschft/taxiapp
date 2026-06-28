@@ -1,0 +1,15 @@
+{
+  "title": "Opiskelu",
+  "subtitle": "Rakenna suomen kielen perusta",
+  "howToTitle": "Käyttöohje",
+  "howToSub": "Aloita tästä — mihin kukin osio on tarkoitettu",
+  "examGuideTitle": "Koeopas",
+  "examGuideSub": "Säännöt, kategoriat, koepäivän vinkit",
+  "vocabularyTitle": "Sanasto",
+  "vocabSub": "{{sets}} sarjaa · {{words}} sanaa",
+  "clueWordsTitle": "Vihjesanat",
+  "clueWordsSub": "Myönteiset ja kielteiset vastauslogiikan sanat",
+  "topicPracticeTitle": "Aiheharjoittelu",
+  "topicSub": "{{questions}} kysymystä · {{sections}} osiota",
+  "guestBlurb": "Rekisteröidy tai kirjaudu sisään avataksesi sanaston, vihjesanat, aiheharjoittelun ja mallikokeet."
+}

@@ -1,0 +1,18 @@
+{
+  "mark": "Merkitse",
+  "marked": "Merkitty",
+  "next": "Seuraava",
+  "finish": "Lopeta",
+  "answered": "{{count}}/{{total}} vastattu",
+  "question": "Kysymys {{n}}/{{total}}",
+  "titleFallback": "Mallikoe",
+  "loadError": "Testin lataus epäonnistui",
+  "notFound": "Koetta ei löytynyt.",
+  "quitTitle": "Lopetetaanko koe?",
+  "quitMessage": "Edistymisesi menetetään.",
+  "quit": "Lopeta",
+  "submitTitle": "Lähetetäänkö koe?",
+  "submitUnanswered": "Sinulla on {{n}} vastaamatta. Lähetetäänkö silti?",
+  "submitConfirm": "Lähetetäänkö koe arvioitavaksi?",
+  "submit": "Lähetä"
+}

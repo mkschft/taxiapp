@@ -9,6 +9,7 @@ import {
   ChevronDown, ChevronUp, CheckCircle2, type LucideIcon,
 } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -64,6 +65,7 @@ function CategoryCard({ cat }: { cat: GuideCategoryRule }) {
 function SectionCard({ section }: { section: GuideSection }) {
   const [open, setOpen] = useState(section.id === 'categories');
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
 
   return (
     <View style={styles.sectionCard}>
@@ -111,7 +113,7 @@ function SectionCard({ section }: { section: GuideSection }) {
           {/* CTA for clue method section */}
           {section.id === 'clue_method' && (
             <AppButton
-              label="Practice clue words →"
+              label={t('guide.practiceClueWords')}
               onPress={() => navigation.navigate('Study', {
                 screen: 'ClueWords', initial: false, params: {},
               })}
@@ -127,18 +129,19 @@ function SectionCard({ section }: { section: GuideSection }) {
 // ── Main screen ──
 export function GuideScreen() {
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
   const sections = getGuideSections();
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title="Exam Guide" onBack={() => navigation.goBack()} />
+      <ScreenHeader title={t('guide.title')} onBack={() => navigation.goBack()} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Hero banner */}
         <View style={styles.hero}>
           <View style={styles.heroTextBlock}>
-            <Text style={styles.heroTitle}>Finnish Taxi Exam</Text>
-            <Text style={styles.heroSub}>50 questions · 45 min · 38/50 to pass</Text>
+            <Text style={styles.heroTitle}>{t('guide.heroTitle')}</Text>
+            <Text style={styles.heroSub}>{t('guide.heroSub')}</Text>
           </View>
           <View style={styles.heroBadge}>
             <Text style={styles.heroBadgeText}>Traficom</Text>
@@ -148,10 +151,10 @@ export function GuideScreen() {
         {/* Quick stats row */}
         <View style={styles.statsRow}>
           {[
-            { val: '50', label: 'Questions' },
-            { val: '45', label: 'Minutes' },
-            { val: '38/50', label: 'Pass mark' },
-            { val: '4', label: 'Categories' },
+            { val: '50', label: t('guide.statQuestions') },
+            { val: '45', label: t('guide.statMinutes') },
+            { val: '38/50', label: t('guide.statPassMark') },
+            { val: '4', label: t('guide.statCategories') },
           ].map(s => (
             <View key={s.label} style={styles.statChip}>
               <Text style={styles.statVal}>{s.val}</Text>
@@ -165,10 +168,7 @@ export function GuideScreen() {
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>
-            Source: Traficom (Finnish Transport and Communications Agency).
-            Rules may change — always verify at traficom.fi before your exam.
-          </Text>
+          <Text style={styles.footerText}>{t('guide.footer')}</Text>
         </View>
 
         <View style={{ height: 32 }} />

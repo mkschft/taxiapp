@@ -6,6 +6,7 @@ import { MotiView } from 'moti';
 import { ChevronLeft, PartyPopper, BookOpenCheck, Check, X } from 'lucide-react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
@@ -65,6 +66,7 @@ function fromBackend(p: BackendProblem): Question {
 }
 
 export function VocabQuizScreen({ navigation, route }: Props) {
+  const { t } = useTranslation();
   const { setId, sessionId, problemSetId } = route.params;
   const set = getVocabSet(setId);
 
@@ -140,7 +142,7 @@ export function VocabQuizScreen({ navigation, route }: Props) {
   if (loading) {
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title="Quiz" onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('quiz.title')} onBack={() => navigation.goBack()} />
         <View style={styles.center}>
           <ActivityIndicator size="large" color={colors.primary} />
         </View>
@@ -151,9 +153,9 @@ export function VocabQuizScreen({ navigation, route }: Props) {
   if (error || !set || questions.length === 0) {
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title="Quiz" onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('quiz.title')} onBack={() => navigation.goBack()} />
         <View style={styles.center}>
-          <Text style={styles.emptyText}>{error || 'No quiz questions for this set.'}</Text>
+          <Text style={styles.emptyText}>{error || t('vocab.quizEmpty')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -164,26 +166,26 @@ export function VocabQuizScreen({ navigation, route }: Props) {
     const passed = pct >= PASS_PCT;
     return (
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title={`Set ${set.set_no} · Result`} onBack={() => navigation.popToTop()} />
+        <ScreenHeader title={t('vocab.resultHeader', { n: set.set_no })} onBack={() => navigation.popToTop()} />
         <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
           <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
             {passed
               ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
               : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
             <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error }]}>
-              {passed ? 'Nice work!' : 'Keep practising'}
+              {passed ? t('quiz.passTitle') : t('quiz.failTitle')}
             </Text>
-            <Text style={styles.bannerSub}>Pass mark {PASS_PCT}% · You scored {pct}%</Text>
+            <Text style={styles.bannerSub}>{t('quiz.passMark', { pct: PASS_PCT, score: pct })}</Text>
           </View>
 
           <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
             <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>{score}</Text>
-            <Text style={styles.scoreOf}>out of {questions.length}</Text>
+            <Text style={styles.scoreOf}>{t('quiz.scoreOf', { total: questions.length })}</Text>
           </View>
 
           {wrong.length > 0 && (
             <>
-              <Text style={styles.sectionHeader}>Review ({wrong.length})</Text>
+              <Text style={styles.sectionHeader}>{t('quiz.review', { count: wrong.length })}</Text>
               {wrong.map(w => (
                 <View key={w.id} style={styles.wrongItem}>
                   <Text style={styles.wrongWord}>{w.prompt}</Text>
@@ -194,9 +196,9 @@ export function VocabQuizScreen({ navigation, route }: Props) {
           )}
 
           <View style={styles.actions}>
-            <AppButton label="Try again" onPress={restart} />
+            <AppButton label={t('quiz.tryAgain')} onPress={restart} />
             <AppButton
-              label="Back to set"
+              label={t('vocab.backToSet')}
               variant="secondary"
               onPress={() => navigation.goBack()}
               style={{ marginTop: spacing.sm }}
@@ -224,7 +226,7 @@ export function VocabQuizScreen({ navigation, route }: Props) {
         <Pressable onPress={() => navigation.goBack()} style={styles.backBtn} hitSlop={8}>
           <ChevronLeft size={24} color={colors.primary} strokeWidth={2.2} />
         </Pressable>
-        <Text style={styles.navTitle} numberOfLines={1}>Quiz · Set {set.set_no}</Text>
+        <Text style={styles.navTitle} numberOfLines={1}>{t('vocab.quizNavTitle', { n: set.set_no })}</Text>
         <Text style={styles.qCount}>{index + 1}/{questions.length}</Text>
       </View>
 
@@ -234,7 +236,7 @@ export function VocabQuizScreen({ navigation, route }: Props) {
         </View>
 
         <View style={styles.promptCard}>
-          <Text style={styles.promptLabel}>WHAT DOES THIS WORD MEAN?</Text>
+          <Text style={styles.promptLabel}>{t('vocab.promptLabel')}</Text>
           <Text style={styles.promptWord}>{q.prompt}</Text>
         </View>
 
@@ -264,8 +266,8 @@ export function VocabQuizScreen({ navigation, route }: Props) {
               : <X size={16} color={colors.error} strokeWidth={3} />}
             <Text style={styles.feedbackText}>
               {gotItRight
-                ? 'Correct!'
-                : <>Correct answer: <Text style={{ fontFamily: font.semibold }}>{q.correctText}</Text></>}
+                ? t('vocab.correct')
+                : <>{t('vocab.correctAnswerInline')}<Text style={{ fontFamily: font.semibold }}>{q.correctText}</Text></>}
             </Text>
           </MotiView>
         )}
@@ -273,7 +275,7 @@ export function VocabQuizScreen({ navigation, route }: Props) {
         {answered && (
           <View style={styles.nextBtn}>
             <AppButton
-              label={index < questions.length - 1 ? 'Next →' : 'See result'}
+              label={index < questions.length - 1 ? `${t('quiz.next')} →` : t('quiz.seeResult')}
               onPress={handleNext}
             />
           </View>

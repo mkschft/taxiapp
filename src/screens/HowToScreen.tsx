@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { IconChip } from '../components/ui/IconChip';
@@ -13,59 +14,23 @@ import { MODULE_ICONS } from '../theme/icons';
 type Nav = { stack?: 'Study' | 'Test'; screen: string } | { tab: 'Progress' };
 
 type Module = {
-  Icon: LucideIcon; tint: string; title: string;
-  what: string; how: string; nav: Nav;
+  id: string; Icon: LucideIcon; tint: string; nav: Nav;
 };
 
 const MODULES: Module[] = [
-  {
-    Icon: MODULE_ICONS.examGuide, tint: colors.primary, title: 'Exam Guide',
-    what: 'The facts of the real Traficom exam — format, the 4 official categories, and exam-day rules.',
-    how: 'Read this first so you know exactly what you are training for: 50 questions, 45 minutes, 38/50 to pass (with a minimum in each category), in Finnish or Swedish.',
-    nav: { stack: 'Study', screen: 'Guide' },
-  },
-  {
-    Icon: MODULE_ICONS.vocabulary, tint: colors.success, title: 'Vocabulary',
-    what: 'Core Finnish taxi words grouped into bite-size sets, each with a flashcard lesson and a quiz.',
-    how: 'Learn a set, then take its quiz. Build the base words before tackling full questions.',
-    nav: { stack: 'Study', screen: 'VocabSets' },
-  },
-  {
-    Icon: MODULE_ICONS.clueWords, tint: colors.warning, title: 'Clue Words',
-    what: 'The answer-logic words that quietly point to the right or wrong option.',
-    how: 'Positive clues (varmistaa, huolehtia) lean correct; absolutes (aina, vain, koskaan) are usually traps. Train your eye here so you can answer even when you don’t understand every word.',
-    nav: { stack: 'Study', screen: 'ClueWords' },
-  },
-  {
-    Icon: MODULE_ICONS.topicPractice, tint: colors.error, title: 'Topic Practice',
-    what: 'Real exam-style questions sorted into lessons under the 4 official categories.',
-    how: 'Work through a section lesson by lesson. Every answer shows the translation and explanation, so each question teaches you something.',
-    nav: { stack: 'Study', screen: 'TopicSections' },
-  },
-  {
-    Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, title: 'Model Tests',
-    what: 'Full, timed mock exams that rehearse the real exam’s format and time pressure.',
-    how: 'Use these near exam day to rehearse under pressure. Sit one in a quiet 45 minutes, then review every question you missed.',
-    nav: { stack: 'Test', screen: 'TestHome' },
-  },
-  {
-    Icon: MODULE_ICONS.progress, tint: colors.primary, title: 'Progress & Weak Areas',
-    what: 'Tracks what you’ve practiced and surfaces the questions you keep getting wrong.',
-    how: 'Check it regularly and re-drill your weak areas until they stop showing up.',
-    nav: { tab: 'Progress' },
-  },
+  { id: 'examGuide', Icon: MODULE_ICONS.examGuide, tint: colors.primary, nav: { stack: 'Study', screen: 'Guide' } },
+  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, nav: { stack: 'Study', screen: 'VocabSets' } },
+  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, nav: { stack: 'Study', screen: 'ClueWords' } },
+  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, nav: { stack: 'Study', screen: 'TopicSections' } },
+  { id: 'modelTests', Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, nav: { stack: 'Test', screen: 'TestHome' } },
+  { id: 'progress', Icon: MODULE_ICONS.progress, tint: colors.primary, nav: { tab: 'Progress' } },
 ];
 
-const STEPS = [
-  'Start with the Exam Guide so you know the format and the 4 categories.',
-  'Build words in Vocabulary, then learn the Clue Words logic.',
-  'Drill Topic Practice section by section — read every explanation.',
-  'Rehearse with timed Model Tests and review every miss.',
-  'Use Progress & Weak Areas to re-drill what you keep getting wrong.',
-];
+const STEP_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5'] as const;
 
 export function HowToScreen() {
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
 
   const go = (nav: Nav) => {
     if ('tab' in nav) navigation.navigate(nav.tab);
@@ -75,57 +40,51 @@ export function HowToScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title="How to use the app" onBack={() => navigation.goBack()} />
+      <ScreenHeader title={t('howto.title')} onBack={() => navigation.goBack()} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Hero */}
         <View style={styles.hero}>
-          <Text style={styles.heroTitle}>Pass the Finnish taxi exam — even with limited Finnish</Text>
-          <Text style={styles.heroSub}>
-            Five tools that work together: learn the words, spot the clues, practice real
-            questions, and rehearse under exam conditions.
-          </Text>
+          <Text style={styles.heroTitle}>{t('howto.heroTitle')}</Text>
+          <Text style={styles.heroSub}>{t('howto.heroSub')}</Text>
         </View>
 
         {/* Recommended study plan */}
         <View style={styles.planCard}>
-          <Text style={styles.planLabel}>Recommended study plan</Text>
-          {STEPS.map((step, i) => (
-            <View key={i} style={styles.stepRow}>
+          <Text style={styles.planLabel}>{t('howto.planLabel')}</Text>
+          {STEP_KEYS.map((key, i) => (
+            <View key={key} style={styles.stepRow}>
               <View style={styles.stepNum}><Text style={styles.stepNumText}>{i + 1}</Text></View>
-              <Text style={styles.stepText}>{step}</Text>
+              <Text style={styles.stepText}>{t(`howto.${key}`)}</Text>
             </View>
           ))}
         </View>
 
         {/* Module cards */}
-        <Text style={styles.sectionLabel}>What each section does</Text>
+        <Text style={styles.sectionLabel}>{t('howto.sectionLabel')}</Text>
         <View style={styles.modules}>
           {MODULES.map(m => (
             <TouchableOpacity
-              key={m.title}
+              key={m.id}
               style={styles.modCard}
               onPress={() => go(m.nav)}
               activeOpacity={0.75}
             >
               <View style={styles.modHeader}>
                 <IconChip Icon={m.Icon} tint={m.tint} size={40} iconSize={20} />
-                <Text style={styles.modTitle}>{m.title}</Text>
+                <Text style={styles.modTitle}>{t(`howto.modules.${m.id}.title`)}</Text>
                 <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
               </View>
-              <Text style={styles.modWhat}>{m.what}</Text>
+              <Text style={styles.modWhat}>{t(`howto.modules.${m.id}.what`)}</Text>
               <View style={styles.modHow}>
-                <Text style={styles.modHowText}>{m.how}</Text>
+                <Text style={styles.modHowText}>{t(`howto.modules.${m.id}.how`)}</Text>
               </View>
             </TouchableOpacity>
           ))}
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>
-            Tip: the exam is in Finnish (or Swedish), with no translation into other languages. The clue-word method is your edge —
-            most mistakes come from misreading, not from not knowing.
-          </Text>
+          <Text style={styles.footerText}>{t('howto.footer')}</Text>
         </View>
 
         <View style={{ height: 32 }} />

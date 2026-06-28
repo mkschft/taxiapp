@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { X, Clock, Bookmark } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
+import { localizedPair } from '../i18n/content';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
@@ -60,13 +61,13 @@ function fromBackend(p: BackendProblem): TestQuestion {
   };
 }
 
-function confirm(title: string, message: string, confirmLabel: string, onConfirm: () => void) {
+function confirm(title: string, message: string, confirmLabel: string, cancelLabel: string, onConfirm: () => void) {
   if (Platform.OS === 'web') {
     if (window.confirm(`${title}\n\n${message}`)) onConfirm();
     return;
   }
   Alert.alert(title, message, [
-    { text: 'Cancel', style: 'cancel' },
+    { text: cancelLabel, style: 'cancel' },
     { text: confirmLabel, style: 'default', onPress: onConfirm },
   ]);
 }
@@ -74,7 +75,7 @@ function confirm(title: string, message: string, confirmLabel: string, onConfirm
 export function ModelTestScreen({ navigation, route }: Props) {
   const { testId, sessionId, problemSetId } = route.params;
   const test = getModelTestById(testId);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isSaved, toggle } = useSavedQuestions();
 
   const [loading, setLoading] = useState(!!problemSetId);
@@ -95,7 +96,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       setLoading(true);
       getProblemSet(problemSetId)
         .then(ps => setQuestions(ps.problems.map(fromBackend)))
-        .catch(e => setError(e instanceof Error ? e.message : 'Failed to load test'))
+        .catch(e => setError(e instanceof Error ? e.message : t('modelTest.loadError')))
         .finally(() => setLoading(false));
     } else if (test) {
       setQuestions(test.question_ids.map(id => {
@@ -141,7 +142,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
       navigation.replace('Result', {
         mode: 'test',
-        label: test?.title_en ?? 'Model Test',
+        label: test ? localizedPair(test.title_fi, test.title_en, i18n.language).primary : t('modelTest.titleFallback'),
         score,
         total,
         wrongIds,
@@ -158,7 +159,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
 
     navigation.replace('Result', {
       mode: 'test',
-      label: test.title_en,
+      label: localizedPair(test.title_fi, test.title_en, i18n.language).primary,
       score,
       total,
       wrongIds,
@@ -166,7 +167,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
       answers: finalAnswers,
       passed,
     });
-  }, [questions, navigation, test, sessionId]);
+  }, [questions, navigation, test, sessionId, i18n.language, t]);
 
   const submitRef = useRef(submit);
   submitRef.current = submit;
@@ -199,7 +200,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
     return (
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
-          <Text style={styles.errorText}>{error || 'Test not found.'}</Text>
+          <Text style={styles.errorText}>{error || t('modelTest.notFound')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -210,6 +211,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const selected = answers[question.id];
   const isLast = qIndex === ids.length - 1;
   const answeredCount = ids.filter(id => answers[id]).length;
+  const { primary: testTitle } = localizedPair(test.title_fi, test.title_en, i18n.language);
 
   const optionStates: Record<string, OptionState> = {};
   question.options.forEach(o => {
@@ -225,9 +227,9 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const confirmSubmit = () => {
     const unanswered = ids.length - answeredCount;
     const detail = unanswered > 0
-      ? `You have ${unanswered} unanswered. Submit anyway?`
-      : 'Submit your test for grading?';
-    confirm('Submit test?', detail, 'Submit', () => submit(false));
+      ? t('modelTest.submitUnanswered', { n: unanswered })
+      : t('modelTest.submitConfirm');
+    confirm(t('modelTest.submitTitle'), detail, t('modelTest.submit'), t('common.cancel'), () => submit(false));
   };
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
@@ -239,11 +241,11 @@ export function ModelTestScreen({ navigation, route }: Props) {
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
         <TouchableOpacity onPress={() => confirm(
-          'Quit test?', 'Your progress will be lost.', 'Quit', () => navigation.goBack(),
+          t('modelTest.quitTitle'), t('modelTest.quitMessage'), t('modelTest.quit'), t('common.cancel'), () => navigation.goBack(),
         )} style={styles.backBtn}>
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
-        <Text style={styles.navTitle} numberOfLines={1}>{test.title_en}</Text>
+        <Text style={styles.navTitle} numberOfLines={1}>{testTitle}</Text>
       </View>
 
       <View style={styles.timerRow}>
@@ -289,7 +291,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
             text: question.text,
             options: question.options.map(o => ({ key: o.key, text: o.fi })),
             correctKey: question.correctKey,
-            source: test.title_en,
+            source: testTitle,
           })}
         >
           <Bookmark

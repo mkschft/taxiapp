@@ -6,6 +6,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Mail } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export function VerifyEmailScreen({ route }: Props) {
+  const { t } = useTranslation();
   const navigation = useNavigation<NavigationProp>();
   const { state: auth, setAuth, clearAuth } = useAuth();
   const isLoggedIn = !!auth.user;
@@ -44,7 +46,7 @@ export function VerifyEmailScreen({ route }: Props) {
 
     verifyEmail(token)
       .then(() => {
-        setSuccessMessage('Email verified successfully');
+        setSuccessMessage(t('auth.emailVerifiedSuccess'));
         if (isLoggedIn && auth.refreshToken) {
           return refreshTokens(auth.refreshToken).then(({ accessToken, refreshToken }) =>
             getMe(accessToken).then((user) => setAuth(user, accessToken, refreshToken))
@@ -54,27 +56,27 @@ export function VerifyEmailScreen({ route }: Props) {
       .catch((err: any) => {
         const status = err?.statusCode;
         if (status === 401) {
-          setFormError('Invalid or expired token. Please request a new verification email.');
+          setFormError(t('auth.invalidVerificationToken'));
         } else {
-          setFormError(err?.message ?? 'Something went wrong. Please try again.');
+          setFormError(err?.message ?? t('auth.genericError'));
         }
       })
       .finally(() => setLoading(false));
-  }, [route.params?.token, isLoggedIn, auth.refreshToken, setAuth]);
+  }, [route.params?.token, isLoggedIn, auth.refreshToken, setAuth, t]);
 
   const handleResend = async () => {
     const email = auth.user?.email;
     if (!email) {
-      setFormError('Unable to resend. Please log in first.');
+      setFormError(t('auth.resendNeedsLogin'));
       return;
     }
     setResendLoading(true);
     setFormError(null);
     try {
       const res = await resendVerification(email);
-      Alert.alert('Verification email sent', res.message);
+      Alert.alert(t('auth.resendAlertTitle'), res.message);
     } catch (err: any) {
-      setFormError(err?.message ?? 'Failed to resend verification email.');
+      setFormError(err?.message ?? t('auth.resendFailed'));
     } finally {
       setResendLoading(false);
     }
@@ -93,17 +95,17 @@ export function VerifyEmailScreen({ route }: Props) {
           <Mail size={40} color={colors.primary} strokeWidth={2} />
         </View>
 
-        <Text style={styles.title}>Verify your email</Text>
+        <Text style={styles.title}>{t('auth.verifyTitle')}</Text>
         <Text style={styles.subtitle}>
           {isLoggedIn
-            ? `We sent a verification link to ${auth.user!.email}.`
-            : 'Please check your email and click the verification link.'}
+            ? t('auth.verifySubtitleLoggedIn', { email: auth.user!.email })
+            : t('auth.verifySubtitleGuest')}
         </Text>
 
         {loading && (
           <View style={styles.statusBox}>
             <ActivityIndicator color={colors.primary} />
-            <Text style={styles.statusText}>Verifying your email...</Text>
+            <Text style={styles.statusText}>{t('auth.verifying')}</Text>
           </View>
         )}
 
@@ -112,7 +114,7 @@ export function VerifyEmailScreen({ route }: Props) {
             <Text style={styles.successText}>{successMessage}</Text>
             {isLoggedIn && (
               <AppButton
-                label="Continue"
+                label={t('common.continue')}
                 onPress={() => navigation.replace(auth.onboardingSeen ? 'App' : 'Onboarding')}
                 variant="secondary"
                 style={{ marginTop: spacing.md }}
@@ -120,7 +122,7 @@ export function VerifyEmailScreen({ route }: Props) {
             )}
             {!isLoggedIn && (
               <AppButton
-                label="Go to log in"
+                label={t('auth.goToLogIn')}
                 onPress={() => navigation.navigate('Login')}
                 variant="secondary"
                 style={{ marginTop: spacing.md }}
@@ -135,13 +137,13 @@ export function VerifyEmailScreen({ route }: Props) {
             {isLoggedIn && (
               <View style={styles.actions}>
                 <AppButton
-                  label="Resend verification email"
+                  label={t('auth.resendVerification')}
                   onPress={handleResend}
                   loading={resendLoading}
                   variant="secondary"
                 />
                 <AppButton
-                  label="Log out"
+                  label={t('auth.logOut')}
                   onPress={handleLogout}
                   variant="danger"
                   style={{ marginTop: spacing.md }}
@@ -150,7 +152,7 @@ export function VerifyEmailScreen({ route }: Props) {
             )}
             {!isLoggedIn && (
               <AppButton
-                label="Go to log in"
+                label={t('auth.goToLogIn')}
                 onPress={() => navigation.navigate('Login')}
                 variant="secondary"
                 style={{ marginTop: spacing.md }}
@@ -162,18 +164,18 @@ export function VerifyEmailScreen({ route }: Props) {
         {!loading && !successMessage && !formError && !token && (
           <View style={styles.statusBox}>
             <Text style={styles.statusText}>
-              Check your inbox and tap the link in the email to verify your account.
+              {t('auth.checkInbox')}
             </Text>
             {isLoggedIn && (
               <View style={styles.actions}>
                 <AppButton
-                  label="Resend verification email"
+                  label={t('auth.resendVerification')}
                   onPress={handleResend}
                   loading={resendLoading}
                   variant="secondary"
                 />
                 <AppButton
-                  label="Log out"
+                  label={t('auth.logOut')}
                   onPress={handleLogout}
                   variant="danger"
                   style={{ marginTop: spacing.md }}
@@ -182,7 +184,7 @@ export function VerifyEmailScreen({ route }: Props) {
             )}
             {!isLoggedIn && (
               <AppButton
-                label="Go to log in"
+                label={t('auth.goToLogIn')}
                 onPress={() => navigation.navigate('Login')}
                 variant="secondary"
                 style={{ marginTop: spacing.md }}
