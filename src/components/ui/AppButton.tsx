@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet, ActivityIndicator, ViewStyle, Platform } from 'react-native';
+import { Pressable, Text, StyleSheet, ActivityIndicator, type ViewStyle, type StyleProp, Platform } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { colors, radius, fontSize, font, shadow } from '../../theme/tokens';
 
@@ -11,7 +11,7 @@ type Props = {
   variant?: Variant;
   loading?: boolean;
   disabled?: boolean;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 };
 
 export function AppButton({ label, onPress, variant = 'primary', loading, disabled, style }: Props) {

@@ -8,7 +8,7 @@ import { Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-import { useAuth } from '../store/authStore';
+import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { createCheckoutSession, type PlanType } from '../lib/paymentApi';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -76,6 +76,9 @@ export function PricingScreen() {
   const { state: auth } = useAuth();
   const [loading, setLoading] = useState<PlanType | null>(null);
 
+  const hasActive = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
+  const activePlanType = auth.user?.subscription.planType ?? null;
+
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
 
@@ -87,6 +90,11 @@ export function PricingScreen() {
 
     if (!auth.user) {
       Alert.alert('Sign in required', 'Please log in or create an account to purchase access.');
+      return;
+    }
+
+    if (hasActive && auth.user.subscription.planType !== plan.key) {
+      Alert.alert('Active subscription', 'You already have an active subscription.');
       return;
     }
 
@@ -117,6 +125,8 @@ export function PricingScreen() {
         <View style={styles.grid}>
           {PLANS.map((plan) => {
             const isLoading = loading === plan.key;
+            const isActivePlan = activePlanType === plan.key;
+            const buttonDisabled = isActivePlan || (hasActive && !isActivePlan);
             return (
               <View key={plan.key} style={[styles.card, plan.badge && styles.cardPopular]}>
                 {plan.badge && (
@@ -138,11 +148,15 @@ export function PricingScreen() {
                 </View>
 
                 <AppButton
-                  label={plan.buttonLabel}
+                  label={isActivePlan ? 'Active' : plan.buttonLabel}
                   variant={plan.buttonVariant}
                   loading={isLoading}
+                  disabled={buttonDisabled}
                   onPress={() => handleSelect(plan)}
-                  style={{ marginTop: spacing.md }}
+                  style={[
+                    { marginTop: spacing.md },
+                    isActivePlan && { backgroundColor: 'transparent', borderWidth: 0 }
+                  ]}
                 />
               </View>
             );
