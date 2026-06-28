@@ -227,12 +227,14 @@ Notes:
 
 ## Task tracker (rollup)
 
-- [ ] R1 — Rings show Mastery %; drop "done" subtitle → "Last practiced"; wire real progress + backend `lastPracticedAt`
-- [ ] R2 — Persistent "Mark/Save" bookmark + Saved list
-- [ ] R3 — i18n infra + App language setting + Model Test in Finnish
-- [ ] R4 — Progress tab: drop fake chips; per-category mastery counts; auto weak-areas
-- [ ] R5 — Topic Practice per-subcategory Quiz mode (reuse existing questions + backend problem sets)
-- [ ] R6 — Dashboard hero: fresh-state start card + de-duplicated ring-only progress
+- [x] R1 — Rings show Mastery %; drop "done" subtitle → "Last practiced"; wire real progress *(PR1 #6, PR2 #7)* — backend `lastPracticedAt` (BE-1) pending, FE graceful
+- [x] R2 — Persistent "Mark/Save" bookmark + Saved list *(PR7 #12)*
+- [x] R3 — i18n infra + App language setting + Model Test in Finnish *(PR5 #10, PR7 #12)*
+- [x] R4 — Progress tab: drop fake chips; per-category mastery counts; auto weak-areas *(PR4 #9)* — weak-areas await BE-2, FE graceful
+- [x] R5 — Topic Practice per-subcategory Quiz mode *(PR6 #11)*
+- [x] R6 — Dashboard hero: fresh-state start card + de-duplicated ring-only progress *(PR3 #8)*
+
+### Status: all 7 FE PRs merged into `feat/next-changes` (each tsc-clean). Pending for backend dev: **BE-1** (`lastPracticedAt`), **BE-2** (`wrongCount`/`wrongQuestionIds`), **BE-3** (`/progress/problem-sets`). All FE degrades gracefully until they land. Deferred (optional): "Marked" section on the Result screen (R2.e); incremental i18n of remaining screens (R3.f).
 
 ---
 
