@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "study": "Study",
+    "tests": "Tests",
+    "progress": "Progress",
+    "profile": "Profile"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "done": "Done",
+    "cancel": "Cancel"
+  },
+  "modelTest": {
+    "mark": "Mark",
+    "marked": "Marked",
+    "next": "Next",
+    "finish": "Finish",
+    "answered": "{{count}}/{{total}} answered",
+    "question": "Q{{n}} OF {{total}}"
+  },
+  "profile": {
+    "preferences": "Preferences",
+    "appLanguage": "App language",
+    "appLanguageHint": "Changes buttons and labels only — not questions or answers",
+    "english": "English",
+    "finnish": "Suomi"
+  }
+}

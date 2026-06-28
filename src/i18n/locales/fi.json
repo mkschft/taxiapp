@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "dashboard": "Etusivu",
+    "study": "Opiskelu",
+    "tests": "Kokeet",
+    "progress": "Edistyminen",
+    "profile": "Profiili"
+  },
+  "common": {
+    "next": "Seuraava",
+    "back": "Takaisin",
+    "done": "Valmis",
+    "cancel": "Peruuta"
+  },
+  "modelTest": {
+    "mark": "Merkitse",
+    "marked": "Merkitty",
+    "next": "Seuraava",
+    "finish": "Lopeta",
+    "answered": "{{count}}/{{total}} vastattu",
+    "question": "Kysymys {{n}}/{{total}}"
+  },
+  "profile": {
+    "preferences": "Asetukset",
+    "appLanguage": "Sovelluksen kieli",
+    "appLanguageHint": "Muuttaa vain painikkeet ja otsikot — ei kysymyksiä tai vastauksia",
+    "english": "English",
+    "finnish": "Suomi"
+  }
+}
