@@ -22,7 +22,7 @@ type Props = {
 
 export function LoginScreen({ route }: Props) {
   const navigation = useNavigation<NavigationProp>();
-  const { setAuth, completeReturningUserAuth, state: auth } = useAuth();
+  const { setAuth, completeReturningUserAuth, markOnboardingSeen, state: auth } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -57,7 +57,11 @@ export function LoginScreen({ route }: Props) {
       });
 
       if (!user.emailVerified) {
+        // A returning user logging in is never a first-run user, so suppress the
+        // onboarding carousel even though they still need to verify their email.
+        // (VerifyEmail routes to 'App' when onboardingSeen, else 'Onboarding'.)
         await setAuth(user, accessToken, refreshToken);
+        void markOnboardingSeen();
         navigation.replace('VerifyEmail');
         return;
       }
