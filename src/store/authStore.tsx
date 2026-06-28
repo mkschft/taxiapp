@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import { AppState, type AppStateStatus } from 'react-native';
 import { loadItem, saveItem } from './storage';
 import { setUnauthorizedHandler } from '../lib/api';
+import { getMe } from '../lib/authApi';
 
 export type SubscriptionInfo = {
   planType: string;
@@ -142,6 +144,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
     return () => setUnauthorizedHandler(null);
   }, [clearAuth]);
+
+  // Global subscription refresh: on mount + when app returns to foreground
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refresh() {
+      const token = state.accessToken;
+      if (!token || state.guest) return;
+      try {
+        const user = await getMe(token);
+        if (!cancelled) {
+          setState(prev => {
+            if (!prev.user) return prev;
+            const nextUser = { ...prev.user, ...user };
+            void saveItem(AUTH_STORAGE_KEYS.USER, nextUser);
+            return { ...prev, user: nextUser };
+          });
+        }
+      } catch {
+        // ignore — auth state stays as-is
+      }
+    }
+
+    refresh();
+
+    const sub = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
+      if (nextAppState === 'active') {
+        void refresh();
+      }
+    });
+
+    return () => {
+      cancelled = true;
+      sub.remove();
+    };
+  }, [state.accessToken, state.guest]);
 
   const value = useMemo(() => ({
     state,
