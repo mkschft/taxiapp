@@ -24,6 +24,11 @@ export type ProgressItem = {
     percentage: number;
     // BE-1 (optional): epoch ms of the user's most recent answer in this category.
     lastPracticedAt?: number | null;
+    // BE-2 (optional): questions attempted but not yet answered correctly.
+    // wrongQuestionIds are app question IDs (as in questions.json) so the
+    // Practice runner can consume them directly.
+    wrongCount?: number;
+    wrongQuestionIds?: string[];
   }[];
 };
 

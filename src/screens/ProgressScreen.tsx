@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, SafeAreaView,
+  View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity,
 } from 'react-native';
-import { CircleCheck } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
+import { CircleCheck, ChevronRight } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -16,6 +17,7 @@ const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
+  const navigation = useNavigation<any>();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress, loading } = useProgress(!isGuest);
@@ -30,9 +32,39 @@ export function ProgressScreen() {
 
   const officialCategory = progress?.find(item => item.mainCategory.name === 'Official');
   const catProgress = CATEGORIES.map(cat => {
-    const sub = officialCategory?.subcategories.find((s: { category: { name: string } }) => s.category.name === cat.name_en);
-    return { catId: cat.id, pct: sub?.percentage ?? 0 };
+    const sub = officialCategory?.subcategories.find(s => s.category.name === cat.name_en);
+    return {
+      catId: cat.id,
+      pct: sub?.percentage ?? 0,
+      completed: sub?.completed ?? 0,
+      total: sub?.total ?? 0,
+    };
   });
+
+  // Weak areas = subcategories with questions attempted but not yet correct
+  // (BE-2). Until the backend supplies wrongCount, this is empty → the "all
+  // good" state shows. wrongQuestionIds feed a focused "Practice these" run.
+  const weakAreas = (officialCategory?.subcategories ?? [])
+    .filter(s => (s.wrongCount ?? 0) > 0)
+    .sort((a, b) => (b.wrongCount ?? 0) - (a.wrongCount ?? 0))
+    .slice(0, 3)
+    .map(s => {
+      const cat = CATEGORIES.find(c => c.name_en === s.category.name);
+      return {
+        catId: cat?.id ?? s.category.name,
+        name: cat?.name_en ?? s.category.name,
+        wrongCount: s.wrongCount ?? 0,
+        wrongQuestionIds: s.wrongQuestionIds ?? [],
+      };
+    });
+
+  const practiceWeak = (ids: string[]) => {
+    if (ids.length === 0) return;
+    navigation.navigate('Study', {
+      screen: 'Practice',
+      params: { questionId: ids[0], queue: ids, queueIndex: 0, sourceLabel: 'Weak areas' },
+    });
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -49,20 +81,6 @@ export function ProgressScreen() {
             <Text style={styles.overallSub}>
               {loading ? 'Loading...' : `${totalCompleted} of ${totalQuestions} questions practiced`}
             </Text>
-            <View style={styles.statRow}>
-              <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.success }]}>0</Text>
-                <Text style={styles.statLbl}>Day streak</Text>
-              </View>
-              <View style={styles.statChip}>
-                <Text style={[styles.statVal, { color: colors.primary }]}>0%</Text>
-                <Text style={styles.statLbl}>Accuracy</Text>
-              </View>
-              <View style={styles.statChip}>
-                <Text style={styles.statVal}>0</Text>
-                <Text style={styles.statLbl}>Tests done</Text>
-              </View>
-            </View>
           </View>
         </View>
 
@@ -76,7 +94,8 @@ export function ProgressScreen() {
                 key={cp.catId}
                 label={cat?.name_en ?? cp.catId}
                 value={cp.pct}
-                color={colors.border}
+                rightLabel={`${cp.completed}/${cp.total} mastered`}
+                color={colors.primary}
               />
             );
           })}
@@ -97,10 +116,33 @@ export function ProgressScreen() {
         {/* Weak areas */}
         <View style={styles.section}>
           <Text style={styles.sectionHeader}>WEAK AREAS — NEEDS ATTENTION</Text>
-          <View style={styles.allGood}>
-            <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
-            <Text style={styles.allGoodText}>No weak areas yet. Keep practising to see them here.</Text>
-          </View>
+          {weakAreas.length === 0 ? (
+            <View style={styles.allGood}>
+              <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
+              <Text style={styles.allGoodText}>No weak areas yet. Keep practising to see them here.</Text>
+            </View>
+          ) : (
+            weakAreas.map(w => (
+              <TouchableOpacity
+                key={w.catId}
+                style={styles.weakRow}
+                activeOpacity={0.78}
+                disabled={w.wrongQuestionIds.length === 0}
+                onPress={() => practiceWeak(w.wrongQuestionIds)}
+              >
+                <View style={styles.weakInfo}>
+                  <Text style={styles.weakTitle}>{w.name}</Text>
+                  <Text style={styles.weakSub}>{w.wrongCount} to revisit</Text>
+                </View>
+                {w.wrongQuestionIds.length > 0 && (
+                  <View style={styles.retryBtn}>
+                    <Text style={styles.retryText}>Practise</Text>
+                  </View>
+                )}
+                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+              </TouchableOpacity>
+            ))
+          )}
         </View>
 
         <View style={{ height: 32 }} />
@@ -127,13 +169,6 @@ const styles = StyleSheet.create({
   overallRight: { flex: 1 },
   overallLabel: { fontSize: fontSize.sm, color: colors.textSecondary, marginBottom: 2 },
   overallSub: { fontSize: 12, color: colors.textSecondary, marginBottom: spacing.sm },
-  statRow: { flexDirection: 'row', gap: 8 },
-  statChip: {
-    flex: 1, backgroundColor: colors.surface, borderRadius: radius.sm,
-    padding: 8, alignItems: 'center',
-  },
-  statVal: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
-  statLbl: { fontSize: 10, color: colors.textSecondary, marginTop: 1 },
   section: { paddingHorizontal: spacing.md, marginBottom: spacing.sm },
   sectionHeader: {
     fontSize: fontSize.xs, fontFamily: font.bold, letterSpacing: 1,

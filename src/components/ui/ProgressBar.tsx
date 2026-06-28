@@ -7,16 +7,19 @@ type Props = {
   value: number; // 0–100
   color?: string;
   showPct?: boolean;
+  /** Custom right-aligned label (e.g. "32/44 mastered"); replaces the %. */
+  rightLabel?: string;
 };
 
-export function ProgressBar({ label, value, color = colors.primary, showPct = true }: Props) {
+export function ProgressBar({ label, value, color = colors.primary, showPct = true, rightLabel }: Props) {
   const clamped = Math.min(100, Math.max(0, value));
+  const right = rightLabel ?? (showPct ? `${clamped}%` : null);
   return (
     <View style={styles.wrap}>
-      {(label || showPct) && (
+      {(label || right) && (
         <View style={styles.labelRow}>
           {label && <Text style={styles.label}>{label}</Text>}
-          {showPct && <Text style={styles.pct}>{clamped}%</Text>}
+          {right && <Text style={styles.pct}>{right}</Text>}
         </View>
       )}
       <View style={styles.track}>
