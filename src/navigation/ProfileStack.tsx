@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator<ProfileStackParamList>();
 export function ProfileStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="ProfileHome" component={RequireAuth(ProfileScreen, 'Profile')} />
+      <Stack.Screen name="ProfileHome" component={ProfileScreen} />
       <Stack.Screen name="Referral" component={RequireAuth(ReferralScreen, 'Profile')} />
     </Stack.Navigator>
   );

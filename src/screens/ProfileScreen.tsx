@@ -15,6 +15,7 @@ import { useAuth } from '../store/authStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
 import { useProgress } from '../hooks/useProgress';
+import { GuestOverlay } from '../components/GuestOverlay';
 
 const HELP_URL = 'https://taxipilot.fi';
 
@@ -55,7 +56,8 @@ function SettingRow({
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
   const { state: auth, clearAuth, updateUser } = useAuth();
-  const { data: progress } = useProgress(true);
+  const isGuest = auth.guest && !auth.user;
+  const { data: progress } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -277,6 +279,7 @@ export function ProfileScreen() {
           </Pressable>
         </Pressable>
       </Modal>
+      <GuestOverlay blurb="Sign up or log in to manage your profile, set your exam date, and view your subscription." />
     </SafeAreaView>
   );
 }

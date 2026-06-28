@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator<StudyStackParamList>();
 export function StudyStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="StudyHome" component={RequireAuth(StudyHomeScreen, 'Study')} />
+      <Stack.Screen name="StudyHome" component={StudyHomeScreen} />
       <Stack.Screen name="VocabSets" component={RequireAuth(VocabSetsScreen, 'Study')} />
       <Stack.Screen name="VocabSetDetail" component={RequireAuth(VocabSetDetailScreen, 'Study')} />
       <Stack.Screen name="VocabLesson" component={RequireAuth(VocabLessonScreen, 'Study')} />
@@ -34,8 +34,8 @@ export function StudyStack() {
       <Stack.Screen name="TopicLessons" component={RequireAuth(TopicLessonsScreen, 'Study')} />
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Study')} />
       <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Study')} />
-      <Stack.Screen name="Guide" component={RequireAuth(GuideScreen, 'Study')} />
-      <Stack.Screen name="HowTo" component={RequireAuth(HowToScreen, 'Study')} />
+      <Stack.Screen name="Guide" component={GuideScreen} />
+      <Stack.Screen name="HowTo" component={HowToScreen} />
     </Stack.Navigator>
   );
 }

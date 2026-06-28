@@ -7,15 +7,19 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { getModelTests } from '../data/loaders';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
+import { useAuth } from '../store/authStore';
 import { Paywall } from '../components/Paywall';
+import { GuestOverlay } from '../components/GuestOverlay';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const tests = getModelTests();
   const { startQuiz, loading } = useStartQuiz();
   const { isUnlocked } = usePaywall();
+  const { state: auth } = useAuth();
+  const isGuest = auth.guest && !auth.user;
 
-  if (!isUnlocked('model_tests')) {
+  if (!isGuest && !isUnlocked('model_tests')) {
     return (
       <Paywall
         title="Model Tests"
@@ -55,6 +59,7 @@ export function TestHomeScreen() {
         ))}
         <View style={{ height: 32 }} />
       </ScrollView>
+      <GuestOverlay blurb="Sign up or log in to take timed model tests and track your scores." />
     </SafeAreaView>
   );
 }

@@ -7,6 +7,8 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress } from '../hooks/useProgress';
+import { GuestOverlay } from '../components/GuestOverlay';
+import { useAuth } from '../store/authStore';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
 const TOTAL_QS = getQuestions().length;
@@ -14,7 +16,9 @@ const CATEGORIES = getCategories();
 const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
-  const { data: progress, loading } = useProgress(true);
+  const { state: auth } = useAuth();
+  const isGuest = auth.guest && !auth.user;
+  const { data: progress, loading } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -101,6 +105,7 @@ export function ProgressScreen() {
 
         <View style={{ height: 32 }} />
       </ScrollView>
+      <GuestOverlay blurb="Sign up or log in to track your progress, see weak areas, and build your streak." />
     </SafeAreaView>
   );
 }

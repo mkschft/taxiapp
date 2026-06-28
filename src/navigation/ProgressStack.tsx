@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 export function ProgressStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="ProgressHome" component={RequireAuth(ProgressScreen, 'Progress')} />
+      <Stack.Screen name="ProgressHome" component={ProgressScreen} />
     </Stack.Navigator>
   );
 }

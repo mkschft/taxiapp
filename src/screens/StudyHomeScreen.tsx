@@ -8,6 +8,7 @@ import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
 import { getVocabSets, getVocabWordTotal, getQuestions, getTopicSections } from '../data/loaders';
+import { GuestOverlay } from '../components/GuestOverlay';
 
 const MENU: { Icon: LucideIcon; tint: string; title: string; sub: string; screen: string; paid: boolean; params: any }[] = [
   { Icon: MODULE_ICONS.howTo, tint: colors.textSecondary, title: 'How to use the app', sub: 'Start here — what each section is for', screen: 'HowTo', paid: false, params: {} },
@@ -44,6 +45,7 @@ export function StudyHomeScreen() {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <GuestOverlay blurb="Sign up or log in to unlock vocabulary, clue words, topic practice and model tests." />
     </SafeAreaView>
   );
 }
