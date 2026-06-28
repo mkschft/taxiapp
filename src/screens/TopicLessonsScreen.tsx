@@ -10,7 +10,9 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useAuth } from '../store/authStore';
+import { usePaywall } from '../store/paywallStore';
 import { AuthPrompt } from '../components/AuthPrompt';
+import { Paywall } from '../components/Paywall';
 import type { StudyStackParamList } from '../navigation/types';
 
 type Props = {
@@ -26,6 +28,21 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
+  const { isUnlocked, unlock } = usePaywall();
+
+  // The dashboard hero tiles deep-link straight here, bypassing TopicSections,
+  // so the paywall gate must also hold here for signed-in users.
+  if (isAuthenticated && !isUnlocked('topic_practice')) {
+    return (
+      <Paywall
+        title="Topic Practice"
+        blurb="Drill real exam-style questions one official section at a time, with the real pass thresholds."
+        perks={['All 4 official exam sections', 'Every answer explained, with the clue lens', 'Practise at the real per-section pass mark']}
+        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
+        onSkip={() => unlock('topic_practice')}
+      />
+    );
+  }
 
   if (!section) {
     return (
