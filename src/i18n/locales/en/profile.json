@@ -10,8 +10,6 @@
   "examDate": "Exam date",
   "daysLeft": "{{n}} days left",
   "complete": "Complete",
-  "accuracy": "Accuracy",
-  "dayStreak": "Day streak",
   "account": "Account",
   "setExamDate": "Set exam date",
   "notSet": "Not set",

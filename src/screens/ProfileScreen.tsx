@@ -68,7 +68,6 @@ export function ProfileScreen() {
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
-  const accuracy = 0;
   const userName = auth.user?.name ?? t('profile.yourName');
   const initial = userName ? userName[0].toUpperCase() : '?';
   const examDate = auth.user?.expectedExamDate ?? null;
@@ -192,18 +191,12 @@ export function ProfileScreen() {
           </View>
         )}
 
-        {/* Mini stats */}
+        {/* Overall completion (real progress data) */}
         <View style={styles.statRow}>
-          {[
-            { val: `${completion}%`, label: t('profile.complete') },
-            { val: `${accuracy}%`, label: t('profile.accuracy'), color: colors.success },
-            { val: '0', label: t('profile.dayStreak') },
-          ].map(s => (
-            <View key={s.label} style={styles.statChip}>
-              <Text style={[styles.statVal, s.color ? { color: s.color } : {}]}>{s.val}</Text>
-              <Text style={styles.statLbl}>{s.label}</Text>
-            </View>
-          ))}
+          <View style={styles.statChip}>
+            <Text style={styles.statVal}>{`${completion}%`}</Text>
+            <Text style={styles.statLbl}>{t('profile.complete')}</Text>
+          </View>
         </View>
 
         {/* Account */}
