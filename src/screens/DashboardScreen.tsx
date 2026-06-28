@@ -113,16 +113,25 @@ export function DashboardScreen() {
               style={{ marginTop: spacing.sm }}
             />
           </View>
+        ) : !loading && totalCompleted === 0 ? (
+          // Fresh signed-in user: an encouraging start card instead of a flat 0%.
+          <View style={styles.progressCard}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.progressLabel}>Ready to start?</Text>
+              <Text style={styles.startTitle}>
+                {totalQuestions || TOTAL_QUESTIONS} questions across your exam topics
+              </Text>
+              <Text style={styles.progressSub}>Pick a topic below to begin.</Text>
+            </View>
+          </View>
         ) : (
+          // Active: a single percentage via the ring + the count. No duplicate
+          // big number or bar.
           <View style={styles.progressCard}>
             <View style={{ flex: 1 }}>
               <Text style={styles.progressLabel}>Overall progress</Text>
-              <Text style={styles.progressPct}>{loading ? '—' : `${completion}%`}</Text>
-              <View style={styles.progressTrack}>
-                <View style={[styles.progressFill, { width: `${completion}%` }]} />
-              </View>
               <Text style={styles.progressSub}>
-                {totalCompleted} of {totalQuestions} questions practiced
+                {loading ? 'Loading…' : `${totalCompleted} of ${totalQuestions} questions practiced`}
               </Text>
             </View>
             <ProgressRing value={completion} size={80} strokeWidth={7} color="#fff" />
@@ -227,12 +236,7 @@ const styles = StyleSheet.create({
     ...shadow.md,
   },
   progressLabel: { fontSize: fontSize.sm, color: 'rgba(255,255,255,0.8)', marginBottom: 4 },
-  progressPct: { fontSize: 28, fontFamily: font.bold, color: '#fff', marginBottom: 8 },
-  progressTrack: {
-    height: 6, backgroundColor: 'rgba(255,255,255,0.3)',
-    borderRadius: radius.full, overflow: 'hidden', marginBottom: 8,
-  },
-  progressFill: { height: '100%', backgroundColor: '#fff', borderRadius: radius.full },
+  startTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: '#fff', marginBottom: 4, lineHeight: 22 },
   progressSub: { fontSize: 12, color: 'rgba(255,255,255,0.75)' },
 
   sectionHead: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, paddingBottom: spacing.sm },
