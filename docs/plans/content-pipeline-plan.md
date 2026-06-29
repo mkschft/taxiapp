@@ -1,9 +1,11 @@
 # Content Pipeline Plan — Drop Excel-as-source, adopt a Sheet → validated-PR workflow
 
-**Status:** Proposed (planning)
+**Status:** P0–P2 (one-way) built on `feat/content-ci-gate`; two-way sync handed to backend
 **Date:** 2026-06-29
 **Owner:** (assign)
-**Related:** `docs/content/spreadsheet-template.md` (the editor's column contract + data-model diagrams), `docs/audit/content-fact-check.md` (what drift cost us)
+**Related:** `docs/content/two-way-sync-handoff.md` (current state + the backend ask — **read this first**), `docs/content/spreadsheet-template.md` (the editor's column contract + data-model diagrams), `docs/audit/content-fact-check.md` (what drift cost us)
+
+> **Progress note (2026-06-29):** P0 (gate), P1 (seed export) and P2 (one-way Sheet→PR sync, single-sheet) are built in Node and verified; a per-tab review workbook (4 question tabs + Vocabulary + Clue Words) was added. P3's approval gate was **dropped for now** (nothing is `approved` yet; enforcing it would empty the surfaces). The **two-way / tabbed / vocab+clue sync is deferred to the backend developer** — see the handoff doc.
 
 ---
 
