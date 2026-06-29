@@ -95,13 +95,16 @@ The remaining work is a **bidirectional sync**, and the right shape depends on c
 
 1. **Bundled-static vs backend-served content.** Today content is bundled into the app build; Sheet edits would reach users via a normal release (Sheet → PR → merge → build). Given the Convex/NestJS backend (`backend/convex/`), do we instead want content served/cached by the backend so edits publish without an app release? This reopens decision **D-E**. Recommendation unchanged unless instant-publish is a hard requirement, but it's your call.
 
-2. **Tabbed sync for questions.** Extend `sync-sheet.mjs` to read the 4 category tabs (each published as its own CSV) and recombine into `questions.json`, deriving `category_id` from the tab. The single-sheet path already works and is the reference.
+2. **Content identity & the half-built Convex `problems` model.** The Convex schema already has a content model — `problems`, `problemTranslations`, `clueLens`, `categories`, `problemSets` — but it is **not wired to the app** (the frontend reads bundled JSON), and **no `problem` carries a link back to the bundled `Q001` id**. Meanwhile `answers`/`solutionSessions` track user progress against `problemId`. This is a latent **third source of truth** for content (JSON, Sheet, Convex). **Decision needed:** is Convex `problems` the home of content, or progress-only?
+   - **Recommendation (true either way):** do **not** use Convex's auto `_id` as a question's identity — it's assigned on insert, unstable across re-seeds, and doesn't belong in the Sheet. Keep **`Q001` (the Sheet/JSON business key) as the canonical id**, and if content lives in Convex, add `sourceId: v.string()` to `problems` with a unique `by_sourceId` index. Then Sheet `Q001` ⇄ JSON `Q001` ⇄ `problems.sourceId`, re-seeds become idempotent upserts, and existing progress (keyed on `problemId`) is never orphaned. The shapes also need reconciling: JSON splits `fi`/`en` per field and keys options `A/B/C`; Convex uses `problemTranslations` (per-locale) + a numeric `correctAnswer` index. A mapping layer (extend `scripts/content-sheet.mjs`) would bridge them.
 
-3. **New sync lanes for vocab & clue.** These are **relational** (`vocab.json` = sets + words + quizzes; nested `forms_fi`), unlike the flat question schema. They are currently **export-only**. A round-tripping design is needed (or a decision that these stay read-only).
+3. **Tabbed sync for questions.** Extend `sync-sheet.mjs` to read the 4 category tabs (each published as its own CSV) and recombine into `questions.json`, deriving `category_id` from the tab. The single-sheet path already works and is the reference.
 
-4. **Sheet access/auth.** Pick: publish-to-CSV (no auth, simplest, current `content-sync.yml` assumption) vs Sheets API + service account (private, needs a secret). If multi-tab, publish-to-CSV means one published URL per tab.
+4. **New sync lanes for vocab & clue.** These are **relational** (`vocab.json` = sets + words + quizzes; nested `forms_fi`), unlike the flat question schema. They are currently **export-only**. A round-tripping design is needed (or a decision that these stay read-only).
 
-5. **Ownership & cadence.** Who runs the sync (the `workflow_dispatch` Action, on demand) and reviews/merges the resulting PRs day-to-day.
+5. **Sheet access/auth.** Pick: publish-to-CSV (no auth, simplest, current `content-sync.yml` assumption) vs Sheets API + service account (private, needs a secret). If multi-tab, publish-to-CSV means one published URL per tab.
+
+6. **Ownership & cadence.** Who runs the sync (the `workflow_dispatch` Action, on demand) and reviews/merges the resulting PRs day-to-day.
 
 **Suggested entry points:** `scripts/sync-sheet.mjs` (reference implementation), `scripts/content-sheet.mjs` (the mapping layer to extend), `.github/workflows/content-sync.yml` (the automation to generalise), and `docs/plans/content-pipeline-plan.md` §5–§7 (validation gate + phased plan + risks).
 
