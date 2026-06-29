@@ -217,13 +217,33 @@ Applied with judgment (the 3 key fixes are each corroborated by a contradicting 
 | **Q221** | explanation only — "regulated" → operator's price-list fee (pricing is market-based) | `questions.json`, `content/enrichment/batch_199_239.json` |
 | **MTQ-032** | explanation only — 15+ belt responsibility wording | `model_test_questions.json` |
 
-Each answer-key change uses the existing `key_overridden` + `correct_master` + `reviewer_notes` mechanism (same as Q051/Q053/Q090) so it is auditable. Bank-question fixes were mirrored into the `content/enrichment/batch_*.json` **source** so a future `build_appready.py` rebuild reproduces them.
+Each answer-key change uses the existing `key_overridden` + `correct_master` + `reviewer_notes` mechanism (same as Q051/Q053/Q090) so it is auditable.
 
-**Source-sync debt (flagged, not blocking):** the two `MTQ-*` fixes were applied to the generated `model_test_questions.json` only — their durable source is `content/sources/model_test_workbook.xlsx` (binary; Python build deps not available in this environment). The workbook's `New_Questions` sheet must be updated to match for MTQ-051 (`correct_option` C→A) and MTQ-032 (explanation) before the next model-test rebuild.
+### ⚠️ Source-of-truth / rebuild debt (important — read before any content rebuild)
+
+The committed **generated JSON** (`src/data/json/questions.json`, `model_test_questions.json`) is the artifact the app ships, and it carries **all** fixes correctly. But the durable build sources do **not** all reflect them, because the Python build deps (openpyxl/pandas) and binary `.xlsx` workbooks could not be edited in this environment. A future rebuild would partially **revert** fixes unless the sources are updated first:
+
+- **`content/content_workbook.xlsx` is the SINGLE source of truth** when present (`build_appready.py`); the `content/enrichment/batch_*.json` files are only a **legacy fallback** used when the workbook is absent. I updated the batch files (legacy path) for the bank fixes, but the **workbook must be updated** for: Q314 (key C→A), Q057 (key B→A), Q221 (explanation), **Q029/Q053 (option C text → "all directions" + key C)**.
+- **`content/build_appready.py`** had an `EXPLANATION_OVERRIDE` dict hardcoding Q314's *old* explanation — **updated in this PR** to the corrected police text (otherwise a rebuild reverts it).
+- **`content/sources/model_test_workbook.xlsx`** (`New_Questions` sheet) must be updated for **MTQ-051** (`correct_option` C→A) and **MTQ-032** (explanation) — its fixes live only in the generated `model_test_questions.json`.
+
+Net: **safe to ship as-is** (generated JSON is correct); a content editor must mirror the above into the `.xlsx` workbooks before the next `build_appready.py` / `build_model_tests.py` run.
 
 ## Deliberately NOT changed (judgment calls)
 
 - **Q068** — "must refuse the trip if belt refused": ambiguous (no age specified), source-keyed, low confidence. Left for a content editor.
 - **Q235** — €65 fare looks copied from the 20 km variant, but verifying needs the source price-list table (unavailable). Did **not** guess a replacement number.
-- **Q029 / Q053** — wheelchair-occupant belt wording is imprecise but the keyed answer is defensible; low confidence. Noted for a wording pass.
-- The recurring **15+ seatbelt** theme: fixed the two clear instances (MTQ-051, MTQ-032); a fuller sweep of all belt questions is recommended as a follow-up.
+- The recurring **15+ seatbelt** theme: fixed the two clear instances (MTQ-051, MTQ-032); a fuller belt sweep was then run — see below.
+
+## Belt / child-restraint sweep (follow-up, 69 questions)
+
+A focused auditor reviewed all 69 seat-belt / child-restraint / wheelchair questions against the age-15 responsibility rule, child-restraint rules, driver's-own-belt, wheelchair-occupant restraint, and cross-question consistency. Result: the set is mostly correct and the earlier fixes are now consistent. **Two high-confidence wheelchair errors found and FIXED:**
+
+| ID | Problem | Fix |
+|---|---|---|
+| **Q029** | Option C was corrupted to "secured against **only sideways** movement" (false), so the misleading B ("occupant needs **no** seat belt") was keyed correct — teaching that wheelchair passengers need no restraint. | Restored C to "prevents movement in **all directions**" (per intact twin **MTQ-052**) and keyed **B→C**; corrected option text, explanation, clues. |
+| **Q053** | Same corruption; the earlier C→B override had "fixed" it the wrong way (master key was already C). | Restored C text + keyed **C** (= master); reverted the bad override. |
+
+Both `key`/text fixes verified against the app's own intact twin **MTQ-052** (same question, uncorrupted option C, correctly keyed "all directions"). Q029 is part of model test **mt4** — confirmed still valid (exactly one correct option) after the fix.
+
+Not changed by the sweep: **Q068** (med/med — "must refuse the trip" is ambiguous without a stated age; left for a content editor) and **MTQ-039** (low/low — defensible as a child-needs-restraint reading).

@@ -2945,19 +2945,19 @@
         "fi": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
         "fi_raw": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessa käyttää ajoneuvon turvavyötä.",
         "en": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "key": "C",
-        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen.",
-        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkee.",
-        "en": "The wheelchair must be secured so that it prevents only sideways movement.",
-        "is_correct": false
+        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "en": "The wheelchair must be secured so that it prevents movement in all directions.",
+        "is_correct": true
       }
     ],
-    "correct_option": "B",
+    "correct_option": "C",
     "correct_master": "B",
-    "key_overridden": false,
+    "key_overridden": true,
     "clue_annotations": [
       {
         "text_fi": "pyörätuolin käyttöä ja kiinnittämistä",
@@ -2970,7 +2970,7 @@
       {
         "text_fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä",
         "meaning_en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
@@ -2984,15 +2984,15 @@
         ]
       },
       {
-        "text_fi": "ainoastaan sivusuuntaisen liikkeen",
-        "meaning_en": "only sideways movement",
-        "clue_type": "ncw",
+        "text_fi": "kaikkiin suuntiin",
+        "meaning_en": "in all directions",
+        "clue_type": "pcw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "The marked answer is B. A is false — every wheelchair, including an electric one, must be secured. C is false — securing must restrain movement in all directions, not only sideways.",
+    "explanation_en": "The wheelchair must be secured so that it prevents movement in all directions (C) — wheelchair tie-downs plus an occupant restraint. A is false: every wheelchair, including an electric one, must be secured. B is false: a wheelchair passenger must still be restrained by an occupant belt.",
     "difficulty": "Hard",
     "tags": [
       "wheelchair",
@@ -3002,7 +3002,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": true,
-    "reviewer_notes": "Marked-correct option B is pedagogically questionable: a wheelchair passenger normally should also use the vehicle's seat belt. Verify the answer key against the official source.",
+    "reviewer_notes": "ANSWER-KEY + OPTION FIX: option C was corrupted to 'only sideways' (false), leaving the misleading B ('occupant needs no seat belt') keyed correct. Restored C to the all-directions statement per twin MTQ-052 and keyed C. A wheelchair occupant must be belted; B is false.",
     "enriched": true
   },
   {
@@ -5088,19 +5088,19 @@
         "fi": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
         "fi_raw": "Asiakkan ei tarvitse ajon aikana pyörätuolissa istuessa käyttää ajoneuvon turvävyötä",
         "en": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "key": "C",
-        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen.",
-        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää ainiastaan sivusuuntiaisen liikkee.",
-        "en": "The wheelchair must be secured so that it prevents only sideways movement.",
-        "is_correct": false
+        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "en": "The wheelchair must be secured so that it prevents movement in all directions.",
+        "is_correct": true
       }
     ],
-    "correct_option": "B",
+    "correct_option": "C",
     "correct_master": "C",
-    "key_overridden": true,
+    "key_overridden": false,
     "clue_annotations": [
       {
         "text_fi": "pyörätuolin käyttöä ja kiinnittämistä",
@@ -5113,7 +5113,7 @@
       {
         "text_fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä",
         "meaning_en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
@@ -5127,15 +5127,15 @@
         ]
       },
       {
-        "text_fi": "ainoastaan sivusuuntaisen liikkeen",
-        "meaning_en": "only sideways movement",
-        "clue_type": "ncw",
+        "text_fi": "kaikkiin suuntiin",
+        "meaning_en": "in all directions",
+        "clue_type": "pcw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "A is false — every wheelchair, including electric, must be secured. C is false — the word 'ainoastaan' (only sideways) contradicts the all-directions securing rule. The true statement is B.",
+    "explanation_en": "The wheelchair must be secured so that it prevents movement in all directions (C) — wheelchair tie-downs plus an occupant restraint. A is false: every wheelchair, including an electric one, must be secured. B is false: a wheelchair passenger must still be restrained by an occupant belt.",
     "difficulty": "Hard",
     "tags": [
       "wheelchair",
@@ -5144,7 +5144,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": true,
-    "reviewer_notes": "ANSWER-KEY OVERRIDE: master marked C; changed to B. Options are identical to Q029 (master key B there). Option C is false because 'ainoastaan sivusuuntaisen' (only sideways) breaks the all-directions securing rule. Q029/Q053 contradict each other in the source — confirm B.",
+    "reviewer_notes": "OPTION-TEXT FIX + override revert: option C was corrupted to 'only sideways'; restored to the all-directions statement per twin MTQ-052 and keyed C (= master key). Reverts the earlier C->B override, which wrongly kept the misleading 'no seat belt needed' statement B.",
     "enriched": true
   },
   {
