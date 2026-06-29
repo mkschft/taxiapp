@@ -43,7 +43,10 @@
     "web": "expo start --web",
     "typegen": "bash scripts/typegen.sh",
     "typegen:api": "bash scripts/typegen-api.sh",
-    "check:data": "node scripts/check-data-integrity.mjs"
+    "check:data": "node scripts/check-data-integrity.mjs",
+    "sheet:export": "node scripts/export-sheet-csv.mjs",
+    "sheet:sync": "node scripts/sync-sheet.mjs",
+    "sheet:verify": "node scripts/verify-sheet-roundtrip.mjs"
   },
   "private": true
 }

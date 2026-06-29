@@ -42,3 +42,5 @@ jobs:
       # The gate uses only Node built-ins — no dependency install needed,
       # so this job stays fast and is independent of node_modules drift.
       - run: node scripts/check-data-integrity.mjs
+      # Guards that the Sheet ⇄ JSON column contract stays lossless.
+      - run: node scripts/verify-sheet-roundtrip.mjs
