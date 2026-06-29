@@ -92,6 +92,7 @@ jobs:
           source: 'app-dist.tar.gz'
           target: '~/'
           strip_components: 0
+          debug: true
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
@@ -99,6 +100,7 @@ jobs:
           host: ${{ secrets.APP_HOST }}
           username: ${{ secrets.APP_USER }}
           key: ${{ secrets.APP_SSH_PRIVATE_KEY }}
+          debug: true
           script: |
             set -euo pipefail
 
