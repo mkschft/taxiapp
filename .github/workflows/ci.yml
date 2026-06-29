@@ -1,0 +1,44 @@
+name: CI
+
+# Minimal mandatory gate for every PR (see AGENTS.md → "Always keep a minimal CI
+# gate on PRs"). Two jobs must pass before merge:
+#   • typecheck   — npx tsc --noEmit (clean)
+#   • content-gate — the content validation gate: per-question schema, no NEW
+#                    contradictory twins, model-test integrity, exam-fact
+#                    constants, and en/fi i18n parity (npm run check:data).
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+# A newer push to the same branch/PR cancels the in-flight run.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: TypeScript (tsc --noEmit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+
+  content-gate:
+    name: Content validation gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The gate uses only Node built-ins — no dependency install needed,
+      # so this job stays fast and is independent of node_modules drift.
+      - run: node scripts/check-data-integrity.mjs
