@@ -1,14 +1,20 @@
 name: CI
 
-# Minimal mandatory gate for every PR (see AGENTS.md → "Always keep a minimal CI
-# gate on PRs"). Two jobs must pass before merge:
-#   • typecheck   — npx tsc --noEmit (clean)
+# Mandatory gate for every PR (see AGENTS.md → "Always keep a minimal CI gate
+# on PRs"). Three jobs must pass before merge:
+#   • typecheck    — npx tsc --noEmit (clean)
 #   • content-gate — the content validation gate: per-question schema, no NEW
 #                    contradictory twins, model-test integrity, exam-fact
-#                    constants, and en/fi i18n parity (npm run check:data).
+#                    constants, en/fi i18n parity, and the lossless Sheet ⇄ JSON
+#                    round-trip contract.
+#   • build-web    — expo web export + postbuild, mirroring the Deploy workflow
+#                    so a broken build is caught on the PR, not at deploy time.
+#
+# Package manager is pnpm, matching .github/workflows/deploy.yml.
 
 on:
   pull_request:
+    branches: [master]
   push:
     branches: [master]
 
@@ -23,11 +29,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.3.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - run: npx tsc --noEmit
 
   content-gate:
@@ -38,9 +49,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       # The gate uses only Node built-ins — no dependency install needed,
       # so this job stays fast and is independent of node_modules drift.
       - run: node scripts/check-data-integrity.mjs
       # Guards that the Sheet ⇄ JSON column contract stays lossless.
       - run: node scripts/verify-sheet-roundtrip.mjs
+
+  build-web:
+    name: Build for web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.3.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build for web
+        run: |
+          npx expo export --platform web
+          node scripts/postbuild-web.js
