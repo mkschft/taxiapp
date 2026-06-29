@@ -154,16 +154,17 @@
       "B": "The employer's.",
       "C": "The school's and daycare's."
     },
+    "correct_override": "A",
     "fw": [{"fi": "rikostaustaote", "en": "criminal-background extract"}],
-    "pcw": [{"fi": "Työnantajan", "en": "the employer's"}],
+    "pcw": [{"fi": "Kuljettajan", "en": "the driver's"}],
     "ncw": [
-      {"fi": "Kuljettajan", "en": "the driver's"},
+      {"fi": "Työnantajan", "en": "the employer's"},
       {"fi": "Koulun ja päiväkodin", "en": "the school's and daycare's"}
     ],
-    "explanation_en": "Per the master key, the employer is responsible for obtaining the driver's criminal-background extract (B).",
+    "explanation_en": "The driver must personally obtain their own criminal-background extract (rikostaustaote) from the Legal Register Centre and present it (A). The employer or orderer must require to see the extract but cannot obtain it on the driver's behalf; a self-employed driver has no employer. Consistent with Q037.",
     "difficulty": "Medium",
     "tags": ["criminal record", "school transport", "review-flag"],
-    "notes": "CONTRADICTION with Q037: Q037 marks the driver as the one who obtains the extract; Q057 marks the employer. Finnish practice splits this (the individual requests the extract from the Legal Register Centre; the employer must check it) and self-employed drivers have no employer. Kept each question's master key; confirm against the official source and align Q037/Q057."
+    "notes": "ANSWER-KEY OVERRIDE: master marked B (employer); changed to A (driver). Under the Finnish rules on checking the background of persons working with children, the individual requests their own extract from the Legal Register Centre and presents it; the employer only verifies it. Resolves the documented contradiction with Q037 (keyed driver)."
   },
   "Q058": {
     "question_fi": "Mitä turvavyön käytöstä on määrätty koskien koulukuljetuksia?",
