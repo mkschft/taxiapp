@@ -92,7 +92,6 @@ jobs:
           source: 'app-dist.tar.gz'
           target: '~/'
           strip_components: 0
-          debug: true
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
@@ -100,23 +99,15 @@ jobs:
           host: ${{ secrets.APP_HOST }}
           username: ${{ secrets.APP_USER }}
           key: ${{ secrets.APP_SSH_PRIVATE_KEY }}
-          debug: true
           script: |
             set -euo pipefail
 
             DEPLOY_DIR="/var/www/taxipilot"
-            NEW_DIR="${DEPLOY_DIR}.new"
-            OLD_DIR="${DEPLOY_DIR}.old"
 
-            # Extract to a temporary new directory
-            mkdir -p "$NEW_DIR"
-            tar -xzf ~/app-dist.tar.gz -C "$NEW_DIR"
+            # Clean existing contents and extract in place
+            # (avoids mkdir in /var/www/ which is root-owned)
+            rm -rf "${DEPLOY_DIR:?}/"*
+            tar -xzf ~/app-dist.tar.gz -C "$DEPLOY_DIR"
             rm -f ~/app-dist.tar.gz
-
-            # Atomic swap
-            rm -rf "$OLD_DIR"
-            mv "$DEPLOY_DIR" "$OLD_DIR" || true
-            mv "$NEW_DIR" "$DEPLOY_DIR"
-            rm -rf "$OLD_DIR"
 
             echo "Deployment complete"
