@@ -455,7 +455,7 @@
     "fw": [{"fi": "siivouslisämaksua", "en": "cleaning surcharge"}, {"fi": "sotkee auton", "en": "soil the car"}],
     "pcw": [{"fi": "130 €", "en": "€130"}],
     "ncw": [{"fi": "500 €", "en": "€500"}, {"fi": "350 €", "en": "€350"}],
-    "explanation_en": "The regulated cleaning surcharge for soiling a taxi is €130 (A).",
+    "explanation_en": "The cleaning/soiling surcharge in the operator's price list is €130 (A). Taxi pricing has been market-based (deregulated) since 2018, so this fee is set by the operator's own price list, not by a national regulation.",
     "difficulty": "Medium",
     "tags": ["cleaning surcharge", "fare", "review-flag"],
     "notes": "Surcharge amounts are set by regulation and may change. Confirm the current figure (€130) matches the valid exam schedule before publishing."
