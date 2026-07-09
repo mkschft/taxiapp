@@ -15,7 +15,7 @@ Q013,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 Q014,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q015,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q016,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q017,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
+Q017,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,"Clue annotations shortened: fw=""lyhyet"", pcw=""toisen taksin"", ncw=""jatkopalalla"". Source workbook sync needed.",2026-07-09T21:48:58.371Z,admin
 Q018,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q019,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q020,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,

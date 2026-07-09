@@ -1842,7 +1842,7 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "turvavyöt ovat liian lyhyet",
+        "text_fi": "lyhyet",
         "meaning_en": "the seat belts are too short",
         "clue_type": "fw",
         "found_in": [
@@ -1850,7 +1850,7 @@
         ]
       },
       {
-        "text_fi": "Tilaat asiakkaalle toisen taksin",
+        "text_fi": "toisen taksin",
         "meaning_en": "you order the customer another taxi",
         "clue_type": "pcw",
         "found_in": [
@@ -1874,7 +1874,7 @@
         ]
       },
       {
-        "text_fi": "Jatkat turvavyön pituutta jatkopalalla",
+        "text_fi": "jatkopalalla",
         "meaning_en": "extend the seat belt with an extension piece",
         "clue_type": "ncw",
         "found_in": [
