@@ -73,7 +73,7 @@ export function VocabSetsScreen({ navigation }: Props) {
             ? t('vocab.lastPracticed', { when: lastPracticed })
             : lp
               ? t('vocab.learnedCount', { completed: lp.completed, total: lp.total })
-              : t('common.wordsCount', { n: words.length });
+              : null;
 
           return (
             <View key={set.id} style={styles.card}>
@@ -93,13 +93,15 @@ export function VocabSetsScreen({ navigation }: Props) {
                   <Text style={styles.setNo}>{t('vocab.setLabel', { n: set.set_no })}</Text>
                   <Text style={styles.cardTitle} numberOfLines={2}>{set.name}</Text>
                   <Text style={styles.cardSub}>
-                    {t('vocab.setMeta', { words: set.word_count, quiz: set.question_count })}
+                    {t('common.wordsCount', { n: set.word_count })}
                   </Text>
-                  <View style={styles.metaRow}>
-                    <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                      <Text style={styles.tagText}>{tagText}</Text>
+                  {tagText && (
+                    <View style={styles.metaRow}>
+                      <View style={[styles.tag, { backgroundColor: colors.surface }]}>
+                        <Text style={styles.tagText}>{tagText}</Text>
+                      </View>
                     </View>
-                  </View>
+                  )}
                 </View>
               </View>
 
