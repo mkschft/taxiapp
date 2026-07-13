@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { AppState, type AppStateStatus } from 'react-native';
 import { loadItem, saveItem } from './storage';
-import { setUnauthorizedHandler } from '../lib/api';
+import { setTokenRefreshHandler, setUnauthorizedHandler } from '../lib/api';
 import { getMe } from '../lib/authApi';
 
 export type SubscriptionInfo = {
@@ -53,6 +53,7 @@ export function hasActivePaidPlan(subscription: SubscriptionInfo): boolean {
 const AuthContext = createContext<{
   state: AuthState;
   setAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;
+  setTokens: (accessToken: string, refreshToken: string) => Promise<void>;
   updateUser: (patch: Partial<AuthUser>) => Promise<void>;
   enterGuest: () => Promise<void>;
   markOnboardingSeen: () => Promise<void>;
@@ -61,6 +62,7 @@ const AuthContext = createContext<{
 }>({
   state: { user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false, hydrated: false },
   setAuth: async () => {},
+  setTokens: async () => {},
   updateUser: async () => {},
   enterGuest: async () => {},
   markOnboardingSeen: async () => {},
@@ -99,6 +101,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
     void saveItem(AUTH_STORAGE_KEYS.GUEST, false); // a real account supersedes guest
     setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false }));
+  }, []);
+
+  const setTokens = useCallback(async (accessToken: string, refreshToken: string) => {
+    void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+    void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
+    setState(prev => ({ ...prev, accessToken, refreshToken }));
   }, []);
 
   const updateUser = useCallback(async (patch: Partial<AuthUser>) => {
@@ -142,8 +150,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUnauthorizedHandler(() => {
       clearAuth();
     });
-    return () => setUnauthorizedHandler(null);
-  }, [clearAuth]);
+    setTokenRefreshHandler((accessToken, refreshToken) => {
+      void setTokens(accessToken, refreshToken);
+    });
+    return () => {
+      setUnauthorizedHandler(null);
+      setTokenRefreshHandler(null);
+    };
+  }, [clearAuth, setTokens]);
 
   // Global subscription refresh: on mount + when app returns to foreground
   useEffect(() => {
@@ -153,7 +167,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const token = state.accessToken;
       if (!token || state.guest) return;
       try {
-        const user = await getMe(token);
+        const user = await getMe();
         if (!cancelled) {
           setState(prev => {
             if (!prev.user) return prev;
@@ -184,12 +198,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(() => ({
     state,
     setAuth,
+    setTokens,
     updateUser,
     enterGuest,
     markOnboardingSeen,
     completeReturningUserAuth,
     clearAuth,
-  }), [state, setAuth, updateUser, enterGuest, markOnboardingSeen, completeReturningUserAuth, clearAuth]);
+  }), [state, setAuth, setTokens, updateUser, enterGuest, markOnboardingSeen, completeReturningUserAuth, clearAuth]);
 
   return (
     <AuthContext.Provider value={value}>

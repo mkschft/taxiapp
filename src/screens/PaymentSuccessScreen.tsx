@@ -39,7 +39,7 @@ export function PaymentSuccessScreen() {
           }
           return;
         }
-        const user = await getMe(auth.accessToken);
+        const user = await getMe();
         if (!cancelled) {
           await setAuth(user, auth.accessToken, auth.refreshToken!);
           setVerifying(false);

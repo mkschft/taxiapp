@@ -1,27 +1,16 @@
-import { patch, post } from './api';
+import { get, patch, post } from './api';
 import type { AuthUser, SubscriptionInfo } from '../store/authStore';
 
-const BASE_URL = 'https://api.taxipilot.fi';
-
-export async function getMe(accessToken: string): Promise<AuthUser> {
-  const res = await fetch(`${BASE_URL}/auth/me`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-    cache: 'no-store',
-  });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    const err: any = new Error(body.message ?? 'Failed to fetch user');
-    err.statusCode = res.status;
-    throw err;
-  }
-  const data = await res.json() as {
+export async function getMe(): Promise<AuthUser> {
+  const data = await get<{
     id: string;
     email: string;
     name: string;
     expectedExamDate?: string | null;
     emailVerified?: boolean;
     subscription?: SubscriptionInfo;
-  };
+  }>('/auth/me');
+
   return {
     id: data.id,
     email: data.email,
