@@ -48,8 +48,10 @@ QUIZ_SHEET = "Quiz set"
 # are now kept, matching the Excel's 11 sets.)
 EXCLUDE_SETS = set()
 
-# Sets 10/11 list a different sub-page name on every row; give them a clean name.
+# Override set names from the Excel where we want a cleaner, stable title.
 SET_NAME_OVERRIDE = {
+    1: "Passenger Assistance & Accessibility",
+    2: "Passenger Assistance & Communication",
     10: "Conjunctions",
     11: "WH / Question Words",
 }
