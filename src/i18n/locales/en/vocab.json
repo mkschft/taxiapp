@@ -3,7 +3,6 @@
   "lesson": "Lesson",
   "setsCaption": "{{n}} practice sets · learn the words, then take the quiz",
   "setLabel": "SET {{n}}",
-  "setMeta": "{{words}} words · {{quiz}} quiz Qs",
   "learnedCount": "{{completed}}/{{total}} learned",
   "lastPracticed": "Last practiced {{when}}",
   "lessonHeader": "Lesson · Set {{n}}",

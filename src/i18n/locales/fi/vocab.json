@@ -3,7 +3,6 @@
   "lesson": "Oppitunti",
   "setsCaption": "{{n}} harjoitussarjaa · opi sanat ja tee sitten tietovisa",
   "setLabel": "SARJA {{n}}",
-  "setMeta": "{{words}} sanaa · {{quiz}} visakysymystä",
   "learnedCount": "{{completed}}/{{total}} opittu",
   "lastPracticed": "Viimeksi harjoiteltu {{when}}",
   "lessonHeader": "Oppitunti · Sarja {{n}}",

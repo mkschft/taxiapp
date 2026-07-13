@@ -93,7 +93,7 @@ export function VocabSetsScreen({ navigation }: Props) {
                   <Text style={styles.setNo}>{t('vocab.setLabel', { n: set.set_no })}</Text>
                   <Text style={styles.cardTitle} numberOfLines={2}>{set.name}</Text>
                   <Text style={styles.cardSub}>
-                    {t('vocab.setMeta', { words: set.word_count, quiz: set.question_count })}
+                    {t('common.wordsCount', { n: set.word_count })}
                   </Text>
                   {tagText && (
                     <View style={styles.metaRow}>
