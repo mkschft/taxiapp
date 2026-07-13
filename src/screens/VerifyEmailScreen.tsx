@@ -49,7 +49,7 @@ export function VerifyEmailScreen({ route }: Props) {
         setSuccessMessage(t('auth.emailVerifiedSuccess'));
         if (isLoggedIn && auth.refreshToken) {
           return refreshTokens(auth.refreshToken).then(({ accessToken, refreshToken }) =>
-            getMe(accessToken).then((user) => setAuth(user, accessToken, refreshToken))
+            getMe().then((user) => setAuth(user, accessToken, refreshToken))
           );
         }
       })
