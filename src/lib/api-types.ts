@@ -429,6 +429,327 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/progress/problem-sets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get user progress by problem set */
+        get: operations["ProgressController_getProblemSets"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/clue-groups": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all clue groups (admin only) */
+        get: operations["ClueWordsController_listGroups"];
+        put?: never;
+        /** Create a new clue group (admin only) */
+        post: operations["ClueWordsController_createGroup"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/clue-groups/{groupId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a clue group by id (admin only) */
+        get: operations["ClueWordsController_getGroup"];
+        put?: never;
+        post?: never;
+        /** Delete a clue group (admin only) */
+        delete: operations["ClueWordsController_deleteGroup"];
+        options?: never;
+        head?: never;
+        /** Update a clue group (admin only) */
+        patch: operations["ClueWordsController_updateGroup"];
+        trace?: never;
+    };
+    "/admin/clue-groups/{groupId}/words": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List words in a clue group (admin only) */
+        get: operations["ClueWordsController_listWords"];
+        put?: never;
+        /** Create a clue word in a group (admin only) */
+        post: operations["ClueWordsController_createWord"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/clue-groups/{groupId}/words/{wordId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a clue word by id (admin only) */
+        get: operations["ClueWordsController_getWord"];
+        put?: never;
+        post?: never;
+        /** Delete a clue word (admin only) */
+        delete: operations["ClueWordsController_deleteWord"];
+        options?: never;
+        head?: never;
+        /** Update a clue word (admin only) */
+        patch: operations["ClueWordsController_updateWord"];
+        trace?: never;
+    };
+    "/admin/clue-groups/{groupId}/words/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Reorder words in a clue group (admin only) */
+        patch: operations["ClueWordsController_reorderWords"];
+        trace?: never;
+    };
+    "/vocab/sets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all vocabulary sets */
+        get: operations["VocabController_listSets"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/vocab/sets/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a vocabulary set */
+        get: operations["VocabController_getSet"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/vocab/sets/{id}/words": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get lesson words for a vocabulary set */
+        get: operations["VocabController_listWords"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/vocab/sets/{id}/questions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get quiz questions for a vocabulary set */
+        get: operations["VocabController_listQuestions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/vocab/sets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all vocabulary sets (admin only) */
+        get: operations["VocabAdminController_listSets"];
+        put?: never;
+        /** Create a vocabulary set (admin only) */
+        post: operations["VocabAdminController_createSet"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a vocabulary set (admin only) */
+        get: operations["VocabAdminController_getSet"];
+        put?: never;
+        post?: never;
+        /** Delete a vocabulary set (admin only) */
+        delete: operations["VocabAdminController_deleteSet"];
+        options?: never;
+        head?: never;
+        /** Update a vocabulary set (admin only) */
+        patch: operations["VocabAdminController_updateSet"];
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/words": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List words in a vocab set (admin only) */
+        get: operations["VocabAdminController_listWords"];
+        put?: never;
+        /** Create a vocab word in a set (admin only) */
+        post: operations["VocabAdminController_createWord"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/words/{wordId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a vocab word by id (admin only) */
+        get: operations["VocabAdminController_getWord"];
+        put?: never;
+        post?: never;
+        /** Delete a vocab word (admin only) */
+        delete: operations["VocabAdminController_deleteWord"];
+        options?: never;
+        head?: never;
+        /** Update a vocab word (admin only) */
+        patch: operations["VocabAdminController_updateWord"];
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/words/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Reorder words in a vocab set (admin only) */
+        patch: operations["VocabAdminController_reorderWords"];
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/questions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List quiz questions in a vocab set (admin only) */
+        get: operations["VocabAdminController_listQuestions"];
+        put?: never;
+        /** Create a vocab quiz question (admin only) */
+        post: operations["VocabAdminController_createQuestion"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/questions/{questionId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a vocab quiz question (admin only) */
+        get: operations["VocabAdminController_getQuestion"];
+        put?: never;
+        post?: never;
+        /** Delete a vocab quiz question (admin only) */
+        delete: operations["VocabAdminController_deleteQuestion"];
+        options?: never;
+        head?: never;
+        /** Update a vocab quiz question (admin only) */
+        patch: operations["VocabAdminController_updateQuestion"];
+        trace?: never;
+    };
+    "/admin/vocab/sets/{id}/questions/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Reorder questions in a vocab set (admin only) */
+        patch: operations["VocabAdminController_reorderQuestions"];
+        trace?: never;
+    };
     "/payments/checkout-session": {
         parameters: {
             query?: never;
@@ -580,7 +901,17 @@ export interface components {
              * @example Q284
              */
             imageKey?: string;
+            /**
+             * @description Optional ID of the default problem translation
+             * @example k57a1...
+             */
+            defaultTranslationId?: string;
             clueLens?: components["schemas"]["ClueLensDto"];
+            /**
+             * @description Optional linked vocabulary word ID
+             * @example set-1-w1
+             */
+            vocabWordId?: string;
         };
         CreateClueLensDto: {
             focusWords: components["schemas"]["FocusWordDto"][];
@@ -643,7 +974,17 @@ export interface components {
              * @example Q284
              */
             imageKey?: string;
+            /**
+             * @description Optional ID of the default problem translation
+             * @example k57a1...
+             */
+            defaultTranslationId?: string;
             clueLens?: components["schemas"]["UpdateClueLensDto"];
+            /**
+             * @description Optional linked vocabulary word ID
+             * @example set-1-w1
+             */
+            vocabWordId?: string;
         };
         CreateProblemSetDto: {
             /** @example Basic Math Quiz */
@@ -657,7 +998,12 @@ export interface components {
              * @description Category ID
              * @example category-id
              */
-            categoryId: string;
+            categoryId?: string;
+            /**
+             * @description Optional linked vocabulary set ID
+             * @example set-1
+             */
+            vocabSetId?: string;
         };
         UpdateProblemSetDto: {
             /** @example Basic Math Quiz */
@@ -672,6 +1018,11 @@ export interface components {
              * @example category-id
              */
             categoryId?: string;
+            /**
+             * @description Optional linked vocabulary set ID
+             * @example set-1
+             */
+            vocabSetId?: string;
         };
         CreateSolutionSessionDto: {
             /**
@@ -715,6 +1066,211 @@ export interface components {
             parentCategoryId?: string;
             /** @example 1 */
             sortOrder?: number;
+        };
+        CreateClueGroupDto: {
+            /**
+             * @description Unique slug-like id
+             * @example positive
+             */
+            id: string;
+            /** @example Positive */
+            short: string;
+            /** @example Positive clue words */
+            label: string;
+            /** @enum {string} */
+            tone: "positive" | "negative" | "neutral";
+            /** @example Words that indicate a favorable answer */
+            blurb: string;
+            /** @example 1 */
+            order: number;
+            /**
+             * @description Optional external problem set id
+             * @example problemSet123
+             */
+            problemSetId?: Record<string, never> | null;
+        };
+        UpdateClueGroupDto: {
+            /** @example Positive */
+            short?: string;
+            /** @example Positive clue words */
+            label?: string;
+            /** @enum {string} */
+            tone?: "positive" | "negative" | "neutral";
+            /** @example Words that indicate a favorable answer */
+            blurb?: string;
+            /** @example 1 */
+            order?: number;
+            /**
+             * @description Optional external problem set id
+             * @example problemSet123
+             */
+            problemSetId?: Record<string, never> | null;
+        };
+        CreateClueWordDto: {
+            /**
+             * @description Optional explicit id; generated if omitted
+             * @example clue-positive-w3
+             */
+            id?: string;
+            /** @example aina */
+            phraseFi: string;
+            /** @example always */
+            meaningEn: string;
+            /** @example Suggests the action is required */
+            effectEn?: Record<string, never> | null;
+            /** @example Unless stated otherwise */
+            exceptionEn?: Record<string, never> | null;
+        };
+        UpdateClueWordDto: {
+            /** @example aina */
+            phraseFi?: string;
+            /** @example always */
+            meaningEn?: string;
+            /** @example Suggests the action is required */
+            effectEn?: Record<string, never> | null;
+            /** @example Unless stated otherwise */
+            exceptionEn?: Record<string, never> | null;
+        };
+        ReorderClueWordsDto: {
+            /**
+             * @description Word ids in the desired order
+             * @example [
+             *       "clue-positive-w2",
+             *       "clue-positive-w1"
+             *     ]
+             */
+            wordIds: string[];
+        };
+        CreateVocabSetDto: {
+            /**
+             * @description URL-safe unique ID
+             * @example set-1
+             */
+            id: string;
+            /**
+             * @description Set number
+             * @example 1
+             */
+            setNo: number;
+            /** @example Passenger Assistance & Accessibility — Part 1 */
+            name: string;
+            /**
+             * @description App-facing category slug
+             * @example special_needs
+             */
+            categoryId?: string;
+            /**
+             * @description Display order
+             * @example 1
+             */
+            order: number;
+        };
+        UpdateVocabSetDto: {
+            /**
+             * @description Set number
+             * @example 1
+             */
+            setNo?: number;
+            /** @example Passenger Assistance & Accessibility — Part 1 */
+            name?: string;
+            /**
+             * @description App-facing category slug
+             * @example special_needs
+             */
+            categoryId?: string;
+            /**
+             * @description Display order
+             * @example 1
+             */
+            order?: number;
+        };
+        VocabFormDto: {
+            /** @example toimia */
+            fi: string;
+            /** @example to act */
+            en: string;
+        };
+        CreateVocabWordDto: {
+            /** @example set-1-w1 */
+            id?: string;
+            /** @example toimia */
+            wordFi: string;
+            /** @example to act / handle the situation */
+            meaningEn: string;
+            formsFi: components["schemas"]["VocabFormDto"][];
+            /** @example Action keyword. It appears in questions asking what the driver should do. */
+            examUseEn: string;
+        };
+        UpdateVocabWordDto: {
+            /** @example toimia */
+            wordFi?: string;
+            /** @example to act / handle the situation */
+            meaningEn?: string;
+            formsFi?: components["schemas"]["VocabFormDto"][];
+            /** @example Action keyword. It appears in questions asking what the driver should do. */
+            examUseEn?: string;
+        };
+        ReorderVocabWordsDto: {
+            /**
+             * @example [
+             *       "set-1-w2",
+             *       "set-1-w1"
+             *     ]
+             */
+            wordIds: string[];
+        };
+        CreateVocabQuestionDto: {
+            /** @example toimia */
+            promptWordFi: string;
+            /**
+             * @description Options in A, B, C order
+             * @example [
+             *       "to act / handle the situation",
+             *       "wheelchair",
+             *       "assistant/helper"
+             *     ]
+             */
+            options: string[];
+            /**
+             * @example A
+             * @enum {string}
+             */
+            correctOption: "A" | "B" | "C";
+            /** @example to act / handle the situation */
+            correctMeaningEn: string;
+            /** @example set-1-w1 */
+            lessonWordId?: string;
+        };
+        UpdateVocabQuestionDto: {
+            /** @example toimia */
+            promptWordFi?: string;
+            /**
+             * @description Options in A, B, C order
+             * @example [
+             *       "to act / handle the situation",
+             *       "wheelchair",
+             *       "assistant/helper"
+             *     ]
+             */
+            options?: string[];
+            /**
+             * @example A
+             * @enum {string}
+             */
+            correctOption?: "A" | "B" | "C";
+            /** @example to act / handle the situation */
+            correctMeaningEn?: string;
+            /** @example set-1-w1 */
+            lessonWordId?: string;
+        };
+        ReorderVocabQuestionsDto: {
+            /**
+             * @example [
+             *       "j57a1...",
+             *       "j57a2..."
+             *     ]
+             */
+            questionIds: string[];
         };
         CreateCheckoutSessionDto: Record<string, never>;
     };
@@ -1762,6 +2318,854 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Progress returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProgressController_getProblemSets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Problem set progress returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_listGroups: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue groups returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_createGroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateClueGroupDto"];
+            };
+        };
+        responses: {
+            /** @description Clue group created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation failure */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Duplicate id */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_getGroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue group returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_deleteGroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue group deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_updateGroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateClueGroupDto"];
+            };
+        };
+        responses: {
+            /** @description Clue group updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation failure */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_listWords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue words returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_createWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateClueWordDto"];
+            };
+        };
+        responses: {
+            /** @description Clue word created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation failure */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_getWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue word returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue word not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_deleteWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Clue word deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue word not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_updateWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateClueWordDto"];
+            };
+        };
+        responses: {
+            /** @description Clue word updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue word not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClueWordsController_reorderWords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                groupId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReorderClueWordsDto"];
+            };
+        };
+        responses: {
+            /** @description Words reordered */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation failure */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Clue group not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabController_listSets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab sets returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabController_getSet: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab set returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabController_listWords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab words returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabController_listQuestions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab questions returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_listSets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab sets returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_createSet: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateVocabSetDto"];
+            };
+        };
+        responses: {
+            /** @description Vocab set created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_getSet: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab set returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_deleteSet: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab set deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_updateSet: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateVocabSetDto"];
+            };
+        };
+        responses: {
+            /** @description Vocab set updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab set not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_listWords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab words returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_createWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateVocabWordDto"];
+            };
+        };
+        responses: {
+            /** @description Vocab word created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_getWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Vocab word returned */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Vocab word not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_deleteWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_updateWord: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                wordId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateVocabWordDto"];
+            };
+        };
+        responses: {
+            /** @description Vocab word updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_reorderWords: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReorderVocabWordsDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_listQuestions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_createQuestion: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateVocabQuestionDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_getQuestion: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                questionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_deleteQuestion: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                questionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_updateQuestion: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                questionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateVocabQuestionDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VocabAdminController_reorderQuestions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReorderVocabQuestionsDto"];
+            };
+        };
+        responses: {
             200: {
                 headers: {
                     [name: string]: unknown;
