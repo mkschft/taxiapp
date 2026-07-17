@@ -176,6 +176,15 @@ export function DashboardScreen() {
                     valueFontSize={12}
                   />
                   <View style={styles.rowInfo}>
+                    {section.pass_correct != null && section.pass_total != null && (
+                      <Text style={styles.moduleKicker}>
+                        {t('dashboard.moduleKicker', {
+                          n: section.order,
+                          correct: section.pass_correct,
+                          total: section.pass_total,
+                        })}
+                      </Text>
+                    )}
                     <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
                     <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
                     <Text style={styles.hubSub}>
@@ -274,6 +283,7 @@ const styles = StyleSheet.create({
   },
   quizButtonText: { fontSize: fontSize.sm, fontFamily: font.semibold },
   rowInfo: { flex: 1, gap: 2 },
+  moduleKicker: { fontSize: 11, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },

@@ -13,6 +13,7 @@
   "wordsTitle": "Opi tärkeitä sanoja",
   "studyTitle": "Harjoittele kysymyksiä",
   "quizOnModule": "Tentti: Moduuli {{n}}",
+  "moduleKicker": "Moduuli {{n}} | {{correct}} oikein / {{total}} kysymystä",
   "practiced": "{{completed}} / {{total}} kysymystä harjoiteltu",
   "topicPractice": {
     "title": "Aiheharjoittelu",
