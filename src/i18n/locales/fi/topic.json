@@ -3,7 +3,7 @@
   "practice": "Harjoittele",
   "sectionsCaption": "Harjoittele koeosioittain — valitse aihe ja sitten keskitetty kysymyssarja.",
   "sectionNotFound": "Osiota ei löytynyt.",
-  "sectionMeta": "{{questions}} kysymystä · {{lessons}} oppituntia",
+  "sectionMeta": "{{questions}} kysymystä · {{topics}} aihetta",
   "lastPracticed": "Viimeksi harjoiteltu {{when}}",
   "doneCount": "{{completed}}/{{total}} tehty",
   "authTitle": "Kirjaudu harjoitellaksesi tätä osiota",

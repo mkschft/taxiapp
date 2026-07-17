@@ -3,7 +3,7 @@
   "practice": "Practice",
   "sectionsCaption": "Practise by exam section — pick a topic, then a focused set of questions.",
   "sectionNotFound": "Section not found.",
-  "sectionMeta": "{{questions}} questions · {{lessons}} lessons",
+  "sectionMeta": "{{questions}} questions · {{topics}} topics",
   "lastPracticed": "Last practiced {{when}}",
   "doneCount": "{{completed}}/{{total}} done",
   "authTitle": "Sign in to practise this section",
