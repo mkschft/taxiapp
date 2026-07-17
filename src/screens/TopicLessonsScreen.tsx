@@ -14,7 +14,6 @@ import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
 import { useStartQuiz } from '../hooks/useStartQuiz';
-import { formatRelativeDay } from '../lib/time';
 import { localizedPair } from '../i18n/content';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
@@ -107,18 +106,13 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
         </View>
       ) : (
       <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
-        {lessons.map(lesson => {
+        {lessons.map((lesson, index) => {
           // Per-lesson progress is keyed by the lesson's backend problem set. Until
           // BE-3 ships, the map is empty → render a neutral ring with no fake count.
           const problemSetId =
             BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
           const lp = problemSetId ? setProgress[problemSetId] : undefined;
-          const lastPracticed = formatRelativeDay(lp?.lastPracticedAt);
-          const tagText = lastPracticed
-            ? t('topic.lastPracticed', { when: lastPracticed })
-            : lp
-              ? t('topic.doneCount', { completed: lp.completed, total: lp.total })
-              : t('common.questionsCount', { n: lesson.question_count });
+          const kicker = t('topic.lessonHeader', { n: index + 1, count: lesson.question_count });
 
           const cardTop = (
             <View style={styles.cardTop}>
@@ -134,12 +128,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
               </ProgressRing>
 
               <View style={styles.info}>
+                <Text style={styles.kicker}>{kicker}</Text>
                 <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
-                <View style={styles.metaRow}>
-                  <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                    <Text style={styles.tagText}>{tagText}</Text>
-                  </View>
-                </View>
               </View>
 
               <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
@@ -182,10 +172,8 @@ const styles = StyleSheet.create({
   },
   cardTop: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   info: { flex: 1, gap: 2 },
+  kicker: { fontSize: 12, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text, lineHeight: 21 },
-  metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
-  tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
-  tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
   ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
   btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
   authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
