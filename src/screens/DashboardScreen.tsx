@@ -68,9 +68,9 @@ export function DashboardScreen() {
     else navigation.navigate(screen);
   };
 
-  const openModule = (sectionId: string) => {
+  const openModule = (sectionId: string, mode?: 'practice' | 'quiz') => {
     if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
-    else navigation.navigate('TopicLessons', { sectionId });
+    else navigation.navigate('TopicLessons', { sectionId, mode });
   };
 
   return (
@@ -161,33 +161,43 @@ export function DashboardScreen() {
             const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
             return (
-              <TouchableOpacity
-                key={section.id}
-                style={styles.moduleRow}
-                onPress={() => openModule(section.id)}
-                activeOpacity={0.78}
-              >
-                <ProgressRing
-                  value={pctDone}
-                  size={48}
-                  strokeWidth={5}
-                  color={tint}
-                  trackColor={colors.surfaceAlt}
-                  valueFontSize={12}
-                />
-                <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
-                  <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
-                  <Text style={styles.hubSub}>
-                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+              <View key={section.id} style={styles.moduleCard}>
+                <TouchableOpacity
+                  style={styles.moduleInfo}
+                  onPress={() => openModule(section.id)}
+                  activeOpacity={0.78}
+                >
+                  <ProgressRing
+                    value={pctDone}
+                    size={48}
+                    strokeWidth={5}
+                    color={tint}
+                    trackColor={colors.surfaceAlt}
+                    valueFontSize={12}
+                  />
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
+                    <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
+                    <Text style={styles.hubSub}>
+                      {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+                    </Text>
+                  </View>
+                  {(locked || !isPaid) ? (
+                    <Badge type={locked ? 'locked' : 'paid'} />
+                  ) : (
+                    <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.quizButton}
+                  onPress={() => openModule(section.id, 'quiz')}
+                  activeOpacity={0.78}
+                >
+                  <Text style={[styles.quizButtonText, { color: tint }]}>
+                    {t('dashboard.quizOnModule', { n: section.order })}
                   </Text>
-                </View>
-                {(locked || !isPaid) ? (
-                  <Badge type={locked ? 'locked' : 'paid'} />
-                ) : (
-                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-                )}
-              </TouchableOpacity>
+                </TouchableOpacity>
+              </View>
             );
           })}
         </View>
@@ -249,13 +259,20 @@ const styles = StyleSheet.create({
     borderRadius: radius.md, padding: spacing.md,
     ...shadow.sm,
   },
-  moduleRow: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
+  moduleCard: {
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
+    gap: spacing.sm,
     ...shadow.sm,
   },
+  moduleInfo: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  quizButton: {
+    alignItems: 'center', justifyContent: 'center',
+    height: 40, borderRadius: radius.sm,
+    borderWidth: 1.5, borderColor: colors.borderStrong,
+  },
+  quizButtonText: { fontSize: fontSize.sm, fontFamily: font.semibold },
   rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },

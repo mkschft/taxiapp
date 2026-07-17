@@ -1,6 +1,6 @@
 {
   "title": "Aiheharjoittelu",
-  "practice": "Harjoittele",
+  "moduleHeader": "Moduuli {{n}} | {{name}}",
   "sectionsCaption": "Harjoittele koeosioittain — valitse aihe ja sitten keskitetty kysymyssarja.",
   "sectionNotFound": "Osiota ei löytynyt.",
   "sectionMeta": "{{topics}} aihetta · {{questions}} kysymystä",

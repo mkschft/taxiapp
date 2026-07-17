@@ -5,7 +5,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, ClipboardCheck } from 'lucide-react-native';
+import { ChevronRight } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -29,7 +29,8 @@ type Props = {
 const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 
 export function TopicLessonsScreen({ navigation, route }: Props) {
-  const { sectionId } = route.params;
+  const { sectionId, mode = 'practice' } = route.params;
+  const isQuizMode = mode === 'quiz';
   const section = getTopicSection(sectionId);
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
@@ -78,9 +79,19 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
     });
   };
 
+  const goToQuiz = (lessonId: string) =>
+    startQuiz(
+      `topic/${section.category_id}/lessons/${lessonId}`,
+      'TopicQuiz',
+      { lessonId, sectionId: section.id },
+    );
+
+  const moduleTitle = t('topic.moduleHeader', { n: section.order, name: primary });
+  const headerTitle = isQuizMode ? `${moduleTitle} · ${t('quiz.title')}` : moduleTitle;
+
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={primary} onBack={() => navigation.goBack()} />
+      <ScreenHeader title={headerTitle} onBack={() => navigation.goBack()} />
 
       <View style={styles.subHeader}>
         <Text style={styles.fi}>{secondary}</Text>
@@ -109,53 +120,43 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
               ? t('topic.doneCount', { completed: lp.completed, total: lp.total })
               : t('common.questionsCount', { n: lesson.question_count });
 
-          return (
-            <View key={lesson.id} style={styles.card}>
-              <View style={styles.cardTop}>
-                <ProgressRing
-                  value={lp?.percentage ?? 0}
-                  size={48}
-                  strokeWidth={5}
-                  color={tint}
-                  trackColor={colors.surfaceAlt}
-                  valueFontSize={12}
-                >
-                  {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
-                </ProgressRing>
+          const cardTop = (
+            <View style={styles.cardTop}>
+              <ProgressRing
+                value={lp?.percentage ?? 0}
+                size={48}
+                strokeWidth={5}
+                color={tint}
+                trackColor={colors.surfaceAlt}
+                valueFontSize={12}
+              >
+                {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+              </ProgressRing>
 
-                <View style={styles.info}>
-                  <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
-                  <View style={styles.metaRow}>
-                    <View style={[styles.tag, { backgroundColor: colors.surface }]}>
-                      <Text style={styles.tagText}>{tagText}</Text>
-                    </View>
+              <View style={styles.info}>
+                <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
+                <View style={styles.metaRow}>
+                  <View style={[styles.tag, { backgroundColor: colors.surface }]}>
+                    <Text style={styles.tagText}>{tagText}</Text>
                   </View>
                 </View>
               </View>
 
-              <View style={styles.actions}>
-                <Pressable
-                  onPress={() => startLesson(lesson.question_ids, lesson.name)}
-                  style={({ pressed }) => [styles.btn, styles.btnOutline, pressed && styles.btnPressed]}
-                >
-                  <BookOpen size={17} color={colors.text} strokeWidth={2.2} />
-                  <Text style={styles.btnOutlineText}>{t('topic.practice')}</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() =>
-                    startQuiz(
-                      `topic/${section.category_id}/lessons/${lesson.id}`,
-                      'TopicQuiz',
-                      { lessonId: lesson.id, sectionId: section.id },
-                    )
-                  }
-                  style={({ pressed }) => [styles.btn, { backgroundColor: tint }, pressed && styles.btnPressed]}
-                >
-                  <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
-                  <Text style={styles.btnFilledText}>{t('quiz.title')}</Text>
-                </Pressable>
-              </View>
+              <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
             </View>
+          );
+
+          // Practice and quiz each live on their own screen now (card tap vs.
+          // "Quiz on Module N" from Home) — no per-lesson mode choice here,
+          // just one tap target into the mode this screen was opened for.
+          return (
+            <Pressable
+              key={lesson.id}
+              onPress={() => (isQuizMode ? goToQuiz(lesson.id) : startLesson(lesson.question_ids, lesson.name))}
+              style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
+            >
+              {cardTop}
+            </Pressable>
           );
         })}
         <View style={{ height: 32 }} />
@@ -186,14 +187,6 @@ const styles = StyleSheet.create({
   tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3 },
   tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
   ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
-  actions: { flexDirection: 'row', gap: spacing.sm },
-  btn: {
-    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 6, height: 44, borderRadius: radius.sm,
-  },
-  btnOutline: { borderWidth: 1.5, borderColor: colors.borderStrong, backgroundColor: colors.bg },
   btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
-  btnOutlineText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.text },
-  btnFilledText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
   authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });

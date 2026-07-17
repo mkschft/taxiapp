@@ -13,6 +13,7 @@
   "practiced": "{{completed}} of {{total}} questions practiced",
   "wordsTitle": "Learn Important Words",
   "studyTitle": "Practice Questions",
+  "quizOnModule": "Quiz on Module {{n}}",
   "topicPractice": {
     "title": "Topic Practice",
     "sub": "The core exam curriculum — practise by category"

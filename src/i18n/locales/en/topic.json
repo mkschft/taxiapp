@@ -1,6 +1,6 @@
 {
   "title": "Topic Practice",
-  "practice": "Practice",
+  "moduleHeader": "Module {{n}} | {{name}}",
   "sectionsCaption": "Practise by exam section — pick a topic, then a focused set of questions.",
   "sectionNotFound": "Section not found.",
   "sectionMeta": "{{topics}} topics · {{questions}} questions",

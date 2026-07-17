@@ -12,6 +12,7 @@
   "overallProgress": "Kokonaisedistyminen",
   "wordsTitle": "Opi tärkeitä sanoja",
   "studyTitle": "Harjoittele kysymyksiä",
+  "quizOnModule": "Tentti: Moduuli {{n}}",
   "practiced": "{{completed}} / {{total}} kysymystä harjoiteltu",
   "topicPractice": {
     "title": "Aiheharjoittelu",
