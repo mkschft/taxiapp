@@ -43,8 +43,9 @@ export type DashboardStackParamList = {
   ClueWords: { mode?: 'practice' | 'quiz' } | undefined;
   ClueLesson: { groupId: string; index?: number };
   ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
-  TopicLessons: { sectionId: string; mode?: 'practice' | 'quiz' };
+  TopicLessons: { sectionId: string };
   TopicQuiz: { lessonId: string; sectionId: string; sessionId?: string; problemSetId?: string };
+  ModuleQuiz: { sectionId: string; sessionId?: string; problemSetId?: string };
   Practice: {
     questionId: string;
     queue?: string[];

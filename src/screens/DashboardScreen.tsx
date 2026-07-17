@@ -12,6 +12,7 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { AppButton } from '../components/ui/AppButton';
 import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
+import { useStartQuiz } from '../hooks/useStartQuiz';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
 import { localizedPair } from '../i18n/content';
@@ -49,19 +50,25 @@ export function DashboardScreen() {
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const { data: progress, loading } = useProgress(!isGuest);
+  const { startQuiz } = useStartQuiz();
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openScreen = (screen: string, mode?: 'practice' | 'quiz') => {
+  const openScreen = (screen: string) => {
     if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else navigation.navigate(screen, mode ? { mode } : undefined);
+    else navigation.navigate(screen);
   };
 
-  const openModule = (sectionId: string, mode?: 'practice' | 'quiz') => {
+  const openModule = (sectionId: string) => {
     if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
-    else navigation.navigate('TopicLessons', { sectionId, mode });
+    else navigation.navigate('TopicLessons', { sectionId });
+  };
+
+  const startModuleQuiz = (sectionId: string, categoryId: string) => {
+    if (isGuestLocked('ModuleQuiz', isGuest)) navigation.navigate('Signup');
+    else startQuiz(`topic/${categoryId}/module-quiz`, 'ModuleQuiz', { sectionId });
   };
 
   return (
@@ -177,7 +184,7 @@ export function DashboardScreen() {
                   </Text>
                   <TouchableOpacity
                     style={styles.quizPill}
-                    onPress={() => openModule(section.id, 'quiz')}
+                    onPress={() => startModuleQuiz(section.id, section.category_id)}
                     activeOpacity={0.85}
                   >
                     <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
