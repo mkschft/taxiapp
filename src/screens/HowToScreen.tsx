@@ -11,9 +11,9 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { MODULE_ICONS } from '../theme/icons';
 
 // Where each module lives in the navigator, so cards are tappable. HowTo lives
-// inside DashboardStack, so its Home-tab siblings (Guide/VocabSets/ClueWords/
-// DashboardHome) are in-stack pushes; Test/Progress are cross-tab jumps.
-type Nav = { screen: string } | { crossTab: 'Test'; screen: string } | { tab: 'Progress' };
+// inside ProfileStack, so its only in-stack sibling is Guide; everything else
+// (Dashboard's Home-tab screens, Test, Progress) is a cross-tab jump.
+type Nav = { screen: string } | { crossTab: 'Dashboard' | 'Test'; screen: string } | { tab: 'Progress' };
 
 type Module = {
   id: string; Icon: LucideIcon; tint: string; nav: Nav;
@@ -21,9 +21,9 @@ type Module = {
 
 const MODULES: Module[] = [
   { id: 'examGuide', Icon: MODULE_ICONS.examGuide, tint: colors.primary, nav: { screen: 'Guide' } },
-  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, nav: { screen: 'VocabSets' } },
-  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, nav: { screen: 'ClueWords' } },
-  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, nav: { screen: 'DashboardHome' } },
+  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, nav: { crossTab: 'Dashboard', screen: 'VocabSets' } },
+  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, nav: { crossTab: 'Dashboard', screen: 'ClueWords' } },
+  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, nav: { crossTab: 'Dashboard', screen: 'DashboardHome' } },
   { id: 'modelTests', Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, nav: { crossTab: 'Test', screen: 'TestHome' } },
   { id: 'progress', Icon: MODULE_ICONS.progress, tint: colors.primary, nav: { tab: 'Progress' } },
 ];

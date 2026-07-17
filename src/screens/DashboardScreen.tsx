@@ -17,7 +17,7 @@ import { getSectionProgress } from '../lib/progressLookup';
 import { localizedPair } from '../i18n/content';
 import {
   getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal,
-  getModelTests, getTopicSections, getCategories,
+  getTopicSections, getCategories,
 } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
@@ -25,7 +25,6 @@ const VOCAB_SETS = getVocabSets().length;
 const VOCAB_WORDS = getVocabWordTotal();
 const CLUE_GROUPS = getClueGroups().length;
 const CLUE_WORDS = getClueWordTotal();
-const MODEL_TESTS = getModelTests().length;
 const SECTIONS = getTopicSections();
 const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 
@@ -42,12 +41,6 @@ type WordsCard = {
 const WORDS: WordsCard[] = [
   { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { groups: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets' },
   { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords' },
-];
-
-// Reference destinations — low priority, rendered as lightweight text links.
-const LINKS: { titleKey: string; screen: string }[] = [
-  { titleKey: 'dashboard.examGuide.title', screen: 'Guide' },
-  { titleKey: 'dashboard.howTo', screen: 'HowTo' },
 ];
 
 export function DashboardScreen() {
@@ -195,28 +188,6 @@ export function DashboardScreen() {
           })}
         </View>
 
-        {/* Mock Exams — quick link into the Test tab */}
-        <View style={styles.links}>
-          <TouchableOpacity
-            style={styles.linkRow}
-            onPress={() => navigation.navigate('Test', { screen: 'TestHome' })}
-            activeOpacity={0.6}
-          >
-            <Text style={styles.linkText}>{t('dashboard.modelTests.title')} ({MODEL_TESTS})</Text>
-            <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
-          </TouchableOpacity>
-          {LINKS.map(link => (
-            <TouchableOpacity
-              key={link.screen}
-              style={styles.linkRow}
-              onPress={() => openScreen(link.screen)}
-              activeOpacity={0.6}
-            >
-              <Text style={styles.linkText}>{t(link.titleKey)}</Text>
-              <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
-            </TouchableOpacity>
-          ))}
-        </View>
         <View style={{ height: spacing.lg }} />
       </ScrollView>
     </SafeAreaView>
@@ -262,14 +233,6 @@ const styles = StyleSheet.create({
   rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
-
-  links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },
-  linkRow: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingVertical: spacing.sm,
-    borderBottomWidth: 1, borderBottomColor: colors.border,
-  },
-  linkText: { fontSize: fontSize.sm, fontFamily: font.medium, color: colors.textSecondary },
 
   guestCard: {
     margin: spacing.md, backgroundColor: colors.primaryTint,
