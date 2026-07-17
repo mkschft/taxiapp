@@ -63,9 +63,9 @@ export function DashboardScreen() {
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openScreen = (screen: string) => {
+  const openScreen = (screen: string, mode?: 'practice' | 'quiz') => {
     if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else navigation.navigate(screen);
+    else navigation.navigate(screen, mode ? { mode } : undefined);
   };
 
   const openModule = (sectionId: string, mode?: 'practice' | 'quiz') => {
@@ -130,19 +130,33 @@ export function DashboardScreen() {
           {WORDS.map(w => {
             const locked = isGuestLocked(w.screen, isGuest);
             return (
-              <TouchableOpacity
-                key={w.screen}
-                style={styles.hubRow}
-                onPress={() => openScreen(w.screen)}
-                activeOpacity={0.78}
-              >
-                <IconChip Icon={w.Icon} tint={w.tint} />
-                <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
-                  <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
-                </View>
-                {(locked || !isPaid) && <Badge type={locked ? 'locked' : 'paid'} />}
-              </TouchableOpacity>
+              <View key={w.screen} style={styles.moduleCard}>
+                <TouchableOpacity
+                  style={styles.moduleInfo}
+                  onPress={() => openScreen(w.screen, 'practice')}
+                  activeOpacity={0.78}
+                >
+                  <IconChip Icon={w.Icon} tint={w.tint} />
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
+                    <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
+                  </View>
+                  {(locked || !isPaid) ? (
+                    <Badge type={locked ? 'locked' : 'paid'} />
+                  ) : (
+                    <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.quizButton}
+                  onPress={() => openScreen(w.screen, 'quiz')}
+                  activeOpacity={0.78}
+                >
+                  <Text style={[styles.quizButtonText, { color: w.tint }]}>
+                    {t('dashboard.takeQuiz')}
+                  </Text>
+                </TouchableOpacity>
+              </View>
             );
           })}
         </View>
@@ -261,13 +275,6 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
   rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
-  hubRow: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
-    backgroundColor: colors.bg,
-    borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
-    ...shadow.sm,
-  },
   moduleCard: {
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,

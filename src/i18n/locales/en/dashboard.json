@@ -15,6 +15,7 @@
   "studyTitle": "Practice Questions",
   "quizOnModule": "Quiz on Module {{n}}",
   "moduleKicker": "Module {{n}} | {{correct}} correct needed out of {{total}}qs",
+  "takeQuiz": "Take Quiz",
   "topicPractice": {
     "title": "Topic Practice",
     "sub": "The core exam curriculum — practise by category"

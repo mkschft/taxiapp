@@ -39,10 +39,10 @@ export type DashboardStackParamList = {
   DashboardHome: undefined;
   Guide: undefined;
   HowTo: undefined;
-  VocabSets: undefined;
+  VocabSets: { mode?: 'practice' | 'quiz' } | undefined;
   VocabLesson: { setId: string; index?: number };
   VocabQuiz: { setId: string; sessionId?: string; problemSetId?: string };
-  ClueWords: undefined;
+  ClueWords: { mode?: 'practice' | 'quiz' } | undefined;
   ClueLesson: { groupId: string; index?: number };
   ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
   TopicLessons: { sectionId: string; mode?: 'practice' | 'quiz' };
