@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Home, Timer, TrendingUp, User } from 'lucide-react-native';
+import { BookOpen, Timer, TrendingUp, User } from 'lucide-react-native';
 import { DashboardStack } from './DashboardStack';
 import { ProgressStack } from './ProgressStack';
 import { TestStack } from './TestStack';
@@ -13,7 +13,7 @@ import type { AppTabParamList } from './types';
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
 const ICONS: Record<string, any> = {
-  Dashboard: Home, Test: Timer, Progress: TrendingUp, Profile: User,
+  Dashboard: BookOpen, Test: Timer, Progress: TrendingUp, Profile: User,
 };
 
 export function AppTabs() {
