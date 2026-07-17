@@ -28,11 +28,11 @@
   },
   "vocabulary": {
     "title": "Sanasto",
-    "sub": "{{sets}} sarjaa · {{words}} sanaa"
+    "sub": "{{groups}} ryhmää · {{words}} sanakorttia"
   },
   "clueWords": {
     "title": "Vihjesanat",
-    "sub": "{{groups}} ryhmää · {{words}} vihjesanaa"
+    "sub": "{{groups}} ryhmää · {{words}} sanaa"
   },
   "howTo": "Sovelluksen käyttöohje"
 }

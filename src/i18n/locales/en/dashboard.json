@@ -28,11 +28,11 @@
   },
   "vocabulary": {
     "title": "Vocabulary",
-    "sub": "{{sets}} sets · {{words}} words"
+    "sub": "{{groups}} groups · {{words}} word cards"
   },
   "clueWords": {
     "title": "Clue Words",
-    "sub": "{{groups}} groups · {{words}} clue words"
+    "sub": "{{groups}} groups · {{words}} words"
   },
   "howTo": "How to use the app"
 }

@@ -42,7 +42,7 @@ type WordsCard = {
 
 // "Learn Important Words" — vocabulary + clue words, one tap from Home.
 const WORDS: WordsCard[] = [
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { sets: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets' },
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { groups: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets' },
   { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords' },
 ];
 
