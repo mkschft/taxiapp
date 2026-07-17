@@ -13,7 +13,6 @@ import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders
 import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
-import { useStartQuiz } from '../hooks/useStartQuiz';
 import { localizedPair } from '../i18n/content';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
@@ -28,15 +27,13 @@ type Props = {
 const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 
 export function TopicLessonsScreen({ navigation, route }: Props) {
-  const { sectionId, mode = 'practice' } = route.params;
-  const isQuizMode = mode === 'quiz';
+  const { sectionId } = route.params;
   const section = getTopicSection(sectionId);
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
   const { isUnlocked } = usePaywall();
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
-  const { startQuiz } = useStartQuiz();
   const { t, i18n } = useTranslation();
   const rootNav = useNavigation<any>();
 
@@ -78,19 +75,11 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
     });
   };
 
-  const goToQuiz = (lessonId: string) =>
-    startQuiz(
-      `topic/${section.category_id}/lessons/${lessonId}`,
-      'TopicQuiz',
-      { lessonId, sectionId: section.id },
-    );
-
   const moduleTitle = t('topic.moduleHeader', { n: section.order, name: primary });
-  const headerTitle = isQuizMode ? `${moduleTitle} · ${t('quiz.title')}` : moduleTitle;
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={headerTitle} onBack={() => navigation.goBack()} />
+      <ScreenHeader title={moduleTitle} onBack={() => navigation.goBack()} />
 
       <View style={styles.subHeader}>
         <Text style={styles.fi}>{secondary}</Text>
@@ -136,13 +125,12 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
             </View>
           );
 
-          // Practice and quiz each live on their own screen now (card tap vs.
-          // "Quiz on Module N" from Home) — no per-lesson mode choice here,
-          // just one tap target into the mode this screen was opened for.
+          // "Take Quiz" on Home now goes straight into a whole-module quiz
+          // (ModuleQuizScreen) — this list is practice-only.
           return (
             <Pressable
               key={lesson.id}
-              onPress={() => (isQuizMode ? goToQuiz(lesson.id) : startLesson(lesson.question_ids, lesson.name))}
+              onPress={() => startLesson(lesson.question_ids, lesson.name)}
               style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
             >
               {cardTop}

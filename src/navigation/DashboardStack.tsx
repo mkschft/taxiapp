@@ -8,6 +8,7 @@ import { ClueLessonScreen } from '../screens/ClueLessonScreen';
 import { ClueQuizScreen } from '../screens/ClueQuizScreen';
 import { TopicLessonsScreen } from '../screens/TopicLessonsScreen';
 import { TopicQuizScreen } from '../screens/TopicQuizScreen';
+import { ModuleQuizScreen } from '../screens/ModuleQuizScreen';
 import { PracticeScreen } from '../screens/PracticeScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
@@ -28,6 +29,7 @@ export function DashboardStack() {
       <Stack.Screen name="ClueQuiz" component={RequireAuth(ClueQuizScreen, 'Dashboard')} />
       <Stack.Screen name="TopicLessons" component={RequireAuth(TopicLessonsScreen, 'Dashboard')} />
       <Stack.Screen name="TopicQuiz" component={RequireAuth(TopicQuizScreen, 'Dashboard')} />
+      <Stack.Screen name="ModuleQuiz" component={RequireAuth(ModuleQuizScreen, 'Dashboard')} />
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Dashboard')} />
       <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Dashboard')} />
     </Stack.Navigator>

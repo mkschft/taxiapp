@@ -18,6 +18,7 @@ import enProfile from './locales/en/profile.json';
 import enTopic from './locales/en/topic.json';
 import enQuiz from './locales/en/quiz.json';
 import enModelTest from './locales/en/modelTest.json';
+import enModuleQuiz from './locales/en/moduleQuiz.json';
 import enTestHome from './locales/en/testHome.json';
 import enResult from './locales/en/result.json';
 import enPractice from './locales/en/practice.json';
@@ -40,6 +41,7 @@ import fiProfile from './locales/fi/profile.json';
 import fiTopic from './locales/fi/topic.json';
 import fiQuiz from './locales/fi/quiz.json';
 import fiModelTest from './locales/fi/modelTest.json';
+import fiModuleQuiz from './locales/fi/moduleQuiz.json';
 import fiTestHome from './locales/fi/testHome.json';
 import fiResult from './locales/fi/result.json';
 import fiPractice from './locales/fi/practice.json';
@@ -66,6 +68,7 @@ const en = {
   topic: enTopic,
   quiz: enQuiz,
   modelTest: enModelTest,
+  moduleQuiz: enModuleQuiz,
   testHome: enTestHome,
   result: enResult,
   practice: enPractice,
@@ -89,6 +92,7 @@ const fi = {
   topic: fiTopic,
   quiz: fiQuiz,
   modelTest: fiModelTest,
+  moduleQuiz: fiModuleQuiz,
   testHome: fiTestHome,
   result: fiResult,
   practice: fiPractice,
