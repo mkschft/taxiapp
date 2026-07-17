@@ -9,9 +9,8 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { Badge } from '../components/ui/Badge';
 import { AppButton } from '../components/ui/AppButton';
-import { useAuth, hasActivePaidPlan } from '../store/authStore';
+import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
@@ -56,7 +55,6 @@ export function DashboardScreen() {
   const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
-  const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const { data: progress, loading } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
@@ -127,38 +125,31 @@ export function DashboardScreen() {
           <Text style={styles.sectionTitle}>{t('dashboard.wordsTitle')}</Text>
         </View>
         <View style={styles.rows}>
-          {WORDS.map(w => {
-            const locked = isGuestLocked(w.screen, isGuest);
-            return (
-              <View key={w.screen} style={styles.moduleCard}>
-                <TouchableOpacity
-                  style={styles.moduleInfo}
-                  onPress={() => openScreen(w.screen, 'practice')}
-                  activeOpacity={0.78}
-                >
-                  <IconChip Icon={w.Icon} tint={w.tint} />
-                  <View style={styles.rowInfo}>
-                    <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
-                    <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
-                  </View>
-                  {(locked || !isPaid) ? (
-                    <Badge type={locked ? 'locked' : 'paid'} />
-                  ) : (
-                    <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-                  )}
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.quizButton}
-                  onPress={() => openScreen(w.screen, 'quiz')}
-                  activeOpacity={0.78}
-                >
-                  <Text style={[styles.quizButtonText, { color: w.tint }]}>
-                    {t('dashboard.takeQuiz')}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
+          {WORDS.map(w => (
+            <View key={w.screen} style={styles.moduleCard}>
+              <TouchableOpacity
+                style={styles.moduleInfo}
+                onPress={() => openScreen(w.screen, 'practice')}
+                activeOpacity={0.78}
+              >
+                <IconChip Icon={w.Icon} tint={w.tint} />
+                <View style={styles.rowInfo}>
+                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
+                  <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
+                </View>
+                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.quizButton}
+                onPress={() => openScreen(w.screen, 'quiz')}
+                activeOpacity={0.78}
+              >
+                <Text style={[styles.quizButtonText, { color: w.tint }]}>
+                  {t('dashboard.takeQuiz')}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          ))}
         </View>
 
         {/* MODULES — the 4 official exam categories, inline (was a separate TopicSections hop) */}
@@ -167,7 +158,6 @@ export function DashboardScreen() {
         </View>
         <View style={styles.rows}>
           {SECTIONS.map(section => {
-            const locked = isGuestLocked('TopicLessons', isGuest);
             const cat = CAT[section.category_id];
             const tint = cat?.color ?? colors.primary;
             const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
@@ -205,11 +195,7 @@ export function DashboardScreen() {
                       {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
                     </Text>
                   </View>
-                  {(locked || !isPaid) ? (
-                    <Badge type={locked ? 'locked' : 'paid'} />
-                  ) : (
-                    <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-                  )}
+                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.quizButton}
@@ -275,18 +261,19 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
   rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
-  moduleCard: {
+  moduleCard: { gap: 8 },
+  moduleInfo: {
+    flexDirection: 'row', alignItems: 'center', gap: 14,
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md,
-    gap: spacing.sm,
     ...shadow.sm,
   },
-  moduleInfo: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   quizButton: {
     alignItems: 'center', justifyContent: 'center',
-    height: 40, borderRadius: radius.sm,
+    height: 44, borderRadius: radius.md,
     borderWidth: 1.5, borderColor: colors.borderStrong,
+    backgroundColor: colors.bg,
   },
   quizButtonText: { fontSize: fontSize.sm, fontFamily: font.semibold },
   rowInfo: { flex: 1, gap: 2 },
