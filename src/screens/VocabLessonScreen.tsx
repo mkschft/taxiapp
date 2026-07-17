@@ -10,11 +10,11 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson } from '../data/loaders';
 import type { VocabLessonWord } from '../data/types';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'VocabLesson'>;
-  route: RouteProp<StudyStackParamList, 'VocabLesson'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'VocabLesson'>;
+  route: RouteProp<DashboardStackParamList, 'VocabLesson'>;
 };
 
 function WordCard({ word }: { word: VocabLessonWord }) {

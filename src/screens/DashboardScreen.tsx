@@ -9,14 +9,15 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { Badge } from '../components/ui/Badge';
 import { AppButton } from '../components/ui/AppButton';
-import { useAuth, hasActivePaidPlan } from '../store/authStore';
+import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
+import { getSectionProgress } from '../lib/progressLookup';
+import { localizedPair } from '../i18n/content';
 import {
   getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal,
-  getModelTests,
+  getModelTests, getTopicSections, getCategories,
 } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
@@ -25,61 +26,54 @@ const VOCAB_WORDS = getVocabWordTotal();
 const CLUE_GROUPS = getClueGroups().length;
 const CLUE_WORDS = getClueWordTotal();
 const MODEL_TESTS = getModelTests().length;
+const SECTIONS = getTopicSections();
+const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 
-type CoreModule = {
+type WordsCard = {
   Icon: LucideIcon;
   tint: string;
   titleKey: string;
   subKey: string;
   subParams?: Record<string, number>;
   screen: string;
-  stack?: string;
-  paid: boolean;
 };
 
-// The dashboard surfaces only LEARNING MODES (one consistent axis). Exam
-// categories live one level down, inside Topic Practice (TopicSections).
-const CORE: CoreModule[] = [
-  { Icon: MODULE_ICONS.topicPractice, tint: colors.error, titleKey: 'dashboard.topicPractice.title', subKey: 'dashboard.topicPractice.sub', screen: 'TopicSections', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { sets: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, titleKey: 'dashboard.modelTests.title', subKey: 'dashboard.modelTests.sub', subParams: { n: MODEL_TESTS }, screen: 'TestHome', stack: 'Test', paid: true },
+// "Learn Important Words" — vocabulary + clue words, one tap from Home.
+const WORDS: WordsCard[] = [
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { groups: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets' },
+  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords' },
 ];
 
 // Reference destinations — low priority, rendered as lightweight text links.
-const LINKS: { titleKey: string; screen: string; stack?: string }[] = [
-  { titleKey: 'dashboard.examGuide.title', screen: 'Guide', stack: 'Study' },
-  { titleKey: 'dashboard.howTo', screen: 'HowTo', stack: 'Study' },
+const LINKS: { titleKey: string; screen: string }[] = [
+  { titleKey: 'dashboard.examGuide.title', screen: 'Guide' },
+  { titleKey: 'dashboard.howTo', screen: 'HowTo' },
 ];
 
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
-  const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const { data: progress, loading } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openHub = (screen: string, stack?: string) => {
+  const openScreen = (screen: string, mode?: 'practice' | 'quiz') => {
     if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else if (stack) navigation.navigate(stack, { screen, params: {} });
-    else navigation.navigate(screen);
+    else navigation.navigate(screen, mode ? { mode } : undefined);
+  };
+
+  const openModule = (sectionId: string, mode?: 'practice' | 'quiz') => {
+    if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
+    else navigation.navigate('TopicLessons', { sectionId, mode });
   };
 
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>{t('dashboard.greeting')}</Text>
-            <Text style={styles.caption}>{t('dashboard.tagline')}</Text>
-          </View>
-        </View>
-
         {/* Progress card */}
         {isGuest ? (
           <View style={styles.guestCard}>
@@ -119,38 +113,103 @@ export function DashboardScreen() {
           </View>
         )}
 
-        {/* CORE — learning modes, as full-width rows (app-wide pattern) */}
+        {/* WORDS — vocabulary + clue words */}
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionTitle}>{t('dashboard.wordsTitle')}</Text>
+        </View>
+        <View style={styles.rows}>
+          {WORDS.map(w => (
+            <TouchableOpacity
+              key={w.screen}
+              style={styles.card}
+              onPress={() => openScreen(w.screen)}
+              activeOpacity={0.78}
+            >
+              <View style={styles.cardBody}>
+                <IconChip Icon={w.Icon} tint={w.tint} />
+                <View style={styles.rowInfo}>
+                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
+                  <Text style={styles.wordsFooterMeta}>{t(w.subKey, w.subParams)}</Text>
+                </View>
+                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* MODULES — the 4 official exam categories, inline (was a separate TopicSections hop) */}
         <View style={styles.sectionHead}>
           <Text style={styles.sectionTitle}>{t('dashboard.studyTitle')}</Text>
         </View>
         <View style={styles.rows}>
-          {CORE.map(m => {
-            const locked = isGuestLocked(m.screen, isGuest);
+          {SECTIONS.map(section => {
+            const cat = CAT[section.category_id];
+            const tint = cat?.color ?? colors.primary;
+            const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
+            const pctDone = sectionProgress?.percentage ?? 0;
+            const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
+
             return (
-              <TouchableOpacity
-                key={m.screen}
-                style={styles.hubRow}
-                onPress={() => openHub(m.screen, m.stack)}
-                activeOpacity={0.78}
-              >
-                <IconChip Icon={m.Icon} tint={m.tint} />
-                <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle}>{t(m.titleKey)}</Text>
-                  <Text style={styles.hubSub}>{t(m.subKey, m.subParams)}</Text>
+              <View key={section.id} style={styles.card}>
+                <TouchableOpacity
+                  style={styles.cardBody}
+                  onPress={() => openModule(section.id)}
+                  activeOpacity={0.78}
+                >
+                  <ProgressRing
+                    value={pctDone}
+                    size={48}
+                    strokeWidth={5}
+                    color={tint}
+                    trackColor={colors.surfaceAlt}
+                    valueFontSize={12}
+                  />
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.hubTitle} numberOfLines={2}>
+                      {t('topic.moduleHeader', { n: section.order, name: primary })}
+                    </Text>
+                    <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
+                  </View>
+                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+                </TouchableOpacity>
+                <View style={styles.divider} />
+                <View style={styles.cardFooter}>
+                  <Text style={styles.footerMeta}>
+                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+                    {section.pass_correct != null && section.pass_total != null &&
+                      ` · ${t('dashboard.passRequirement', {
+                        correct: section.pass_correct,
+                        total: section.pass_total,
+                      })}`}
+                  </Text>
+                  <TouchableOpacity
+                    style={styles.quizPill}
+                    onPress={() => openModule(section.id, 'quiz')}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
+                  </TouchableOpacity>
                 </View>
-                {(locked || !isPaid) && <Badge type={locked ? 'locked' : m.paid ? 'paid' : 'free'} />}
-              </TouchableOpacity>
+              </View>
             );
           })}
         </View>
 
-        {/* LINKS — reference destinations */}
+        {/* Mock Exams — quick link into the Test tab */}
         <View style={styles.links}>
+          <TouchableOpacity
+            style={styles.linkRow}
+            onPress={() => navigation.navigate('Test', { screen: 'TestHome' })}
+            activeOpacity={0.6}
+          >
+            <Text style={styles.linkText}>{t('dashboard.modelTests.title')} ({MODEL_TESTS})</Text>
+            <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+          </TouchableOpacity>
           {LINKS.map(link => (
             <TouchableOpacity
               key={link.screen}
               style={styles.linkRow}
-              onPress={() => openHub(link.screen, link.stack)}
+              onPress={() => openScreen(link.screen)}
               activeOpacity={0.6}
             >
               <Text style={styles.linkText}>{t(link.titleKey)}</Text>
@@ -166,12 +225,6 @@ export function DashboardScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
-  },
-  greeting: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
-  caption: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
 
   progressCard: {
     margin: spacing.md, borderRadius: radius.md, backgroundColor: colors.primary,
@@ -185,20 +238,32 @@ const styles = StyleSheet.create({
   sectionHead: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, paddingBottom: spacing.sm },
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
-  // Core learning modes — full-width rows (matches Study tab + lesson cards)
-  rows: { paddingHorizontal: spacing.md, gap: 12 },
-  hubRow: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
+  rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
+  card: {
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
+    borderRadius: radius.md,
     ...shadow.sm,
   },
-  rowInfo: { flex: 1 },
+  cardBody: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: spacing.md },
+  wordsFooterMeta: { fontSize: 13, color: colors.textSecondary },
+  divider: { height: 1, backgroundColor: colors.border, marginHorizontal: spacing.md },
+  cardFooter: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    gap: spacing.sm, padding: spacing.md,
+  },
+  footerMeta: { flex: 1, fontSize: 14, color: colors.textSecondary },
+  quizPill: {
+    alignItems: 'center', justifyContent: 'center',
+    height: 36, borderRadius: radius.full, paddingHorizontal: spacing.md,
+    backgroundColor: colors.primary,
+  },
+  quizPillText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
+  rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
-  hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
+  moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
 
-  links: { paddingHorizontal: spacing.md, paddingTop: spacing.lg, gap: 2 },
+  links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },
   linkRow: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     paddingVertical: spacing.sm,

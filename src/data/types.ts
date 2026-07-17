@@ -6,23 +6,6 @@ export type ExamCategory = {
   color: string;
 };
 
-export type Topic = {
-  id: string;
-  category_id: string;
-  title_fi: string;
-  title_en: string;
-  order: number;
-};
-
-export type Lesson = {
-  id: string;
-  topic_id: string;
-  title_fi: string;
-  title_en: string;
-  body_fi: string;
-  body_en: string;
-};
-
 export type ClueType = 'positive' | 'negative' | 'neutral';
 
 /* ── Vocabulary — set-based flow (built by content/build_vocab.py) ─────────

@@ -49,10 +49,10 @@ const linking: LinkingOptions<RootStackParamList> = {
       App: {
         path: 'app',
         screens: {
-          Dashboard: 'home',
-          Study: {
+          Dashboard: {
+            path: 'home',
             screens: {
-              StudyHome: 'study',
+              DashboardHome: '',
               Guide: 'guide',
               HowTo: 'how-to-use',
               VocabSets: 'vocab/sets',
@@ -61,7 +61,6 @@ const linking: LinkingOptions<RootStackParamList> = {
               ClueWords: 'clue-words',
               ClueLesson: 'clue-words/:groupId/lesson/:index',
               ClueQuiz: 'clue-words/:groupId/quiz',
-              TopicSections: 'practice',
               TopicLessons: 'practice/:sectionId',
               Practice: 'practice/run',
               Result: 'result',
