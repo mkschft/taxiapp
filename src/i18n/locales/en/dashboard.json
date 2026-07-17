@@ -13,7 +13,6 @@
   "practiced": "{{completed}} of {{total}} questions practiced",
   "wordsTitle": "Learn Important Words",
   "studyTitle": "Practice Questions",
-  "quizOnModule": "Quiz on Module {{n}}",
   "moduleKicker": "Module {{n}} | {{correct}} correct needed out of {{total}}qs",
   "takeQuiz": "Take Quiz",
   "topicPractice": {

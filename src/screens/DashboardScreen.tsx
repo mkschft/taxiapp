@@ -126,28 +126,27 @@ export function DashboardScreen() {
         </View>
         <View style={styles.rows}>
           {WORDS.map(w => (
-            <View key={w.screen} style={styles.moduleCard}>
+            <View key={w.screen} style={styles.card}>
               <TouchableOpacity
-                style={styles.moduleInfo}
+                style={styles.cardBody}
                 onPress={() => openScreen(w.screen, 'practice')}
                 activeOpacity={0.78}
               >
                 <IconChip Icon={w.Icon} tint={w.tint} />
-                <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
-                  <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
-                </View>
+                <Text style={[styles.hubTitle, { flex: 1 }]}>{t(w.titleKey)}</Text>
                 <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.quizButton}
-                onPress={() => openScreen(w.screen, 'quiz')}
-                activeOpacity={0.78}
-              >
-                <Text style={[styles.quizButtonText, { color: w.tint }]}>
-                  {t('dashboard.takeQuiz')}
-                </Text>
-              </TouchableOpacity>
+              <View style={styles.divider} />
+              <View style={styles.cardFooter}>
+                <Text style={styles.footerMeta}>{t(w.subKey, w.subParams)}</Text>
+                <TouchableOpacity
+                  style={styles.quizPill}
+                  onPress={() => openScreen(w.screen, 'quiz')}
+                  activeOpacity={0.85}
+                >
+                  <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           ))}
         </View>
@@ -165,9 +164,9 @@ export function DashboardScreen() {
             const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
             return (
-              <View key={section.id} style={styles.moduleCard}>
+              <View key={section.id} style={styles.card}>
                 <TouchableOpacity
-                  style={styles.moduleInfo}
+                  style={styles.cardBody}
                   onPress={() => openModule(section.id)}
                   activeOpacity={0.78}
                 >
@@ -191,21 +190,22 @@ export function DashboardScreen() {
                     )}
                     <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
                     <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
-                    <Text style={styles.hubSub}>
-                      {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
-                    </Text>
                   </View>
                   <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
                 </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.quizButton}
-                  onPress={() => openModule(section.id, 'quiz')}
-                  activeOpacity={0.78}
-                >
-                  <Text style={[styles.quizButtonText, { color: tint }]}>
-                    {t('dashboard.quizOnModule', { n: section.order })}
+                <View style={styles.divider} />
+                <View style={styles.cardFooter}>
+                  <Text style={styles.footerMeta}>
+                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
                   </Text>
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.quizPill}
+                    onPress={() => openModule(section.id, 'quiz')}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             );
           })}
@@ -261,25 +261,28 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
   rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
-  moduleCard: { gap: 8 },
-  moduleInfo: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
+  card: {
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
+    borderRadius: radius.md,
     ...shadow.sm,
   },
-  quizButton: {
-    alignItems: 'center', justifyContent: 'center',
-    height: 44, borderRadius: radius.md,
-    borderWidth: 1.5, borderColor: colors.borderStrong,
-    backgroundColor: colors.bg,
+  cardBody: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: spacing.md },
+  divider: { height: 1, backgroundColor: colors.border, marginHorizontal: spacing.md },
+  cardFooter: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    gap: spacing.sm, padding: spacing.md,
   },
-  quizButtonText: { fontSize: fontSize.sm, fontFamily: font.semibold },
+  footerMeta: { flex: 1, fontSize: fontSize.sm, color: colors.textSecondary },
+  quizPill: {
+    alignItems: 'center', justifyContent: 'center',
+    height: 36, borderRadius: radius.full, paddingHorizontal: spacing.md,
+    backgroundColor: colors.primary,
+  },
+  quizPillText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
   rowInfo: { flex: 1, gap: 2 },
   moduleKicker: { fontSize: 11, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
-  hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
 
   links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },
