@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import {
-  Check, AlertTriangle, HelpCircle, Link2, BookOpen, ClipboardCheck,
+  Check, AlertTriangle, HelpCircle, Link2, ChevronRight,
   type LucideIcon,
 } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
-import { getClueGroups, getClueLesson } from '../data/loaders';
+import { getClueGroups } from '../data/loaders';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { AuthPrompt } from '../components/AuthPrompt';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import type { ClueTone } from '../data/types';
+import type { DashboardStackParamList } from '../navigation/types';
+
+type Props = {
+  route: RouteProp<DashboardStackParamList, 'ClueWords'>;
+};
 
 const GROUP_ICON: Record<string, LucideIcon> = {
   positive: Check,
@@ -33,10 +38,12 @@ function toneColors(tone: ClueTone) {
 
 const GROUPS = getClueGroups();
 
-export function ClueWordsScreen() {
+export function ClueWordsScreen({ route }: Props) {
+  const [mode, setMode] = useState<'practice' | 'quiz'>(route.params?.mode === 'quiz' ? 'quiz' : 'practice');
+  const isQuizMode = mode === 'quiz';
   const navigation = useNavigation<any>();
   const { state: authState } = useAuth();
-  const { startQuiz, loading } = useStartQuiz();
+  const { startQuiz } = useStartQuiz();
   const { isUnlocked } = usePaywall();
   const { t } = useTranslation();
   const isAuthenticated = !!authState.user;
@@ -53,9 +60,21 @@ export function ClueWordsScreen() {
     );
   }
 
+  const headerTitle = isQuizMode ? `${t('clue.title')} · ${t('quiz.title')}` : t('clue.title');
+
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={t('clue.title')} onBack={() => navigation.goBack()} />
+      <ScreenHeader
+        title={headerTitle}
+        onBack={() => navigation.goBack()}
+        right={
+          !isQuizMode ? (
+            <Pressable onPress={() => setMode('quiz')} style={styles.modeBtn} hitSlop={4}>
+              <Text style={styles.modeBtnText}>{t('dashboard.takeQuiz')}</Text>
+            </Pressable>
+          ) : undefined
+        }
+      />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.intro}>
@@ -69,53 +88,33 @@ export function ClueWordsScreen() {
           />
         )}
 
-        {GROUPS.map(group => {
+        {GROUPS.map((group, index) => {
           const Icon = GROUP_ICON[group.id] ?? HelpCircle;
           const tc = toneColors(group.tone);
-          const words = getClueLesson(group.id);
-          const seen = 0;
+          const kicker = t('clue.groupHeader', { n: index + 1, count: group.word_count });
 
           return (
-            <View key={group.id} style={styles.card}>
+            <Pressable
+              key={group.id}
+              onPress={() =>
+                isQuizMode
+                  ? startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })
+                  : navigation.navigate('ClueLesson', { groupId: group.id, index: 1 })
+              }
+              style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
+            >
               <View style={styles.cardHead}>
                 <View style={[styles.iconChip, { backgroundColor: tc.bg }]}>
                   <Icon size={22} color={tc.fg} strokeWidth={2.3} />
                 </View>
                 <View style={styles.headInfo}>
+                  <Text style={styles.kicker}>{kicker}</Text>
                   <Text style={styles.cardTitle}>{group.label}</Text>
                   <Text style={styles.cardBlurb}>{group.blurb}</Text>
                 </View>
+                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
               </View>
-
-              <View style={styles.metaRow}>
-                <Text style={styles.meta}>{t('clue.meta', { words: group.word_count, quiz: group.question_count })}</Text>
-                <View style={styles.tags}>
-                  <Text style={styles.tag}>
-                    {t('clue.learnedCount', { seen, total: words.length })}
-                  </Text>
-                </View>
-              </View>
-
-              <View style={styles.actions}>
-                <Pressable
-                  onPress={() => navigation.navigate('ClueLesson', { groupId: group.id, index: 1 })}
-                  style={({ pressed }) => [styles.btn, styles.btnOutline, pressed && styles.btnPressed]}
-                >
-                  <BookOpen size={17} color={colors.text} strokeWidth={2.2} />
-                  <Text style={styles.btnOutlineText}>{t('clue.lesson')}</Text>
-                </Pressable>
-                {isAuthenticated && (
-                  <Pressable
-                    disabled={loading}
-                    onPress={() => startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })}
-                    style={({ pressed }) => [styles.btn, { backgroundColor: tc.fg }, pressed && styles.btnPressed]}
-                  >
-                    <ClipboardCheck size={17} color="#fff" strokeWidth={2.3} />
-                    <Text style={styles.btnFilledText}>{t('quiz.title')}</Text>
-                  </Pressable>
-                )}
-              </View>
-            </View>
+            </Pressable>
           );
         })}
         <View style={{ height: 32 }} />
@@ -133,25 +132,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg, padding: spacing.md, gap: 12,
     ...shadow.sm,
   },
-  cardHead: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  cardHead: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   iconChip: {
     width: 44, height: 44, borderRadius: radius.sm,
     alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
   headInfo: { flex: 1, gap: 2 },
+  kicker: { fontSize: 12, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   cardBlurb: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 18 },
-  metaRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 },
-  meta: { fontSize: fontSize.sm, color: colors.textSecondary },
-  tags: { flexDirection: 'row', gap: 4 },
-  tag: { fontSize: 12, fontFamily: font.semibold, color: colors.textTertiary },
-  actions: { flexDirection: 'row', gap: spacing.sm },
-  btn: {
-    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 6, height: 44, borderRadius: radius.sm,
-  },
-  btnOutline: { borderWidth: 1.5, borderColor: colors.borderStrong, backgroundColor: colors.bg },
   btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
-  btnOutlineText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.text },
-  btnFilledText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
+  modeBtn: {
+    height: 32, borderRadius: radius.full, paddingHorizontal: spacing.sm + 2,
+    alignItems: 'center', justifyContent: 'center',
+    backgroundColor: colors.primary,
+  },
+  modeBtnText: { fontSize: 13, fontFamily: font.semibold, color: '#fff' },
 });

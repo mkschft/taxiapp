@@ -9,9 +9,8 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { Badge } from '../components/ui/Badge';
 import { AppButton } from '../components/ui/AppButton';
-import { useAuth, hasActivePaidPlan } from '../store/authStore';
+import { useAuth } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
@@ -56,33 +55,25 @@ export function DashboardScreen() {
   const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
-  const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const { data: progress, loading } = useProgress(!isGuest);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openScreen = (screen: string) => {
+  const openScreen = (screen: string, mode?: 'practice' | 'quiz') => {
     if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else navigation.navigate(screen);
+    else navigation.navigate(screen, mode ? { mode } : undefined);
   };
 
-  const openModule = (sectionId: string) => {
+  const openModule = (sectionId: string, mode?: 'practice' | 'quiz') => {
     if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
-    else navigation.navigate('TopicLessons', { sectionId });
+    else navigation.navigate('TopicLessons', { sectionId, mode });
   };
 
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>{t('dashboard.greeting')}</Text>
-            <Text style={styles.caption}>{t('dashboard.tagline')}</Text>
-          </View>
-        </View>
-
         {/* Progress card */}
         {isGuest ? (
           <View style={styles.guestCard}>
@@ -127,24 +118,23 @@ export function DashboardScreen() {
           <Text style={styles.sectionTitle}>{t('dashboard.wordsTitle')}</Text>
         </View>
         <View style={styles.rows}>
-          {WORDS.map(w => {
-            const locked = isGuestLocked(w.screen, isGuest);
-            return (
-              <TouchableOpacity
-                key={w.screen}
-                style={styles.hubRow}
-                onPress={() => openScreen(w.screen)}
-                activeOpacity={0.78}
-              >
+          {WORDS.map(w => (
+            <TouchableOpacity
+              key={w.screen}
+              style={styles.card}
+              onPress={() => openScreen(w.screen)}
+              activeOpacity={0.78}
+            >
+              <View style={styles.cardBody}>
                 <IconChip Icon={w.Icon} tint={w.tint} />
                 <View style={styles.rowInfo}>
                   <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
-                  <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
+                  <Text style={styles.wordsFooterMeta}>{t(w.subKey, w.subParams)}</Text>
                 </View>
-                {(locked || !isPaid) && <Badge type={locked ? 'locked' : 'paid'} />}
-              </TouchableOpacity>
-            );
-          })}
+                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+              </View>
+            </TouchableOpacity>
+          ))}
         </View>
 
         {/* MODULES — the 4 official exam categories, inline (was a separate TopicSections hop) */}
@@ -153,7 +143,6 @@ export function DashboardScreen() {
         </View>
         <View style={styles.rows}>
           {SECTIONS.map(section => {
-            const locked = isGuestLocked('TopicLessons', isGuest);
             const cat = CAT[section.category_id];
             const tint = cat?.color ?? colors.primary;
             const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
@@ -161,33 +150,47 @@ export function DashboardScreen() {
             const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
             return (
-              <TouchableOpacity
-                key={section.id}
-                style={styles.moduleRow}
-                onPress={() => openModule(section.id)}
-                activeOpacity={0.78}
-              >
-                <ProgressRing
-                  value={pctDone}
-                  size={48}
-                  strokeWidth={5}
-                  color={tint}
-                  trackColor={colors.surfaceAlt}
-                  valueFontSize={12}
-                />
-                <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
-                  <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
-                  <Text style={styles.hubSub}>
-                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
-                  </Text>
-                </View>
-                {(locked || !isPaid) ? (
-                  <Badge type={locked ? 'locked' : 'paid'} />
-                ) : (
+              <View key={section.id} style={styles.card}>
+                <TouchableOpacity
+                  style={styles.cardBody}
+                  onPress={() => openModule(section.id)}
+                  activeOpacity={0.78}
+                >
+                  <ProgressRing
+                    value={pctDone}
+                    size={48}
+                    strokeWidth={5}
+                    color={tint}
+                    trackColor={colors.surfaceAlt}
+                    valueFontSize={12}
+                  />
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.hubTitle} numberOfLines={2}>
+                      {t('topic.moduleHeader', { n: section.order, name: primary })}
+                    </Text>
+                    <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
+                  </View>
                   <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-                )}
-              </TouchableOpacity>
+                </TouchableOpacity>
+                <View style={styles.divider} />
+                <View style={styles.cardFooter}>
+                  <Text style={styles.footerMeta}>
+                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+                    {section.pass_correct != null && section.pass_total != null &&
+                      ` · ${t('dashboard.passRequirement', {
+                        correct: section.pass_correct,
+                        total: section.pass_total,
+                      })}`}
+                  </Text>
+                  <TouchableOpacity
+                    style={styles.quizPill}
+                    onPress={() => openModule(section.id, 'quiz')}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             );
           })}
         </View>
@@ -222,12 +225,6 @@ export function DashboardScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
-  },
-  greeting: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
-  caption: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
 
   progressCard: {
     margin: spacing.md, borderRadius: radius.md, backgroundColor: colors.primary,
@@ -242,23 +239,28 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
   rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
-  hubRow: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
+  card: {
     backgroundColor: colors.bg,
     borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
+    borderRadius: radius.md,
     ...shadow.sm,
   },
-  moduleRow: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
-    backgroundColor: colors.bg,
-    borderWidth: 1, borderColor: colors.border,
-    borderRadius: radius.md, padding: spacing.md,
-    ...shadow.sm,
+  cardBody: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: spacing.md },
+  wordsFooterMeta: { fontSize: 13, color: colors.textSecondary },
+  divider: { height: 1, backgroundColor: colors.border, marginHorizontal: spacing.md },
+  cardFooter: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    gap: spacing.sm, padding: spacing.md,
   },
+  footerMeta: { flex: 1, fontSize: 14, color: colors.textSecondary },
+  quizPill: {
+    alignItems: 'center', justifyContent: 'center',
+    height: 36, borderRadius: radius.full, paddingHorizontal: spacing.md,
+    backgroundColor: colors.primary,
+  },
+  quizPillText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
   rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
-  hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
 
   links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },

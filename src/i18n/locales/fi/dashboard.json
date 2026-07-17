@@ -1,6 +1,4 @@
 {
-  "greeting": "Huomenta",
-  "tagline": "Jatka samaan malliin — koepäivä lähestyy!",
   "guest": {
     "title": "Seuraa edistymistäsi",
     "body": "Luo ilmainen tili tallentaaksesi edistymisesi ja nähdäksesi, kuinka lähellä koepäivää olet.",
@@ -12,6 +10,8 @@
   "overallProgress": "Kokonaisedistyminen",
   "wordsTitle": "Opi tärkeitä sanoja",
   "studyTitle": "Harjoittele kysymyksiä",
+  "passRequirement": "{{correct}} oikein / {{total}}",
+  "takeQuiz": "Tee tentti",
   "practiced": "{{completed}} / {{total}} kysymystä harjoiteltu",
   "topicPractice": {
     "title": "Aiheharjoittelu",
