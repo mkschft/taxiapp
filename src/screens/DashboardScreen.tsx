@@ -74,13 +74,6 @@ export function DashboardScreen() {
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>{t('dashboard.greeting')}</Text>
-            <Text style={styles.caption}>{t('dashboard.tagline')}</Text>
-          </View>
-        </View>
-
         {/* Progress card */}
         {isGuest ? (
           <View style={styles.guestCard}>
@@ -126,28 +119,21 @@ export function DashboardScreen() {
         </View>
         <View style={styles.rows}>
           {WORDS.map(w => (
-            <View key={w.screen} style={styles.card}>
-              <TouchableOpacity
-                style={styles.cardBody}
-                onPress={() => openScreen(w.screen, 'practice')}
-                activeOpacity={0.78}
-              >
+            <TouchableOpacity
+              key={w.screen}
+              style={styles.card}
+              onPress={() => openScreen(w.screen)}
+              activeOpacity={0.78}
+            >
+              <View style={styles.cardBody}>
                 <IconChip Icon={w.Icon} tint={w.tint} />
-                <Text style={[styles.hubTitle, { flex: 1 }]}>{t(w.titleKey)}</Text>
+                <View style={styles.rowInfo}>
+                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
+                  <Text style={styles.wordsFooterMeta}>{t(w.subKey, w.subParams)}</Text>
+                </View>
                 <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-              </TouchableOpacity>
-              <View style={styles.divider} />
-              <View style={styles.cardFooter}>
-                <Text style={styles.footerMeta}>{t(w.subKey, w.subParams)}</Text>
-                <TouchableOpacity
-                  style={styles.quizPill}
-                  onPress={() => openScreen(w.screen, 'quiz')}
-                  activeOpacity={0.85}
-                >
-                  <Text style={styles.quizPillText}>{t('dashboard.takeQuiz')}</Text>
-                </TouchableOpacity>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
 
@@ -179,16 +165,9 @@ export function DashboardScreen() {
                     valueFontSize={12}
                   />
                   <View style={styles.rowInfo}>
-                    {section.pass_correct != null && section.pass_total != null && (
-                      <Text style={styles.moduleKicker}>
-                        {t('dashboard.moduleKicker', {
-                          n: section.order,
-                          correct: section.pass_correct,
-                          total: section.pass_total,
-                        })}
-                      </Text>
-                    )}
-                    <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
+                    <Text style={styles.hubTitle} numberOfLines={2}>
+                      {t('topic.moduleHeader', { n: section.order, name: primary })}
+                    </Text>
                     <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
                   </View>
                   <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
@@ -197,6 +176,11 @@ export function DashboardScreen() {
                 <View style={styles.cardFooter}>
                   <Text style={styles.footerMeta}>
                     {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+                    {section.pass_correct != null && section.pass_total != null &&
+                      ` · ${t('dashboard.passRequirement', {
+                        correct: section.pass_correct,
+                        total: section.pass_total,
+                      })}`}
                   </Text>
                   <TouchableOpacity
                     style={styles.quizPill}
@@ -241,12 +225,6 @@ export function DashboardScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
-  header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingHorizontal: spacing.md, paddingTop: spacing.md, paddingBottom: spacing.sm,
-  },
-  greeting: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
-  caption: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
 
   progressCard: {
     margin: spacing.md, borderRadius: radius.md, backgroundColor: colors.primary,
@@ -268,12 +246,13 @@ const styles = StyleSheet.create({
     ...shadow.sm,
   },
   cardBody: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: spacing.md },
+  wordsFooterMeta: { fontSize: 13, color: colors.textSecondary },
   divider: { height: 1, backgroundColor: colors.border, marginHorizontal: spacing.md },
   cardFooter: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     gap: spacing.sm, padding: spacing.md,
   },
-  footerMeta: { flex: 1, fontSize: fontSize.sm, color: colors.textSecondary },
+  footerMeta: { flex: 1, fontSize: 14, color: colors.textSecondary },
   quizPill: {
     alignItems: 'center', justifyContent: 'center',
     height: 36, borderRadius: radius.full, paddingHorizontal: spacing.md,
@@ -281,7 +260,6 @@ const styles = StyleSheet.create({
   },
   quizPillText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: '#fff' },
   rowInfo: { flex: 1, gap: 2 },
-  moduleKicker: { fontSize: 11, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
 

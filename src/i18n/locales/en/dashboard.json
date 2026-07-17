@@ -1,6 +1,4 @@
 {
-  "greeting": "Good morning",
-  "tagline": "Keep going — exam day is coming!",
   "guest": {
     "title": "Track your progress",
     "body": "Create a free account to save your progress and see how close you are to exam day.",
@@ -13,7 +11,7 @@
   "practiced": "{{completed}} of {{total}} questions practiced",
   "wordsTitle": "Learn Important Words",
   "studyTitle": "Practice Questions",
-  "moduleKicker": "Module {{n}} | {{correct}} correct needed out of {{total}}qs",
+  "passRequirement": "{{correct}} correct needed out of {{total}}",
   "takeQuiz": "Take Quiz",
   "topicPractice": {
     "title": "Topic Practice",

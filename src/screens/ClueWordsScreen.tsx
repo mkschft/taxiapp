@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
@@ -39,7 +39,8 @@ function toneColors(tone: ClueTone) {
 const GROUPS = getClueGroups();
 
 export function ClueWordsScreen({ route }: Props) {
-  const isQuizMode = route.params?.mode === 'quiz';
+  const [mode, setMode] = useState<'practice' | 'quiz'>(route.params?.mode === 'quiz' ? 'quiz' : 'practice');
+  const isQuizMode = mode === 'quiz';
   const navigation = useNavigation<any>();
   const { state: authState } = useAuth();
   const { startQuiz } = useStartQuiz();
@@ -63,7 +64,21 @@ export function ClueWordsScreen({ route }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={headerTitle} onBack={() => navigation.goBack()} />
+      <ScreenHeader
+        title={headerTitle}
+        onBack={() => navigation.goBack()}
+        right={
+          <Pressable
+            onPress={() => setMode(isQuizMode ? 'practice' : 'quiz')}
+            style={[styles.modeBtn, isQuizMode && styles.modeBtnActive]}
+            hitSlop={4}
+          >
+            <Text style={[styles.modeBtnText, isQuizMode && styles.modeBtnTextActive]}>
+              {isQuizMode ? t('practice.title') : t('dashboard.takeQuiz')}
+            </Text>
+          </Pressable>
+        }
+      />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.intro}>
@@ -131,4 +146,12 @@ const styles = StyleSheet.create({
   cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   cardBlurb: { fontSize: fontSize.sm, color: colors.textSecondary, lineHeight: 18 },
   btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
+  modeBtn: {
+    height: 32, borderRadius: radius.full, paddingHorizontal: spacing.sm + 2,
+    alignItems: 'center', justifyContent: 'center',
+    backgroundColor: colors.primary,
+  },
+  modeBtnActive: { backgroundColor: colors.surfaceAlt },
+  modeBtnText: { fontSize: 13, fontFamily: font.semibold, color: '#fff' },
+  modeBtnTextActive: { color: colors.text },
 });
