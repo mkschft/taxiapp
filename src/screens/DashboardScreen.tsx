@@ -15,7 +15,6 @@ import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
-import { formatRelativeDay } from '../lib/time';
 import { localizedPair } from '../i18n/content';
 import {
   getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal,
@@ -158,10 +157,7 @@ export function DashboardScreen() {
             const cat = CAT[section.category_id];
             const tint = cat?.color ?? colors.primary;
             const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
-            const answered = sectionProgress?.completed ?? 0;
-            const total = sectionProgress?.total ?? section.question_count;
             const pctDone = sectionProgress?.percentage ?? 0;
-            const lastPracticed = formatRelativeDay(sectionProgress?.lastPracticedAt);
             const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
             return (
@@ -185,15 +181,6 @@ export function DashboardScreen() {
                   <Text style={styles.hubSub}>
                     {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
                   </Text>
-                  <View style={styles.metaRow}>
-                    <View style={styles.tag}>
-                      <Text style={styles.tagText}>
-                        {lastPracticed
-                          ? t('topic.lastPracticed', { when: lastPracticed })
-                          : t('topic.doneCount', { completed: answered, total })}
-                      </Text>
-                    </View>
-                  </View>
                 </View>
                 {(locked || !isPaid) ? (
                   <Badge type={locked ? 'locked' : 'paid'} />
@@ -273,9 +260,6 @@ const styles = StyleSheet.create({
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
-  metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 4 },
-  tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: colors.surface },
-  tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
 
   links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },
   linkRow: {
