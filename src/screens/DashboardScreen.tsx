@@ -14,9 +14,12 @@ import { AppButton } from '../components/ui/AppButton';
 import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { isGuestLocked } from '../lib/access';
 import { useProgress } from '../hooks/useProgress';
+import { getSectionProgress } from '../lib/progressLookup';
+import { formatRelativeDay } from '../lib/time';
+import { localizedPair } from '../i18n/content';
 import {
   getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal,
-  getModelTests,
+  getModelTests, getTopicSections, getCategories,
 } from '../data/loaders';
 
 const TOTAL_QUESTIONS = getQuestions().length;
@@ -25,36 +28,33 @@ const VOCAB_WORDS = getVocabWordTotal();
 const CLUE_GROUPS = getClueGroups().length;
 const CLUE_WORDS = getClueWordTotal();
 const MODEL_TESTS = getModelTests().length;
+const SECTIONS = getTopicSections();
+const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
 
-type CoreModule = {
+type WordsCard = {
   Icon: LucideIcon;
   tint: string;
   titleKey: string;
   subKey: string;
   subParams?: Record<string, number>;
   screen: string;
-  stack?: string;
-  paid: boolean;
 };
 
-// The dashboard surfaces only LEARNING MODES (one consistent axis). Exam
-// categories live one level down, inside Topic Practice (TopicSections).
-const CORE: CoreModule[] = [
-  { Icon: MODULE_ICONS.topicPractice, tint: colors.error, titleKey: 'dashboard.topicPractice.title', subKey: 'dashboard.topicPractice.sub', screen: 'TopicSections', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { sets: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords', stack: 'Study', paid: true },
-  { Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, titleKey: 'dashboard.modelTests.title', subKey: 'dashboard.modelTests.sub', subParams: { n: MODEL_TESTS }, screen: 'TestHome', stack: 'Test', paid: true },
+// "Learn Important Words" — vocabulary + clue words, one tap from Home.
+const WORDS: WordsCard[] = [
+  { Icon: MODULE_ICONS.vocabulary, tint: colors.success, titleKey: 'dashboard.vocabulary.title', subKey: 'dashboard.vocabulary.sub', subParams: { sets: VOCAB_SETS, words: VOCAB_WORDS }, screen: 'VocabSets' },
+  { Icon: MODULE_ICONS.clueWords, tint: colors.warning, titleKey: 'dashboard.clueWords.title', subKey: 'dashboard.clueWords.sub', subParams: { groups: CLUE_GROUPS, words: CLUE_WORDS }, screen: 'ClueWords' },
 ];
 
 // Reference destinations — low priority, rendered as lightweight text links.
-const LINKS: { titleKey: string; screen: string; stack?: string }[] = [
-  { titleKey: 'dashboard.examGuide.title', screen: 'Guide', stack: 'Study' },
-  { titleKey: 'dashboard.howTo', screen: 'HowTo', stack: 'Study' },
+const LINKS: { titleKey: string; screen: string }[] = [
+  { titleKey: 'dashboard.examGuide.title', screen: 'Guide' },
+  { titleKey: 'dashboard.howTo', screen: 'HowTo' },
 ];
 
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { state: auth } = useAuth();
   const isGuest = auth.guest && !auth.user;
   const isPaid = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
@@ -64,10 +64,14 @@ export function DashboardScreen() {
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openHub = (screen: string, stack?: string) => {
+  const openScreen = (screen: string) => {
     if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else if (stack) navigation.navigate(stack, { screen, params: {} });
     else navigation.navigate(screen);
+  };
+
+  const openModule = (sectionId: string) => {
+    if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
+    else navigation.navigate('TopicLessons', { sectionId });
   };
 
   return (
@@ -119,38 +123,103 @@ export function DashboardScreen() {
           </View>
         )}
 
-        {/* CORE — learning modes, as full-width rows (app-wide pattern) */}
+        {/* WORDS — vocabulary + clue words */}
         <View style={styles.sectionHead}>
-          <Text style={styles.sectionTitle}>{t('dashboard.studyTitle')}</Text>
+          <Text style={styles.sectionTitle}>{t('dashboard.wordsTitle')}</Text>
         </View>
         <View style={styles.rows}>
-          {CORE.map(m => {
-            const locked = isGuestLocked(m.screen, isGuest);
+          {WORDS.map(w => {
+            const locked = isGuestLocked(w.screen, isGuest);
             return (
               <TouchableOpacity
-                key={m.screen}
+                key={w.screen}
                 style={styles.hubRow}
-                onPress={() => openHub(m.screen, m.stack)}
+                onPress={() => openScreen(w.screen)}
                 activeOpacity={0.78}
               >
-                <IconChip Icon={m.Icon} tint={m.tint} />
+                <IconChip Icon={w.Icon} tint={w.tint} />
                 <View style={styles.rowInfo}>
-                  <Text style={styles.hubTitle}>{t(m.titleKey)}</Text>
-                  <Text style={styles.hubSub}>{t(m.subKey, m.subParams)}</Text>
+                  <Text style={styles.hubTitle}>{t(w.titleKey)}</Text>
+                  <Text style={styles.hubSub}>{t(w.subKey, w.subParams)}</Text>
                 </View>
-                {(locked || !isPaid) && <Badge type={locked ? 'locked' : m.paid ? 'paid' : 'free'} />}
+                {(locked || !isPaid) && <Badge type={locked ? 'locked' : 'paid'} />}
               </TouchableOpacity>
             );
           })}
         </View>
 
-        {/* LINKS — reference destinations */}
+        {/* MODULES — the 4 official exam categories, inline (was a separate TopicSections hop) */}
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionTitle}>{t('dashboard.studyTitle')}</Text>
+        </View>
+        <View style={styles.rows}>
+          {SECTIONS.map(section => {
+            const locked = isGuestLocked('TopicLessons', isGuest);
+            const cat = CAT[section.category_id];
+            const tint = cat?.color ?? colors.primary;
+            const sectionProgress = getSectionProgress(progress, cat?.name_en ?? '');
+            const answered = sectionProgress?.completed ?? 0;
+            const total = sectionProgress?.total ?? section.question_count;
+            const pctDone = sectionProgress?.percentage ?? 0;
+            const lastPracticed = formatRelativeDay(sectionProgress?.lastPracticedAt);
+            const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
+
+            return (
+              <TouchableOpacity
+                key={section.id}
+                style={styles.moduleRow}
+                onPress={() => openModule(section.id)}
+                activeOpacity={0.78}
+              >
+                <ProgressRing
+                  value={pctDone}
+                  size={48}
+                  strokeWidth={5}
+                  color={tint}
+                  trackColor={colors.surfaceAlt}
+                  valueFontSize={12}
+                />
+                <View style={styles.rowInfo}>
+                  <Text style={styles.hubTitle} numberOfLines={2}>{primary}</Text>
+                  <Text style={styles.moduleFi} numberOfLines={1}>{secondary}</Text>
+                  <Text style={styles.hubSub}>
+                    {t('topic.sectionMeta', { questions: section.question_count, topics: section.lesson_count })}
+                  </Text>
+                  <View style={styles.metaRow}>
+                    <View style={styles.tag}>
+                      <Text style={styles.tagText}>
+                        {lastPracticed
+                          ? t('topic.lastPracticed', { when: lastPracticed })
+                          : t('topic.doneCount', { completed: answered, total })}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                {(locked || !isPaid) ? (
+                  <Badge type={locked ? 'locked' : 'paid'} />
+                ) : (
+                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
+                )}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
+        {/* Mock Exams — quick link into the Test tab */}
         <View style={styles.links}>
+          <TouchableOpacity
+            style={styles.linkRow}
+            onPress={() => navigation.navigate('Test', { screen: 'TestHome' })}
+            activeOpacity={0.6}
+          >
+            <Text style={styles.linkText}>{t('dashboard.modelTests.title')} ({MODEL_TESTS})</Text>
+            <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+          </TouchableOpacity>
           {LINKS.map(link => (
             <TouchableOpacity
               key={link.screen}
               style={styles.linkRow}
-              onPress={() => openHub(link.screen, link.stack)}
+              onPress={() => openScreen(link.screen)}
               activeOpacity={0.6}
             >
               <Text style={styles.linkText}>{t(link.titleKey)}</Text>
@@ -185,8 +254,7 @@ const styles = StyleSheet.create({
   sectionHead: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, paddingBottom: spacing.sm },
   sectionTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
 
-  // Core learning modes — full-width rows (matches Study tab + lesson cards)
-  rows: { paddingHorizontal: spacing.md, gap: 12 },
+  rows: { paddingHorizontal: spacing.md, gap: 12, marginBottom: spacing.sm },
   hubRow: {
     flexDirection: 'row', alignItems: 'center', gap: 14,
     backgroundColor: colors.bg,
@@ -194,11 +262,22 @@ const styles = StyleSheet.create({
     borderRadius: radius.md, padding: spacing.md,
     ...shadow.sm,
   },
-  rowInfo: { flex: 1 },
+  moduleRow: {
+    flexDirection: 'row', alignItems: 'center', gap: 14,
+    backgroundColor: colors.bg,
+    borderWidth: 1, borderColor: colors.border,
+    borderRadius: radius.md, padding: spacing.md,
+    ...shadow.sm,
+  },
+  rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   hubSub: { fontSize: 12, color: colors.textSecondary, fontFamily: font.regular },
+  moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
+  metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 4 },
+  tag: { borderRadius: radius.full, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: colors.surface },
+  tagText: { fontSize: 11, fontFamily: font.semibold, color: colors.textSecondary },
 
-  links: { paddingHorizontal: spacing.md, paddingTop: spacing.lg, gap: 2 },
+  links: { paddingHorizontal: spacing.md, paddingTop: spacing.sm, gap: 2 },
   linkRow: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     paddingVertical: spacing.sm,

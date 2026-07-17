@@ -12,13 +12,13 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getTopicLesson, getTopicSection, getQuestionById } from '../data/loaders';
 import type { Question as BankQuestion } from '../data/types';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
 import type { BackendProblem } from '../lib/quizApi';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'TopicQuiz'>;
-  route: RouteProp<StudyStackParamList, 'TopicQuiz'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'TopicQuiz'>;
+  route: RouteProp<DashboardStackParamList, 'TopicQuiz'>;
 };
 
 const DEFAULT_PASS_PCT = 70;

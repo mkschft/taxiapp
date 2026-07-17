@@ -10,7 +10,8 @@
   "startTitle": "{{n}} kysymystä tutkinnon aiheista",
   "pickTopic": "Valitse aihe alta aloittaaksesi.",
   "overallProgress": "Kokonaisedistyminen",
-  "studyTitle": "Aloita harjoittelu",
+  "wordsTitle": "Opi tärkeitä sanoja",
+  "studyTitle": "Harjoittele moduuleittain",
   "practiced": "{{completed}} / {{total}} kysymystä harjoiteltu",
   "topicPractice": {
     "title": "Aiheharjoittelu",

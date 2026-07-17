@@ -17,11 +17,11 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
 import { cluesForScope, focusWords, optionVerdict } from '../utils/clueParser';
 import { getQuestionById } from '../data/loaders';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'Practice'>;
-  route: RouteProp<StudyStackParamList, 'Practice'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'Practice'>;
+  route: RouteProp<DashboardStackParamList, 'Practice'>;
 };
 
 export function PracticeScreen({ navigation, route }: Props) {

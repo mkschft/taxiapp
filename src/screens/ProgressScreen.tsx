@@ -64,7 +64,7 @@ export function ProgressScreen() {
 
   const practiceWeak = (ids: string[]) => {
     if (ids.length === 0) return;
-    navigation.navigate('Study', {
+    navigation.navigate('Dashboard', {
       screen: 'Practice',
       params: { questionId: ids[0], queue: ids, queueIndex: 0, sourceLabel: t('progress.weakAreasSource') },
     });

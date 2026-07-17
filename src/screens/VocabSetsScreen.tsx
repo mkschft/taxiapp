@@ -17,10 +17,10 @@ import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
 import { formatRelativeDay } from '../lib/time';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { Paywall } from '../components/Paywall';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'VocabSets'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'VocabSets'>;
 };
 
 const CAT_COLOR: Record<string, string> = Object.fromEntries(
@@ -45,7 +45,7 @@ export function VocabSetsScreen({ navigation }: Props) {
         blurb={t('vocab.paywallBlurb')}
         perks={[t('vocab.paywallPerkSets', { n: SETS.length }), t('vocab.paywallPerkBilingual'), t('vocab.paywallPerkQuiz')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'VocabSets' })}
+        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'VocabSets' })}
       />
     );
   }

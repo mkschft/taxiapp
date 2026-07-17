@@ -11,7 +11,8 @@
   "pickTopic": "Pick a topic below to begin.",
   "overallProgress": "Overall progress",
   "practiced": "{{completed}} of {{total}} questions practiced",
-  "studyTitle": "Start practising",
+  "wordsTitle": "Learn Important Words",
+  "studyTitle": "Practise by Module",
   "topicPractice": {
     "title": "Topic Practice",
     "sub": "The core exam curriculum — practise by category"

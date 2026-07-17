@@ -48,7 +48,7 @@ export function ClueWordsScreen() {
         blurb={t('clue.paywallBlurb')}
         perks={[t('clue.paywallPerk1'), t('clue.paywallPerk2'), t('clue.paywallPerk3')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
-        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'ClueWords' })}
+        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'ClueWords' })}
       />
     );
   }

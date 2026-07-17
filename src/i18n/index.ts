@@ -25,7 +25,6 @@ import enVocab from './locales/en/vocab.json';
 import enClue from './locales/en/clue.json';
 import enGuide from './locales/en/guide.json';
 import enHowto from './locales/en/howto.json';
-import enStudyHome from './locales/en/studyHome.json';
 import enComponents from './locales/en/components.json';
 import enAuth from './locales/en/auth.json';
 import enPricing from './locales/en/pricing.json';
@@ -48,7 +47,6 @@ import fiVocab from './locales/fi/vocab.json';
 import fiClue from './locales/fi/clue.json';
 import fiGuide from './locales/fi/guide.json';
 import fiHowto from './locales/fi/howto.json';
-import fiStudyHome from './locales/fi/studyHome.json';
 import fiComponents from './locales/fi/components.json';
 import fiAuth from './locales/fi/auth.json';
 import fiPricing from './locales/fi/pricing.json';
@@ -75,7 +73,6 @@ const en = {
   clue: enClue,
   guide: enGuide,
   howto: enHowto,
-  studyHome: enStudyHome,
   components: enComponents,
   auth: enAuth,
   pricing: enPricing,
@@ -99,7 +96,6 @@ const fi = {
   clue: fiClue,
   guide: fiGuide,
   howto: fiHowto,
-  studyHome: fiStudyHome,
   components: fiComponents,
   auth: fiAuth,
   pricing: fiPricing,

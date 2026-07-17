@@ -12,11 +12,11 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroup, getClueLesson } from '../data/loaders';
 import type { ClueLessonWord, ClueTone } from '../data/types';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'ClueLesson'>;
-  route: RouteProp<StudyStackParamList, 'ClueLesson'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'ClueLesson'>;
+  route: RouteProp<DashboardStackParamList, 'ClueLesson'>;
 };
 
 function effectStyle(tone: ClueTone) {

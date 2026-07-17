@@ -19,11 +19,11 @@ import { localizedPair } from '../i18n/content';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
 import { Paywall } from '../components/Paywall';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'TopicLessons'>;
-  route: RouteProp<StudyStackParamList, 'TopicLessons'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'TopicLessons'>;
+  route: RouteProp<DashboardStackParamList, 'TopicLessons'>;
 };
 
 const CAT = Object.fromEntries(getCategories().map(c => [c.id, c]));
@@ -40,8 +40,8 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const { t, i18n } = useTranslation();
   const rootNav = useNavigation<any>();
 
-  // The dashboard hero tiles deep-link straight here, bypassing TopicSections,
-  // so the topic_practice paywall must also hold here for signed-in users.
+  // Home's module rows deep-link straight here, so the topic_practice paywall
+  // must also hold here for signed-in users.
   if (isAuthenticated && !isUnlocked('topic_practice')) {
     return (
       <Paywall
@@ -49,7 +49,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
         blurb={t('topic.paywallBlurb')}
         perks={[t('topic.paywallPerkAll'), t('topic.paywallPerkExplained'), t('topic.paywallPerkPassMark')]}
         onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Study', redirectScreen: 'TopicSections' })}
+        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'DashboardHome' })}
       />
     );
   }
