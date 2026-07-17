@@ -235,11 +235,15 @@ export function PracticeScreen({ navigation, route }: Props) {
         )}
 
         <View style={styles.nextBtn}>
-          {answered && (
+          {answered ? (
             <AppButton
               label={queue.length > 0 && queueIndex < queue.length - 1 ? t('practice.nextQuestion') : t('common.finish')}
               onPress={handleNext}
             />
+          ) : (
+            <Pressable onPress={handleNext} hitSlop={8} style={styles.skipBtn}>
+              <Text style={styles.skipText}>{t('practice.skip')}</Text>
+            </Pressable>
           )}
         </View>
 
@@ -311,4 +315,6 @@ const styles = StyleSheet.create({
   },
   expText: { fontSize: 13, lineHeight: 20, color: colors.text },
   nextBtn: { marginTop: 4 },
+  skipBtn: { alignSelf: 'flex-end', paddingVertical: 8, paddingHorizontal: 4 },
+  skipText: { fontSize: 14, fontFamily: font.semibold, color: colors.textSecondary },
 });

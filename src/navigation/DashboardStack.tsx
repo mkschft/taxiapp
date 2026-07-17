@@ -11,8 +11,6 @@ import { TopicQuizScreen } from '../screens/TopicQuizScreen';
 import { PracticeScreen } from '../screens/PracticeScreen';
 import { ResultScreen } from '../screens/ResultScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
-import { GuideScreen } from '../screens/GuideScreen';
-import { HowToScreen } from '../screens/HowToScreen';
 import { RequireAuth } from '../components/RequireAuth';
 import type { DashboardStackParamList } from './types';
 
@@ -32,8 +30,6 @@ export function DashboardStack() {
       <Stack.Screen name="TopicQuiz" component={RequireAuth(TopicQuizScreen, 'Dashboard')} />
       <Stack.Screen name="Practice" component={RequireAuth(PracticeScreen, 'Dashboard')} />
       <Stack.Screen name="Result" component={RequireAuth(ResultScreen, 'Dashboard')} />
-      <Stack.Screen name="Guide" component={GuideScreen} />
-      <Stack.Screen name="HowTo" component={HowToScreen} />
     </Stack.Navigator>
   );
 }

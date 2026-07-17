@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, Platform, Modal, Pressable, Linking,
+  TouchableOpacity, Alert, Platform, Modal, Pressable,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
-  Target, CreditCard, Gift, HelpCircle, Trash2,
+  Target, CreditCard, Gift, BookOpen, Info, Trash2,
   ChevronRight, CalendarDays, Languages, Bookmark, type LucideIcon,
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
@@ -19,8 +19,6 @@ import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
 import { useProgress } from '../hooks/useProgress';
 import { GuestOverlay } from '../components/GuestOverlay';
-
-const HELP_URL = 'https://taxipilot.fi';
 
 /** today + n weeks, as an ISO date string (YYYY-MM-DD). */
 function weeksFromNow(n: number): string {
@@ -118,12 +116,6 @@ export function ProfileScreen() {
 
   const handleManageSub = () => {
     navigation.navigate('Pricing');
-  };
-
-  const handleHelp = () => {
-    Linking.openURL(HELP_URL).catch(() =>
-      Alert.alert(t('profile.helpFaq'), t('profile.helpFaqBody', { url: HELP_URL })),
-    );
   };
 
   const handleLogout = () => {
@@ -251,7 +243,9 @@ export function ProfileScreen() {
         {/* Support */}
         <Text style={styles.sectionHeader}>{t('profile.support')}</Text>
         <View style={styles.settingGroup}>
-          <SettingRow Icon={HelpCircle} title={t('profile.helpFaq')} onPress={handleHelp} />
+          <SettingRow Icon={BookOpen} title={t('dashboard.examGuide.title')} onPress={() => navigation.navigate('Guide')} />
+          <View style={styles.sep} />
+          <SettingRow Icon={Info} title={t('dashboard.howTo')} onPress={() => navigation.navigate('HowTo')} />
           <View style={styles.sep} />
           <SettingRow Icon={Trash2} tint={colors.error} title={t('profile.clearProgressData')} onPress={handleClearData} />
         </View>
