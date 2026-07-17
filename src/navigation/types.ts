@@ -37,8 +37,6 @@ export type AppTabParamList = {
 
 export type DashboardStackParamList = {
   DashboardHome: undefined;
-  Guide: undefined;
-  HowTo: undefined;
   VocabSets: { mode?: 'practice' | 'quiz' } | undefined;
   VocabLesson: { setId: string; index?: number };
   VocabQuiz: { setId: string; sessionId?: string; problemSetId?: string };
@@ -103,4 +101,6 @@ export type ProfileStackParamList = {
   ProfileHome: undefined;
   Referral: undefined;
   SavedQuestions: undefined;
+  Guide: undefined;
+  HowTo: undefined;
 };

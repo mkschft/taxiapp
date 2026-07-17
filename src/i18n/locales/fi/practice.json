@@ -5,5 +5,6 @@
   "simpleMeaning": "Yksinkertainen merkitys",
   "clueLens": "Vihjelinssi",
   "focusWords": "TÄMÄN KYSYMYKSEN AVAINSANAT",
-  "nextQuestion": "Seuraava kysymys →"
+  "nextQuestion": "Seuraava kysymys →",
+  "skip": "Ohita →"
 }
