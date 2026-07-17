@@ -68,15 +68,11 @@ export function ClueWordsScreen({ route }: Props) {
         title={headerTitle}
         onBack={() => navigation.goBack()}
         right={
-          <Pressable
-            onPress={() => setMode(isQuizMode ? 'practice' : 'quiz')}
-            style={[styles.modeBtn, isQuizMode && styles.modeBtnActive]}
-            hitSlop={4}
-          >
-            <Text style={[styles.modeBtnText, isQuizMode && styles.modeBtnTextActive]}>
-              {isQuizMode ? t('practice.title') : t('dashboard.takeQuiz')}
-            </Text>
-          </Pressable>
+          !isQuizMode ? (
+            <Pressable onPress={() => setMode('quiz')} style={styles.modeBtn} hitSlop={4}>
+              <Text style={styles.modeBtnText}>{t('dashboard.takeQuiz')}</Text>
+            </Pressable>
+          ) : undefined
         }
       />
 
@@ -151,7 +147,5 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
     backgroundColor: colors.primary,
   },
-  modeBtnActive: { backgroundColor: colors.surfaceAlt },
   modeBtnText: { fontSize: 13, fontFamily: font.semibold, color: '#fff' },
-  modeBtnTextActive: { color: colors.text },
 });
