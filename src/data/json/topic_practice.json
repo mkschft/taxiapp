@@ -10,7 +10,7 @@
       "pass_total": 15,
       "order": 1,
       "lesson_count": 6,
-      "question_count": 91
+      "question_count": 90
     },
     {
       "id": "special_needs",
@@ -22,7 +22,7 @@
       "pass_total": 15,
       "order": 2,
       "lesson_count": 8,
-      "question_count": 57
+      "question_count": 60
     },
     {
       "id": "customer_service",
@@ -34,7 +34,7 @@
       "pass_total": 10,
       "order": 3,
       "lesson_count": 9,
-      "question_count": 87
+      "question_count": 90
     },
     {
       "id": "traffic_safety",
@@ -46,7 +46,7 @@
       "pass_total": 10,
       "order": 4,
       "lesson_count": 6,
-      "question_count": 88
+      "question_count": 90
     }
   ],
   "lessons": [
@@ -58,11 +58,15 @@
       "total_in_section": 6,
       "question_count": 44,
       "question_ids": [
-        "Q017",
         "Q001",
+        "Q002",
+        "Q003",
         "Q006",
+        "Q009",
+        "Q010",
         "Q011",
         "Q015",
+        "Q017",
         "Q019",
         "Q020",
         "Q021",
@@ -70,10 +74,6 @@
         "Q024",
         "Q025",
         "Q026",
-        "Q002",
-        "Q003",
-        "Q043",
-        "Q049",
         "Q027",
         "Q028",
         "Q029",
@@ -82,15 +82,15 @@
         "Q034",
         "Q035",
         "Q039",
+        "Q043",
+        "Q044",
         "Q047",
-        "Q084",
         "Q048",
+        "Q049",
         "Q050",
         "Q051",
         "Q052",
         "Q055",
-        "Q061",
-        "Q065",
         "Q067",
         "Q070",
         "Q074",
@@ -110,31 +110,34 @@
       "name": "Passenger Assistance & Safe Exit",
       "order": 2,
       "total_in_section": 6,
-      "question_count": 24,
+      "question_count": 27,
       "question_ids": [
-        "Q013",
         "Q004",
+        "Q007",
         "Q008",
         "Q012",
+        "Q013",
         "Q014",
         "Q016",
         "Q018",
         "Q022",
-        "Q040",
-        "Q054",
+        "Q030",
         "Q032",
         "Q036",
         "Q037",
         "Q038",
+        "Q040",
         "Q041",
-        "Q086",
+        "Q042",
         "Q045",
         "Q046",
         "Q053",
-        "Q030",
+        "Q054",
         "Q062",
         "Q063",
         "Q064",
+        "Q071",
+        "Q072",
         "Q073"
       ]
     },
@@ -144,18 +147,16 @@
       "name": "School & Daycare Transport Safety",
       "order": 3,
       "total_in_section": 6,
-      "question_count": 10,
+      "question_count": 8,
       "question_ids": [
-        "Q007",
-        "Q009",
-        "Q010",
-        "Q057",
         "Q058",
         "Q059",
-        "Q042",
+        "Q061",
+        "Q065",
         "Q085",
+        "Q086",
         "Q090",
-        "Q076"
+        "Q091"
       ]
     },
     {
@@ -169,9 +170,9 @@
         "Q056",
         "Q068",
         "Q069",
-        "Q091",
+        "Q076",
         "Q079",
-        "Q044"
+        "Q084"
       ]
     },
     {
@@ -180,11 +181,9 @@
       "name": "Accessibility & Securement",
       "order": 5,
       "total_in_section": 6,
-      "question_count": 3,
+      "question_count": 1,
       "question_ids": [
-        "Q005",
-        "Q071",
-        "Q072"
+        "Q005"
       ]
     },
     {
@@ -207,13 +206,15 @@
       "name": "Communication with Special Groups",
       "order": 1,
       "total_in_section": 8,
-      "question_count": 5,
+      "question_count": 7,
       "question_ids": [
         "Q092",
-        "Q124",
+        "Q093",
+        "Q097",
         "Q123",
+        "Q124",
         "Q143",
-        "Q093"
+        "Q144"
       ]
     },
     {
@@ -222,11 +223,8 @@
       "name": "Hearing Impairment",
       "order": 2,
       "total_in_section": 8,
-      "question_count": 2,
-      "question_ids": [
-        "Q144",
-        "Q097"
-      ]
+      "question_count": 0,
+      "question_ids": []
     },
     {
       "id": "special_needs__visual-impairment-guide-dog",
@@ -234,14 +232,17 @@
       "name": "Visual Impairment & Guide Dog",
       "order": 3,
       "total_in_section": 8,
-      "question_count": 10,
+      "question_count": 13,
       "question_ids": [
         "Q101",
+        "Q104",
         "Q105",
         "Q110",
         "Q111",
         "Q112",
+        "Q115",
         "Q117",
+        "Q119",
         "Q135",
         "Q139",
         "Q142",
@@ -254,13 +255,15 @@
       "name": "Wheelchair & Accessibility Assistance",
       "order": 4,
       "total_in_section": 8,
-      "question_count": 6,
+      "question_count": 8,
       "question_ids": [
         "Q127",
+        "Q129",
         "Q132",
         "Q137",
         "Q138",
         "Q140",
+        "Q141",
         "Q147"
       ]
     },
@@ -270,25 +273,20 @@
       "name": "Medical / Special-Need Assistance",
       "order": 5,
       "total_in_section": 8,
-      "question_count": 17,
+      "question_count": 12,
       "question_ids": [
         "Q094",
         "Q095",
         "Q096",
         "Q098",
         "Q102",
-        "Q104",
         "Q107",
         "Q108",
         "Q109",
         "Q113",
-        "Q115",
         "Q116",
         "Q118",
-        "Q119",
-        "Q120",
-        "Q129",
-        "Q141"
+        "Q328"
       ]
     },
     {
@@ -297,12 +295,14 @@
       "name": "Payment, Receipt, Kela & Fare",
       "order": 6,
       "total_in_section": 8,
-      "question_count": 9,
+      "question_count": 11,
       "question_ids": [
         "Q099",
         "Q100",
         "Q103",
+        "Q106",
         "Q114",
+        "Q120",
         "Q121",
         "Q122",
         "Q130",
@@ -316,12 +316,10 @@
       "name": "Seatbelt & Safety Devices",
       "order": 7,
       "total_in_section": 8,
-      "question_count": 4,
+      "question_count": 2,
       "question_ids": [
-        "Q106",
         "Q128",
-        "Q133",
-        "Q145"
+        "Q133"
       ]
     },
     {
@@ -330,12 +328,15 @@
       "name": "General Duties, School & Traffic Rules",
       "order": 8,
       "total_in_section": 8,
-      "question_count": 4,
+      "question_count": 7,
       "question_ids": [
+        "Q057",
         "Q125",
         "Q126",
         "Q131",
-        "Q146"
+        "Q145",
+        "Q146",
+        "Q329"
       ]
     },
     {
@@ -344,23 +345,24 @@
       "name": "Payment, Receipt, Kela & Fare",
       "order": 1,
       "total_in_section": 9,
-      "question_count": 17,
+      "question_count": 18,
       "question_ids": [
-        "Q154",
-        "Q152",
-        "Q179",
         "Q149",
         "Q151",
+        "Q152",
+        "Q154",
+        "Q171",
+        "Q179",
         "Q180",
         "Q186",
         "Q187",
-        "Q239",
+        "Q195",
         "Q198",
-        "Q232",
+        "Q206",
         "Q207",
         "Q221",
         "Q227",
-        "Q206",
+        "Q232",
         "Q235",
         "Q237"
       ]
@@ -373,10 +375,10 @@
       "total_in_section": 9,
       "question_count": 4,
       "question_ids": [
+        "Q150",
         "Q153",
         "Q158",
-        "Q168",
-        "Q150"
+        "Q168"
       ]
     },
     {
@@ -411,11 +413,11 @@
       "question_ids": [
         "Q156",
         "Q163",
-        "Q174",
         "Q165",
-        "Q202",
+        "Q174",
         "Q181",
-        "Q182"
+        "Q182",
+        "Q202"
       ]
     },
     {
@@ -429,7 +431,7 @@
         "Q160",
         "Q172",
         "Q175",
-        "Q215",
+        "Q192",
         "Q200",
         "Q201",
         "Q203",
@@ -444,9 +446,10 @@
       "name": "Complaints & Service Quality",
       "order": 6,
       "total_in_section": 9,
-      "question_count": 2,
+      "question_count": 3,
       "question_ids": [
         "Q159",
+        "Q178",
         "Q188"
       ]
     },
@@ -456,18 +459,19 @@
       "name": "Customer Requests, Alcohol & Difficult Situations",
       "order": 7,
       "total_in_section": 9,
-      "question_count": 14,
+      "question_count": 15,
       "question_ids": [
         "Q155",
+        "Q164",
         "Q167",
         "Q170",
         "Q173",
         "Q183",
-        "Q194",
         "Q184",
         "Q185",
         "Q189",
         "Q191",
+        "Q194",
         "Q196",
         "Q197",
         "Q199",
@@ -482,23 +486,23 @@
       "total_in_section": 9,
       "question_count": 17,
       "question_ids": [
-        "Q219",
-        "Q222",
+        "Q166",
         "Q208",
         "Q210",
         "Q213",
-        "Q192",
+        "Q215",
         "Q216",
+        "Q219",
         "Q220",
+        "Q222",
         "Q224",
         "Q225",
         "Q226",
-        "Q195",
         "Q228",
         "Q230",
         "Q234",
         "Q236",
-        "Q238"
+        "Q239"
       ]
     },
     {
@@ -521,28 +525,30 @@
       "name": "Traffic Safety & Driving Rules",
       "order": 1,
       "total_in_section": 6,
-      "question_count": 20,
+      "question_count": 22,
       "question_ids": [
-        "Q250",
+        "Q238",
         "Q240",
-        "Q284",
+        "Q243",
         "Q245",
         "Q246",
         "Q247",
+        "Q250",
         "Q253",
         "Q257",
         "Q261",
-        "Q290",
         "Q283",
-        "Q243",
+        "Q284",
         "Q287",
+        "Q290",
         "Q293",
         "Q297",
         "Q301",
-        "Q256",
+        "Q310",
         "Q311",
         "Q322",
-        "Q324"
+        "Q324",
+        "Q330"
       ]
     },
     {
@@ -551,26 +557,27 @@
       "name": "Police, Emergency & Risky Behaviour",
       "order": 2,
       "total_in_section": 6,
-      "question_count": 18,
+      "question_count": 19,
       "question_ids": [
         "Q241",
         "Q242",
-        "Q251",
-        "Q248",
         "Q244",
-        "Q275",
+        "Q248",
+        "Q251",
+        "Q256",
         "Q264",
-        "Q309",
-        "Q310",
+        "Q274",
+        "Q275",
         "Q276",
+        "Q277",
         "Q288",
         "Q295",
         "Q296",
-        "Q321",
-        "Q274",
-        "Q277",
-        "Q278",
-        "Q280"
+        "Q309",
+        "Q312",
+        "Q314",
+        "Q317",
+        "Q321"
       ]
     },
     {
@@ -592,33 +599,33 @@
         "Q263",
         "Q265",
         "Q266",
-        "Q325",
+        "Q267",
         "Q268",
         "Q269",
         "Q270",
         "Q271",
-        "Q305",
-        "Q308",
-        "Q314",
-        "Q315",
-        "Q317",
-        "Q318",
+        "Q272",
+        "Q273",
+        "Q278",
+        "Q279",
+        "Q280",
+        "Q281",
         "Q282",
         "Q291",
         "Q292",
-        "Q316",
-        "Q267",
-        "Q326",
-        "Q327",
         "Q302",
         "Q303",
         "Q304",
-        "Q272",
-        "Q273",
+        "Q305",
+        "Q308",
         "Q313",
-        "Q279",
-        "Q281",
-        "Q323"
+        "Q315",
+        "Q316",
+        "Q318",
+        "Q323",
+        "Q325",
+        "Q326",
+        "Q327"
       ]
     },
     {
@@ -627,9 +634,8 @@
       "name": "Alcohol Interlock & Alcohol Rules",
       "order": 4,
       "total_in_section": 6,
-      "question_count": 2,
+      "question_count": 1,
       "question_ids": [
-        "Q312",
         "Q306"
       ]
     },
@@ -656,9 +662,9 @@
       "total_in_section": 6,
       "question_count": 5,
       "question_ids": [
-        "Q299",
         "Q286",
         "Q289",
+        "Q299",
         "Q300",
         "Q320"
       ]

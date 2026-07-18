@@ -258,7 +258,7 @@ Use this table as a rollup. Update the numbers from the companion CSV tracker.
 
 | Area | Total | Approved | Needs Edit | Deferred | Pending | % Done |
 |---|---:|---:|---:|---:|---:|---:|
-| Bank questions | 327 | 20 | 0 | 0 | 307 | 6.1% |
+| Bank questions | 330 | 330 | 0 | 0 | 0 | 100% |
 | Model-test-only questions | 80 | 0 | 0 | 0 | 80 | 0% |
 | Model tests (meta) | 5 | 0 | 0 | 0 | 5 | 0% |
 | Vocab words | 84 | 0 | 0 | 0 | 84 | 0% |
@@ -267,7 +267,7 @@ Use this table as a rollup. Update the numbers from the companion CSV tracker.
 | Clue quiz questions | 30 | 0 | 0 | 0 | 30 | 0% |
 | Topic lessons | 29 | 0 | 0 | 0 | 29 | 0% |
 | Guide sections | 5 | 0 | 0 | 0 | 5 | 0% |
-| **Total** | **815** | **20** | **0** | **0** | **795** | **2.5%** |
+| **Total** | **818** | **330** | **0** | **0** | **488** | **40.3%** |
 
 **Last updated:** 2026-07-10
 
