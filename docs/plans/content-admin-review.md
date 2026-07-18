@@ -7,6 +7,18 @@
 
 ---
 
+## 0. Locked Scope Decision — Phase 1
+
+| # | Decision |
+|---|---|
+| D1 | **Phase 1 covers only the 327 bank questions** in `src/data/json/questions.json`. |
+| D2 | **Editable fields per question:** focus words (`fw`), positive clue words (`pcw`), negative clue words (`ncw`), and English explanation (`explanation_en`). |
+| D3 | **Out of scope for Phase 1:** model-test-only questions, model test composition, vocabulary sets/words/quiz, clue-word study module (dictionary + quiz), topic practice structure, guide content, UI chrome/i18n, and backend API changes. |
+| D4 | **Question count may expand later** to ~330 total bank questions, but Phase 1 reviews and locks the existing 327 first. New additions will be tracked as a separate batch when they arrive. |
+| D5 | **No changes to Finnish question text or options** unless a typo is explicitly flagged; the primary customization target is clue annotations and English explanation. |
+
+---
+
 ## 1. Scope & Inventory
 
 This review covers **all** user-facing content in the app.
@@ -258,6 +270,8 @@ Use this table as a rollup. Update the numbers from the companion CSV tracker.
 | **Total** | **815** | **1** | **0** | **0** | **814** | **0.1%** |
 
 **Last updated:** 2026-07-10
+
+> **Phase 1 focus:** only the 327 bank questions are actively reviewed. The remaining 488 tracker rows (model-test questions, vocab, clue words, topic lessons, guide sections, model tests) are **out of scope for Phase 1** and stay `pending` until a later phase.
 
 ---
 
