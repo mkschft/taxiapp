@@ -39,14 +39,6 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "ilman aikuista",
-        "meaning_en": "without an adult",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
         "text_fi": "alle 15-vuotias lapsi",
         "meaning_en": "child under 15",
         "clue_type": "fw",
@@ -55,16 +47,24 @@
         ]
       },
       {
-        "text_fi": "irrottaa turvavyönsä",
-        "meaning_en": "removes the seat belt",
+        "text_fi": "ilman aikuista",
+        "meaning_en": "without an adult",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "eikä suostu",
-        "meaning_en": "refuses to",
+        "text_fi": "irrottaa turvavyönsä",
+        "meaning_en": "removes their seat belt",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
+        "text_fi": "eikä suostu kiinnittämään",
+        "meaning_en": "and refuses to fasten it",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -72,16 +72,7 @@
       },
       {
         "text_fi": "Pysäytät ajoneuvon",
-        "meaning_en": "stop the vehicle",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a",
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "keskustelet",
-        "meaning_en": "discuss",
+        "meaning_en": "you stop the vehicle",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
@@ -97,7 +88,7 @@
       },
       {
         "text_fi": "turvavyö on kiinni",
-        "meaning_en": "seat belt is fastened",
+        "meaning_en": "the seat belt is fastened",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
@@ -105,7 +96,7 @@
       },
       {
         "text_fi": "poistat hänet autosta",
-        "meaning_en": "remove them from the car",
+        "meaning_en": "you remove them from the car",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
@@ -118,17 +109,9 @@
         "found_in": [
           "option_c"
         ]
-      },
-      {
-        "text_fi": "ilmoitat asiasta hänen huoltajalleen",
-        "meaning_en": "inform the guardian",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_c"
-        ]
       }
     ],
-    "explanation_en": "This is a child seat-belt responsibility question. The Finnish focus words ilman aikuista, alle 15-vuotias lapsi and turvavyö show that the driver must make sure the child uses the belt. The correct answer uses Pysäytät ajoneuvon, keskustelet and vasta sitten, meaning you stop, discuss, and continue only after the belt is fastened. Threatening to remove the child or allowing travel ilman turvavyötä are wrong-answer clues.",
+    "explanation_en": "Alle 15-vuotias lapsi and ilman aikuista show that the driver is responsible for a child travelling alone. Irrottaa turvavyönsä and ei suostu kiinnittämään show the immediate problem. Choose Pysäytät ajoneuvon and vasta sitten: continue only when turvavyö on kiinni. Eliminate B because poistat hänet autosta is an unnecessary first response, and C because ilman turvavyötä allows the child to continue unbelted.",
     "difficulty": "Medium",
     "tags": [
       "seatbelt",
@@ -181,8 +164,16 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "yksin matkustavan laps",
-        "meaning_en": "child travelling alone",
+        "text_fi": "mihin asti",
+        "meaning_en": "until what age",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
+        "text_fi": "yksin matkustavan lapsen",
+        "meaning_en": "a child travelling alone",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -199,14 +190,6 @@
       {
         "text_fi": "vastuu",
         "meaning_en": "responsibility",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
-        "text_fi": "taksinkuljettajalla",
-        "meaning_en": "taxi driver",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -237,7 +220,7 @@
         ]
       }
     ],
-    "explanation_en": "The key Finnish words are yksin matkustava lapsi, turvavyön käytöstä and vastuu. They point to the rule about a child travelling alone. The positive clue is 15 ikävuoteen asti: the taxi driver is responsible until the child is 15. The numbers 12 and 18 are trap answers.",
+    "explanation_en": "Mihin asti asks for the age limit. Yksin matkustavan lapsen, turvavyön käytöstä and vastuu identify the rule being tested. Choose 15 ikävuoteen asti. The numbers 12 and 18 are age traps.",
     "difficulty": "Easy",
     "tags": [
       "seatbelt",
@@ -290,29 +273,16 @@
     "key_overridden": false,
     "clue_annotations": [
       {
+        "text_fi": "kuljettajan",
+        "meaning_en": "the driver",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
         "text_fi": "ei tarvitse käyttää turvavyötä",
-        "meaning_en": "does not need to use a seat belt",
-        "clue_type": "fw",
-        "found_in": [
-          "question",
-          "option_a",
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "kuljettaja",
-        "meaning_en": "driver",
-        "clue_type": "fw",
-        "found_in": [
-          "question",
-          "option_a",
-          "option_b",
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "missä tilanteessa",
-        "meaning_en": "in which situation",
+        "meaning_en": "does not need to wear a seat belt",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -320,28 +290,10 @@
       },
       {
         "text_fi": "aina käyttää turvavyötä",
-        "meaning_en": "always use the seat belt",
+        "meaning_en": "always wear a seat belt",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
-        ]
-      },
-      {
-        "text_fi": "tarvitsee",
-        "meaning_en": "must/needs to",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "ei tarvitse",
-        "meaning_en": "does not need",
-        "clue_type": "ncw",
-        "found_in": [
-          "question",
-          "option_a",
-          "option_c"
         ]
       },
       {
@@ -353,15 +305,15 @@
         ]
       },
       {
-        "text_fi": "koulukyytejä",
-        "meaning_en": "school rides",
+        "text_fi": "koulukyytejä ajaessaan",
+        "meaning_en": "when driving school transport",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "The question is built around the negative phrase ei tarvitse käyttää turvavyötä. The safe exam answer is not an exception but the rule: kuljettajan tarvitsee ajaessaan aina käyttää turvavyötä. In the wrong options, ei tarvitse with yöaikaan or koulukyytejä is a negative clue because the driver should not treat those as excuses to skip the seat belt.",
+    "explanation_en": "Ei tarvitse is a negative phrase meaning “does not need to.” The question asks whether any listed situation removes the driver's seat-belt duty. Aina käyttää turvavyötä gives the correct rule. Eliminate yöaikaan and koulukyytejä ajaessaan because they are presented as false exceptions.",
     "difficulty": "Medium",
     "tags": [
       "seatbelt",
@@ -418,8 +370,7 @@
         "meaning_en": "to stop",
         "clue_type": "fw",
         "found_in": [
-          "question",
-          "option_c"
+          "question"
         ]
       },
       {
@@ -432,32 +383,15 @@
       },
       {
         "text_fi": "jäädä pois kyydistä",
-        "meaning_en": "to get out of the ride",
+        "meaning_en": "get out of the taxi",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "ei ole turvallinen",
-        "meaning_en": "is not safe",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a",
-          "option_b"
-        ]
-      },
-      {
         "text_fi": "etsit toisen paikan",
-        "meaning_en": "find another place",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a"
-        ]
-      },
-      {
-        "text_fi": "vastuullasi",
-        "meaning_en": "your responsibility",
+        "meaning_en": "you find another place",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
@@ -472,31 +406,23 @@
         ]
       },
       {
-        "text_fi": "oikeus valita",
-        "meaning_en": "right to choose",
+        "text_fi": "oikeus valita pysähtymispaikka",
+        "meaning_en": "right to choose the stopping place",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
       },
       {
-        "text_fi": "mahdollinen sakkoksu",
-        "meaning_en": "possible fine",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "kielletyssä paikassa",
-        "meaning_en": "in a prohibited place",
+        "text_fi": "maksaa mahdollinen sakko",
+        "meaning_en": "pay a possible fine",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "This is a safety-over-customer-choice question. The focus words pysähtymään, vilkkaasti liikennöidyllä tiellä and jäädä pois kyydistä tell you the passenger wants to exit in a risky place. The correct answer includes ei ole turvallinen, etsit toisen paikan and vastuullasi. The wrong-answer clue oikeus valita is dangerous here because the customer’s wish does not override safe stopping.",
+    "explanation_en": "Vilkkaasti liikennöidyllä tiellä and jäädä pois kyydistä show that the requested stopping place may be unsafe. Choose etsit toisen paikan because the driver must ensure turvallinen ajoneuvosta poistuminen. A passenger's oikeus valita or willingness to maksaa mahdollinen sakko does not make an unsafe stop safe.",
     "difficulty": "Medium",
     "tags": [
       "safe stopping",
@@ -550,7 +476,7 @@
     "clue_annotations": [
       {
         "text_fi": "kiinnittää",
-        "meaning_en": "secure/fasten",
+        "meaning_en": "secure or fasten",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -566,67 +492,22 @@
       },
       {
         "text_fi": "selinmakuulla",
-        "meaning_en": "lying on the back",
+        "meaning_en": "lying on their back",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "asiakas",
-        "meaning_en": "customer",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
-        "text_fi": "Hartiavyöllä",
-        "meaning_en": "with shoulder belt",
+        "text_fi": "Hartiavyöllä, lantiovyöllä ja jalkavyöllä",
+        "meaning_en": "with shoulder, lap and leg belts",
         "clue_type": "pcw",
         "found_in": [
-          "option_a",
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "lantiovyöllä",
-        "meaning_en": "with lap belt",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a",
-          "option_b",
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "jalkavyöllä",
-        "meaning_en": "with leg belt",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a",
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "Hartiavyöllä ja lantiovyöllä",
-        "meaning_en": "shoulder and lap only",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "Lantiovyöllä ja jalkavyöllä",
-        "meaning_en": "lap and leg only",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_a",
-          "option_c"
+          "option_a"
         ]
       }
     ],
-    "explanation_en": "The question asks for the paras tapa to secure a stretcher passenger. The Finnish focus words paareilla and selinmakuulla show that normal seating rules are not enough. The correct option has all three positive clue words: Hartiavyöllä, lantiovyöllä and jalkavyöllä. The other options are incomplete because one belt type is missing.",
+    "explanation_en": "Paareilla and selinmakuulla show a stretcher passenger lying on their back. The correct option is the only one containing all three restraints: hartiavyö, lantiovyö and jalkavyö. B omits the leg belt, while C omits the shoulder belt.",
     "difficulty": "Easy",
     "tags": [
       "stretcher",
@@ -695,11 +576,35 @@
         ]
       },
       {
+        "text_fi": "turvavyön käytöstä",
+        "meaning_en": "seat-belt use",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
         "text_fi": "kuka vastaa",
         "meaning_en": "who is responsible",
         "clue_type": "fw",
         "found_in": [
           "question"
+        ]
+      },
+      {
+        "text_fi": "Taksinkuljettaja",
+        "meaning_en": "the taxi driver",
+        "clue_type": "pcw",
+        "found_in": [
+          "option_b"
+        ]
+      },
+      {
+        "text_fi": "Anna itse",
+        "meaning_en": "Anna herself",
+        "clue_type": "ncw",
+        "found_in": [
+          "option_a"
         ]
       },
       {
@@ -711,7 +616,7 @@
         ]
       }
     ],
-    "explanation_en": "The focus words 14-vuotias and yksin make this a child travelling alone case. Because Anna is under 15, the responsibility for turvavyön käyttö belongs to the taksinkuljettaja. Anna itse and aina vapaaehtoista are negative clues because the responsibility is not simply left to the child and seat-belt use is not always voluntary.",
+    "explanation_en": "14-vuotias and yksin show a child under 15 travelling without a guardian. Kuka vastaa asks who is responsible for turvavyön käyttö. Choose Taksinkuljettaja. Eliminate Anna itse and aina vapaaehtoista because the responsibility is not left only to the child.",
     "difficulty": "Easy",
     "tags": [
       "seatbelt",
@@ -768,31 +673,20 @@
         "meaning_en": "alcohol interlock",
         "clue_type": "fw",
         "found_in": [
-          "question",
-          "option_a",
-          "option_b"
+          "question"
         ]
       },
       {
         "text_fi": "koulu- ja päivähoitokuljetuksissa",
-        "meaning_en": "in school and daycare transports",
-        "clue_type": "fw",
-        "found_in": [
-          "question",
-          "option_c"
-        ]
-      },
-      {
-        "text_fi": "tulee käyttää",
-        "meaning_en": "must use",
+        "meaning_en": "in school and daycare transport",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "tulee aina käyttää",
-        "meaning_en": "must always use",
+        "text_fi": "aina käyttää",
+        "meaning_en": "always use",
         "clue_type": "pcw",
         "found_in": [
           "option_c"
@@ -800,7 +694,7 @@
       },
       {
         "text_fi": "asennettu alkolukko",
-        "meaning_en": "installed alcohol interlock",
+        "meaning_en": "an installed alcohol interlock",
         "clue_type": "pcw",
         "found_in": [
           "option_c"
@@ -816,14 +710,14 @@
       },
       {
         "text_fi": "ei ole alkolukkoa",
-        "meaning_en": "does not have an alcohol interlock",
+        "meaning_en": "has no alcohol interlock",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
       }
     ],
-    "explanation_en": "The focus words alkolukkoa and koulu- ja päivähoitokuljetuksissa signal a strict safety rule. The positive clue is tulee aina käyttää together with asennettu alkolukko: always use a vehicle with the alcohol interlock installed.oikeus means right and ei ole alkolukkoa are negative clues because they create unsafe exceptions.",
+    "explanation_en": "Alkolukko and koulu- ja päivähoitokuljetuksissa identify the safety requirement. Choose aina käyttää and asennettu alkolukko. In käyttämättä, the ending -matta/-mättä means “without doing,” so oikeus olla käyttämättä is a negative clue. Ei ole alkolukkoa also removes the required device.",
     "difficulty": "Easy",
     "tags": [
       "alcohol interlock",
@@ -892,24 +786,6 @@
         ]
       },
       {
-        "text_fi": "matkustaja",
-        "meaning_en": "passenger",
-        "clue_type": "fw",
-        "found_in": [
-          "question",
-          "option_a",
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "nousta autosta",
-        "meaning_en": "get out of the car",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_a"
-        ]
-      },
-      {
         "text_fi": "tarvittaessa auttaa",
         "meaning_en": "help if necessary",
         "clue_type": "pcw",
@@ -918,8 +794,8 @@
         ]
       },
       {
-        "text_fi": "ainoastaan varoittaa",
-        "meaning_en": "only warn",
+        "text_fi": "ainoastaan",
+        "meaning_en": "only",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
@@ -932,17 +808,9 @@
         "found_in": [
           "option_c"
         ]
-      },
-      {
-        "text_fi": "vastuu ei ulotu",
-        "meaning_en": "responsibility does not extend",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_c"
-        ]
       }
     ],
-    "explanation_en": "This question is about safe passenger exit. The Finnish focus words poistuessa taksista and liukkaalla kelillä show that falling/slipping risk matters. The correct answer uses nousta autosta and tarvittaessa auttaa. The negative clues ainoastaan varoittaa and Ei mitään are too passive because the driver may need to actively help.",
+    "explanation_en": "Poistuessa taksista and liukkaalla kelillä show that the passenger may slip while getting out. Poistuessa comes from poistua; -essa/-essä means “while” or “when doing.” Choose tarvittaessa auttaa. Eliminate B because ainoastaan limits the action to a warning, and C because Ei mitään means taking no action.",
     "difficulty": "Easy",
     "tags": [
       "safe exit",
@@ -995,33 +863,16 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "ensisijaisesti",
-        "meaning_en": "primarily",
+        "text_fi": "koulukuljetuksessa oleva oppilas",
+        "meaning_en": "a pupil in school transport",
         "clue_type": "fw",
         "found_in": [
           "question"
-        ]
-      },
-      {
-        "text_fi": "koulukuljetuksessa",
-        "meaning_en": "in school transport",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
-        "text_fi": "oppilas",
-        "meaning_en": "pupil",
-        "clue_type": "fw",
-        "found_in": [
-          "question",
-          "option_a"
         ]
       },
       {
         "text_fi": "ei kehotuksestasi huolimatta kiinnitä turvavyötä",
-        "meaning_en": "does not fasten the seat belt",
+        "meaning_en": "does not fasten the seat belt despite your instruction",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -1052,14 +903,6 @@
         ]
       },
       {
-        "text_fi": "kieltäytyä kuljettamasta",
-        "meaning_en": "refuse to transport",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_a"
-        ]
-      },
-      {
         "text_fi": "poistaa hänet autosta",
         "meaning_en": "remove them from the car",
         "clue_type": "ncw",
@@ -1084,7 +927,7 @@
         ]
       }
     ],
-    "explanation_en": "The question asks for the ensisijaisesti action, meaning the primary/best first response. With a school-transport pupil who does not kiinnitä turvavyötä, the correct approach is keskustella and drive vasta sitten when the belt is fastened. Removing the pupil or letting them travel ilman turvavyötä and reporting jälkeenpäin are wrong clues.",
+    "explanation_en": "Koulukuljetuksessa oleva oppilas and kehotuksestasi huolimatta show that the pupil still refuses the belt after being told. The correct first step is keskustella and drive vasta sitten when the belt is fastened. Eliminate A because poistaa hänet autosta is too immediate, and B because ilman turvavyötä plus jälkeenpäin delays action until after unsafe travel.",
     "difficulty": "Medium",
     "tags": [
       "school transport",
@@ -1145,24 +988,16 @@
         ]
       },
       {
-        "text_fi": "määrätty",
-        "meaning_en": "prescribed/ordered",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
         "text_fi": "koulukuljetuksia",
-        "meaning_en": "school transports",
+        "meaning_en": "school transport",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "Kuljettajan tulee käyttää turvavyötä",
-        "meaning_en": "the driver must use a seat belt",
+        "text_fi": "tulee käyttää turvavyötä",
+        "meaning_en": "must wear a seat belt",
         "clue_type": "pcw",
         "found_in": [
           "option_c"
@@ -1176,25 +1011,9 @@
           "option_a",
           "option_b"
         ]
-      },
-      {
-        "text_fi": "Takapenkillä",
-        "meaning_en": "on the back seat",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_a"
-        ]
-      },
-      {
-        "text_fi": "Kuljettajan ei tarvitse",
-        "meaning_en": "the driver does not need",
-        "clue_type": "ncw",
-        "found_in": [
-          "option_b"
-        ]
       }
     ],
-    "explanation_en": "The focus words turvavyön käytöstä and koulukuljetuksia point to a strict school-transport safety rule. The positive clue is tulee käyttää turvavyötä. The negative clue ei tarvitse is a common trap here: the answer should not remove the seat-belt duty from the pupil or the driver.",
+    "explanation_en": "Turvavyön käytöstä and koulukuljetuksia identify the school-transport seat-belt rule. Choose tulee käyttää turvavyötä. The repeated phrase ei tarvitse käyttää means “does not need to use” and removes the duty, so it eliminates A and B.",
     "difficulty": "Easy",
     "tags": [
       "school transport",
@@ -1247,14 +1066,6 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "koulu- ja päivähoitokuljetuksissa",
-        "meaning_en": "school and daycare transport",
-        "clue_type": "fw",
-        "found_in": [
-          "question"
-        ]
-      },
-      {
         "text_fi": "taksinkuljettajan toimintaan",
         "meaning_en": "the taxi driver's conduct",
         "clue_type": "fw",
@@ -1263,16 +1074,16 @@
         ]
       },
       {
-        "text_fi": "vastuullisen kuljettajan",
-        "meaning_en": "a responsible driver",
-        "clue_type": "pcw",
+        "text_fi": "koulu- ja päivähoitokuljetuksissa",
+        "meaning_en": "in school and daycare transport",
+        "clue_type": "fw",
         "found_in": [
-          "option_b"
+          "question"
         ]
       },
       {
-        "text_fi": "tulee käyttäytyä",
-        "meaning_en": "must behave",
+        "text_fi": "vastuullisen kuljettajan",
+        "meaning_en": "a responsible driver",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
@@ -1295,7 +1106,7 @@
         ]
       }
     ],
-    "explanation_en": "The correct answer is B: a taxi driver must always act responsibly, especially with children. Option A invents a rule against speaking to children, and C is the opposite of the driver's duty — the driver must in fact ensure seat-belt use.",
+    "explanation_en": "The question asks about the driver's conduct in transport involving children. Vastuullisen kuljettajan identifies the correct general duty. Both wrong options use ei saa, meaning “must not” or “may not,” to invent restrictions: not speaking to children or not requiring a seat belt.",
     "difficulty": "Easy",
     "tags": [
       "school transport",
@@ -1355,39 +1166,31 @@
         ]
       },
       {
-        "text_fi": "Nouset ajoneuvosta",
-        "meaning_en": "you get out of the vehicle",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_b"
-        ]
-      },
-      {
         "text_fi": "tiedustelet tarvitseeko hän apua",
-        "meaning_en": "ask whether they need help",
+        "meaning_en": "you ask whether they need help",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
         ]
       },
       {
-        "text_fi": "kysymättä tarvitseeko hän apua",
-        "meaning_en": "without asking whether they need help",
+        "text_fi": "kysymättä",
+        "meaning_en": "without asking",
         "clue_type": "ncw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "Käsken asiakasta kiirehtimään",
-        "meaning_en": "order the customer to hurry",
+        "text_fi": "kiirehtimään",
+        "meaning_en": "to hurry",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "B is correct: you exit the car and ask whether help is needed before acting. Grabbing the arm without consent (A) and rushing the customer in traffic (C) ignore the customer's dignity and safety.",
+    "explanation_en": "Hyvin hitaasti liikkuva asiakas may need assistance, but you should ask before touching or helping. Choose tiedustelet tarvitseeko hän apua. In kysymättä, -matta/-mättä means “without doing,” so A acts without asking. Kiirehtimään means telling the customer to hurry, which does not respect their safety or pace.",
     "difficulty": "Easy",
     "tags": [
       "assistance",
@@ -1448,7 +1251,7 @@
       },
       {
         "text_fi": "ajoonlähtötarkastuksessa",
-        "meaning_en": "pre-departure inspection",
+        "meaning_en": "during the pre-departure check",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -1456,7 +1259,7 @@
       },
       {
         "text_fi": "Koekäyttämällä",
-        "meaning_en": "by test-running",
+        "meaning_en": "by test-operating",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
@@ -1472,14 +1275,14 @@
       },
       {
         "text_fi": "silmämääräisesti",
-        "meaning_en": "visually (a visual-only check)",
+        "meaning_en": "visually only",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "An accessibility lift must be test-run (B) during the pre-departure check, since only operating it confirms it works safely. A visual look (C) or no check (A) is not enough.",
+    "explanation_en": "Henkilönostin and ajoonlähtötarkastus show that the lift's operation must be checked before departure. Koekäyttämällä means “by test-operating”; the ending -malla/-mällä expresses doing something by a method. Ei mitenkään means no check, while silmämääräisesti is only a visual check and does not confirm operation.",
     "difficulty": "Medium",
     "tags": [
       "accessible taxi",
@@ -1539,16 +1342,24 @@
         ]
       },
       {
-        "text_fi": "pyytää asennon korjaamiseen",
-        "meaning_en": "asks for the position to be corrected",
+        "text_fi": "epämiellyttävä istua",
+        "meaning_en": "uncomfortable to sit",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "varmistaa, että asiakkaalla on mukava",
-        "meaning_en": "ensure the customer is comfortable",
+        "text_fi": "pyytää apua asennon korjaamiseen",
+        "meaning_en": "asks for help adjusting their position",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
+        "text_fi": "mukava olla",
+        "meaning_en": "be comfortable",
         "clue_type": "pcw",
         "found_in": [
           "option_c"
@@ -1556,15 +1367,23 @@
       },
       {
         "text_fi": "auttaa oikaisemaan",
-        "meaning_en": "help to straighten",
+        "meaning_en": "help straighten the clothing",
         "clue_type": "pcw",
         "found_in": [
           "option_c"
         ]
       },
       {
+        "text_fi": "ei ole",
+        "meaning_en": "is not",
+        "clue_type": "ncw",
+        "found_in": [
+          "option_a"
+        ]
+      },
+      {
         "text_fi": "ainoastaan",
-        "meaning_en": "only (a limiting word)",
+        "meaning_en": "only",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
@@ -1579,7 +1398,7 @@
         ]
       }
     ],
-    "explanation_en": "C is correct: the driver should make sure the customer is comfortable and help when asked. A and B wrongly deny assistance; the limiting word 'ainoastaan' (only) and 'ei saa' (may not) are negative-restriction clues pointing to wrong answers.",
+    "explanation_en": "The focus words show a wheelchair customer who is uncomfortable and asks for help. Choose mukava olla and auttaa oikaisemaan: the driver ensures comfort and assists when requested. Eliminate A because ei ole denies responsibility, and B because ainoastaan and ei saa oikaista unnecessarily limit or forbid help.",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -1639,8 +1458,8 @@
         ]
       },
       {
-        "text_fi": "huoltajan antaneen",
-        "meaning_en": "the guardian has given",
+        "text_fi": "huoltajan antaneen hänelle luvan",
+        "meaning_en": "the guardian has given permission",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -1651,45 +1470,43 @@
         "meaning_en": "without a seat belt",
         "clue_type": "fw",
         "found_in": [
-          "question",
-          "option_c"
+          "question"
         ]
       },
       {
-        "text_fi": "Huolehdit, että lapsi käyttää turvavyötä",
-        "meaning_en": "you make sure the child uses the seat belt",
+        "text_fi": "Huolehdit",
+        "meaning_en": "you make sure",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "koko matkan ajan",
-        "meaning_en": "for the whole journey",
+        "text_fi": "käyttää turvavyötä",
+        "meaning_en": "uses a seat belt",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "matkustaa kiinnittämättä turvavyötä",
-        "meaning_en": "travel without fastening the seat belt",
+        "text_fi": "kiinnittämättä",
+        "meaning_en": "without fastening",
         "clue_type": "ncw",
         "found_in": [
-          "option_b",
-          "option_c"
+          "option_b"
         ]
       },
       {
-        "text_fi": "kuka tahansa matkustaa ilman turvavyötä",
-        "meaning_en": "anyone may travel without a seat belt",
+        "text_fi": "ilman turvavyötä",
+        "meaning_en": "without a seat belt",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "For a child under 15 the driver is responsible for seat-belt use, so A is correct regardless of any claim about the guardian's permission. B and C both wrongly allow the child to travel unbelted.",
+    "explanation_en": "14-vuotias lapsi shows that the passenger is under 15. Huoltajan antaneen luvan is the trap: the guardian's permission does not remove the driver's responsibility. The correct option uses Huolehdit and käyttää turvavyötä. Eliminate B and C because kiinnittämättä and ilman turvavyötä both allow the child to travel unbelted.",
     "difficulty": "Medium",
     "tags": [
       "seatbelt",
@@ -1751,15 +1568,15 @@
       },
       {
         "text_fi": "haluaa itse siirtyä",
-        "meaning_en": "wants to transfer themselves",
+        "meaning_en": "wants to transfer independently",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "Annat asiakkaan siirtyä itse",
-        "meaning_en": "you let the customer transfer themselves",
+        "text_fi": "siirtyä itse",
+        "meaning_en": "transfer themselves",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
@@ -1774,23 +1591,23 @@
         ]
       },
       {
-        "text_fi": "ei voi koskaan siirtyä ilman kuljettajan apua",
-        "meaning_en": "can never transfer without the driver's help",
+        "text_fi": "ei voi koskaan",
+        "meaning_en": "can never",
         "clue_type": "ncw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "voit siirtyä odottamaan kuljettajan paikalle",
-        "meaning_en": "you may go and wait in the driver's seat",
+        "text_fi": "odottamaan kuljettajan paikalle",
+        "meaning_en": "go and wait in the driver's seat",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "B respects the customer's autonomy: let them transfer themselves and assist only if needed. The absolute claim 'never without help' (A) and abandoning them to wait in the driver's seat (C) are both wrong.",
+    "explanation_en": "Pyörätuolissa oleva asiakas and haluaa itse siirtyä show that the customer wants to transfer independently. Choose siirtyä itse and avustat tarvittaessa: respect the customer's ability while remaining ready to help. Eliminate A because ei voi koskaan is an absolute “never” claim, and C because it leaves the customer without support.",
     "difficulty": "Easy",
     "tags": [
       "wheelchair",
@@ -1842,8 +1659,16 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "lyhyet",
-        "meaning_en": "the seat belts are too short",
+        "text_fi": "ei voi käyttää turvavyötä",
+        "meaning_en": "cannot use the seat belt",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
+        "text_fi": "liian lyhyet",
+        "meaning_en": "too short",
         "clue_type": "fw",
         "found_in": [
           "question"
@@ -1851,7 +1676,7 @@
       },
       {
         "text_fi": "toisen taksin",
-        "meaning_en": "you order the customer another taxi",
+        "meaning_en": "another taxi",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
@@ -1867,7 +1692,7 @@
       },
       {
         "text_fi": "ilman turvavyötä",
-        "meaning_en": "travel without a seat belt",
+        "meaning_en": "without a seat belt",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
@@ -1875,14 +1700,14 @@
       },
       {
         "text_fi": "jatkopalalla",
-        "meaning_en": "extend the seat belt with an extension piece",
+        "meaning_en": "with an extension piece",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "If a belt does not fit, the safe and correct solution is to arrange another suitable vehicle (A). Travelling unbelted (B) is unsafe, and improvised belt extenders (C) are not permitted.",
+    "explanation_en": "Ei voi käyttää turvavyötä and liian lyhyet show that the available belt does not fit the customer. Choose toisen taksin and turvallisempi kuljettaa: arrange a vehicle where the customer can be transported safely. Eliminate ilman turvavyötä and jatkopalalla because neither is the safe solution given here.",
     "difficulty": "Medium",
     "tags": [
       "seatbelt",
@@ -1934,16 +1759,24 @@
     "key_overridden": false,
     "clue_annotations": [
       {
-        "text_fi": "siirtyä pyörätuolista taksin etuistuimelle",
-        "meaning_en": "transfer from the wheelchair to the taxi's front seat",
+        "text_fi": "haluaa itse siirtyä",
+        "meaning_en": "wants to transfer independently",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "on oikeus siirtyä itse",
-        "meaning_en": "has the right to transfer themselves",
+        "text_fi": "pyörätuolista taksin etuistuimelle",
+        "meaning_en": "from the wheelchair to the taxi's front seat",
+        "clue_type": "fw",
+        "found_in": [
+          "question"
+        ]
+      },
+      {
+        "text_fi": "oikeus siirtyä itse",
+        "meaning_en": "the right to transfer independently",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
@@ -1966,15 +1799,15 @@
         ]
       },
       {
-        "text_fi": "ei saa istua ajoneuvon etupenkillä",
-        "meaning_en": "may not sit in the vehicle's front seat",
+        "text_fi": "ei saa istua",
+        "meaning_en": "may not sit",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "B is correct: the customer has the right to transfer independently and to sit in the front seat, and you help if needed. A and C invent prohibitions that do not exist.",
+    "explanation_en": "Haluaa itse siirtyä and etuistuimelle show a customer choosing an independent transfer to the front seat. Choose oikeus siirtyä itse and tarvittaessa avustan. Both wrong options use ei saa, meaning “may not,” to invent restrictions on independent transfer or front-seat use.",
     "difficulty": "Medium",
     "tags": [
       "wheelchair",
@@ -2035,7 +1868,7 @@
         ]
       },
       {
-        "text_fi": "yksintään",
+        "text_fi": "yksinään",
         "meaning_en": "alone",
         "clue_type": "fw",
         "found_in": [
@@ -2043,39 +1876,39 @@
         ]
       },
       {
-        "text_fi": "Pyydät lapselta hänen huoltajansa puhelinnumeroa",
-        "meaning_en": "you ask the child for the guardian's phone number",
-        "clue_type": "pcw",
+        "text_fi": "kaverinsa luokse",
+        "meaning_en": "to their friend's home",
+        "clue_type": "fw",
         "found_in": [
-          "option_a"
+          "question"
         ]
       },
       {
         "text_fi": "kysyt huoltajalta",
-        "meaning_en": "you ask the guardian",
+        "meaning_en": "you ask or check with the guardian",
         "clue_type": "pcw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "kysymättä hänen huoltajaltaan lupaa",
-        "meaning_en": "without asking the guardian for permission",
+        "text_fi": "kysymättä",
+        "meaning_en": "without asking",
         "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
       },
       {
-        "text_fi": "Kieltäydyt kuljettamasta lasta",
-        "meaning_en": "you refuse to transport the child",
+        "text_fi": "kieltäydyt kuljettamasta",
+        "meaning_en": "you refuse to transport",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "With a young child travelling alone, the safe step is to confirm with the guardian (A). Driving off without checking (B) ignores the risk, and refusing and ejecting the child (C) is inappropriate.",
+    "explanation_en": "Noin 10-vuotias lapsi, yksinään and kaverinsa luokse show that a young child wants to travel alone to a friend's home. The correct action is kysyt huoltajalta: first confirm the trip with the guardian. In kysymättä, -matta/-mättä means “without doing.” Kieltäydyt kuljettamasta means refusing to transport; -masta is not negative by itself—the negative meaning comes from kieltäydyt.",
     "difficulty": "Medium",
     "tags": [
       "child",
@@ -2136,46 +1969,38 @@
       },
       {
         "text_fi": "kerrostalokotiinsa",
-        "meaning_en": "to their apartment-building home",
+        "meaning_en": "to their home in an apartment building",
         "clue_type": "fw",
         "found_in": [
           "question"
         ]
       },
       {
-        "text_fi": "Pyydät lasta soittamaan huoltajalleen",
-        "meaning_en": "you ask the child to call their guardian",
+        "text_fi": "soittamaan huoltajalleen",
+        "meaning_en": "to call their guardian",
         "clue_type": "pcw",
         "found_in": [
           "option_b"
         ]
       },
       {
-        "text_fi": "tulemaan lasta vastaan",
-        "meaning_en": "to come and meet the child",
-        "clue_type": "pcw",
-        "found_in": [
-          "option_b"
-        ]
-      },
-      {
-        "text_fi": "annat hänen mennä itsekseen kotiinsa",
-        "meaning_en": "let them go home by themselves",
+        "text_fi": "mennä itsekseen",
+        "meaning_en": "go by themselves",
         "clue_type": "ncw",
         "found_in": [
           "option_a"
         ]
       },
       {
-        "text_fi": "jotakin kerrostalon pihalla olevaa aikuista",
-        "meaning_en": "some adult in the building's yard (a stranger)",
+        "text_fi": "jotakin",
+        "meaning_en": "some unspecified person",
         "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "The child should be handed over to the guardian (B). Leaving them alone (A) or entrusting them to a random stranger (C) both create unnecessary risk.",
+    "explanation_en": "Yksinään matkustava noin 10-vuotias lapsi shows that a young child is travelling alone. Kerrostalokotiinsa matters because leaving the child in the building yard still means they must reach the apartment alone. Choose soittamaan huoltajalleen. Eliminate A because mennä itsekseen means continuing alone, and C because jotakin means an unspecified person, not the confirmed guardian.",
     "difficulty": "Medium",
     "tags": [
       "child",

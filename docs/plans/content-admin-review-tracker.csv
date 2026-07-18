@@ -1,24 +1,24 @@
 id,content_type,parent_id,category_id,status,fi_checked,en_checked,options_checked,correct_answer_checked,explanation_checked,clues_checked,notes,reviewed_at,reviewed_by
-Q001,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q002,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q003,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q004,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q005,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q006,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q007,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q008,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q009,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q010,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q011,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q012,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q013,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q014,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q015,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q016,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q017,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,"Clue annotations shortened: fw=""lyhyet"", pcw=""toisen taksin"", ncw=""ilman turvavyötä"". Source workbook sync needed.",2026-07-09T21:55:18.675Z,admin
-Q018,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q019,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
-Q020,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
+Q001,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q002,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q003,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q004,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q005,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q006,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q007,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q008,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q009,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q010,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q011,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q012,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q013,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q014,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q015,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q016,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q017,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q018,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q019,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
+Q020,bank_question,,passenger_safety,approved,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,Reviewed via bank-questions-review-20qs-app-revised.xlsx: clue annotations and explanation_en updated.,2026-07-18T08:38:38.341Z,admin
 Q021,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q022,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
 Q023,bank_question,,passenger_safety,pending,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,,,
