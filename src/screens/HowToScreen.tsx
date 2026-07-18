@@ -10,19 +10,21 @@ import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
 
-// Where each module lives in the navigator, so cards are tappable.
-type Nav = { stack?: 'Study' | 'Test'; screen: string } | { tab: 'Progress' };
+// Where each module lives in the navigator, so cards are tappable. HowTo lives
+// inside ProfileStack, so its only in-stack sibling is Guide; everything else
+// (Dashboard's Home-tab screens, Test, Progress) is a cross-tab jump.
+type Nav = { screen: string } | { crossTab: 'Dashboard' | 'Test'; screen: string } | { tab: 'Progress' };
 
 type Module = {
   id: string; Icon: LucideIcon; tint: string; nav: Nav;
 };
 
 const MODULES: Module[] = [
-  { id: 'examGuide', Icon: MODULE_ICONS.examGuide, tint: colors.primary, nav: { stack: 'Study', screen: 'Guide' } },
-  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, nav: { stack: 'Study', screen: 'VocabSets' } },
-  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, nav: { stack: 'Study', screen: 'ClueWords' } },
-  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, nav: { stack: 'Study', screen: 'TopicSections' } },
-  { id: 'modelTests', Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, nav: { stack: 'Test', screen: 'TestHome' } },
+  { id: 'examGuide', Icon: MODULE_ICONS.examGuide, tint: colors.primary, nav: { screen: 'Guide' } },
+  { id: 'vocabulary', Icon: MODULE_ICONS.vocabulary, tint: colors.success, nav: { crossTab: 'Dashboard', screen: 'VocabSets' } },
+  { id: 'clueWords', Icon: MODULE_ICONS.clueWords, tint: colors.warning, nav: { crossTab: 'Dashboard', screen: 'ClueWords' } },
+  { id: 'topicPractice', Icon: MODULE_ICONS.topicPractice, tint: colors.error, nav: { crossTab: 'Dashboard', screen: 'DashboardHome' } },
+  { id: 'modelTests', Icon: MODULE_ICONS.modelTests, tint: colors.modelTest, nav: { crossTab: 'Test', screen: 'TestHome' } },
   { id: 'progress', Icon: MODULE_ICONS.progress, tint: colors.primary, nav: { tab: 'Progress' } },
 ];
 
@@ -34,7 +36,7 @@ export function HowToScreen() {
 
   const go = (nav: Nav) => {
     if ('tab' in nav) navigation.navigate(nav.tab);
-    else if (nav.stack) navigation.navigate(nav.stack, { screen: nav.screen, params: {} });
+    else if ('crossTab' in nav) navigation.navigate(nav.crossTab, { screen: nav.screen, params: {} });
     else navigation.navigate(nav.screen);
   };
 

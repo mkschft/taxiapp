@@ -20,9 +20,10 @@ export function PaywallProvider({ children }: { children: React.ReactNode }) {
 
   const isUnlocked = useCallback(
     (_feature: PaidFeature) => {
-      if (state.guest) return false;
-      if (!state.user) return false;
-      return hasActivePaidPlan(state.user.subscription);
+      // TEMP DEV BYPASS — remove before commit/push. Forces every paywalled
+      // feature unlocked so signed-in-but-unpaid accounts can preview lessons.
+      // Real check (restore this): if (state.guest) return false; if (!state.user) return false; return hasActivePaidPlan(state.user.subscription);
+      return true;
     },
     [state.user, state.guest],
   );

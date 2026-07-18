@@ -5,7 +5,7 @@
 // Everything else is locked behind sign-up. Signed-in users are governed by the
 // paywall layer (see store/paywallStore), not this.
 //
-// Keyed by the route name used in navigation (StudyStack / RootStack screens).
+// Keyed by the route name used in navigation (screens across the tab stacks).
 export const GUEST_SCREENS = ['HowTo', 'Guide'] as const;
 
 export function isGuestLocked(screen: string, isGuest: boolean): boolean {

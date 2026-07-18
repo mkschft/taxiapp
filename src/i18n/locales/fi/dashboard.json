@@ -1,6 +1,4 @@
 {
-  "greeting": "Huomenta",
-  "tagline": "Jatka samaan malliin — koepäivä lähestyy!",
   "guest": {
     "title": "Seuraa edistymistäsi",
     "body": "Luo ilmainen tili tallentaaksesi edistymisesi ja nähdäksesi, kuinka lähellä koepäivää olet.",
@@ -10,7 +8,10 @@
   "startTitle": "{{n}} kysymystä tutkinnon aiheista",
   "pickTopic": "Valitse aihe alta aloittaaksesi.",
   "overallProgress": "Kokonaisedistyminen",
-  "studyTitle": "Aloita harjoittelu",
+  "wordsTitle": "Opi tärkeitä sanoja",
+  "studyTitle": "Harjoittele kysymyksiä",
+  "passRequirement": "{{correct}} oikein / {{total}}",
+  "takeQuiz": "Tee tentti",
   "practiced": "{{completed}} / {{total}} kysymystä harjoiteltu",
   "topicPractice": {
     "title": "Aiheharjoittelu",
@@ -27,11 +28,11 @@
   },
   "vocabulary": {
     "title": "Sanasto",
-    "sub": "{{sets}} sarjaa · {{words}} sanaa"
+    "sub": "{{groups}} ryhmää · {{words}} sanakorttia"
   },
   "clueWords": {
     "title": "Vihjesanat",
-    "sub": "{{groups}} ryhmää · {{words}} vihjesanaa"
+    "sub": "{{groups}} ryhmää · {{words}} sanaa"
   },
   "howTo": "Sovelluksen käyttöohje"
 }

@@ -13,13 +13,13 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getVocabSet, getVocabQuiz } from '../data/loaders';
 import type { VocabQuizQuestion } from '../data/types';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
 import type { BackendProblem } from '../lib/quizApi';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'VocabQuiz'>;
-  route: RouteProp<StudyStackParamList, 'VocabQuiz'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'VocabQuiz'>;
+  route: RouteProp<DashboardStackParamList, 'VocabQuiz'>;
 };
 
 const PASS_PCT = 75;

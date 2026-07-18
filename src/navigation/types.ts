@@ -30,25 +30,22 @@ export type RootStackParamList = {
 
 export type AppTabParamList = {
   Dashboard: undefined;
-  Study: undefined;
   Test: undefined;
   Progress: undefined;
   Profile: undefined;
 };
 
-export type StudyStackParamList = {
-  StudyHome: undefined;
-  Guide: undefined;
-  HowTo: undefined;
-  VocabSets: undefined;
+export type DashboardStackParamList = {
+  DashboardHome: undefined;
+  VocabSets: { mode?: 'practice' | 'quiz' } | undefined;
   VocabLesson: { setId: string; index?: number };
   VocabQuiz: { setId: string; sessionId?: string; problemSetId?: string };
-  ClueWords: undefined;
+  ClueWords: { mode?: 'practice' | 'quiz' } | undefined;
   ClueLesson: { groupId: string; index?: number };
   ClueQuiz: { groupId: string; sessionId?: string; problemSetId?: string };
-  TopicSections: undefined;
   TopicLessons: { sectionId: string };
   TopicQuiz: { lessonId: string; sectionId: string; sessionId?: string; problemSetId?: string };
+  ModuleQuiz: { sectionId: string; sessionId?: string; problemSetId?: string };
   Practice: {
     questionId: string;
     queue?: string[];
@@ -105,4 +102,6 @@ export type ProfileStackParamList = {
   ProfileHome: undefined;
   Referral: undefined;
   SavedQuestions: undefined;
+  Guide: undefined;
+  HowTo: undefined;
 };

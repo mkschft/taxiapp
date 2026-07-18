@@ -13,13 +13,13 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getClueGroup, getClueQuiz } from '../data/loaders';
 import type { ClueQuizQuestion } from '../data/types';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
 import type { BackendProblem } from '../lib/quizApi';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'ClueQuiz'>;
-  route: RouteProp<StudyStackParamList, 'ClueQuiz'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'ClueQuiz'>;
+  route: RouteProp<DashboardStackParamList, 'ClueQuiz'>;
 };
 
 const PASS_PCT = 75;

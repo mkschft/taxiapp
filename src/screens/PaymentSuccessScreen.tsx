@@ -19,7 +19,7 @@ export function PaymentSuccessScreen() {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteProp<RootStackParamList, 'PaymentSuccess'>>();
   const { t } = useTranslation();
-  const { state: auth, setAuth } = useAuth();
+  const { state: auth, updateUser } = useAuth();
   const [verifying, setVerifying] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,9 +39,9 @@ export function PaymentSuccessScreen() {
           }
           return;
         }
-        const user = await getMe(auth.accessToken);
+        const user = await getMe();
         if (!cancelled) {
-          await setAuth(user, auth.accessToken, auth.refreshToken!);
+          await updateUser(user);
           setVerifying(false);
         }
       } catch (err: any) {
@@ -52,7 +52,7 @@ export function PaymentSuccessScreen() {
       }
     })();
     return () => { cancelled = true; };
-  }, [sessionId, auth.accessToken, auth.refreshToken, setAuth]);
+  }, [sessionId, auth.accessToken, updateUser]);
 
   const handleContinue = () => {
     navigation.replace('App');

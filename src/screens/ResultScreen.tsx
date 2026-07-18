@@ -11,11 +11,11 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getQuestionById } from '../data/loaders';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'Result'>;
-  route: RouteProp<StudyStackParamList, 'Result'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'Result'>;
+  route: RouteProp<DashboardStackParamList, 'Result'>;
 };
 
 export function ResultScreen({ navigation, route }: Props) {

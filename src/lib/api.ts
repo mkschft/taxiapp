@@ -1,4 +1,5 @@
 import { loadItem, saveItem } from '../store/storage';
+import { decodeJwtPayload } from './jwt';
 
 const BASE_URL = 'https://api.taxipilot.fi';
 
@@ -10,11 +11,18 @@ export const AUTH_KEYS = {
 export type ApiError = { message: string; statusCode: number };
 
 type UnauthorizedHandler = () => void;
+type TokenRefreshHandler = (accessToken: string, refreshToken: string) => void;
 
 let unauthorizedHandler: UnauthorizedHandler | null = null;
+let tokenRefreshHandler: TokenRefreshHandler | null = null;
+let refreshPromise: Promise<{ accessToken: string; refreshToken: string }> | null = null;
 
 export function setUnauthorizedHandler(handler: UnauthorizedHandler | null): void {
   unauthorizedHandler = handler;
+}
+
+export function setTokenRefreshHandler(handler: TokenRefreshHandler | null): void {
+  tokenRefreshHandler = handler;
 }
 
 const AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER = new Set([
@@ -25,8 +33,14 @@ const AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER = new Set([
   '/auth/reset-password',
 ]);
 
+const REFRESH_BUFFER_MS = 60_000;
+
 async function getAccessToken(): Promise<string | null> {
   return loadItem<string | null>(AUTH_KEYS.ACCESS_TOKEN, null);
+}
+
+async function getRefreshToken(): Promise<string | null> {
+  return loadItem<string | null>(AUTH_KEYS.REFRESH_TOKEN, null);
 }
 
 export async function setTokens(accessToken: string, refreshToken: string): Promise<void> {
@@ -43,8 +57,63 @@ export async function clearTokens(): Promise<void> {
   ]);
 }
 
-async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const token = await getAccessToken();
+function isTokenExpiringSoon(token: string | null, bufferMs: number = REFRESH_BUFFER_MS): boolean {
+  if (!token) return true;
+  const payload = decodeJwtPayload(token);
+  if (!payload?.exp) return true;
+  return payload.exp * 1000 - Date.now() <= bufferMs;
+}
+
+async function performRefresh(): Promise<{ accessToken: string; refreshToken: string }> {
+  const refreshToken = await getRefreshToken();
+  if (!refreshToken) {
+    throw new Error('No refresh token available');
+  }
+
+  const res = await fetch(`${BASE_URL}/auth/refresh`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    const err: any = new Error(body.message ?? 'Failed to refresh tokens');
+    err.statusCode = res.status;
+    throw err;
+  }
+
+  const data = (await res.json()) as { accessToken: string; refreshToken: string };
+  await setTokens(data.accessToken, data.refreshToken);
+  tokenRefreshHandler?.(data.accessToken, data.refreshToken);
+  return data;
+}
+
+async function refreshAccessToken(): Promise<{ accessToken: string; refreshToken: string }> {
+  if (refreshPromise) {
+    return refreshPromise;
+  }
+
+  refreshPromise = performRefresh().finally(() => {
+    refreshPromise = null;
+  });
+
+  return refreshPromise;
+}
+
+async function request<T>(path: string, options: RequestInit = {}, retrying: boolean = false): Promise<T> {
+  let token = await getAccessToken();
+
+  if (token && isTokenExpiringSoon(token) && !retrying && !AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER.has(path)) {
+    try {
+      const refreshed = await refreshAccessToken();
+      token = refreshed.accessToken;
+    } catch {
+      // Keep the existing token and let the request proceed. If the server
+      // rejects it, the 401 handler below will attempt one reactive refresh.
+    }
+  }
+
   const url = `${BASE_URL}${path}`;
 
   const headers: Record<string, string> = {
@@ -59,9 +128,19 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(url, { ...options, headers });
 
   if (!res.ok) {
+    if (res.status === 401 && !retrying && !AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER.has(path)) {
+      try {
+        await refreshAccessToken();
+        return request<T>(path, options, true);
+      } catch {
+        // Refresh failed — clear auth below.
+      }
+    }
+
     if (res.status === 401 && !AUTH_PATHS_WITHOUT_UNAUTHORIZED_HANDLER.has(path) && unauthorizedHandler) {
       unauthorizedHandler();
     }
+
     let message = res.statusText;
     try {
       const body = await res.json();

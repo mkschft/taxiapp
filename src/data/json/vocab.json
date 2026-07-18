@@ -3,7 +3,7 @@
     {
       "id": "set-1",
       "set_no": 1,
-      "name": "Passenger Assistance & Accessibility — Part 1",
+      "name": "Passenger Assistance & Accessibility",
       "category_id": "special_needs",
       "order": 1,
       "word_count": 8,
@@ -12,7 +12,7 @@
     {
       "id": "set-2",
       "set_no": 2,
-      "name": "Passenger Assistance & Communication — Part 2",
+      "name": "Passenger Assistance & Communication",
       "category_id": "special_needs",
       "order": 2,
       "word_count": 7,

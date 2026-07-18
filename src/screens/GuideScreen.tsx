@@ -114,9 +114,7 @@ function SectionCard({ section }: { section: GuideSection }) {
           {section.id === 'clue_method' && (
             <AppButton
               label={t('guide.practiceClueWords')}
-              onPress={() => navigation.navigate('Study', {
-                screen: 'ClueWords', initial: false, params: {},
-              })}
+              onPress={() => navigation.navigate('ClueWords')}
               style={{ marginTop: spacing.md }}
             />
           )}

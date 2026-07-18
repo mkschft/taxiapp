@@ -17,11 +17,11 @@ import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
 import { cluesForScope, focusWords, optionVerdict } from '../utils/clueParser';
 import { getQuestionById } from '../data/loaders';
-import type { StudyStackParamList } from '../navigation/types';
+import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
-  navigation: NativeStackNavigationProp<StudyStackParamList, 'Practice'>;
-  route: RouteProp<StudyStackParamList, 'Practice'>;
+  navigation: NativeStackNavigationProp<DashboardStackParamList, 'Practice'>;
+  route: RouteProp<DashboardStackParamList, 'Practice'>;
 };
 
 export function PracticeScreen({ navigation, route }: Props) {
@@ -235,11 +235,15 @@ export function PracticeScreen({ navigation, route }: Props) {
         )}
 
         <View style={styles.nextBtn}>
-          {answered && (
+          {answered ? (
             <AppButton
               label={queue.length > 0 && queueIndex < queue.length - 1 ? t('practice.nextQuestion') : t('common.finish')}
               onPress={handleNext}
             />
+          ) : (
+            <Pressable onPress={handleNext} hitSlop={8} style={styles.skipBtn}>
+              <Text style={styles.skipText}>{t('practice.skip')}</Text>
+            </Pressable>
           )}
         </View>
 
@@ -311,4 +315,6 @@ const styles = StyleSheet.create({
   },
   expText: { fontSize: 13, lineHeight: 20, color: colors.text },
   nextBtn: { marginTop: 4 },
+  skipBtn: { alignSelf: 'flex-end', paddingVertical: 8, paddingHorizontal: 4 },
+  skipText: { fontSize: 14, fontFamily: font.semibold, color: colors.textSecondary },
 });

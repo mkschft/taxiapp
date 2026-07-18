@@ -1,6 +1,4 @@
 {
-  "greeting": "Good morning",
-  "tagline": "Keep going — exam day is coming!",
   "guest": {
     "title": "Track your progress",
     "body": "Create a free account to save your progress and see how close you are to exam day.",
@@ -11,7 +9,10 @@
   "pickTopic": "Pick a topic below to begin.",
   "overallProgress": "Overall progress",
   "practiced": "{{completed}} of {{total}} questions practiced",
-  "studyTitle": "Start practising",
+  "wordsTitle": "Learn Important Words",
+  "studyTitle": "Practice Questions",
+  "passRequirement": "{{correct}} correct needed out of {{total}}",
+  "takeQuiz": "Take Quiz",
   "topicPractice": {
     "title": "Topic Practice",
     "sub": "The core exam curriculum — practise by category"
@@ -27,11 +28,11 @@
   },
   "vocabulary": {
     "title": "Vocabulary",
-    "sub": "{{sets}} sets · {{words}} words"
+    "sub": "{{groups}} groups · {{words}} word cards"
   },
   "clueWords": {
     "title": "Clue Words",
-    "sub": "{{groups}} groups · {{words}} clue words"
+    "sub": "{{groups}} groups · {{words}} words"
   },
   "howTo": "How to use the app"
 }

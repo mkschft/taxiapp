@@ -1,6 +1,5 @@
 {
-  "dashboard": "Dashboard",
-  "study": "Study",
+  "dashboard": "Study",
   "tests": "Mock Exams",
   "progress": "Progress",
   "profile": "Profile"
