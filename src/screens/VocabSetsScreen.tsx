@@ -3,19 +3,17 @@ import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getCategories } from '../data/loaders';
-import { usePaywall } from '../store/paywallStore';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
-import { Paywall } from '../components/Paywall';
 import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
@@ -32,25 +30,11 @@ const SETS = getVocabSets();
 export function VocabSetsScreen({ navigation, route }: Props) {
   const [mode, setMode] = useState<'practice' | 'quiz'>(route.params?.mode === 'quiz' ? 'quiz' : 'practice');
   const isQuizMode = mode === 'quiz';
-  const { isUnlocked } = usePaywall();
   const { state: auth } = useAuth();
   const isAuthenticated = !!auth.user;
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
   const { startQuiz } = useStartQuiz();
   const { t } = useTranslation();
-  const rootNav = useNavigation<any>();
-
-  if (!isUnlocked('vocabulary')) {
-    return (
-      <Paywall
-        title={t('vocab.title')}
-        blurb={t('vocab.paywallBlurb')}
-        perks={[t('vocab.paywallPerkSets', { n: SETS.length }), t('vocab.paywallPerkBilingual'), t('vocab.paywallPerkQuiz')]}
-        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'VocabSets' })}
-      />
-    );
-  }
 
   const headerTitle = isQuizMode ? `${t('vocab.title')} · ${t('quiz.title')}` : t('vocab.title');
 

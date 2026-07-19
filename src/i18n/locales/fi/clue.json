@@ -16,9 +16,5 @@
   "quizEmpty": "Tälle ryhmälle ei ole visakysymyksiä.",
   "backToClue": "Takaisin vihjesanoihin",
   "correct": "Oikein!",
-  "correctAnswerInline": "Oikea vastaus: ",
-  "paywallBlurb": "Menetelmä, jolla vastaat kysymyksiin vaikka suomen taito olisi heikko — tunnista sanat, jotka kertovat oikean ja väärän.",
-  "paywallPerk1": "Positiiviset ja negatiiviset vihjesanat poikkeuksineen",
-  "paywallPerk2": "Lue kysymys strategisesti, ei sana sanalta",
-  "paywallPerk3": "Harjoitustietovisa jokaiselle vihjesanaryhmälle"
+  "correctAnswerInline": "Oikea vastaus: "
 }

@@ -25,10 +25,6 @@ export type AuthState = {
   user: AuthUser | null;
   accessToken: string | null;
   refreshToken: string | null;
-  /** Local-first preview: the user chose "Try free preview" and is using the
-   *  app without an account. Progress is stored locally but not synced until
-   *  they sign up. Cleared the moment a real account is set. */
-  guest: boolean;
   /** The first-run onboarding carousel has been completed. Persisted so it is
    *  shown once and skipped on every later launch. Reset on logout. */
   onboardingSeen: boolean;
@@ -39,7 +35,6 @@ const AUTH_STORAGE_KEYS = {
   USER: '@taxi/authUser',
   ACCESS_TOKEN: '@taxi/accessToken',
   REFRESH_TOKEN: '@taxi/refreshToken',
-  GUEST: '@taxi/guest',
   ONBOARDING_SEEN: '@taxi/onboardingSeen',
 } as const;
 
@@ -50,21 +45,35 @@ export function hasActivePaidPlan(subscription: SubscriptionInfo): boolean {
   return true;
 }
 
+// Plan types that unlock everything (all modules, all mock exams). Kept as a
+// literal list rather than "anything that isn't free_preview/day pass" so a
+// future partial tier doesn't silently become full-access.
+const FULL_ACCESS_PLAN_TYPES = ['7_day', '14_day'];
+// The single-day pass: mock exams (a fixed subset) + vocab/clue only — see
+// paywallStore for what it does and doesn't unlock.
+const DAY_PASS_PLAN_TYPES = ['1_day'];
+
+export function hasFullAccessPlan(subscription: SubscriptionInfo): boolean {
+  return hasActivePaidPlan(subscription) && FULL_ACCESS_PLAN_TYPES.includes(subscription.planType);
+}
+
+export function hasDayPassPlan(subscription: SubscriptionInfo): boolean {
+  return hasActivePaidPlan(subscription) && DAY_PASS_PLAN_TYPES.includes(subscription.planType);
+}
+
 const AuthContext = createContext<{
   state: AuthState;
   setAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;
   setTokens: (accessToken: string, refreshToken: string) => Promise<void>;
   updateUser: (patch: Partial<AuthUser>) => Promise<void>;
-  enterGuest: () => Promise<void>;
   markOnboardingSeen: () => Promise<void>;
   completeReturningUserAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;
   clearAuth: () => Promise<void>;
 }>({
-  state: { user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false, hydrated: false },
+  state: { user: null, accessToken: null, refreshToken: null, onboardingSeen: false, hydrated: false },
   setAuth: async () => {},
   setTokens: async () => {},
   updateUser: async () => {},
-  enterGuest: async () => {},
   markOnboardingSeen: async () => {},
   completeReturningUserAuth: async () => {},
   clearAuth: async () => {},
@@ -75,23 +84,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user: null,
     accessToken: null,
     refreshToken: null,
-    guest: false,
     onboardingSeen: false,
     hydrated: false,
   });
 
   useEffect(() => {
     (async () => {
-      const [rawUser, accessToken, refreshToken, guest, onboardingSeen] = await Promise.all([
+      const [rawUser, accessToken, refreshToken, onboardingSeen] = await Promise.all([
         loadItem<AuthUser | null>(AUTH_STORAGE_KEYS.USER, null),
         loadItem<string | null>(AUTH_STORAGE_KEYS.ACCESS_TOKEN, null),
         loadItem<string | null>(AUTH_STORAGE_KEYS.REFRESH_TOKEN, null),
-        loadItem<boolean>(AUTH_STORAGE_KEYS.GUEST, false),
         loadItem<boolean>(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, false),
       ]);
       // Migrate legacy users that were created before email verification existed.
       const user = rawUser ? { ...rawUser, emailVerified: rawUser.emailVerified ?? true } : null;
-      setState({ user, accessToken, refreshToken, guest: !user && guest, onboardingSeen, hydrated: true });
+      setState({ user, accessToken, refreshToken, onboardingSeen, hydrated: true });
     })();
   }, []);
 
@@ -99,8 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void saveItem(AUTH_STORAGE_KEYS.USER, user);
     void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
-    void saveItem(AUTH_STORAGE_KEYS.GUEST, false); // a real account supersedes guest
-    setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false }));
+    setState(prev => ({ ...prev, user, accessToken, refreshToken }));
   }, []);
 
   const setTokens = useCallback(async (accessToken: string, refreshToken: string) => {
@@ -118,11 +124,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const enterGuest = useCallback(async () => {
-    void saveItem(AUTH_STORAGE_KEYS.GUEST, true);
-    setState(prev => ({ ...prev, guest: true }));
-  }, []);
-
   const markOnboardingSeen = useCallback(async () => {
     void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, true);
     setState(prev => ({ ...prev, onboardingSeen: true }));
@@ -132,18 +133,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void saveItem(AUTH_STORAGE_KEYS.USER, user);
     void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
-    void saveItem(AUTH_STORAGE_KEYS.GUEST, false);
     void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, true);
-    setState(prev => ({ ...prev, user, accessToken, refreshToken, guest: false, onboardingSeen: true }));
+    setState(prev => ({ ...prev, user, accessToken, refreshToken, onboardingSeen: true }));
   }, []);
 
   const clearAuth = useCallback(async () => {
     void saveItem(AUTH_STORAGE_KEYS.USER, null);
     void saveItem(AUTH_STORAGE_KEYS.ACCESS_TOKEN, null);
     void saveItem(AUTH_STORAGE_KEYS.REFRESH_TOKEN, null);
-    void saveItem(AUTH_STORAGE_KEYS.GUEST, false);
     void saveItem(AUTH_STORAGE_KEYS.ONBOARDING_SEEN, false);
-    setState(prev => ({ ...prev, user: null, accessToken: null, refreshToken: null, guest: false, onboardingSeen: false }));
+    setState(prev => ({ ...prev, user: null, accessToken: null, refreshToken: null, onboardingSeen: false }));
   }, []);
 
   useEffect(() => {
@@ -165,7 +164,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     async function refresh() {
       const token = state.accessToken;
-      if (!token || state.guest) return;
+      if (!token) return;
       try {
         const user = await getMe();
         if (!cancelled) {
@@ -193,18 +192,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       cancelled = true;
       sub.remove();
     };
-  }, [state.accessToken, state.guest]);
+  }, [state.accessToken]);
 
   const value = useMemo(() => ({
     state,
     setAuth,
     setTokens,
     updateUser,
-    enterGuest,
     markOnboardingSeen,
     completeReturningUserAuth,
     clearAuth,
-  }), [state, setAuth, setTokens, updateUser, enterGuest, markOnboardingSeen, completeReturningUserAuth, clearAuth]);
+  }), [state, setAuth, setTokens, updateUser, markOnboardingSeen, completeReturningUserAuth, clearAuth]);
 
   return (
     <AuthContext.Provider value={value}>

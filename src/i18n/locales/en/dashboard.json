@@ -1,9 +1,4 @@
 {
-  "guest": {
-    "title": "Track your progress",
-    "body": "Create a free account to save your progress and see how close you are to exam day.",
-    "cta": "Create account"
-  },
   "ready": "Ready to start?",
   "startTitle": "{{n}} questions across your exam topics",
   "pickTopic": "Pick a topic below to begin.",

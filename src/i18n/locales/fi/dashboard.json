@@ -1,9 +1,4 @@
 {
-  "guest": {
-    "title": "Seuraa edistymistäsi",
-    "body": "Luo ilmainen tili tallentaaksesi edistymisesi ja nähdäksesi, kuinka lähellä koepäivää olet.",
-    "cta": "Luo tili"
-  },
   "ready": "Valmiina aloittamaan?",
   "startTitle": "{{n}} kysymystä tutkinnon aiheista",
   "pickTopic": "Valitse aihe alta aloittaaksesi.",

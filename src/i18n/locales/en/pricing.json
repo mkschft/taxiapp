@@ -1,40 +1,45 @@
 {
   "title": "Choose a plan",
-  "headline": "Full access to all features",
-  "subtitle": "Vocabulary, clue words, topic practice, explanations, and mock exams. Only the access duration changes.",
+  "headline": "Study for free. Upgrade for full access.",
+  "subtitle": "Every account gets one free topic per module plus all of Vocabulary and Clue Words. Paid passes unlock the rest for a fixed number of days.",
   "mostPopular": "Most Popular",
   "active": "Active",
   "plans": {
     "free": {
-      "name": "Free Preview",
-      "description": "Try the app without any commitment.",
-      "perk1": "1 vocabulary page",
-      "perk2": "4 practice questions",
-      "button": "Start free preview"
+      "name": "Free",
+      "description": "Included with every account, no time limit.",
+      "perk1": "1 topic in each of the 4 modules",
+      "perk2": "Full Vocabulary & Clue Words",
+      "button": "Continue with free"
     },
-    "day3": {
-      "name": "3-Day Pass",
-      "description": "Quick revision before the exam.",
-      "perk1": "Full access for 3 days",
-      "button": "Get 3-day access"
+    "day1": {
+      "name": "Day Pass",
+      "description": "Test your exam readiness with 2 mock exams. Expires after 1 day.",
+      "perk1": "2 mock exams",
+      "perk2": "Full Vocabulary & Clue Words",
+      "button": "Get 1-day access — €5"
     },
     "day7": {
-      "name": "7-Day Pass",
-      "description": "Balanced and focused preparation.",
-      "perk1": "Full access for 7 days",
-      "button": "Get 7-day access"
+      "name": "Week Pass",
+      "description": "Full study access for a focused week of prep. Expires after 7 days.",
+      "perk1": "All 4 modules, every topic",
+      "perk2": "All 5 mock exams",
+      "perk3": "Full Vocabulary & Clue Words",
+      "button": "Get 7-day access — €50"
     },
     "day14": {
-      "name": "14-Day Pass",
-      "description": "Complete preparation with more practice.",
-      "perk1": "Full access for 14 days",
-      "button": "Get 14-day access"
+      "name": "Two-Week Pass",
+      "description": "Full study access with extra runway before the exam. Expires after 14 days.",
+      "perk1": "All 4 modules, every topic",
+      "perk2": "All 5 mock exams",
+      "perk3": "Full Vocabulary & Clue Words",
+      "button": "Get 14-day access — €100"
     }
   },
   "signInRequiredTitle": "Sign in required",
   "signInRequiredBody": "Please log in or create an account to purchase access.",
-  "activeSubTitle": "Active subscription",
-  "activeSubBody": "You already have an active subscription.",
+  "activeSubTitle": "Already active",
+  "activeSubBody": "You already have this plan active.",
   "checkoutFailedTitle": "Checkout failed",
   "checkoutFailedBody": "Could not start checkout. Please try again.",
   "verifying": "Verifying your payment…",
@@ -43,7 +48,7 @@
   "errorVerifyFailed": "Could not verify payment. Please contact support.",
   "goToDashboard": "Go to Dashboard",
   "successTitle": "Payment successful!",
-  "successBody": "Your subscription is now active. Enjoy full access to all features.",
+  "successBody": "Your pass is now active. Enjoy full access until it expires.",
   "cancelTitle": "Payment cancelled",
   "cancelBody": "No worries — you can try again whenever you are ready.",
   "backToPlans": "Back to plans"

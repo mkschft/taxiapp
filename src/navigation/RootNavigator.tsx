@@ -34,7 +34,7 @@ export function RootNavigator() {
     );
   }
 
-  const entered = !!(state.user || state.guest);
+  const entered = !!state.user;
   const needsVerification = entered && state.user && !state.user.emailVerified;
 
   let initialRouteName: keyof RootStackParamList;

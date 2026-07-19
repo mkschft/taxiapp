@@ -18,7 +18,6 @@ import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { clearAll } from '../store/storage';
 import { updateExpectedExamDate } from '../lib/authApi';
 import { useProgress } from '../hooks/useProgress';
-import { GuestOverlay } from '../components/GuestOverlay';
 
 /** today + n weeks, as an ISO date string (YYYY-MM-DD). */
 function weeksFromNow(n: number): string {
@@ -57,8 +56,7 @@ function SettingRow({
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
   const { state: auth, clearAuth, updateUser } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-  const { data: progress } = useProgress(!isGuest);
+  const { data: progress } = useProgress(true);
   const { t, i18n } = useTranslation();
   const lang = (i18n.language === 'fi' ? 'fi' : 'en') as AppLanguage;
   const { saved } = useSavedQuestions();
@@ -295,7 +293,6 @@ export function ProfileScreen() {
           </Pressable>
         </Pressable>
       </Modal>
-      <GuestOverlay blurb={t('profile.guestBlurb')} />
     </SafeAreaView>
   );
 }

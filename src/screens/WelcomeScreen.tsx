@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
-import { useAuth } from '../store/authStore';
 
 type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Welcome'> };
 
@@ -19,14 +18,6 @@ const FEATURES: { Icon: LucideIcon; tint: string; titleKey: string; bodyKey: str
 
 export function WelcomeScreen({ navigation }: Props) {
   const { t } = useTranslation();
-  const { enterGuest } = useAuth();
-
-  // Local-first preview. Guests can browse "How to use the app" + the Exam
-  // Guide; everything else is locked until they create an account.
-  const continueAsGuest = async () => {
-    await enterGuest();
-    navigation.replace('Onboarding');
-  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -72,9 +63,6 @@ export function WelcomeScreen({ navigation }: Props) {
             onPress={() => navigation.navigate('Login')}
             style={{ marginTop: spacing.sm }}
           />
-          <Text style={styles.guestLink} onPress={continueAsGuest}>
-            {t('auth.guestPreview')}
-          </Text>
         </View>
 
       </View>
@@ -108,8 +96,4 @@ const styles = StyleSheet.create({
   featureTitle: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.text },
   featureBody: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
   actions: {},
-  guestLink: {
-    fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium,
-    textAlign: 'center', marginTop: spacing.md, paddingVertical: spacing.xs,
-  },
 });

@@ -9,8 +9,6 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { useProgress } from '../hooks/useProgress';
-import { GuestOverlay } from '../components/GuestOverlay';
-import { useAuth } from '../store/authStore';
 import { localizedPair } from '../i18n/content';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
 
@@ -21,9 +19,7 @@ const TOTAL_VOCAB = getVocabWordTotal();
 export function ProgressScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
-  const { state: auth } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-  const { data: progress, loading } = useProgress(!isGuest);
+  const { data: progress, loading } = useProgress(true);
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -154,7 +150,6 @@ export function ProgressScreen() {
 
         <View style={{ height: 32 }} />
       </ScrollView>
-      <GuestOverlay blurb={t('progress.guestBlurb')} />
     </SafeAreaView>
   );
 }

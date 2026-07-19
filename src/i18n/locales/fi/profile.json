@@ -32,6 +32,5 @@
   "examDateModalSub": "Valitse pikavalinta tai kirjoita tarkka päivämäärä.",
   "exactDate": "Tarkka päivämäärä (YYYY-MM-DD)",
   "saveDate": "Tallenna päivämäärä",
-  "clearDate": "Tyhjennä päivämäärä",
-  "guestBlurb": "Rekisteröidy tai kirjaudu sisään hallitaksesi profiiliasi, asettaaksesi koepäiväsi ja nähdäksesi tilauksesi."
+  "clearDate": "Tyhjennä päivämäärä"
 }

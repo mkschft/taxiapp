@@ -32,6 +32,5 @@
   "examDateModalSub": "Pick a quick option or type the exact date.",
   "exactDate": "Exact date (YYYY-MM-DD)",
   "saveDate": "Save date",
-  "clearDate": "Clear date",
-  "guestBlurb": "Sign up or log in to manage your profile, set your exam date, and view your subscription."
+  "clearDate": "Clear date"
 }

@@ -14,9 +14,5 @@
   "backToSet": "Back to group",
   "correct": "Correct!",
   "correctAnswerInline": "Correct answer: ",
-  "setNotFound": "Group not found.",
-  "paywallBlurb": "Learn the exact Finnish words the exam uses — with English meanings and inflected forms.",
-  "paywallPerkSets": "{{n}} themed groups · the words that appear on the real exam",
-  "paywallPerkBilingual": "Bilingual cards (Finnish + English)",
-  "paywallPerkQuiz": "Built-in quiz after every group"
+  "setNotFound": "Group not found."
 }

@@ -23,6 +23,7 @@ import type { Question } from '../data/types';
 import type { DashboardStackParamList } from '../navigation/types';
 import { getProblemSet, submitAnswer, completeSession } from '../lib/quizApi';
 import type { BackendProblem } from '../lib/quizApi';
+import { loadItem, saveItem, removeItem } from '../store/storage';
 
 type Props = {
   navigation: NativeStackNavigationProp<DashboardStackParamList, 'ModuleQuiz'>;
@@ -40,6 +41,16 @@ type ModuleQuestion = {
 };
 
 const DEFAULT_PASS_PCT = 70;
+const RESUME_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+const progressKey = (sectionId: string) => `@taxi/moduleQuizProgress:${sectionId}`;
+
+type SavedProgress = {
+  questions: ModuleQuestion[];
+  answers: Record<string, Choice>;
+  qIndex: number;
+  startedAt: number;
+};
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -95,7 +106,7 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
   const { t, i18n } = useTranslation();
   const { isSaved, toggle } = useSavedQuestions();
   const { state: authState } = useAuth();
-  const { isUnlocked } = usePaywall();
+  const { hasFullAccess } = usePaywall();
   const isAuthenticated = !!authState.user;
   const rootNav = useNavigation<any>();
 
@@ -115,21 +126,54 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
   const answersRef = useRef(answers);
   answersRef.current = answers;
 
+  const [hydrated, setHydrated] = useState(false);
+
   useEffect(() => {
-    if (problemSetId) {
-      setLoading(true);
-      getProblemSet(problemSetId)
-        .then(ps => setQuestions(ps.problems.map(fromBackend)))
-        .catch(e => setError(e instanceof Error ? e.message : t('moduleQuiz.loadError')))
-        .finally(() => setLoading(false));
-    } else if (section) {
-      const pool = getTopicSectionQuestionIds(sectionId)
-        .map(getQuestionById)
-        .filter((q): q is Question => !!q);
-      const size = section.pass_total ?? pool.length;
-      setQuestions(shuffle(pool).slice(0, size).map(fromLocal));
-    }
+    let cancelled = false;
+
+    (async () => {
+      const saved = await loadItem<SavedProgress | null>(progressKey(sectionId), null);
+      if (saved && Date.now() - saved.startedAt < RESUME_MAX_AGE_MS && saved.questions.length > 0) {
+        if (cancelled) return;
+        setQuestions(saved.questions);
+        setAnswers(saved.answers);
+        setQIndex(Math.min(saved.qIndex, saved.questions.length - 1));
+        startTimeRef.current = saved.startedAt;
+        setLoading(false);
+        setHydrated(true);
+        return;
+      }
+      if (saved) void removeItem(progressKey(sectionId));
+
+      if (problemSetId) {
+        setLoading(true);
+        try {
+          const ps = await getProblemSet(problemSetId);
+          if (!cancelled) setQuestions(ps.problems.map(fromBackend));
+        } catch (e) {
+          if (!cancelled) setError(e instanceof Error ? e.message : t('moduleQuiz.loadError'));
+        } finally {
+          if (!cancelled) setLoading(false);
+        }
+      } else if (section) {
+        const pool = getTopicSectionQuestionIds(sectionId)
+          .map(getQuestionById)
+          .filter((q): q is Question => !!q);
+        const size = section.pass_total ?? pool.length;
+        if (!cancelled) setQuestions(shuffle(pool).slice(0, size).map(fromLocal));
+      }
+      if (!cancelled) setHydrated(true);
+    })();
+
+    return () => { cancelled = true; };
   }, [problemSetId, sectionId, section, t]);
+
+  useEffect(() => {
+    if (!hydrated || loading || questions.length === 0) return;
+    void saveItem(progressKey(sectionId), {
+      questions, answers, qIndex, startedAt: startTimeRef.current,
+    } satisfies SavedProgress);
+  }, [hydrated, loading, sectionId, questions, answers, qIndex]);
 
   const submit = useCallback(async (auto: boolean) => {
     if (questions.length === 0 || !section) return;
@@ -167,6 +211,8 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
       }
     }
 
+    void removeItem(progressKey(sectionId));
+
     navigation.replace('Result', {
       mode: 'quiz',
       label,
@@ -177,9 +223,9 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
       answers: finalAnswers,
       passed: pct >= passPct,
     });
-  }, [questions, navigation, section, sessionId, i18n.language, t, passPct]);
+  }, [questions, navigation, section, sessionId, sectionId, i18n.language, t, passPct]);
 
-  if (isAuthenticated && !isUnlocked('topic_practice')) {
+  if (isAuthenticated && !hasFullAccess()) {
     return (
       <Paywall
         title={t('topic.title')}
@@ -244,7 +290,7 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
         <TouchableOpacity onPress={() => confirm(
-          t('modelTest.quitTitle'), t('modelTest.quitMessage'), t('modelTest.quit'), t('common.cancel'), () => navigation.goBack(),
+          t('moduleQuiz.closeTitle'), t('moduleQuiz.closeMessage'), t('moduleQuiz.close'), t('common.cancel'), () => navigation.goBack(),
         )} style={styles.backBtn}>
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>

@@ -18,6 +18,14 @@ export async function saveItem<T>(key: string, value: T): Promise<void> {
   }
 }
 
+export async function removeItem(key: string): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(key);
+  } catch {
+    // silently fail — progress is best-effort
+  }
+}
+
 export async function clearAll(): Promise<void> {
   try {
     await AsyncStorage.clear();

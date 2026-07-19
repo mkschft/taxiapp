@@ -1,4 +1,7 @@
 {
   "loadError": "Failed to load quiz",
-  "notFound": "Module not found."
+  "notFound": "Module not found.",
+  "closeTitle": "Close quiz?",
+  "closeMessage": "You can pick up right where you left off next time.",
+  "close": "Close"
 }

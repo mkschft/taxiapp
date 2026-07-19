@@ -46,7 +46,7 @@ export function LoginScreen({ route }: Props) {
 
   const handleLogin = async () => {
     if (!validate()) return;
-    const upgradingGuest = !!(auth.user || auth.guest);
+    const alreadySignedIn = !!auth.user;
     setLoading(true);
     try {
       const { accessToken, refreshToken, user } = await post<{
@@ -81,7 +81,7 @@ export function LoginScreen({ route }: Props) {
             params: redirect.params,
           },
         });
-      } else if (upgradingGuest) {
+      } else if (alreadySignedIn) {
         navigation.goBack();
       } else {
         navigation.replace('App');

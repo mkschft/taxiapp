@@ -16,9 +16,5 @@
   "quizEmpty": "No quiz questions for this group.",
   "backToClue": "Back to clue words",
   "correct": "Correct!",
-  "correctAnswerInline": "Correct answer: ",
-  "paywallBlurb": "The method that lets you answer questions even with weak Finnish — spot the words that signal right vs wrong.",
-  "paywallPerk1": "Positive & negative clue words, with their exceptions",
-  "paywallPerk2": "Read a question strategically, not word-by-word",
-  "paywallPerk3": "Practice quiz for each clue group"
+  "correctAnswerInline": "Correct answer: "
 }

@@ -14,9 +14,5 @@
   "backToSet": "Takaisin ryhmään",
   "correct": "Oikein!",
   "correctAnswerInline": "Oikea vastaus: ",
-  "setNotFound": "Ryhmää ei löytynyt.",
-  "paywallBlurb": "Opi täsmälleen ne suomen sanat, joita kokeessa käytetään — englanninkielisin merkityksin ja taivutusmuodoin.",
-  "paywallPerkSets": "{{n}} teemoitettua ryhmää · sanat, jotka esiintyvät oikeassa kokeessa",
-  "paywallPerkBilingual": "Kaksikieliset kortit (suomi + englanti)",
-  "paywallPerkQuiz": "Sisäänrakennettu tietovisa jokaisen ryhmän jälkeen"
+  "setNotFound": "Ryhmää ei löytynyt."
 }
