@@ -7,9 +7,8 @@
   "sectionMeta": "{{topics}} topics · {{questions}} questions",
   "authTitle": "Sign in to practise this section",
   "authBody": "Create a free account to drill real exam-style questions one lesson at a time.",
-  "paywallBlurb": "Drill real exam-style questions one official section at a time, with the real pass thresholds.",
-  "paywallPerkAll": "All 4 official exam sections",
-  "paywallPerkSections": "{{n}} official exam sections",
+  "paywallBlurb": "You already have 1 free topic in every module. The full module quiz covers all of them at once — upgrade to a Week or Two-Week Pass to take it.",
+  "paywallPerkAll": "All topics in every module",
   "paywallPerkExplained": "Every answer explained, with the clue lens",
-  "paywallPerkPassMark": "Practise at the real per-section pass mark"
+  "paywallPerkPassMark": "Scored at the real per-module pass mark"
 }

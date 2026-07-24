@@ -1,40 +1,45 @@
 {
   "title": "Valitse tilaus",
-  "headline": "Täysi pääsy kaikkiin ominaisuuksiin",
-  "subtitle": "Sanasto, vihjesanat, aiheharjoittelu, selitykset ja mallikokeet. Vain käyttöaika vaihtelee.",
+  "headline": "Opiskele ilmaiseksi. Päivitä saadaksesi täyden pääsyn.",
+  "subtitle": "Jokainen tili sisältää yhden ilmaisen aiheen jokaisesta moduulista sekä koko Sanaston ja Vihjesanat. Maksulliset paketit avaavat lopun tietyksi määräksi päiviä.",
   "mostPopular": "Suosituin",
   "active": "Aktiivinen",
   "plans": {
     "free": {
-      "name": "Ilmainen esikatselu",
-      "description": "Kokeile sovellusta ilman sitoutumista.",
-      "perk1": "1 sanastosivu",
-      "perk2": "4 harjoituskysymystä",
-      "button": "Aloita ilmainen esikatselu"
+      "name": "Ilmainen",
+      "description": "Sisältyy jokaiseen tiliin, ei aikarajaa.",
+      "perk1": "1 aihe jokaisesta 4 moduulista",
+      "perk2": "Koko Sanasto ja Vihjesanat",
+      "button": "Jatka ilmaiseksi"
     },
-    "day3": {
-      "name": "3 päivän pääsy",
-      "description": "Nopea kertaus ennen koetta.",
-      "perk1": "Täysi pääsy 3 päivän ajan",
-      "button": "Hanki 3 päivän pääsy"
+    "day1": {
+      "name": "Päiväpaketti",
+      "description": "Testaa koevalmiutesi 2 mallikokeella. Vanhenee 1 päivän kuluttua.",
+      "perk1": "2 mallikoetta",
+      "perk2": "Koko Sanasto ja Vihjesanat",
+      "button": "Hanki 1 päivän pääsy — 5 €"
     },
     "day7": {
-      "name": "7 päivän pääsy",
-      "description": "Tasapainoinen ja keskittynyt valmistautuminen.",
-      "perk1": "Täysi pääsy 7 päivän ajan",
-      "button": "Hanki 7 päivän pääsy"
+      "name": "Viikkopaketti",
+      "description": "Täysi opiskelupääsy keskittyneelle valmistautumisviikolle. Vanhenee 7 päivän kuluttua.",
+      "perk1": "Kaikki 4 moduulia, jokainen aihe",
+      "perk2": "Kaikki 5 mallikoetta",
+      "perk3": "Koko Sanasto ja Vihjesanat",
+      "button": "Hanki 7 päivän pääsy — 50 €"
     },
     "day14": {
-      "name": "14 päivän pääsy",
-      "description": "Kattava valmistautuminen ja enemmän harjoittelua.",
-      "perk1": "Täysi pääsy 14 päivän ajan",
-      "button": "Hanki 14 päivän pääsy"
+      "name": "Kahden viikon paketti",
+      "description": "Täysi opiskelupääsy ja enemmän aikaa ennen koetta. Vanhenee 14 päivän kuluttua.",
+      "perk1": "Kaikki 4 moduulia, jokainen aihe",
+      "perk2": "Kaikki 5 mallikoetta",
+      "perk3": "Koko Sanasto ja Vihjesanat",
+      "button": "Hanki 14 päivän pääsy — 100 €"
     }
   },
   "signInRequiredTitle": "Kirjautuminen vaaditaan",
   "signInRequiredBody": "Kirjaudu sisään tai luo tili ostaaksesi pääsyn.",
-  "activeSubTitle": "Aktiivinen tilaus",
-  "activeSubBody": "Sinulla on jo aktiivinen tilaus.",
+  "activeSubTitle": "Jo aktiivinen",
+  "activeSubBody": "Tämä paketti on jo sinulla aktiivisena.",
   "checkoutFailedTitle": "Maksun aloitus epäonnistui",
   "checkoutFailedBody": "Maksua ei voitu aloittaa. Yritä uudelleen.",
   "verifying": "Vahvistetaan maksuasi…",
@@ -43,7 +48,7 @@
   "errorVerifyFailed": "Maksua ei voitu vahvistaa. Ota yhteyttä tukeen.",
   "goToDashboard": "Siirry koontinäyttöön",
   "successTitle": "Maksu onnistui!",
-  "successBody": "Tilauksesi on nyt aktiivinen. Nauti täydestä pääsystä kaikkiin ominaisuuksiin.",
+  "successBody": "Pakettisi on nyt aktiivinen. Nauti täydestä pääsystä sen voimassaolon ajan.",
   "cancelTitle": "Maksu peruutettu",
   "cancelBody": "Ei hätää — voit yrittää uudelleen milloin tahansa olet valmis.",
   "backToPlans": "Takaisin tilauksiin"

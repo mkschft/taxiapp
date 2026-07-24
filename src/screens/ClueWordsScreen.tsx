@@ -14,8 +14,6 @@ import { getClueGroups } from '../data/loaders';
 import { useAuth } from '../store/authStore';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { AuthPrompt } from '../components/AuthPrompt';
-import { usePaywall } from '../store/paywallStore';
-import { Paywall } from '../components/Paywall';
 import type { ClueTone } from '../data/types';
 import type { DashboardStackParamList } from '../navigation/types';
 
@@ -44,21 +42,8 @@ export function ClueWordsScreen({ route }: Props) {
   const navigation = useNavigation<any>();
   const { state: authState } = useAuth();
   const { startQuiz } = useStartQuiz();
-  const { isUnlocked } = usePaywall();
   const { t } = useTranslation();
   const isAuthenticated = !!authState.user;
-
-  if (!isUnlocked('clue_words')) {
-    return (
-      <Paywall
-        title={t('clue.title')}
-        blurb={t('clue.paywallBlurb')}
-        perks={[t('clue.paywallPerk1'), t('clue.paywallPerk2'), t('clue.paywallPerk3')]}
-        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
-        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'ClueWords' })}
-      />
-    );
-  }
 
   const headerTitle = isQuizMode ? `${t('clue.title')} · ${t('quiz.title')}` : t('clue.title');
 

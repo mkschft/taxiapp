@@ -1,4 +1,7 @@
 {
   "loadError": "Tentin lataaminen epäonnistui",
-  "notFound": "Moduulia ei löytynyt."
+  "notFound": "Moduulia ei löytynyt.",
+  "closeTitle": "Suljetaanko tentti?",
+  "closeMessage": "Voit jatkaa siitä mihin jäit ensi kerralla.",
+  "close": "Sulje"
 }

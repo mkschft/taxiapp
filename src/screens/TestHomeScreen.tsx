@@ -2,37 +2,20 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { Clock, ClipboardList, CircleCheck } from 'lucide-react-native';
+import { Clock, ClipboardList, CircleCheck, Lock } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { localizedPair } from '../i18n/content';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
-import { useAuth } from '../store/authStore';
-import { Paywall } from '../components/Paywall';
-import { GuestOverlay } from '../components/GuestOverlay';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
   const tests = getModelTests();
   const { startQuiz, loading } = useStartQuiz();
-  const { isUnlocked } = usePaywall();
-  const { state: auth } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-
-  if (!isGuest && !isUnlocked('model_tests')) {
-    return (
-      <Paywall
-        title={t('testHome.title')}
-        blurb={t('testHome.paywallBlurb')}
-        perks={[t('testHome.perkExams', { n: tests.length }), t('testHome.perkScored'), t('testHome.perkReview')]}
-        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard'))}
-        onSubscribe={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
-      />
-    );
-  }
+  const { isMockTestUnlocked } = usePaywall();
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -44,28 +27,38 @@ export function TestHomeScreen() {
       <ScrollView contentContainerStyle={styles.scroll}>
         {tests.map(test => {
           const { primary } = localizedPair(test.title_fi, test.title_en, i18n.language);
+          const unlocked = isMockTestUnlocked(test.id);
           return (
-          <View key={test.id} style={styles.testCard}>
+          <View key={test.id} style={[styles.testCard, !unlocked && styles.testCardLocked]}>
             <View style={styles.cardHeader}>
               <Text style={styles.testTitle}>{primary}</Text>
+              {!unlocked && <Lock size={16} color={colors.textTertiary} strokeWidth={2.2} />}
             </View>
             <View style={styles.metaRow}>
               <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.minutes', { n: test.time_minutes })}</Text></View>
               <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('common.questionsCount', { n: test.question_ids.length })}</Text></View>
               <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.pass', { n: test.pass_mark })}</Text></View>
             </View>
-            <AppButton
-              label={`${t('testHome.startTest')} →`}
-              disabled={loading}
-              onPress={() => startQuiz(`model-test/${test.id}`, 'ModelTest', { testId: test.id })}
-              style={{ marginTop: spacing.sm }}
-            />
+            {unlocked ? (
+              <AppButton
+                label={`${t('testHome.startTest')} →`}
+                disabled={loading}
+                onPress={() => startQuiz(`model-test/${test.id}`, 'ModelTest', { testId: test.id })}
+                style={{ marginTop: spacing.sm }}
+              />
+            ) : (
+              <AppButton
+                label={t('testHome.unlock')}
+                variant="secondary"
+                onPress={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
+                style={{ marginTop: spacing.sm }}
+              />
+            )}
           </View>
           );
         })}
         <View style={{ height: 32 }} />
       </ScrollView>
-      <GuestOverlay blurb={t('testHome.guestBlurb')} />
     </SafeAreaView>
   );
 }
@@ -85,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg,
     ...shadow.sm,
   },
+  testCardLocked: { backgroundColor: colors.surfaceAlt },
   cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
   testTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   scoreBadge: {

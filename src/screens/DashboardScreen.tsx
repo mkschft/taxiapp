@@ -4,14 +4,11 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { UserPlus, ChevronRight, type LucideIcon } from 'lucide-react-native';
+import { ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
-import { AppButton } from '../components/ui/AppButton';
-import { useAuth } from '../store/authStore';
-import { isGuestLocked } from '../lib/access';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
@@ -47,50 +44,25 @@ const WORDS: WordsCard[] = [
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
-  const { state: auth } = useAuth();
-  const isGuest = auth.guest && !auth.user;
-  const { data: progress, loading } = useProgress(!isGuest);
+  const { data: progress, loading } = useProgress(true);
   const { startQuiz } = useStartQuiz();
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
   const completion = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100);
 
-  const openScreen = (screen: string) => {
-    if (isGuestLocked(screen, isGuest)) navigation.navigate('Signup');
-    else navigation.navigate(screen);
-  };
+  const openScreen = (screen: string) => navigation.navigate(screen);
 
-  const openModule = (sectionId: string) => {
-    if (isGuestLocked('TopicLessons', isGuest)) navigation.navigate('Signup');
-    else navigation.navigate('TopicLessons', { sectionId });
-  };
+  const openModule = (sectionId: string) => navigation.navigate('TopicLessons', { sectionId });
 
-  const startModuleQuiz = (sectionId: string, categoryId: string) => {
-    if (isGuestLocked('ModuleQuiz', isGuest)) navigation.navigate('Signup');
-    else startQuiz(`topic/${categoryId}/module-quiz`, 'ModuleQuiz', { sectionId });
-  };
+  const startModuleQuiz = (sectionId: string, categoryId: string) =>
+    startQuiz(`topic/${categoryId}/module-quiz`, 'ModuleQuiz', { sectionId });
 
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Progress card */}
-        {isGuest ? (
-          <View style={styles.guestCard}>
-            <View style={styles.guestIcon}>
-              <UserPlus size={20} color={colors.primary} strokeWidth={2.1} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.guestTitle}>{t('dashboard.guest.title')}</Text>
-              <Text style={styles.guestBody}>{t('dashboard.guest.body')}</Text>
-            </View>
-            <AppButton
-              label={t('dashboard.guest.cta')}
-              onPress={() => navigation.navigate('Signup')}
-              style={{ marginTop: spacing.sm }}
-            />
-          </View>
-        ) : !loading && totalCompleted === 0 ? (
+        {!loading && totalCompleted === 0 ? (
           // Fresh signed-in user: an encouraging start card instead of a flat 0%.
           <View style={styles.progressCard}>
             <View style={{ flex: 1 }}>
@@ -240,16 +212,4 @@ const styles = StyleSheet.create({
   rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
-
-  guestCard: {
-    margin: spacing.md, backgroundColor: colors.primaryTint,
-    borderWidth: 1, borderColor: colors.primary,
-    borderRadius: radius.md, padding: spacing.md, gap: 8,
-  },
-  guestIcon: {
-    width: 34, height: 34, borderRadius: radius.sm,
-    backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center',
-  },
-  guestTitle: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
-  guestBody: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
 });

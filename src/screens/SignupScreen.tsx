@@ -53,7 +53,7 @@ export function SignupScreen({ route }: Props) {
 
   const handleSignup = async () => {
     if (!validate()) return;
-    const upgradingGuest = !!(auth.user || auth.guest);
+    const alreadySignedIn = !!auth.user;
     setLoading(true);
     try {
       const code = referralCode.trim().toUpperCase();
@@ -83,7 +83,7 @@ export function SignupScreen({ route }: Props) {
             params: redirect.params,
           },
         });
-      } else if (upgradingGuest) {
+      } else if (alreadySignedIn) {
         navigation.goBack();
       } else if (!auth.onboardingSeen) {
         // Brand-new signup that comes back already verified: still show the

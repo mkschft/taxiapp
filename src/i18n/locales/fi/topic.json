@@ -7,9 +7,8 @@
   "sectionMeta": "{{topics}} aihetta · {{questions}} kysymystä",
   "authTitle": "Kirjaudu harjoitellaksesi tätä osiota",
   "authBody": "Luo ilmainen tili harjoitellaksesi oikeita koekysymyksiä oppitunti kerrallaan.",
-  "paywallBlurb": "Harjoittele oikeita koekysymyksiä yksi virallinen osio kerrallaan, oikeilla läpäisyrajoilla.",
-  "paywallPerkAll": "Kaikki 4 virallista koeosiota",
-  "paywallPerkSections": "{{n}} virallista koeosiota",
+  "paywallBlurb": "Sinulla on jo 1 ilmainen aihe jokaisessa moduulissa. Koko moduulitentti kattaa ne kaikki kerralla — päivitä Viikko- tai Kahden viikon pakettiin tehdäksesi sen.",
+  "paywallPerkAll": "Kaikki aiheet jokaisessa moduulissa",
   "paywallPerkExplained": "Jokainen vastaus selitetty vihjesanojen avulla",
-  "paywallPerkPassMark": "Harjoittele oikealla osiokohtaisella läpäisyrajalla"
+  "paywallPerkPassMark": "Pisteytetään oikealla moduulikohtaisella läpäisyrajalla"
 }

@@ -5,18 +5,18 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight } from 'lucide-react-native';
+import { ChevronRight, Lock } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
+import { Badge } from '../components/ui/Badge';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
 import { useAuth } from '../store/authStore';
-import { usePaywall } from '../store/paywallStore';
+import { usePaywall, FREE_LESSON_INDEX } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
 import { localizedPair } from '../i18n/content';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { AuthPrompt } from '../components/AuthPrompt';
-import { Paywall } from '../components/Paywall';
 import type { DashboardStackParamList } from '../navigation/types';
 
 type Props = {
@@ -32,24 +32,10 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
-  const { isUnlocked } = usePaywall();
+  const { isLessonUnlocked } = usePaywall();
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
   const { t, i18n } = useTranslation();
   const rootNav = useNavigation<any>();
-
-  // Home's module rows deep-link straight here, so the topic_practice paywall
-  // must also hold here for signed-in users.
-  if (isAuthenticated && !isUnlocked('topic_practice')) {
-    return (
-      <Paywall
-        title={t('topic.title')}
-        blurb={t('topic.paywallBlurb')}
-        perks={[t('topic.paywallPerkAll'), t('topic.paywallPerkExplained'), t('topic.paywallPerkPassMark')]}
-        onBack={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Dashboard' as never))}
-        onSubscribe={() => rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'DashboardHome' })}
-      />
-    );
-  }
 
   if (!section) {
     return (
@@ -102,23 +88,35 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
             BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
           const lp = problemSetId ? setProgress[problemSetId] : undefined;
           const kicker = t('topic.lessonHeader', { n: index + 1, count: lesson.question_count });
+          const unlocked = isLessonUnlocked(index);
 
           const cardTop = (
             <View style={styles.cardTop}>
-              <ProgressRing
-                value={lp?.percentage ?? 0}
-                size={48}
-                strokeWidth={5}
-                color={tint}
-                trackColor={colors.surfaceAlt}
-                valueFontSize={12}
-              >
-                {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
-              </ProgressRing>
+              {unlocked ? (
+                <ProgressRing
+                  value={lp?.percentage ?? 0}
+                  size={48}
+                  strokeWidth={5}
+                  color={tint}
+                  trackColor={colors.surfaceAlt}
+                  valueFontSize={12}
+                >
+                  {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+                </ProgressRing>
+              ) : (
+                <View style={styles.lockRing}>
+                  <Lock size={18} color={colors.textTertiary} strokeWidth={2.2} />
+                </View>
+              )}
 
               <View style={styles.info}>
-                <Text style={styles.kicker}>{kicker}</Text>
-                <Text style={styles.cardTitle} numberOfLines={2}>{lesson.name}</Text>
+                <View style={styles.kickerRow}>
+                  <Text style={styles.kicker}>{kicker}</Text>
+                  {index === FREE_LESSON_INDEX && <Badge type="free" />}
+                </View>
+                <Text style={[styles.cardTitle, !unlocked && styles.cardTitleLocked]} numberOfLines={2}>
+                  {lesson.name}
+                </Text>
               </View>
 
               <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
@@ -130,8 +128,10 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
           return (
             <Pressable
               key={lesson.id}
-              onPress={() => startLesson(lesson.question_ids, lesson.name)}
-              style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
+              onPress={() => unlocked
+                ? startLesson(lesson.question_ids, lesson.name)
+                : rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'DashboardHome' })}
+              style={({ pressed }) => [styles.card, !unlocked && styles.cardLocked, pressed && styles.btnPressed]}
             >
               {cardTop}
             </Pressable>
@@ -158,11 +158,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg, gap: 12,
     ...shadow.sm,
   },
+  cardLocked: { backgroundColor: colors.surfaceAlt, opacity: 0.85 },
   cardTop: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   info: { flex: 1, gap: 2 },
+  kickerRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   kicker: { fontSize: 12, fontFamily: font.semibold, color: colors.textTertiary, textTransform: 'uppercase', letterSpacing: 0.3 },
   cardTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text, lineHeight: 21 },
+  cardTitleLocked: { color: colors.textSecondary },
   ringNeutral: { fontSize: 14, fontFamily: font.bold, color: colors.textTertiary },
+  lockRing: {
+    width: 48, height: 48, borderRadius: radius.full,
+    alignItems: 'center', justifyContent: 'center',
+    backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border,
+  },
   btnPressed: { transform: [{ scale: 0.97 }], opacity: 0.95 },
   authPrompt: { flex: 1, justifyContent: 'center', padding: spacing.md },
 });

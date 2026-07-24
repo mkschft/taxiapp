@@ -39,21 +39,21 @@ const PLANS: Plan[] = [
     accent: colors.primary,
   },
   {
-    key: '3_day',
-    nameKey: 'pricing.plans.day3.name',
-    price: '€40',
-    descriptionKey: 'pricing.plans.day3.description',
-    perkKeys: ['pricing.plans.day3.perk1'],
-    buttonLabelKey: 'pricing.plans.day3.button',
+    key: '1_day',
+    nameKey: 'pricing.plans.day1.name',
+    price: '€5',
+    descriptionKey: 'pricing.plans.day1.description',
+    perkKeys: ['pricing.plans.day1.perk1', 'pricing.plans.day1.perk2'],
+    buttonLabelKey: 'pricing.plans.day1.button',
     buttonVariant: 'secondary',
     accent: colors.success,
   },
   {
     key: '7_day',
     nameKey: 'pricing.plans.day7.name',
-    price: '€70',
+    price: '€50',
     descriptionKey: 'pricing.plans.day7.description',
-    perkKeys: ['pricing.plans.day7.perk1'],
+    perkKeys: ['pricing.plans.day7.perk1', 'pricing.plans.day7.perk2', 'pricing.plans.day7.perk3'],
     buttonLabelKey: 'pricing.plans.day7.button',
     buttonVariant: 'primary',
     badgeKey: 'pricing.mostPopular',
@@ -62,9 +62,9 @@ const PLANS: Plan[] = [
   {
     key: '14_day',
     nameKey: 'pricing.plans.day14.name',
-    price: '€120',
+    price: '€100',
     descriptionKey: 'pricing.plans.day14.description',
-    perkKeys: ['pricing.plans.day14.perk1'],
+    perkKeys: ['pricing.plans.day14.perk1', 'pricing.plans.day14.perk2', 'pricing.plans.day14.perk3'],
     buttonLabelKey: 'pricing.plans.day14.button',
     buttonVariant: 'secondary',
     accent: colors.warning,
@@ -95,7 +95,9 @@ export function PricingScreen() {
       return;
     }
 
-    if (hasActive && auth.user.subscription.planType !== plan.key) {
+    // Buying the same plan you already have active is a no-op; buying a
+    // *different* plan while one is active is an upgrade and allowed.
+    if (hasActive && auth.user.subscription.planType === plan.key) {
       Alert.alert(t('pricing.activeSubTitle'), t('pricing.activeSubBody'));
       return;
     }
@@ -125,8 +127,8 @@ export function PricingScreen() {
         <View style={styles.grid}>
           {PLANS.map((plan) => {
             const isLoading = loading === plan.key;
-            const isActivePlan = activePlanType === plan.key;
-            const buttonDisabled = isActivePlan || (hasActive && !isActivePlan);
+            const isActivePlan = hasActive && activePlanType === plan.key;
+            const buttonDisabled = isActivePlan;
             return (
               <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
                 {plan.badgeKey && (
