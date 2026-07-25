@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet, ActivityIndicator, type ViewStyle, type StyleProp, Platform } from 'react-native';
+import { Pressable, Text, StyleSheet, ActivityIndicator, type ViewStyle, type TextStyle, type StyleProp, Platform } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { colors, radius, fontSize, font, shadow } from '../../theme/tokens';
 
@@ -12,9 +12,10 @@ type Props = {
   loading?: boolean;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
 };
 
-export function AppButton({ label, onPress, variant = 'primary', loading, disabled, style }: Props) {
+export function AppButton({ label, onPress, variant = 'primary', loading, disabled, style, labelStyle }: Props) {
   const handlePress = () => {
     if (Platform.OS !== 'web') Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     onPress();
@@ -39,6 +40,7 @@ export function AppButton({ label, onPress, variant = 'primary', loading, disabl
             styles.text,
             variant === 'secondary' && styles.textSecondary,
             variant === 'danger' && styles.textDanger,
+            labelStyle,
           ]}>
             {label}
           </Text>
