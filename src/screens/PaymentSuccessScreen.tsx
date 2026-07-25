@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
+import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import { verifySession } from '../lib/paymentApi';
 import { getMe } from '../lib/authApi';
@@ -58,38 +59,39 @@ export function PaymentSuccessScreen() {
     navigation.replace('App');
   };
 
+  let inner: React.ReactNode;
   if (verifying) {
-    return (
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.center}>
-          <ActivityIndicator size="large" color={colors.primary} />
-          <Text style={styles.status}>{t('pricing.verifying')}</Text>
-        </View>
-      </SafeAreaView>
+    inner = (
+      <>
+        <ActivityIndicator size="large" color={colors.primary} />
+        <Text style={styles.status}>{t('pricing.verifying')}</Text>
+      </>
     );
-  }
-
-  if (error) {
-    return (
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.center}>
-          <Text style={styles.h}>{t('pricing.errorTitle')}</Text>
-          <Text style={styles.sub}>{error}</Text>
-          <AppButton label={t('pricing.goToDashboard')} onPress={() => navigation.replace('App')} style={{ marginTop: spacing.lg }} />
-        </View>
-      </SafeAreaView>
+  } else if (error) {
+    inner = (
+      <>
+        <Text style={styles.h}>{t('pricing.errorTitle')}</Text>
+        <Text style={styles.sub}>{error}</Text>
+        <AppButton label={t('pricing.goToDashboard')} onPress={() => navigation.replace('App')} style={{ marginTop: spacing.lg }} />
+      </>
     );
-  }
-
-  return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.center}>
+  } else {
+    inner = (
+      <>
         <CheckCircle size={64} color={colors.success} strokeWidth={1.8} />
         <Text style={styles.h}>{t('pricing.successTitle')}</Text>
         <Text style={styles.sub}>{t('pricing.successBody')}</Text>
         <AppButton label={t('common.continue')} onPress={handleContinue} style={{ marginTop: spacing.lg }} />
-      </View>
-    </SafeAreaView>
+      </>
+    );
+  }
+
+  return (
+    <GuestShell variant="centered">
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.center}>{inner}</View>
+      </SafeAreaView>
+    </GuestShell>
   );
 }
 

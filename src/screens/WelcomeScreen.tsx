@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Type, Target, ClipboardList, Timer, type LucideIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
+import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -20,8 +21,9 @@ export function WelcomeScreen({ navigation }: Props) {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.container}>
+    <GuestShell>
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.container}>
 
         {/* Top: hero + features — grows to fill space */}
         <View style={styles.top}>
@@ -67,6 +69,7 @@ export function WelcomeScreen({ navigation }: Props) {
 
       </View>
     </SafeAreaView>
+    </GuestShell>
   );
 }
 

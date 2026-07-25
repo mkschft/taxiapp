@@ -1,5 +1,6 @@
 import React from 'react';
 import { Platform, View, StyleSheet } from 'react-native';
+import { useBreakpoint } from '../../theme/breakpoints';
 
 type Props = {
   children: React.ReactNode;
@@ -7,9 +8,13 @@ type Props = {
 };
 
 export function WebRootFrame({ children, isAppRoute }: Props) {
+  const { isCompact } = useBreakpoint();
   if (Platform.OS !== 'web') return children;
 
-  if (isAppRoute) {
+  // App routes always fill the viewport. Guest/auth/payment routes only keep
+  // the 430px phone shell on compact web viewports; on wider screens they
+  // render full-viewport so each screen can provide its own responsive layout.
+  if (isAppRoute || !isCompact) {
     return <View style={styles.webFull}>{children}</View>;
   }
 

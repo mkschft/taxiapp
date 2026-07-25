@@ -9,6 +9,8 @@ import { Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
 import { AlertDialog } from '../components/ui/AlertDialog';
+import { GuestShell } from '../components/web/GuestShell';
+import { useBreakpoint } from '../theme/breakpoints';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { useAuth, hasActivePaidPlan, getRemainingDays } from '../store/authStore';
 import { createCheckoutSession, type PlanType } from '../lib/paymentApi';
@@ -121,6 +123,7 @@ export function PricingScreen() {
   const activePlanType = auth.user?.subscription.planType ?? null;
   const remainingDays = auth.user ? getRemainingDays(auth.user.subscription) : 0;
 
+  const { isCompact } = useBreakpoint();
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
 
@@ -172,13 +175,14 @@ export function PricingScreen() {
   const subtitle = isUpgrading ? t('pricing.upgradeSubtitle') : t('pricing.subtitle');
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={t('pricing.title')} onBack={() => navigation.goBack()} />
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <GuestShell variant="centered" maxWidth={1020}>
+      <SafeAreaView style={styles.safe}>
+        <ScreenHeader title={t('pricing.title')} onBack={() => navigation.goBack()} />
+        <ScrollView contentContainerStyle={[styles.scroll, !isCompact && styles.scrollDesktop]} showsVerticalScrollIndicator={false}>
         <Text style={styles.headline}>{headline}</Text>
         <Text style={styles.sub}>{subtitle}</Text>
 
-        <View style={styles.grid}>
+        <View style={[styles.grid, isCompact && styles.gridCompact]}>
           {PLANS.map((plan) => {
             const isLoading = loading === plan.key;
             const isActivePlan = hasActive && activePlanType === plan.key;
@@ -259,18 +263,21 @@ export function PricingScreen() {
         onDismiss={() => setDialog(null)}
       />
     </SafeAreaView>
+    </GuestShell>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
   scroll: { padding: spacing.lg },
+  scrollDesktop: { padding: 0 },
   headline: { fontSize: fontSize.xl, fontFamily: font.bold, color: colors.text, textAlign: 'center' },
   sub: {
     fontSize: fontSize.sm, color: colors.textSecondary, textAlign: 'center',
     marginTop: spacing.sm, marginBottom: spacing.lg, lineHeight: 20,
   },
-  grid: { flexDirection: Platform.OS === 'web' ? 'row' : 'column', gap: spacing.md, flexWrap: 'wrap' },
+  grid: { flexDirection: 'row', gap: spacing.md, flexWrap: 'wrap' },
+  gridCompact: { flexDirection: 'column' },
   card: {
     flex: 1, minWidth: 220,
     borderWidth: 1.5, borderColor: colors.border, borderRadius: radius.lg,

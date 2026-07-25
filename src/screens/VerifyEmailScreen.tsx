@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AlertDialog } from '../components/ui/AlertDialog';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
+import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { verifyEmail, resendVerification, refreshTokens, getMe } from '../lib/authApi';
@@ -90,8 +91,9 @@ export function VerifyEmailScreen({ route }: Props) {
   const token = route.params?.token;
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.container}>
+    <GuestShell variant="centered">
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.container}>
         <View style={styles.iconWrap}>
           <Mail size={40} color={colors.primary} strokeWidth={2} />
         </View>
@@ -204,6 +206,7 @@ export function VerifyEmailScreen({ route }: Props) {
         onDismiss={() => setDialog(null)}
       />
     </SafeAreaView>
+    </GuestShell>
   );
 }
 
