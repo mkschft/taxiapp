@@ -15,5 +15,8 @@
   "remove": "Remove",
   "error": "Error",
   "questionsCount": "{{n}} questions",
-  "wordsCount": "{{n}} words"
+  "wordsCount": "{{n}} words",
+  "appName": "TaxiPilot",
+  "free": "Free",
+  "upgrade": "Upgrade"
 }

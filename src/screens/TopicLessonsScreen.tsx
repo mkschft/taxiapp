@@ -7,6 +7,7 @@ import { RouteProp, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight, Lock } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -81,65 +82,67 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
           />
         </View>
       ) : (
-      <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
-        {lessons.map((lesson, index) => {
-          // Per-lesson progress is keyed by the lesson's backend problem set. Until
-          // BE-3 ships, the map is empty → render a neutral ring with no fake count.
-          const problemSetId =
-            BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
-          const lp = problemSetId ? setProgress[problemSetId] : undefined;
-          const kicker = t('topic.lessonHeader', { n: index + 1, count: lesson.question_count });
-          const unlocked = isLessonUnlocked(index);
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
+          {lessons.map((lesson, index) => {
+            // Per-lesson progress is keyed by the lesson's backend problem set. Until
+            // BE-3 ships, the map is empty → render a neutral ring with no fake count.
+            const problemSetId =
+              BACKEND_PROBLEM_SET_IDS[`topic/${section.category_id}/lessons/${lesson.id}`];
+            const lp = problemSetId ? setProgress[problemSetId] : undefined;
+            const kicker = t('topic.lessonHeader', { n: index + 1, count: lesson.question_count });
+            const unlocked = isLessonUnlocked(index);
 
-          const cardTop = (
-            <View style={styles.cardTop}>
-              {unlocked ? (
-                <ProgressRing
-                  value={lp?.percentage ?? 0}
-                  size={48}
-                  strokeWidth={5}
-                  color={tint}
-                  trackColor={colors.surfaceAlt}
-                  valueFontSize={12}
-                >
-                  {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
-                </ProgressRing>
-              ) : (
-                <View style={styles.lockRing}>
-                  <Lock size={18} color={colors.textTertiary} strokeWidth={2.2} />
-                </View>
-              )}
+            const cardTop = (
+              <View style={styles.cardTop}>
+                {unlocked ? (
+                  <ProgressRing
+                    value={lp?.percentage ?? 0}
+                    size={48}
+                    strokeWidth={5}
+                    color={tint}
+                    trackColor={colors.surfaceAlt}
+                    valueFontSize={12}
+                  >
+                    {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+                  </ProgressRing>
+                ) : (
+                  <View style={styles.lockRing}>
+                    <Lock size={18} color={colors.textTertiary} strokeWidth={2.2} />
+                  </View>
+                )}
 
-              <View style={styles.info}>
-                <View style={styles.kickerRow}>
-                  <Text style={styles.kicker}>{kicker}</Text>
-                  {index === FREE_LESSON_INDEX && !hasPaidPlan && <Badge type="free" />}
+                <View style={styles.info}>
+                  <View style={styles.kickerRow}>
+                    <Text style={styles.kicker}>{kicker}</Text>
+                    {index === FREE_LESSON_INDEX && !hasPaidPlan && <Badge type="free" />}
+                  </View>
+                  <Text style={[styles.cardTitle, !unlocked && styles.cardTitleLocked]} numberOfLines={2}>
+                    {lesson.name}
+                  </Text>
                 </View>
-                <Text style={[styles.cardTitle, !unlocked && styles.cardTitleLocked]} numberOfLines={2}>
-                  {lesson.name}
-                </Text>
+
+                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
               </View>
+            );
 
-              <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-            </View>
-          );
-
-          // "Take Quiz" on Home now goes straight into a whole-module quiz
-          // (ModuleQuizScreen) — this list is practice-only.
-          return (
-            <Pressable
-              key={lesson.id}
-              onPress={() => unlocked
-                ? startLesson(lesson.question_ids, lesson.name)
-                : rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'DashboardHome' })}
-              style={({ pressed }) => [styles.card, !unlocked && styles.cardLocked, pressed && styles.btnPressed]}
-            >
-              {cardTop}
-            </Pressable>
-          );
-        })}
-        <View style={{ height: 32 }} />
-      </ScrollView>
+            // "Take Quiz" on Home now goes straight into a whole-module quiz
+            // (ModuleQuizScreen) — this list is practice-only.
+            return (
+              <Pressable
+                key={lesson.id}
+                onPress={() => unlocked
+                  ? startLesson(lesson.question_ids, lesson.name)
+                  : rootNav.navigate('Pricing', { redirectTab: 'Dashboard', redirectScreen: 'DashboardHome' })}
+                style={({ pressed }) => [styles.card, !unlocked && styles.cardLocked, pressed && styles.btnPressed]}
+              >
+                {cardTop}
+              </Pressable>
+            );
+          })}
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
       )}
     </SafeAreaView>
   );

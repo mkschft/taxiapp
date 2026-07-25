@@ -13,6 +13,8 @@ import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
+import { ContentContainer } from '../components/web/ContentContainer';
+import { useBreakpoint } from '../theme/breakpoints';
 import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
@@ -66,6 +68,7 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const { testId, sessionId, problemSetId } = route.params;
   const test = getModelTestById(testId);
   const { t, i18n } = useTranslation();
+  const { isDesktop } = useBreakpoint();
   const { isSaved, toggle } = useSavedQuestions();
 
   const [loading, setLoading] = useState(!!problemSetId);
@@ -242,91 +245,139 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const progress = ((qIndex + 1) / ids.length) * 100;
   const isLowTime = secondsLeft < 300;
 
+  const navBar = (
+    <View style={styles.navBar}>
+      <TouchableOpacity
+        onPress={() => setDialog({
+          title: t('modelTest.quitTitle'),
+          message: t('modelTest.quitMessage'),
+          confirmLabel: t('modelTest.quit'),
+          cancelLabel: t('common.cancel'),
+          variant: 'danger',
+          onConfirm: () => navigation.goBack(),
+        })}
+        style={styles.backBtn}
+      >
+        <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
+      </TouchableOpacity>
+      <Text style={styles.navTitle} numberOfLines={1}>{testTitle}</Text>
+    </View>
+  );
+
+  const timerRow = (
+    <View style={styles.timerRow}>
+      <View style={[styles.timerChip, isLowTime && styles.timerChipLow]}>
+        <Clock size={13} color={isLowTime ? colors.error : colors.warning} strokeWidth={2.4} />
+        <Text style={[styles.timerText, isLowTime && styles.timerTextLow]}>{mm}:{ss}</Text>
+      </View>
+      <View style={styles.progressTrack}>
+        <View style={[styles.progressFill, { width: `${progress}%` }]} />
+      </View>
+      <Text style={styles.qCount}>{qIndex + 1}/{ids.length}</Text>
+    </View>
+  );
+
+  const questionLabel = (
+    <Text style={styles.qCategory}>{t('modelTest.question', { n: qIndex + 1, total: ids.length })}</Text>
+  );
+
+  const questionCard = (
+    <View style={styles.questionCard}>
+      <Text style={styles.qText}>{question.text}</Text>
+      <QuestionImage imageKey={question.imageKey ?? question.id} />
+      <QuestionTariff id={question.id} />
+    </View>
+  );
+
+  const optionsList = (
+    <>
+      {question.options.map(opt => (
+        <OptionRow
+          key={opt.key}
+          letter={opt.key}
+          text={opt.fi}
+          state={optionStates[opt.key]}
+          onPress={() => handleSelect(opt.key)}
+        />
+      ))}
+    </>
+  );
+
+  const footer = (
+    <View style={styles.footer}>
+      <Text style={styles.answeredHint}>
+        {t('modelTest.answered', { count: answeredCount, total: ids.length })}
+      </Text>
+      <TouchableOpacity
+        style={[styles.markBtn, isSaved(question.id) && styles.markBtnActive]}
+        onPress={() => toggle({
+          id: question.id,
+          text: question.text,
+          options: question.options.map(o => ({ key: o.key, text: o.fi })),
+          correctKey: question.correctKey,
+          source: testTitle,
+        })}
+      >
+        <Bookmark
+          size={15}
+          color={isSaved(question.id) ? colors.primary : colors.textSecondary}
+          fill={isSaved(question.id) ? colors.primary : 'transparent'}
+          strokeWidth={2.2}
+        />
+        <Text style={[styles.markText, isSaved(question.id) && styles.markTextActive]}>
+          {isSaved(question.id) ? t('modelTest.marked') : t('modelTest.mark')}
+        </Text>
+      </TouchableOpacity>
+      {isLast ? (
+        <View style={styles.submitWrap}>
+          <AppButton label={t('modelTest.finish')} onPress={confirmSubmit} />
+        </View>
+      ) : (
+        <TouchableOpacity style={[styles.navBtn, styles.navBtnPrimary]} onPress={goNext}>
+          <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('modelTest.next')} →</Text>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <TouchableOpacity
-          onPress={() => setDialog({
-            title: t('modelTest.quitTitle'),
-            message: t('modelTest.quitMessage'),
-            confirmLabel: t('modelTest.quit'),
-            cancelLabel: t('common.cancel'),
-            variant: 'danger',
-            onConfirm: () => navigation.goBack(),
-          })}
-          style={styles.backBtn}
-        >
-          <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
-        </TouchableOpacity>
-        <Text style={styles.navTitle} numberOfLines={1}>{testTitle}</Text>
-      </View>
-
-      <View style={styles.timerRow}>
-        <View style={[styles.timerChip, isLowTime && styles.timerChipLow]}>
-          <Clock size={13} color={isLowTime ? colors.error : colors.warning} strokeWidth={2.4} />
-          <Text style={[styles.timerText, isLowTime && styles.timerTextLow]}>{mm}:{ss}</Text>
-        </View>
-        <View style={styles.progressTrack}>
-          <View style={[styles.progressFill, { width: `${progress}%` }]} />
-        </View>
-        <Text style={styles.qCount}>{qIndex + 1}/{ids.length}</Text>
-      </View>
-
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.qCategory}>{t('modelTest.question', { n: qIndex + 1, total: ids.length })}</Text>
-        <View style={styles.questionCard}>
-          <Text style={styles.qText}>{question.text}</Text>
-          <QuestionImage imageKey={question.imageKey ?? question.id} />
-          <QuestionTariff id={question.id} />
-        </View>
-
-        {question.options.map(opt => (
-          <OptionRow
-            key={opt.key}
-            letter={opt.key}
-            text={opt.fi}
-            state={optionStates[opt.key]}
-            onPress={() => handleSelect(opt.key)}
-          />
-        ))}
-
-        <View style={{ height: 16 }} />
-      </ScrollView>
-
-      <View style={styles.footer}>
-        <Text style={styles.answeredHint}>
-          {t('modelTest.answered', { count: answeredCount, total: ids.length })}
-        </Text>
-        <TouchableOpacity
-          style={[styles.markBtn, isSaved(question.id) && styles.markBtnActive]}
-          onPress={() => toggle({
-            id: question.id,
-            text: question.text,
-            options: question.options.map(o => ({ key: o.key, text: o.fi })),
-            correctKey: question.correctKey,
-            source: testTitle,
-          })}
-        >
-          <Bookmark
-            size={15}
-            color={isSaved(question.id) ? colors.primary : colors.textSecondary}
-            fill={isSaved(question.id) ? colors.primary : 'transparent'}
-            strokeWidth={2.2}
-          />
-          <Text style={[styles.markText, isSaved(question.id) && styles.markTextActive]}>
-            {isSaved(question.id) ? t('modelTest.marked') : t('modelTest.mark')}
-          </Text>
-        </TouchableOpacity>
-        {isLast ? (
-          <View style={styles.submitWrap}>
-            <AppButton label={t('modelTest.finish')} onPress={confirmSubmit} />
-          </View>
-        ) : (
-          <TouchableOpacity style={[styles.navBtn, styles.navBtnPrimary]} onPress={goNext}>
-            <Text style={[styles.navBtnText, styles.navBtnTextPrimary]}>{t('modelTest.next')} →</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      {isDesktop ? (
+        <ContentContainer maxWidth={1120}>
+          {navBar}
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={[styles.scrollContent, styles.desktopRow]}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.leftCol}>
+              {questionLabel}
+              {questionCard}
+            </View>
+            <View style={styles.rightCol}>
+              {timerRow}
+              {optionsList}
+              {footer}
+            </View>
+          </ScrollView>
+        </ContentContainer>
+      ) : (
+        <>
+          {navBar}
+          {timerRow}
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+          >
+            {questionLabel}
+            {questionCard}
+            {optionsList}
+            <View style={{ height: 16 }} />
+          </ScrollView>
+          {footer}
+        </>
+      )}
 
       <ConfirmDialog
         visible={!!dialog}
@@ -353,6 +404,15 @@ const styles = StyleSheet.create({
   },
   backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
   navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  scrollContent: { padding: spacing.md },
+  desktopRow: {
+    flexDirection: 'row',
+    gap: spacing.xl,
+    padding: spacing.xl,
+    alignItems: 'flex-start',
+  },
+  leftCol: { flex: 1.15, minWidth: 0 },
+  rightCol: { flex: 1, minWidth: 0 },
   timerRow: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     paddingHorizontal: spacing.md, paddingVertical: 10,
@@ -371,7 +431,6 @@ const styles = StyleSheet.create({
   },
   progressFill: { height: '100%', backgroundColor: colors.primary, borderRadius: radius.full },
   qCount: { fontSize: fontSize.sm, color: colors.textSecondary, minWidth: 36, textAlign: 'right' },
-  scroll: { flex: 1, padding: spacing.md },
   qCategory: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.semibold, marginBottom: 8 },
   questionCard: {
     backgroundColor: colors.surface, borderRadius: radius.md,

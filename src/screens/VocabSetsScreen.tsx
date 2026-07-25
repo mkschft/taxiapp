@@ -7,6 +7,7 @@ import { RouteProp } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { AlertDialog } from '../components/ui/AlertDialog';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
@@ -59,49 +60,51 @@ export function VocabSetsScreen({ navigation, route }: Props) {
         </Text>
       </View>
 
-      <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
-        {SETS.map((set, index) => {
-          const tint = CAT_COLOR[set.category_id ?? ''] ?? colors.primary;
-          // Per-set progress is keyed by the set's backend problem set. Until BE-3
-          // ships, the map is empty → neutral ring with no fake count.
-          const problemSetId = BACKEND_PROBLEM_SET_IDS[`vocab/sets/set-${set.set_no}`];
-          const lp = problemSetId ? setProgress[problemSetId] : undefined;
-          const kicker = t('vocab.groupHeader', { n: index + 1, count: set.word_count });
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
+          {SETS.map((set, index) => {
+            const tint = CAT_COLOR[set.category_id ?? ''] ?? colors.primary;
+            // Per-set progress is keyed by the set's backend problem set. Until BE-3
+            // ships, the map is empty → neutral ring with no fake count.
+            const problemSetId = BACKEND_PROBLEM_SET_IDS[`vocab/sets/set-${set.set_no}`];
+            const lp = problemSetId ? setProgress[problemSetId] : undefined;
+            const kicker = t('vocab.groupHeader', { n: index + 1, count: set.word_count });
 
-          return (
-            <Pressable
-              key={set.id}
-              onPress={() =>
-                isQuizMode
-                  ? startQuiz(`vocab/sets/${set.id}`, 'VocabQuiz', { setId: set.id })
-                  : navigation.navigate('VocabLesson', { setId: set.id, index: 1 })
-              }
-              style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
-            >
-              <View style={styles.cardTop}>
-                <ProgressRing
-                  value={lp?.percentage ?? 0}
-                  size={48}
-                  strokeWidth={5}
-                  color={tint}
-                  trackColor={colors.surfaceAlt}
-                  valueFontSize={12}
-                >
-                  {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
-                </ProgressRing>
+            return (
+              <Pressable
+                key={set.id}
+                onPress={() =>
+                  isQuizMode
+                    ? startQuiz(`vocab/sets/${set.id}`, 'VocabQuiz', { setId: set.id })
+                    : navigation.navigate('VocabLesson', { setId: set.id, index: 1 })
+                }
+                style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
+              >
+                <View style={styles.cardTop}>
+                  <ProgressRing
+                    value={lp?.percentage ?? 0}
+                    size={48}
+                    strokeWidth={5}
+                    color={tint}
+                    trackColor={colors.surfaceAlt}
+                    valueFontSize={12}
+                  >
+                    {lp ? undefined : <Text style={styles.ringNeutral}>–</Text>}
+                  </ProgressRing>
 
-                <View style={styles.info}>
-                  <Text style={styles.kicker}>{kicker}</Text>
-                  <Text style={styles.cardTitle} numberOfLines={2}>{set.name}</Text>
+                  <View style={styles.info}>
+                    <Text style={styles.kicker}>{kicker}</Text>
+                    <Text style={styles.cardTitle} numberOfLines={2}>{set.name}</Text>
+                  </View>
+
+                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
                 </View>
-
-                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-              </View>
-            </Pressable>
-          );
-        })}
-        <View style={{ height: 32 }} />
-      </ScrollView>
+              </Pressable>
+            );
+          })}
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
 
       <AlertDialog
         visible={!!error}

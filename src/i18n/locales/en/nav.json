@@ -2,5 +2,8 @@
   "dashboard": "Study",
   "tests": "Mock Exams",
   "progress": "Progress",
-  "profile": "Profile"
+  "profile": "Profile",
+  "guide": "Exam Guide",
+  "howToUse": "How to Use",
+  "savedQuestions": "Saved Questions"
 }

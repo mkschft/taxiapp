@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight, type LucideIcon } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { IconChip } from '../components/ui/IconChip';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { MODULE_ICONS } from '../theme/icons';
@@ -44,53 +45,55 @@ export function HowToScreen() {
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={t('howto.title')} onBack={() => navigation.goBack()} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Hero */}
-        <View style={styles.hero}>
-          <Text style={styles.heroTitle}>{t('howto.heroTitle')}</Text>
-          <Text style={styles.heroSub}>{t('howto.heroSub')}</Text>
-        </View>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* Hero */}
+          <View style={styles.hero}>
+            <Text style={styles.heroTitle}>{t('howto.heroTitle')}</Text>
+            <Text style={styles.heroSub}>{t('howto.heroSub')}</Text>
+          </View>
 
-        {/* Recommended study plan */}
-        <View style={styles.planCard}>
-          <Text style={styles.planLabel}>{t('howto.planLabel')}</Text>
-          {STEP_KEYS.map((key, i) => (
-            <View key={key} style={styles.stepRow}>
-              <View style={styles.stepNum}><Text style={styles.stepNumText}>{i + 1}</Text></View>
-              <Text style={styles.stepText}>{t(`howto.${key}`)}</Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Module cards */}
-        <Text style={styles.sectionLabel}>{t('howto.sectionLabel')}</Text>
-        <View style={styles.modules}>
-          {MODULES.map(m => (
-            <TouchableOpacity
-              key={m.id}
-              style={styles.modCard}
-              onPress={() => go(m.nav)}
-              activeOpacity={0.75}
-            >
-              <View style={styles.modHeader}>
-                <IconChip Icon={m.Icon} tint={m.tint} size={40} iconSize={20} />
-                <Text style={styles.modTitle}>{t(`howto.modules.${m.id}.title`)}</Text>
-                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
+          {/* Recommended study plan */}
+          <View style={styles.planCard}>
+            <Text style={styles.planLabel}>{t('howto.planLabel')}</Text>
+            {STEP_KEYS.map((key, i) => (
+              <View key={key} style={styles.stepRow}>
+                <View style={styles.stepNum}><Text style={styles.stepNumText}>{i + 1}</Text></View>
+                <Text style={styles.stepText}>{t(`howto.${key}`)}</Text>
               </View>
-              <Text style={styles.modWhat}>{t(`howto.modules.${m.id}.what`)}</Text>
-              <View style={styles.modHow}>
-                <Text style={styles.modHowText}>{t(`howto.modules.${m.id}.how`)}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
+            ))}
+          </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>{t('howto.footer')}</Text>
-        </View>
+          {/* Module cards */}
+          <Text style={styles.sectionLabel}>{t('howto.sectionLabel')}</Text>
+          <View style={styles.modules}>
+            {MODULES.map(m => (
+              <TouchableOpacity
+                key={m.id}
+                style={styles.modCard}
+                onPress={() => go(m.nav)}
+                activeOpacity={0.75}
+              >
+                <View style={styles.modHeader}>
+                  <IconChip Icon={m.Icon} tint={m.tint} size={40} iconSize={20} />
+                  <Text style={styles.modTitle}>{t(`howto.modules.${m.id}.title`)}</Text>
+                  <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2} />
+                </View>
+                <Text style={styles.modWhat}>{t(`howto.modules.${m.id}.what`)}</Text>
+                <View style={styles.modHow}>
+                  <Text style={styles.modHowText}>{t(`howto.modules.${m.id}.how`)}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
 
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>{t('howto.footer')}</Text>
+          </View>
+
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }

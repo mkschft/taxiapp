@@ -13,6 +13,8 @@ import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { ContentContainer } from '../components/web/ContentContainer';
+import { useBreakpoint } from '../theme/breakpoints';
 import { setAppLanguage, type AppLanguage } from '../i18n';
 import { useAuth } from '../store/authStore';
 import { useSavedQuestions } from '../store/savedQuestionsStore';
@@ -56,6 +58,7 @@ function SettingRow({
 
 export function ProfileScreen() {
   const navigation = useNavigation<any>();
+  const { isCompact } = useBreakpoint();
   const { state: auth, clearAuth, updateUser } = useAuth();
   const { data: progress } = useProgress(true);
   const { t, i18n } = useTranslation();
@@ -158,9 +161,11 @@ export function ProfileScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{t('profile.title')}</Text>
-      </View>
+      {isCompact && (
+        <View style={styles.header}>
+          <Text style={styles.title}>{t('profile.title')}</Text>
+        </View>
+      )}
 
       {notice && (
         <View style={styles.noticeBanner}>
@@ -168,112 +173,114 @@ export function ProfileScreen() {
         </View>
       )}
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Avatar */}
-        <View style={styles.avatarSection}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{initial}</Text>
-          </View>
-          <Text style={styles.name}>{userName}</Text>
-        </View>
-
-        {/* Exam countdown */}
-        {daysLeft !== null && (
-          <View style={styles.examCard}>
-            <View>
-              <Text style={styles.examLabel}>{t('profile.examDate')}</Text>
-              <Text style={styles.examDate}>{examDate}</Text>
-              <Text style={[styles.examDays, daysLeft < 7 && { color: colors.error }]}>
-                {t('profile.daysLeft', { n: daysLeft })}
-              </Text>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* Avatar */}
+          <View style={styles.avatarSection}>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>{initial}</Text>
             </View>
-            <CalendarDays size={36} color={colors.warning} strokeWidth={1.8} />
+            <Text style={styles.name}>{userName}</Text>
           </View>
-        )}
 
-        {/* Overall completion (real progress data) */}
-        <View style={styles.statRow}>
-          <View style={styles.statChip}>
-            <Text style={styles.statVal}>{`${completion}%`}</Text>
-            <Text style={styles.statLbl}>{t('profile.complete')}</Text>
-          </View>
-        </View>
-
-        {/* Account */}
-        <Text style={styles.sectionHeader}>{t('profile.account')}</Text>
-        <View style={styles.settingGroup}>
-          <SettingRow Icon={Target} tint={colors.primary} title={t('profile.setExamDate')} subtitle={examDate ?? t('profile.notSet')} onPress={openDateModal} />
-        </View>
-
-        {/* Preferences */}
-        <Text style={styles.sectionHeader}>{t('profile.preferences')}</Text>
-        <View style={styles.settingGroup}>
-          <SettingRow
-            Icon={Languages}
-            tint={colors.primary}
-            title={t('profile.appLanguage')}
-            subtitle={t('profile.appLanguageHint')}
-            onPress={() => setAppLanguage(lang === 'fi' ? 'en' : 'fi')}
-            right={<Text style={styles.langValue}>{lang === 'fi' ? 'Suomi' : 'English'}</Text>}
-          />
-          <SettingRow
-            Icon={Bookmark}
-            tint={colors.primary}
-            title={t('profile.savedQuestions')}
-            onPress={() => navigation.navigate('SavedQuestions')}
-            right={
-              <View style={styles.countRow}>
-                {saved.length > 0 && <Text style={styles.langValue}>{saved.length}</Text>}
-                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+          {/* Exam countdown */}
+          {daysLeft !== null && (
+            <View style={styles.examCard}>
+              <View>
+                <Text style={styles.examLabel}>{t('profile.examDate')}</Text>
+                <Text style={styles.examDate}>{examDate}</Text>
+                <Text style={[styles.examDays, daysLeft < 7 && { color: colors.error }]}>
+                  {t('profile.daysLeft', { n: daysLeft })}
+                </Text>
               </View>
-            }
-          />
-        </View>
+              <CalendarDays size={36} color={colors.warning} strokeWidth={1.8} />
+            </View>
+          )}
 
-        {/* Subscription */}
-        <Text style={styles.sectionHeader}>{t('profile.subscription')}</Text>
-        <View style={styles.settingGroup}>
-          <SettingRow
-            Icon={CreditCard}
-            tint={colors.primary}
-            title={isPaid ? subscription!.planName : t('profile.manageSubscription')}
-            subtitle={
-              isPaid
-                ? subscription?.planType === '1_day'
-                  ? t('profile.daysLeftUnlockFull', { n: subDaysLeft })
-                  : subscription?.planType === '7_day'
-                    ? t('profile.daysLeftExtend', { n: subDaysLeft })
-                    : t('profile.daysLeft', { n: subDaysLeft })
-                : t('profile.upgradeHint')
-            }
-            onPress={handleManageSub}
-          />
-          <View style={styles.sep} />
-          <SettingRow
-            Icon={Gift} tint={colors.success} title={t('profile.referralTitle')}
-            subtitle={t('profile.referralHint')}
-            onPress={() => navigation.navigate('Referral')}
-          />
-        </View>
+          {/* Overall completion (real progress data) */}
+          <View style={styles.statRow}>
+            <View style={styles.statChip}>
+              <Text style={styles.statVal}>{`${completion}%`}</Text>
+              <Text style={styles.statLbl}>{t('profile.complete')}</Text>
+            </View>
+          </View>
 
-        {/* Support */}
-        <Text style={styles.sectionHeader}>{t('profile.support')}</Text>
-        <View style={styles.settingGroup}>
-          <SettingRow Icon={BookOpen} title={t('dashboard.examGuide.title')} onPress={() => navigation.navigate('Guide')} />
-          <View style={styles.sep} />
-          <SettingRow Icon={Info} title={t('dashboard.howTo')} onPress={() => navigation.navigate('HowTo')} />
-          <View style={styles.sep} />
-          <SettingRow Icon={Trash2} tint={colors.error} title={t('profile.clearProgressData')} onPress={handleClearData} />
-        </View>
+          {/* Account */}
+          <Text style={styles.sectionHeader}>{t('profile.account')}</Text>
+          <View style={styles.settingGroup}>
+            <SettingRow Icon={Target} tint={colors.primary} title={t('profile.setExamDate')} subtitle={examDate ?? t('profile.notSet')} onPress={openDateModal} />
+          </View>
 
-        <AppButton
-          label={t('profile.logout')}
-          variant="danger"
-          onPress={handleLogout}
-          style={{ margin: spacing.md }}
-        />
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          {/* Preferences */}
+          <Text style={styles.sectionHeader}>{t('profile.preferences')}</Text>
+          <View style={styles.settingGroup}>
+            <SettingRow
+              Icon={Languages}
+              tint={colors.primary}
+              title={t('profile.appLanguage')}
+              subtitle={t('profile.appLanguageHint')}
+              onPress={() => setAppLanguage(lang === 'fi' ? 'en' : 'fi')}
+              right={<Text style={styles.langValue}>{lang === 'fi' ? 'Suomi' : 'English'}</Text>}
+            />
+            <SettingRow
+              Icon={Bookmark}
+              tint={colors.primary}
+              title={t('profile.savedQuestions')}
+              onPress={() => navigation.navigate('SavedQuestions')}
+              right={
+                <View style={styles.countRow}>
+                  {saved.length > 0 && <Text style={styles.langValue}>{saved.length}</Text>}
+                  <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+                </View>
+              }
+            />
+          </View>
+
+          {/* Subscription */}
+          <Text style={styles.sectionHeader}>{t('profile.subscription')}</Text>
+          <View style={styles.settingGroup}>
+            <SettingRow
+              Icon={CreditCard}
+              tint={colors.primary}
+              title={isPaid ? subscription!.planName : t('profile.manageSubscription')}
+              subtitle={
+                isPaid
+                  ? subscription?.planType === '1_day'
+                    ? t('profile.daysLeftUnlockFull', { n: subDaysLeft })
+                    : subscription?.planType === '7_day'
+                      ? t('profile.daysLeftExtend', { n: subDaysLeft })
+                      : t('profile.daysLeft', { n: subDaysLeft })
+                  : t('profile.upgradeHint')
+              }
+              onPress={handleManageSub}
+            />
+            <View style={styles.sep} />
+            <SettingRow
+              Icon={Gift} tint={colors.success} title={t('profile.referralTitle')}
+              subtitle={t('profile.referralHint')}
+              onPress={() => navigation.navigate('Referral')}
+            />
+          </View>
+
+          {/* Support */}
+          <Text style={styles.sectionHeader}>{t('profile.support')}</Text>
+          <View style={styles.settingGroup}>
+            <SettingRow Icon={BookOpen} title={t('dashboard.examGuide.title')} onPress={() => navigation.navigate('Guide')} />
+            <View style={styles.sep} />
+            <SettingRow Icon={Info} title={t('dashboard.howTo')} onPress={() => navigation.navigate('HowTo')} />
+            <View style={styles.sep} />
+            <SettingRow Icon={Trash2} tint={colors.error} title={t('profile.clearProgressData')} onPress={handleClearData} />
+          </View>
+
+          <AppButton
+            label={t('profile.logout')}
+            variant="danger"
+            onPress={handleLogout}
+            style={{ margin: spacing.md }}
+          />
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
 
       {/* Exam-date picker — presets or an exact date, no extra dependency */}
       <Modal visible={dateModal} transparent animationType="fade" onRequestClose={() => setDateModal(false)}>

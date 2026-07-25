@@ -11,6 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getGuideSections } from '../data/loaders';
@@ -139,43 +140,45 @@ export function GuideScreen() {
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={t('guide.title')} onBack={() => navigation.goBack()} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Hero banner */}
-        <View style={styles.hero}>
-          <View style={styles.heroTextBlock}>
-            <Text style={styles.heroTitle}>{t('guide.heroTitle')}</Text>
-            <Text style={styles.heroSub}>{t('guide.heroSub')}</Text>
-          </View>
-          <View style={styles.heroBadge}>
-            <Text style={styles.heroBadgeText}>Traficom</Text>
-          </View>
-        </View>
-
-        {/* Quick stats row */}
-        <View style={styles.statsRow}>
-          {[
-            { val: '50', label: t('guide.statQuestions') },
-            { val: '45', label: t('guide.statMinutes') },
-            { val: '38/50', label: t('guide.statPassMark') },
-            { val: '4', label: t('guide.statCategories') },
-          ].map(s => (
-            <View key={s.label} style={styles.statChip}>
-              <Text style={styles.statVal}>{s.val}</Text>
-              <Text style={styles.statLbl}>{s.label}</Text>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* Hero banner */}
+          <View style={styles.hero}>
+            <View style={styles.heroTextBlock}>
+              <Text style={styles.heroTitle}>{t('guide.heroTitle')}</Text>
+              <Text style={styles.heroSub}>{t('guide.heroSub')}</Text>
             </View>
-          ))}
-        </View>
+            <View style={styles.heroBadge}>
+              <Text style={styles.heroBadgeText}>Traficom</Text>
+            </View>
+          </View>
 
-        <View style={styles.sections}>
-          {sections.map(s => <SectionCard key={s.id} section={s} />)}
-        </View>
+          {/* Quick stats row */}
+          <View style={styles.statsRow}>
+            {[
+              { val: '50', label: t('guide.statQuestions') },
+              { val: '45', label: t('guide.statMinutes') },
+              { val: '38/50', label: t('guide.statPassMark') },
+              { val: '4', label: t('guide.statCategories') },
+            ].map(s => (
+              <View key={s.label} style={styles.statChip}>
+                <Text style={styles.statVal}>{s.val}</Text>
+                <Text style={styles.statLbl}>{s.label}</Text>
+              </View>
+            ))}
+          </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>{t('guide.footer')}</Text>
-        </View>
+          <View style={styles.sections}>
+            {sections.map(s => <SectionCard key={s.id} section={s} />)}
+          </View>
 
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>{t('guide.footer')}</Text>
+          </View>
+
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }

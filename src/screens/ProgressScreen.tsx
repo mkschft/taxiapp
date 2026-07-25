@@ -8,6 +8,8 @@ import { CircleCheck, ChevronRight } from 'lucide-react-native';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { ContentContainer } from '../components/web/ContentContainer';
+import { useBreakpoint } from '../theme/breakpoints';
 import { useProgress } from '../hooks/useProgress';
 import { localizedPair } from '../i18n/content';
 import { getQuestions, getCategories, getVocabWordTotal } from '../data/loaders';
@@ -18,6 +20,7 @@ const TOTAL_VOCAB = getVocabWordTotal();
 
 export function ProgressScreen() {
   const navigation = useNavigation<any>();
+  const { isCompact } = useBreakpoint();
   const { t, i18n } = useTranslation();
   const { data: progress, loading } = useProgress(true);
 
@@ -68,88 +71,92 @@ export function ProgressScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{t('progress.title')}</Text>
-      </View>
-
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Overall card */}
-        <View style={styles.overallCard}>
-          <ProgressRing value={completion} size={100} />
-          <View style={styles.overallRight}>
-            <Text style={styles.overallLabel}>{t('progress.overallCompletion')}</Text>
-            <Text style={styles.overallSub}>
-              {loading ? t('common.loading') : t('progress.overallSub', { c: totalCompleted, t: totalQuestions })}
-            </Text>
-          </View>
+      {isCompact && (
+        <View style={styles.header}>
+          <Text style={styles.title}>{t('progress.title')}</Text>
         </View>
+      )}
 
-        {/* By category */}
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>{t('progress.byOfficialCategory')}</Text>
-          {catProgress.map(cp => {
-            const cat = CATEGORIES.find(c => c.id === cp.catId);
-            const { primary } = cat
-              ? localizedPair(cat.name_fi, cat.name_en, i18n.language)
-              : { primary: cp.catId };
-            return (
-              <ProgressBar
-                key={cp.catId}
-                label={primary}
-                value={cp.pct}
-                rightLabel={t('progress.mastered', { c: cp.completed, t: cp.total })}
-                color={colors.primary}
-              />
-            );
-          })}
-        </View>
-
-        {/* Vocabulary */}
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>{t('progress.vocabulary')}</Text>
-          <ProgressBar
-            label={t('progress.wordsLearned')}
-            value={vocabTotal === 0 ? 0 : Math.round((vocabLearned / vocabTotal) * 100)}
-            showPct={false}
-            color={colors.primary}
-          />
-          <Text style={styles.vocabCount}>{t('progress.vocabCount', { c: vocabLearned, t: vocabTotal })}</Text>
-        </View>
-
-        {/* Weak areas */}
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>{t('progress.weakAreasHeader')}</Text>
-          {weakAreas.length === 0 ? (
-            <View style={styles.allGood}>
-              <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
-              <Text style={styles.allGoodText}>{t('progress.noWeakAreas')}</Text>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* Overall card */}
+          <View style={styles.overallCard}>
+            <ProgressRing value={completion} size={100} />
+            <View style={styles.overallRight}>
+              <Text style={styles.overallLabel}>{t('progress.overallCompletion')}</Text>
+              <Text style={styles.overallSub}>
+                {loading ? t('common.loading') : t('progress.overallSub', { c: totalCompleted, t: totalQuestions })}
+              </Text>
             </View>
-          ) : (
-            weakAreas.map(w => (
-              <TouchableOpacity
-                key={w.catId}
-                style={styles.weakRow}
-                activeOpacity={0.78}
-                disabled={w.wrongQuestionIds.length === 0}
-                onPress={() => practiceWeak(w.wrongQuestionIds)}
-              >
-                <View style={styles.weakInfo}>
-                  <Text style={styles.weakTitle}>{localizedPair(w.nameFi, w.nameEn, i18n.language).primary}</Text>
-                  <Text style={styles.weakSub}>{t('progress.toRevisit', { n: w.wrongCount })}</Text>
-                </View>
-                {w.wrongQuestionIds.length > 0 && (
-                  <View style={styles.retryBtn}>
-                    <Text style={styles.retryText}>{t('progress.practise')}</Text>
-                  </View>
-                )}
-                <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
-              </TouchableOpacity>
-            ))
-          )}
-        </View>
+          </View>
 
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          {/* By category */}
+          <View style={styles.section}>
+            <Text style={styles.sectionHeader}>{t('progress.byOfficialCategory')}</Text>
+            {catProgress.map(cp => {
+              const cat = CATEGORIES.find(c => c.id === cp.catId);
+              const { primary } = cat
+                ? localizedPair(cat.name_fi, cat.name_en, i18n.language)
+                : { primary: cp.catId };
+              return (
+                <ProgressBar
+                  key={cp.catId}
+                  label={primary}
+                  value={cp.pct}
+                  rightLabel={t('progress.mastered', { c: cp.completed, t: cp.total })}
+                  color={colors.primary}
+                />
+              );
+            })}
+          </View>
+
+          {/* Vocabulary */}
+          <View style={styles.section}>
+            <Text style={styles.sectionHeader}>{t('progress.vocabulary')}</Text>
+            <ProgressBar
+              label={t('progress.wordsLearned')}
+              value={vocabTotal === 0 ? 0 : Math.round((vocabLearned / vocabTotal) * 100)}
+              showPct={false}
+              color={colors.primary}
+            />
+            <Text style={styles.vocabCount}>{t('progress.vocabCount', { c: vocabLearned, t: vocabTotal })}</Text>
+          </View>
+
+          {/* Weak areas */}
+          <View style={styles.section}>
+            <Text style={styles.sectionHeader}>{t('progress.weakAreasHeader')}</Text>
+            {weakAreas.length === 0 ? (
+              <View style={styles.allGood}>
+                <CircleCheck size={18} color={colors.success} strokeWidth={2.2} />
+                <Text style={styles.allGoodText}>{t('progress.noWeakAreas')}</Text>
+              </View>
+            ) : (
+              weakAreas.map(w => (
+                <TouchableOpacity
+                  key={w.catId}
+                  style={styles.weakRow}
+                  activeOpacity={0.78}
+                  disabled={w.wrongQuestionIds.length === 0}
+                  onPress={() => practiceWeak(w.wrongQuestionIds)}
+                >
+                  <View style={styles.weakInfo}>
+                    <Text style={styles.weakTitle}>{localizedPair(w.nameFi, w.nameEn, i18n.language).primary}</Text>
+                    <Text style={styles.weakSub}>{t('progress.toRevisit', { n: w.wrongCount })}</Text>
+                  </View>
+                  {w.wrongQuestionIds.length > 0 && (
+                    <View style={styles.retryBtn}>
+                      <Text style={styles.retryText}>{t('progress.practise')}</Text>
+                    </View>
+                  )}
+                  <ChevronRight size={18} color={colors.textTertiary} strokeWidth={2.2} />
+                </TouchableOpacity>
+              ))
+            )}
+          </View>
+
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }
