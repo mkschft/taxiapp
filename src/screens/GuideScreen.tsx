@@ -41,6 +41,11 @@ function CategoryCard({ cat }: { cat: GuideCategoryRule }) {
         </View>
         <View style={{ flex: 1 }}>
           <Text style={styles.catName}>{cat.name}</Text>
+          {(cat.name_fi || cat.distribution) && (
+            <Text style={styles.catMeta}>
+              {[cat.name_fi, cat.distribution].filter(Boolean).join(' · ')}
+            </Text>
+          )}
           <Text style={styles.catDesc} numberOfLines={open ? undefined : 2}>{cat.description}</Text>
         </View>
         {open
@@ -251,6 +256,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
   catName: { fontSize: 14, fontFamily: font.semibold, color: colors.text, marginBottom: 2 },
+  catMeta: { fontSize: 11, color: colors.textSecondary, marginBottom: 4 },
   catDesc: { fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
   catRules: { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.border, gap: 7 },
   ruleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 8 },
