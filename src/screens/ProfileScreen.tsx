@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, Platform, Modal, Pressable,
+  TouchableOpacity, Modal, Pressable,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
 import { AppInput } from '../components/ui/AppInput';
+import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { setAppLanguage, type AppLanguage } from '../i18n';
 import { useAuth } from '../store/authStore';
@@ -73,6 +74,16 @@ export function ProfileScreen() {
   const [dateError, setDateError] = useState<string | null>(null);
   const [savingDate, setSavingDate] = useState(false);
 
+  const [dialog, setDialog] = useState<{
+    title: string;
+    message: string;
+    confirmLabel: string;
+    cancelLabel: string;
+    variant?: 'default' | 'danger';
+    onConfirm: () => void;
+  } | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+
   const daysLeft = examDate
     ? Math.max(0, Math.round((new Date(examDate).getTime() - Date.now()) / 86400000))
     : null;
@@ -117,39 +128,32 @@ export function ProfileScreen() {
   };
 
   const handleLogout = () => {
-    const doLogout = async () => {
-      await clearAuth();
-      navigation.navigate('Welcome');
-    };
-
-    if (Platform.OS === 'web') {
-      const confirmed = window.confirm(`${t('profile.logoutTitle')} ${t('profile.logoutBody')}`);
-      if (confirmed) doLogout();
-      return;
-    }
-
-    Alert.alert(
-      t('profile.logoutTitle'),
-      t('profile.logoutBody'),
-      [
-        { text: t('common.cancel') },
-        { text: t('profile.logout'), style: 'destructive', onPress: doLogout },
-      ],
-    );
+    setDialog({
+      title: t('profile.logoutTitle'),
+      message: t('profile.logoutBody'),
+      confirmLabel: t('profile.logout'),
+      cancelLabel: t('common.cancel'),
+      variant: 'danger',
+      onConfirm: async () => {
+        await clearAuth();
+        navigation.navigate('Welcome');
+      },
+    });
   };
 
   const handleClearData = () => {
-    Alert.alert(
-      t('profile.clearTitle'),
-      t('profile.clearBody'),
-      [
-        { text: t('common.cancel') },
-        {
-          text: t('profile.clear'), style: 'destructive',
-          onPress: async () => { await clearAll(); Alert.alert(t('common.done'), t('profile.clearedBody')); },
-        },
-      ],
-    );
+    setDialog({
+      title: t('profile.clearTitle'),
+      message: t('profile.clearBody'),
+      confirmLabel: t('profile.clear'),
+      cancelLabel: t('common.cancel'),
+      variant: 'danger',
+      onConfirm: async () => {
+        await clearAll();
+        setNotice(t('profile.clearedBody'));
+        setTimeout(() => setNotice(null), 3000);
+      },
+    });
   };
 
   return (
@@ -157,6 +161,12 @@ export function ProfileScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{t('profile.title')}</Text>
       </View>
+
+      {notice && (
+        <View style={styles.noticeBanner}>
+          <Text style={styles.noticeText}>{notice}</Text>
+        </View>
+      )}
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Avatar */}
@@ -301,6 +311,17 @@ export function ProfileScreen() {
           </Pressable>
         </Pressable>
       </Modal>
+
+      <ConfirmDialog
+        visible={!!dialog}
+        title={dialog?.title ?? ''}
+        message={dialog?.message}
+        confirmLabel={dialog?.confirmLabel ?? ''}
+        cancelLabel={dialog?.cancelLabel ?? ''}
+        variant={dialog?.variant}
+        onConfirm={() => { dialog?.onConfirm(); setDialog(null); }}
+        onCancel={() => setDialog(null)}
+      />
     </SafeAreaView>
   );
 }
@@ -312,6 +333,17 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1, borderColor: colors.border,
   },
   title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
+  noticeBanner: {
+    marginHorizontal: spacing.md,
+    marginTop: spacing.sm,
+    backgroundColor: colors.successTint,
+    borderWidth: 1,
+    borderColor: colors.success,
+    borderRadius: radius.md,
+    padding: spacing.sm,
+    alignItems: 'center',
+  },
+  noticeText: { fontSize: fontSize.sm, fontFamily: font.semibold, color: colors.success },
   avatarSection: { alignItems: 'center', paddingVertical: spacing.lg, gap: 8 },
   avatar: {
     width: 80, height: 80, borderRadius: 40,
