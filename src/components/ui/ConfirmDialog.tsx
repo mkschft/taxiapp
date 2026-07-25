@@ -37,13 +37,15 @@ export function ConfirmDialog({
               label={cancelLabel}
               variant="secondary"
               onPress={onCancel}
-              style={styles.cancelBtn}
+              style={styles.btn}
+              labelStyle={styles.btnText}
             />
             <AppButton
               label={confirmLabel}
               variant={variant === 'danger' ? 'danger' : 'primary'}
               onPress={onConfirm}
-              style={styles.confirmBtn}
+              style={styles.btn}
+              labelStyle={styles.btnText}
             />
           </View>
         </Pressable>
@@ -60,25 +62,28 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
   },
   sheet: {
+    width: '100%',
+    maxWidth: 360,
+    alignSelf: 'center',
     backgroundColor: colors.bg,
     borderRadius: radius.lg,
-    padding: spacing.lg,
+    padding: spacing.md,
     borderWidth: 1,
     borderColor: colors.border,
   },
-  title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
+  title: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
   message: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
     fontFamily: font.regular,
     color: colors.textSecondary,
-    marginTop: spacing.sm,
-    lineHeight: 22,
+    marginTop: spacing.xs,
+    lineHeight: 20,
   },
   actions: {
     flexDirection: 'row',
     gap: spacing.sm,
-    marginTop: spacing.lg,
+    marginTop: spacing.md,
   },
-  cancelBtn: { flex: 1 },
-  confirmBtn: { flex: 1 },
+  btn: { flex: 1, height: 40 },
+  btnText: { fontSize: fontSize.sm },
 });
