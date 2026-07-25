@@ -61,6 +61,14 @@ export function hasDayPassPlan(subscription: SubscriptionInfo): boolean {
   return hasActivePaidPlan(subscription) && DAY_PASS_PLAN_TYPES.includes(subscription.planType);
 }
 
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+export function getRemainingDays(subscription: SubscriptionInfo): number {
+  if (!hasActivePaidPlan(subscription)) return 0;
+  if (!subscription.expiresAt) return 0;
+  return Math.max(0, Math.ceil((subscription.expiresAt - Date.now()) / MS_PER_DAY));
+}
+
 const AuthContext = createContext<{
   state: AuthState;
   setAuth: (user: AuthUser, accessToken: string, refreshToken: string) => Promise<void>;

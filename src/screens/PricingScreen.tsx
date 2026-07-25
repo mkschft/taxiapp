@@ -9,7 +9,7 @@ import { Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
-import { useAuth, hasActivePaidPlan } from '../store/authStore';
+import { useAuth, hasActivePaidPlan, getRemainingDays } from '../store/authStore';
 import { createCheckoutSession, type PlanType } from '../lib/paymentApi';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -26,6 +26,39 @@ type Plan = {
   badgeKey?: string;
   accent: string;
 };
+
+const PLAN_ORDER: Record<Plan['key'], number> = {
+  free_preview: 0,
+  '1_day': 1,
+  '7_day': 2,
+  '14_day': 3,
+};
+
+const PLAN_DURATION_DAYS: Record<Plan['key'], number> = {
+  free_preview: 0,
+  '1_day': 1,
+  '7_day': 7,
+  '14_day': 14,
+};
+
+function planOrderOf(planType: string | null): number {
+  if (!planType) return -1;
+  return PLAN_ORDER[planType as Plan['key']] ?? -1;
+}
+
+function isUpgrade(currentPlanType: string | null, targetPlanType: Plan['key']): boolean {
+  if (!currentPlanType || currentPlanType === 'free_preview') return false;
+  return PLAN_ORDER[targetPlanType] > planOrderOf(currentPlanType);
+}
+
+function isDowngrade(currentPlanType: string | null, targetPlanType: Plan['key']): boolean {
+  if (!currentPlanType || currentPlanType === 'free_preview') return false;
+  return PLAN_ORDER[targetPlanType] < planOrderOf(currentPlanType);
+}
+
+function isDayPassToFullUpgrade(currentPlanType: string | null, targetPlanType: Plan['key']): boolean {
+  return currentPlanType === '1_day' && (targetPlanType === '7_day' || targetPlanType === '14_day');
+}
 
 const PLANS: Plan[] = [
   {
@@ -80,9 +113,15 @@ export function PricingScreen() {
 
   const hasActive = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const activePlanType = auth.user?.subscription.planType ?? null;
+  const remainingDays = auth.user ? getRemainingDays(auth.user.subscription) : 0;
 
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
+
+  const visiblePlans = PLANS.filter((plan) => {
+    if (plan.key === 'free_preview') return true;
+    return !isDowngrade(activePlanType, plan.key);
+  });
 
   const handleSelect = async (plan: Plan) => {
     if (plan.key === 'free_preview') {
@@ -117,18 +156,32 @@ export function PricingScreen() {
     }
   };
 
+  const isUpgrading = hasActive && activePlanType !== 'free_preview';
+  const headline = isUpgrading ? t('pricing.upgradeHeadline') : t('pricing.headline');
+  const subtitle = isUpgrading ? t('pricing.upgradeSubtitle') : t('pricing.subtitle');
+
   return (
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={t('pricing.title')} onBack={() => navigation.goBack()} />
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.headline}>{t('pricing.headline')}</Text>
-        <Text style={styles.sub}>{t('pricing.subtitle')}</Text>
+        <Text style={styles.headline}>{headline}</Text>
+        <Text style={styles.sub}>{subtitle}</Text>
 
         <View style={styles.grid}>
-          {PLANS.map((plan) => {
+          {visiblePlans.map((plan) => {
             const isLoading = loading === plan.key;
             const isActivePlan = hasActive && activePlanType === plan.key;
+            const planIsUpgrade = isUpgrade(activePlanType, plan.key);
+            const planIsDayPassToFull = isDayPassToFullUpgrade(activePlanType, plan.key);
+            const bonusDays = planIsDayPassToFull ? 1 : 0;
+            const totalDays = remainingDays + PLAN_DURATION_DAYS[plan.key] + bonusDays;
             const buttonDisabled = isActivePlan;
+            const buttonLabel = isActivePlan
+              ? t('pricing.active')
+              : planIsUpgrade
+                ? t('pricing.upgrade')
+                : t(plan.buttonLabelKey);
+
             return (
               <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
                 {plan.badgeKey && (
@@ -149,8 +202,22 @@ export function PricingScreen() {
                   ))}
                 </View>
 
+                {planIsUpgrade && (
+                  <View style={styles.upgradeInfo}>
+                    <Text style={styles.upgradeInfoText}>
+                      {t('pricing.remainingDaysAdded', { remaining: remainingDays })}
+                    </Text>
+                    {planIsDayPassToFull && (
+                      <Text style={styles.upgradeInfoText}>{t('pricing.bonusDayAdded')}</Text>
+                    )}
+                    <Text style={[styles.upgradeInfoText, styles.totalDays]}>
+                      {t('pricing.totalDays', { total: totalDays })}
+                    </Text>
+                  </View>
+                )}
+
                 <AppButton
-                  label={isActivePlan ? t('pricing.active') : t(plan.buttonLabelKey)}
+                  label={buttonLabel}
                   variant={plan.buttonVariant}
                   loading={isLoading}
                   disabled={buttonDisabled}
@@ -198,4 +265,13 @@ const styles = StyleSheet.create({
   perks: { marginTop: spacing.md, gap: 8 },
   perkRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   perkText: { flex: 1, fontSize: fontSize.sm, color: colors.text, fontFamily: font.medium },
+  upgradeInfo: {
+    marginTop: spacing.md,
+    padding: spacing.sm,
+    backgroundColor: colors.surface,
+    borderRadius: radius.md,
+    gap: 2,
+  },
+  upgradeInfoText: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium },
+  totalDays: { color: colors.text, fontFamily: font.semibold, marginTop: 2 },
 });
