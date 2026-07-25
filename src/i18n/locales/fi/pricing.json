@@ -7,6 +7,7 @@
   "mostPopular": "Suosituin",
   "active": "Aktiivinen",
   "upgrade": "Päivitä",
+  "notAvailable": "Ei saatavilla",
   "remainingDaysAdded": "Jäljellä olevat {{remaining}} päivää lisätään",
   "bonusDayAdded": "+ 1 bonuspäivä",
   "totalDays": "Yhteensä {{total}} päivää",
