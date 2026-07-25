@@ -16,6 +16,8 @@
   "subscription": "Tilaus",
   "manageSubscription": "Hallitse tilausta",
   "upgradeHint": "Päivitä saadaksesi täyden käytön",
+  "daysLeftUnlockFull": "{{n}} päivää jäljellä • Avaa täysi käyttöoikeus →",
+  "daysLeftExtend": "{{n}} päivää jäljellä • Jatka kahdeksi viikoksi →",
   "referralTitle": "Suosittele — anna ja saa ilmainen viikko",
   "referralHint": "Jaa koodisi, ansaitse palkintoja",
   "support": "Tuki",

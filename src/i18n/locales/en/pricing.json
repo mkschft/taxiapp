@@ -2,8 +2,14 @@
   "title": "Choose a plan",
   "headline": "Study for free. Upgrade for full access.",
   "subtitle": "Every account gets one free topic per module plus all of Vocabulary and Clue Words. Paid passes unlock the rest for a fixed number of days.",
+  "upgradeHeadline": "Upgrade your access",
+  "upgradeSubtitle": "Your remaining pass time will be added to your new pass.",
   "mostPopular": "Most Popular",
   "active": "Active",
+  "upgrade": "Upgrade",
+  "remainingDaysAdded": "Your remaining {{remaining}} days will be added",
+  "bonusDayAdded": "+ 1 bonus day",
+  "totalDays": "{{total}} days total",
   "plans": {
     "free": {
       "name": "Free",

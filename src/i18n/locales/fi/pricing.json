@@ -2,8 +2,14 @@
   "title": "Valitse tilaus",
   "headline": "Opiskele ilmaiseksi. Päivitä saadaksesi täyden pääsyn.",
   "subtitle": "Jokainen tili sisältää yhden ilmaisen aiheen jokaisesta moduulista sekä koko Sanaston ja Vihjesanat. Maksulliset paketit avaavat lopun tietyksi määräksi päiviä.",
+  "upgradeHeadline": "Päivitä käyttöoikeuttasi",
+  "upgradeSubtitle": "Jäljellä oleva pakettiaikasi lisätään uuteen pakettiisi.",
   "mostPopular": "Suosituin",
   "active": "Aktiivinen",
+  "upgrade": "Päivitä",
+  "remainingDaysAdded": "Jäljellä olevat {{remaining}} päivää lisätään",
+  "bonusDayAdded": "+ 1 bonuspäivä",
+  "totalDays": "Yhteensä {{total}} päivää",
   "plans": {
     "free": {
       "name": "Ilmainen",

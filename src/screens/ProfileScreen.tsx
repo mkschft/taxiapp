@@ -227,7 +227,15 @@ export function ProfileScreen() {
             Icon={CreditCard}
             tint={colors.primary}
             title={isPaid ? subscription!.planName : t('profile.manageSubscription')}
-            subtitle={isPaid ? t('profile.daysLeft', { n: subDaysLeft }) : t('profile.upgradeHint')}
+            subtitle={
+              isPaid
+                ? subscription?.planType === '1_day'
+                  ? t('profile.daysLeftUnlockFull', { n: subDaysLeft })
+                  : subscription?.planType === '7_day'
+                    ? t('profile.daysLeftExtend', { n: subDaysLeft })
+                    : t('profile.daysLeft', { n: subDaysLeft })
+                : t('profile.upgradeHint')
+            }
             onPress={handleManageSub}
           />
           <View style={styles.sep} />

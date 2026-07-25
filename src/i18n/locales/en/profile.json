@@ -16,6 +16,8 @@
   "subscription": "Subscription",
   "manageSubscription": "Manage subscription",
   "upgradeHint": "Upgrade to unlock full access",
+  "daysLeftUnlockFull": "{{n}} days left • Unlock full access →",
+  "daysLeftExtend": "{{n}} days left • Extend to 2 weeks →",
   "referralTitle": "Referral — give & get free week",
   "referralHint": "Share your code, earn rewards",
   "support": "Support",
