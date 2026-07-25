@@ -22,8 +22,11 @@ On desktop web the app renders inside a centered **430px "phone shell"** (`App.t
 | D-F | **Content container:** all tab content centers in `maxWidth: 1120` with 32px horizontal padding. Per-screen variants via prop: reading-heavy screens 880px. |
 | D-G | **Quiz/exam screens (Practice, ModelTest):** two-column split on ≥1024 — left column (~55%): progress track, question card, explanation; right column (~45%): action buttons, options list, Next/Finish. Below 1024: unchanged single column. |
 | D-H | **Dashboard:** 2-column card grid (modules + vocab/clue cards) inside 1120px; progress hero card stays full-width. |
-| D-I | **Auth/payment root routes** (Welcome, Login, Signup, Pricing, …): keep today's 430px centered shell. Only the `App` (tabs) flow goes full-viewport responsive. Shell becomes route-aware. |
+| D-I | **`App` flow goes full-viewport responsive.** Only the `App` (tabs) flow uses the sidebar/rail + top-navbar shell. |
 | D-J | **Same navigators, same URLs.** Sidebar dispatches to the existing tab navigator; linking config untouched. `ScreenHeader` stays as the in-content page bar; on desktop it drops its border/background to read as an inline page title. |
+| D-K | **Auth/payment root routes** (Welcome, Onboarding, Login, Signup, VerifyEmail, ForgotPassword, ResetPassword, Pricing, PaymentSuccess, PaymentCancel) are **no longer locked to the 430px phone shell** on ≥768px. `WebRootFrame` renders them full-viewport, and each screen uses `GuestShell` for its desktop layout. |
+| D-L | **`GuestShell` desktop layouts:** split-screen brand panel + white content card for Welcome/Onboarding/auth forms; centered white card for status pages (VerifyEmail, PaymentSuccess, PaymentCancel); full-width centered container for Pricing. |
+| D-M | **Guest chrome:** brand mark + app name + language toggle visible on every guest desktop screen; no upgrade chip (guests have no subscription state here). |
 
 ## Implementation (grounded in code)
 
@@ -34,14 +37,16 @@ On desktop web the app renders inside a centered **430px "phone shell"** (`App.t
 - `src/components/web/TopNavbar.tsx` — section title + language toggle + upgrade chip.
 - `src/components/web/LanguageToggle.tsx` — EN/FI segmented control (reuses `setAppLanguage`).
 - `src/components/web/ContentContainer.tsx` — max-width wrapper for screens.
-- `src/components/web/WebRootFrame.tsx` — wraps `RootNavigator`; tracks current root route via `NavigationContainer onStateChange` and renders the 430px phone shell for non-`App` routes, full width for `App`.
+- `src/components/web/WebRootFrame.tsx` — wraps `RootNavigator`; tracks current root route via `NavigationContainer onStateChange`. Renders the 430px phone shell for non-`App` routes **only on compact web viewports**, full width for `App` and for guest routes on ≥768px.
+- `src/components/web/GuestShell.tsx` — desktop layout wrapper for guest/auth/payment screens. Split-screen brand panel + content card, or centered card variant; compact passthrough.
 
 **Modified files**
 - `App.tsx` — remove unconditional `webShell`; use `WebRootFrame`.
 - `src/navigation/AppTabs.tsx` — wrap `Tab.Navigator` with `AppShell`; hide tab bar at ≥768 via `tabBar: (props) => isCompact ? <BottomTabBar {...props}/> : null`; track active tab + nested route via `screenListeners={{ state }}` and feed `AppShell`.
 - `src/screens/DashboardScreen.tsx` — `isDesktop` → cards in flex-wrap 2-col row.
 - `src/screens/PracticeScreen.tsx`, `ModelTestScreen.tsx` — `isDesktop` → two-column row layout; reuse existing fragments in left/right groups.
-- List/settings screens (`VocabSets`, `ClueWords`, `TopicLessons`, `TestHome`, `Progress`, `Profile`, `Result`, `SavedQuestions`, `Guide`, `HowTo`, `Referral`) — mechanical wrap of main content in `<ContentContainer maxWidth={880}>`.
+- List/settings screens (`VocabSets`, `ClueWords`, `TopicLessons`, `TestHome`, `Progress`, `Profile`, `Result`, `SavedQuestions`, `Guide`, `HowTo`, `Referral`) — mechanical wrap of main content in `<ContentContainer maxWidth={880}>`. Guest/auth/payment screens now wrapped in `<GuestShell>` with per-screen variant/maxWidth.
+- `src/screens/PricingScreen.tsx` — replace `Platform.OS === 'web'` row logic with `isCompact` breakpoint so the plan grid responds to viewport width; keep centered full-width layout on desktop.
 - `src/components/ui/ScreenHeader.tsx` — on `isDesktop`: transparent bg, no bottom border.
 - `src/i18n/locales/{en,fi}/nav.json` — add `guide`, `howToUse`, `savedQuestions`. `src/i18n/locales/{en,fi}/common.json` — add `appName`, `upgrade`. EN/FI parity maintained.
 
@@ -51,7 +56,7 @@ On desktop web the app renders inside a centered **430px "phone shell"** (`App.t
 
 ## Out of scope
 
-- Sticky option column, question-map sidebar in exams, pricing page wide layout, any content/copy changes, dark mode.
+- Sticky option column, question-map sidebar in exams, any content/copy changes, dark mode, marketing-grade landing redesign beyond the split-shell card layout.
 
 ## Verify
 

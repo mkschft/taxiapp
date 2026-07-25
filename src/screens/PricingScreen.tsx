@@ -9,6 +9,8 @@ import { Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
 import { AlertDialog } from '../components/ui/AlertDialog';
+import { GuestShell } from '../components/web/GuestShell';
+import { useBreakpoint } from '../theme/breakpoints';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { useAuth, hasActivePaidPlan, getRemainingDays } from '../store/authStore';
 import { createCheckoutSession, type PlanType } from '../lib/paymentApi';
@@ -121,8 +123,24 @@ export function PricingScreen() {
   const activePlanType = auth.user?.subscription.planType ?? null;
   const remainingDays = auth.user ? getRemainingDays(auth.user.subscription) : 0;
 
+  const { isCompact } = useBreakpoint();
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
+
+  const handleBack = () => {
+    if (redirectTab && redirectScreen) {
+      navigation.replace('App' as any, {
+        screen: redirectTab,
+        params: { screen: redirectScreen },
+      } as any);
+      return;
+    }
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.replace(auth.user ? 'App' : 'Welcome');
+    }
+  };
 
   const handleSelect = async (plan: Plan) => {
     if (plan.key === 'free_preview') {
@@ -172,13 +190,14 @@ export function PricingScreen() {
   const subtitle = isUpgrading ? t('pricing.upgradeSubtitle') : t('pricing.subtitle');
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <ScreenHeader title={t('pricing.title')} onBack={() => navigation.goBack()} />
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <GuestShell variant="centered" maxWidth={1020}>
+      <SafeAreaView style={styles.safe}>
+        <ScreenHeader title={t('pricing.title')} onBack={handleBack} />
+        <ScrollView contentContainerStyle={[styles.scroll, !isCompact && styles.scrollDesktop]} showsVerticalScrollIndicator={false}>
         <Text style={styles.headline}>{headline}</Text>
         <Text style={styles.sub}>{subtitle}</Text>
 
-        <View style={styles.grid}>
+        <View style={[styles.grid, isCompact && styles.gridCompact]}>
           {PLANS.map((plan) => {
             const isLoading = loading === plan.key;
             const isActivePlan = hasActive && activePlanType === plan.key;
@@ -198,37 +217,39 @@ export function PricingScreen() {
 
             return (
               <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
-                {plan.badgeKey && (
-                  <View style={styles.badge}>
-                    <Text style={styles.badgeText}>{t(plan.badgeKey)}</Text>
-                  </View>
-                )}
-                <Text style={[styles.planName, { color: plan.accent }]}>{t(plan.nameKey)}</Text>
-                <Text style={styles.price}>{plan.price}</Text>
-                <Text style={styles.description}>{t(plan.descriptionKey)}</Text>
-
-                <View style={styles.perks}>
-                  {plan.perkKeys.map((perkKey) => (
-                    <View key={perkKey} style={styles.perkRow}>
-                      <Check size={14} color={plan.accent} strokeWidth={2.4} />
-                      <Text style={styles.perkText}>{t(perkKey)}</Text>
+                <View style={styles.cardBody}>
+                  {plan.badgeKey && (
+                    <View style={styles.badge}>
+                      <Text style={styles.badgeText}>{t(plan.badgeKey)}</Text>
                     </View>
-                  ))}
-                </View>
+                  )}
+                  <Text style={[styles.planName, { color: plan.accent }]}>{t(plan.nameKey)}</Text>
+                  <Text style={styles.price}>{plan.price}</Text>
+                  <Text style={styles.description}>{t(plan.descriptionKey)}</Text>
 
-                {planIsUpgrade && (
-                  <View style={styles.upgradeInfo}>
-                    <Text style={styles.upgradeInfoText}>
-                      {t('pricing.remainingDaysAdded', { remaining: remainingDays })}
-                    </Text>
-                    {planIsDayPassToFull && (
-                      <Text style={styles.upgradeInfoText}>{t('pricing.bonusDayAdded')}</Text>
-                    )}
-                    <Text style={[styles.upgradeInfoText, styles.totalDays]}>
-                      {t('pricing.totalDays', { total: totalDays })}
-                    </Text>
+                  <View style={styles.perks}>
+                    {plan.perkKeys.map((perkKey) => (
+                      <View key={perkKey} style={styles.perkRow}>
+                        <Check size={14} color={plan.accent} strokeWidth={2.4} />
+                        <Text style={styles.perkText}>{t(perkKey)}</Text>
+                      </View>
+                    ))}
                   </View>
-                )}
+
+                  {planIsUpgrade && (
+                    <View style={styles.upgradeInfo}>
+                      <Text style={styles.upgradeInfoText}>
+                        {t('pricing.remainingDaysAdded', { remaining: remainingDays })}
+                      </Text>
+                      {planIsDayPassToFull && (
+                        <Text style={styles.upgradeInfoText}>{t('pricing.bonusDayAdded')}</Text>
+                      )}
+                      <Text style={[styles.upgradeInfoText, styles.totalDays]}>
+                        {t('pricing.totalDays', { total: totalDays })}
+                      </Text>
+                    </View>
+                  )}
+                </View>
 
                 <AppButton
                   label={buttonLabel}
@@ -259,23 +280,27 @@ export function PricingScreen() {
         onDismiss={() => setDialog(null)}
       />
     </SafeAreaView>
+    </GuestShell>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
   scroll: { padding: spacing.lg },
+  scrollDesktop: { padding: 0 },
   headline: { fontSize: fontSize.xl, fontFamily: font.bold, color: colors.text, textAlign: 'center' },
   sub: {
     fontSize: fontSize.sm, color: colors.textSecondary, textAlign: 'center',
     marginTop: spacing.sm, marginBottom: spacing.lg, lineHeight: 20,
   },
-  grid: { flexDirection: Platform.OS === 'web' ? 'row' : 'column', gap: spacing.md, flexWrap: 'wrap' },
+  grid: { flexDirection: 'row', gap: spacing.md, flexWrap: 'wrap' },
+  gridCompact: { flexDirection: 'column' },
   card: {
     flex: 1, minWidth: 220,
     borderWidth: 1.5, borderColor: colors.border, borderRadius: radius.lg,
     padding: spacing.lg, backgroundColor: colors.bg,
   },
+  cardBody: { flex: 1 },
   cardPopular: { borderColor: colors.primary },
   badge: {
     alignSelf: 'center', backgroundColor: colors.primary,

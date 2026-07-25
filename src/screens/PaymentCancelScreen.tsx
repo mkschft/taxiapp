@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { XCircle } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
+import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -17,14 +18,16 @@ export function PaymentCancelScreen() {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.center}>
+    <GuestShell variant="centered">
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.center}>
         <XCircle size={64} color={colors.error} strokeWidth={1.8} />
         <Text style={styles.h}>{t('pricing.cancelTitle')}</Text>
         <Text style={styles.sub}>{t('pricing.cancelBody')}</Text>
         <AppButton label={t('pricing.backToPlans')} onPress={() => navigation.replace('Pricing')} style={{ marginTop: spacing.lg }} />
       </View>
     </SafeAreaView>
+    </GuestShell>
   );
 }
 

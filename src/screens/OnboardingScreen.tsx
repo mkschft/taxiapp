@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Languages, Target, ClipboardList, Lock, type LucideIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
+import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 import { useAuth } from '../store/authStore';
@@ -85,8 +86,9 @@ export function OnboardingScreen({ navigation }: Props) {
   const onLayout = (e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width);
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.topBar}>
+    <GuestShell maxWidth={640}>
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.topBar}>
         <Text style={styles.skip} onPress={finish}>{t('auth.skip')}</Text>
       </View>
 
@@ -123,6 +125,7 @@ export function OnboardingScreen({ navigation }: Props) {
         <AppButton label={isLast ? t('auth.getStarted') : t('common.next')} onPress={next} />
       </View>
     </SafeAreaView>
+    </GuestShell>
   );
 }
 
