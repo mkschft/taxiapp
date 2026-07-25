@@ -3,123 +3,110 @@
     "id": "exam_overview",
     "icon": "FileText",
     "title": "What is the taxi exam?",
-    "summary": "A computer-based multiple-choice test set under Traficom (Finnish Transport and Communications Agency) and delivered by its contracted provider, Ajovarma.",
+    "summary": "The taxi driver exam is an electronic theory exam required for a Finnish taxi driver's permit. It checks whether you understand passenger safety, special passenger needs, customer service situations, and transport and traffic safety.",
     "items": [
       { "label": "Questions", "value": "50 multiple-choice questions" },
-      { "label": "Time", "value": "45 minutes (90 minutes for an oral exam on documented medical grounds)" },
-      { "label": "Pass mark", "value": "38 out of 50 correct (76%) — AND you must reach the minimum in each of the 4 subject areas (12/15, 12/15, 7/10, 7/10). Falling below the minimum in any one area fails the whole exam." },
-      { "label": "Format", "value": "Multiple-choice — each question has only one fully correct answer" },
-      { "label": "Language", "value": "Finnish or Swedish. No translation into other languages is available during the exam." },
-      { "label": "Where", "value": "Ajovarma exam locations across Finland — since Nov 2025 run as centralised group exams in 12 cities" },
-      { "label": "Cost", "value": "~€110 per written attempt (≈€150 for an oral exam on medical grounds). Fees rose on 1.1.2026 — verify the current amount with Ajovarma/Traficom before booking." },
-      { "label": "Retakes", "value": "You can retake if you fail — no mandatory waiting period" }
+      { "label": "Time", "value": "Maximum 45 minutes" },
+      { "label": "Pass mark", "value": "At least 38 correct answers out of 50, and you must also reach the minimum score in each official topic area." },
+      { "label": "Format", "value": "Several answer options per question — only one answer is fully correct." },
+      { "label": "Language", "value": "Finnish or Swedish. No interpreter or dictionary may be used in the exam." },
+      { "label": "Where", "value": "The exam is arranged by Traficom's service provider. Since 17.11.2025, taxi driver exams are held as group exams in 12 towns: Järvenpää, Oulu, Tampere, Turku, Kuopio, Vaasa, Lappeenranta, Jyväskylä, Lahti, Lohja, Seinäjoki, and Rovaniemi." },
+      { "label": "Cost", "value": "The listed taxi driver exam fee is €138.00. Always check the current fee on the booking/payment page before paying." },
+      { "label": "Retakes", "value": "If you fail, you can book another exam according to available appointments. If a person commits fraud in the taxi exam, Traficom can impose a 6-month ban from taking the exam." },
+      { "label": "Result", "value": "The electronic exam system checks the answers and gives the result decision based on the number of correct answers." }
     ],
-    "note": "The exam tests your knowledge of passenger safety, traffic rules, customer service, and special passenger needs — not your driving ability. The authorities don't publish how many answer options each question shows, so this app trains the skill that always transfers: read the question carefully and identify the one fully correct answer."
+    "note": "The exam is not passed only by reaching 38/50. You must also pass the minimum score in each official topic area."
   },
   {
     "id": "licence_process",
     "icon": "ClipboardList",
-    "title": "How to get a taxi licence",
-    "summary": "The taxi driver's licence (taksinkuljettajan ajolupa) is separate from a regular driving licence.",
+    "title": "How to get a taxi driver's permit",
+    "summary": "The taxi driver's permit is called \"taksinkuljettajan ajolupa\". It is separate from a normal driving licence. You need it before you can legally work as a taxi driver in Finland.",
     "items": [
-      { "label": "Step 1", "value": "Hold a category B driving licence (Finland or EU/EEA), held for at least one year before applying" },
-      { "label": "Step 2", "value": "Pass the taxi driver knowledge exam (delivered by Ajovarma)" },
-      { "label": "Step 3", "value": "Meet Group 2 medical fitness — a doctor's certificate no more than 6 months old" },
-      { "label": "Step 4", "value": "Background check — no serious criminal record" },
-      { "label": "Step 5", "value": "Apply for the ajolupa at Traficom — valid for 5 years (2 years if you are 68 or older)" },
-      { "label": "Renewal", "value": "Renew before it expires by meeting the Group 2 health and clean-record conditions. No re-exam — a passed exam stays valid indefinitely." }
+      { "label": "Step 1", "value": "Hold a category B driving licence that you received at least one year earlier in Finland or another EU/EEA country." },
+      { "label": "Step 2", "value": "Make sure you are not under a driving ban." },
+      { "label": "Step 3", "value": "Meet the Group 2 medical requirements for drivers." },
+      { "label": "Step 4", "value": "Pass the taxi driver exam." },
+      { "label": "Step 5", "value": "Pass Traficom's suitability/background check. You must not have criminal or fine-register entries that prevent the permit from being granted." },
+      { "label": "Step 6", "value": "Submit the permit application at an Ajovarma service point. Attach the required medical statement and photo if needed." },
+      { "label": "Step 7", "value": "Wait for Traficom's decision. The average processing time is about 2 weeks when no extra information is needed. If the permit is granted, the card is normally sent by post." },
+      { "label": "Validity", "value": "The taxi driver's permit is normally valid for 5 years. If the driver has reached the age of 68, the permit is valid for 2 years." },
+      { "label": "Renewal", "value": "The permit must be renewed before it expires. For renewal, you must still not be under a driving ban, you must meet the Group 2 health requirements, and you must not have disqualifying criminal or fine-register entries." }
     ],
-    "note": "You must complete all steps before you can legally carry paying passengers in Finland."
+    "note": "A first-aid course is useful in real taxi work, but it is not listed by Traficom as an official requirement for the taxi driver's permit."
   },
   {
     "id": "categories",
     "icon": "LayoutGrid",
-    "title": "The 4 exam categories",
-    "summary": "All 50 questions come from exactly these four official categories. Know them — the exam is organised around them.",
+    "title": "The 4 official exam modules",
+    "summary": "All 50 questions come from four official topic areas. Each area has its own minimum score. If you miss the minimum in even one area, the whole exam fails.",
     "categories": [
       {
         "id": "passenger_safety",
-        "name": "Passenger Help & Safety",
+        "name": "Taking care of passenger assistance and safety",
+        "name_fi": "Matkustajien avustamisesta ja turvallisuudesta huolehtiminen",
+        "distribution": "15 questions — need at least 12 correct",
         "icon": "ShieldCheck",
         "color": "#1F6FEB",
-        "description": "Seatbelt rules, safe boarding and alighting, door safety, driver duties before moving the vehicle.",
+        "description": "This section tests the driver's responsibility for the passenger and the transport. It includes safe boarding and exiting, the correct use and securing of safety devices, technical aids, and communication devices during the journey.",
         "keyRules": [
-          "Driver must ensure all passengers are safely seated before driving",
-          "Driver must remind passengers to wear seatbelts",
-          "Driver must assist passengers getting in and out safely",
-          "Vehicle must not move until all doors are properly closed"
+          "Passenger assistance, safe entry and exit, safety devices, technical aids, and driver responsibility."
         ]
       },
       {
         "id": "special_needs",
-        "name": "Special Passenger Needs",
+        "name": "Special needs of different passenger groups",
+        "name_fi": "Eri matkustajaryhmien erityistarpeet",
+        "distribution": "15 questions — need at least 12 correct",
         "icon": "Accessibility",
         "color": "#2E9E6B",
-        "description": "Assisting wheelchair users, elderly passengers, children, and passengers with visual or hearing impairments.",
+        "description": "This section tests how the driver recognises and handles different passengers' assistance needs. It includes disabled passengers, school and daycare transport, elderly passengers, and other passenger groups that may need extra help.",
         "keyRules": [
-          "Driver must ask if help is needed — never assume",
-          "Wheelchair must be properly secured before driving",
-          "Children under 135 cm normally need a child restraint; in a taxi a child aged 3+ may use the adult seatbelt if no suitable seat is available, but a child under 3 must always be properly restrained",
-          "Guide dogs and assistance animals must be accepted — unless the driver has a documented allergy, in which case they must arrange a replacement taxi"
+          "Disabled passengers, elderly passengers, children, school/daycare transport, and recognising assistance needs."
         ]
       },
       {
         "id": "customer_service",
-        "name": "Customer Service",
+        "name": "Customer-service situations in taxi services",
+        "name_fi": "Taksipalvelujen asiakaspalvelutilanteet",
+        "distribution": "10 questions — need at least 7 correct",
         "icon": "HandHeart",
         "color": "#D98E00",
-        "description": "Receipts, pricing transparency, passenger rights, professional conduct, handling complaints.",
+        "description": "This section tests professional customer service. It includes passenger comfort, driver behaviour, interaction with the customer, and the driver's general responsibility for the customer during the service situation.",
         "keyRules": [
-          "Driver must offer a receipt for every trip — not only when asked",
-          "Before the trip the driver must state the price or pricing basis up front — proactively, not only when asked",
-          "Driver must not discriminate against any passenger",
-          "When the price is based on distance or time, the meter must be on from the start of the trip — but it isn't required when a fixed price has been agreed in advance"
+          "Customer interaction, professional behaviour, passenger comfort, and service responsibility."
         ]
       },
       {
         "id": "traffic_safety",
-        "name": "Transport & Traffic Safety",
+        "name": "Factors affecting transport and traffic safety",
+        "name_fi": "Kuljetusten ja liikenteen turvallisuuteen vaikuttavat tekijät",
+        "distribution": "10 questions — need at least 7 correct",
         "icon": "TrafficCone",
         "color": "#DC2626",
-        "description": "Traffic rules specific to taxi operation, speed limits, stopping and parking, vehicle roadworthiness.",
+        "description": "This section tests traffic safety and taxi-driving rules. It includes general road safety, taxi-related rules and regulations, and the quality requirements for taxi services.",
         "keyRules": [
-          "All traffic rules apply equally to taxi drivers — no exceptions",
-          "Driver must not use a phone while driving without hands-free",
-          "Follow taxi-rank etiquette — note that customers may choose any taxi in the queue, so strict 'first in, first out' is courtesy, not law",
-          "Vehicle must be in roadworthy condition before every shift"
+          "Traffic safety, taxi-driving rules, vehicle/use requirements, and taxi-service quality rules."
         ]
       }
-    ]
+    ],
+    "note": "A score of 38/50 is not enough if one topic area is below its minimum. For example, if your total is 39/50 but you get only 6/10 in Customer Service, the exam fails."
   },
   {
     "id": "exam_day",
     "icon": "CalendarCheck",
     "title": "On exam day",
-    "summary": "What to expect when you walk into the examination centre.",
+    "summary": "Know the basic rules before you enter the exam room.",
     "items": [
-      { "label": "Bring", "value": "Valid photo ID (passport or Finnish ID card)" },
-      { "label": "Arrive", "value": "At least 15 minutes early — late arrivals may not be admitted" },
-      { "label": "Device", "value": "Ajovarma provides the computer/tablet on site — no own device needed" },
-      { "label": "Allowed", "value": "Nothing on the desk. No notes, no phone, no dictionary." },
-      { "label": "Questions", "value": "Read every word carefully — Finnish is precise" },
-      { "label": "Flagging", "value": "You can mark questions to review before final submission — but it's best to answer every question on the first sequential pass and only flag the ones you want to rethink" },
-      { "label": "Results", "value": "The exam is graded electronically and your result is available quickly" }
-    ],
-    "note": "If your Finnish is weak, use this app's clue-word method. Many questions can be answered by spotting key Finnish words even without full comprehension."
-  },
-  {
-    "id": "clue_method",
-    "icon": "Target",
-    "title": "The clue-word method",
-    "summary": "How this app teaches you to pass — even with limited Finnish.",
-    "items": [
-      { "label": "Insight", "value": "Finnish exam answers follow predictable language patterns" },
-      { "label": "Positive clues", "value": "Words like varmistaa, huolehtia, tiedustella signal the CORRECT answer" },
-      { "label": "Negative clues", "value": "Words like ilman, ei tarvitse, vain/ainoastaan signal the WRONG answer" },
-      { "label": "Absolute words", "value": "Never/always/only (koskaan/aina/vain) are almost always traps" },
-      { "label": "Obligation verbs", "value": "Tulee/pitää/on velvollinen = driver duty = usually correct" },
-      { "label": "Practice", "value": "Use 'Spot the Clue' mode to train your eye before the real exam" }
-    ],
-    "note": "This method doesn't replace learning Finnish — but it gives you a systematic edge when you're unsure. Most exam errors happen from misreading, not ignorance."
+      { "label": "Bring", "value": "Valid photo ID and any documents required by the booking instructions." },
+      { "label": "Arrive", "value": "Arrive early enough to follow the check-in instructions. Late arrival may cause problems with participation." },
+      { "label": "Device", "value": "The exam is done electronically. In the current group-exam model, participants complete the exam at the same time on a tablet." },
+      { "label": "Allowed", "value": "No phone, headphones, communication devices, recording devices, notes, dictionary, or other materials may be used. The exam cannot be done with an interpreter." },
+      { "label": "Language", "value": "You complete the exam in Finnish or Swedish." },
+      { "label": "Questions", "value": "Read every word carefully. Finnish exam wording is precise, and small words such as \"aina\", \"vain\", \"ellei\", \"jos\", and \"mikäli\" can change the meaning." },
+      { "label": "Fraud warning", "value": "Copying, saving, recording, sharing exam questions, using prohibited devices, or trying to get outside help is fraud. Fraud can lead to a 6-month ban from taking the taxi exam." },
+      { "label": "Results", "value": "The electronic system checks the answers and gives the result decision immediately." },
+      { "label": "App study tip", "value": "If your Finnish is weak, use TaxiPilot's clue-word method. Many questions become easier when you recognise responsibility words, condition words, negative words, and time/order words." }
+    ]
   }
 ]

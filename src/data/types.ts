@@ -200,7 +200,7 @@ export type Quiz = {
 
 export type GuideItem = { label: string; value: string };
 export type GuideCategoryRule = {
-  id: string; name: string; icon: string; color: string;
+  id: string; name: string; name_fi?: string; distribution?: string; icon: string; color: string;
   description: string; keyRules: string[];
 };
 export type GuideSection = {

@@ -28,7 +28,7 @@ const MODULES: Module[] = [
   { id: 'progress', Icon: MODULE_ICONS.progress, tint: colors.primary, nav: { tab: 'Progress' } },
 ];
 
-const STEP_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5'] as const;
+const STEP_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7'] as const;
 
 export function HowToScreen() {
   const navigation = useNavigation<any>();

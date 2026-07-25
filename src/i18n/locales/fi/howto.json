@@ -1,45 +1,47 @@
 {
   "title": "Käyttöohje",
-  "heroTitle": "Läpäise Suomen taksikoe — vaikka suomen taito olisi rajallinen",
-  "heroSub": "Viisi työkalua, jotka toimivat yhdessä: opi sanat, tunnista vihjeet, harjoittele oikeita kysymyksiä ja harjoittele koeolosuhteissa.",
+  "heroTitle": "Käyttöohje",
+  "heroSub": "Opiskelutapa · vihjeet · mallikokeet. Opi paras tapa valmistautua TaxiPilotilla: ensin sanasto, sitten vihjesanat, osioharjoittelu ja lopuksi ajastetut mallikokeet.",
   "planLabel": "Suositeltu opiskelusuunnitelma",
-  "step1": "Aloita Koeoppaasta, jotta tunnet koeformaatin ja 4 kategoriaa.",
-  "step2": "Rakenna sanavarastoa Sanastossa, opi sitten Vihjesanojen logiikka.",
-  "step3": "Harjoittele Aiheharjoittelua osio osiolta — lue jokainen selitys.",
-  "step4": "Harjoittele ajastetuilla Mallikokeilla ja käy läpi jokainen virhe.",
-  "step5": "Käytä Edistyminen ja heikot alueet -osiota kerrataksesi sen, mitä vastaat jatkuvasti väärin.",
+  "step1": "Aloita Sanastosta. Sanat on järjestetty aiheittain, joten voit oppia hyödyllisimmät suomen kielen sanat taksikokeen jokaiseen osaan.",
+  "step2": "Opi WH-sanat ja konjunktiot. WH-sanat auttavat ymmärtämään, mitä kysymys kysyy; konjunktiot auttavat ymmärtämään lauseen logiikkaa, kuten syy, ehto, poikkeus, vastakohta tai aikajärjestys.",
+  "step3": "Käytä myönteisiä ja kielteisiä vihjesanoja. Myönteiset vihjesanat auttavat löytämään oikean vastauksen nopeammin; kielteiset vihjesanat auttavat poistamaan väärät vaihtoehdot ensin.",
+  "step4": "Harjoittele virallisen kokeen osioittain. Älä harjoittele sattumanvaraisesti — valmistaudu osio kerrallaan, tarkista virheesi ja kertaa heikko osio ennen etenemistä.",
+  "step5": "Käytä vihjejärjestelmää. Vihjejärjestelmä näyttää hyödyllisiä fokussanoja, myönteisiä vihjesanoja, kielteisiä vihjesanoja ja lyhyet selitykset.",
+  "step6": "Seuraa edistymistäsi. Käytä edistymistulostasi nähdäksesi, mikä osio vaatii lisää työtä. Keskity tarkkuuteen, heikkoihin aiheisiin ja toistuviin virheisiin.",
+  "step7": "Viimeistele ajastetuilla mallikokeilla. Mallikokeet noudattavat oikean taksikokeen rakennetta, mukaan lukien osiojakauma ja koetyylinen vaikeustaso.",
   "sectionLabel": "Mitä kukin osio tekee",
   "modules": {
     "examGuide": {
       "title": "Koeopas",
-      "what": "Oikean Traficom-kokeen faktat — formaatti, 4 virallista kategoriaa ja koepäivän säännöt.",
-      "how": "Lue tämä ensin, jotta tiedät tarkalleen mihin harjoittelet: 50 kysymystä, 45 minuuttia, 38/50 läpäisyyn (vähimmäismäärä jokaisessa kategoriassa), suomeksi tai ruotsiksi."
+      "what": "Todellisen suomen taksikokeen tiedot — formaatti, 4 virallista moduulia ja koepäivän säännöt.",
+      "how": "Lue tämä ensin, jotta tiedät tarkalleen, mihin harjoittelet."
     },
     "vocabulary": {
       "title": "Sanasto",
-      "what": "Keskeiset suomalaiset taksisanat ryhmitelty pieniin sarjoihin, joissa kussakin on muistikorttioppitunti ja tietovisa.",
-      "how": "Opi sarja, tee sitten sen tietovisa. Rakenna perussanasto ennen kuin tartut kokonaisiin kysymyksiin."
+      "what": "Keskeiset suomalaiset taksisanat aiheittain ryhmiteltyinä, muistikorttioppitunteineen ja tietovisoineen.",
+      "how": "Opi jokaisen sanan merkitys ja se, missä se esiintyy todellisissa koetyylisissä kysymyksissä."
     },
     "clueWords": {
       "title": "Vihjesanat",
-      "what": "Vastauslogiikan sanat, jotka hiljaa viittaavat oikeaan tai väärään vaihtoehtoon.",
-      "how": "Myönteiset vihjeet (varmistaa, huolehtia) viittaavat oikeaan; ehdottomuudet (aina, vain, koskaan) ovat yleensä ansoja. Harjoita silmääsi täällä, jotta voit vastata vaikka et ymmärtäisi jokaista sanaa."
+      "what": "WH-sanat, konjunktiot sekä myönteiset ja kielteiset vihjesanat, jotka paljastavat kysymysten logiikan.",
+      "how": "Harjoittele silmääsi tunnistamaan vastuusanat, ehtosanat, kielteiset sanat ja aika/järjestys-sanat."
     },
     "topicPractice": {
       "title": "Aiheharjoittelu",
-      "what": "Oikeita koetyylisiä kysymyksiä lajiteltuna oppitunneiksi 4 virallisen kategorian alle.",
-      "how": "Käy läpi osio oppitunti kerrallaan. Jokainen vastaus näyttää käännöksen ja selityksen, joten jokainen kysymys opettaa sinulle jotain."
+      "what": "Koetyylisiä kysymyksiä lajiteltuna 4 virallisen moduulin alle.",
+      "how": "Harjoittele yksi moduuli kerrallaan, tarkista virheesi ja kertaa heikot osiot ennen etenemistä."
     },
     "modelTests": {
       "title": "Mallikokeet",
-      "what": "Täydet, ajastetut harjoituskokeet, jotka jäljittelevät oikean kokeen formaattia ja aikapainetta.",
-      "how": "Käytä näitä lähellä koepäivää harjoitellaksesi paineen alla. Suorita yksi rauhassa 45 minuutissa ja käy sitten läpi jokainen kysymys, jonka et osannut."
+      "what": "Ajastetut mallikokeet, jotka noudattavat oikean taksikokeen rakennetta.",
+      "how": "Käytä näitä lähellä koepäivää harjoitellaksesi paineen alla ja käy läpi jokainen virhe."
     },
     "progress": {
-      "title": "Edistyminen ja heikot alueet",
-      "what": "Seuraa mitä olet harjoitellut ja nostaa esiin kysymykset, joihin vastaat jatkuvasti väärin.",
+      "title": "Edistyminen",
+      "what": "Seuraa, mitä olet harjoitellut, ja nostaa esiin kysymykset, joihin vastaat jatkuvasti väärin.",
       "how": "Tarkista se säännöllisesti ja kertaa heikkoja alueitasi, kunnes ne lakkaavat ilmestymästä."
     }
   },
-  "footer": "Vinkki: koe on suomeksi (tai ruotsiksi), ilman käännöstä muille kielille. Vihjesanamenetelmä on valttisi — useimmat virheet johtuvat väärinlukemisesta, ei tietämättömyydestä."
+  "footer": "Valmistaudu fiksusti, älä satunnaisesti. TaxiPilot auttaa sinua säästämään aikaa, vähentämään hämmennystä ja rakentamaan itseluottamusta ennen suomen taksikoetta."
 }
