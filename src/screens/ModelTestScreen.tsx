@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, Platform, ActivityIndicator,
+  TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
@@ -12,6 +12,7 @@ import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
+import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getModelTestById, getQuestionById } from '../data/loaders';
@@ -61,17 +62,6 @@ function fromBackend(p: BackendProblem): TestQuestion {
   };
 }
 
-function confirm(title: string, message: string, confirmLabel: string, cancelLabel: string, onConfirm: () => void) {
-  if (Platform.OS === 'web') {
-    if (window.confirm(`${title}\n\n${message}`)) onConfirm();
-    return;
-  }
-  Alert.alert(title, message, [
-    { text: cancelLabel, style: 'cancel' },
-    { text: confirmLabel, style: 'default', onPress: onConfirm },
-  ]);
-}
-
 export function ModelTestScreen({ navigation, route }: Props) {
   const { testId, sessionId, problemSetId } = route.params;
   const test = getModelTestById(testId);
@@ -85,6 +75,15 @@ export function ModelTestScreen({ navigation, route }: Props) {
   const [qIndex, setQIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, Choice>>({});
   const [secondsLeft, setSecondsLeft] = useState(test ? test.time_minutes * 60 : 0);
+
+  const [dialog, setDialog] = useState<{
+    title: string;
+    message: string;
+    confirmLabel: string;
+    cancelLabel: string;
+    variant?: 'default' | 'danger';
+    onConfirm: () => void;
+  } | null>(null);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef(Date.now());
@@ -229,7 +228,13 @@ export function ModelTestScreen({ navigation, route }: Props) {
     const detail = unanswered > 0
       ? t('modelTest.submitUnanswered', { n: unanswered })
       : t('modelTest.submitConfirm');
-    confirm(t('modelTest.submitTitle'), detail, t('modelTest.submit'), t('common.cancel'), () => submit(false));
+    setDialog({
+      title: t('modelTest.submitTitle'),
+      message: detail,
+      confirmLabel: t('modelTest.submit'),
+      cancelLabel: t('common.cancel'),
+      onConfirm: () => submit(false),
+    });
   };
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
@@ -240,9 +245,17 @@ export function ModelTestScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => confirm(
-          t('modelTest.quitTitle'), t('modelTest.quitMessage'), t('modelTest.quit'), t('common.cancel'), () => navigation.goBack(),
-        )} style={styles.backBtn}>
+        <TouchableOpacity
+          onPress={() => setDialog({
+            title: t('modelTest.quitTitle'),
+            message: t('modelTest.quitMessage'),
+            confirmLabel: t('modelTest.quit'),
+            cancelLabel: t('common.cancel'),
+            variant: 'danger',
+            onConfirm: () => navigation.goBack(),
+          })}
+          style={styles.backBtn}
+        >
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
         <Text style={styles.navTitle} numberOfLines={1}>{testTitle}</Text>
@@ -314,6 +327,17 @@ export function ModelTestScreen({ navigation, route }: Props) {
           </TouchableOpacity>
         )}
       </View>
+
+      <ConfirmDialog
+        visible={!!dialog}
+        title={dialog?.title ?? ''}
+        message={dialog?.message}
+        confirmLabel={dialog?.confirmLabel ?? ''}
+        cancelLabel={dialog?.cancelLabel ?? ''}
+        variant={dialog?.variant}
+        onConfirm={() => { dialog?.onConfirm(); setDialog(null); }}
+        onCancel={() => setDialog(null)}
+      />
     </SafeAreaView>
   );
 }

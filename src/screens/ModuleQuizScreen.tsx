@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, Platform, ActivityIndicator,
+  TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -13,6 +13,7 @@ import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
+import { ConfirmDialog } from '../components/ui/ConfirmDialog';
 import { useSavedQuestions } from '../store/savedQuestionsStore';
 import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
@@ -85,17 +86,6 @@ function fromBackend(p: BackendProblem): ModuleQuestion {
   };
 }
 
-function confirm(title: string, message: string, confirmLabel: string, cancelLabel: string, onConfirm: () => void) {
-  if (Platform.OS === 'web') {
-    if (window.confirm(`${title}\n\n${message}`)) onConfirm();
-    return;
-  }
-  Alert.alert(title, message, [
-    { text: cancelLabel, style: 'cancel' },
-    { text: confirmLabel, style: 'default', onPress: onConfirm },
-  ]);
-}
-
 // One quiz covering the whole module at once (all lessons combined), sized to
 // the real Traficom module pass gate (pass_total) — same layout/UX as Mock
 // Exams (ModelTestScreen) minus the countdown timer, since this is a shorter
@@ -121,6 +111,15 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
 
   const [qIndex, setQIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, Choice>>({});
+
+  const [dialog, setDialog] = useState<{
+    title: string;
+    message: string;
+    confirmLabel: string;
+    cancelLabel: string;
+    variant?: 'default' | 'danger';
+    onConfirm: () => void;
+  } | null>(null);
 
   const startTimeRef = useRef(Date.now());
   const answersRef = useRef(answers);
@@ -281,7 +280,13 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
     const detail = unanswered > 0
       ? t('modelTest.submitUnanswered', { n: unanswered })
       : t('modelTest.submitConfirm');
-    confirm(t('modelTest.submitTitle'), detail, t('modelTest.submit'), t('common.cancel'), () => submit(false));
+    setDialog({
+      title: t('modelTest.submitTitle'),
+      message: detail,
+      confirmLabel: t('modelTest.submit'),
+      cancelLabel: t('common.cancel'),
+      onConfirm: () => submit(false),
+    });
   };
 
   const progress = ((qIndex + 1) / ids.length) * 100;
@@ -289,9 +294,17 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => confirm(
-          t('moduleQuiz.closeTitle'), t('moduleQuiz.closeMessage'), t('moduleQuiz.close'), t('common.cancel'), () => navigation.goBack(),
-        )} style={styles.backBtn}>
+        <TouchableOpacity
+          onPress={() => setDialog({
+            title: t('moduleQuiz.closeTitle'),
+            message: t('moduleQuiz.closeMessage'),
+            confirmLabel: t('moduleQuiz.close'),
+            cancelLabel: t('common.cancel'),
+            variant: 'danger',
+            onConfirm: () => navigation.goBack(),
+          })}
+          style={styles.backBtn}
+        >
           <X size={22} color={colors.textSecondary} strokeWidth={2.2} />
         </TouchableOpacity>
         <Text style={styles.navTitle} numberOfLines={1}>{navTitle}</Text>
@@ -359,6 +372,17 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
           </TouchableOpacity>
         )}
       </View>
+
+      <ConfirmDialog
+        visible={!!dialog}
+        title={dialog?.title ?? ''}
+        message={dialog?.message}
+        confirmLabel={dialog?.confirmLabel ?? ''}
+        cancelLabel={dialog?.cancelLabel ?? ''}
+        variant={dialog?.variant}
+        onConfirm={() => { dialog?.onConfirm(); setDialog(null); }}
+        onCancel={() => setDialog(null)}
+      />
     </SafeAreaView>
   );
 }
