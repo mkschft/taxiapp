@@ -127,6 +127,21 @@ export function PricingScreen() {
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
 
+  const handleBack = () => {
+    if (redirectTab && redirectScreen) {
+      navigation.replace('App' as any, {
+        screen: redirectTab,
+        params: { screen: redirectScreen },
+      } as any);
+      return;
+    }
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.replace(auth.user ? 'App' : 'Welcome');
+    }
+  };
+
   const handleSelect = async (plan: Plan) => {
     if (plan.key === 'free_preview') {
       navigation.goBack();
@@ -177,7 +192,7 @@ export function PricingScreen() {
   return (
     <GuestShell variant="centered" maxWidth={1020}>
       <SafeAreaView style={styles.safe}>
-        <ScreenHeader title={t('pricing.title')} onBack={() => navigation.goBack()} />
+        <ScreenHeader title={t('pricing.title')} onBack={handleBack} />
         <ScrollView contentContainerStyle={[styles.scroll, !isCompact && styles.scrollDesktop]} showsVerticalScrollIndicator={false}>
         <Text style={styles.headline}>{headline}</Text>
         <Text style={styles.sub}>{subtitle}</Text>
@@ -202,37 +217,39 @@ export function PricingScreen() {
 
             return (
               <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
-                {plan.badgeKey && (
-                  <View style={styles.badge}>
-                    <Text style={styles.badgeText}>{t(plan.badgeKey)}</Text>
-                  </View>
-                )}
-                <Text style={[styles.planName, { color: plan.accent }]}>{t(plan.nameKey)}</Text>
-                <Text style={styles.price}>{plan.price}</Text>
-                <Text style={styles.description}>{t(plan.descriptionKey)}</Text>
-
-                <View style={styles.perks}>
-                  {plan.perkKeys.map((perkKey) => (
-                    <View key={perkKey} style={styles.perkRow}>
-                      <Check size={14} color={plan.accent} strokeWidth={2.4} />
-                      <Text style={styles.perkText}>{t(perkKey)}</Text>
+                <View style={styles.cardBody}>
+                  {plan.badgeKey && (
+                    <View style={styles.badge}>
+                      <Text style={styles.badgeText}>{t(plan.badgeKey)}</Text>
                     </View>
-                  ))}
-                </View>
+                  )}
+                  <Text style={[styles.planName, { color: plan.accent }]}>{t(plan.nameKey)}</Text>
+                  <Text style={styles.price}>{plan.price}</Text>
+                  <Text style={styles.description}>{t(plan.descriptionKey)}</Text>
 
-                {planIsUpgrade && (
-                  <View style={styles.upgradeInfo}>
-                    <Text style={styles.upgradeInfoText}>
-                      {t('pricing.remainingDaysAdded', { remaining: remainingDays })}
-                    </Text>
-                    {planIsDayPassToFull && (
-                      <Text style={styles.upgradeInfoText}>{t('pricing.bonusDayAdded')}</Text>
-                    )}
-                    <Text style={[styles.upgradeInfoText, styles.totalDays]}>
-                      {t('pricing.totalDays', { total: totalDays })}
-                    </Text>
+                  <View style={styles.perks}>
+                    {plan.perkKeys.map((perkKey) => (
+                      <View key={perkKey} style={styles.perkRow}>
+                        <Check size={14} color={plan.accent} strokeWidth={2.4} />
+                        <Text style={styles.perkText}>{t(perkKey)}</Text>
+                      </View>
+                    ))}
                   </View>
-                )}
+
+                  {planIsUpgrade && (
+                    <View style={styles.upgradeInfo}>
+                      <Text style={styles.upgradeInfoText}>
+                        {t('pricing.remainingDaysAdded', { remaining: remainingDays })}
+                      </Text>
+                      {planIsDayPassToFull && (
+                        <Text style={styles.upgradeInfoText}>{t('pricing.bonusDayAdded')}</Text>
+                      )}
+                      <Text style={[styles.upgradeInfoText, styles.totalDays]}>
+                        {t('pricing.totalDays', { total: totalDays })}
+                      </Text>
+                    </View>
+                  )}
+                </View>
 
                 <AppButton
                   label={buttonLabel}
@@ -283,6 +300,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5, borderColor: colors.border, borderRadius: radius.lg,
     padding: spacing.lg, backgroundColor: colors.bg,
   },
+  cardBody: { flex: 1 },
   cardPopular: { borderColor: colors.primary },
   badge: {
     alignSelf: 'center', backgroundColor: colors.primary,
