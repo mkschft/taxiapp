@@ -7,6 +7,7 @@ import { RouteProp } from '@react-navigation/native';
 import { Lightbulb, ChevronLeft, ChevronRight, ClipboardCheck } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSet, getVocabLesson } from '../data/loaders';
 import type { VocabLessonWord } from '../data/types';
@@ -102,12 +103,14 @@ export function VocabLessonScreen({ navigation, route }: Props) {
         ))}
       </View>
 
-      <ScrollView
-        contentContainerStyle={styles.scroll}
-        showsVerticalScrollIndicator={false}
-      >
-        <WordCard word={word} />
-      </ScrollView>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }}
+          contentContainerStyle={styles.scroll}
+          showsVerticalScrollIndicator={false}
+        >
+          <WordCard word={word} />
+        </ScrollView>
+      </ContentContainer>
 
       {/* Prev / Next footer */}
       <View style={styles.footer}>

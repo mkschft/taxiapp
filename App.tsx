@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { loadSavedLanguage } from './src/i18n';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import type { RootStackParamList } from './src/navigation/types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, View, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import {
   useFonts,
   Inter_400Regular,
@@ -15,6 +15,7 @@ import {
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
 import { RootNavigator } from './src/navigation/RootNavigator';
+import { WebRootFrame } from './src/components/web/WebRootFrame';
 import { AuthProvider } from './src/store/authStore';
 import { PaywallProvider } from './src/store/paywallStore';
 import { SavedQuestionsProvider } from './src/store/savedQuestionsStore';
@@ -88,6 +89,7 @@ const linking: LinkingOptions<RootStackParamList> = {
 };
 
 export default function App() {
+  const [rootRoute, setRootRoute] = useState<string | null>(null);
   const [loaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
@@ -111,7 +113,13 @@ export default function App() {
       <AuthProvider>
         <PaywallProvider>
           <SavedQuestionsProvider>
-            <NavigationContainer linking={linking}>
+            <NavigationContainer
+              linking={linking}
+              onStateChange={(state) => {
+                const route = state?.routes?.[state?.index ?? 0];
+                setRootRoute(route?.name ?? null);
+              }}
+            >
               <StatusBar style="dark" />
               <RootNavigator />
             </NavigationContainer>
@@ -121,28 +129,13 @@ export default function App() {
     </SafeAreaProvider>
   );
 
-  if (Platform.OS !== 'web') return inner;
-
   return (
-    <View style={styles.webOuter}>
-      <View style={styles.webShell}>{inner}</View>
-    </View>
+    <WebRootFrame isAppRoute={rootRoute === 'App'}>
+      {inner}
+    </WebRootFrame>
   );
 }
 
 const styles = StyleSheet.create({
   loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
-  webOuter: {
-    flex: 1,
-    backgroundColor: '#E8ECF0',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  webShell: {
-    width: '100%',
-    maxWidth: 430,
-    height: '100%',
-    backgroundColor: '#FFFFFF',
-    ...(Platform.OS === 'web' ? ({ boxShadow: '0 0 40px rgba(0,0,0,0.12)' } as any) : {}),
-  },
 });

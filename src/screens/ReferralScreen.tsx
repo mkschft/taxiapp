@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { Gift } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 
 function BoldText({ text }: { text: string }) {
@@ -55,74 +56,76 @@ export function ReferralScreen() {
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={t('referral.headerTitle')} onBack={() => navigation.goBack()} />
 
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* Hero */}
-        <View style={styles.hero}>
-          <View style={styles.heroIconChip}>
-            <Gift size={36} color={colors.success} strokeWidth={1.9} />
-          </View>
-          <Text style={styles.heroTitle}>{t('referral.heroTitle')}</Text>
-          <Text style={styles.heroSub}>{t('referral.heroSub')}</Text>
-        </View>
-
-        {/* Code card */}
-        <View style={styles.codeCard}>
-          <Text style={styles.codeLabel}>{t('referral.codeLabel')}</Text>
-          <Text style={styles.code}>{code}</Text>
-          <AppButton
-            label={copied ? t('referral.copied') : t('referral.copy')}
-            onPress={handleCopy}
-            variant={copied ? 'success' : 'primary'}
-            style={{ marginTop: spacing.sm }}
-          />
-        </View>
-
-        {copied && (
-          <View style={styles.copyConfirm}>
-            <Text style={styles.copyConfirmText}>{t('referral.copyConfirm')}</Text>
-          </View>
-        )}
-
-        {/* Share */}
-        <View style={styles.shareSection}>
-          <AppButton label={t('referral.share')} onPress={handleShare} />
-        </View>
-
-        {/* How it works */}
-        <Text style={styles.sectionHeader}>{t('referral.howItWorks')}</Text>
-        <View style={styles.steps}>
-          {steps.map(s => (
-            <View key={s.n} style={styles.stepRow}>
-              <View style={[styles.stepNum, s.n === 3 && { backgroundColor: colors.success }]}>
-                <Text style={styles.stepNumText}>{s.n}</Text>
-              </View>
-              <BoldText text={s.text} />
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          {/* Hero */}
+          <View style={styles.hero}>
+            <View style={styles.heroIconChip}>
+              <Gift size={36} color={colors.success} strokeWidth={1.9} />
             </View>
-          ))}
-        </View>
+            <Text style={styles.heroTitle}>{t('referral.heroTitle')}</Text>
+            <Text style={styles.heroSub}>{t('referral.heroSub')}</Text>
+          </View>
 
-        {/* Stats */}
-        <View style={styles.statsCard}>
-          <Text style={styles.statsTitle}>{t('referral.statsTitle')}</Text>
-          <View style={styles.statsRow}>
-            {[
-              { val: friendsJoined, label: t('referral.friendsJoined'), color: colors.primary },
-              { val: daysEarned, label: t('referral.daysEarned'), color: colors.success },
-              { val: '∞', label: t('referral.noLimit'), color: colors.text },
-            ].map((s, i) => (
-              <React.Fragment key={s.label}>
-                {i > 0 && <View style={styles.statsDivider} />}
-                <View style={styles.statItem}>
-                  <Text style={[styles.statVal, { color: s.color }]}>{s.val}</Text>
-                  <Text style={styles.statLbl}>{s.label}</Text>
+          {/* Code card */}
+          <View style={styles.codeCard}>
+            <Text style={styles.codeLabel}>{t('referral.codeLabel')}</Text>
+            <Text style={styles.code}>{code}</Text>
+            <AppButton
+              label={copied ? t('referral.copied') : t('referral.copy')}
+              onPress={handleCopy}
+              variant={copied ? 'success' : 'primary'}
+              style={{ marginTop: spacing.sm }}
+            />
+          </View>
+
+          {copied && (
+            <View style={styles.copyConfirm}>
+              <Text style={styles.copyConfirmText}>{t('referral.copyConfirm')}</Text>
+            </View>
+          )}
+
+          {/* Share */}
+          <View style={styles.shareSection}>
+            <AppButton label={t('referral.share')} onPress={handleShare} />
+          </View>
+
+          {/* How it works */}
+          <Text style={styles.sectionHeader}>{t('referral.howItWorks')}</Text>
+          <View style={styles.steps}>
+            {steps.map(s => (
+              <View key={s.n} style={styles.stepRow}>
+                <View style={[styles.stepNum, s.n === 3 && { backgroundColor: colors.success }]}>
+                  <Text style={styles.stepNumText}>{s.n}</Text>
                 </View>
-              </React.Fragment>
+                <BoldText text={s.text} />
+              </View>
             ))}
           </View>
-        </View>
 
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          {/* Stats */}
+          <View style={styles.statsCard}>
+            <Text style={styles.statsTitle}>{t('referral.statsTitle')}</Text>
+            <View style={styles.statsRow}>
+              {[
+                { val: friendsJoined, label: t('referral.friendsJoined'), color: colors.primary },
+                { val: daysEarned, label: t('referral.daysEarned'), color: colors.success },
+                { val: '∞', label: t('referral.noLimit'), color: colors.text },
+              ].map((s, i) => (
+                <React.Fragment key={s.label}>
+                  {i > 0 && <View style={styles.statsDivider} />}
+                  <View style={styles.statItem}>
+                    <Text style={[styles.statVal, { color: s.color }]}>{s.val}</Text>
+                    <Text style={styles.statLbl}>{s.label}</Text>
+                  </View>
+                </React.Fragment>
+              ))}
+            </View>
+          </View>
+
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroup, getClueLesson } from '../data/loaders';
 import type { ClueLessonWord, ClueTone } from '../data/types';
@@ -103,9 +104,11 @@ export function ClueLessonScreen({ navigation, route }: Props) {
         ))}
       </View>
 
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <ClueCard word={word} tone={group.tone} />
-      </ScrollView>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          <ClueCard word={word} tone={group.tone} />
+        </ScrollView>
+      </ContentContainer>
 
       <View style={styles.footer}>
         <Pressable

@@ -19,6 +19,7 @@ import { useAuth } from '../store/authStore';
 import { usePaywall } from '../store/paywallStore';
 import { Paywall } from '../components/Paywall';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { getTopicSection, getTopicSectionQuestionIds, getQuestionById } from '../data/loaders';
 import type { Question } from '../data/types';
 import type { DashboardStackParamList } from '../navigation/types';
@@ -317,26 +318,28 @@ export function ModuleQuizScreen({ navigation, route }: Props) {
         <Text style={styles.qCount}>{qIndex + 1}/{ids.length}</Text>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.qCategory}>{t('modelTest.question', { n: qIndex + 1, total: ids.length })}</Text>
-        <View style={styles.questionCard}>
-          <Text style={styles.qText}>{question.text}</Text>
-          <QuestionImage imageKey={question.imageKey ?? question.id} />
-          <QuestionTariff id={question.id} />
-        </View>
+      <ContentContainer maxWidth={1120}>
+        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+          <Text style={styles.qCategory}>{t('modelTest.question', { n: qIndex + 1, total: ids.length })}</Text>
+          <View style={styles.questionCard}>
+            <Text style={styles.qText}>{question.text}</Text>
+            <QuestionImage imageKey={question.imageKey ?? question.id} />
+            <QuestionTariff id={question.id} />
+          </View>
 
-        {question.options.map(opt => (
-          <OptionRow
-            key={opt.key}
-            letter={opt.key}
-            text={opt.fi}
-            state={optionStates[opt.key]}
-            onPress={() => handleSelect(opt.key)}
-          />
-        ))}
+          {question.options.map(opt => (
+            <OptionRow
+              key={opt.key}
+              letter={opt.key}
+              text={opt.fi}
+              state={optionStates[opt.key]}
+              onPress={() => handleSelect(opt.key)}
+            />
+          ))}
 
-        <View style={{ height: 16 }} />
-      </ScrollView>
+          <View style={{ height: 16 }} />
+        </ScrollView>
+      </ContentContainer>
 
       <View style={styles.footer}>
         <Text style={styles.answeredHint}>

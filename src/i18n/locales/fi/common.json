@@ -15,5 +15,8 @@
   "remove": "Poista",
   "error": "Virhe",
   "questionsCount": "{{n}} kysymystä",
-  "wordsCount": "{{n}} sanaa"
+  "wordsCount": "{{n}} sanaa",
+  "appName": "TaxiPilot",
+  "free": "Ilmainen",
+  "upgrade": "Päivitä"
 }

@@ -14,6 +14,8 @@ import { useStartQuiz } from '../hooks/useStartQuiz';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
 import { localizedPair } from '../i18n/content';
+import { useBreakpoint } from '../theme/breakpoints';
+import { ContentContainer } from '../components/web/ContentContainer';
 import {
   getQuestions, getVocabSets, getVocabWordTotal, getClueGroups, getClueWordTotal,
   getTopicSections, getCategories,
@@ -45,6 +47,7 @@ const WORDS: WordsCard[] = [
 export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
+  const { isDesktop } = useBreakpoint();
   const { data: progress, loading } = useProgress(true);
   const { startQuiz, error, clearError } = useStartQuiz();
 
@@ -61,7 +64,8 @@ export function DashboardScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ContentContainer maxWidth={1120}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* Progress card */}
         {!loading && totalCompleted === 0 ? (
           // Fresh signed-in user: an encouraging start card instead of a flat 0%.
@@ -90,11 +94,11 @@ export function DashboardScreen() {
         <View style={styles.sectionHead}>
           <Text style={styles.sectionTitle}>{t('dashboard.wordsTitle')}</Text>
         </View>
-        <View style={styles.rows}>
+        <View style={[styles.rows, isDesktop && styles.rowGrid]}>
           {WORDS.map(w => (
             <TouchableOpacity
               key={w.screen}
-              style={styles.card}
+              style={[styles.card, isDesktop && styles.cardHalf]}
               onPress={() => openScreen(w.screen)}
               activeOpacity={0.78}
             >
@@ -114,7 +118,7 @@ export function DashboardScreen() {
         <View style={styles.sectionHead}>
           <Text style={styles.sectionTitle}>{t('dashboard.studyTitle')}</Text>
         </View>
-        <View style={styles.rows}>
+        <View style={[styles.rows, isDesktop && styles.rowGrid]}>
           {SECTIONS.map(section => {
             const cat = CAT[section.category_id];
             const tint = cat?.color ?? colors.primary;
@@ -123,7 +127,7 @@ export function DashboardScreen() {
             const { primary, secondary } = localizedPair(section.name_fi, section.name_en, i18n.language);
 
             return (
-              <View key={section.id} style={styles.card}>
+              <View key={section.id} style={[styles.card, isDesktop && styles.cardHalf]}>
                 <TouchableOpacity
                   style={styles.cardBody}
                   onPress={() => openModule(section.id)}
@@ -170,6 +174,7 @@ export function DashboardScreen() {
 
         <View style={{ height: spacing.lg }} />
       </ScrollView>
+      </ContentContainer>
 
       <AlertDialog
         visible={!!error}
@@ -222,4 +227,14 @@ const styles = StyleSheet.create({
   rowInfo: { flex: 1, gap: 2 },
   hubTitle: { fontSize: 14, fontFamily: font.semibold, color: colors.text },
   moduleFi: { fontSize: 12, fontStyle: 'italic', color: colors.textTertiary },
+
+  rowGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  cardHalf: {
+    width: '48.5%',
+    marginBottom: 12,
+  },
 });

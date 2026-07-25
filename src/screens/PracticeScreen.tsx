@@ -14,6 +14,8 @@ import { QuestionImage } from '../components/question/QuestionImage';
 import { QuestionTariff } from '../components/question/QuestionTariff';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
+import { useBreakpoint } from '../theme/breakpoints';
 import { colors, spacing, fontSize, radius, font } from '../theme/tokens';
 import { cluesForScope, focusWords, optionVerdict } from '../utils/clueParser';
 import { getQuestionById } from '../data/loaders';
@@ -26,6 +28,7 @@ type Props = {
 
 export function PracticeScreen({ navigation, route }: Props) {
   const { t } = useTranslation();
+  const { isDesktop } = useBreakpoint();
   const { questionId, queue = [], queueIndex = 0, sourceLabel = 'Practice', review = false, answers } = route.params;
   const question = getQuestionById(questionId);
 
@@ -116,139 +119,183 @@ export function PracticeScreen({ navigation, route }: Props) {
   const highlightQuestion = showLens;
   const revealClues = answered && showLens;
 
+  const navBar = (
+    <View style={styles.navBar}>
+      <Pressable onPress={() => navigation.goBack()} style={styles.backBtn} hitSlop={8}>
+        <ChevronLeft size={24} color={colors.primary} strokeWidth={2.2} />
+      </Pressable>
+      <Text style={styles.navTitle}>{sourceLabel}</Text>
+      {queue.length > 0 && (
+        <Text style={styles.qCount}>{queueIndex + 1}/{queue.length}</Text>
+      )}
+    </View>
+  );
+
+  const progressTrack = queue.length > 0 && (
+    <View style={styles.progressWrap}>
+      <View style={styles.progressTrack}>
+        <View style={[styles.progressFill, { width: `${progress}%` }]} />
+      </View>
+    </View>
+  );
+
+  const questionCard = (
+    <View style={styles.questionCard}>
+      <Text style={styles.qLabel}>{t('quiz.question')}</Text>
+      <ClueHighlight
+        text={qText}
+        clueAnnotations={focus}
+        showHighlights={highlightQuestion}
+        style={styles.qText}
+      />
+      {showMeaning && !!qTextEn && (
+        <Text style={styles.qTextEn}>{qTextEn}</Text>
+      )}
+      <QuestionImage imageKey={question.id} />
+      <QuestionTariff id={question.id} />
+    </View>
+  );
+
+  const actionBar = (
+    <View style={styles.actionBar}>
+      <Pressable
+        style={({ pressed }) => [styles.actionBtn, showMeaning && styles.actionBtnActive, pressed && styles.actionPressed]}
+        onPress={toggleMeaning}
+      >
+        <BookOpen size={16} color={showMeaning ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
+        <Text style={[styles.actionLabel, showMeaning && styles.actionLabelActive]} numberOfLines={1}>
+          {t('practice.simpleMeaning')}
+        </Text>
+        <View style={[styles.langPill, showMeaning && styles.langPillActive]}>
+          <Text style={styles.langPillText}>EN</Text>
+        </View>
+      </Pressable>
+
+      <Pressable
+        style={({ pressed }) => [styles.actionBtn, showLens && styles.actionBtnHint, pressed && styles.actionPressed]}
+        onPress={() => setShowLens(h => !h)}
+      >
+        <Search size={16} color={showLens ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
+        <Text style={[styles.actionLabel, showLens && styles.actionLabelHint]} numberOfLines={1}>
+          {t('practice.clueLens')}
+        </Text>
+      </Pressable>
+    </View>
+  );
+
+  const focusPanel = showLens && focus.length > 0 && (
+    <MotiView
+      from={{ opacity: 0, translateY: -6 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ type: 'timing', duration: 220 }}
+      style={styles.focusPanel}
+    >
+      <Text style={styles.focusTitle}>{t('practice.focusWords')}</Text>
+      <View style={styles.focusGrid}>
+        {focus.map((ann, idx) => (
+          <View key={idx} style={styles.focusChip}>
+            <Text style={styles.focusFi}>{ann.text_fi}</Text>
+            {ann.meaning_en ? <Text style={styles.focusEn}>{ann.meaning_en}</Text> : null}
+          </View>
+        ))}
+      </View>
+    </MotiView>
+  );
+
+  const optionsList = (
+    <View style={styles.options}>
+      {question.options.map((opt, i) => {
+        const optionClues = cluesForScope(clueAnnotations, opt.key);
+        const verdict = optionVerdict(optionClues, opt.key === question.correct_option);
+        return (
+          <OptionRow
+            key={opt.key}
+            letter={opt.key}
+            text={opt.fi ?? ''}
+            translation={showMeaning ? (opt.en ?? '') : undefined}
+            state={optionStates[opt.key]}
+            onPress={() => handleSelect(opt.key)}
+            disabled={answered}
+            index={i}
+            optionClues={optionClues}
+            verdict={verdict}
+            reveal={revealClues}
+          />
+        );
+      })}
+    </View>
+  );
+
+  const explanationPanel = answered && !!question.explanation_en && (
+    <MotiView
+      from={{ opacity: 0, translateY: 10 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ type: 'timing', duration: 300 }}
+      style={styles.explanation}
+    >
+      <Text style={styles.expText}>{question.explanation_en}</Text>
+    </MotiView>
+  );
+
+  const nextControl = (
+    <View style={styles.nextBtn}>
+      {answered ? (
+        <AppButton
+          label={queue.length > 0 && queueIndex < queue.length - 1 ? t('practice.nextQuestion') : t('common.finish')}
+          onPress={handleNext}
+        />
+      ) : (
+        <Pressable onPress={handleNext} hitSlop={8} style={styles.skipBtn}>
+          <Text style={styles.skipText}>{t('practice.skip')}</Text>
+        </Pressable>
+      )}
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.navBar}>
-        <Pressable onPress={() => navigation.goBack()} style={styles.backBtn} hitSlop={8}>
-          <ChevronLeft size={24} color={colors.primary} strokeWidth={2.2} />
-        </Pressable>
-        <Text style={styles.navTitle}>{sourceLabel}</Text>
-        {queue.length > 0 && (
-          <Text style={styles.qCount}>{queueIndex + 1}/{queue.length}</Text>
+      <ContentContainer maxWidth={1120}>
+        {isDesktop ? (
+          <>
+            {navBar}
+            <ScrollView
+              style={{ flex: 1 }}
+              contentContainerStyle={[styles.scrollContent, styles.desktopRow]}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.leftCol}>
+                {progressTrack}
+                {questionCard}
+                {explanationPanel}
+              </View>
+              <View style={styles.rightCol}>
+                {actionBar}
+                {focusPanel}
+                {optionsList}
+                {nextControl}
+              </View>
+            </ScrollView>
+          </>
+        ) : (
+          <>
+            {navBar}
+            <ScrollView
+              style={{ flex: 1 }}
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
+            >
+              {progressTrack}
+              {questionCard}
+              {actionBar}
+              {focusPanel}
+              {optionsList}
+              {explanationPanel}
+              {nextControl}
+              <View style={{ height: 32 }} />
+            </ScrollView>
+          </>
         )}
-      </View>
-
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        {queue.length > 0 && (
-          <View style={styles.progressWrap}>
-            <View style={styles.progressTrack}>
-              <View style={[styles.progressFill, { width: `${progress}%` }]} />
-            </View>
-          </View>
-        )}
-
-        {/* Question card */}
-        <View style={styles.questionCard}>
-          <Text style={styles.qLabel}>{t('quiz.question')}</Text>
-          <ClueHighlight
-            text={qText}
-            clueAnnotations={focus}
-            showHighlights={highlightQuestion}
-            style={styles.qText}
-          />
-          {showMeaning && !!qTextEn && (
-            <Text style={styles.qTextEn}>{qTextEn}</Text>
-          )}
-          <QuestionImage imageKey={question.id} />
-          <QuestionTariff id={question.id} />
-        </View>
-
-        {/* Action bar: Simple Meaning + Clue Lens */}
-        <View style={styles.actionBar}>
-          <Pressable
-            style={({ pressed }) => [styles.actionBtn, showMeaning && styles.actionBtnActive, pressed && styles.actionPressed]}
-            onPress={toggleMeaning}
-          >
-            <BookOpen size={16} color={showMeaning ? colors.primary : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.actionLabel, showMeaning && styles.actionLabelActive]} numberOfLines={1}>
-              {t('practice.simpleMeaning')}
-            </Text>
-            <View style={[styles.langPill, showMeaning && styles.langPillActive]}>
-              <Text style={styles.langPillText}>EN</Text>
-            </View>
-          </Pressable>
-
-          <Pressable
-            style={({ pressed }) => [styles.actionBtn, showLens && styles.actionBtnHint, pressed && styles.actionPressed]}
-            onPress={() => setShowLens(h => !h)}
-          >
-            <Search size={16} color={showLens ? colors.warning : colors.textSecondary} strokeWidth={2.2} />
-            <Text style={[styles.actionLabel, showLens && styles.actionLabelHint]} numberOfLines={1}>
-              {t('practice.clueLens')}
-            </Text>
-          </Pressable>
-        </View>
-
-        {/* Focus words box — neutral comprehension aid (no answer leak) */}
-        {showLens && focus.length > 0 && (
-          <MotiView
-            from={{ opacity: 0, translateY: -6 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{ type: 'timing', duration: 220 }}
-            style={styles.focusPanel}
-          >
-            <Text style={styles.focusTitle}>{t('practice.focusWords')}</Text>
-            <View style={styles.focusGrid}>
-              {focus.map((ann, idx) => (
-                <View key={idx} style={styles.focusChip}>
-                  <Text style={styles.focusFi}>{ann.text_fi}</Text>
-                  {ann.meaning_en ? <Text style={styles.focusEn}>{ann.meaning_en}</Text> : null}
-                </View>
-              ))}
-            </View>
-          </MotiView>
-        )}
-
-        {/* Options */}
-        <View style={styles.options}>
-          {question.options.map((opt, i) => {
-            const optionClues = cluesForScope(clueAnnotations, opt.key);
-            const verdict = optionVerdict(optionClues, opt.key === question.correct_option);
-            return (
-              <OptionRow
-                key={opt.key}
-                letter={opt.key}
-                text={opt.fi ?? ''}
-                translation={showMeaning ? (opt.en ?? '') : undefined}
-                state={optionStates[opt.key]}
-                onPress={() => handleSelect(opt.key)}
-                disabled={answered}
-                index={i}
-                optionClues={optionClues}
-                verdict={verdict}
-                reveal={revealClues}
-              />
-            );
-          })}
-        </View>
-
-        {/* Explanation */}
-        {answered && !!question.explanation_en && (
-          <MotiView
-            from={{ opacity: 0, translateY: 10 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{ type: 'timing', duration: 300 }}
-            style={styles.explanation}
-          >
-            <Text style={styles.expText}>{question.explanation_en}</Text>
-          </MotiView>
-        )}
-
-        <View style={styles.nextBtn}>
-          {answered ? (
-            <AppButton
-              label={queue.length > 0 && queueIndex < queue.length - 1 ? t('practice.nextQuestion') : t('common.finish')}
-              onPress={handleNext}
-            />
-          ) : (
-            <Pressable onPress={handleNext} hitSlop={8} style={styles.skipBtn}>
-              <Text style={styles.skipText}>{t('practice.skip')}</Text>
-            </Pressable>
-          )}
-        </View>
-
-        <View style={{ height: 32 }} />
-      </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }
@@ -263,7 +310,15 @@ const styles = StyleSheet.create({
   backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
   navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   qCount: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium },
-  scroll: { flex: 1, padding: spacing.md },
+  scrollContent: { padding: spacing.md },
+  desktopRow: {
+    flexDirection: 'row',
+    gap: spacing.xl,
+    padding: spacing.xl,
+    alignItems: 'flex-start',
+  },
+  leftCol: { flex: 1.15, minWidth: 0 },
+  rightCol: { flex: 1, minWidth: 0 },
   progressWrap: { marginBottom: 12 },
   progressTrack: { height: 6, backgroundColor: colors.surface, borderRadius: radius.full, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
   progressFill: { height: '100%', backgroundColor: colors.primary, borderRadius: radius.full },

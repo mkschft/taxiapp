@@ -9,6 +9,7 @@ import { PartyPopper, BookOpenCheck } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getQuestionById } from '../data/loaders';
 import type { DashboardStackParamList } from '../navigation/types';
@@ -40,118 +41,120 @@ export function ResultScreen({ navigation, route }: Props) {
     <SafeAreaView style={styles.safe}>
       <ScreenHeader title={t('result.headerTitle', { label })} onBack={() => navigation.popToTop()} />
 
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* Pass / fail banner */}
-        <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
-          {passed
-            ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
-            : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
-          <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
-            {passed ? t('result.passed') : t('result.keepStudying')}
-          </Text>
-          <Text style={styles.bannerSub}>{t('result.passMark', { score, total })}</Text>
-        </View>
-
-        {/* Why-failed note: reached 38 overall but missed a category gate */}
-        {gateFail && (
-          <View style={styles.gateNote}>
-            <Text style={styles.gateNoteText}>
-              {t('result.gateNote', { score, total, cats: failedCats.map(c => c.label).join(', ') })}
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          {/* Pass / fail banner */}
+          <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
+            {passed
+              ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
+              : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
+            <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error, marginTop: 6 }]}>
+              {passed ? t('result.passed') : t('result.keepStudying')}
             </Text>
+            <Text style={styles.bannerSub}>{t('result.passMark', { score, total })}</Text>
           </View>
-        )}
 
-        {/* Per-category breakdown (model-test pass gate) */}
-        {categories && categories.length > 0 && (
-          <View style={styles.catCard}>
-            <Text style={styles.catHeader}>{t('result.categoryBreakdown')}</Text>
-            {categories.map(c => (
-              <View key={c.category} style={styles.catRow}>
-                <Text style={styles.catName} numberOfLines={1}>{c.label}</Text>
-                <Text style={[styles.catScore, { color: c.passed ? colors.success : colors.error }]}>
-                  {c.correct}/{c.total}
-                </Text>
-                <Text style={styles.catMin}>{t('result.categoryMin', { min: c.min })}</Text>
-                <Text style={[styles.catFlag, { color: c.passed ? colors.success : colors.error }]}>
-                  {c.passed ? '✓' : '✕'}
-                </Text>
+          {/* Why-failed note: reached 38 overall but missed a category gate */}
+          {gateFail && (
+            <View style={styles.gateNote}>
+              <Text style={styles.gateNoteText}>
+                {t('result.gateNote', { score, total, cats: failedCats.map(c => c.label).join(', ') })}
+              </Text>
+            </View>
+          )}
+
+          {/* Per-category breakdown (model-test pass gate) */}
+          {categories && categories.length > 0 && (
+            <View style={styles.catCard}>
+              <Text style={styles.catHeader}>{t('result.categoryBreakdown')}</Text>
+              {categories.map(c => (
+                <View key={c.category} style={styles.catRow}>
+                  <Text style={styles.catName} numberOfLines={1}>{c.label}</Text>
+                  <Text style={[styles.catScore, { color: c.passed ? colors.success : colors.error }]}>
+                    {c.correct}/{c.total}
+                  </Text>
+                  <Text style={styles.catMin}>{t('result.categoryMin', { min: c.min })}</Text>
+                  <Text style={[styles.catFlag, { color: c.passed ? colors.success : colors.error }]}>
+                    {c.passed ? '✓' : '✕'}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          )}
+
+          {/* Score ring area */}
+          <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
+            <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>
+              {score}
+            </Text>
+            <Text style={styles.scoreOf}>{t('result.outOf', { total })}</Text>
+          </View>
+
+          {/* Stat chips */}
+          <View style={styles.statRow}>
+            {[
+              { val: String(score), label: t('result.correct'), color: colors.success },
+              { val: String(total - score), label: t('result.wrong'), color: colors.error },
+              { val: timeTaken ? fmt(timeTaken) : `${pct}%`, label: timeTaken ? t('result.time') : t('result.score'), color: colors.text },
+            ].map(s => (
+              <View key={s.label} style={styles.statChip}>
+                <Text style={[styles.statVal, { color: s.color }]}>{s.val}</Text>
+                <Text style={styles.statLbl}>{s.label}</Text>
               </View>
             ))}
           </View>
-        )}
 
-        {/* Score ring area */}
-        <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
-          <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>
-            {score}
-          </Text>
-          <Text style={styles.scoreOf}>{t('result.outOf', { total })}</Text>
-        </View>
-
-        {/* Stat chips */}
-        <View style={styles.statRow}>
-          {[
-            { val: String(score), label: t('result.correct'), color: colors.success },
-            { val: String(total - score), label: t('result.wrong'), color: colors.error },
-            { val: timeTaken ? fmt(timeTaken) : `${pct}%`, label: timeTaken ? t('result.time') : t('result.score'), color: colors.text },
-          ].map(s => (
-            <View key={s.label} style={styles.statChip}>
-              <Text style={[styles.statVal, { color: s.color }]}>{s.val}</Text>
-              <Text style={styles.statLbl}>{s.label}</Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Wrong answers */}
-        {wrongIds.length > 0 && (
-          <>
-            <Text style={styles.sectionHeader}>{t('result.reviewWrong', { count: wrongIds.length })}</Text>
-            {wrongIds.map(id => {
-              const q = getQuestionById(id);
-              if (!q) return null;
-              return (
-                <TouchableOpacity
-                  key={id}
-                  style={styles.wrongItem}
-                  onPress={() => navigation.push('Practice', {
-                    questionId: id,
-                    queue: wrongIds,
-                    queueIndex: wrongIds.indexOf(id),
-                    sourceLabel: 'Review',
-                    review: true,
-                    answers,
-                  })}
-                  activeOpacity={0.8}
-                >
-                  <Text style={styles.wrongQ} numberOfLines={2}>{q.question.fi ?? q.question.en}</Text>
-                  <Text style={styles.wrongMeta}>{t('result.tapToReview')}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </>
-        )}
-
-        <View style={styles.actions}>
+          {/* Wrong answers */}
           {wrongIds.length > 0 && (
-            <AppButton
-              label={t('result.retryWrong')}
-              onPress={() => navigation.replace('Practice', {
-                questionId: wrongIds[0],
-                queue: wrongIds,
-                queueIndex: 0,
-                sourceLabel: 'Retry',
+            <>
+              <Text style={styles.sectionHeader}>{t('result.reviewWrong', { count: wrongIds.length })}</Text>
+              {wrongIds.map(id => {
+                const q = getQuestionById(id);
+                if (!q) return null;
+                return (
+                  <TouchableOpacity
+                    key={id}
+                    style={styles.wrongItem}
+                    onPress={() => navigation.push('Practice', {
+                      questionId: id,
+                      queue: wrongIds,
+                      queueIndex: wrongIds.indexOf(id),
+                      sourceLabel: 'Review',
+                      review: true,
+                      answers,
+                    })}
+                    activeOpacity={0.8}
+                  >
+                    <Text style={styles.wrongQ} numberOfLines={2}>{q.question.fi ?? q.question.en}</Text>
+                    <Text style={styles.wrongMeta}>{t('result.tapToReview')}</Text>
+                  </TouchableOpacity>
+                );
               })}
-            />
+            </>
           )}
-          <AppButton
-            label={t('result.backToDashboard')}
-            variant="secondary"
-            onPress={() => navigation.popToTop()}
-            style={{ marginTop: spacing.sm }}
-          />
-        </View>
-        <View style={{ height: 32 }} />
-      </ScrollView>
+
+          <View style={styles.actions}>
+            {wrongIds.length > 0 && (
+              <AppButton
+                label={t('result.retryWrong')}
+                onPress={() => navigation.replace('Practice', {
+                  questionId: wrongIds[0],
+                  queue: wrongIds,
+                  queueIndex: 0,
+                  sourceLabel: 'Retry',
+                })}
+              />
+            )}
+            <AppButton
+              label={t('result.backToDashboard')}
+              variant="secondary"
+              onPress={() => navigation.popToTop()}
+              style={{ marginTop: spacing.sm }}
+            />
+          </View>
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }

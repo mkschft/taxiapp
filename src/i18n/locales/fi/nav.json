@@ -2,5 +2,8 @@
   "dashboard": "Etusivu",
   "tests": "Kokeet",
   "progress": "Edistyminen",
-  "profile": "Profiili"
+  "profile": "Profiili",
+  "guide": "Koeopas",
+  "howToUse": "Käyttöohje",
+  "savedQuestions": "Tallennetut kysymykset"
 }

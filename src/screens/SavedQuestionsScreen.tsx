@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { Bookmark, X } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { useSavedQuestions } from '../store/savedQuestionsStore';
 import type { ProfileStackParamList } from '../navigation/types';
@@ -28,29 +29,31 @@ export function SavedQuestionsScreen({ navigation }: Props) {
           <Text style={styles.emptyText}>{t('saved.empty')}</Text>
         </View>
       ) : (
-        <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
-          {saved.map(q => {
-            const correct = q.options.find(o => o.key === q.correctKey);
-            return (
-              <View key={q.id} style={styles.card}>
-                <View style={styles.cardHead}>
-                  {q.source ? <Text style={styles.source}>{q.source}</Text> : <View />}
-                  <TouchableOpacity onPress={() => remove(q.id)} hitSlop={8} style={styles.removeBtn}>
-                    <X size={16} color={colors.textTertiary} strokeWidth={2.2} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.qText}>{q.text}</Text>
-                {correct && (
-                  <View style={styles.answerRow}>
-                    <Text style={styles.answerLabel}>{t('saved.correctAnswer')}:</Text>
-                    <Text style={styles.answerText}>{correct.key}. {correct.text}</Text>
+        <ContentContainer maxWidth={880}>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
+            {saved.map(q => {
+              const correct = q.options.find(o => o.key === q.correctKey);
+              return (
+                <View key={q.id} style={styles.card}>
+                  <View style={styles.cardHead}>
+                    {q.source ? <Text style={styles.source}>{q.source}</Text> : <View />}
+                    <TouchableOpacity onPress={() => remove(q.id)} hitSlop={8} style={styles.removeBtn}>
+                      <X size={16} color={colors.textTertiary} strokeWidth={2.2} />
+                    </TouchableOpacity>
                   </View>
-                )}
-              </View>
-            );
-          })}
-          <View style={{ height: 32 }} />
-        </ScrollView>
+                  <Text style={styles.qText}>{q.text}</Text>
+                  {correct && (
+                    <View style={styles.answerRow}>
+                      <Text style={styles.answerLabel}>{t('saved.correctAnswer')}:</Text>
+                      <Text style={styles.answerText}>{correct.key}. {correct.text}</Text>
+                    </View>
+                  )}
+                </View>
+              );
+            })}
+            <View style={{ height: 32 }} />
+          </ScrollView>
+        </ContentContainer>
       )}
     </SafeAreaView>
   );

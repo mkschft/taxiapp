@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { Clock, ClipboardList, CircleCheck, Lock } from 'lucide-react-native';
@@ -7,12 +7,14 @@ import { AppButton } from '../components/ui/AppButton';
 import { AlertDialog } from '../components/ui/AlertDialog';
 import { localizedPair } from '../i18n/content';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
+import { useBreakpoint } from '../theme/breakpoints';
 import { getModelTests } from '../data/loaders';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { usePaywall } from '../store/paywallStore';
 
 export function TestHomeScreen() {
   const navigation = useNavigation<any>();
+  const { isCompact } = useBreakpoint();
   const { t, i18n } = useTranslation();
   const tests = getModelTests();
   const { startQuiz, loading, error, clearError } = useStartQuiz();
@@ -20,42 +22,47 @@ export function TestHomeScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{t('testHome.title')}</Text>
-        <Text style={styles.sub}>{t('testHome.subtitle')}</Text>
-      </View>
+      {isCompact && (
+        <View style={styles.header}>
+          <Text style={styles.title}>{t('testHome.title')}</Text>
+          <Text style={styles.sub}>{t('testHome.subtitle')}</Text>
+        </View>
+      )}
 
-      <ScrollView contentContainerStyle={styles.scroll}>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={[styles.scroll, !isCompact && styles.scrollGrid]}
+      >
         {tests.map(test => {
           const { primary } = localizedPair(test.title_fi, test.title_en, i18n.language);
           const unlocked = isMockTestUnlocked(test.id);
           return (
-          <View key={test.id} style={[styles.testCard, !unlocked && styles.testCardLocked]}>
-            <View style={styles.cardHeader}>
-              <Text style={styles.testTitle}>{primary}</Text>
-              {!unlocked && <Lock size={16} color={colors.textTertiary} strokeWidth={2.2} />}
+            <View key={test.id} style={[styles.testCard, !unlocked && styles.testCardLocked, !isCompact && styles.testCardGrid]}>
+              <View style={styles.cardHeader}>
+                <Text style={[styles.testTitle, !isCompact && styles.testTitleDesktop]}>{primary}</Text>
+                {!unlocked && <Lock size={16} color={colors.textTertiary} strokeWidth={2.2} />}
+              </View>
+              <View style={styles.metaRow}>
+                <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.minutes', { n: test.time_minutes })}</Text></View>
+                <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('common.questionsCount', { n: test.question_ids.length })}</Text></View>
+                <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.pass', { n: test.pass_mark })}</Text></View>
+              </View>
+              {unlocked ? (
+                <AppButton
+                  label={`${t('testHome.startTest')} →`}
+                  disabled={loading}
+                  onPress={() => startQuiz(`model-test/${test.id}`, 'ModelTest', { testId: test.id })}
+                  style={{ marginTop: spacing.sm }}
+                />
+              ) : (
+                <AppButton
+                  label={t('testHome.unlock')}
+                  variant="secondary"
+                  onPress={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
+                  style={{ marginTop: spacing.sm }}
+                />
+              )}
             </View>
-            <View style={styles.metaRow}>
-              <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.minutes', { n: test.time_minutes })}</Text></View>
-              <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('common.questionsCount', { n: test.question_ids.length })}</Text></View>
-              <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.pass', { n: test.pass_mark })}</Text></View>
-            </View>
-            {unlocked ? (
-              <AppButton
-                label={`${t('testHome.startTest')} →`}
-                disabled={loading}
-                onPress={() => startQuiz(`model-test/${test.id}`, 'ModelTest', { testId: test.id })}
-                style={{ marginTop: spacing.sm }}
-              />
-            ) : (
-              <AppButton
-                label={t('testHome.unlock')}
-                variant="secondary"
-                onPress={() => navigation.navigate('Pricing', { redirectTab: 'Test', redirectScreen: 'TestHome' })}
-                style={{ marginTop: spacing.sm }}
-              />
-            )}
-          </View>
           );
         })}
         <View style={{ height: 32 }} />
@@ -82,6 +89,12 @@ const styles = StyleSheet.create({
   title: { fontSize: fontSize.lg, fontFamily: font.bold, color: colors.text },
   sub: { fontSize: fontSize.sm, color: colors.textSecondary, marginTop: 2 },
   scroll: { padding: spacing.md },
+  scrollGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.md,
+    padding: spacing.md,
+  },
   testCard: {
     borderWidth: 1, borderColor: colors.border,
     borderRadius: radius.md, padding: spacing.md, marginBottom: 14,
@@ -89,8 +102,13 @@ const styles = StyleSheet.create({
     ...shadow.sm,
   },
   testCardLocked: { backgroundColor: colors.surfaceAlt },
+  testCardGrid: {
+    width: '48%',
+    marginBottom: 0,
+  },
   cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
   testTitle: { fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
+  testTitleDesktop: { fontSize: fontSize.lg },
   scoreBadge: {
     borderRadius: radius.sm, paddingHorizontal: 8, paddingVertical: 3,
     borderWidth: 1,

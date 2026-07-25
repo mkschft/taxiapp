@@ -9,6 +9,7 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { AlertDialog } from '../components/ui/AlertDialog';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getClueGroups } from '../data/loaders';
@@ -62,49 +63,51 @@ export function ClueWordsScreen({ route }: Props) {
         }
       />
 
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.intro}>
-          {t('clue.intro')}
-        </Text>
+      <ContentContainer maxWidth={880}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          <Text style={styles.intro}>
+            {t('clue.intro')}
+          </Text>
 
-        {!isAuthenticated && (
-          <AuthPrompt
-            title={t('clue.authTitle')}
-            body={t('clue.authBody')}
-          />
-        )}
+          {!isAuthenticated && (
+            <AuthPrompt
+              title={t('clue.authTitle')}
+              body={t('clue.authBody')}
+            />
+          )}
 
-        {GROUPS.map((group, index) => {
-          const Icon = GROUP_ICON[group.id] ?? HelpCircle;
-          const tc = toneColors(group.tone);
-          const kicker = t('clue.groupHeader', { n: index + 1, count: group.word_count });
+          {GROUPS.map((group, index) => {
+            const Icon = GROUP_ICON[group.id] ?? HelpCircle;
+            const tc = toneColors(group.tone);
+            const kicker = t('clue.groupHeader', { n: index + 1, count: group.word_count });
 
-          return (
-            <Pressable
-              key={group.id}
-              onPress={() =>
-                isQuizMode
-                  ? startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })
-                  : navigation.navigate('ClueLesson', { groupId: group.id, index: 1 })
-              }
-              style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
-            >
-              <View style={styles.cardHead}>
-                <View style={[styles.iconChip, { backgroundColor: tc.bg }]}>
-                  <Icon size={22} color={tc.fg} strokeWidth={2.3} />
+            return (
+              <Pressable
+                key={group.id}
+                onPress={() =>
+                  isQuizMode
+                    ? startQuiz(`clue/${group.id}`, 'ClueQuiz', { groupId: group.id })
+                    : navigation.navigate('ClueLesson', { groupId: group.id, index: 1 })
+                }
+                style={({ pressed }) => [styles.card, pressed && styles.btnPressed]}
+              >
+                <View style={styles.cardHead}>
+                  <View style={[styles.iconChip, { backgroundColor: tc.bg }]}>
+                    <Icon size={22} color={tc.fg} strokeWidth={2.3} />
+                  </View>
+                  <View style={styles.headInfo}>
+                    <Text style={styles.kicker}>{kicker}</Text>
+                    <Text style={styles.cardTitle}>{group.label}</Text>
+                    <Text style={styles.cardBlurb}>{group.blurb}</Text>
+                  </View>
+                  <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
                 </View>
-                <View style={styles.headInfo}>
-                  <Text style={styles.kicker}>{kicker}</Text>
-                  <Text style={styles.cardTitle}>{group.label}</Text>
-                  <Text style={styles.cardBlurb}>{group.blurb}</Text>
-                </View>
-                <ChevronRight size={20} color={colors.textTertiary} strokeWidth={2.2} />
-              </View>
-            </Pressable>
-          );
-        })}
-        <View style={{ height: 32 }} />
-      </ScrollView>
+              </Pressable>
+            );
+          })}
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
 
       <AlertDialog
         visible={!!error}

@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { OptionRow, OptionState } from '../components/question/OptionRow';
 import { AppButton } from '../components/ui/AppButton';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
+import { ContentContainer } from '../components/web/ContentContainer';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { getTopicLesson, getTopicSection, getQuestionById } from '../data/loaders';
 import type { Question as BankQuestion } from '../data/types';
@@ -169,45 +170,47 @@ export function TopicQuizScreen({ navigation, route }: Props) {
     return (
       <SafeAreaView style={styles.safe}>
         <ScreenHeader title={`${lesson.name} · ${t('quiz.title')}`} onBack={() => navigation.goBack()} />
-        <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-          <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
-            {passed
-              ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
-              : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
-            <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error }]}>
-              {passed ? t('quiz.passTitle') : t('quiz.failTitle')}
-            </Text>
-            <Text style={styles.bannerSub}>{t('quiz.passMark', { pct: passPct, score: pct })}</Text>
-          </View>
+        <ContentContainer maxWidth={880}>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+            <View style={[styles.banner, passed ? styles.bannerPass : styles.bannerFail]}>
+              {passed
+                ? <PartyPopper size={32} color={colors.success} strokeWidth={2} />
+                : <BookOpenCheck size={32} color={colors.error} strokeWidth={2} />}
+              <Text style={[styles.bannerTitle, { color: passed ? colors.success : colors.error }]}>
+                {passed ? t('quiz.passTitle') : t('quiz.failTitle')}
+              </Text>
+              <Text style={styles.bannerSub}>{t('quiz.passMark', { pct: passPct, score: pct })}</Text>
+            </View>
 
-          <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
-            <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>{score}</Text>
-            <Text style={styles.scoreOf}>{t('quiz.scoreOf', { total: questions.length })}</Text>
-          </View>
+            <View style={[styles.scoreCircle, { borderColor: passed ? colors.success : colors.error }]}>
+              <Text style={[styles.scoreNum, { color: passed ? colors.success : colors.error }]}>{score}</Text>
+              <Text style={styles.scoreOf}>{t('quiz.scoreOf', { total: questions.length })}</Text>
+            </View>
 
-          {wrong.length > 0 && (
-            <>
-              <Text style={styles.sectionHeader}>{t('quiz.review', { count: wrong.length })}</Text>
-              {wrong.map(w => (
-                <View key={w.id} style={styles.wrongItem}>
-                  <Text style={styles.wrongWord}>{w.prompt}</Text>
-                  <Text style={styles.wrongMeaning}>{t('quiz.correctAnswer')}: {w.correctText}</Text>
-                </View>
-              ))}
-            </>
-          )}
+            {wrong.length > 0 && (
+              <>
+                <Text style={styles.sectionHeader}>{t('quiz.review', { count: wrong.length })}</Text>
+                {wrong.map(w => (
+                  <View key={w.id} style={styles.wrongItem}>
+                    <Text style={styles.wrongWord}>{w.prompt}</Text>
+                    <Text style={styles.wrongMeaning}>{t('quiz.correctAnswer')}: {w.correctText}</Text>
+                  </View>
+                ))}
+              </>
+            )}
 
-          <View style={styles.actions}>
-            <AppButton label={t('quiz.tryAgain')} onPress={restart} />
-            <AppButton
-              label={t('quiz.back')}
-              variant="secondary"
-              onPress={() => navigation.goBack()}
-              style={{ marginTop: spacing.sm }}
-            />
-          </View>
-          <View style={{ height: 32 }} />
-        </ScrollView>
+            <View style={styles.actions}>
+              <AppButton label={t('quiz.tryAgain')} onPress={restart} />
+              <AppButton
+                label={t('quiz.back')}
+                variant="secondary"
+                onPress={() => navigation.goBack()}
+                style={{ marginTop: spacing.sm }}
+              />
+            </View>
+            <View style={{ height: 32 }} />
+          </ScrollView>
+        </ContentContainer>
       </SafeAreaView>
     );
   }
@@ -229,38 +232,40 @@ export function TopicQuizScreen({ navigation, route }: Props) {
         <Text style={styles.qCount}>{index + 1}/{questions.length}</Text>
       </View>
 
-      <ScrollView style={styles.scrollQ} showsVerticalScrollIndicator={false}>
-        <View style={styles.progressTrack}>
-          <View style={[styles.progressFill, { width: `${progress}%` }]} />
-        </View>
+      <ContentContainer maxWidth={1120}>
+        <ScrollView style={styles.scrollQ} showsVerticalScrollIndicator={false}>
+          <View style={styles.progressTrack}>
+            <View style={[styles.progressFill, { width: `${progress}%` }]} />
+          </View>
 
-        <View style={styles.promptCard}>
-          <Text style={styles.promptLabel}>KYSYMYS</Text>
-          <Text style={styles.promptText}>{q.prompt}</Text>
-        </View>
+          <View style={styles.promptCard}>
+            <Text style={styles.promptLabel}>KYSYMYS</Text>
+            <Text style={styles.promptText}>{q.prompt}</Text>
+          </View>
 
-        <View style={styles.options}>
-          {q.options.map((opt, i) => (
-            <OptionRow
-              key={opt.key}
-              letter={opt.key}
-              text={opt.text}
-              state={optionStates[opt.key]}
-              onPress={() => handleSelect(opt.key)}
-              index={i}
+          <View style={styles.options}>
+            {q.options.map((opt, i) => (
+              <OptionRow
+                key={opt.key}
+                letter={opt.key}
+                text={opt.text}
+                state={optionStates[opt.key]}
+                onPress={() => handleSelect(opt.key)}
+                index={i}
+              />
+            ))}
+          </View>
+
+          <View style={styles.nextBtn}>
+            <AppButton
+              label={index < questions.length - 1 ? t('quiz.next') : t('quiz.seeResult')}
+              onPress={handleNext}
+              disabled={!selected}
             />
-          ))}
-        </View>
-
-        <View style={styles.nextBtn}>
-          <AppButton
-            label={index < questions.length - 1 ? t('quiz.next') : t('quiz.seeResult')}
-            onPress={handleNext}
-            disabled={!selected}
-          />
-        </View>
-        <View style={{ height: 32 }} />
-      </ScrollView>
+          </View>
+          <View style={{ height: 32 }} />
+        </ScrollView>
+      </ContentContainer>
     </SafeAreaView>
   );
 }

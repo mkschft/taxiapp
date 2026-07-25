@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ChevronLeft } from 'lucide-react-native';
+import { useBreakpoint } from '../../theme/breakpoints';
 import { colors, spacing, fontSize, font } from '../../theme/tokens';
 
 type Props = {
@@ -10,8 +11,9 @@ type Props = {
 };
 
 export function ScreenHeader({ title, onBack, right }: Props) {
+  const { isDesktop } = useBreakpoint();
   return (
-    <View style={styles.bar}>
+    <View style={[styles.bar, isDesktop && styles.barDesktop]}>
       {onBack ? (
         <Pressable onPress={onBack} style={styles.backBtn} hitSlop={8}>
           <ChevronLeft size={24} color={colors.primary} strokeWidth={2.2} />
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md, height: 52,
     borderBottomWidth: 1, borderColor: colors.border,
   },
+  barDesktop: { borderBottomWidth: 0, backgroundColor: 'transparent' },
   backBtn: { width: 32, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -8 },
   spacer: { width: 4 },
   title: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
