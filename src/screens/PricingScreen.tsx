@@ -220,9 +220,10 @@ export function PricingScreen() {
                   loading={isLoading}
                   disabled={buttonDisabled}
                   onPress={() => handleSelect(plan)}
+                  labelStyle={isActivePlan ? styles.activeButtonText : undefined}
                   style={[
                     { marginTop: spacing.md },
-                    isActivePlan && { backgroundColor: 'transparent', borderWidth: 0 }
+                    isActivePlan && { backgroundColor: 'transparent', borderWidth: 0, opacity: 1 }
                   ]}
                 />
               </View>
@@ -272,4 +273,5 @@ const styles = StyleSheet.create({
   },
   upgradeInfoText: { fontSize: fontSize.sm, color: colors.textSecondary, fontFamily: font.medium },
   totalDays: { color: colors.text, fontFamily: font.semibold, marginTop: 2 },
+  activeButtonText: { color: colors.text },
 });
