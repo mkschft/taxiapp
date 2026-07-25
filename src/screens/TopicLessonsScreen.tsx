@@ -11,7 +11,7 @@ import { ProgressRing } from '../components/ui/ProgressRing';
 import { Badge } from '../components/ui/Badge';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getTopicSection, getTopicLessons, getCategories } from '../data/loaders';
-import { useAuth } from '../store/authStore';
+import { useAuth, hasActivePaidPlan } from '../store/authStore';
 import { usePaywall, FREE_LESSON_INDEX } from '../store/paywallStore';
 import { useProblemSetProgress } from '../hooks/useProblemSetProgress';
 import { localizedPair } from '../i18n/content';
@@ -32,6 +32,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
   const lessons = getTopicLessons(sectionId);
   const { state: authState } = useAuth();
   const isAuthenticated = !!authState.user;
+  const hasPaidPlan = authState.user ? hasActivePaidPlan(authState.user.subscription) : false;
   const { isLessonUnlocked } = usePaywall();
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
   const { t, i18n } = useTranslation();
@@ -112,7 +113,7 @@ export function TopicLessonsScreen({ navigation, route }: Props) {
               <View style={styles.info}>
                 <View style={styles.kickerRow}>
                   <Text style={styles.kicker}>{kicker}</Text>
-                  {index === FREE_LESSON_INDEX && <Badge type="free" />}
+                  {index === FREE_LESSON_INDEX && !hasPaidPlan && <Badge type="free" />}
                 </View>
                 <Text style={[styles.cardTitle, !unlocked && styles.cardTitleLocked]} numberOfLines={2}>
                   {lesson.name}
