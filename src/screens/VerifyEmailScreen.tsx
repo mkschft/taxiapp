@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, ActivityIndicator,
-  Alert,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Mail } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
+import { AlertDialog } from '../components/ui/AlertDialog';
 import { FormErrorBanner } from '../components/ui/FormErrorBanner';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
@@ -29,6 +29,7 @@ export function VerifyEmailScreen({ route }: Props) {
   const [resendLoading, setResendLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [dialog, setDialog] = useState<{ title: string; message: string } | null>(null);
 
   const hasAutoVerified = useRef(false);
 
@@ -74,7 +75,7 @@ export function VerifyEmailScreen({ route }: Props) {
     setFormError(null);
     try {
       const res = await resendVerification(email);
-      Alert.alert(t('auth.resendAlertTitle'), res.message);
+      setDialog({ title: t('auth.resendAlertTitle'), message: res.message });
     } catch (err: any) {
       setFormError(err?.message ?? t('auth.resendFailed'));
     } finally {
@@ -193,6 +194,15 @@ export function VerifyEmailScreen({ route }: Props) {
           </View>
         )}
       </View>
+
+      <AlertDialog
+        visible={!!dialog}
+        title={dialog?.title ?? ''}
+        message={dialog?.message}
+        buttonLabel={t('common.ok')}
+        variant="success"
+        onDismiss={() => setDialog(null)}
+      />
     </SafeAreaView>
   );
 }
