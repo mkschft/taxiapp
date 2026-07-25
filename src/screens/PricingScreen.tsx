@@ -118,11 +118,6 @@ export function PricingScreen() {
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
 
-  const visiblePlans = PLANS.filter((plan) => {
-    if (plan.key === 'free_preview') return true;
-    return !isDowngrade(activePlanType, plan.key);
-  });
-
   const handleSelect = async (plan: Plan) => {
     if (plan.key === 'free_preview') {
       navigation.goBack();
@@ -168,19 +163,22 @@ export function PricingScreen() {
         <Text style={styles.sub}>{subtitle}</Text>
 
         <View style={styles.grid}>
-          {visiblePlans.map((plan) => {
+          {PLANS.map((plan) => {
             const isLoading = loading === plan.key;
             const isActivePlan = hasActive && activePlanType === plan.key;
             const planIsUpgrade = isUpgrade(activePlanType, plan.key);
+            const planIsDowngrade = isDowngrade(activePlanType, plan.key);
             const planIsDayPassToFull = isDayPassToFullUpgrade(activePlanType, plan.key);
             const bonusDays = planIsDayPassToFull ? 1 : 0;
             const totalDays = remainingDays + PLAN_DURATION_DAYS[plan.key] + bonusDays;
-            const buttonDisabled = isActivePlan;
+            const buttonDisabled = isActivePlan || planIsDowngrade;
             const buttonLabel = isActivePlan
               ? t('pricing.active')
-              : planIsUpgrade
-                ? t('pricing.upgrade')
-                : t(plan.buttonLabelKey);
+              : planIsDowngrade
+                ? t('pricing.notAvailable')
+                : planIsUpgrade
+                  ? t('pricing.upgrade')
+                  : t(plan.buttonLabelKey);
 
             return (
               <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
