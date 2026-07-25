@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { ProgressRing } from '../components/ui/ProgressRing';
+import { AlertDialog } from '../components/ui/AlertDialog';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getVocabSets, getCategories } from '../data/loaders';
 import { useAuth } from '../store/authStore';
@@ -33,7 +34,7 @@ export function VocabSetsScreen({ navigation, route }: Props) {
   const { state: auth } = useAuth();
   const isAuthenticated = !!auth.user;
   const { data: setProgress } = useProblemSetProgress(isAuthenticated);
-  const { startQuiz } = useStartQuiz();
+  const { startQuiz, error, clearError } = useStartQuiz();
   const { t } = useTranslation();
 
   const headerTitle = isQuizMode ? `${t('vocab.title')} · ${t('quiz.title')}` : t('vocab.title');
@@ -101,6 +102,15 @@ export function VocabSetsScreen({ navigation, route }: Props) {
         })}
         <View style={{ height: 32 }} />
       </ScrollView>
+
+      <AlertDialog
+        visible={!!error}
+        title={t('common.error')}
+        message={error ?? undefined}
+        buttonLabel={t('common.ok')}
+        variant="danger"
+        onDismiss={clearError}
+      />
     </SafeAreaView>
   );
 }

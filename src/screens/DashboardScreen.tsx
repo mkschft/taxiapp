@@ -9,6 +9,7 @@ import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens
 import { MODULE_ICONS } from '../theme/icons';
 import { IconChip } from '../components/ui/IconChip';
 import { ProgressRing } from '../components/ui/ProgressRing';
+import { AlertDialog } from '../components/ui/AlertDialog';
 import { useStartQuiz } from '../hooks/useStartQuiz';
 import { useProgress } from '../hooks/useProgress';
 import { getSectionProgress } from '../lib/progressLookup';
@@ -45,7 +46,7 @@ export function DashboardScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
   const { data: progress, loading } = useProgress(true);
-  const { startQuiz } = useStartQuiz();
+  const { startQuiz, error, clearError } = useStartQuiz();
 
   const totalCompleted = progress?.reduce((sum, item) => sum + item.progress.completed, 0) ?? 0;
   const totalQuestions = progress?.reduce((sum, item) => sum + item.progress.total, 0) ?? 0;
@@ -169,6 +170,15 @@ export function DashboardScreen() {
 
         <View style={{ height: spacing.lg }} />
       </ScrollView>
+
+      <AlertDialog
+        visible={!!error}
+        title={t('common.error')}
+        message={error ?? undefined}
+        buttonLabel={t('common.ok')}
+        variant="danger"
+        onDismiss={clearError}
+      />
     </SafeAreaView>
   );
 }

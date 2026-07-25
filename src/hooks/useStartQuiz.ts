@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BACKEND_PROBLEM_SET_IDS } from '../data/backendProblemSetIds';
 import { createSolutionSession } from '../lib/quizApi';
@@ -9,6 +8,7 @@ export function useStartQuiz() {
   const { state: authState } = useAuth();
   const navigation = useNavigation<any>();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const startQuiz = useCallback(
     async (
@@ -29,12 +29,13 @@ export function useStartQuiz() {
       }
 
       setLoading(true);
+      setError(null);
       try {
         const sessionId = await createSolutionSession(problemSetId);
         navigation.navigate(screen, { ...params, sessionId, problemSetId });
       } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to start quiz';
-        Alert.alert('Quiz error', message);
+        setError(message);
         navigation.navigate(screen, params);
       } finally {
         setLoading(false);
@@ -43,5 +44,7 @@ export function useStartQuiz() {
     [authState.user, navigation],
   );
 
-  return { startQuiz, loading };
+  const clearError = useCallback(() => setError(null), []);
+
+  return { startQuiz, loading, error, clearError };
 }

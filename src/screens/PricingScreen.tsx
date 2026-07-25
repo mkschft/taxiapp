@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, Platform, Alert, Linking,
+  View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, Platform, Linking,
 } from 'react-native';
 import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Check } from 'lucide-react-native';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
 import { AppButton } from '../components/ui/AppButton';
+import { AlertDialog } from '../components/ui/AlertDialog';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import { useAuth, hasActivePaidPlan, getRemainingDays } from '../store/authStore';
 import { createCheckoutSession, type PlanType } from '../lib/paymentApi';
@@ -110,6 +111,11 @@ export function PricingScreen() {
   const { t } = useTranslation();
   const { state: auth } = useAuth();
   const [loading, setLoading] = useState<PlanType | null>(null);
+  const [dialog, setDialog] = useState<{
+    title: string;
+    message: string;
+    variant?: 'default' | 'danger' | 'success';
+  } | null>(null);
 
   const hasActive = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const activePlanType = auth.user?.subscription.planType ?? null;
@@ -125,14 +131,20 @@ export function PricingScreen() {
     }
 
     if (!auth.user) {
-      Alert.alert(t('pricing.signInRequiredTitle'), t('pricing.signInRequiredBody'));
+      setDialog({
+        title: t('pricing.signInRequiredTitle'),
+        message: t('pricing.signInRequiredBody'),
+      });
       return;
     }
 
     // Buying the same plan you already have active is a no-op; buying a
     // *different* plan while one is active is an upgrade and allowed.
     if (hasActive && auth.user.subscription.planType === plan.key) {
-      Alert.alert(t('pricing.activeSubTitle'), t('pricing.activeSubBody'));
+      setDialog({
+        title: t('pricing.activeSubTitle'),
+        message: t('pricing.activeSubBody'),
+      });
       return;
     }
 
@@ -145,7 +157,11 @@ export function PricingScreen() {
         await Linking.openURL(url);
       }
     } catch (err: any) {
-      Alert.alert(t('pricing.checkoutFailedTitle'), err?.message ?? t('pricing.checkoutFailedBody'));
+      setDialog({
+        title: t('pricing.checkoutFailedTitle'),
+        message: err?.message ?? t('pricing.checkoutFailedBody'),
+        variant: 'danger',
+      });
     } finally {
       setLoading(null);
     }
@@ -233,6 +249,15 @@ export function PricingScreen() {
 
         <View style={{ height: 32 }} />
       </ScrollView>
+
+      <AlertDialog
+        visible={!!dialog}
+        title={dialog?.title ?? ''}
+        message={dialog?.message}
+        buttonLabel={t('common.ok')}
+        variant={dialog?.variant}
+        onDismiss={() => setDialog(null)}
+      />
     </SafeAreaView>
   );
 }

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { Clock, ClipboardList, CircleCheck, Lock } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
+import { AlertDialog } from '../components/ui/AlertDialog';
 import { localizedPair } from '../i18n/content';
 import { colors, spacing, fontSize, font, radius, shadow } from '../theme/tokens';
 import { getModelTests } from '../data/loaders';
@@ -14,7 +15,7 @@ export function TestHomeScreen() {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
   const tests = getModelTests();
-  const { startQuiz, loading } = useStartQuiz();
+  const { startQuiz, loading, error, clearError } = useStartQuiz();
   const { isMockTestUnlocked } = usePaywall();
 
   return (
@@ -59,6 +60,15 @@ export function TestHomeScreen() {
         })}
         <View style={{ height: 32 }} />
       </ScrollView>
+
+      <AlertDialog
+        visible={!!error}
+        title={t('common.error')}
+        message={error ?? undefined}
+        buttonLabel={t('common.ok')}
+        variant="danger"
+        onDismiss={clearError}
+      />
     </SafeAreaView>
   );
 }
