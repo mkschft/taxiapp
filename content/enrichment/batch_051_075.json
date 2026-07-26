@@ -52,25 +52,25 @@
     "options_fi": {
       "A": "Sähköpyörätuolia ei tarvitse kiinnittää ajoneuvoon.",
       "B": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
-      "C": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen."
+      "C": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin."
     },
     "question_en": "Which of the following statements about wheelchair use and securing is true?",
     "options_en": {
       "A": "An electric wheelchair does not need to be secured to the vehicle.",
       "B": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
-      "C": "The wheelchair must be secured so that it prevents only sideways movement."
+      "C": "The wheelchair must be secured so that it prevents movement in all directions."
     },
-    "correct_override": "B",
+    "correct_override": "C",
     "fw": [{"fi": "pyörätuolin käyttöä ja kiinnittämistä", "en": "wheelchair use and securing"}],
-    "pcw": [{"fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä", "en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive"}],
+    "pcw": [{"fi": "estää liikkumisen kaikkiin suuntiin", "en": "prevents movement in all directions"}],
     "ncw": [
       {"fi": "Sähköpyörätuolia ei tarvitse kiinnittää", "en": "an electric wheelchair need not be secured"},
-      {"fi": "ainoastaan sivusuuntaisen liikkeen", "en": "only sideways movement"}
+      {"fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä", "en": "need not use the vehicle's seat belt while seated in the wheelchair"}
     ],
-    "explanation_en": "A is false — every wheelchair, including electric, must be secured. C is false — the word 'ainoastaan' (only sideways) contradicts the all-directions securing rule. The true statement is B.",
+    "explanation_en": "The wheelchair must be secured so that it prevents movement in all directions (C) — wheelchair tie-downs plus an occupant restraint. A is false: every wheelchair, including an electric one, must be secured. B is false: a wheelchair passenger must still be restrained by an occupant belt.",
     "difficulty": "Hard",
     "tags": ["wheelchair", "securing", "review-flag"],
-    "notes": "ANSWER-KEY OVERRIDE: master marked C; changed to B. Options are identical to Q029 (master key B there). Option C is false because 'ainoastaan sivusuuntaisen' (only sideways) breaks the all-directions securing rule. Q029/Q053 contradict each other in the source — confirm B."
+    "notes": "OPTION-TEXT FIX + override revert: option C was corrupted to 'only sideways'; restored to the all-directions statement per twin MTQ-052 and keyed C (= master key). Reverts the earlier C->B override, which wrongly kept the misleading 'no seat belt needed' statement B."
   },
   "Q054": {
     "question_fi": "Mikä seuraavista pyörätuolin käyttöä ja kiinnittymistä koskevista väitteistä pitää paikkansa?",
@@ -154,16 +154,17 @@
       "B": "The employer's.",
       "C": "The school's and daycare's."
     },
+    "correct_override": "A",
     "fw": [{"fi": "rikostaustaote", "en": "criminal-background extract"}],
-    "pcw": [{"fi": "Työnantajan", "en": "the employer's"}],
+    "pcw": [{"fi": "Kuljettajan", "en": "the driver's"}],
     "ncw": [
-      {"fi": "Kuljettajan", "en": "the driver's"},
+      {"fi": "Työnantajan", "en": "the employer's"},
       {"fi": "Koulun ja päiväkodin", "en": "the school's and daycare's"}
     ],
-    "explanation_en": "Per the master key, the employer is responsible for obtaining the driver's criminal-background extract (B).",
+    "explanation_en": "The driver must personally obtain their own criminal-background extract (rikostaustaote) from the Legal Register Centre and present it (A). The employer or orderer must require to see the extract but cannot obtain it on the driver's behalf; a self-employed driver has no employer. Consistent with Q037.",
     "difficulty": "Medium",
     "tags": ["criminal record", "school transport", "review-flag"],
-    "notes": "CONTRADICTION with Q037: Q037 marks the driver as the one who obtains the extract; Q057 marks the employer. Finnish practice splits this (the individual requests the extract from the Legal Register Centre; the employer must check it) and self-employed drivers have no employer. Kept each question's master key; confirm against the official source and align Q037/Q057."
+    "notes": "ANSWER-KEY OVERRIDE: master marked B (employer); changed to A (driver). Under the Finnish rules on checking the background of persons working with children, the individual requests their own extract from the Legal Register Centre and presents it; the employer only verifies it. Resolves the documented contradiction with Q037 (keyed driver)."
   },
   "Q058": {
     "question_fi": "Mitä turvavyön käytöstä on määrätty koskien koulukuljetuksia?",

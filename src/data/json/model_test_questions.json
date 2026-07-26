@@ -1557,7 +1557,7 @@
     "correct_master": "A",
     "key_overridden": false,
     "clue_annotations": [],
-    "explanation_en": "The driver has a duty to ensure passengers wear seat belts; a calm reminder is the appropriate first step and does not itself create a new safety hazard.",
+    "explanation_en": "A passenger aged 15+ is legally responsible for their own seat-belt use, so the driver should remind them as good practice rather than as a strict legal duty. A calm reminder while continuing to drive safely (A) is the safest action; braking hard (B) or turning around (C) would create new hazards.",
     "difficulty": null,
     "tags": [
       "model-test"
@@ -2467,7 +2467,7 @@
         "fi": "Asiakas itse huolehtii turvavyön käytöstä.",
         "fi_raw": null,
         "en": "The passenger is responsible for wearing their own seat belt.",
-        "is_correct": false
+        "is_correct": true
       },
       {
         "key": "B",
@@ -2481,21 +2481,22 @@
         "fi": "Taksinkuljettajan on huolehdittava asiakkaan turvavyön käytöstä.",
         "fi_raw": null,
         "en": "The taxi driver must ensure the passenger wears a seat belt.",
-        "is_correct": true
+        "is_correct": false
       }
     ],
-    "correct_option": "C",
+    "correct_option": "A",
     "correct_master": "C",
-    "key_overridden": false,
+    "key_overridden": true,
     "clue_annotations": [],
-    "explanation_en": "Under Finnish law a taxi driver is responsible for ensuring all passengers wear seat belts, regardless of the passenger's age or whether the journey is a school transport service.",
+    "explanation_en": "A passenger aged 15 or older is personally responsible for their own seat-belt use (A). The taxi driver's legal duty to ensure belt use applies only to passengers under 15. Consistent with Q090.",
     "difficulty": null,
     "tags": [
-      "model-test"
+      "model-test",
+      "review-flag"
     ],
     "status": "model-test",
     "fi_edited": false,
-    "reviewer_notes": null,
+    "reviewer_notes": "ANSWER-KEY OVERRIDE: master marked C (driver must ensure); changed to A (passenger responsible). A passenger aged 15+ is responsible for their own belt use; the driver's duty applies to under-15s only. Consistent with Q090 (identical 15-year-old-alone scenario).",
     "enriched": false
   },
   {

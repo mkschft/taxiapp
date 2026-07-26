@@ -72,7 +72,7 @@ def split_list(v):
 # Author shorthand leaks into explanations (cross-refs like "Mirrors Q14." and
 # "NOTE FOR REVIEWER: ..."). Strip those so explanations are self-contained.
 EXPLANATION_OVERRIDE = {
-    "Q314": "Finnish law gives driving-licence revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Here the master answer is Traficom (C).",
+    "Q314": "The police revoke a taxi driver's licence (taksinkuljettajan ajolupa) under the Act on Transport Services (A). Traficom grants the ajolupa and may revoke a taxi operator's transport licence — a different permit — but does not revoke the driver's licence. Consistent with Q259 and Q278.",
 }
 
 

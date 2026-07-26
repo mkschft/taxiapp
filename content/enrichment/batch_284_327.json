@@ -335,12 +335,13 @@
     "options_fi": {"A": "Poliisi.", "B": "Taksin paikallisyhdistys.", "C": "Liikenne- ja viestintävirasto (Traficom)."},
     "question_en": "Who can revoke a taxi driver's licence?",
     "options_en": {"A": "The police.", "B": "The local taxi association.", "C": "Traficom."},
+    "correct_override": "A",
     "fw": [{"fi": "voi peruuttaa", "en": "can revoke"}],
-    "pcw": [{"fi": "Liikenne- ja viestintävirasto (Traficom)", "en": "Traficom"}],
-    "ncw": [{"fi": "Poliisi", "en": "police"}, {"fi": "Taksin paikallisyhdistys", "en": "local association"}],
-    "explanation_en": "NOTE: this question marks Traficom as the answer; Q259 and Q278 mark the police. Finnish law gives revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Kept master key C (Traficom) here and flagged for consistency review.",
-    "difficulty": "Medium", "tags": ["licence revocation", "Traficom", "review-flag"],
-    "notes": "CONTRADICTION: Q259 and Q278 say police; Q314 says Traficom. Both are legally correct in different contexts. Flag for exam author to specify which authority is being tested in each question."
+    "pcw": [{"fi": "Poliisi", "en": "police"}],
+    "ncw": [{"fi": "Liikenne- ja viestintävirasto (Traficom)", "en": "Traficom"}, {"fi": "Taksin paikallisyhdistys", "en": "local association"}],
+    "explanation_en": "The police revoke a taxi driver's licence (taksinkuljettajan ajolupa) under the Act on Transport Services (A). Traficom grants the ajolupa and may revoke a taxi operator's transport licence — a different permit — but does not revoke the driver's licence. Consistent with Q259 and Q278.",
+    "difficulty": "Medium", "tags": ["licence revocation", "police", "review-flag"],
+    "notes": "ANSWER-KEY OVERRIDE: master marked C (Traficom); changed to A (police). The police revoke the taxi driver's ajolupa under the Act on Transport Services (320/2017); Traficom grants it and revokes only the operator's transport licence. Resolves the documented contradiction with Q259/Q278 (both keyed police). Verified vs Traficom + Finlex 320/2017."
   },
   "Q315": {
     "question_fi": "Kuinka pitkään B-luokan ajo-oikeuden on pitänyt olla voimassa, jotta taksinkuljettajan ajolupa voidaan myöntää?",

@@ -2945,19 +2945,19 @@
         "fi": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
         "fi_raw": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessa käyttää ajoneuvon turvavyötä.",
         "en": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "key": "C",
-        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen.",
-        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkee.",
-        "en": "The wheelchair must be secured so that it prevents only sideways movement.",
-        "is_correct": false
+        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "en": "The wheelchair must be secured so that it prevents movement in all directions.",
+        "is_correct": true
       }
     ],
-    "correct_option": "B",
+    "correct_option": "C",
     "correct_master": "B",
-    "key_overridden": false,
+    "key_overridden": true,
     "clue_annotations": [
       {
         "text_fi": "pyörätuolin käyttöä ja kiinnittämistä",
@@ -2970,7 +2970,7 @@
       {
         "text_fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä",
         "meaning_en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
@@ -2984,15 +2984,15 @@
         ]
       },
       {
-        "text_fi": "ainoastaan sivusuuntaisen liikkeen",
-        "meaning_en": "only sideways movement",
-        "clue_type": "ncw",
+        "text_fi": "kaikkiin suuntiin",
+        "meaning_en": "in all directions",
+        "clue_type": "pcw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "The marked answer is B. A is false — every wheelchair, including an electric one, must be secured. C is false — securing must restrain movement in all directions, not only sideways.",
+    "explanation_en": "The wheelchair must be secured so that it prevents movement in all directions (C) — wheelchair tie-downs plus an occupant restraint. A is false: every wheelchair, including an electric one, must be secured. B is false: a wheelchair passenger must still be restrained by an occupant belt.",
     "difficulty": "Hard",
     "tags": [
       "wheelchair",
@@ -3002,7 +3002,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": true,
-    "reviewer_notes": "Marked-correct option B is pedagogically questionable: a wheelchair passenger normally should also use the vehicle's seat belt. Verify the answer key against the official source.",
+    "reviewer_notes": "ANSWER-KEY + OPTION FIX: option C was corrupted to 'only sideways' (false), leaving the misleading B ('occupant needs no seat belt') keyed correct. Restored C to the all-directions statement per twin MTQ-052 and keyed C. A wheelchair occupant must be belted; B is false.",
     "enriched": true
   },
   {
@@ -5088,19 +5088,19 @@
         "fi": "Asiakkaan ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä.",
         "fi_raw": "Asiakkan ei tarvitse ajon aikana pyörätuolissa istuessa käyttää ajoneuvon turvävyötä",
         "en": "The customer does not need to use the vehicle's seat belt while seated in the wheelchair during the drive.",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "key": "C",
-        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää ainoastaan sivusuuntaisen liikkeen.",
-        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää ainiastaan sivusuuntiaisen liikkee.",
-        "en": "The wheelchair must be secured so that it prevents only sideways movement.",
-        "is_correct": false
+        "fi": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "fi_raw": "Pyörätuoli tulee kiinnittää siten, että se estää liikkumisen kaikkiin suuntiin.",
+        "en": "The wheelchair must be secured so that it prevents movement in all directions.",
+        "is_correct": true
       }
     ],
-    "correct_option": "B",
+    "correct_option": "C",
     "correct_master": "C",
-    "key_overridden": true,
+    "key_overridden": false,
     "clue_annotations": [
       {
         "text_fi": "pyörätuolin käyttöä ja kiinnittämistä",
@@ -5113,7 +5113,7 @@
       {
         "text_fi": "ei tarvitse ajon aikana pyörätuolissa istuessaan käyttää ajoneuvon turvavyötä",
         "meaning_en": "need not use the vehicle's seat belt while seated in the wheelchair during the drive",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
@@ -5127,15 +5127,15 @@
         ]
       },
       {
-        "text_fi": "ainoastaan sivusuuntaisen liikkeen",
-        "meaning_en": "only sideways movement",
-        "clue_type": "ncw",
+        "text_fi": "kaikkiin suuntiin",
+        "meaning_en": "in all directions",
+        "clue_type": "pcw",
         "found_in": [
           "option_c"
         ]
       }
     ],
-    "explanation_en": "A is false — every wheelchair, including electric, must be secured. C is false — the word 'ainoastaan' (only sideways) contradicts the all-directions securing rule. The true statement is B.",
+    "explanation_en": "The wheelchair must be secured so that it prevents movement in all directions (C) — wheelchair tie-downs plus an occupant restraint. A is false: every wheelchair, including an electric one, must be secured. B is false: a wheelchair passenger must still be restrained by an occupant belt.",
     "difficulty": "Hard",
     "tags": [
       "wheelchair",
@@ -5144,7 +5144,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": true,
-    "reviewer_notes": "ANSWER-KEY OVERRIDE: master marked C; changed to B. Options are identical to Q029 (master key B there). Option C is false because 'ainoastaan sivusuuntaisen' (only sideways) breaks the all-directions securing rule. Q029/Q053 contradict each other in the source — confirm B.",
+    "reviewer_notes": "OPTION-TEXT FIX + override revert: option C was corrupted to 'only sideways'; restored to the all-directions statement per twin MTQ-052 and keyed C (= master key). Reverts the earlier C->B override, which wrongly kept the misleading 'no seat belt needed' statement B.",
     "enriched": true
   },
   {
@@ -5426,14 +5426,14 @@
         "fi": "Kuljettajan.",
         "fi_raw": "Kuljettajan",
         "en": "The driver's.",
-        "is_correct": false
+        "is_correct": true
       },
       {
         "key": "B",
         "fi": "Työnantajan.",
         "fi_raw": "Työantajan",
         "en": "The employer's.",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "key": "C",
@@ -5443,9 +5443,9 @@
         "is_correct": false
       }
     ],
-    "correct_option": "B",
+    "correct_option": "A",
     "correct_master": "B",
-    "key_overridden": false,
+    "key_overridden": true,
     "clue_annotations": [
       {
         "text_fi": "rikostaustaote",
@@ -5458,7 +5458,7 @@
       {
         "text_fi": "Työnantajan",
         "meaning_en": "the employer's",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_b"
         ]
@@ -5466,7 +5466,7 @@
       {
         "text_fi": "Kuljettajan",
         "meaning_en": "the driver's",
-        "clue_type": "ncw",
+        "clue_type": "pcw",
         "found_in": [
           "question",
           "option_a"
@@ -5481,7 +5481,7 @@
         ]
       }
     ],
-    "explanation_en": "Per the master key, the employer is responsible for obtaining the driver's criminal-background extract (B).",
+    "explanation_en": "The driver must personally obtain their own criminal-background extract (rikostaustaote) from the Legal Register Centre and present it (A). The employer or orderer must require to see the extract but cannot obtain it on the driver's behalf; a self-employed driver has no employer. Consistent with Q037.",
     "difficulty": "Medium",
     "tags": [
       "criminal record",
@@ -5490,7 +5490,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": true,
-    "reviewer_notes": "CONTRADICTION with Q037: Q037 marks the driver as the one who obtains the extract; Q057 marks the employer. Finnish practice splits this (the individual requests the extract from the Legal Register Centre; the employer must check it) and self-employed drivers have no employer. Kept each question's master key; confirm against the official source and align Q037/Q057.",
+    "reviewer_notes": "ANSWER-KEY OVERRIDE: master marked B (employer); changed to A (driver). Under the Finnish rules on checking the background of persons working with children, the individual requests their own extract from the Legal Register Centre and presents it; the employer only verifies it. Resolves the documented contradiction with Q037 (keyed driver).",
     "enriched": true
   },
   {
@@ -20062,7 +20062,7 @@
         ]
       }
     ],
-    "explanation_en": "The regulated cleaning surcharge for soiling a taxi is €130 (A).",
+    "explanation_en": "The cleaning/soiling surcharge in the operator's price list is €130 (A). Taxi pricing has been market-based (deregulated) since 2018, so this fee is set by the operator's own price list, not by a national regulation.",
     "difficulty": "Medium",
     "tags": [
       "cleaning surcharge",
@@ -28073,7 +28073,7 @@
         "fi": "Poliisi.",
         "fi_raw": "Poliisi.",
         "en": "The police.",
-        "is_correct": false
+        "is_correct": true
       },
       {
         "key": "B",
@@ -28087,12 +28087,12 @@
         "fi": "Liikenne- ja viestintävirasto (Traficom).",
         "fi_raw": "Liikenne- ja viestintävirasto (Traficom).",
         "en": "Traficom.",
-        "is_correct": true
+        "is_correct": false
       }
     ],
-    "correct_option": "C",
+    "correct_option": "A",
     "correct_master": "C",
-    "key_overridden": false,
+    "key_overridden": true,
     "clue_annotations": [
       {
         "text_fi": "voi peruuttaa",
@@ -28105,7 +28105,7 @@
       {
         "text_fi": "Liikenne- ja viestintävirasto (Traficom)",
         "meaning_en": "Traficom",
-        "clue_type": "pcw",
+        "clue_type": "ncw",
         "found_in": [
           "option_c"
         ]
@@ -28113,7 +28113,7 @@
       {
         "text_fi": "Poliisi",
         "meaning_en": "police",
-        "clue_type": "ncw",
+        "clue_type": "pcw",
         "found_in": [
           "option_a"
         ]
@@ -28127,7 +28127,7 @@
         ]
       }
     ],
-    "explanation_en": "Finnish law gives driving-licence revocation power to both the police (immediate safety grounds) and Traficom (administrative grounds). Here the master answer is Traficom (C).",
+    "explanation_en": "The police revoke a taxi driver's licence (taksinkuljettajan ajolupa) under the Act on Transport Services (A). Traficom grants the ajolupa and may revoke a taxi operator's transport licence — a different permit — but does not revoke the driver's licence. Consistent with Q259 and Q278.",
     "difficulty": "Medium",
     "tags": [
       "licence revocation",
@@ -28136,7 +28136,7 @@
     ],
     "status": "ai-draft",
     "fi_edited": false,
-    "reviewer_notes": "CONTRADICTION: Q259 and Q278 say police; Q314 says Traficom. Both are legally correct in different contexts. Flag for exam author to specify which authority is being tested in each question.",
+    "reviewer_notes": "ANSWER-KEY OVERRIDE: master marked C (Traficom); changed to A (police). The police revoke the taxi driver's ajolupa under the Act on Transport Services (320/2017); Traficom grants it and revokes only the operator's transport licence. Resolves the documented contradiction with Q259/Q278 (both keyed police). Verified vs Traficom + Finlex 320/2017.",
     "enriched": true
   },
   {
