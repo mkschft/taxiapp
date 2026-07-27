@@ -97,7 +97,7 @@ jobs:
           scp taxipilot-web.tar.gz \
             "$APP_USER@$APP_HOST:/tmp/taxipilot-${GITHUB_SHA}.tar.gz"
 
-      - name: Publish release and reload Nginx
+      - name: Publish release
         env:
           APP_HOST: ${{ secrets.APP_HOST }}
           APP_USER: ${{ secrets.APP_USER }}
@@ -118,8 +118,12 @@ jobs:
           mkdir -p "$release"
           tar -xzf "$archive" -C "$release"
 
-          sudo -n mkdir -p /var/www/taxipilot
-          sudo -n rsync -a --delete "$release/" /var/www/taxipilot/
-          sudo -n nginx -t
-          sudo -n systemctl reload nginx
+          deploy_user="$(id -un)"
+          if [[ ! -d /var/www/taxipilot || ! -w /var/www/taxipilot ]]; then
+            echo "::error::/var/www/taxipilot must exist and be writable by the deployment user."
+            echo "Run once on the server: sudo chown -R ${deploy_user} /var/www/taxipilot"
+            exit 1
+          fi
+
+          rsync -a --delete "$release/" /var/www/taxipilot/
           REMOTE
