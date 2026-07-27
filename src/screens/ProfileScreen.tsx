@@ -127,7 +127,10 @@ export function ProfileScreen() {
     : null;
 
   const handleManageSub = () => {
-    navigation.navigate('Pricing');
+    navigation.getParent()?.getParent()?.navigate('Pricing', {
+      redirectTab: 'Profile',
+      redirectScreen: 'ProfileHome',
+    });
   };
 
   const handleLogout = () => {
