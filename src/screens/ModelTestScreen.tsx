@@ -343,22 +343,18 @@ export function ModelTestScreen({ navigation, route }: Props) {
   return (
     <SafeAreaView style={styles.safe}>
       {isDesktop ? (
-        <ContentContainer maxWidth={1120}>
+        <ContentContainer maxWidth={760}>
           {navBar}
           <ScrollView
             style={{ flex: 1 }}
-            contentContainerStyle={[styles.scrollContent, styles.desktopRow]}
+            contentContainerStyle={styles.desktopContent}
             showsVerticalScrollIndicator={false}
           >
-            <View style={styles.leftCol}>
-              {questionLabel}
-              {questionCard}
-            </View>
-            <View style={styles.rightCol}>
-              {timerRow}
-              {optionsList}
-              {footer}
-            </View>
+            {timerRow}
+            {questionLabel}
+            {questionCard}
+            {optionsList}
+            {footer}
           </ScrollView>
         </ContentContainer>
       ) : (
@@ -405,14 +401,7 @@ const styles = StyleSheet.create({
   backBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', marginLeft: -6 },
   navTitle: { flex: 1, fontSize: fontSize.md, fontFamily: font.semibold, color: colors.text },
   scrollContent: { padding: spacing.md },
-  desktopRow: {
-    flexDirection: 'row',
-    gap: spacing.xl,
-    padding: spacing.xl,
-    alignItems: 'flex-start',
-  },
-  leftCol: { flex: 1.15, minWidth: 0 },
-  rightCol: { flex: 1, minWidth: 0 },
+  desktopContent: { padding: spacing.xl },
   timerRow: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     paddingHorizontal: spacing.md, paddingVertical: 10,
