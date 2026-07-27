@@ -11,16 +11,13 @@ export function WebRootFrame({ children, isAppRoute }: Props) {
   const { isCompact } = useBreakpoint();
   if (Platform.OS !== 'web') return children;
 
-  // App routes always fill the viewport. Guest/auth/payment routes only keep
-  // the 430px phone shell on compact web viewports; on wider screens they
-  // render full-viewport so each screen can provide its own responsive layout.
-  if (isAppRoute || !isCompact) {
-    return <View style={styles.webFull}>{children}</View>;
-  }
+  const usePhoneShell = !isAppRoute && isCompact;
 
+  // Keep this two-View structure stable across route changes. Re-parenting the
+  // NavigationContainer here remounts it, which resets compact-web navigation.
   return (
-    <View style={styles.webOuter}>
-      <View style={styles.webShell}>{children}</View>
+    <View style={usePhoneShell ? styles.webOuter : styles.webFull}>
+      <View style={usePhoneShell ? styles.webShell : styles.webFull}>{children}</View>
     </View>
   );
 }
