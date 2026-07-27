@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { Clock, ClipboardList, CircleCheck, Lock } from 'lucide-react-native';
+import { Clock, ClipboardList, Lock } from 'lucide-react-native';
 import { AppButton } from '../components/ui/AppButton';
 import { AlertDialog } from '../components/ui/AlertDialog';
 import { localizedPair } from '../i18n/content';
@@ -45,7 +45,6 @@ export function TestHomeScreen() {
               <View style={styles.metaRow}>
                 <View style={styles.metaItem}><Clock size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.minutes', { n: test.time_minutes })}</Text></View>
                 <View style={styles.metaItem}><ClipboardList size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('common.questionsCount', { n: test.question_ids.length })}</Text></View>
-                <View style={styles.metaItem}><CircleCheck size={13} color={colors.textSecondary} strokeWidth={2.2} /><Text style={styles.meta}>{t('testHome.pass', { n: test.pass_mark })}</Text></View>
               </View>
               {unlocked ? (
                 <AppButton
