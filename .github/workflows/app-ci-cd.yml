@@ -1,0 +1,120 @@
+name: App CI/CD
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: app-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'production' }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Verify and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check translations
+        run: npm run check:i18n
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Check app data
+        run: npm run check:data
+
+      - name: Build web app
+        run: |
+          npx expo export --platform web
+          node scripts/postbuild-web.js
+
+      - name: Package release
+        if: github.event_name != 'pull_request'
+        run: tar -C dist -czf taxipilot-web.tar.gz .
+
+      - name: Upload release
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: taxipilot-web-${{ github.sha }}
+          path: taxipilot-web.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    name: Deploy to production
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+
+    steps:
+      - name: Download release
+        uses: actions/download-artifact@v4
+        with:
+          name: taxipilot-web-${{ github.sha }}
+
+      - name: Configure SSH
+        env:
+          APP_HOST: ${{ secrets.APP_HOST }}
+          APP_SSH_PRIVATE_KEY: ${{ secrets.APP_SSH_PRIVATE_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$APP_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$APP_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload release
+        env:
+          APP_HOST: ${{ secrets.APP_HOST }}
+          APP_USER: ${{ secrets.APP_USER }}
+        run: |
+          scp taxipilot-web.tar.gz \
+            "$APP_USER@$APP_HOST:/tmp/taxipilot-${GITHUB_SHA}.tar.gz"
+
+      - name: Publish release and reload Nginx
+        env:
+          APP_HOST: ${{ secrets.APP_HOST }}
+          APP_USER: ${{ secrets.APP_USER }}
+        run: |
+          ssh "$APP_USER@$APP_HOST" \
+            "DEPLOY_SHA='$GITHUB_SHA' bash -s" <<'REMOTE'
+          set -euo pipefail
+
+          archive="/tmp/taxipilot-${DEPLOY_SHA}.tar.gz"
+          release="/tmp/taxipilot-${DEPLOY_SHA}"
+
+          cleanup() {
+            rm -rf "$release"
+            rm -f "$archive"
+          }
+          trap cleanup EXIT
+
+          mkdir -p "$release"
+          tar -xzf "$archive" -C "$release"
+
+          sudo -n mkdir -p /var/www/taxipilot
+          sudo -n rsync -a --delete "$release/" /var/www/taxipilot/
+          sudo -n nginx -t
+          sudo -n systemctl reload nginx
+          REMOTE
