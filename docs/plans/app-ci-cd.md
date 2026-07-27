@@ -1,0 +1,37 @@
+# App CI/CD
+
+## Goal
+
+Build and verify the Expo web app in GitHub Actions, then deploy successful
+production builds to the existing Nginx host without relying on a checkout or
+Node tooling on that host.
+
+## Locked decisions
+
+1. **D-A — Production source:** pushes to `master` deploy automatically. The
+   workflow can also be started manually for recovery or an intentional
+   redeploy.
+2. **D-B — Build location:** GitHub Actions builds the complete web artifact
+   using the same data check, Expo export, and post-build layout used by the
+   existing Vercel configuration.
+3. **D-C — CI gates:** pull requests and `master` pushes must pass TypeScript,
+   content integrity, English/Finnish i18n parity, and the production build.
+4. **D-D — Transport:** the runner connects with `APP_HOST`, `APP_USER`, and
+   `APP_SSH_PRIVATE_KEY`, uploads one compressed release, and stages it under
+   `/tmp` on the server.
+5. **D-E — Publish:** the remote deploy uses `sudo rsync --delete` to publish
+   into `/var/www/taxipilot`, then validates and reloads Nginx.
+6. **D-F — Concurrency:** only one production deployment runs at a time; a newer
+   run supersedes an older in-progress run.
+7. **D-G — Server prerequisites:** `APP_USER` has passwordless sudo permission
+   for the required `mkdir`, `rsync`, `nginx -t`, and `systemctl reload nginx`
+   commands.
+
+## Verification
+
+- Run `npm run check:i18n`.
+- Run `npx tsc --noEmit`.
+- Run `npm run check:data`.
+- Run the production export and post-build commands.
+- Validate the workflow YAML structure locally.
+
