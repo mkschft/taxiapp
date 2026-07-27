@@ -19,13 +19,13 @@ Node tooling on that host.
 4. **D-D — Transport:** the runner connects with `APP_HOST`, `APP_USER`, and
    `APP_SSH_PRIVATE_KEY`, uploads one compressed release, and stages it under
    `/tmp` on the server.
-5. **D-E — Publish:** the remote deploy uses `sudo rsync --delete` to publish
-   into `/var/www/taxipilot`, then validates and reloads Nginx.
+5. **D-E — Publish:** the remote deploy uses `rsync --delete` to publish into
+   `/var/www/taxipilot`. Static file changes do not require an Nginx reload.
 6. **D-F — Concurrency:** only one production deployment runs at a time; a newer
    run supersedes an older in-progress run.
-7. **D-G — Server prerequisites:** `APP_USER` has passwordless sudo permission
-   for the required `mkdir`, `rsync`, `nginx -t`, and `systemctl reload nginx`
-   commands.
+7. **D-G — Server prerequisites:** `/var/www/taxipilot` exists and is writable
+   by `APP_USER`. This is configured once on the server instead of granting the
+   CI user passwordless sudo.
 
 ## Verification
 
@@ -34,4 +34,3 @@ Node tooling on that host.
 - Run `npm run check:data`.
 - Run the production export and post-build commands.
 - Validate the workflow YAML structure locally.
-
