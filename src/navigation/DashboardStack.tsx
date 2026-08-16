@@ -22,7 +22,7 @@ export function DashboardStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="DashboardHome" component={DashboardScreen} />
       <Stack.Screen name="VocabSets" component={RequireAuth(VocabSetsScreen, 'Dashboard')} />
-      <Stack.Screen name="VocabLesson" component={RequireAuth(VocabLessonScreen, 'Dashboard')} />
+      <Stack.Screen name="VocabLesson" component={VocabLessonScreen} />
       <Stack.Screen name="VocabQuiz" component={RequireAuth(VocabQuizScreen, 'Dashboard')} />
       <Stack.Screen name="ClueWords" component={RequireAuth(ClueWordsScreen, 'Dashboard')} />
       <Stack.Screen name="ClueLesson" component={RequireAuth(ClueLessonScreen, 'Dashboard')} />

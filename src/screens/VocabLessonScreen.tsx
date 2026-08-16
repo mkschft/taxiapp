@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
+import { useAuth } from '../store/authStore';
+import type { AuthRedirectInfo } from '../navigation/types';
 import { Lightbulb, ChevronLeft, ChevronRight, ClipboardCheck } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { ScreenHeader } from '../components/ui/ScreenHeader';
@@ -63,6 +65,20 @@ export function VocabLessonScreen({ navigation, route }: Props) {
 
   const isFirst = current <= 1;
   const isLast = current >= total;
+
+  // Redirect unauthenticated users trying to access lesson 2+
+  const authNav = useNavigation<any>();
+  const { state: authState } = useAuth();
+  useEffect(() => {
+    if (authState.hydrated && current > 1 && !authState.user) {
+      const redirect: AuthRedirectInfo = {
+        tab: 'Dashboard',
+        screen: 'VocabLesson',
+        params: { setId, index: current },
+      };
+      authNav.navigate('Login', { redirect });
+    }
+  }, [authState.hydrated, current, authState.user, setId, authNav]);
 
   // setParams updates the URL (…/lesson/:index) in place — no stack growth,
   // only the single visible card re-renders.
