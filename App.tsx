@@ -102,7 +102,7 @@ const linking: LinkingOptions<RootStackParamList> = {
     if (path.includes('pricing')) {
       const planMatch = path.match(/[?&]plan=([^&]+)/);
       const plan = planMatch ? planMatch[1] : undefined;
-      
+
       if (plan && ['1_day', '7_day', '14_day'].includes(plan)) {
         return {
           routes: [
@@ -114,7 +114,24 @@ const linking: LinkingOptions<RootStackParamList> = {
         };
       }
     }
-    
+
+    // Handle payment success with sessionId
+    if (path.includes('payment/success')) {
+      const sessionMatch = path.match(/[?&]sessionId=([^&]+)/);
+      const sessionId = sessionMatch ? sessionMatch[1] : undefined;
+
+      if (sessionId) {
+        return {
+          routes: [
+            {
+              name: 'PaymentSuccess',
+              params: { sessionId },
+            },
+          ],
+        };
+      }
+    }
+
     // Default behavior
     return undefined;
   },
