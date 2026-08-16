@@ -65,9 +65,9 @@ export function GuestCheckoutScreen({ route }: Props) {
       const status = err?.statusCode;
       if (status === 409) {
         // Email already exists
-        setFormError(t('guestCheckout.emailExists'));
+        setFormError(t('auth.guestCheckout.emailExists'));
       } else {
-        setFormError(err?.message ?? t('guestCheckout.genericError'));
+        setFormError(err?.message ?? t('auth.guestCheckout.genericError'));
       }
     } finally {
       setLoading(false);
@@ -104,7 +104,7 @@ export function GuestCheckoutScreen({ route }: Props) {
             <View style={styles.backIcon}>
               <ChevronLeft size={20} color={colors.textSecondary} strokeWidth={2.2} />
             </View>
-            <Text style={styles.headerTitle}>{t('guestCheckout.title')}</Text>
+            <Text style={styles.headerTitle}>{t('auth.guestCheckout.title')}</Text>
           </View>
 
           <ScrollView
@@ -112,7 +112,7 @@ export function GuestCheckoutScreen({ route }: Props) {
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}
           >
-            <Text style={styles.subtitle}>{t('guestCheckout.subtitle')}</Text>
+            <Text style={styles.subtitle}>{t('auth.guestCheckout.subtitle')}</Text>
 
             <View style={styles.form}>
               <AppInput
@@ -137,7 +137,7 @@ export function GuestCheckoutScreen({ route }: Props) {
               )}
 
               <AppButton
-                label={t('guestCheckout.continueToPayment')}
+                label={t('auth.guestCheckout.continueToPayment')}
                 onPress={handleContinue}
                 loading={loading}
                 style={{ marginTop: spacing.lg }}
@@ -145,7 +145,7 @@ export function GuestCheckoutScreen({ route }: Props) {
             </View>
 
             <View style={styles.footer}>
-              <Text style={styles.footerText}>{t('guestCheckout.haveAccount')}</Text>
+              <Text style={styles.footerText}>{t('auth.guestCheckout.haveAccount')}</Text>
               <AppButton
                 label={t('auth.logIn')}
                 onPress={handleLogin}
