@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RouteProp } from '@react-navigation/native';
 import { Type, Target, ClipboardList, Timer, type LucideIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from '../components/ui/AppButton';
@@ -8,7 +9,10 @@ import { GuestShell } from '../components/web/GuestShell';
 import { colors, spacing, fontSize, font, radius } from '../theme/tokens';
 import type { RootStackParamList } from '../navigation/types';
 
-type Props = { navigation: NativeStackNavigationProp<RootStackParamList, 'Welcome'> };
+type Props = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Welcome'>;
+  route: RouteProp<RootStackParamList, 'Welcome'>;
+};
 
 const FEATURES: { Icon: LucideIcon; tint: string; titleKey: string; bodyKey: string }[] = [
   { Icon: Type, tint: colors.primary, titleKey: 'auth.feature1Title', bodyKey: 'auth.feature1Body' },
@@ -17,8 +21,16 @@ const FEATURES: { Icon: LucideIcon; tint: string; titleKey: string; bodyKey: str
   { Icon: Timer, tint: colors.error, titleKey: 'auth.feature4Title', bodyKey: 'auth.feature4Body' },
 ];
 
-export function WelcomeScreen({ navigation }: Props) {
+export function WelcomeScreen({ navigation, route }: Props) {
   const { t } = useTranslation();
+  const deepLinkPlan = route.params?.deepLinkPlan;
+
+  // Handle deep link: if plan param present, navigate to GuestCheckout
+  useEffect(() => {
+    if (deepLinkPlan) {
+      navigation.replace('GuestCheckout', { planType: deepLinkPlan });
+    }
+  }, [deepLinkPlan, navigation]);
 
   return (
     <GuestShell>

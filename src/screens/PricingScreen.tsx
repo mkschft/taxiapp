@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, Platform, Linking,
 } from 'react-native';
@@ -118,6 +118,8 @@ export function PricingScreen() {
     message: string;
     variant?: 'default' | 'danger' | 'success';
   } | null>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const planRefs = useRef<Record<string, View | null>>({});
 
   const hasActive = auth.user ? hasActivePaidPlan(auth.user.subscription) : false;
   const activePlanType = auth.user?.subscription.planType ?? null;
@@ -126,6 +128,7 @@ export function PricingScreen() {
   const { isCompact } = useBreakpoint();
   const redirectTab = route.params?.redirectTab;
   const redirectScreen = route.params?.redirectScreen;
+  const highlightPlan = route.params?.highlightPlan;
 
   const handleBack = () => {
     if (redirectTab && redirectScreen) {
@@ -209,6 +212,7 @@ export function PricingScreen() {
             const bonusDays = planIsDayPassToFull ? 1 : 0;
             const totalDays = remainingDays + PLAN_DURATION_DAYS[plan.key] + bonusDays;
             const buttonDisabled = isActivePlan || planIsDowngrade;
+            const isHighlighted = highlightPlan === plan.key && plan.key !== 'free_preview';
             const buttonLabel = isActivePlan
               ? t('pricing.active')
               : planIsDowngrade
@@ -218,7 +222,15 @@ export function PricingScreen() {
                   : t(plan.buttonLabelKey);
 
             return (
-              <View key={plan.key} style={[styles.card, plan.badgeKey && styles.cardPopular]}>
+              <View 
+                key={plan.key} 
+                ref={(ref) => { planRefs.current[plan.key] = ref; }}
+                style={[
+                  styles.card, 
+                  plan.badgeKey && styles.cardPopular,
+                  isHighlighted && styles.cardHighlighted
+                ]}
+              >
                 <View style={styles.cardBody}>
                   {plan.badgeKey && (
                     <View style={styles.badge}>
@@ -304,6 +316,15 @@ const styles = StyleSheet.create({
   },
   cardBody: { flex: 1 },
   cardPopular: { borderColor: colors.primary },
+  cardHighlighted: {
+    borderColor: colors.success,
+    borderWidth: 3,
+    shadowColor: colors.success,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 8,
+  },
   badge: {
     alignSelf: 'center', backgroundColor: colors.primary,
     borderRadius: radius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs,

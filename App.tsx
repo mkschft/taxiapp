@@ -34,7 +34,7 @@ function applyGlobalFont() {
 // URL ↔ route mapping. Web syncs the address bar; native uses the prefixes for
 // deep links. Vocab paths follow /vocab/sets/:setId/lesson/:index.
 const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: [],
+  prefixes: ['taxipilot://', 'https://taxipilot.fi', 'https://www.taxipilot.fi'],
   config: {
     screens: {
       Welcome: 'app/welcome',
@@ -44,7 +44,18 @@ const linking: LinkingOptions<RootStackParamList> = {
       VerifyEmail: 'verify-email',
       ForgotPassword: 'forgot-password',
       ResetPassword: 'reset-password',
-      Pricing: 'pricing',
+      Pricing: {
+        path: 'pricing',
+        parse: {
+          highlightPlan: (plan: string) => plan,
+        },
+      },
+      GuestCheckout: {
+        path: 'guest-checkout',
+        parse: {
+          planType: (plan: string) => plan,
+        },
+      },
       PaymentSuccess: 'payment/success',
       PaymentCancel: 'payment/cancel',
       App: {
@@ -85,6 +96,27 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
     },
+  },
+  getStateFromPath: (path, options) => {
+    // Handle plan parameter for pricing deep links
+    if (path.includes('pricing')) {
+      const planMatch = path.match(/[?&]plan=([^&]+)/);
+      const plan = planMatch ? planMatch[1] : undefined;
+      
+      if (plan && ['1_day', '7_day', '14_day'].includes(plan)) {
+        return {
+          routes: [
+            {
+              name: 'Pricing',
+              params: { highlightPlan: plan },
+            },
+          ],
+        };
+      }
+    }
+    
+    // Default behavior
+    return undefined;
   },
 };
 

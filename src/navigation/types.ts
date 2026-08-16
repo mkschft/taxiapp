@@ -15,14 +15,14 @@ export type AuthRedirectInfo = {
 };
 
 export type RootStackParamList = {
-  Welcome: undefined;
+  Welcome: { deepLinkPlan?: string } | undefined;
   Onboarding: undefined;
   Signup: { redirect?: AuthRedirectInfo } | undefined;
   Login: { redirect?: AuthRedirectInfo } | undefined;
   VerifyEmail: { token?: string } | undefined;
   ForgotPassword: undefined;
   ResetPassword: { token: string };
-  Pricing: { redirectTab?: keyof AppTabParamList; redirectScreen?: string } | undefined;
+  Pricing: { redirectTab?: keyof AppTabParamList; redirectScreen?: string; highlightPlan?: string } | undefined;
   GuestCheckout: { planType: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
   PaymentSuccess: { sessionId: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
   PaymentCancel: undefined;
