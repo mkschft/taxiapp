@@ -84,7 +84,7 @@ export function CompleteSignupScreen({ route }: Props) {
         navigation.replace('App');
       }
     } catch (err: any) {
-      setFormError(err?.message ?? t('completeSignup.error'));
+      setFormError(err?.message ?? t('auth.completeSignup.error'));
     } finally {
       setLoading(false);
     }
@@ -107,8 +107,8 @@ export function CompleteSignupScreen({ route }: Props) {
               <CheckCircle size={64} color={colors.success} strokeWidth={1.8} />
             </View>
 
-            <Text style={styles.title}>{t('completeSignup.title')}</Text>
-            <Text style={styles.subtitle}>{t('completeSignup.subtitle', { email })}</Text>
+            <Text style={styles.title}>{t('auth.completeSignup.title')}</Text>
+            <Text style={styles.subtitle}>{t('auth.completeSignup.subtitle', { email })}</Text>
 
             <View style={styles.form}>
               <AppInput
@@ -147,7 +147,7 @@ export function CompleteSignupScreen({ route }: Props) {
               )}
 
               <AppButton
-                label={t('completeSignup.completeButton')}
+                label={t('auth.completeSignup.completeButton')}
                 onPress={handleComplete}
                 loading={loading}
                 style={{ marginTop: spacing.lg }}
