@@ -49,3 +49,40 @@ export async function resetPassword(token: string, password: string): Promise<{ 
 export async function updateExpectedExamDate(expectedExamDate: string | null): Promise<void> {
   await patch<void>('/auth/me/expected-exam-date', { expectedExamDate });
 }
+
+export async function completeGuestSignup(
+  email: string,
+  password: string,
+  name: string,
+): Promise<{ accessToken: string; refreshToken: string; user: AuthUser }> {
+  const data = await post<{
+    accessToken: string;
+    refreshToken: string;
+    user: {
+      id: string;
+      email: string;
+      name: string;
+      expectedExamDate?: string | null;
+      emailVerified?: boolean;
+      subscription?: SubscriptionInfo;
+    };
+  }>('/auth/complete-guest-signup', { email, password, name });
+
+  return {
+    accessToken: data.accessToken,
+    refreshToken: data.refreshToken,
+    user: {
+      id: data.user.id,
+      email: data.user.email,
+      name: data.user.name,
+      expectedExamDate: data.user.expectedExamDate ?? null,
+      emailVerified: data.user.emailVerified ?? false,
+      subscription: data.user.subscription ?? {
+        planType: 'free_preview',
+        planName: 'Free Preview',
+        isActive: true,
+        expiresAt: null,
+      },
+    },
+  };
+}

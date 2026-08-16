@@ -32,7 +32,22 @@ export function PaymentSuccessScreen() {
     let cancelled = false;
     (async () => {
       try {
-        await verifySession(sessionId);
+        const result = await verifySession(sessionId);
+
+        // Handle guest checkout - navigate to complete signup
+        if (result.isGuest && result.email) {
+          if (!cancelled) {
+            setVerifying(false);
+            navigation.replace('CompleteSignup', {
+              email: result.email,
+              redirectTab,
+              redirectScreen,
+            });
+          }
+          return;
+        }
+
+        // Regular flow for authenticated users
         if (!auth.accessToken) {
           if (!cancelled) {
             setError(t('pricing.errorLoginAgain'));
@@ -53,7 +68,7 @@ export function PaymentSuccessScreen() {
       }
     })();
     return () => { cancelled = true; };
-  }, [sessionId, auth.accessToken, updateUser]);
+  }, [sessionId, auth.accessToken, updateUser, navigation, redirectTab, redirectScreen]);
 
   const handleContinue = () => {
     navigation.replace('App');

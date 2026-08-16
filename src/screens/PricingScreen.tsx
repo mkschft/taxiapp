@@ -149,9 +149,11 @@ export function PricingScreen() {
     }
 
     if (!auth.user) {
-      setDialog({
-        title: t('pricing.signInRequiredTitle'),
-        message: t('pricing.signInRequiredBody'),
+      // Navigate to guest checkout for non-authenticated users
+      navigation.navigate('GuestCheckout', {
+        planType: plan.key,
+        redirectTab,
+        redirectScreen,
       });
       return;
     }

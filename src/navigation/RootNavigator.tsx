@@ -9,8 +9,10 @@ import { VerifyEmailScreen } from '../screens/VerifyEmailScreen';
 import { ForgotPasswordScreen } from '../screens/ForgotPasswordScreen';
 import { ResetPasswordScreen } from '../screens/ResetPasswordScreen';
 import { PricingScreen } from '../screens/PricingScreen';
+import { GuestCheckoutScreen } from '../screens/GuestCheckoutScreen';
 import { PaymentSuccessScreen } from '../screens/PaymentSuccessScreen';
 import { PaymentCancelScreen } from '../screens/PaymentCancelScreen';
+import { CompleteSignupScreen } from '../screens/CompleteSignupScreen';
 import { AppTabs } from './AppTabs';
 import { useAuth } from '../store/authStore';
 import { colors } from '../theme/tokens';
@@ -59,8 +61,10 @@ export function RootNavigator() {
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
       <Stack.Screen name="Pricing" component={PricingScreen} />
+      <Stack.Screen name="GuestCheckout" component={GuestCheckoutScreen} />
       <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
       <Stack.Screen name="PaymentCancel" component={PaymentCancelScreen} />
+      <Stack.Screen name="CompleteSignup" component={CompleteSignupScreen} />
     </Stack.Navigator>
   );
 }

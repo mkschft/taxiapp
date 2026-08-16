@@ -23,8 +23,10 @@ export type RootStackParamList = {
   ForgotPassword: undefined;
   ResetPassword: { token: string };
   Pricing: { redirectTab?: keyof AppTabParamList; redirectScreen?: string } | undefined;
+  GuestCheckout: { planType: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
   PaymentSuccess: { sessionId: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
   PaymentCancel: undefined;
+  CompleteSignup: { email: string; redirectTab?: keyof AppTabParamList; redirectScreen?: string };
   App: undefined;
 };
 
