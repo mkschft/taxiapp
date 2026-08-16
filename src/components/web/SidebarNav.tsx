@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import { useAuth, hasActivePaidPlan, getRemainingDays } from '../../store/authStore';
+import { LogoIcon } from '../LogoIcon';
 import { useBreakpoint } from '../../theme/breakpoints';
 import { colors, spacing, fontSize, font, radius } from '../../theme/tokens';
 
@@ -102,9 +103,7 @@ export function SidebarNav({ activeTab, activeRoute, onNavigate, onSignIn }: Pro
     <View style={[styles.sidebar, compact && styles.sidebarCompact]}>
       <View style={styles.top}>
         <View style={[styles.brand, compact && styles.brandCompact]}>
-          <View style={styles.brandMark}>
-            <Text style={styles.brandMarkText}>T</Text>
-          </View>
+          <LogoIcon size={34} />
           {!compact && <Text style={styles.brandText}>{t('common.appName')}</Text>}
         </View>
 
@@ -181,15 +180,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: spacing.md,
   },
-  brandMark: {
-    width: 34,
-    height: 34,
-    borderRadius: 10,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  brandMarkText: { fontSize: 18, fontFamily: font.bold, color: '#fff' },
   brandText: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
   section: { gap: 4, paddingHorizontal: spacing.sm },
   item: {

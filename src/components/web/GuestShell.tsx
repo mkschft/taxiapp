@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LanguageToggle } from './LanguageToggle';
+import { LogoIcon } from '../LogoIcon';
 import { useBreakpoint } from '../../theme/breakpoints';
 import { colors, spacing, fontSize, font, radius, shadow } from '../../theme/tokens';
 
@@ -16,9 +17,7 @@ type Props = {
 function BrandMark({ appName }: { appName: string }) {
   return (
     <View style={styles.brand}>
-      <View style={styles.brandMark}>
-        <Text style={styles.brandMarkText}>T</Text>
-      </View>
+      <LogoIcon size={34} />
       <Text style={styles.brandText}>{appName}</Text>
     </View>
   );
@@ -123,15 +122,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  brandMark: {
-    width: 34,
-    height: 34,
-    borderRadius: radius.md,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  brandMarkText: { fontSize: 18, fontFamily: font.bold, color: '#fff' },
   brandText: { fontSize: fontSize.md, fontFamily: font.bold, color: colors.text },
   tagline: {
     fontSize: fontSize.xs,
