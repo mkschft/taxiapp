@@ -128,7 +128,7 @@ export function CompleteSignupScreen({ route }: Props) {
               <AppInput
                 ref={passwordRef}
                 label={t('auth.passwordLabel')}
-                placeholder={t('auth.passwordPlaceholder')}
+                placeholder={t('auth.passwordMinPlaceholder')}
                 secureTextEntry
                 autoComplete="new-password"
                 textContentType="newPassword"
